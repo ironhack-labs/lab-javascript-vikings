@@ -1,0 +1,22 @@
+{
+  "name": "javascript-prototypes",
+  "version": "1.0.0",
+  "description": "![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^3.4.1",
+    "faker": "^3.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^3.1.2",
+    "mocha-let": "^0.1.1"
+  }
+}
