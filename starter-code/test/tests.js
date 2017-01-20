@@ -44,7 +44,6 @@ describe ('SOLDIERS', function () {
 
   it ('should remove the received damage from his health', function () {
     var damage = 50;
-
     soldier.receiveDamage(damage);
     soldier.health.should.equal(health - damage);
   });
