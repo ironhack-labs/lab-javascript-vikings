@@ -93,7 +93,6 @@ describe ('VIKINGS', function () {
 
   it ('should remove the received damage from his health', function () {
     var damage = 50;
-
     viking.receiveDamage(damage).should.equal(name + ' has received ' + damage + ' points of damage');
     viking.health.should.equal(health - damage);
   });
