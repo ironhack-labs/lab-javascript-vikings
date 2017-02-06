@@ -1,19 +1,17 @@
-// =========Soldier=====================
 
- function Soldier(healthParams, strengthParams) {
-   this.health = healthParams;
-   this.strength = strengthParams;
- }
+function Soldier (healthParams, strengthParams) {
+  this.health = healthParams;
+  this.strength = strengthParams;
+}
 
- Soldier.prototype.attack = function () {
-   return this.strength;
- };
+Soldier.prototype.attack = function () {
+  return this.strength; // forogt this line
+};
 
- Soldier.prototype.receiveDamage = function (damage) {
-   this.health -= damage;
- };
+Soldier.prototype.receiveDamage = function (damage) {
+  this.health -= damage;
+};
 
-// =========Vikings=====================
 
 
 function Viking (nameParam, healthParam, strengthParam) {
@@ -21,10 +19,10 @@ function Viking (nameParam, healthParam, strengthParam) {
   this.name = nameParam;
 }
 
-Viking.prototype = Object.create(Soldier.prototype);
-Viking.prototype.constructor = Viking;
+Viking.prototype = Object.create(Soldier.prototype); // "should be derived from Soldier" & "Soldier should have object as its prototype"
+Viking.prototype.constructor = Viking; // forgot this to complete the constructor
 
-Viking.prototype.receiveDamage = function (damage) {
+Viking.prototype.receiveDamage = function (damage) { // originally had Viking.prototype.healthChecl = function() {
   this.health -= damage;
 
   if (this.health <= 0) {
@@ -34,14 +32,10 @@ Viking.prototype.receiveDamage = function (damage) {
   return this.name + ' has received ' + damage + ' points of damage';
 };
 
-
 Viking.prototype.battleCry = function () {
-  return "Odin Owns You All!";
+  return 'Odin Owns You All!';
 };
 
-
-
-// =========SAXONS=====================
 
 
 function Saxon (healthParam, strengthParam) {
@@ -59,15 +53,4 @@ Saxon.prototype.receiveDamage = function (damage) {
   }
 
   return 'A Saxon has received ' + damage + ' points of damage';
-};
-
-
-
-function War () {}
-
-module.exports = {
-  Soldier: Soldier,
-  Viking:  Viking,
-  Saxon:   Saxon,
-  War:     War
 };
