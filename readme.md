@@ -31,7 +31,7 @@ We will be working with npm, Node, Chai and Mocha to work with this project and 
 
 ![](https://i.imgur.com/5QYneg7.jpg)
 
-In future weeks of the course we will explain all this concepts deeply. By the moment, we will give you a few introduction to help you understand how we will use each one:
+In future weeks of the course we will explain all these concepts more deeply. For the moment, we will give you a short introduction to help you understand how we will use each one:
 
 - [`npm`](https://www.npmjs.com/). It's the Node package manager. It will help us to install all the packages and its dependencies that we need to run our project.
 - [`Node`](https://nodejs.org/es/). It's used to run JavaScript in the back end.
