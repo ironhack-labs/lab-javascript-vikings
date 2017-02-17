@@ -43,7 +43,7 @@ In future weeks of the course we will explain all these concepts more deeply. Fo
 ## Usage
 
 ```bash
-$ cd ~/code/labs/lab-javascript-oop/
+$ cd ~/code/labs/lab-javascript-vikings/starter-code/
 $ npm install
 $ npm install mocha chai --save-dev
 $ npm install -g mocha
