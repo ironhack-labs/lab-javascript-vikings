@@ -45,6 +45,8 @@ In future weeks of the course we will explain all these concepts more deeply. Fo
 ```bash
 $ cd ~/code/labs/lab-javascript-oop/
 $ npm install
+$ npm install mocha chai --save-dev
+$ npm install -g mocha
 $ mocha
 
   SOLDIERS
