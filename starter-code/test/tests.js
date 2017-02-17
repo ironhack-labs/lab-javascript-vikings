@@ -23,20 +23,19 @@ describe ('SOLDIERS', function () {
     Object.getPrototypeOf(soldier).should.be.an('Object');
   });
 
-  it ('should have a number of health', function () {
+  it ('should have a health attribute equal to 300', function () {
     soldier.health.should.be.a('number');
-    soldier.health.should.equal(health);
+    soldier.health.should.equal(300);
   });
 
-  it ('should have a strength', function () {
+  it ('should have a strength attribute equal to 150', function () {
     soldier.strength.should.be.a('number');
-    soldier.strength.should.equal(strength);
+    soldier.strength.should.equal(150);
   });
 
   it ('should have an attack function', function () {
     soldier.attack.should.be.a('Function');
-    soldier.attack().should.equal(strength);
-  });
+    });
 
   it ('should have a receiveDamage function', function () {
     soldier.receiveDamage.should.be.a('Function');
@@ -84,7 +83,6 @@ describe ('VIKINGS', function () {
 
   it ('should have an attack function', function () {
     viking.attack.should.be.a('Function');
-    viking.attack().should.equal(strength);
   });
 
   it ('should have a receiveDamage function', function () {
@@ -136,7 +134,6 @@ describe ('SAXONS', function () {
 
   it ('should have an attack function', function () {
     saxon.attack.should.be.a('Function');
-    saxon.attack().should.equal(strength);
   });
 
   it ('should have a receiveDamage function', function () {
