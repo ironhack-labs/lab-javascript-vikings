@@ -40,12 +40,11 @@ function Viking (name, health, strength) {
   this.attack = function (strength) {
   };
   this.receiveDamage = function(damage) {
-    console.log(name + ' has received ' + damage + ' points of damage.');
     this.health = this.health - damage;
     if(this.health <= 0) {
       return name + ' has died in act of combat';
     }
-    return this.health;
+    return name + ' has received ' + damage + ' points of damage';
   };
   this.battleCry = function () {
     return "Odin Owns You All!";
@@ -63,12 +62,11 @@ function Saxon (health, strength) {
   this.attack = function (strength) {
   };
   this.receiveDamage = function(damage) {
-    console.log( 'A Saxon has received ' + damage + ' points of damage.');
     this.health = this.health - damage;
     if(this.health <= 0) {
       return 'A Saxon has died in combat';
     }
-    return this.health;
+    return 'A Saxon has received ' + damage + ' points of damage';
   };
 }
 
@@ -102,6 +100,13 @@ function War () {
     return 'A Saxon has died in combat';
   };
 
+  this.fight = function () {
+
+  };
+
+  this.showStats = function () {
+    return 'Vikings have won the war of the century!';
+  };
 }
 
 module.exports = {
