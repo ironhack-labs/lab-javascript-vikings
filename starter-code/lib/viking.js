@@ -30,8 +30,10 @@ function Soldier () {
 }
 
 Viking.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
 
 function Viking (name, health, strength) {
+  Soldier.call(this, health, strength);
   this.name = name;
   this.health = health;
   this.strength = strength;
@@ -39,7 +41,7 @@ function Viking (name, health, strength) {
   };
   this.receiveDamage = function(damage) {
     console.log(name + ' has received ' + damage + ' points of damage.');
-    this.health = health - damage;
+    this.health = this.health - damage;
     if(this.health <= 0) {
       return name + ' has died in act of combat';
     }
@@ -52,16 +54,17 @@ function Viking (name, health, strength) {
 }
 
 Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.constructor = Saxon;
 
 function Saxon (health, strength) {
+  Soldier.call(this, health, strength);
   this.health = health;
   this.strength = strength;
   this.attack = function (strength) {
   };
   this.receiveDamage = function(damage) {
     console.log( 'A Saxon has received ' + damage + ' points of damage.');
-    this.health = health - damage;
-    console.log(this.health);
+    this.health = this.health - damage;
     if(this.health <= 0) {
       return 'A Saxon has died in combat';
     }
@@ -98,7 +101,6 @@ function War () {
     this.saxonsArmy.shift();
     return 'A Saxon has died in combat';
   };
-
 
 }
 
