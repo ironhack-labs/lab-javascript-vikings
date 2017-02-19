@@ -101,7 +101,7 @@ function War () {
   // var x = new Viking(42,423,"thor");
  // console.log(x);
 
- // var MyVikings = new Viking ['Thor', 'Odin', 'Baldur', 'Loki', 'Borr', 'Forseti', 'Fulla', 'Gefjun', 'Hermóðr', 'Alejandorr', 'Höðr', 'Vali'];
+ // var MyVikings = new Viking ['Thor', 'Odin', 'Baldur', 'Loki', 'Mart', 'Borr', 'Forseti', 'Fulla', 'Gefjun', 'Hermóðr', 'Alejandorr', 'Höðr', 'Vali'];
 
  // var war = ['Thor', 'Odin', 'Baldur', 'Loki', 'Borr', 'Forseti', 'Fulla', 'Gefjun', 'Hermóðr', 'Alejandorr', 'Höðr', 'Vali'];
 
