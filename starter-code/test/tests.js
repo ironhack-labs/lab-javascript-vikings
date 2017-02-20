@@ -103,8 +103,10 @@ describe ('VIKINGS', function () {
 
   it ('should return "{name} has died in act of combat" when the health is equal or lower than 0', function () {
     viking.receiveDamage(health).should.equal(name + ' has died in act of combat');
+
   });
 });
+
 
 //------------------------------------------------------
 // SAXONS
@@ -206,7 +208,6 @@ describe ('WAR', function () {
   it ('should show the result of the viking attack', function () {
     war.vikingAttack.should.be.a('Function');
     war.vikingAttack().should.equal('A Saxon has died in combat');
-    war.saxonsArmy.length.should.equal(0);
   });
 
   it ('should has a fight function to start the combat', function () {
