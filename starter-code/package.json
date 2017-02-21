@@ -16,7 +16,8 @@
     "faker": "^3.0.1"
   },
   "devDependencies": {
-    "mocha": "^3.1.2",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
     "mocha-let": "^0.1.1"
   }
 }
