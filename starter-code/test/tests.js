@@ -23,12 +23,12 @@ describe ('SOLDIERS', function () {
     Object.getPrototypeOf(soldier).should.be.an('Object');
   });
 
-  it ('should have a health attribute equal to 300', function () {
+  it ('should have a health attribute set in the constructor', function () {
     soldier.health.should.be.a('number');
     soldier.health.should.equal(300);
   });
 
-  it ('should have a strength attribute equal to 150', function () {
+  it ('should have a strength attribute set in the constructor', function () {
     soldier.strength.should.be.a('number');
     soldier.strength.should.equal(150);
   });
