@@ -10,6 +10,8 @@ var VikingBattle = require('../lib/viking.js');
 //------------------------------------------------------
 // SOLDIERS
 //------------------------------------------------------
+
+
 describe ('SOLDIERS', function () {
   var strength = 150;
   var health   = 300;
