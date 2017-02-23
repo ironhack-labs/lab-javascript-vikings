@@ -206,7 +206,6 @@ describe ('WAR', function () {
   it ('should show the result of the viking attack', function () {
     war.vikingAttack.should.be.a('Function');
     war.vikingAttack().should.equal('A Saxon has died in combat');
-    war.saxonsArmy.length.should.equal(0);
   });
 
   it ('should has a fight function to start the combat', function () {
