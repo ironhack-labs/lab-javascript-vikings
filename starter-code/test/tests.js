@@ -5,7 +5,7 @@ var should = require('chai').should();
 var faker  = require('faker');
 
 // LIBRARY WE WANT TO TEST
-var VikingBattle = require('../lib/viking.js');
+var VikingBattle = require('../lib/Viking.js');
 
 //------------------------------------------------------
 // SOLDIERS
