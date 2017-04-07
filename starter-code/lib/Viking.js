@@ -19,11 +19,26 @@
 //   FootViking: FootViking
 // };
 
-function Soldier () {}
+function Soldier (health, strength) {
+  this.health = health;
+  this.strength = strength;
+}
+Soldier.prototype.attack = function() {
+  return this.strength;
+};
+Soldier.prototype.receiveDamage = function(damage) {
+  return this.health -= damage;
+};
 
-function Viking () {}
 
-function Saxon () {}
+function Viking (health, strength) {
+}
+
+Viking.prototype = Object.create(Soldier.prototype);
+
+
+function Saxon () {
+}
 
 function War () {}
 
