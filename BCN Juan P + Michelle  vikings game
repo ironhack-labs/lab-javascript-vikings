@@ -1,0 +1,103 @@
+function Soldier(health, strength){
+  this.health = health;
+  this.strength = health;
+  Soldier.prototype.attack = function(){
+    return this.strength;
+  };
+  Soldier.prototype.receiveDamage = function(enemyDamage){
+    return(this.health = this.health - enemyDamage);
+  };
+}
+
+function Viking(name, theHealth, theStrength){
+//  Soldier.call(this, health, strength);
+  this.health = theHealth;
+  this.strength = theStrength;
+  this.name = name;
+  this.receiveDamage = function(enemyDamage){
+    return(this.health = this.health - enemyDamage);
+  }
+  this.attack = function(){
+    return this.strength;
+  };
+
+  //battleCry, a console.log that writes "Odin Owns You All!// //When they go to the array//
+}
+
+function Saxon(theHealth, theStrength){
+//  Soldier.call(health, strength);
+  this.health = theHealth;
+  this.strength = theStrength;
+  this.receiveDamage = function(enemyDamage){
+    return(this.health = this.health - enemyDamage);
+  }
+  this.attack = function(){
+    return this.strength;
+  };
+}
+
+function war (health, strength) {
+
+  //Step 1. create random number to determine how many saxons/vikings are pushed into their respective arrays.
+
+  var numberOfSaxons = Math.floor(Math.random() * 100) +50;
+  var numberOfVikings = Math.floor(Math.random() * 100) +50;
+
+  console.log("Number of Vikings in the war: " + numberOfVikings);
+  console.log("Number of Saxons in the war: " + numberOfSaxons);
+
+//  var troopSaxon = new Saxon(10, 3);
+  var saxonArray = [];
+  var i = 0;
+  while(i<numberOfSaxons) {
+    saxonArray.push( new Saxon(10, 3) );
+    i++;
+  }
+
+//  var troopVikings = new Viking("Michelle", 10, 6);
+  var vikingArray = [];
+  var j = 0;
+  while(j<numberOfVikings) {
+    vikingArray.push( new Viking("Michelle"+j, 10, 6) );
+    j++;
+  }
+
+
+  console.log("*** War has started ***");
+  while(saxonArray.length !==0 || vikingArray.length !==0) {
+
+    vikingArray[0].receiveDamage(saxonArray[0].attack());
+
+    if(vikingArray[0].health<=0) {
+        console.log("## "+ vikingArray[0].name + " has died in act of combat");
+        vikingArray.shift();
+      } else {console.log(vikingArray[0].name + " has received "+ saxonArray[0].attack() + " points of damage")}
+
+    if(saxonArray.length ===0 || vikingArray.length ===0){
+      break;
+    }
+
+    saxonArray[0].receiveDamage(vikingArray[0].attack());
+      if(saxonArray[0].health<=0) {
+      console.log("## A Saxon" + " has died in act of combat");
+      saxonArray.shift();
+    } else {console.log("A Saxon has received "+ saxonArray[0].attack() + " points of damage")
+    }
+
+    if(saxonArray.length ===0 || vikingArray.length ===0){
+      break;
+    }
+
+    console.log("Viking health: " + vikingArray[0].health);
+    console.log("Saxon health: " + saxonArray[0].health);
+
+  }
+    if(vikingArray.length > saxonArray.length) {
+      return("Vikings won the war")
+    } else {
+      return("Saxon won the war")
+    }
+
+}
+
+ war();
