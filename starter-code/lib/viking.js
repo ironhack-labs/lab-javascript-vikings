@@ -23,15 +23,30 @@ function Soldier (health, strength) {
   this.health = health
   this.strength = strength
 }
+
 Soldier.prototype.attack = function() {
   return this.strength
 }
 
-Soldier.prototype.receiveDamage = function(health) {
-  return this.health -= health
+Soldier.prototype.receiveDamage = function(damage) {
+  this.health -= damage
+  if (this.health > 0) {
+    return this.name + ' has received ' + damage + ' points of damage'
+  } else {
+    return this.name + ' has died in act of combat'
+  }
 }
 
-function Viking () {}
+function Viking (name, health, strength) {
+  this.name = name
+  Soldier.call(this, health, strength)
+}
+
+Viking.prototype = Object.create(Soldier.prototype)
+
+Viking.prototype.battleCry = function() {
+  return 'Odin Owns You All!'
+}
 
 function Saxon () {}
 
