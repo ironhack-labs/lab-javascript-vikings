@@ -45,7 +45,7 @@ function Viking (name, health, strength) {
       this.health -= damage;
       if (this.health <= 0) {
 
-         return name + ' has died in act of combat';
+         return this.name + ' has died in act of combat';
       }
       return this.name + ' has received ' + damage + ' points of damage';
 
@@ -70,10 +70,31 @@ function Saxon (health,strength) {
 //saxons inheritance
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
-function War () {
-  this.Vikings = Vikings = [];
 
+
+
+//War constructor
+function War () {
+  this.vikingsArmy  = [];
+  this.saxonsArmy = [];
+  this.addViking = function(){
+    this.vikingsArmy.push(Viking);
+};
+  this.addSaxon = function(){
+    this.saxonsArmy.push(Saxon);
+  };
+  this.saxonAttack = function(){
+    return viking.name + ' has received ' + saxon.strength + ' points of damage';
+  };
+  this.vikingAttack = function(){
+    //Viking.attack();
+    //Saxon.receiveDamage();
+    this.saxonsArmy = [];
+    return "A Saxon has died in combat";
+  //  saxonsArmy.pull(saxon)
+  };
 }
+
 
 module.exports = {
   Soldier: Soldier,
