@@ -63,7 +63,26 @@ Saxon.prototype.receiveDamage = function(damage) {
   }
 }
 
-function War () {}
+function War () {
+  this.vikingsArmy = []
+  this.saxonsArmy = []
+}
+
+War.prototype.addViking = function(viking) {
+  return this.vikingsArmy.push(viking)
+}
+
+War.prototype.addSaxon = function(saxon) {
+  return this.saxonsArmy.push(saxon)
+}
+
+War.prototype.saxonAttack = function() {
+  return this.vikingsArmy[0].receiveDamage(this.saxonsArmy[0].attack())
+}
+
+War.prototype.vikingAttack = function() {
+  return this.saxonsArmy[0].receiveDamage(this.vikingsArmy[0].attack())
+}
 
 module.exports = {
   Soldier: Soldier,
