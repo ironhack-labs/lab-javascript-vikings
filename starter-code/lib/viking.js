@@ -77,14 +77,16 @@ Saxon.prototype.constructor = Saxon;
 function War () {
   this.vikingsArmy  = [];
   this.saxonsArmy = [];
+  //push a viking object into viking army array
   this.addViking = function(viking){
     this.vikingsArmy.push(viking);
   };
-
+//push a saxon object into saxon array
   this.addSaxon = function(saxon){
     this.saxonsArmy.push(saxon);
   };
 }
+//check soldier's health
 War.prototype.checkDeath =  function(){
   if(this.saxonsArmy[0].health < 0){
     this.saxonsArmy.pop();
@@ -93,22 +95,27 @@ War.prototype.checkDeath =  function(){
     this.vikingsArmy.pop();
   }
 };
+//start a fight
 War.prototype.fight = function(){
   this.vikingAttack();
   this.saxonAttack();
 };
+//define saxon attack
+War.prototype.saxonAttack = function(){
+
+    return this.vikingsArmy[0].receiveDamage(this.saxonsArmy[0].attack());
+};
+//define viking attack
 War.prototype.vikingAttack = function(){
     var result = this.saxonsArmy[0].receiveDamage(this.vikingsArmy[0].attack());
     this.checkDeath();
     return result;
 };
+//log final stats
 War.prototype.showStats = function(){
   return 'Vikings have won the war of the century!';
 };
-War.prototype.saxonAttack = function(){
 
-    return this.vikingsArmy[0].receiveDamage(this.saxonsArmy[0].attack());
-};
 
 module.exports = {
   Soldier: Soldier,
