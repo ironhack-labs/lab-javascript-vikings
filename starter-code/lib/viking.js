@@ -85,12 +85,18 @@ function War () {
     this.saxonsArmy.push(saxon);
   };
 }
+War.prototype.checkDeath =  function(){
+  if(this.saxonsArmy[0].health < 0){
+    this.saxonsArmy.pop();
+  }
+  if (this.vikingsArmy[0].health <0) {
+    this.vikingsArmy.pop();
+  }
+};
 
 War.prototype.vikingAttack = function(){
     var result = this.saxonsArmy[0].receiveDamage(this.vikingsArmy[0].attack());
-    if (this.saxonsArmy[0].health < 0) {
-      this.saxonsArmy.pull(this.saxonsArmy[0]);
-    }
+    this.checkDeath();
     return result;
 };
 
