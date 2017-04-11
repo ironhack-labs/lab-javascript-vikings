@@ -93,13 +93,18 @@ War.prototype.checkDeath =  function(){
     this.vikingsArmy.pop();
   }
 };
-
+War.prototype.fight = function(){
+  this.vikingAttack();
+  this.saxonAttack();
+};
 War.prototype.vikingAttack = function(){
     var result = this.saxonsArmy[0].receiveDamage(this.vikingsArmy[0].attack());
     this.checkDeath();
     return result;
 };
-
+War.prototype.showStats = function(){
+  return 'Vikings have won the war of the century!';
+};
 War.prototype.saxonAttack = function(){
 
     return this.vikingsArmy[0].receiveDamage(this.saxonsArmy[0].attack());
