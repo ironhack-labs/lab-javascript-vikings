@@ -194,7 +194,7 @@ describe ('WAR', function () {
 
   it ('should add saxons to the army', function () {
     war.addSaxon.should.be.a('Function');
-    war.addSaxon (saxon);
+    war.addSaxon(saxon);
     war.saxonsArmy.length.should.equal(1);
   });
 
