@@ -77,24 +77,27 @@ Saxon.prototype.constructor = Saxon;
 function War () {
   this.vikingsArmy  = [];
   this.saxonsArmy = [];
-  this.addViking = function(){
-    this.vikingsArmy.push(Viking);
-};
-  this.addSaxon = function(){
-    this.saxonsArmy.push(Saxon);
+  this.addViking = function(viking){
+    this.vikingsArmy.push(viking);
   };
-  this.saxonAttack = function(){
-    return viking.name + ' has received ' + saxon.strength + ' points of damage';
-  };
-  this.vikingAttack = function(){
-    //Viking.attack();
-    //Saxon.receiveDamage();
-    this.saxonsArmy = [];
-    return "A Saxon has died in combat";
-  //  saxonsArmy.pull(saxon)
+
+  this.addSaxon = function(saxon){
+    this.saxonsArmy.push(saxon);
   };
 }
 
+War.prototype.vikingAttack = function(){
+    var result = this.saxonsArmy[0].receiveDamage(this.vikingsArmy[0].attack());
+    if (this.saxonsArmy[0].health < 0) {
+      this.saxonsArmy.pull(this.saxonsArmy[0]);
+    }
+    return result;
+};
+
+War.prototype.saxonAttack = function(){
+
+    return this.vikingsArmy[0].receiveDamage(this.saxonsArmy[0].attack());
+};
 
 module.exports = {
   Soldier: Soldier,
