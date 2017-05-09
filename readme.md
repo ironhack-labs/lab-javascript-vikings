@@ -69,7 +69,7 @@ We are going to be working with the files inside the `spec` and `src` folders. I
 
 Run the tests with Jasmine is super easy, you just have to open the `SpecRunner.html` file in your browser. You will find something like this:
 
-![](images/1.png)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_dfaa7b22b9e00c73218f5980aaa12cad.png)
 
 We've got a _test suite_ for our constructor functions and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `spec/VikingSpec.js` and implement the code in `src/viking.js` to make each test pass.
 
@@ -93,7 +93,7 @@ If you open `spec/VikingSpec.js` and take a look at **lines 10-20**. You should 
 
 Now that particular test (_should receive 2 arguments (health & strength)_) is failing!
 
-![](images/2.png)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_b44f06caaa4ae521745568a482ff3d62.png)
 
 
 **Write the code**
@@ -132,7 +132,7 @@ function War () {}
 
 Once we have implemented the correct code, we can refresh the `SpecRunner.html` page to see how our tests are passing.
 
-![](images/3.png)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_7074e3db1d1b0ddadfee5914fe2e0595.png)
 
 ![For the win](https://media.giphy.com/media/nXxOjZrbnbRxS/giphy.gif)
 
@@ -141,7 +141,7 @@ Once we have implemented the correct code, we can refresh the `SpecRunner.html` 
 
 Now that we are passing the first test, the next step is to uncomment the next test. To do that, we have to remove the comments from **lines 15-17** in the `spec/VikingSpec.js` file, and refresh the page to see what we have to implement next:
 
-![](images/4.png)
+![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_c82d7c268ab8bdd99b3908c497ea39a5.png)
 
 Once we have checked out that the test is failing, we can implement the code to make it pass. This is how [TDD (Test-driven development)](https://en.wikipedia.org/wiki/Test-driven_development) works. Once you have implemented the code to pass all the tests, the exercise will be done.
 
