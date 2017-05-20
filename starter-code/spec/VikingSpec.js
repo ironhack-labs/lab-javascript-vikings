@@ -7,6 +7,8 @@ describe("Soldier", function () {
     soldier = new Soldier(health, strength);
   });
 
+// patatas llevo
+
   describe("constructor function", function () {
     // it("should receive 2 arguments (health & strength)", function () {
     //   expect(Soldier.length).toEqual(2);
