@@ -19,7 +19,7 @@ function Viking (name, health, strength) {
   this.receiveDamage = function(damage){
     this.health -= damage;
     if(this.health<= 0) {
-      console.log( this.name + " has died in act of combat ");
+     console.log( this.name + " has died in act of combat ");
       return this.name + " has died in act of combat";
     } else {
       console.log( this.name + " has received " + damage + " points of damage");
