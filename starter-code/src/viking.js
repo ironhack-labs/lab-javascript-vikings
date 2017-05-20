@@ -65,7 +65,7 @@ function War (vikingArmy, saxonArmy) {
     var randomViking = Math.floor(Math.random() * this.vikingArmy.length);
     this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
     if (this.vikingArmy[randomViking].health <= 0) {
-      return this.vikingArmy.splice(randomSaxon, 1);
+      return this.vikingArmy.splice(randomViking, 1);
     }
   };
   this.showStatus = function() {
@@ -103,7 +103,7 @@ var battle = new War(newVikings, newSaxons);
   // battle.saxonAttack();
   // battle.showStatus();
 
-while (battle.vikingArmy && battle.saxonArmy) {
+while (battle.vikingArmy.length !==0 && battle.saxonArmy.length !== 0) {
   battle.vikingAttack();
   battle.saxonAttack();
   battle.showStatus();
