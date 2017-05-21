@@ -3,7 +3,7 @@ function Soldier (health, strength) {
   this.health = health;
   this.strength = strength;
   this.attack = function() {
-    console.log(this.strength);
+    return this.strength;
   };
   this.receiveDamage = function(damage) {
     this.health -= this.damage;
@@ -43,9 +43,9 @@ function Saxon(name, health, strength) {
 }
 
 // War
-function War (vikingArmy, saxonArmy) {
-  this.vikingArmy = vikingArmy;
-  this.saxonArmy = saxonArmy;
+function War () {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
   this.addViking = function(Viking) {
     this.vikingArmy.push(Viking);
   };
@@ -55,24 +55,27 @@ function War (vikingArmy, saxonArmy) {
   this.vikingAttack = function() {
     var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     var randomViking = Math.floor(Math.random() * this.vikingArmy.length);
-    this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
+    var doDamage = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
     if (this.saxonArmy[randomSaxon].health <= 0) {
-      return this.saxonArmy.splice(randomSaxon, 1);
+      this.saxonArmy.splice(randomSaxon, 1);
     }
+    return doDamage;
   };
   this.saxonAttack = function() {
     var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     var randomViking = Math.floor(Math.random() * this.vikingArmy.length);
-    this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
+    var doDamage = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
     if (this.vikingArmy[randomViking].health <= 0) {
-      return this.vikingArmy.splice(randomViking, 1);
+      this.vikingArmy.splice(randomViking, 1);
     }
+    return doDamage;
   };
+
   this.showStatus = function() {
-    if (this.saxonArmy.length === 0) {
+    if (this.saxonArmy.length <= 0) {
       console.log("Vikings have won the war of the century!");
     }
-    else if (this.vikingArmy.length === 0) {
+    else if (this.vikingArmy.length <= 0) {
       console.log("Saxons have fought for their lives and survive another day...");
     }
     else if ((this.vikingArmy.length && this.saxonArmy.length) >= 1) {
@@ -81,30 +84,42 @@ function War (vikingArmy, saxonArmy) {
   };
 }
 
+// I'm adding the NewSaxons inside WAR constructor
+
+var startBattle = new War(newVikings, newSaxons);
+
+// Variables that then I gonna use for names
+
 var vikingsName = ["Ragnar", "Bjorn", "Rollo", "Ubbe", "Ivar"];
-var saxonsName = ["Pedro", "Guti", "Lucas", "Manolo", "Jose"];
-var randomHealth = Math.floor(Math.random() * 10);
-var randomStrength = Math.floor(Math.random() * 10);
+var saxonsName = ["Saxon1", "Saxon2", "Saxon3", "Saxon4", "Saxon5"];
+
+// this variable is iterating with map, but the health, and strength is inside because I want warriors with
+// his own and independent stats, now it's working!
 
 var newVikings = vikingsName.map(function(vikName) {
+  var randomVikingHealth = Math.floor(Math.random() * 10);
+  var randomVikingStrength = Math.floor(Math.random() * 20);
     console.log(vikName, "  Con ganas de aplastar cráneo Sajón");
-    return new Viking(vikName, randomHealth, randomStrength);
+    return new Viking(vikName, randomVikingHealth, randomVikingStrength);
 });
 
 var newSaxons = saxonsName.map(function(saxName) {
+  var randomSaxonHealth = Math.floor(Math.random() * 20);
+  var randomSaxonStrength = Math.floor(Math.random() * 10);
   console.log(saxName, "  Con ganas de matar Vikingos");
-  return new Saxon(saxName, randomHealth, randomStrength);
+  return new Saxon(saxName, randomSaxonHealth, randomSaxonStrength);
 });
 
 console.log(newVikings, newSaxons);
 
-var battle = new War(newVikings, newSaxons);
-  // battle.vikingAttack();
-  // battle.saxonAttack();
-  // battle.showStatus();
 
-while (battle.vikingArmy.length !==0 && battle.saxonArmy.length !== 0) {
-  battle.vikingAttack();
-  battle.saxonAttack();
-  battle.showStatus();
+// This function must activate the game
+function play() {
+  console.log("The Battle between Vikings and Saxons is about to start");
+while (startBattle.vikingArmy.length !==0 && startBattle.saxonArmy.length !== 0) {
+    startBattle.vikingAttack();
+    startBattle.saxonAttack();
+  }
+    startBattle.showStatus();
 }
+play();
