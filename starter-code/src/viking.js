@@ -43,7 +43,7 @@ function Saxon(name, health, strength) {
 }
 
 // War
-function War () {
+function War (newVikings, newSaxons) {
   this.vikingArmy = [];
   this.saxonArmy = [];
   this.addViking = function(Viking) {
@@ -52,26 +52,30 @@ function War () {
   this.addSaxon = function(Saxon) {
     this.saxonArmy.push(Saxon);
   };
+  console.log(this.vikingArmy);
+
   this.vikingAttack = function() {
     var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     var randomViking = Math.floor(Math.random() * this.vikingArmy.length);
     var doDamage = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
     if (this.saxonArmy[randomSaxon].health <= 0) {
+      console.log("I'm a dead Saxon");
       this.saxonArmy.splice(randomSaxon, 1);
     }
-    return doDamage;
   };
+
   this.saxonAttack = function() {
     var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     var randomViking = Math.floor(Math.random() * this.vikingArmy.length);
     var doDamage = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
     if (this.vikingArmy[randomViking].health <= 0) {
+      console.log("I'm a dead Viking");
       this.vikingArmy.splice(randomViking, 1);
     }
-    return doDamage;
   };
 
   this.showStatus = function() {
+    console.log(this.saxonArmy, this.vikingArmy);
     if (this.saxonArmy.length <= 0) {
       console.log("Vikings have won the war of the century!");
     }
@@ -84,8 +88,7 @@ function War () {
   };
 }
 
-// I'm adding the NewSaxons inside WAR constructor
-
+// I'm adding the newSaxons inside WAR constructor
 var startBattle = new War(newVikings, newSaxons);
 
 // Variables that then I gonna use for names
@@ -97,24 +100,24 @@ var saxonsName = ["Saxon1", "Saxon2", "Saxon3", "Saxon4", "Saxon5"];
 // his own and independent stats, now it's working!
 
 var newVikings = vikingsName.map(function(vikName) {
-  var randomVikingHealth = Math.floor(Math.random() * 10);
-  var randomVikingStrength = Math.floor(Math.random() * 20);
+  var randomVikingHealth = Math.floor(Math.random() * 10) + 1;
+  var randomVikingStrength = Math.floor(Math.random() * 20) + 1;
     console.log(vikName, "  Con ganas de aplastar cráneo Sajón");
-    return new Viking(vikName, randomVikingHealth, randomVikingStrength);
+    startBattle.addViking(new Viking(vikName, randomVikingHealth, randomVikingStrength));
 });
 
 var newSaxons = saxonsName.map(function(saxName) {
-  var randomSaxonHealth = Math.floor(Math.random() * 20);
-  var randomSaxonStrength = Math.floor(Math.random() * 10);
+  var randomSaxonHealth = Math.floor(Math.random() * 20) + 1;
+  var randomSaxonStrength = Math.floor(Math.random() * 10) + 1;
   console.log(saxName, "  Con ganas de matar Vikingos");
-  return new Saxon(saxName, randomSaxonHealth, randomSaxonStrength);
+  startBattle.addSaxon(new Saxon(saxName, randomSaxonHealth, randomSaxonStrength));
 });
 
 console.log(newVikings, newSaxons);
 
-
 // This function must activate the game
 function play() {
+
   console.log("The Battle between Vikings and Saxons is about to start");
 while (startBattle.vikingArmy.length !==0 && startBattle.saxonArmy.length !== 0) {
     startBattle.vikingAttack();
