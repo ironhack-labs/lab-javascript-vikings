@@ -40,7 +40,7 @@ function Saxon (health, strength) {
   this.receiveDamage = function(damage){
     this.health -= damage;
     if (this.health > 0){
-      return "A saxon has received " + damage +  "points of damage";
+      return "A saxon has received " + damage +  " points of damage";
     }
     else {
       return "A saxon has died in combat";
@@ -130,7 +130,7 @@ var saxonObject = [
 var newWar = new War(vikingObject, saxonObject);
 
 
-//Display the war + status 
+//Display the war + status
 
 while (newWar.vikingArmy.length !== 0 && newWar.saxonArmy.length !== 0){
 
