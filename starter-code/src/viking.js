@@ -1,7 +1,7 @@
 // Soldier
 function Soldier (health, strenght) {
-  this.health = 100;
-  this.strenght = 10;
+  this.health = health;
+  this.strenght = strenght;
   this.recieveDamage = function (damage){
   this.health = this.health - damage;
   };
@@ -32,6 +32,7 @@ function Saxon (health, strenght) {
   this.battlecry = function(){
     console.log("Soy SAJÖOOOOOOON");
     } ;
+
   this.recieveDamage = function (damage){
     this.health = this.health - damage;
     if (Saxon.health === 0){
@@ -45,44 +46,67 @@ function Saxon (health, strenght) {
 
 // War
 
-
-var vikingArmy = [];
-var saxonArmy = [];
-
 function  War(){
 
-  this.addViking = function(vikingObject){
-    vikingArmy.push(vikingObject);
+  this.vikingArmy =[];
+  this.saxonArmy = [];
+  this.addViking = function(viking){
+    this.vikingArmy.push(viking);
   };
-  this.addSaxon = function(saxonObject){
-    saxonArmy.push(saxonObject);
+  this.addSaxon = function(saxon){
+    this.saxonArmy.push(saxon);
   };
-  this.vikingAttack = function(){
-    saxonArmy.map(recieveDamage(Viking.strenght),saxon);
-    if (saxon.health === 0){
-      var index = saxonArmy.slice(index, 1);
-    }
-    else return Saxon.recieveDamage();
-  };
-  this.saxonAttack = function(){
-    vikingArmy.map(recieveDamage(Saxon.strenght), viking);
-    if (viking.health === 0){
-      var index = saxonArmy.slice(index, 1);
-    }
-    else return Viking.recieveDamage();
-  };
-  this.ShowStatus = function(){
 
+  this.vikingAttack= function(){
+    var randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length )];
+    var randomViking = this.vikingArmy[Math.floor(Math.random()* this.vikingArmy.length)];
+    //randomSaxon.health -= randomViking.strength;
+    randomSaxon.receiveDamage(randomViking.strength);
+      if (randomSaxon.health <= 0) { this.saxonArmy.splice(randomSaxon,1);}
+    //return (randomSaxon.health <= 0) ? this.saxonArmy.splice(randomSaxon,1) : ;
   };
+
+  this.saxonAttack = function(){
+    var randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length )];
+    var randomViking = this.vikingArmy[Math.floor(Math.random()* this.vikingArmy.length)];
+    //randomSaxon.health -= randomViking.strength;
+    randomViking.receiveDamage(randomSaxon.strength);
+      if (randomSaxon.health <= 0) { this.saxonArmy.splice(randomSaxon,1);}
+};
+
+this.showStatus= function(){
+   if (!(this.vikingArmy[0]))console.log('Saxons have fought for their lives and survive another day...');
+   if (!(this.saxonArmy[0]))console.log('Vikings have won the war of the century!');
+   if (this.vikingArmy[0]&&this.saxonArmy[0]) console.log('Vikings and Saxons are still in the thick of battle.');
+  };
+
 }
 
+//Play
+
+  var war= new War();
+  var olaf = new Viking('Olaf',100, 10);
+  var rollo = new Viking('Rollo',50, 8 );
+  war.addViking(olaf);
+  war.addViking(rollo);
+
+  var saxonsNumbers = 5;
+  for (var i = 0; i < saxonsNumbers ; i++) {
+  var randomHealth = Math.round(Math.random()*15);
+  var randomStrenght = Math.round(Math.random()*5);
+  war.addSaxon(new Saxon(randomHealth,randomStrenght));
+  }
+
+console.log('WAR IS COMING!');
+  while (war.saxonArmy[0] && war.vikingArmy[0]) {
+    war.vikingAttack();
+    if (war.saxonArmy[0]) war.saxonAttack();
+    war.showStatus();
+  }
+console.log('Finally, the war ends!');
 
 
 
-var Odin = new Viking("Odin");
-var Saxon1 = new Saxon();
-Odin.recieveDamage(Saxon1.strenght);
-console.log(Odin);
 
 //var Rulfo = new Viking("Rulfo");
 //var Saxon1 = new Saxon();
