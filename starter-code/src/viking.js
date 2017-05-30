@@ -1,3 +1,4 @@
+
 // Soldier
 function Soldier (health, strength) {
   this.health = health;
@@ -45,12 +46,9 @@ function Saxon(name, health, strength) {
 }
 
 // War
-function War (newVikings, newSaxons) {
+function War () {
   this.vikingArmy = [];
   this.saxonArmy = [];
-
-  console.log(this.vikingArmy);
-  console.log(this.saxonArmy);
 
   this.vikingAttack = function() {
     var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
@@ -90,7 +88,7 @@ function War (newVikings, newSaxons) {
 
 // I'm adding the newSaxons inside WAR constructor
 
-var startBattle = new War(newVikings, newSaxons);
+var startBattle = new War();
 
 // Variables that then I gonna use for names
 
@@ -100,14 +98,14 @@ var saxonsName = ["Saxon1", "Saxon2", "Saxon3", "Saxon4", "Saxon5"];
 // this variable is iterating with map, but the health, and strength is inside because I want warriors with
 // his own and independent stats, now it's working!
 
-  var newVikings = vikingsName.forEach(function(vikName) {
+vikingsName.forEach(function(vikName) {
   var randomVikingHealth = Math.floor(Math.random() * 10) + 1;
   var randomVikingStrength = Math.floor(Math.random() * 20) + 1;
-    console.log(vikName, "  Con ganas de aplastar cráneo Sajón");
-    startBattle.vikingArmy.push(new Viking(vikName, randomVikingHealth, randomVikingStrength));
+  console.log(vikName, "  Con ganas de aplastar cráneo Sajón");
+  startBattle.vikingArmy.push(new Viking(vikName, randomVikingHealth, randomVikingStrength));
 });
 
-var newSaxons = saxonsName.forEach(function(saxName) {
+saxonsName.forEach(function(saxName) {
   var randomSaxonHealth = Math.floor(Math.random() * 20) + 1;
   var randomSaxonStrength = Math.floor(Math.random() * 10) + 1;
   console.log(saxName, "  Con ganas de matar Vikingos");
@@ -117,11 +115,23 @@ var newSaxons = saxonsName.forEach(function(saxName) {
 // This function must activate the game
 
 function play() {
+
   console.log("The Battle between Vikings and Saxons is about to start");
-while (startBattle.vikingArmy.length !== 0 && startBattle.saxonArmy.length !== 0) {
-    startBattle.vikingAttack();
-    startBattle.saxonAttack();
+  var vikingTurn = true;
+
+  while (startBattle.vikingArmy.length !== 0 && startBattle.saxonArmy.length !== 0) {
+
+    if (vikingTurn) {
+      startBattle.vikingAttack();
+    } else {
+      startBattle.saxonAttack();
+    }
+
+    vikingTurn = !vikingTurn;
   }
     startBattle.showStatus();
 }
+
+console.log(startBattle.vikingArmy);
+console.log(startBattle.saxonArmy);
 play();
