@@ -23,8 +23,9 @@ Viking.prototype = Object.create(Soldier.prototype);
 
 Viking.prototype.receiveDamage = function (damage) {
 
-    // Is this proper way to call "super" receiveDamage???
-    Soldier.prototype.receiveDamage.call(this, damage);
+    // TA says stupid JavaScript cannot call super method like below, so just duplicate the code
+    // Soldier.prototype.receiveDamage.call(this, damage);
+    this.health -= damage;
 
    if (this.health <= 0) {
         return this.name + ' has died in act of combat';
@@ -48,7 +49,9 @@ Saxon.prototype = Object.create(Soldier.prototype);
 
 Saxon.prototype.receiveDamage = function (damage) {
 
-    Soldier.prototype.receiveDamage.call(this, damage);
+    // TA says stupid JavaScript cannot call super method like below, so just duplicate the code
+    // Soldier.prototype.receiveDamage.call(this, damage);
+    this.health -= damage;
 
    if (this.health <= 0) {
         // return this.name + ' has died in act of combat';
