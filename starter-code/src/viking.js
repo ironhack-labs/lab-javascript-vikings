@@ -5,9 +5,19 @@ function Soldier (health, strength) {
 }
 
 
-function attack(){
-
+Soldier.prototype.attack = function (){
+    return this.strength;
 }
+
+Soldier.prototype.reciveDamage = function (dmgRecived){
+    this.health -= dmgRecived;
+}
+
+var chuckNorris = new Soldier(300,150);
+
+console.log(chuckNorris.attack());
+chuckNorris.reciveDamage(10);
+console.log(chuckNorris.health);
 
 
 
