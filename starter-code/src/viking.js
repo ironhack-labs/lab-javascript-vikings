@@ -34,7 +34,33 @@ Viking.prototype.battleCry = function (){
   return "Odin Owns You All!";
 }
 // Saxon
-function Saxon () {}
+function Saxon (health, strength) {
+  Soldier.call(this, health, strength);
+}
+
+Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.constructor = Saxon;
+
+Saxon.prototype.receiveDamage = function (damage){
+  if (this.health - damage > 0 ) {
+    this.health = this.health - damage;
+    return   "A Saxon has received " +damage +" points of damage";
+  }else {
+    this.health = this.health - damage;
+    return   "A Saxon has died in combat";
+  }
+}
+
 
 // War
-function War () {}
+function War () {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+
+War.prototype.addViking = function (viking){
+  this.vikingArmy.push(viking);
+}
+War.prototype.addSaxon = function (saxon){
+  this.saxonArmy.push(saxon);
+}
