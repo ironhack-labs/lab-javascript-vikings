@@ -23,7 +23,8 @@ Viking.prototype = Object.create(Soldier.prototype);
 
 Viking.prototype.receiveDamage = function (damage) {
 
-   this.health -= damage;
+    // Is this proper way to call "super" receiveDamage???
+    Soldier.prototype.receiveDamage.call(this, damage);
 
    if (this.health <= 0) {
         return this.name + ' has died in act of combat';
@@ -47,7 +48,8 @@ Saxon.prototype = Object.create(Soldier.prototype);
 
 Saxon.prototype.receiveDamage = function (damage) {
 
-   this.health -= damage;
+//    this.health -= damage;
+    Soldier.prototype.receiveDamage.call(this, damage);
 
    if (this.health <= 0) {
         // return this.name + ' has died in act of combat';
