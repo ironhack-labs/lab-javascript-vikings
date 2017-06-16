@@ -116,10 +116,10 @@ describe("Viking", function () {
       expect(viking.health).toEqual(health - 50);
     });
 
-    // it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
-    //   expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
-    //   expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
-    // });
+    it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
+      expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
+      expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
+    });
 
     // it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
     //   expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
