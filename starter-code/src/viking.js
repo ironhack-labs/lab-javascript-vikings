@@ -48,7 +48,6 @@ Saxon.prototype = Object.create(Soldier.prototype);
 
 Saxon.prototype.receiveDamage = function (damage) {
 
-//    this.health -= damage;
     Soldier.prototype.receiveDamage.call(this, damage);
 
    if (this.health <= 0) {
