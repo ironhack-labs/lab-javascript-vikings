@@ -63,6 +63,15 @@ function War () {
     var result = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
     if(this.vikingArmy[0].health <= 0) this.vikingArmy.splice(0, 1);
     return result;
+  };
+  this.showStatus = function () {
+    if (this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!"
+    } else if (this.vikingArmy.length === 0) {
+      return "Saxons have fought for their lives and survive another day..."
+    } else {
+      return "Vikings and Saxons are still in the thick of battle."
+    }
   }
 
 
