@@ -59,8 +59,8 @@ War.prototype.addSaxon = function(saxon){
 War.prototype.vikingAttack = function(){
   var saxonDamaged = getRandomArrayKey(this.saxonArmy);
   var vikingAttacker = getRandomArrayKey(this.vikingArmy);
-  var result = this.saxonArmy[saxonDamaged].receiveDamage(this.vikingArmy[vikingAttacker].strength);
-  this.saxonArmy.filter(function (saxon) {
+  var result = saxonDamaged.receiveDamage(vikingAttacker.strength);
+  this.saxonArmy = this.saxonArmy.filter(function (saxon) {
     return saxon.health > 0;
   });
   return result;
@@ -68,8 +68,8 @@ War.prototype.vikingAttack = function(){
 War.prototype.saxonAttack = function() {
   var vikingDamaged = getRandomArrayKey(this.vikingArmy);
   var saxonAttacker = getRandomArrayKey(this.saxonArmy);
-  var result = this.vikingArmy[vikingDamaged].receiveDamage(this.saxonArmy[saxonAttacker].strength);
-  this.vikingArmy.filter(function (viking) {
+  var result = vikingDamaged.receiveDamage(saxonAttacker.strength);
+  this.vikingArmy = this.vikingArmy.filter(function (viking) {
     return viking.health > 0;
   });
   return result;
