@@ -45,4 +45,30 @@ Saxon.prototype.receiveDamage = function(damage){
 };
 
 // War
-function War () {}
+function War () {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+War.prototype.addViking = function(Viking){
+  this.vikingArmy.push(Viking);
+};
+War.prototype.addSaxon = function(Saxon){
+  this.saxonArmy.push(Saxon);
+};
+War.prototype.vikingAttack = function(){
+  var i = Math.random() * this.saxonArmy.length;
+  var pickedSaxon = this.saxonArmy[i];
+  var j = Math.random() * this.vikingArmy.length;
+  var pickedViking = this.vikingArmy[j];
+  pickedSaxon.health -= pickedViking.strength;
+  if (pickedSaxon.health <= 0) {
+    this.saxonArmy.splice(i,1);
+  }
+  return pickedSaxon.prototype.receiveDamage(pickedViking.strength);
+};
+War.prototype.vikingSaxon = function(){
+  //return this.strength;
+};
+War.prototype.showStatus = function(){
+  //return this.strength;
+};
