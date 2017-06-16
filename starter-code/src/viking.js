@@ -14,6 +14,15 @@ function Soldier ( health, strength ) {
 function Viking ( name, health, strength) {
   Soldier.call(this, health, strength );
   this.name = name;
+  this.receiveDamage = function( damage ) {
+    this.health -= damage;
+    return (this.health <= 0)
+      ? this.name + " has died in act of combat"
+      : this.name + " has received " + damage + " points of damage";
+  };
+  this.battleCry = function () {
+    return "Odin Owns You All!";
+  }
 }
 
 Viking.prototype = Object.create(Soldier.prototype);
