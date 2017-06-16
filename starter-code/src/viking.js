@@ -50,17 +50,18 @@ function War () {
 function getRandomArrayKey(myArray) {
   return myArray[Math.floor(Math.random() * myArray.length)];
 }
+
 War.prototype.addViking = function(viking){
   this.vikingArmy.push(viking);
 };
 War.prototype.addSaxon = function(saxon){
-  this.saxonArmy.puhs(saxon);
+  this.saxonArmy.push(saxon);
 };
 War.prototype.vikingAttack = function(){
   var saxonDamaged = getRandomArrayKey(this.saxonArmy);
   var vikingAttacker = getRandomArrayKey(this.vikingArmy);
-  var result = this.saxonArmy[saxonDamaged].receiveDamage(this.vikingArmy[vikingAttacker].strength);
-  this.saxonArmy.filter(function (saxon) {
+  var result = saxonDamaged.receiveDamage(vikingAttacker.strength);
+  this.saxonArmy = this.saxonArmy.filter(function (saxon) {
     return saxon.health > 0;
   });
   return result;
@@ -68,8 +69,8 @@ War.prototype.vikingAttack = function(){
 War.prototype.saxonAttack = function() {
   var vikingDamaged = getRandomArrayKey(this.vikingArmy);
   var saxonAttacker = getRandomArrayKey(this.saxonArmy);
-  var result = this.vikingArmy[vikingDamaged].receiveDamage(this.saxonArmy[saxonAttacker].strength);
-  this.vikingArmy.filter(function (viking) {
+  var result = vikingDamaged.receiveDamage(saxonAttacker.strength);
+  this.vikingArmy = this.vikingArmy.filter(function (viking) {
     return viking.health > 0;
   });
   return result;
@@ -83,3 +84,15 @@ War.prototype.showStatus = function(){
   }
   return "Vikings and Saxons are still in the thick of battle.";
 };
+
+var mySaxon = new Saxon(2, 2);
+var myViking = new Viking('a', 2, 2);
+var myViking2 = new Viking('b', 2, 2);
+
+var war = new War();
+war.addSaxon(mySaxon)
+war.addViking(myViking)
+war.addViking(myViking2)
+war.saxonAttack();
+war.saxonAttack();
+war.showStatus();
