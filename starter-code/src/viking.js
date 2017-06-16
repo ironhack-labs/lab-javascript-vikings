@@ -55,14 +55,30 @@ function Saxon (health, strength) {
 
 // War
 function War () {
-  vikingArmy: [],
-  saxonArmy: [],
-  addViking: function() {
-    addSaxon()
-    vikingAttack()
-    saxonAttack()
-    showStatus()
+  this.vikingArmy= [],
+  this.saxonArmy= [],
+  this.addViking =  function(Viking) {
+    this.vikingArmy.push(Viking);
+  },
+  this.addSaxon = function(Saxon) {
+    this.saxonArmy.push(Saxon);
+  },
+  this.vikingAttack = function() {
+    var result = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+    if (this.saxonArmy[0].health <= 0){
+      this.saxonArmy.splice(0,1);
+    }
+    return result;
+  },
+  this.saxonAttack= function(){
+    var result = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+    if (this.vikingArmy[0].health <= 0){
+      this.vikingArmy.splice(0,1);
+    }
+    return result;
+  },
+
+  this.showStatus= function(){
+
   }
-
-
-}
+  }
