@@ -74,9 +74,16 @@ War.prototype.vikingAttack = function vikingAttack() {
 War.prototype.saxonAttack = function saxonAttack() {
   var statusViking = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
   if (this.vikingArmy.health <= 0) {
+    this.vikingArmy[0].splice(0,1);
   }
   return statusViking;
 };
 War.prototype.showStatus = function showStatus() {
-
+  if (this.saxonArmy.length === 0) {
+    return "Vikings have won the war of the century!";
+  } else if (this.vikingArmy.length === 0) {
+    return "Saxons have fought for their lives and survive another day...";
+  } else {
+    return "Vikings and Saxons are still in the thick of battle.";
+  }
 };
