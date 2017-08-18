@@ -70,7 +70,9 @@ War.property.addSaxon = function (Saxon) {
 };
 
 War.property.vikingAttack = function () {
-  Saxon.receiveDamage(Viking.strength);
+  var random = Math.floor(Math.random()*(this.vikingArmy.length));
+  var myVicking = this.vikingArmy[random].strength;
+  Saxon.receiveDamage(myVicking);
   for(var i = 0; i < this.saxonArmy.length; i++){
     if(this.saxonArmy[i].health <= 0){
       this.saxonArmy.splice(i,1);
@@ -80,7 +82,9 @@ War.property.vikingAttack = function () {
 };
 
 War.property.saxonAttack = function () {
-  Viking.receiveDamage(Saxon.strength);
+  var random = Math.floor(Math.random()*(this.saxonArmy.length));
+  var mySaxon = this.saxonArmy[random].strength;
+  Viking.receiveDamage(mySaxon);
   for(var i = 0; i < this.vikingArmy.length; i++){
     if(this.vikingArmy[i].health <= 0){
       this.vikingArmy.splice(i,1);
