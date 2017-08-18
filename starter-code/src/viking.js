@@ -9,24 +9,22 @@ Soldier.prototype.attack = function () {
 }
 
 Soldier.prototype.receiveDamage = function (damage) {
-  var total = this.health -= damage
-  return
-
+  this.health -= damage
 }
 
 // Viking
+
 function Viking (name, health, strength) {
   this.name = name
-  this.health = health
-  this.strength = strength
+  Soldier.call(this, health, strength)
 }
 
 Viking.prototype = Object.create(Soldier.prototype)
 Viking.prototype.constructor = Viking
 
 Viking.prototype.receiveDamage = function (damage) {
-  var total = this.health -= damage
-  if(total <= 0) {
+  this.health -= damage
+  if(this.health <= 0) {
     if (this.name === 'A Saxon') {
       return 'A Saxon has died in combat'
     } else {
@@ -53,4 +51,22 @@ Saxon.prototype.constructor = Saxon
 
 
 // War
-function War () {}
+function War () {
+  this.vikingArmy = []
+  this.saxonArmy = []
+}
+
+War.prototype = Object.create(Saxon.prototype)
+War.prototype.constructor = War
+
+War.prototype.addViking = function (a) {
+  this.vikingArmy.push(a)
+}
+
+War.prototype.addSaxon = function (a) {
+  this.saxonArmy.push(a)
+}
+
+War.prototype.vikingAttack = function () {
+  return this.saxonArmy[0].health -= this.vikingArmy[0].strength
+}
