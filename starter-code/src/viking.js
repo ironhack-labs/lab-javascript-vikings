@@ -1,22 +1,27 @@
 // Soldier
-function Soldier(healthArg, strengthArg) {
-  this.health = healthArg;
-  this.strength = strengthArg;
+function Soldier(health, strength) {
+  this.health = health;
+  this.strength = strength;
   this.attack = function() {
-    return strengthArg;
-  }
+    return strength;
+  };
   this.receiveDamage = function(damage) {
     this.health -= damage;
-  }
+  };
 }
 
 
 
 // Viking
-function Viking() {
+function Viking(name, health, strength) {
+  this.name = name;
+Vicking.prototype.receiveDamage= funcion(damage){
+  this.health-=damage;
+  if(this.health>0){
 
-}
+
 Viking.prototype=Object.create(Soldier.prototype);
+viking.prototype.constructor=Viking;
 // Saxon
 function Saxon() {}
 
