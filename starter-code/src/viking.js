@@ -73,3 +73,18 @@ War.prototype.addViking = function(Viking){
 War.prototype.addSaxon = function(Saxon){
   this.saxonArmy.push(Saxon);
 };
+
+War.prototype.vikingAttack = function(){
+  var vattack = this.vikingArmy[0].attack();
+  this.saxonArmy[0].receiveDamage(vattack);
+  this.saxonArmy.shift();
+  return;
+};
+
+War.prototype.saxonAttack = function(){
+  var sattack = this.saxonArmy[0].attack();
+  this.vikingArmy[0].receiveDamage(sattack);
+  for (var i = 0; i < 12; i += 1) {
+  this.vikingArmy.shift();}
+  return;
+};
