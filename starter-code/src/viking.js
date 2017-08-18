@@ -44,5 +44,14 @@ function Saxon (health, strength) {
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
+Saxon.prototype.receiveDamage = function (damage) {
+  this.health -= damage;
+  var result = "A Saxon has died in combat";
+  if (this.health > 0) {
+    result = "A Saxon has received " + damage + " points of damage";
+  }
+  return result;
+};
+
 // War
 function War () {}
