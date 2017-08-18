@@ -36,7 +36,8 @@ Viking.prototype.receiveDamage = function(damage){
 		return this.name + " has received "+ damage +" points of damage";
 	}
 }
-var viking = new Viking('Marco', 30, 10)
+var viking1 = new Viking('Marco', 30, 10)
+var viking2 = new Viking('Gabri', 20, 5)
 // Saxon
 function Saxon (health, strength) {
 	Soldier.call(this, health, strength)
@@ -54,15 +55,84 @@ Saxon.prototype.receiveDamage = function(damage){
 	}
 }
 
-var saxon = new Saxon(25, 5)
+var saxon1 = new Saxon(25, 5)
+var saxon2 = new Saxon(20, 2)
 
 
+// Constructor War
+function War () {
+	this.vikingArmy = [];
+	this.saxonArmy = [];
 
-// War
-function War () {}
+}
+
+War.prototype.addViking = function(viking){
+	this.vikingArmy.push(viking);
+}
+
+War.prototype.addSaxon = function(saxon){
+	this.saxonArmy.push(saxon);
+}
+
+//viking attack method
+War.prototype.vikingAttack = function(){
+	//get random index from 0 to length of array
+	var randomIndexViking = getRandom(this.vikingArmy.length)
+	var randomIndexSaxon = getRandom(this.saxonArmy.length)
+	//get random object from array with random index
+	var randomViking = this.vikingArmy[randomIndexViking];
+	var randomSaxon = this.saxonArmy[randomIndexSaxon];
 	
+	var message = randomSaxon.receiveDamage(randomViking.strength)
+
+	if(randomSaxon.health < 1){
+		this.saxonArmy.splice(randomIndexSaxon,1);
+	}
+	return message;
+}
+
+//saxon attack method
+War.prototype.saxonAttack = function() {
+	//get random index from 0 to length of array
+	var randomIndexViking = getRandom(this.vikingArmy.length)
+	var randomIndexSaxon = getRandom(this.saxonArmy.length)
+	//get random object from array with random index
+	var randomViking = this.vikingArmy[randomIndexViking];
+	var randomSaxon = this.saxonArmy[randomIndexSaxon];
+
+	var message = randomViking.receiveDamage(randomSaxon.strength)
+
+	if(randomViking.health < 1){
+		this.vikingArmy.splice(randomIndexViking,1)
+	}
+	return message;
+}
+
+//show status method
+War.prototype.showStatus = function(){
+	if(this.saxonArmy.length < 1){
+		return "Vikings have won the war of the century!";
+	} else if (this.vikingArmy.length < 1){
+		return "Saxons have fought for their lives and survive another day...";
+	} else {
+		return "Vikings and Saxons are still in the thick of battle.";
+	}
+}
 
 
+var war = new War()
+var wa2 = new War();
+
+//function for return random number
+function getRandom(limit){
+	return Math.floor(Math.random()*limit)
+}
+
+war.addViking(viking1)
+war.addViking(viking2)
+
+war.addSaxon(saxon1)
+war.addSaxon(saxon2)
 
 
 
