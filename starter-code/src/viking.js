@@ -60,5 +60,11 @@ function War () {
 }
 
 War.prototype.addViking = function (Viking) {
-  vikingArmy += this.Viking;
+  for (var i = 0; i < 10; i++) {
+    this.vikingArmy = [Viking];
+  }
+};
+
+War.prototype.addSaxon = function (Saxon) {
+    this.saxonArmy = [Saxon];
 };

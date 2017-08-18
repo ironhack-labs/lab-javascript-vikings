@@ -256,33 +256,33 @@ describe("War", function () {
       expect(war.addViking.length).toEqual(1);
     });
 
-    // it("should add the received Viking to the army", function () {
-    //   war.addViking(viking);
-    //   expect(war.vikingArmy).toEqual([ viking ]);
-    // });
-    //
-    // it("shouldn't return anything", function () {
-    //   expect(war.addViking(viking)).toEqual(undefined);
-    // });
+     it("should add the received Viking to the army", function () {
+       war.addViking(viking);
+       expect(war.vikingArmy).toEqual([ viking ]);
+     });
+
+    it("shouldn't return anything", function () {
+       expect(war.addViking(viking)).toEqual(undefined);
+     });
   });
 
   describe("addSaxon() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(war.addSaxon)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(war.addSaxon)).toBe("function");
+    });
 
-    // it("should receive 1 argument (a Saxon object)", function () {
-    //   expect(war.addSaxon.length).toEqual(1);
-    // });
+    it("should receive 1 argument (a Saxon object)", function () {
+      expect(war.addSaxon.length).toEqual(1);
+    });
 
-    // it("should add the received Saxon to the army", function () {
-    //   war.addSaxon(saxon);
-    //   expect(war.saxonArmy).toEqual([ saxon ]);
-    // });
+    it("should add the received Saxon to the army", function () {
+      war.addSaxon(saxon);
+      expect(war.saxonArmy).toEqual([ saxon ]);
+    });
 
-    // it("shouldn't return anything", function () {
-    //   expect(war.addSaxon(saxon)).toEqual(undefined);
-    // });
+    it("shouldn't return anything", function () {
+      expect(war.addSaxon(saxon)).toEqual(undefined);
+    });
   });
 
   describe("Armies Attack", function () {
