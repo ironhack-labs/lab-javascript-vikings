@@ -256,10 +256,10 @@ describe("War", function () {
     //   expect(war.addViking.length).toEqual(1);
     // });
 
-    // it("should add the received Viking to the army", function () {
-    //   war.addViking(viking);
-    //   expect(war.vikingArmy).toEqual([ viking ]);
-    // });
+     it("should add the received Viking to the army", function () {
+       war.addViking(viking);
+       expect(war.vikingArmy).toEqual([ viking ]);
+     });
 
     // it("shouldn't return anything", function () {
     //   expect(war.addViking(viking)).toEqual(undefined);
