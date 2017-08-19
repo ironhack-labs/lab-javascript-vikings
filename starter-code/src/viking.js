@@ -64,9 +64,13 @@ War.prototype.addSaxon = function (a) {
   this.saxonArmy.push(a)
 }
 
+function randomSoldier(a){
+  return parseInt(Math.random() * a.length)
+}
+
 War.prototype.vikingAttack = function () {
-  var sRandomSaxon = parseInt(Math.random() * this.saxonArmy.length)
-  var vRandomViking = parseInt(Math.random() * this.vikingArmy.length)
+  var sRandomSaxon = randomSoldier(this.saxonArmy)
+  var vRandomViking = randomSoldier(this.vikingArmy)
   this.saxonArmy[sRandomSaxon].health -= this.vikingArmy[vRandomViking].strength
 
   if(this.saxonArmy[sRandomSaxon].health <= 0) {
@@ -76,8 +80,8 @@ War.prototype.vikingAttack = function () {
 }
 
 War.prototype.saxonAttack = function () {
-  var sRandomSaxon = parseInt(Math.random() * this.saxonArmy.length)
-  var vRandomViking = parseInt(Math.random() * this.vikingArmy.length)
+  var sRandomSaxon = randomSoldier(this.saxonArmy)
+  var vRandomViking = randomSoldier(this.vikingArmy)
   this.vikingArmy[vRandomViking].health -= this.saxonArmy[sRandomSaxon].strength
   var result = this.vikingArmy[vRandomViking].name + " has received " + this.saxonArmy[sRandomSaxon].strength + " points of damage"
   if(this.vikingArmy[vRandomViking].health <= 0) {
@@ -94,4 +98,4 @@ War.prototype.showStatus = function () {
   } else {
     return "Vikings and Saxons are still in the thick of battle."
   }
-};
+}
