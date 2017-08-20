@@ -50,7 +50,7 @@ Saxon.prototype = Object.create(Soldier.prototype);
 //fix Saxon constructor
 Saxon.prototype.constructor = Saxon;
 
-//attack Method  not need to change anything--> inherited from Soldier
+//attack Method  not need to overwrite--> inherited from Soldier
 
 //receiveDamage Method overwritten--> inherited from Soldier
 Saxon.prototype.receiveDamage = function(damage) {
@@ -62,7 +62,7 @@ Saxon.prototype.receiveDamage = function(damage) {
   }
 };
 
-// War
+// War--> completado
 function War() {
   this.vikingArmy = [];
   this.saxonArmy = [];
@@ -75,5 +75,5 @@ War.prototype.addViking = function(Viking) {
 
 //addSaxon Method
 War.prototype.addSaxon = function(Saxon) {
-  this.saxonArmy.push(saxon);
+  this.saxonArmy.push(Saxon);
 };
