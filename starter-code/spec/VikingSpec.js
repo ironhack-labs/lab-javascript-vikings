@@ -8,17 +8,17 @@ describe("Soldier", function () {
   });
 
   describe("constructor function", function () {
-    // it("should receive 2 arguments (health & strength)", function () {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+    it("should receive 2 arguments (health & strength)", function () {
+      expect(Soldier.length).toEqual(2);
+    });
 
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
+    it("should receive the health property as its 1st argument", function () {
+      expect(soldier.health).toEqual(health);
+    });
 
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 2nd argument", function () {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
   describe("attack() method", function () {
@@ -344,29 +344,29 @@ describe("War", function () {
     });
 
     describe("showStatus() method", function () {
-      // it("should be a function", function () {
-      //   expect(typeof(war.showStatus)).toBe("function");
-      // });
+      it("should be a function", function () {
+        expect(typeof(war.showStatus)).toBe("function");
+      });
 
-      // it("should receive 0 arguments", function () {
-      //   expect(war.showStatus.length).toEqual(0);
-      // });
+      it("should receive 0 arguments", function () {
+        expect(war.showStatus.length).toEqual(0);
+      });
 
-      // it("should return \"Vikings have won the war of the century!\", if the Saxons array is empty", function () {
-      //   war.vikingAttack();
-      //   expect(war.showStatus()).toEqual("Vikings have won the war of the century!");
-      // });
+      it("should return \"Vikings have won the war of the century!\", if the Saxons array is empty", function () {
+        war.vikingAttack();
+        expect(war.showStatus()).toEqual("Vikings have won the war of the century!");
+      });
 
-      // it("should return \"Saxons have fought for their lives and survive another day...\", if the Vikings array is empty", function () {
-      //   for (var i = 0; i < 12; i += 1) {
-      //     war.saxonAttack();
-      //   }
-      //   expect(war.showStatus()).toEqual("Saxons have fought for their lives and survive another day...");
-      // });
+      it("should return \"Saxons have fought for their lives and survive another day...\", if the Vikings array is empty", function () {
+        for (var i = 0; i < 12; i += 1) {
+          war.saxonAttack();
+        }
+        expect(war.showStatus()).toEqual("Saxons have fought for their lives and survive another day...");
+      });
 
-      // it("should return \"Vikings and Saxons are still in the thick of battle.\", if there are still both Vikings and Saxons", function () {
-      //   expect(war.showStatus()).toEqual("Vikings and Saxons are still in the thick of battle.");
-      // });
+      it("should return \"Vikings and Saxons are still in the thick of battle.\", if there are still both Vikings and Saxons", function () {
+        expect(war.showStatus()).toEqual("Vikings and Saxons are still in the thick of battle.");
+      });
     });
   });
 });
