@@ -51,11 +51,32 @@ Saxon.prototype.receiveDamage = function(damage){
   }
 };
 
-function War (Viking, Saxon) {
+function War () {
   this.vikingArmy = [];
   this.saxonArmy = [];
 }
 
-War.prototype.addViking = function () {
-  
+var viking1 = new Viking("Faromir", 400, 122);
+
+War.prototype.addViking = function (viking1) {
+  this.vikingArmy.push(viking1);
+};
+
+var saxon1 = new Saxon("Legolas", 400, 250);
+
+War.prototype.addSaxon = function (saxon1) {
+  this.saxonArmy.push(saxon1);
+};
+
+War.prototype.vikingAttack = function () {
+  var r = Math.floor(Math.random() * (max - min)) + min;
+  saxonArmy[r].receiveDamage();
+};
+
+War.prototype.saxonAttack = function () {
+
+};
+
+War.prototype.showStatus = function () {
+
 };
