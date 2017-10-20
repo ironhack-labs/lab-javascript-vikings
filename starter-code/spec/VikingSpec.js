@@ -1,3 +1,4 @@
+//test
 describe("Soldier", function () {
   var soldier;
   var strength = 150;
