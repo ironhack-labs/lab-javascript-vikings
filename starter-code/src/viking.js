@@ -51,6 +51,7 @@ Saxon.prototype.receiveDamage = function(dmg){
     return "A Saxon has died in combat";
   }
 };
+
 // War
 function War () {
 
@@ -65,11 +66,33 @@ War.prototype.addSaxon = function (saxon) {
   this.saxonArmy.push(saxon);
 };
 War.prototype.vikingAttack = function () {
-
+  var atacante = this.vikingArmy[Math.floor(Math.random()* this.vikingArmy.length)].strength;
+  var atacadoIndex = Math.floor(Math.random() * this.saxonArmy.length);
+  var atacado = this.saxonArmy[atacadoIndex];
+  atacado.receiveDamage(atacante);
+  if(atacado.health <= 0){
+    this.saxonArmy.splice(atacadoIndex,1);
+  }
+  return "A Saxon has died in combat";
 };
+
 War.prototype.saxonAttack = function () {
-
+  var atacante = this.saxonArmy[Math.floor(Math.random()* this.saxonArmy.length)].strength;
+  var atacadoIndex = Math.floor(Math.random() * this.vikingArmy.length);
+  var atacado = this.vikingArmy[atacadoIndex];
+  atacado.receiveDamage(atacante);
+  if(atacado.health <= 0){
+    this.vikingArmy.splice(atacadoIndex,1);
+  }
+  return atacado.name + " has received " + atacante + " points of damage";
 };
-War.prototype.showStatus = function () {
 
+War.prototype.showStatus = function () {
+  if(this.vikingArmy.length <= 0){
+    return "Saxons have fought for their lives and survive another day...";
+  } else if (this.saxonArmy.length <= 0){
+    return "Vikings have won the war of the century!";
+  } else {
+    return "Vikings and Saxons are still in the thick of battle.";
+  }
 };
