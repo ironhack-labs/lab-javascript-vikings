@@ -1,24 +1,24 @@
 describe("Soldier", function () {
   var soldier;
   var strength = 150;
-  var health   = 300;
+  var health = 300;
 
   beforeEach (function () {
     soldier = new Soldier(health, strength);
   });
 
   describe("constructor function", function () {
-    // it("should receive 2 arguments (health & strength)", function () {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+    it("should receive 2 arguments (health & strength)", function () {
+      expect(Soldier.length).toEqual(2);
+    });
 
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
+    it("should receive the health property as its 1st argument", function () {
+      expect(soldier.health).toEqual(health);
+    });
 
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 2nd argument", function () {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
   describe("attack() method", function () {
