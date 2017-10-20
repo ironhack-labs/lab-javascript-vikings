@@ -58,7 +58,7 @@ describe("Soldier", function () {
 
 describe("Viking", function () {
   var viking;
-  var name     = "Harald";
+  var name     = "H";
   var strength = 150;
   var health   = 300;
 
