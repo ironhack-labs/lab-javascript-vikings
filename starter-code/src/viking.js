@@ -5,8 +5,7 @@ function Soldier (healthArg, strengthArg) {
    return this.strength;
   };
   this.receiveDamage= function (damage){
-  return this.health - damage;
-
+    this.health = this.health - damage;
   };
 }
 
@@ -16,6 +15,8 @@ console.log(mySoldier.health);
 
 mySoldier.attack();
 mySoldier.receiveDamage(75);
+
+
 
 function attack() {}
 
