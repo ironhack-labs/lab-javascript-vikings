@@ -30,25 +30,33 @@ function Viking (name,health,strength) {
         return this.name +" has died in act of combat";
       }
   };
+  Viking.prototype.battleCry = function() {
+  return "Odin Owns You All!";
+  };
 }
 
 //Saxon -Herencia
-Saxon.prototype=Object.create(Soldier.prtotype);
-Saxon.prototype.constructor=Viking;
+Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.constructor = Saxon;
 // Saxon - Funciones
 function Saxon (health,strength) {
   Soldier.call(this, health, strength);
 
+  Saxon.prototype.attack = function() {
+  return this.strength;
+};
+
   Saxon.prototype.receiveDamage= function(damage){
       this.health -= damage;
       if(this.health>0){
-        return "Has received "+ damage + " points of damage";
+        return "A Saxon has received " + damage + " points of damage";
       }else{
         return "A Saxon has died in combat";
       }
   };
 }
 
+// War - Funciones
 function War () {
   this.vikingArmy = [];
   this.saxonArmy = [];
