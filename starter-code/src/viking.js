@@ -60,23 +60,27 @@ function Saxon (health,strength) {
 function War () {
   this.vikingArmy = [];
   this.saxonArmy = [];
-  this.addViking = function(viking){
+
+  war.prototype.addViking = function(viking){
     this.vikingArmy.push(viking);
   };
-  this.addSaxon = function (saxon){
+
+  war.prototype.addSaxon = function (saxon){
     this.saxonArmy.push(saxon);
   };
-  this.vikingAttack = function(){
 
+  war.prototype.vikingAttack = function(){
     var result = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
     if(this.saxonArmy[0].health <= 0) this.saxonArmy.splice(0, 1);
     return result;
   };
-  this.saxonAttack = function () {
+
+  war.prototype.saxonAttack = function () {
     var result = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
     if(this.vikingArmy[0].health <= 0) this.vikingArmy.splice(0, 1);
     return result;
   };
+
   this.showStatus = function () {
     if (this.saxonArmy.length === 0) {
       return "Vikings have won the war of the century!";
