@@ -69,22 +69,22 @@ War.prototype.vikingAttack = function () {
   var atacante = this.vikingArmy[Math.floor(Math.random()* this.vikingArmy.length)].strength;
   var atacadoIndex = Math.floor(Math.random() * this.saxonArmy.length);
   var atacado = this.saxonArmy[atacadoIndex];
-  atacado.receiveDamage(atacante);
+  var result = atacado.receiveDamage(atacante);
   if(atacado.health <= 0){
     this.saxonArmy.splice(atacadoIndex,1);
   }
-  return "A Saxon has died in combat";
+  return result;
 };
 
 War.prototype.saxonAttack = function () {
   var atacante = this.saxonArmy[Math.floor(Math.random()* this.saxonArmy.length)].strength;
   var atacadoIndex = Math.floor(Math.random() * this.vikingArmy.length);
   var atacado = this.vikingArmy[atacadoIndex];
-  atacado.receiveDamage(atacante);
+  var result = atacado.receiveDamage(atacante);
   if(atacado.health <= 0){
     this.vikingArmy.splice(atacadoIndex,1);
   }
-  return atacado.name + " has received " + atacante + " points of damage";
+  return result;
 };
 
 War.prototype.showStatus = function () {
