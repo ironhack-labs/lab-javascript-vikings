@@ -16,8 +16,6 @@ Viking.prototype.constructor = Viking;
 function Viking (name, health, strength) {
   this.name = name;
   Soldier.call(this, health, strength);
-  // this.health = health;
-  // this.strength = strength;
 }
 Viking.prototype.receiveDamage = function(damage) {
   this.health -= damage;
