@@ -38,16 +38,34 @@ function War() {
   this.vikingArmy = [];
   this.saxonArmy = [];
 }
-War.prototype.addViking = function (viking) {
-  if(viking instanceof Viking){
+War.prototype.addViking = function(viking) {
+  if (viking instanceof Viking) {
     this.vikingArmy.push(viking);
   }
 };
-War.prototype.addSaxon = function (saxon) {
-  if(saxon instanceof Saxon){
+War.prototype.addSaxon = function(saxon) {
+  if (saxon instanceof Saxon) {
     this.saxonArmy.push(saxon);
   }
 };
-War.prototype.vikingAttack = function () {
-  
+War.prototype.vikingAttack = function() {
+  saxonRandom = Math.floor(Math.random() * this.saxonArmy.length);
+  vikingRandom = Math.floor(Math.random() * this.vikingArmy.length);
+  this.saxonArmy[saxonRandom].receiveDamage(this.vikingArmy[vikingRandom].health);
+  if (this.saxonArmy[saxonRandom].health <= 0) {
+    alert("saxonRandom=" + saxonRandom + ", Health=" + this.saxonArmy[saxonRandom].health);
+    this.saxonArmy.splice(saxonRandom, 1);
+    alert("saxonArmyLength =" + this.saxonArmy.length);
+    return "A Saxon has died in combat";
+  }
 };
+
+
+
+
+
+
+
+
+
+/**/
