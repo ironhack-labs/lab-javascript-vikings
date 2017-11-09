@@ -68,20 +68,20 @@ War.prototype.addSaxon = function(saxonObj) {
     this.saxonArmy.push(saxonObj);
 }
 War.prototype.vikingAttack = function() {
-    vikingIndex = this.getRandomSoldier(this.vikingArmy);
-    saxonIndex = this.getRandomSoldier(this.saxonArmy);
-    vikingAttack = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].attack());
-    if ( ! this.saxonArmy[saxonIndex].isAlive() ) {
-        this.removeSoldier(this.saxonArmy, saxonIndex);
+    vikingSoldier = this.getRandomSoldier(this.vikingArmy);
+    saxonSoldier = this.getRandomSoldier(this.saxonArmy);
+    vikingAttack = saxonSoldier.receiveDamage(vikingSoldier.attack());
+    if ( ! saxonSoldier.isAlive() ) {
+        this.removeSoldier(saxonSoldier, this.saxonArmy);
     }
     return vikingAttack;
 }
 War.prototype.saxonAttack = function() {
-    vikingIndex = this.getRandomSoldier(this.vikingArmy);
-    saxonIndex = this.getRandomSoldier(this.saxonArmy);
-    saxonAttack = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].attack());
-    if ( ! this.vikingArmy[vikingIndex].isAlive() ) {
-        this.removeSoldier(this.vikingArmy, vikingIndex);
+    vikingSoldier = this.getRandomSoldier(this.vikingArmy);
+    saxonSoldier = this.getRandomSoldier(this.saxonArmy);
+    saxonAttack = vikingSoldier.receiveDamage(saxonSoldier.attack());
+    if ( ! vikingSoldier.isAlive() ) {
+        this.removeSoldier(vikingSoldier, this.vikingArmy);
     }
     return saxonAttack;
 }
@@ -101,8 +101,15 @@ War.prototype.showStatus = function() {
 }
 
 War.prototype.getRandomSoldier = function(soldierArray) {
-    return Math.floor(Math.random() * soldierArray.length);
+    return soldierArray[Math.floor(Math.random() * soldierArray.length)];
 }
-War.prototype.removeSoldier = function(soldierArray, index) {
-    soldierArray.splice(index, 1);
+
+War.prototype.removeSoldier = function(soldierObj, soldierArray) {
+    soldierIndex = soldierArray.indexOf(soldierObj);
+    if(soldierIndex !== -1) {
+        soldierArray.splice(soldierIndex, 1);
+    }
+    else {
+        return "Soldier not found";
+    }
 }
