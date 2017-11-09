@@ -66,8 +66,36 @@ function War () {
     this.saxonArmy = [];
 }
 
-War.prototype.addViking = function() {}
-War.prototype.addSaxon = function() {}
-War.prototype.vikingAttack = function() {}
-War.prototype.saxonAttack = function() {}
+War.prototype.addViking = function(vikingObj) {
+    this.vikingArmy.push(vikingObj);
+}
+War.prototype.addSaxon = function(saxonObj) {
+    this.saxonArmy.push(saxonObj);
+}
+War.prototype.vikingAttack = function() {
+    vikingIndex = this.getRandomSoldier(this.vikingArmy);
+    saxonIndex = this.getRandomSoldier(this.saxonArmy);
+    vikingAttack = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].attack());
+    if ( ! this.saxonArmy[saxonIndex].isAlive() ) {
+        this.removeSoldier(this.saxonArmy, saxonIndex);
+    }
+    return vikingAttack;
+}
+War.prototype.saxonAttack = function() {
+    vikingIndex = this.getRandomSoldier(this.vikingArmy);
+    saxonIndex = this.getRandomSoldier(this.saxonArmy);
+    saxonAttack = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].attack());
+    if ( ! this.vikingArmy[vikingIndex].isAlive() ) {
+        this.removeSoldier(this.vikingArmy, vikingIndex);
+    }
+    return saxonAttack;
+}
+
 War.prototype.showStatus = function() {}
+
+War.prototype.getRandomSoldier = function(soldierArray) {
+    return Math.floor(Math.random() * soldierArray.length);
+}
+War.prototype.removeSoldier = function(soldierArray, index) {
+    soldierArray.splice(index, 1);
+}
