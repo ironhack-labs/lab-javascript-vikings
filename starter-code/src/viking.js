@@ -2,16 +2,15 @@
 function Soldier(health, strength) {
   this.health = health;
   this.strength = strength;
+
+  this.attack = function() {
+    return this.strength;
+  };
+
+  this.receiveDamage = function(damage) {
+    this.health -= damage;
+  };
 }
-
-Soldier.prototype.attack = function() {
-return this.strength;
-};
-
-Soldier.prototype.receiveDamage = function(damage) {
-this.health -= damage;
-};
-
 
 // Viking
 
@@ -22,9 +21,9 @@ function Viking(name, health, strength) {
 
 Viking.prototype = Object.create(Soldier.prototype);
 
-Viking.prototype.attack = function() {
-return this.strength;
-};
+//Viking.prototype.attack = function() {
+//return this.strength;
+//};
 
 Viking.prototype.receiveDamage = function(damage) {
   this.health -= damage;
@@ -45,10 +44,6 @@ function Saxon(health, strength) {
 }
 
 Saxon.prototype = Object.create(Soldier.prototype);
-
-Saxon.prototype.attack = function(){
-  return this.strength;
-};
 
 Saxon.prototype.receiveDamage = function(damage) {
   this.health -= damage;
