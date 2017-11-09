@@ -91,7 +91,19 @@ War.prototype.saxonAttack = function() {
     return saxonAttack;
 }
 
-War.prototype.showStatus = function() {}
+War.prototype.showStatus = function() {
+    if(this.saxonArmy.length == 0) {
+        return "Vikings have won the war of the century!";
+    }
+    else {
+        if(this.vikingArmy.length == 0) {
+            return "Saxons have fought for their lives and survive another day...";
+        }
+        else {
+            return "Vikings and Saxons are still in the thick of battle.";
+        }
+    }
+}
 
 War.prototype.getRandomSoldier = function(soldierArray) {
     return Math.floor(Math.random() * soldierArray.length);
