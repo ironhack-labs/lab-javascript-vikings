@@ -13,12 +13,7 @@ Soldier.prototype.receiveDamage = function(damage) {
 }
 
 Soldier.prototype.isAlive = function() {
-    if(this.health > 0) {
-        return true;
-    }
-    else {
-        return false;
-    }
+   return this.health > 0;
 }
 
 Viking.prototype = Object.create(Soldier.prototype);
