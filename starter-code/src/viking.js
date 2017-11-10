@@ -24,13 +24,12 @@ function Viking (name, health, strength) {
     }
   };
 }
-
-Vikig.prototype.battleCry = function() {
-  return "Odin Owns You All!";
-};
-
 Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.constructor = Viking;
+
+Viking.prototype.battleCry = function() {
+  return "Odin Owns You All!";
+};
 
 // Saxon
 function Saxon (health, strength) {
