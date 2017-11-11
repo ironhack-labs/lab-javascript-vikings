@@ -148,3 +148,7 @@ War.prototype.showStatus = function() {
         return "Vikings and Saxons are still in the thick of battle.";
     }
 }
+
+//NOTA: intentar crear un mini juego partiendo de esto al igual que en el ejercicio del cluedo.
+//que le demos el numero de guerrreros de cada ejercito y que los construya aleatroriamente y que luego los enfrente
+// y que muestre por consola el resultado de la batalla
