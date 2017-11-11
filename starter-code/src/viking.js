@@ -8,12 +8,12 @@ function Soldier(health, strength) {
 //
 // Definimos el método "attack" del objeto Soldier
 Soldier.prototype.attack = function(){
-return this.strength;
+    return this.strength;
 }
 //
 // Definimos el método "receiveDamage" del objeto Soldier
 Soldier.prototype.receiveDamage = function(damage) {
-    this.health = this.health - damage;
+    this.health -= damage;
 }
 
 
@@ -32,7 +32,7 @@ Viking.prototype = Object.create(Soldier.prototype);
 // El método "attack" del objeto Viking ya no hay que declararlo pq lo hereda de SOLDIER
 // y tb habría heredado el método "receiveDamage" aunque lo queremos modificar:
 Viking.prototype.receiveDamage = function(damage) {
-    this.health = this.health - damage;
+    this.health -= damage;
     if (this.health > 0) {
         return this.name + " has received " + this.damage + "  points of damage"
     }
@@ -60,7 +60,7 @@ Saxon.prototype = Object.create(Soldier.prototype);
 // El método "attack" del objeto Viking ya no hay que declararlo pq lo hereda de SOLDIER
 // y tb habría heredado el método "receiveDamage" aunque lo queremos modificar:
 Saxon.prototype.receiveDamage = function(damage) {
-    this.health = this.health - damage;
+    this.health -= damage;
     if (this.health > 0) {
         return "A Saxon has received " + this.damage + "  points of damage"
     }
