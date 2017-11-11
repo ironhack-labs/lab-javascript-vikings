@@ -26,7 +26,7 @@ function Viking(name, health, strength) {
     Soldier.call(this, health, strength )
 } 
 //
-//heredamos sus Métodos  
+//heredamos sus Métodos desde Soldier  
 Viking.prototype = Object.create(Soldier.prototype);
 //
 // El método "attack" del objeto Viking ya no hay que declararlo pq lo hereda de SOLDIER
@@ -47,8 +47,59 @@ Viking.prototype.battleCry = function(){
     }
     
 
-// Saxon
-function Saxon () {}
+// SAXON
+//
+// Función constructora del objeto Saxon
+function Saxon(health, strength) {
+    Soldier.call(this, health, strength )
+}
+//
+//heredamos sus Métodos desde Soldier  
+Saxon.prototype = Object.create(Soldier.prototype);
+//
+// El método "attack" del objeto Viking ya no hay que declararlo pq lo hereda de SOLDIER
+// y tb habría heredado el método "receiveDamage" aunque lo queremos modificar:
+Saxon.prototype.receiveDamage = function(damage) {
+    this.health = this.health - damage;
+    if (this.health > 0) {
+        return "A Saxon has received " + this.damage + "  points of damage"
+    }
+    else {
+        return "A Saxon has died in combat" 
+    }
+}
 
-// War
-function War () {}
+
+
+// WAR
+//
+// Función constructora del objeto War
+function War() {
+vikingArmy = [];
+
+}
+//
+// Definimos el método "addViking" del objeto WAR
+War.prototype.addViking = function(){
+    
+    }
+//
+// Definimos el método "addSaxon" del objeto WAR
+War.prototype.addSaxon = function(){
+    
+    }
+//
+// Definimos el método "vikingAttack" del objeto WAR
+War.prototype.vikingAttack = function(){
+    
+    }
+//
+// Definimos el método "saxonAttack" del objeto WAR
+War.prototype.saxonAttack = function(){
+    
+    }
+//
+// Definimos el método "showStatus" del objeto WAR
+War.prototype.showStatus = function(){
+    
+    }
