@@ -34,10 +34,10 @@ Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.receiveDamage = function(damage) {
     this.health -= damage;
     if (this.health > 0) {
-        return this.name + " has received " + this.damage + "  points of damage"
+        return this.name + " has received " + damage + " points of damage";
     }
     else {
-        return this.name + " has died in act of combat" 
+        return this.name + " has died in act of combat";
     }
 }
 //
@@ -75,31 +75,76 @@ Saxon.prototype.receiveDamage = function(damage) {
 //
 // Función constructora del objeto War
 function War() {
-vikingArmy = [];
-
+    this.vikingArmy = [];
+    this.saxonArmy = [];
 }
 //
-// Definimos el método "addViking" del objeto WAR
-War.prototype.addViking = function(){
-    
-    }
+// Definimos el método para seleccionar aleatoriamente un elemento de un array
+Array.prototype.random = function() {
+    return this[Math.floor(Math.random() * this.length)];
+}
 //
-// Definimos el método "addSaxon" del objeto WAR
-War.prototype.addSaxon = function(){
-    
+// Definimos el método "addViking" y "deleteViking" del objeto WAR
+War.prototype.addViking = function(viking){
+    if (viking instanceof Viking) {
+        this.vikingArmy.push(viking);
     }
+}
+War.prototype.deleteViking = function (viking) {
+    if (viking instanceof Viking) {
+        index = this.vikingArmy.indexOf(viking);
+        if (index !== -1) {
+            this.vikingArmy.splice(index, 1);
+        }
+    }
+}
+//
+// Definimos el método "addSaxon" y "deleteSaxon" del objeto WAR
+War.prototype.addSaxon = function(saxon){
+    if (saxon instanceof Saxon) {
+        this.saxonArmy.push(saxon);
+    }
+}
+War.prototype.deleteSaxon = function (saxon) {
+    if (saxon instanceof Saxon) {
+        index = this.saxonArmy.indexOf(saxon);
+        if (index !== -1) {
+            this.saxonArmy.splice(index, 1);
+        }
+    }
+}
 //
 // Definimos el método "vikingAttack" del objeto WAR
-War.prototype.vikingAttack = function(){
+War.prototype.vikingAttack = function() {
+    saxon = this.saxonArmy.random();
+    viking = this.vikingArmy.random();
     
+    status = saxon.receiveDamage(viking.attack());
+    if (!saxon.isStillAlive()) {
+        this.deleteSaxon(saxon);
     }
+    return status;
+}
 //
 // Definimos el método "saxonAttack" del objeto WAR
-War.prototype.saxonAttack = function(){
-    
+War.prototype.saxonAttack = function () {
+    saxon = this.saxonArmy.random();
+    viking = this.vikingArmy.random();
+
+    status = viking.receiveDamage(saxon.attack());
+    if (!viking.isStillAlive()) {
+        this.deleteViking(viking);
     }
+    return status;
+}
 //
 // Definimos el método "showStatus" del objeto WAR
-War.prototype.showStatus = function(){
-    
+War.prototype.showStatus = function() {
+    if (this.saxonArmy.length === 0) {
+        return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0) {
+        return "Saxons have fought for their lives and survive another day...";
+    } else if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1) {
+        return "Vikings and Saxons are still in the thick of battle.";
     }
+}
