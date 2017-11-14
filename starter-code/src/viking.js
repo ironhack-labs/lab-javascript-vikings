@@ -70,14 +70,39 @@ War.prototype.addSaxon = function(saxon) {
   this.saxonArmy.push(saxon);
 };
 
+Saxon.prototype.receiveDamage =  function(damage) {
+    Soldier.prototype.receiveDamage.call(this, damage);
+    if (this.health > 0) {
+        return "A Saxon has received " + damage + " points of damage";
+    } else {
+        return "A Saxon has died in combat";
+    }
+};
+
+Soldier.prototype.isAlive = function() {
+    return this.health > 0;
+};
+
+Array.prototype.random = function() {
+    return this[Math.floor(Math.random() * this.length)];
+};
+
+War.prototype.deleteSaxon = function (saxon) {
+    if (saxon instanceof Saxon) {
+        index = this.saxonArmy.indexOf(saxon);
+        if (index !== -1) {
+            this.saxonArmy.splice(index, 1);
+        }
+    }
+};
+
 War.prototype.vikingAttack = function() {
-  War.prototype.saxonreceiveDamage =function(damage) {
-    return saxon.health += vinking.strength;
-  };
-  var oldHealth = saxon.health;
-  if (saxon.health  > 0){
-    return saxon.health -= viking.strength;
-  } elseif (saxon.health = viking.strength); {
-    return "A Saxon has died in combat";
-  }
+    saxon = this.saxonArmy.random();
+    viking = this.vikingArmy.random();
+
+    status = saxon.receiveDamage(viking.attack());
+    if (!saxon.isAlive()) {
+        this.deleteSaxon(saxon);
+    }
+    return status;
 };
