@@ -1,5 +1,19 @@
 body { overflow-y: scroll; }
 
+.jasmine-labname {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  background-color: #32c3ff;
+  padding: 8px;
+}
+
+.jasmine-labname span {
+  color: white;
+  font-size: 19px;
+  margin-left: 10px;
+}
+
 .jasmine_html-reporter { background-color: #eee; padding: 5px; margin: -8px; font-size: 11px; font-family: Monaco, "Lucida Console", monospace; line-height: 14px; color: #333; }
 .jasmine_html-reporter a { text-decoration: none; }
 .jasmine_html-reporter a:hover { text-decoration: underline; }

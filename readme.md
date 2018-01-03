@@ -25,55 +25,15 @@ git push origin master
 
 - Navigate to your repo and [create a Pull Request](https://help.github.com/articles/creating-a-pull-request/)
 
-## Testing Introduction
+### Tests, test, tests!
 
-### What is testing?
+Yes! Best way to know how our code is doing is to work with tests. Go ahead and open the `SpecRunner.html`!
 
-Software testing is a process of executing an application to validate and verify that it meets the business and technical requirements and works as expected.
+**Run the tests**
 
-Testing is a process, not a single activity. So the process of designing tests early at the beginning of the development and the product's life cycle can help to prevent deficiencies in the code or product design.
+We've got a _test suite_ for our constructor functions and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `tests/VikingSpec.js` and implement the code in `src/viking.js` to make each test pass.
 
-In this exercise, we have created all the tests you need to create the solution, and you have to execute them all and create the code to accomplish all the requirements.
-
-Tests prove that your code actually works in every situation in which it’s designed to work. Even when you are improving the design or creating new features, you can change your current code without breaking what already works.
-
-### Testing with Jasmine
-
-![Jasmine Logo](https://i.imgur.com/A1pop7h.png)
-
-Jasmine is an automated testing framework for JavaScript. It is designed to be used in BDD (behavior-driven development) programming which focuses more on the business value than on the technical details.
-
-We have already included Jasmine in the project you just forked, so let's see how to use it to implement our code.
-
-### Usage
-
-Before start coding, we will explain the project structure we have provided you:
-
-```
-starter-code/
-├── lib
-│   ├── jasmine-2.5.2/
-│   |   └── ...
-│   ├── .gitkeep
-│   └── jquery-3.1.1.min.js
-├── spec
-│   └── VikingSpec.js
-├── src
-│   └── viking.js
-└─ SpecRunner.html
-```
-
-We are going to be working with the files inside the `spec` and `src` folders. In the `lib` folder you can find all the files that compose Jasmine, that are already linked with the `SpecRunner.html` file.
-
-**Run tests**
-
-Run the tests with Jasmine is super easy, you just have to open the `SpecRunner.html` file in your browser. You will find something like this:
-
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_dfaa7b22b9e00c73218f5980aaa12cad.png)
-
-We've got a _test suite_ for our constructor functions and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `spec/VikingSpec.js` and implement the code in `src/viking.js` to make each test pass.
-
-If you open `spec/VikingSpec.js` and take a look at **lines 10-20**. You should see some `it()` functions (tests) that are commented out. Let's start by uncommenting **lines 10-12**:
+If you open `tests/VikingSpec.js` and take a look at **lines 10-20**. You should see some `it()` functions (tests) that are commented out. Let's start by uncommenting **lines 10-12**:
 
 ```javascript
   describe("constructor function", function () {
@@ -93,7 +53,7 @@ If you open `spec/VikingSpec.js` and take a look at **lines 10-20**. You should 
 
 Now that particular test (_should receive 2 arguments (health & strength)_) is failing!
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_b44f06caaa4ae521745568a482ff3d62.png)
+![](images/2.png)
 
 
 **Write the code**
@@ -130,22 +90,14 @@ function Saxon () {}
 function War () {}
 ```
 
-Once we have implemented the correct code, we can refresh the `SpecRunner.html` page to see how our tests are passing.
-
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_7074e3db1d1b0ddadfee5914fe2e0595.png)
-
-![For the win](https://media.giphy.com/media/nXxOjZrbnbRxS/giphy.gif)
-
-
 **Execute all the tests**
 
 Now that we are passing the first test, the next step is to uncomment the next test. To do that, we have to remove the comments from **lines 15-17** in the `spec/VikingSpec.js` file, and refresh the page to see what we have to implement next:
 
-![](https://s3-eu-west-1.amazonaws.com/ih-materials/uploads/upload_c82d7c268ab8bdd99b3908c497ea39a5.png)
+![](images/4.png)
 
-Once we have checked out that the test is failing, we can implement the code to make it pass. This is how [TDD (Test-driven development)](https://en.wikipedia.org/wiki/Test-driven_development) works. Once you have implemented the code to pass all the tests, the exercise will be done.
+Once we have checked out that the test is failing, we can implement the code to make it pass. 
 
-**Note this is a very big picture about Jasmine and TDD. We will learn how to use Jasmine in the future lessons of the course :)**
 
 ## Exercise
 
