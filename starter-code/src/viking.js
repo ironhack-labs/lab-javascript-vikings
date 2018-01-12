@@ -22,15 +22,14 @@ Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.constructor = Viking;
 
 Viking.prototype.receiveDamage = function (damage){
-    this.health = this.health-damage;
-    if (this.health>damage) {
+    this.health -= damage;
+    if (this.health>0) {
         return this.name + " has received " + damage + " points of damage";
     }
     else {
         return this.name + " has died in act of combat";
     }
 }
-//SOLO DE ÁLVARO, EXPLICAR DESPUÉS
 
 Viking.prototype.battleCry = function(){
     return "Odin Owns You All!";
@@ -40,6 +39,7 @@ Viking.prototype.battleCry = function(){
 function Saxon(health, strength) {
     Soldier.call(this, health, strength);
 }
+
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
@@ -54,8 +54,28 @@ Saxon.prototype.receiveDamage= function(damage){
 }
 
 
-
-
-
 // War
-function War() {}
+
+function War() {
+    this.vikingArmy = [] ; 
+    this.saxonArmy = [] ;
+}
+
+War.prototype.addViking = function(Viking){
+    this.vikingArmy.push(Viking);
+}
+
+War.prototype.addSaxon = function(Saxon){
+    this.saxonArmy.push(Saxon);
+}
+
+War.prototype.vikingAttack = function(){
+    this.Saxon.health = this.Saxon.health - this.Viking.damage;
+}
+War.prototype.saxonAtaack = function(){
+
+}
+War.prototype.showStatus = function(){
+
+}
+
