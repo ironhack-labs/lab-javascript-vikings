@@ -103,27 +103,27 @@ describe("Viking", function () {
   });
 
   describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(viking.receiveDamage)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(viking.receiveDamage)).toBe("function");
+    });
 
-    // it("should receive 1 argument (the damage)", function () {
-    //   expect(viking.receiveDamage.length).toEqual(1);
-    // });
+    it("should receive 1 argument (the damage)", function () {
+      expect(viking.receiveDamage.length).toEqual(1);
+    });
 
-    // it("should remove the received damage from the health property", function () {
-    //   viking.receiveDamage(50);
-    //   expect(viking.health).toEqual(health - 50);
-    // });
+    it("should remove the received damage from the health property", function () {
+      viking.receiveDamage(50);
+      expect(viking.health).toEqual(health - 50);
+    });
 
-    // it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
-    //   expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
-    //   expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
-    // });
+    it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
+      expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
+      expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
+    });
 
-    // it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
-    //   expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
-    // });
+    it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
+      expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
+    });
   });
 
   describe("battleCry() method", function () {
