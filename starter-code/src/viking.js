@@ -62,20 +62,27 @@ function War() {
 
 War.prototype.addViking = function (viking) {
     this.vikingArmy.push(viking);
-}
+};
 
 War.prototype.addSaxon = function (saxon) {
     this.saxonArmy.push(saxon);
-}
+};
 
 War.prototype.vikingAttack = function () {
     var saxon = this.saxonArmy[getRandom(this.saxonArmy)];
     var viking = this.vikingArmy[getRandom(this.vikingArmy)];
-    return saxon.health = saxon.health - viking.strength;
-}
-
+    // saxon.health = saxon.health - viking.strength;
+    //saxon.receiveDamage(viking.strength);
+    if (saxon.health > 0) {
+        return saxon.receiveDamage(viking.strength);
+    } else {
+        console.log('else '+saxon.health);
+        this.saxonArmy.splice(saxon);
+        // return saxon.receiveDamage(viking.strength);
+    }
+};
 
 //FX AUX
 function getRandom(arr) {
-    return Math.floor(Math.random() * arr.length ) ;
-}
+    return Math.floor(Math.random() * arr.length);
+};
