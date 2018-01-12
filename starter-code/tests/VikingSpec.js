@@ -311,9 +311,9 @@ describe("War", function () {
         expect(war.saxonArmy.length).toEqual(0);
       });
 
-      // it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function () {
-      //   expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
-      // });
+      it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function () {
+        expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
+      });
     });
 
     describe("saxonAttack() method", function () {

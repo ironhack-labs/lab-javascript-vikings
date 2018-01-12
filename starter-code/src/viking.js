@@ -59,10 +59,11 @@ function War() {
   this.vikingAttack = function(){
     var randomSaxon = Math.floor(Math.random() * saxonArmy.length);
     var randomViking = vikingArmy[Math.floor(Math.random() * vikingArmy.length)];
-    saxonArmy[randomSaxon].receiveDamage(randomViking.strength);
+    var newHealth = saxonArmy[randomSaxon].receiveDamage(randomViking.strength);
     if (saxonArmy[randomSaxon].health < 1){
       saxonArmy.splice(randomSaxon, 1);
     }
+    return newHealth
   };
   this.showStatus = function(){
 
