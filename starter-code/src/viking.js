@@ -70,7 +70,7 @@ War.prototype.addSaxon = function(Saxon){
 }
 
 War.prototype.vikingAttack = function(){
-    this.Saxon.health = this.Saxon.health - this.Viking.damage;
+   
 }
 War.prototype.saxonAtaack = function(){
 
