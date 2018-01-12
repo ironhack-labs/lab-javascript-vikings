@@ -102,8 +102,56 @@ War.prototype.addSaxon = function(saxon){
   this.saxonArmy.push(saxon);
 
 }
-War.prototype.vikingAttack = function(){}
-War.prototype.saxonAttack = function(){}
+
+function givePositionRandom(maximo){
+
+  var position;
+  
+  if(maximo > 1){
+
+    position = Math.floor(Math.random() * maximo);
+
+  }else{
+
+    position = 0;
+  }
+  
+
+  return position;
+}
+
+War.prototype.vikingAttack = function(){
+
+  var indexSaxonRandom;
+  var indexVikinRandom;
+  var resultadoSaxon;
+
+    if(this.vikingArmy.length > 0 && this.saxonArmy.length > 0){
+      
+      indexSaxonRandom = givePositionRandom(this.saxonArmy.length);
+      indexVikinRandom = givePositionRandom(this.vikingArmy.length);
+
+      resultadoSaxon = this.saxonArmy[indexSaxonRandom].receiveDamage(this.vikingArmy[indexVikinRandom].strength);
+      
+      if(this.saxonArmy[indexSaxonRandom].health <= 0){
+
+        this.saxonArmy.splice(indexSaxonRandom,1);
+
+       } ;
+
+    }
+
+  return resultadoSaxon;
+   
+
+}
+
+War.prototype.saxonAttack = function(){
+
+  
+
+}
+
 War.prototype.showStatus = function(){}
 
 
