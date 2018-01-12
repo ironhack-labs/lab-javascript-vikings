@@ -55,4 +55,27 @@ function printSaxonDamage(name, damage, health) {
 
 
 // War
-function War() {}
+function War() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+}
+
+War.prototype.addViking = function (viking) {
+    this.vikingArmy.push(viking);
+}
+
+War.prototype.addSaxon = function (saxon) {
+    this.saxonArmy.push(saxon);
+}
+
+War.prototype.vikingAttack = function () {
+    var saxon = this.saxonArmy[getRandom(this.saxonArmy)];
+    var viking = this.vikingArmy[getRandom(this.vikingArmy)];
+    return saxon.health = saxon.health - viking.strength;
+}
+
+
+//FX AUX
+function getRandom(arr) {
+    return Math.floor(Math.random() * arr.length ) ;
+}
