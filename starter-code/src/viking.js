@@ -59,16 +59,22 @@ function War() {
   this.vikingAttack = function(){
     var randomSaxon = Math.floor(Math.random() * saxonArmy.length);
     var randomViking = vikingArmy[Math.floor(Math.random() * vikingArmy.length)];
-    var newHealth = saxonArmy[randomSaxon].receiveDamage(randomViking.strength);
+    var attackResult = saxonArmy[randomSaxon].receiveDamage(randomViking.strength);
     if (saxonArmy[randomSaxon].health < 1){
       saxonArmy.splice(randomSaxon, 1);
     }
-    return newHealth
+    return attackResult;
   };
   this.showStatus = function(){
 
   };
   this.saxonAttack = function(){
-
+    var randomViking = Math.floor(Math.random() * vikingArmy.length);
+    var randomSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)];
+    var attackResult = vikingArmy[randomViking].receiveDamage(randomSaxon.strength);
+    if (vikingArmy[randomViking].health < 1){
+      vikingArmy.splice(randomViking, 1);
+    }   
+    return attackResult;
   };
 }
