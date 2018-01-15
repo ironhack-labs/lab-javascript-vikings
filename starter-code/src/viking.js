@@ -37,7 +37,41 @@ Viking.prototype.battleCry = function (){
 
 
 // Saxon
-function Saxon() {}
+function Saxon(healthArg, strengthArg) {
+    Soldier.call(this, healthArg, strengthArg);
+}
+Saxon.prototype = Object.create(Soldier.prototype); //We put this BEFORE our viking methods, so that they can 
+Saxon.prototype.constructor = Saxon;//...inherit    
 
+Saxon.prototype.attack = function () {
+    return this.strength;
+}
+
+Saxon.prototype.receiveDamage = function (damageArg){
+    this.health = this.health - damageArg;
+    if (this.health > 0){
+        return 'A Saxon'+ ' has received ' + damageArg + ' points of damage';
+    }
+    else {
+        return 'A Saxon' + ' has died in combat';
+    }
+}
 // War
-function War() {}
+function War() {
+    War.prototype.vikingArmy = [];
+    War.prototype.saxonArmy = [];
+
+    War.prototype.addViking = function(vikingObj){
+        War.prototype.vikingArmy.push(vikingObj);
+    }
+
+    War.prototype.addSaxon = function(saxonObj){
+        War.prototype.saxonArmy.push(saxonObj);
+    }
+
+    // War.prototype.vikingAttack = function(){
+    //    Math.random() * this
+    // }
+    
+
+}
