@@ -12,8 +12,9 @@ function Soldier(healthArg, strengthArg) {
 
 // Viking
 function Viking(name, healthArg, strengthArg) {
-    this.name = name;
+
     Soldier.call(this, healthArg, strengthArg)
+    this.name = name;
     this.receiveDamage = function(damage) {
         this.health -= damage;
         if (this.health > 0){
@@ -22,6 +23,7 @@ function Viking(name, healthArg, strengthArg) {
             return this.name + " has died in act of combat";
         }
     }
+
     this.battleCry = function() {
         return "Odin Owns You All!";
     }
@@ -54,9 +56,31 @@ function War() {
         this.saxonArmy.push(Saxon);
     } 
     this.vikingAttack = function() {
-        Saxon.receiveDamage(Viking.strength);
+        this.randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        this.randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
+        var result = this.randomSaxon.receiveDamage(this.randomViking.strength);
+
+        if (this.randomSaxon.health <= 0) {
+            this.saxonArmy.splice(this.saxonArmy.indexOf(this.randomSaxon), 1);
+        };
+
+        return result;
+       
     }
-    // saxonAttack()
+
+    this.saxonAttack = function () {
+        this.randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        this.randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
+        var result = this.randomViking.receiveDamage(this.randomSaxon.strength);
+
+        if (this.randomViking.health <= 0) {
+            this.vikingArmy.splice(this.vikingArmy.indexOf(this.randomViking), 1);
+        };
+
+        return result;
+    }
     // showStatus()
 
 }
