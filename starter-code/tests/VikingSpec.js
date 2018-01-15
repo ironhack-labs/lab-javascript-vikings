@@ -66,64 +66,64 @@ describe("Viking", function () {
     viking = new Viking(name, health, strength);
   });
 
-  // it("should inherit from Soldier", function () {
-  //   expect(viking instanceof Soldier).toEqual(true);
-  // });
+  it("should inherit from Soldier", function () {
+    expect(viking instanceof Soldier).toEqual(true);
+  });
 
   describe("constructor function", function () {
-    // it("should receive 3 arguments (name, health & strength)", function () {
-    //   expect(Viking.length).toEqual(3);
-    // });
+    it("should receive 3 arguments (name, health & strength)", function () {
+      expect(Viking.length).toEqual(3);
+    });
 
-    // it("should receive the name property as its 1st argument", function () {
-    //   expect(viking.name).toEqual(name);
-    // });
+    it("should receive the name property as its 1st argument", function () {
+      expect(viking.name).toEqual(name);
+    });
 
-    // it("should receive the health property as its 2nd argument", function () {
-    //   expect(viking.health).toEqual(health);
-    // });
+    it("should receive the health property as its 2nd argument", function () {
+      expect(viking.health).toEqual(health);
+    });
 
-    // it("should receive the strength property as its 3rd argument", function () {
-    //   expect(viking.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 3rd argument", function () {
+      expect(viking.strength).toEqual(strength);
+    });
   });
 
   describe("attack() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(viking.attack)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(viking.attack)).toBe("function");
+    });
 
-    // it("should receive 0 arguments", function () {
-    //   expect(viking.attack.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", function () {
+      expect(viking.attack.length).toEqual(0);
+    });
 
-    // it("should return the strength property of the Viking", function () {
-    //   expect(viking.attack()).toEqual(strength);
-    // });
+    it("should return the strength property of the Viking", function () {
+      expect(viking.attack()).toEqual(strength);
+    });
   });
 
   describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(viking.receiveDamage)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(viking.receiveDamage)).toBe("function");
+    });
 
-    // it("should receive 1 argument (the damage)", function () {
-    //   expect(viking.receiveDamage.length).toEqual(1);
-    // });
+    it("should receive 1 argument (the damage)", function () {
+      expect(viking.receiveDamage.length).toEqual(1);
+    });
 
-    // it("should remove the received damage from the health property", function () {
-    //   viking.receiveDamage(50);
-    //   expect(viking.health).toEqual(health - 50);
-    // });
+    it("should remove the received damage from the health property", function () {
+      viking.receiveDamage(50);
+      expect(viking.health).toEqual(health - 50);
+    });
 
-    // it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
-    //   expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
-    //   expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
-    // });
+    it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
+      expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
+      expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
+    });
 
-    // it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
-    //   expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
-    // });
+    it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
+      expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
+    });
   });
 
   describe("battleCry() method", function () {
