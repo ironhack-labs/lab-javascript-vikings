@@ -1,3 +1,5 @@
+
+
 // Soldier
 function Soldier(health, strength) {
   this.health = health;
@@ -27,6 +29,8 @@ function randomNumber(army) {
 
 Viking.prototype = Object.create(Soldier.prototype);
 Saxon.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
+Saxon.prototype.constructor = Saxon;
 
 Soldier.prototype.attack = function () {
   return this.strength;
