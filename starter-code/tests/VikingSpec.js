@@ -12,9 +12,9 @@ describe("Soldier", function () {
     //   expect(Soldier.length).toEqual(2);
     // });
 
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
+    it("should receive the health property as its 1st argument", function () {
+      expect(soldier.health).toEqual(health);
+    });
 
     // it("should receive the strength property as its 2nd argument", function () {
     //   expect(soldier.strength).toEqual(strength);
