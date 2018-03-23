@@ -66,3 +66,22 @@ War.prototype.addViking = function(viking) {
 War.prototype.addSaxon = function(saxon) {
   this.saxonArmy.push(saxon);
 }
+
+War.prototype.vikingAttack = function() {
+  //random saxon
+  var saxon = this.saxonArmy[ Math.floor(Math.random()*(this.saxonArmy.length)) ];
+
+  //random viking
+  var viking = this.vikingArmy[ Math.floor(Math.random()*(this.vikingArmy.length)) ];
+
+  saxon.receiveDamage( viking.strength );
+
+  // remove dead saxon
+  this.saxonArmy = this.saxonArmy.filter( function(e) {
+    return e.health > 0;
+  });
+
+  if( saxon.health < 0 ) {
+    return "A Saxon has died in combat";
+  }
+}
