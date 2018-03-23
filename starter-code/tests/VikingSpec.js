@@ -66,26 +66,26 @@ describe("Viking", function () {
     viking = new Viking(name, health, strength);
   });
 
-  // it("should inherit from Soldier", function () {
-  //   expect(viking instanceof Soldier).toEqual(true);
-  // });
+  it("should inherit from Soldier", function () {
+    expect(viking instanceof Soldier).toEqual(true);
+  });
 
   describe("constructor function", function () {
-    // it("should receive 3 arguments (name, health & strength)", function () {
-    //   expect(Viking.length).toEqual(3);
-    // });
+    it("should receive 3 arguments (name, health & strength)", function () {
+      expect(Viking.length).toEqual(3);
+    });
 
-    // it("should receive the name property as its 1st argument", function () {
-    //   expect(viking.name).toEqual(name);
-    // });
+    it("should receive the name property as its 1st argument", function () {
+      expect(viking.name).toEqual(name);
+    });
 
-    // it("should receive the health property as its 2nd argument", function () {
-    //   expect(viking.health).toEqual(health);
-    // });
+    it("should receive the health property as its 2nd argument", function () {
+      expect(viking.health).toEqual(health);
+    });
 
-    // it("should receive the strength property as its 3rd argument", function () {
-    //   expect(viking.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 3rd argument", function () {
+      expect(viking.strength).toEqual(strength);
+    });
   });
 
   describe("attack() method", function () {
