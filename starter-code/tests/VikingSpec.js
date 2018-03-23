@@ -8,9 +8,9 @@ describe("Soldier", function () {
   });
 
   describe("constructor function", function () {
-    // it("should receive 2 arguments (health & strength)", function () {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+    it("should receive 2 arguments (health & strength)", function () {
+      expect(Soldier.length).toEqual(2);
+    });
 
     // it("should receive the health property as its 1st argument", function () {
     //   expect(soldier.health).toEqual(health);
