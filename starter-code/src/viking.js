@@ -2,21 +2,25 @@
 function Soldier(health, strength) {
     this.health=health;
     this.strength=strength;
-    
 
- this.attack = function (){
-    return strength;
-    };
+}
+Soldier.prototype.attack = function (){
+        return this.strength;
+        };
 
 Soldier.prototype.receiveDamage = function(damage){
     
     this.health -= damage; 
 };
-
-}
-
 // Viking
-function Viking() {}
+function Viking(name,health,strength) {
+
+    Soldier.call(this,health,strength);
+
+    this.name = name;
+}
+Viking.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
 
 // Saxon
 function Saxon() {}
