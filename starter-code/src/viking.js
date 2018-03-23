@@ -51,4 +51,24 @@ Saxon.prototype.receiveDamage = function(damage) {
     }
 }
 // War
-function War() {}
+function War() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+
+    
+}
+
+
+War.prototype.addViking = function(Viking){
+    for(let i = 1; i < Viking.length ;i++)
+        this.vikingArmy.push(Viking[i]);
+    return this.vikingArmy;
+}
+War.prototype.addSaxon = function(Saxon){
+    return this.saxonArmy;
+}
+War.prototype.vikingAttack = function(){
+    
+}
+War.prototype.saxonAttack = function(){}
+War.prototype.showStatus = function(){}
