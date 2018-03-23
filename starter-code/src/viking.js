@@ -32,9 +32,9 @@ function Saxon(healthArg, strengthArg) {
   this.receiveDamage = function (damage) {
     this.health = this.health - damage;
     if (this.health > 0) {
-      return this.name + " has received " + damage + " points of damage"; }
+      return "A Saxon has received " + damage + " points of damage"; }
     else {
-      return this.name + " has died in act of combat";
+      return "A Saxon has died in combat";
     }
   }
 }
@@ -47,9 +47,16 @@ function War() {}
 
 
 
-/* 
 
-// recibirZascas
+
+
+/* 
+Cuando coloco la funcion receiveDamage() por fuera de los constructores de Viking y Saxon
+Jasmin se vuelve loca y me tira mis admiradas bolitas verdes de validación.
+O Jasmin es un poco rebelde o se me escapa algo, o las dos.
+*/
+
+/* 
 function receiveDamage(damage) {
   this.health = this.health - damage;
 
