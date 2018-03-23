@@ -74,7 +74,7 @@ War.prototype.vikingAttack = function() {
   //random viking
   var viking = this.vikingArmy[ Math.floor(Math.random()*(this.vikingArmy.length)) ];
 
-  saxon.receiveDamage( viking.strength );
+  saxon.receiveDamage( viking.attack() );
 
   // remove dead saxon
   this.saxonArmy = this.saxonArmy.filter( function(e) {
@@ -93,7 +93,7 @@ War.prototype.saxonAttack = function() {
   //random saxon
   var saxon = this.saxonArmy[ Math.floor(Math.random()*(this.saxonArmy.length)) ];
 
-  viking.receiveDamage( saxon.strength );
+  viking.receiveDamage( saxon.attack() );
 
   // remove dead vikings
   this.vikingArmy = this.vikingArmy.filter( function(e) {
