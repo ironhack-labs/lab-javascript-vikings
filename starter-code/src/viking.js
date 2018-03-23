@@ -50,5 +50,79 @@ function Saxon(health, strength) {
   }
 }
 Saxon.prototype = Object.create(Soldier.prototype);
+
+
 // War
-function War() {}
+function War() {
+this.vikingArmy = [];
+this.saxonArmy = [];
+
+this.addViking = function(Viking)
+        {
+          this.vikingArmy.push(Viking);
+        };
+
+this.addSaxon = function(Saxon)
+        {
+          this.saxonArmy.push(Saxon);
+        };
+        
+this.vikingAttack = function()
+        {
+          var randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+          var randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+        
+          var randomSaxonSoldier = this.saxonArmy[randomSaxonIndex];
+          var randomVikingSoldier = this.vikingArmy[randomVikingIndex];
+
+          
+          if (randomSaxonSoldier.health <= randomVikingSoldier.strength)
+          {
+              this.saxonArmy.splice(this.randomSaxonIndex,1);
+          }
+          return randomSaxonSoldier.receiveDamage(randomVikingSoldier.strength);
+   
+         
+};
+
+
+this.saxonAttack = function(){
+          
+          var randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+          var randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+          var randomSaxonSoldier = this.saxonArmy[randomSaxonIndex];
+          var randomVikingSoldier = this.vikingArmy[randomVikingIndex];
+
+
+          if (randomSaxonSoldier.strength >= randomVikingSoldier.health)
+          {
+              this.vikingArmy.splice(this.randomVikingIndex,1);
+          }
+          return randomVikingSoldier.receiveDamage(randomSaxonSoldier.strength);
+};
+
+
+
+
+this.showStatus =  function(){
+
+  if (this.saxonArmy.length == 0)
+    {
+      return "Vikings have won the war of the century!";
+    }
+  
+  else if (this.vikingArmy.length == 0)
+    {
+      return "Saxons have fought for their lives and survive another day...";
+    }
+
+    else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+
+};
+
+
+
+}
