@@ -31,6 +31,10 @@ Viking.prototype.receiveDamage = function(damage) {
   }
 }
 
+Viking.prototype.battleCry = function() {
+  return "Odin Owns You All!";
+}
+
 // Saxon
 function Saxon() {}
 
