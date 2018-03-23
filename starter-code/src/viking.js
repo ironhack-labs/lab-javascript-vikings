@@ -1,4 +1,5 @@
 // Soldier
+
 function Soldier() {}
 
 // Viking
