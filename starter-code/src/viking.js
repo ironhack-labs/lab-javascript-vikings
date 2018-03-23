@@ -4,6 +4,10 @@ function Soldier(health, strength) {
   this.strength = strength;
 }
 
+Soldier.prototype.attack = function() {
+  return this.strength;
+}
+
 // Viking
 function Viking() {}
 
