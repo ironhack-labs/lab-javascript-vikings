@@ -42,6 +42,7 @@ Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
 
+
 // War
 function War() {}
 
