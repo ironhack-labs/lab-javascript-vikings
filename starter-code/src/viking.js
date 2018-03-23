@@ -21,6 +21,16 @@ function Viking(name, health, strength) {
 Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.constructor = Viking;
 
+Viking.prototype.receiveDamage = function(damage) {
+  this.health -= damage;
+
+  if(this.health > 0) {
+    return this.name + " has received " + damage + " points of damage";
+  } else {
+    return this.name + " has died in act of combat";
+  }
+}
+
 // Saxon
 function Saxon() {}
 
