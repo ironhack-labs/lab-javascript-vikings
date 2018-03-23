@@ -1,5 +1,5 @@
 // Soldier
-function Soldier(health , strength) {
+function Soldier( health , strength ) {
  this.health = health;
  this.strength = strength;
 }
@@ -7,16 +7,19 @@ Soldier.prototype.attack = function(){
   return this.strength;
 }
 Soldier.prototype.receiveDamage = function (damage){
-console.log(this)
-  if(this.hasOwnProperty('name')){
-    this.health = this.health - damage
-    if((this.health - damage)<0){
-      return this.name + " has died in act of combat"
-    }else{  
+  this.health = this.health - damage;
+  if( this.constructor.name === "Viking"){
+    if( (this.health ) > 0 ){
       return this.name + " has received " + damage + " points of damage"
+    }else{
+      return this.name + " has died in act of combat" 
     }
-  }else{
-    this.health = this.health - damage
+  }else if(this.constructor.name === "Saxon"){                
+    if( (this.health ) > 0 ){ 
+      return "A Saxon has received " + damage + " points of damage"
+    }else{
+      return "A Saxon has died in combat"
+    }
   }
 }
 Viking.prototype = Object.create(Soldier.prototype);
@@ -38,5 +41,15 @@ function Saxon(health, strength) {
 }
 
 // War
-function War() {}
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+War.prototype.addViking = function(Viking){
+  this.vikingArmy.push(Viking);
+};
+
+War.prototype.addSaxon = function(Saxon){
+  this.saxonArmy.push(Saxon);
+}
 
