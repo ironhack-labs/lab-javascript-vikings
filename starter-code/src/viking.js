@@ -52,4 +52,42 @@ War.prototype.addViking = function(Viking){
 War.prototype.addSaxon = function(Saxon){
   this.saxonArmy.push(Saxon);
 }
+War.prototype.vikingAttack = function(){
+  var attackerIndex = Math.floor(Math.random()*this.vikingArmy.length)
+  var victimIndex = Math.floor(Math.random()*this.saxonArmy.length)
+  var attacker = this.vikingArmy[attackerIndex]
+  var victim = this.saxonArmy[victimIndex]
+  var damage = attacker.strength
 
+  EncounterResult = victim.receiveDamage( damage )
+  
+  if( victim.health <= 0){
+    this.saxonArmy.splice(victimIndex,1)
+  }
+  return EncounterResult
+}
+War.prototype.saxonAttack = function(){
+  var attackerIndex = Math.floor(Math.random()*this.saxonArmy.length)
+  var victimIndex = Math.floor(Math.random()*this.vikingArmy.length)
+  var attacker = this.saxonArmy[attackerIndex]
+  var victim = this.vikingArmy[victimIndex]
+  var damage = attacker.strength
+
+  EncounterResult = victim.receiveDamage( damage )
+  
+  if( victim.health <= 0){
+    this.vikingArmy.splice(victimIndex,1)
+  }
+  return EncounterResult
+}
+War.prototype.showStatus = function(){
+  if(this.vikingArmy.length === 0){
+    return "Saxons have fought for their lives and survive another day..."
+  }
+  else if(this.saxonArmy.length === 0){
+    return "Vikings have won the war of the century!"
+  }
+  if (Viking && Saxon){
+    return 'Vikings and Saxons are still in the thick of battle.'
+  }
+}
