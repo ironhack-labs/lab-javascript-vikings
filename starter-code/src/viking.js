@@ -38,7 +38,34 @@ Viking.prototype = Object.create(Soldier.prototype);
 
 
 // Saxon
-function Saxon() {}
+function Saxon(health, strength) {
+  Soldier.call(this);
+  this.health=60;
+  this.strength=25;
+  this.attack;
+  this.receiveDamage = function(damage){
+    this.health-=damage;
+    
+    if(this.health>0){
+      return ("A Saxon has received " + damage +" points of damage");
+    } else {
+      return ("A Saxon has died in combat");
+    }
+  
+}
+}
+
+Saxon.prototype=Object.create(Soldier.prototype); 
 
 // War
-function War() {}
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+
+  this.addViking = function(Viking){
+    this.vikingArmy.push(Viking);
+    
+
+
+  };
+}
