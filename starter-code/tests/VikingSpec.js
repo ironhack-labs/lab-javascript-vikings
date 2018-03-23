@@ -234,17 +234,17 @@ describe("War", function () {
   });
 
   describe("constructor function", function () {
-    // it("should receive 0 arguments", function () {
-    //   expect(War.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", function () {
+      expect(War.length).toEqual(0);
+    });
 
-    // it("should assign an empty array to the vikingArmy property", function () {
-    //   expect(war.vikingArmy).toEqual([]);
-    // });
+    it("should assign an empty array to the vikingArmy property", function () {
+      expect(war.vikingArmy).toEqual([]);
+    });
 
-    // it("should assign an empty array to the saxonArmy property", function () {
-    //   expect(war.saxonArmy).toEqual([]);
-    // });
+    it("should assign an empty array to the saxonArmy property", function () {
+      expect(war.saxonArmy).toEqual([]);
+    });
   });
 
   describe("addViking() method", function () {
