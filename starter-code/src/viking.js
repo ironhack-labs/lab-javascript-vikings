@@ -1,6 +1,11 @@
 // Soldier
-function Soldier() {}
+function Soldier(healthArg, strengthArg) {
+  this.health = healthArg;
+  this.strength = strengthArg;
+}
+function attack(){
 
+}
 // Viking
 function Viking() {}
 
