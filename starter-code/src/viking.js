@@ -1,6 +1,6 @@
 // Soldier
 function Soldier() {}
-
+d
 // Viking
 function Viking() {}
 
