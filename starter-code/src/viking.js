@@ -22,7 +22,7 @@ Viking.prototype.constructie = Viking;
 Viking.prototype.receiveDamage  = function (damage) {
   this.health -=damage;
 
-  if(this.health ==  0){
+  if(this.health <=  0){
     return this.name + " has died in act of combat";   
   } else {
     return this.name + " has received " +damage+ " points of damage";
@@ -43,9 +43,9 @@ Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
 Saxon.prototype.receiveDamage  = function (damage) {
-  this.health -= damage;
+  this.health -=damage;
 
-  if(this.health ==  0){
+  if(this.health <=  0){
     return "A Saxon has died in combat";
       } else {
     return "A Saxon has received " +damage+ " points of damage";
@@ -57,15 +57,15 @@ Saxon.prototype.receiveDamage  = function (damage) {
 function War() {
   this.vikingArmy = [];
   this.saxonArmy = [];
-}
+};
 
 War.prototype.addViking = function(viking) {
     this.vikingArmy.push(viking);
-}
+};
 
 War.prototype.addSaxon = function(saxon) {
   this.saxonArmy.push(saxon);
-}
+};
 
 War.prototype.vikingAttack = function() {
 
@@ -82,7 +82,7 @@ War.prototype.vikingAttack = function() {
     }
     return resultado;
 
-}
+};
     
 
 
@@ -93,13 +93,14 @@ War.prototype.saxonAttack = function() {
   var viking = this.vikingArmy[vikingNum];
   var saxon = this.saxonArmy[saxonNum];
   
-  var resultado = viking.receiveDamage(saxon.attack())
+  var resultado = viking.receiveDamage(saxon.attack());
 
   if(viking.health <=0) {
     this.vikingArmy.splice(vikingNum, 1);
   }
   return resultado;
-}
+};
+
 War.prototype.showStatus = function() {
   if(this.saxonArmy.length == 0){
     return "Vikings have won the war of the century!";
@@ -108,4 +109,4 @@ War.prototype.showStatus = function() {
   } else {
     return "Vikings and Saxons are still in the thick of battle.";
   }
-}
+};
