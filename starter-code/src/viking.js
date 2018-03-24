@@ -73,9 +73,22 @@ War.prototype.vikingAttack = function() {
   ];
   if (viking.strength > saxon.health){
     this.saxonArmy.splice(saxon, 1);
-    console.log(this.saxonArmy)
     return saxon.receiveDamage(viking.attack())
   } else {
     return saxon.receiveDamage(viking.attack())
+  }
+};
+
+War.prototype.saxonAttack = function() {
+  var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  var viking = this.vikingArmy[
+    Math.floor(Math.random() * this.vikingArmy.length)
+  ];
+  if (saxon.strength > viking.health){
+    this.vikingArmy.splice(viking, 1);
+    console.log(this.vikingArmy)
+    return viking.receiveDamage(saxon.attack())
+  } else {
+    return viking.receiveDamage(saxon.attack())
   }
 };
