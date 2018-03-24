@@ -58,7 +58,10 @@ War.prototype.addSaxon = function(Saxon){
     this.saxonArmy.push(Saxon);
 }
 War.prototype.vikingAttack = function(){
-    this.Saxon.receiveDamage = this.Viking.strength
+    var vattack = saxon.receiveDamage
+    if(Saxon.receiveDamage === Viking.strength && saxon.health === 0){
+        this.saxonArmy.splice(0);
+    }
 }
 War.prototype.saxonAttack = function (){
 
