@@ -74,16 +74,14 @@ War.prototype.vikingAttack = function() {
   //random viking
   var viking = this.vikingArmy[ Math.floor(Math.random()*(this.vikingArmy.length)) ];
 
-  saxon.receiveDamage( viking.attack() );
+  var message = saxon.receiveDamage( viking.attack() );
 
   // remove dead saxon
   this.saxonArmy = this.saxonArmy.filter( function(e) {
     return e.health > 0;
   });
 
-  if( saxon.health < 0 ) {
-    return "A Saxon has died in combat";
-  }
+  return message;
 }
 
 War.prototype.saxonAttack = function() {
@@ -93,14 +91,14 @@ War.prototype.saxonAttack = function() {
   //random saxon
   var saxon = this.saxonArmy[ Math.floor(Math.random()*(this.saxonArmy.length)) ];
 
-  viking.receiveDamage( saxon.attack() );
+  var message = viking.receiveDamage( saxon.attack() );
 
   // remove dead vikings
   this.vikingArmy = this.vikingArmy.filter( function(e) {
     return e.health > 0;
   });
 
-  return viking.name + " has received " + saxon.strength + " points of damage";
+  return message;
 }
 
 War.prototype.showStatus = function() {
