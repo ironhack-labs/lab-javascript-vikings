@@ -70,7 +70,7 @@ War.prototype.vikingAttack = function(){
   var aleatSaxon = Math.floor(Math.random() * this.saxonArmy.length);
   var viking = this.vikingArmy[aleatViking];
   var saxon =  this.saxonArmy[aleatSaxon];
-  var msg = saxon.receiveDamage (viking.strength);
+  var msg = saxon.receiveDamage (viking.attack());
   if (saxon.health > 0) {
     this.saxonArmy[aleatSaxon].health = saxon.health;
   } else {
@@ -84,7 +84,7 @@ War.prototype.saxonAttack = function(){
   var aleatSaxon = Math.floor(Math.random() * this.saxonArmy.length);
   var viking = this.vikingArmy[aleatViking];
   var saxon =  this.saxonArmy[aleatSaxon];
-  var msg = viking.receiveDamage (saxon.strength);
+  var msg = viking.receiveDamage (saxon.attack());
   if (viking.health > 0) {
     this.vikingArmy[aleatViking].health = viking.health;
   } else {
