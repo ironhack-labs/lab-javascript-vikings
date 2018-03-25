@@ -55,12 +55,13 @@ function Saxon (health, strength) {
         }else {
         return ("A Saxon has died in combat");
         }
-    }
-
-    
+    }   
 }
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
+
+
+
 // War
 function War() {
     this.vikingArmy=[];
@@ -73,7 +74,12 @@ function War() {
     }
 
     this.vikingAttack = function (){
-          return this.Saxon.receiveDamage(damage) === this.Viking.strength;
+        var randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
+          var randomVikin = Math.floor(Math.random()*this.vikingArmy.length);
+          
         
     }
 }
+
+
+
