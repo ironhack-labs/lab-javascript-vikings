@@ -20,7 +20,7 @@ function Viking(name, health, strength) {
 	this.name = name;
 	
   }
-  
+
 Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.constructor = Viking;
   
