@@ -15,7 +15,6 @@ var soldier = new Soldier(300, 150);
 soldier.receiveDamage(50);
 
 // Viking
-
 Viking.prototype = Object.create(Soldier.prototype);
 
 function Viking(name, health, strength) {
@@ -86,15 +85,14 @@ function War() {
       return result2;
     }
   };
-  this.showStatus = function () {
+
+  this.showStatus = function() {
     if (this.saxonArmy.length === 0) {
-        return "Vikings have won the war of the century!";
-    }
-    else if (this.vikingArmy.length === 0) {
-        return "Saxons have fought for their lives and survive another day...";
-    }
-    else {
-        return "Vikings and Saxons are still in the thick of battle.";
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0) {
+      return "Saxons have fought for their lives and survive another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
     }
   };
 }

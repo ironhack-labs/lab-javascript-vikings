@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row jumbotron">
+      <h1>Saxons vs Vikings</h1>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus, nobis vitae. Necessitatibus omnis atque ullam nesciunt deleniti
+      consequatur ab. Nesciunt voluptate deleniti aspernatur accusantium ex totam ipsa, rem non ducimus.
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg">
+        <h2>
+          <span id="saxons">
+          </span> Saxons</h2>
+        <input type="number" name="" id="saxon-army">
+        <button type="submit" id="submit-saxons">Add</button>
+      </div>
+      <div class="col-lg">
+        <h2>
+          <span id="vikings">
+          </span> Vikings</h2>
+        <input type="number" name="" id="viking-army">
+        <button type="submit" id="submit-vikings">Add</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg">
+        <h4>Saxons' attack</h4>
+        <button type="submit" id="saxonsAttack" class="btn btn-danger" onclick="saxonsAttack();">WAAAAR!</button>
+      </div>
+      <div class="col-lg">
+        <h4>Vikings' attack</h4>
+        <button type="submit" id="vikingsAttack" class="btn btn-danger" onclick="vikingsAttack();">WAAAAR!</button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg">
+          <h2>War Diary</h2>
+          <ul id="diary"></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./src/viking.js"></script>
+  <script src="./src/game.js"></script>
+</body>
+
+
+</html>
