@@ -30,6 +30,13 @@ document.querySelector("#saxonsAttack").onclick = function() {
 		document.querySelector("#diary").insertAdjacentHTML("afterbegin", log);
 		var vikings = game.vikingArmy.length;
 		document.querySelector("#vikings").innerHTML = vikings;
+		// life
+		var vikingsLife = 0;
+		game.vikingArmy.map(viking => {
+			vikingsLife += viking.health;
+		});
+		console.log(vikingsLife);
+		// document.querySelector("#saxonsLife").innerHTML = saxonsLife;
 	}
 };
 
@@ -43,6 +50,13 @@ document.querySelector("#vikingsAttack").onclick = function() {
 		document.querySelector("#diary").insertAdjacentHTML("afterbegin", log);
 		var saxons = game.saxonArmy.length;
 		document.querySelector("#saxons").innerHTML = saxons;
+		// life
+		var saxonsLife = 0;
+		game.saxonArmy.map(saxon => {
+			saxonsLife += saxon.health;
+		});
+		console.log(saxonsLife);
+		// document.querySelector("#saxonsLife").innerHTML = saxonsLife;
 	}
 };
 
