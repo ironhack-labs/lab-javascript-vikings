@@ -77,9 +77,9 @@ function War() {
 
         let Viking = this.vikingArmy[VikingRandom];
 
-        //this.saxonArmy[SaxonRandom].receiveDamage(Viking.strength);
         let totalDamage = this.saxonArmy[SaxonRandom].health - Viking.strength;
         let res = this.saxonArmy[SaxonRandom].receiveDamage(Viking.strength);
+
         if(totalDamage <= 0){
            this.saxonArmy.splice(SaxonRandom,1);
         }
@@ -94,7 +94,6 @@ function War() {
         let Saxon = this.saxonArmy[SaxonRandom];
 
         let totalDamage = this.vikingArmy[VikingRandom].health - Saxon.strength;
-
         let res = this.vikingArmy[VikingRandom].receiveDamage(Saxon.strength);
 
         if(totalDamage <= 0){
