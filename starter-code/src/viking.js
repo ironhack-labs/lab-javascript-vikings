@@ -47,7 +47,7 @@ function Viking(name, health, strength) {
 Saxon.prototype = Object.create(Soldier.prototype);
 
 function Saxon(health, strength) {
-  Soldier.call(this, health,strength);
+  Soldier.call(this, health, strength);
 
   // receivedDamage method
   Saxon.prototype.receiveDamage = function(damage) {
@@ -61,7 +61,34 @@ function Saxon(health, strength) {
 }
 
 // War
-// function War() {
-//   this.vikingArmy = [];
-//   this.saxonArmy = [];
-// }
+
+// War Constructor
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+
+  // addViking method
+  War.prototype.addViking = function(Viking) {
+    this.vikingArmy.push(Viking);
+  }
+
+  // addSaxon method
+  War.prototype.addSaxon = function(Saxon) {
+    this.saxonArmy.push(Saxon);
+  }
+
+  // vikingAttack method
+  War.prototype.vikingAttack = function() {
+    this.saxIndex = Math.floor(Math.random() * this.saxonArmy.length); // picks random index of saxonArmy
+    this.vikIndex = Math.floor(Math.random() * this.vikingArmy.length); // picks random index of vikingArmy
+    this.randomSax = this.saxonArmy[this.saxIndex]; // picks a random Saxon
+    this.randomVik = this.vikingArmy[this.vikIndex]; // picks a random Viking
+    this.attackedSax = this.randomSax.receiveDamage(this.randomVik.strength) // applies damage to the pciked Saxon
+    
+    // removes dead Saxon from array
+    if (this.randomSax.health <= 0) {
+      this.saxonArmy.splice(this.saxIndex, 1);
+      return this.saxonArmy, this.attackedSax;
+    }
+  }
+}
