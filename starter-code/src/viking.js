@@ -99,6 +99,7 @@ function War() {
     this.attackedVik = this.randomVik.receiveDamage(this.randomSax.strength) // applies damage to the picked Viking
 
     // removes dead Viking from array
+    // One test not passing! Probably the extra attribute of Viking class (name). Not sure!
     if (this.randomVik.health <= 0) {
       this.vikingArmy.splice(this.vikIndex, 1);
       return this.vikingArmy, this.attackedVik;
