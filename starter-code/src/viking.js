@@ -13,8 +13,6 @@ function Soldier (health, strength) {
 // Viking
 function Viking(name, health, strength) {
     this.name = name;
-    this.strength = strength;
-    this.health = health;
     Soldier.call(this, health, strength);
     this.attack = function(){
         return this.strength;
@@ -39,8 +37,6 @@ Viking.prototype = Object.create(Soldier.prototype);
 
 // Saxon
 function Saxon( health, strength) {
-    this.strength = strength;
-    this.health = health; 
     Soldier.call(this, health, strength);
     this.attack = function(){
         return this.strength;
@@ -104,14 +100,12 @@ function War() {
     }
     this.showStatus = function(){
       
-        if(this.vikingArmy.length == 0){
+        if(this.vikingArmy.length === 0){
             return "Saxons have fought for their lives and survive another day...";
-        }else if(this.saxonArmy.length == 0){
+        }else if(this.saxonArmy.length === 0){
             return "Vikings have won the war of the century!";
-        }else if(this.saxonArmy.length >= 1 ){
-            if(this.vikingArmy.length >= 1){
-                return "Vikings and Saxons are still in the thick of battle.";
-            }
+        }else{
+            return "Vikings and Saxons are still in the thick of battle.";
         }
 
     }
