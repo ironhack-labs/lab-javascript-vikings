@@ -16,19 +16,23 @@ Soldier.prototype.receiveDamage = function(damage){
 function Viking (name, health, strength, damage) {
     this.name = name;
     Soldier.call(this, health, strength);
-    function receiveDamage (damage){
-        this.health = this.health - damage;
-        if (this.health > 0){
-            return this.name + "has received 50 points of damage";
-        } else if (this.health <= 0){
-            return this.name, "has died in act of combat";
-        }
-    }
 }
+
+
 Viking.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
+
+Viking.prototype.receiveDamage = function(damage){
+    this.health -= damage;
+    if (this.health > 0){
+        return this.name + " has received " + damage + " points of damage";
+    } else {
+        return this.name + " has died in act of combat";
+    }}
 Viking.prototype.battleCry = function(){
     return "Odin Owns You All!";
 }
+
 
 // Saxon
 function Saxon(health, strength, damage) {
@@ -47,12 +51,26 @@ function Saxon(health, strength, damage) {
     }
 }
 Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.receiveDamage = function(damage){
+        this.health -= damage;
+        if (this.health > 0){
+            return "A Saxon has received " + damage + " points of damage";
+        }
+        else {
+            return "A Saxon has died in combat";
+        }
+}
 
 // War
 function War() {
     this.vikingArmy = [];
     this.saxonArmy = [];
 }
+
+War.prototype = Object.create(Saxon.prototype)
+War.prototype.constructor = War;
+War.prototype = Object.create(Viking.prototype)
+War.prototype.constructor = War;
 
 War.prototype.addViking = function (viking){
     this.vikingArmy.push(viking);
@@ -63,5 +81,10 @@ War.prototype.addSaxon = function(saxon){
 }
 
 War.prototype.vikingAttack = function(){
-    Saxon.attack() = Viking.strength;
-}
+    this.randomSax = this.saxonArmy[this.saxIndex];
+    this.randomSax.receiveDamage(this.vikingArmy[this.vikIndex].strength);
+ }
+
+ let saxIndex = Math.floor(Math.random()*this.saxonArmy.length);
+ let vikIndex = Math.floor(Math.random()*this.vikingArmy.length);
+
