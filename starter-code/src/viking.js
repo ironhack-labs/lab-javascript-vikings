@@ -77,18 +77,31 @@ function War() {
     this.saxonArmy.push(Saxon);
   }
 
+  this.saxIndex = Math.floor(Math.random() * this.saxonArmy.length); // picks random index of saxonArmy
+  this.vikIndex = Math.floor(Math.random() * this.vikingArmy.length); // picks random index of vikingArmy
+
   // vikingAttack method
   War.prototype.vikingAttack = function() {
-    this.saxIndex = Math.floor(Math.random() * this.saxonArmy.length); // picks random index of saxonArmy
-    this.vikIndex = Math.floor(Math.random() * this.vikingArmy.length); // picks random index of vikingArmy
     this.randomSax = this.saxonArmy[this.saxIndex]; // picks a random Saxon
     this.randomVik = this.vikingArmy[this.vikIndex]; // picks a random Viking
-    this.attackedSax = this.randomSax.receiveDamage(this.randomVik.strength) // applies damage to the pciked Saxon
+    this.attackedSax = this.randomSax.receiveDamage(this.randomVik.strength) // applies damage to the picked Saxon
     
     // removes dead Saxon from array
     if (this.randomSax.health <= 0) {
       this.saxonArmy.splice(this.saxIndex, 1);
       return this.saxonArmy, this.attackedSax;
+    }
+  }
+
+  War.prototype.saxonAttack = function() {
+    this.randomSax = this.saxonArmy[this.saxIndex]; // picks a random Saxon
+    this.randomVik = this.vikingArmy[this.vikIndex]; // picks a random Viking
+    this.attackedVik = this.randomVik.receiveDamage(this.randomSax.strength) // applies damage to the picked Viking
+
+    // removes dead Viking from array
+    if (this.randomVik.health <= 0) {
+      this.vikingArmy.splice(this.vikIndex, 1);
+      return this.vikingArmy, this.attackedVik;
     }
   }
 }
