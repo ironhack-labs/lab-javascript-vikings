@@ -19,6 +19,8 @@ function Soldier(health, strength) {
 // Viking
 
 // Viking Constructor. Inherits Soldier props and defines a name prop
+Viking.prototype = Object.create(Soldier.prototype);
+
 function Viking(name, health, strength) {
   Soldier.call(this, health, strength);
   this.name = name;
@@ -39,12 +41,15 @@ function Viking(name, health, strength) {
   }
 }
 
-Viking.prototype = Object.create(Soldier.prototype);
-
 // Saxon
+
+// Saxon Constructor. Inherits Soldier props
+Saxon.prototype = Object.create(Soldier.prototype);
+
 function Saxon(health, strength) {
   Soldier.call(this, health,strength);
 
+  // receivedDamage method
   Saxon.prototype.receiveDamage = function(damage) {
     this.health -= damage;
     if(this.health > 0) {
@@ -55,7 +60,8 @@ function Saxon(health, strength) {
   }
 }
 
-Saxon.prototype = Object.create(Soldier.prototype);
-
 // War
-function War() {}
+// function War() {
+//   this.vikingArmy = [];
+//   this.saxonArmy = [];
+// }
