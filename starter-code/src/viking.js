@@ -67,24 +67,50 @@ function War() {
     this.saxonArmy = [];
 }
 
+War.prototype = Object.create(Saxon.prototype)
+War.prototype.constructor = War;
+War.prototype = Object.create(Viking.prototype)
+War.prototype.constructor = War;
+
 War.prototype.addViking = function (viking){
     this.vikingArmy.push(viking);
 }
 
-War.prototype.addSaxon = function(saxon){
+War.prototype.addSaxon = function (saxon) {
     this.saxonArmy.push(saxon);
 }
 
 War.prototype.vikingAttack = function(){
-    let randomSax = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+    let saxInd = Math.floor(Math.random()*this.saxonArmy.length);
+    let randomSax = this.saxonArmy[saxInd];
     let randomVik = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
-    let fight = this.randomSax.receiveDamage(this.randomVik.attack);
+    let fight = randomSax.receiveDamage(randomVik.attack());
+
+   if (randomSax.health <= 0) {
+       this.saxonArmy.splice(saxInd);
+   }
+   return fight;
  }
 
-//  let saxIndex = Math.floor(Math.random()*this.saxonArmy.length);
-// //  let this.vikIndex = Math.floor(Math.random()*this.vikingArmy.length);
+ War.prototype.saxonAttack = function(){
+    let saxInd = Math.floor(Math.random()*this.saxonArmy.length);
+    let randomSax = this.saxonArmy[saxInd];
+    let vikInd = Math.floor(Math.random()*this.vikingArmy.length)
+    let randomVik = this.vikingArmy[vikInd];
+    let fight = randomVik.receiveDamage(randomSax.attack());
 
-//  War.prototype = Object.create(Saxon.prototype)
-//  War.prototype.constructor = War;
-//  War.prototype = Object.create(Viking.prototype)
-//  War.prototype.constructor = War;
+   if (randomVik.health <= 0) {
+       this.vikingArmy.splice(vikInd);
+   }
+   return fight;
+ }
+
+ War.prototype.showStatus = function(){
+     if (this.vikingArmy.length > 0 && this.saxonArmy.length <= 0){
+        return "Vikings have won the war of the century!";
+     } else if (this.saxonArmy.length > 0 && this.vikingArmy.length <= 0){
+         return "Saxons have fought for their lives and survive another day...";
+     } else {
+         return "Vikings and Saxons are still in the thick of battle.";
+     }
+ }
