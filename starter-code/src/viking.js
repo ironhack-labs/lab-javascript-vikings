@@ -47,10 +47,19 @@ Soldier.call(this, health, strength);
     if(this.health > 0){
         return "A Saxon has received " + damage + " points of damage";
     } else {
-    return "A Saxon has died in act of combat";}
+    return "A Saxon has died in combat";}
     }
 }
 Saxon.prototype.constructor = Saxon;
 
 // War
-function War() {}
+function War() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+}
+War.prototype.addViking = function(Viking) {
+    this.vikingArmy.push(Viking);
+    }
+War.prototype.addSaxon = function(Saxon) {
+    this.saxonArmy.push(Saxon);
+    } 
