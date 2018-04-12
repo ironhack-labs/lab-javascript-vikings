@@ -67,11 +67,6 @@ function War() {
     this.saxonArmy = [];
 }
 
-War.prototype = Object.create(Saxon.prototype)
-War.prototype.constructor = War;
-War.prototype = Object.create(Viking.prototype)
-War.prototype.constructor = War;
-
 War.prototype.addViking = function (viking){
     this.vikingArmy.push(viking);
 }
@@ -81,10 +76,15 @@ War.prototype.addSaxon = function(saxon){
 }
 
 War.prototype.vikingAttack = function(){
-    this.randomSax = this.saxonArmy[this.saxIndex];
-    this.randomSax.receiveDamage(this.vikingArmy[this.vikIndex].strength);
+    let randomSax = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+    let randomVik = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
+    let fight = this.randomSax.receiveDamage(this.randomVik.attack);
  }
 
- let saxIndex = Math.floor(Math.random()*this.saxonArmy.length);
- let vikIndex = Math.floor(Math.random()*this.vikingArmy.length);
+//  let saxIndex = Math.floor(Math.random()*this.saxonArmy.length);
+// //  let this.vikIndex = Math.floor(Math.random()*this.vikingArmy.length);
 
+//  War.prototype = Object.create(Saxon.prototype)
+//  War.prototype.constructor = War;
+//  War.prototype = Object.create(Viking.prototype)
+//  War.prototype.constructor = War;
