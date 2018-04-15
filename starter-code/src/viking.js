@@ -47,6 +47,3 @@ function Saxon(health,strength) {
     }
 };
 }
-
-// War
-function War() {}
