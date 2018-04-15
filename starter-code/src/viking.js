@@ -11,7 +11,12 @@ function Soldier(health,strength) {
 }
 
 // Viking
-function Viking() {}
+function Viking(name,health,strength) {
+  Soldier.call(this,health,strength);
+  this.receiveDamage = function(damage) {
+    this.health = this.health - damage;};
+  this.battleCry = function(){};
+}
 
 // Saxon
 function Saxon() {}
