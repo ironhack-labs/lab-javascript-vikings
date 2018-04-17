@@ -75,11 +75,21 @@ War.prototype.addSaxon = function (Saxon) {
 };
 
 War.prototype.vikingAttack = function () {
+  var attack = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+  if (this.saxonArmy[0].health <= 0) {
+    this.saxonArmy.splice(0, 1);
+  }
+  return attack;
 };
 
 War.prototype.saxonAttack = function () {
-
+  var attack = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+  if (this.vikingArmy[0].health <= 0) {
+    this.vikingArmy.splice(0, 1);
+  }
+  return attack;
 };
+
 War.prototype.showStatus = function () {
 
 };
