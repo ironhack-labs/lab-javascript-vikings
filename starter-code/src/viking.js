@@ -8,7 +8,7 @@ function Soldier(health,strength) {
    return this.strength;
  };
 
- Soldier.prototype.receiveDamage = function(receiveDamage){
+ Soldier.prototype.receiveDamage = function(damage){
   this.health -= damage;
  };
 
@@ -48,14 +48,25 @@ function Saxon(health,strength) {
   }
 
 // War
+War.prototype = Object.create(Viking.prototype);
+War.prototype.constructor = War;
+War.prototype = Object.create(Saxon.prototype);
+War.prototype.constructor = War;
+
 function War() {
   this.vikingArmy = [];
   this.saxonArmy = [];
 }
 
-War.prototype.addViking = function(Viking) {
-  this.vikingArmy.push(Viking);
-  }
-War.prototype.addSaxon = function(Saxon) {
-  this.saxonArmy.push(Saxon);
-  }
+War.prototype.addViking = function(viking){
+  this.vikingArmy.push(viking);
+}
+
+War.prototype.addSaxon = function(saxon){
+  this.saxonArmy.push(saxon);
+}
+  vikingAttack()
+
+  saxonAttack()
+
+  showStatus()
