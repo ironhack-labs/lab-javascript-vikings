@@ -96,11 +96,8 @@ War.prototype.showStatus = function() {
 };
 
 War.prototype.randomAttack = function() {
-  var randomViking = this.getRandomViking();
-  var randomSaxon = this.getRandomSaxon();
   var randomBoolean = Math.random() >= 0.5;
-  if (randomBoolean) return this.vikingAttack();
-  else return this.saxonAttack();
+  return randomBoolean ? this.vikingAttack() : this.saxonAttack();
 };
 
 var war = new War();
