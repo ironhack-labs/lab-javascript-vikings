@@ -77,9 +77,7 @@ War.prototype.vikingAttack = function() {
   var randomViking = this.getRandomViking();
   var randomSaxon = this.getRandomSaxon();
   var result = randomSaxon.receiveDamage(randomViking.strength);  
-  if (randomSaxon.health <= 0) {
-     this.removeSaxon(randomSaxon);
-  } 
+  if (randomSaxon.health <= 0) this.removeSaxon(randomSaxon); 
   return result;
 };
 
@@ -87,26 +85,33 @@ War.prototype.saxonAttack = function() {
   var randomViking = this.getRandomViking();
   var randomSaxon = this.getRandomSaxon();
   var result = randomViking.receiveDamage(randomSaxon.strength);  
-  if (randomViking.health <= 0) {
-     this.removeViking(randomViking);
-  } 
+  if (randomViking.health <= 0) this.removeViking(randomViking); 
   return result;
 };
 
 War.prototype.showStatus = function() {
   if (this.saxonArmy.length === 0) return "Vikings have won the war of the century!";
   if (this.vikingArmy.length === 0) return "Saxons have fought for their lives and survive another day...";
-  return "Vikings and Saxons are still in the thick of battle."
-}
+  return "Vikings and Saxons are still in the thick of battle.";
+};
 
+War.prototype.randomAttack = function() {
+  var randomViking = this.getRandomViking();
+  var randomSaxon = this.getRandomSaxon();
+  var randomBoolean = Math.random() >= 0.5;
+  if (randomBoolean) return this.vikingAttack();
+  else return this.saxonAttack();
+};
 
 var war = new War();
-var viking = new Viking('Rulo', 100, 50);
-var saxon = new Saxon(70, 30);
+var belen = new Viking('Belen', 140, 50);
+var rulo = new Viking('Rulo', 130, 50);
 
-war.addViking(viking);
-war.addSaxon(saxon);
-war.vikingAttack();
-war.showStatus();
+war.addViking(belen),
+war.addViking(rulo),
+war.addSaxon(new Saxon(100, 25));
+war.addSaxon(new Saxon(100, 25));
+war.addSaxon(new Saxon(100, 25));
+war.addSaxon(new Saxon(100, 25));
 
-// showStatus()
+console.log("Battle start!!!");
