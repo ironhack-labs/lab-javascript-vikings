@@ -67,7 +67,7 @@ describe("Viking", function () {
   });
 
   it("should inherit from Soldier", function () {
-    // expect(viking instanceof Soldier).toEqual(true);
+    expect(viking instanceof Soldier).toEqual(true);
   });
 
   describe("constructor function", function () {
