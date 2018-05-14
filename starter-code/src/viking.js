@@ -20,7 +20,7 @@ function Viking(name, health, strength) {
 Viking.prototype = Object.create(Soldier.prototype);
 
 Viking.prototype.receiveDamage = function (damage) {
-  Soldier.receiveDamage.call(this, damage);
+  this.health -= damage;
   const msg = this.health > 0
     ? `${this.name} has received ${this.damage} points of damage`
     : '{this.name} has died in act of combat';
