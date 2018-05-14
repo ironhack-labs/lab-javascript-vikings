@@ -1,125 +1,110 @@
-// SOLDIER
+// Soldier
 function Soldier(health, strength) {
     this.health = health;
     this.strength = strength;
-}
-
-Soldier.prototype.attack = function(){
+  }
+  
+  Soldier.prototype.attack = function () {
     return this.strength;
-};
-
-Soldier.prototype.receiveDamage = function(damage){
-    this.health -= damage;
-};
-
-
-
-//VIKING
-function Viking(name, health, strength) {
+  };
+  
+  Soldier.prototype.receiveDamage = function (damage) {
+    this.health =  this.health - damage;
+  };
+  
+  // Viking
+  function Viking(name, health, strength) {
     Soldier.call(this, health, strength);
     this.name = name;
-}
-Viking.prototype = Object.create(Soldier.prototype);
-Viking.prototype.constructor = Viking;
-
-
-Viking.prototype.receiveDamage = function(damage){
-    this.health -= damage;
-    if (this.health > 0) {        
-        return this.name + ' has received ' + damage + ' points of damage';
-    } else{
-        return this.name + ' has died in act of combat';
+  }
+  
+  Viking.prototype = Object.create(Soldier.prototype);
+  Viking.prototype.constructor = Viking;
+  
+  Viking.prototype.receiveDamage = function(damage) {
+    this.health = this.health - damage;
+    if (this.health > 0) {
+      return this.name + ' has received ' + damage + ' points of damage';
+    } else {
+      return this.name + ' has died in act of combat';
     }
-};
-
-Viking.prototype.battleCry = function(){
-    return  "Odin Owns You All!";
-};
-
-
-var viking1  = new Viking('Harald', 100, 60);
-var viking2  = new Viking('Fran', 100, 80);
-var viking3  = new Viking('Pepe', 100, 10);
-viking1.attack();
-viking1.receiveDamage(30);
-
-
-
-
-// //SAXON
-function Saxon( health, strength) {
+  };
+  
+  Viking.prototype.battleCry = function () {
+    return "Odin Owns You All!";
+  };
+  
+  // Saxon
+  function Saxon(health, strength) {
     Soldier.call(this, health, strength);
-    this.name = name;
-}
-Saxon.prototype = Object.create(Soldier.prototype);
-Saxon.prototype.constructor = Saxon;
-
-
-Saxon.prototype.receiveDamage = function(damage){
-    this.health -= damage;
-    if (this.health > 0) {        
-        return 'A Saxon has received ' + damage + ' points of damage and have ' + this.health + ' points of live ';
-    } else{
-        return 'A Saxon has died in combat';
+  }
+  Saxon.prototype = Object.create(Soldier.prototype);
+  Saxon.prototype.constructor = Saxon;
+  
+  Saxon.prototype.receiveDamage = function(damage) {
+    this.health = this.health - damage;
+    if (this.health > 0) {
+      return 'A Saxon has received ' + damage + ' points of damage';
+    } else {
+      return 'A Saxon has died in combat';
     }
-};
-
-var saxon1  = new Saxon(100, 200);
-var saxon2  = new Saxon(100, 3);
-var saxon3  = new Saxon(100, 10);
-viking1.attack();
-viking1.receiveDamage(30);
-
-
-
-// WAR
-function War() {
+  };
+  
+  
+  // War
+  function War() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  
+  War.prototype.addViking = function(viking) {
+    console.log(viking);
     
+    this.vikingArmy.push(viking);
+  };
+  
+  War.prototype.addSaxon = function(saxon){
+    this.saxonArmy.push(saxon);
+  };
+  
+  War.prototype.vikingAttack = function() {
+    var randomVicking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    var randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
     
-}
-
-//Variables
-War.prototype.vikingArmy = [];
-War.prototype.saxonArmy = [];
-
-//Methods
-War.prototype.addViking = function(Viking){    
-    war.vikingArmy.push(Viking);
-};
-War.prototype.addSaxon = function(Saxon){    
-    war.saxonArmy.push(Saxon);
-};
-War.prototype.vikingAttack = function(){    
-    var randomNum = Math.floor(Math.random()* war.vikingArmy.length); randomViking = war.vikingArmy[randomNum]; randomSaxon  = war.saxonArmy[randomNum];  
-   
-    if (randomViking.health >= 0) {
-        return 'The viking named ' + randomViking.name + ' was attacked by a saxon called ' + randomSaxon.name + ' with a strength of ' + randomSaxon.strength + ' and ' + randomViking.name + ' has now ' + (randomViking.health-=randomSaxon.strength) + ' points of life';
-    } else{
-        console.log(randomViking.health);
-        console.log(randomSaxon.health);
-        war.vikingArmy.pop(randomNum);
-        return 'The viking named ' + randomViking.name + ' is now dead and out of the army';
+    var valueToReturnSaxon = randomSaxon.receiveDamage(randomVicking.strength);
+    
+    this.saxonArmy = this.saxonArmy.filter(function(saxon) {
+      return saxon.health > 0;
+    });
+    
+    return valueToReturnSaxon;
+  };
+  
+  War.prototype.saxonAttack = function () {
+    var randomVicking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    var randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    
+    var  valueToReturnViking = randomVicking.receiveDamage(randomSaxon.strength);
+    
+    this.vikingArmy = this.vikingArmy.filter(function(viking) { 
+      return viking.health > 0;
+    });
+    return valueToReturnViking;
+    
+  };
+  
+  War.prototype.showStatus = function () {
+    if (this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0){
+      return "Saxons have fought for their lives and survive another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
     }
-};
-War.prototype.saxonAttack = function(){    
-    var randomViking = war.vikingArmy[Math.floor(Math.random()* war.vikingArmy.length)];
-    var randomSaxon  = war.saxonArmy[Math.floor(Math.random()* war.saxonArmy.length)];
-    
-    return 'The saxon named ' + randomSaxon.name + ' was attacked by a viking called ' + randomViking.name + ' with a strength of ' + randomViking.strength + ' and ' + randomSaxon.name + ' has now ' + (randomSaxon.health-=randomViking.strength) + ' points of life';
-};
-War.prototype.showStatus = function(){    
-};
+  };
+  
+  var viking = new Viking(10);
 
-
-var war = new War();
-
-war.addViking(viking1);
-war.addViking(viking2);
-war.addViking(viking3);
-war.addSaxon(saxon1);
-war.addSaxon(saxon2);
-war.addSaxon(saxon3);
-console.log(war.vikingAttack());
-console.log(war.saxonAttack());
-
-
+  
+  
+  
