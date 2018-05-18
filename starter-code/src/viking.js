@@ -58,7 +58,7 @@ Saxon.prototype.receiveDamage = function(damage) {
 function War() {
     this.vikingArmy = [];
     this.saxonArmy = [];
-    
+
 }
 
 War.prototype.addViking = function(viking) {
@@ -66,11 +66,29 @@ War.prototype.addViking = function(viking) {
 }
 
 War.prototype.addSaxon = function(saxon) {
-    this.saxonArmy.push(saxon);
+    this.saxonArmy.push(saxon); 
 }
 
 //Armies attack:
 
 War.prototype.vikingAttack = function() {
-    this.saxonArmy.receiveDamage(this.viking.strength);
+    
+    saxon = this.saxonArmy[0];
+    viking = this.vikingArmy[0];
+    
+    status = saxon.receiveDamage(viking.attack());
+    if (saxon.health > 0) {
+        this.saxonArmy.pop(saxon);
+    }
+    return status;
+        
+    
+}
+
+War.prototype.saxonAttack = function() {
+    var saxonStrength = this.saxon.strength;
+   
+
+        
+    
 }
