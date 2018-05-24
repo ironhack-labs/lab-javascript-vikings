@@ -44,7 +44,6 @@ function War() {
     var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
     var result = saxon.receiveDamage(viking.attack());
-    // POSSIBLE REFACTOR
     this.saxonArmy = this.saxonArmy.filter(function(currentSaxon) {
       return (currentSaxon.health > 0);
     });
@@ -54,7 +53,6 @@ function War() {
     var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
     var result = viking.receiveDamage(saxon.attack());
-    // POSSIBLE REFACTOR
     this.vikingArmy = this.vikingArmy.filter(function(currentViking) {
       return (currentViking.health > 0);
     });
