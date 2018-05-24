@@ -48,7 +48,6 @@ function War() {
     var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
     var result = saxon.receiveDamage(viking.attack());
-    console.log(result);
     this.saxonArmy = this.saxonArmy.filter(function(currentSaxon) {
       return (currentSaxon.health > 0);
     });
