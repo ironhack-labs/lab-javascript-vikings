@@ -58,16 +58,37 @@ War.prototype.addSaxon = function(saxon) {
   this.saxonArmy.push(saxon);
 }
 War.prototype.vikingAttack = function() {
-  var saxonSoldier = paresInt(Math.random*this.saxonArmy.length); 
-  var vikingSoldier = paresInt(Math.random*this.vikingArmyArmy.length); 
-  this.saxonArmy[saxonSoldier]
-  .receiveDamage(vikingArmy[vikingSoldier].strength);
+  var saxonSoldier = parseInt(Math.random()*this.saxonArmy.length); 
+  var vikingSoldier = parseInt(Math.random()*this.vikingArmy.length); 
+  var receiveDamageReturn = this.saxonArmy[saxonSoldier].receiveDamage(this.vikingArmy[vikingSoldier].strength);
+  // var healthReturn= this.saxonArmy[saxonSoldier].health;
   if (this.saxonArmy[saxonSoldier].health<=0) {
     this.saxonArmy.splice(saxonSoldier);
-    
   }  
-  return this.saxonArmy[saxonSoldier]
-  .receiveDamage(vikingArmy[vikingSoldier].strength);
+  return receiveDamageReturn;
 }
-War.prototype.saxonAttack = function() {}
-War.prototype.showStatus = function() {}
+War.prototype.saxonAttack = function() {
+  var saxonSoldier = parseInt(Math.random()*this.saxonArmy.length); 
+  var vikingSoldier = parseInt(Math.random()*this.vikingArmy.length); 
+  var receiveDamageReturn = this.vikingArmy[vikingSoldier].receiveDamage(this.saxonArmy[saxonSoldier].strength);
+  if (this.vikingArmy[vikingSoldier].health<=0) {
+    this.vikingArmy.splice(vikingSoldier);
+  }  
+  return receiveDamageReturn;
+
+}
+War.prototype.showStatus = function() {
+  if (this.saxonArmy.length==0){
+    return "Vikings have won the war of the century!";
+  } else if (this.vikingArmy.length==0) {
+    return "Saxons have fought for their lives and survive another day...";
+  } else {
+    return "Vikings and Saxons are still in the thick of battle.";
+  }
+
+//   if the Saxon array is empty, should return "Vikings have won the war of the century!"
+// if the Viking array is empty, should return "Saxons have fought for their lives and survive another day..."
+// if there are at least 1 Viking and 1 Saxon, should return "Vikings and Saxons are still in the thick of battle."
+}
+
+
