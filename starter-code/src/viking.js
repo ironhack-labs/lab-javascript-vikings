@@ -10,7 +10,6 @@ Soldier.prototype.receiveDamage = function(damage){
   this.health -= damage;
 }
 
-
 // Viking
 function Viking(name, health, strength) {
   Soldier.call(this, health, strength);
@@ -28,7 +27,6 @@ Viking.prototype.receiveDamage = function(damage){
   else  
     return this.name + " has died in act of combat"
 }
-
 
 // Saxon
 function Saxon(health, strength) {
@@ -60,7 +58,7 @@ War.prototype.addSaxon = function(saxon){
 
 War.prototype.vikingAttack = function(){
   var temp = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
-  if (this.saxonArmy[0].health < 0)
+  if (this.saxonArmy[0].health <= 0)
     this.saxonArmy.shift();
   // return this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
   return temp;
@@ -68,7 +66,7 @@ War.prototype.vikingAttack = function(){
 
 War.prototype.saxonAttack = function(){
   var temp = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
-  if (this.vikingArmy[0].health < 0)
+  if (this.vikingArmy[0].health <= 0)
     this.vikingArmy.shift();
   return temp;
 }
