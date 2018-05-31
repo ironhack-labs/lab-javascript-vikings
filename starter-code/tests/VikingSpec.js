@@ -369,4 +369,3 @@ describe("War", function () {
       });
     });
   });
-});
