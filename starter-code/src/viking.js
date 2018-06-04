@@ -86,9 +86,8 @@ function War() {
 };
 
 
+// advikking function
 
-// advikking funciton
-
-War.prototype.addVikking = function (aVikingObject) {
-  this.vikingArmy = this.vikingArmy.push(aVikingObject);
+War.prototype.addViking = function (aVikingObject) {
+  this.vikingArmy.push(aVikingObject);
 };

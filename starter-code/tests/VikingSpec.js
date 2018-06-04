@@ -186,7 +186,7 @@ describe("Saxon", function () {
     });
   });
 
-  //***************************************************************************/
+ 
   describe("receiveDamage() method", function () {
     it("should be a function", function () {
       expect(typeof(saxon.receiveDamage)).toBe("function");
