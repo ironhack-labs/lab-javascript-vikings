@@ -62,7 +62,7 @@ Now we have to write the correct code in the `src/viking.js` file to make the te
 
 ```javascript
 // Soldier
-function Soldier () {}
+function Soldier (healthArg, strengthArg) {}
 
 // Viking
 function Viking () {}
