@@ -31,7 +31,7 @@ Viking.prototype.receiveDamage = function (damage) {
 
     if (this.health > 0) {
         return `${this.name} has received ${damage} points of damage`
-    } else if (this.health === 0) {
+    } else if (this.health <= 0) {
         return `${this.name} has died in act of combat`
     }
 }
@@ -58,7 +58,7 @@ Saxon.prototype.receiveDamage = function (damage) {
     this.health -= damage;
     if (this.health > 0) {
         return `A Saxon has received ${damage} points of damage`
-    } else if (this.health === 0) {
+    } else if (this.health <= 0) {
         return `A Saxon has died in combat`
     }
 }
@@ -81,10 +81,13 @@ War.prototype.vikingAttack = function () {
     var aleaSaxon = Math.floor(Math.random() * this.vikingArmy.length)
     var vikingHit = this.vikingArmy[aleaViking]
     var degatSaxon = this.saxonArmy[aleaSaxon]
-    degatSaxon.health -= vikingHit.strength
+    // degatSaxon.health -= vikingHit.strength
     console.log(degatSaxon)
-    if (degatSaxon.health <= 0 ){
+    if (degatSaxon.health <= vikingHit.strength){
         this.saxonArmy.splice(aleaSaxon,1);
+        return degatSaxon.receiveDamage(vikingHit.strength);
+    } else {
+        return degatSaxon.receiveDamage(vikingHit.strength);   
     }
 }
 
@@ -93,14 +96,16 @@ War.prototype.saxonAttack = function () {
     var aleaSaxon = Math.floor(Math.random() * this.vikingArmy.length)
     var vikingHit = this.vikingArmy[aleaViking]
     var degatSaxon = this.saxonArmy[aleaSaxon]
-    vikingHit.health -=  degatSaxon.strength
+    // vikingHit.health -=  degatSaxon.strength
     console.log(vikingHit)
-    if (vikingHit.health <= 0 ){
+    if (vikingHit.health <= degatSaxon.strength ){
         this.vikingArmy.splice(aleaViking,1);
+        return vikingHit.receiveDamage(degatSaxon.strength);
+    } else {
+        return vikingHit.receiveDamage(degatSaxon.strength);
     }
 }
 War.prototype.showStatus = function(){
-    debugger
     if (this.vikingArmy.length >= 1 && this.saxonArmy.length >= 1) {
         return 'Vikings and Saxons are still in the thick of battle.'
     } else if (this.saxonArmy.length === 0){
