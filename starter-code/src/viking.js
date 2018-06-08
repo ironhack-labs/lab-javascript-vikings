@@ -86,7 +86,8 @@ function generateViking () {
       var strg=myviking.attack();
       var value=poorsaxon.receiveDamage(strg)
       if(poorsaxon.health<0){
-        this.saxonArmy.splice(poorsaxon);
+        // this.saxonArmy.splice(poorsaxon);
+        this.saxonArmy.splice(s,1);
           return value;
       }else {
         return poorsaxon.health;
@@ -103,7 +104,8 @@ function generateViking () {
     var strg=mysaxon.attack();
     var value=poorviking.receiveDamage(strg);
     if(poorviking.health<=0 || this.vikingArmy.length==0){
-        this.vikingArmy.splice(poorviking);
+        // this.vikingArmy.splice(poorviking);
+        this.vikingArmy.splice(v,1);
         return value;
     }else {
         return value;
