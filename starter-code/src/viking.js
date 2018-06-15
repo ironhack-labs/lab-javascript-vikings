@@ -53,6 +53,16 @@ function War() {
     this.addViking = function (viking){
         this.vikingArmy.push(viking);
     }
-    this.addSaxon = 
+    this.addSaxon = function (saxon){
+      this.saxonArmy.push(saxon);
+    }
+    this.vikingAttack = function (){
+     var randomSaxon =  this.saxonArmy[Math.floor(Math.random)*this.saxonArmy.length];
+     var randomViking = this.vikingArmy[Math.floor(Math.random)*this.vikingArmy.length];
+     randomSaxon.receiveDamage(randomViking.strength);
+     if (randomSaxon.health <= 0){
+       this.saxonArmy.pop(randomSaxon);
+     }
+    }
 }
 
