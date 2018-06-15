@@ -127,17 +127,17 @@ describe("Viking", function () {
   });
 
   describe("battleCry() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(viking.battleCry)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(viking.battleCry)).toBe("function");
+    });
 
-    // it("should receive 0 arguments", function () {
-    //   expect(viking.battleCry.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", function () {
+      expect(viking.battleCry.length).toEqual(0);
+    });
 
-    // it("should return \"Odin Owns You All!\"", function () {
-    //   expect(viking.battleCry()).toEqual("Odin Owns You All!");
-    // });
+    it("should return \"Odin Owns You All!\"", function () {
+      expect(viking.battleCry()).toEqual("Odin Owns You All!");
+    });
   });
 });
 
@@ -151,9 +151,9 @@ describe("Saxon", function () {
     saxon = new Saxon(health, strength);
   });
 
-  // it("should inherit from Soldier", function () {
-  //   expect(saxon instanceof Soldier).toEqual(true);
-  // });
+  it("should inherit from Soldier", function () {
+    expect(saxon instanceof Soldier).toEqual(true);
+  });
 
   describe("constructor function", function () {
     // it("should receive 2 arguments (health & strength)", function () {
@@ -234,17 +234,17 @@ describe("War", function () {
   });
 
   describe("constructor function", function () {
-    // it("should receive 0 arguments", function () {
-    //   expect(War.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", function () {
+      expect(War.length).toEqual(0);
+    });
 
-    // it("should assign an empty array to the vikingArmy property", function () {
-    //   expect(war.vikingArmy).toEqual([]);
-    // });
+    it("should assign an empty array to the vikingArmy property", function () {
+      expect(war.vikingArmy).toEqual([]);
+    });
 
-    // it("should assign an empty array to the saxonArmy property", function () {
-    //   expect(war.saxonArmy).toEqual([]);
-    // });
+    it("should assign an empty array to the saxonArmy property", function () {
+      expect(war.saxonArmy).toEqual([]);
+    });
   });
 
   describe("addViking() method", function () {
