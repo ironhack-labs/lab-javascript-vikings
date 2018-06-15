@@ -2,12 +2,6 @@
 function Soldier(health, strength) {
   this.health = health;
   this.strength = strength;
-  //this.attack = function(){
-  //  return this.strength;
-  //}
-  //this.receiveDamage = function(damage){
-  //  this.health = this.health - damage;
-  //}
 }
 
 Soldier.prototype.attack = function(){
@@ -45,20 +39,41 @@ function Saxon(health, strength) {
   this.attack = function(strength){
     return this.strength;
   }
-  this.receiveDamage = function(damage){
-    this.damage = damage;
-    this.health -= damage;
-    if (this.health > 0) {
-      return (this.name + " has received "  + this.damage + " points of damage");
-    } else {
-      return (this.name + " has died in act of combat");
-    }
-  }
+ 
 }
 
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
+Saxon.prototype.receiveDamage = function(damage){
+  this.damage = damage;
+  this.health -= damage;
+  if (this.health > 0) {
+    return ("A Saxon has received " + this.damage + " points of damage");
+  } else {
+    return ("A Saxon has died in combat");
+  }
+}
+
 // War
-function War() {}
+function War() {
+this.vikingArmy = [];
+this.saxonArmy = [];
+}
+  War.prototype.addViking = function(Viking){
+  this.Viking = this.vikingArmy.push(Viking) ;
+  }
+
+  War.prototype.addSaxon = function(Saxon){
+    this.Saxon= this.saxonArmy.push(Saxon) ;
+  }
+  War.prototype.vikingAttack = function(){
+  var saxonRandom = Math.floor(Math.random(this.Saxon))
+  }
+  War.prototype.saxonAttack = function(){
+
+  }
+  War.prototype.showStatus = function(){
+
+  }
 
