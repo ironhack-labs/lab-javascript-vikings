@@ -7,8 +7,7 @@ function Soldier(health, strength) {
         return this.strength;
     };
     this.receiveDamage = function (damage) {
-        damage - this.health;
-        return;
+        return this.health -= damage;
     };
 }
 
@@ -25,7 +24,7 @@ function Viking(name, health, strength) {
         }
         return;
     }
-    this.battleCry = function () {
+    this.battleCry = function () { // esta función no hace nada...
         return console.log("Odin Owns You All!");
     }
 }
@@ -43,12 +42,12 @@ function Saxon(health, strength) {
         return;
     }
 }
-// War
 
+// War
 function War() {
     this.vikingArmy = [];
     this.saxonArmy = [];
-    console.log(this.vikingArmy);
+    console.log("Fight!!");
 }
 // instancia de War
 var war1 = new War();
@@ -93,6 +92,7 @@ War.prototype.showStatus = function () {
     }
 
 }
+//Crear un loop para que la batalla continue //PENDIENTE!
 
 war1.addViking('jose', 200, 200);
 war1.addViking('jose', 500, 500);
