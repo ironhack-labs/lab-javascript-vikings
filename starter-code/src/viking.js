@@ -1,4 +1,5 @@
 // Soldier
+
 function Soldier(health, strength) {
   this.health = health;
   this.strength = strength;
@@ -13,6 +14,7 @@ Soldier.prototype.receiveDamage = function(damage){
 }
 
 // Viking
+
 function Viking(name, health, strength) {
   Soldier.call(this, health, strength);
   this.name = name;
@@ -58,5 +60,17 @@ Saxon.prototype.receiveDamage = function(damage){
 
 
 // War
-function War() {}
+
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+
+War.prototype.addViking = function(Viking){
+  this.vikingArmy.push(Viking);
+}
+
+War.prototype.addSaxon = function(Saxon){
+  this.saxonArmy.push(Saxon);
+}
 
