@@ -35,15 +35,15 @@ Viking.prototype.battleCry = function(){
 
 // Saxon
 function Saxon(health, strength) {
-  Soldier.call(this, health, strength);
-  this.attack = function(strength){
-    return this.strength;
-  }
- 
+  Soldier.call(this, health, strength); 
 }
 
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
+
+Saxon.prototype.attack = function(strength){
+  return this.strength;
+}
 
 Saxon.prototype.receiveDamage = function(damage){
   this.damage = damage;
@@ -61,19 +61,44 @@ this.vikingArmy = [];
 this.saxonArmy = [];
 }
   War.prototype.addViking = function(Viking){
-  this.Viking = this.vikingArmy.push(Viking) ;
+  this.Viking = this.vikingArmy.push(Viking);
   }
 
   War.prototype.addSaxon = function(Saxon){
-    this.Saxon= this.saxonArmy.push(Saxon) ;
+    this.Saxon = this.saxonArmy.push(Saxon);
   }
   War.prototype.vikingAttack = function(){
-  var saxonRandom = Math.floor(Math.random(this.Saxon))
+  var saxonRandom = Math.floor(Math.random(this.saxonArmy.length));
+  var vikingRandom = Math.floor(Math.random(this.vikingArmy.length));
+
+  saxonRandom = this.saxonArmy[saxonRandom]
+  vikingRandom = this.saxonArmy[vikingRandom]
+
+  var warDamage = vikingRandom.strength;
+  var warHealth = saxonRandom.health;
+
+  saxonRandom.health = warHealth - warDamage;
+  console.log(warDamage)
+  console.log(warHealth)
+  console.log(Saxon.health)
+  if (saxonRandom.health <= 0){
+    this.saxonArmy.pop(this.saxonRandom);
   }
+  return Saxon.prototype.receiveDamage();
+  }
+
   War.prototype.saxonAttack = function(){
 
   }
   War.prototype.showStatus = function(){
+    //War.call(this, saxonArmy, vikingArmy); 
 
+    if (saxonArmy.length == 0) {
+      return "Vikings have won the war of the century!";
+    } else if (vikingArmy.length == 0) {
+      return "Saxons have fought for their lives and survive another day...";
+    } else if (this.vikingArmy.length >= 1 && this.saxonArmy >= 1) {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
   }
 
