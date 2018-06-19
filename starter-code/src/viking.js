@@ -88,13 +88,13 @@ War.prototype.saxonAttack=function(){
     }
     
     War.prototype.showStatus = function(){
-        while (this.war.saxonArmy==[]) {
+        if (this.saxonArmy.length===0) {
         return "Vikings have won the war of the century!";
-        };
-        while (this.war.vikingArmy==[]){
-            return "Saxons have fought for their lives and survive another day..."
         }
-    //     while(this.SaxonArmy!=[]){
-
-    //     }
+        else if (this.vikingArmy.length===0){
+            return "Saxons have fought for their lives and survive another day...";
+        }
+    else{ 
+        return "Vikings and Saxons are still in the thick of battle."
+     }
     }
