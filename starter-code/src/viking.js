@@ -74,6 +74,7 @@ function War() {
     this.saxonArmy = [];
 }
 
+
 War.prototype.addViking = function (oneViking) {
     this.vikingArmy.push(oneViking);
 }
@@ -85,19 +86,38 @@ War.prototype.addSaxon = function (oneSaxon) {
 
 War.prototype.vikingAttack = function () {
     
-    var someViking = vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
-    var someSaxon = saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+    var someViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
+    var someSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
     
-    
-    someSaxon.health=receiveDamage(someViking.strength);
+
+    var result = someSaxon.receiveDamage(someViking.strength);
     if (someSaxon.health <=0) {
         this.saxonArmy = this.saxonArmy.splice(someSaxon,1);
     }
-    else {
-        return receiveDamage();
+    else { 
+        return result;
+
     }
-}  
     
+}  
+
+
+War.prototype.saxonAttack = function () {
+    
+    var someViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
+    var someSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+    
+
+    var result = someViking.receiveDamage(someSaxon.strength);
+    if (someViking.health <=0) {
+        this.vikingArmy = this.vikingArmy.splice(someViking,1);
+    }
+    else { 
+        return result;
+
+    }
+    
+}  
    
 
 War.prototype.showStatus = function () {
