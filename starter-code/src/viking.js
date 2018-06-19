@@ -100,13 +100,14 @@ function War(){
   };
 
 War.prototype.showStatus=function(){
-  while(War.this.saxonArmy == []){
+  if (this.saxonArmy.length === 0){
     return "Vikings have won the war of the century!";
-  }
-  while(War.this.vikingArmy == []){
+  } else if(this.vikingArmy.length === 0) {
     return "Saxons have fought for their lives and survive another day...";
   }
-  while (War.this.saxonArmy >= 1 || War.this.vikingArmy >= 1){
+    else if(this.saxonArmy.length >= 1 || this.vikingArmy.length >= 1){
     return "Vikings and Saxons are still in the thick of battle.";
+  } else{
+    return "So that did not quite work...";
   }
 };
