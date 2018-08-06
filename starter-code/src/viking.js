@@ -43,12 +43,34 @@ function Saxon(health, strength) {
 }
 
 // War
-function War() {}
+function War() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+
+    this.addViking = function(Viking) {
+        this.vikingArmy.push(Viking);
+    };
+
+    this.addSaxon = function(Saxon) {
+        this.saxonArmy.push(Saxon);
+    };
+
+    this.vikingAttack = function() {
+        // var dmg = newSaxon.health - thorViking.strength;
+        newSaxon.receiveDamage(Viking.strength);
+        // console.log(newSaxon.receiveDamage(thorViking.strength));
+        // console.log(thorViking.strength);
+    };
+}
+// var newWar = new War();
+
+// console.log(newWar.vikingAttack());
+console.log(Viking.strength);
 
 var firstSoldier = new Soldier(150, 300);
 // console.log('SOLDIER', firstSoldier);
 
 var thorViking = new Viking('Thor', 150, 300);
-console.log('VIKING', thorViking);
+// console.log('VIKING', thorViking);
 
 var newSaxon = new Saxon(150, 300);
