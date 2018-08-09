@@ -46,35 +46,65 @@ Saxon.prototype.receiveDamage = function(damage) {
 };
 
 // War
-var viking = new Viking("Yo",10,10),
-    saxon = new Saxon(10,10),
-    war = new War();
-
 function War() {
   this.vikingArmy = [];
   this.saxonArmy = [];
 }
-// War.prototype = Object.create(Viking.prototype);
-// War.prototype = Object.create(Saxon.prototype);
 
 War.prototype.addViking = function(Viking) {
   this.vikingArmy.push(Viking);
 };
-war.addViking(viking);
-console.log(war);
-
 War.prototype.addSaxon = function(Saxon) {
   this.saxonArmy.push(Saxon);
 };
 War.prototype.vikingAttack = function() {
+  // this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+  var viking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)],
+      saxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)],
+      attack = saxon.receiveDamage(viking.attack());
   
+  if (saxon.health < 1) {
+    this.saxonArmy.splice(saxon);
+  }
+
+  return attack;
+};
+War.prototype.saxonAttack = function() {
+  var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)],
+      saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)],
+      attack = viking.receiveDamage(saxon.attack());
+  
+  if (viking.health < 1) {
+    this.vikingArmy.splice(viking);
+  }
+
+  return attack;
+};
+War.prototype.showStatus = function() {
+  if (this.saxonArmy.length === 0) return "Vikings have won the war of the century!";
+  if (this.vikingArmy.length === 0) return "Saxons have fought for their lives and survive another day...";
+  if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) return "Vikings and Saxons are still in the thick of battle.";
 };
 
 
 
-war.addViking(viking);
-war.addViking(viking);
-war.addViking(viking);
-war.addSaxon(saxon);
+nameNum = 1;
+war = new War();
+
+/* *********************************
+   ¿¿ MEJOR FORMA DE HACERLO ??
+********************************* */
+war.addViking(new Viking("Vikingo "+(nameNum++),(Math.floor(Math.random() * 100)),(Math.floor(Math.random() * 100))));
+war.addViking(new Viking("Vikingo "+(nameNum++),(Math.floor(Math.random() * 100)),(Math.floor(Math.random() * 100))));
+war.addViking(new Viking("Vikingo "+(nameNum++),(Math.floor(Math.random() * 100)),(Math.floor(Math.random() * 100))));
+war.addSaxon(new Saxon((Math.floor(Math.random() * 100)),(Math.floor(Math.random() * 100))));
+war.addSaxon(new Saxon((Math.floor(Math.random() * 100)),(Math.floor(Math.random() * 100))));
+war.addSaxon(new Saxon((Math.floor(Math.random() * 100)),(Math.floor(Math.random() * 100))));
+
+console.log("-- START OF WAR:\n",war);
+
 war.vikingAttack();
-console.log(war);
+war.saxonAttack();
+
+console.log("-- END OF WAR:\n",war);
+console.log(war.showStatus());
