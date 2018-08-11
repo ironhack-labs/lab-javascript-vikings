@@ -62,13 +62,33 @@ War.prototype.addViking = function(Viking){
 War.prototype.addSaxon = function(Saxon){
     this.saxonArmy.push(Saxon);
 
-War.prototype.vikingAttack = function(){
-   var r = Math.floor(Math.random()*this.vikingArmy.length);
-   var s = Math.floor(Math.random()*this.saxonArmy.length);
-   this.saxonArmy[s].receiveDamage(this.vikingArmy[r].strength);
-   if (this.saxonArmy[s].health <= 0){
-    this.saxonArmy.splice(s,1);
+    War.prototype.vikingAttack = function(){
+        var r = Math.floor(Math.random()*this.vikingArmy.length);
+        var s = Math.floor(Math.random()*this.saxonArmy.length);
+        var resViking = this.saxonArmy[s].receiveDamage(this.vikingArmy[r].strength);
+        if (this.saxonArmy[s].health <= 0){
+          this.saxonArmy.splice(s,1);
+        }
+        return resViking;
+      }
+      
+      War.prototype.saxonAttack = function(){
+        var r = Math.floor(Math.random()*this.vikingArmy.length);
+        var s = Math.floor(Math.random()*this.saxonArmy.length);
+        var resSaxon = this.vikingArmy[s].receiveDamage(this.saxonArmy[r].strength);
+        if (this.vikingArmy[s].health <= 0){
+          this.vikingArmy.splice(s,1);
+        }
+        return resSaxon;
+      }
+      
+      War.prototype.showStatus = function(){
+        if(this.saxonArmy.length == 0){
+          return "Vikings have won the war of the century!";
+        }
+        if(this.vikingArmy.length == 0){
+          return "Saxons have fought for their lives and survive another day...";
+        }
+      return "Vikings and Saxons are still in the thick of battle.";
     }
-    }
-
 }
