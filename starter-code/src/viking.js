@@ -1,11 +1,13 @@
 // Soldier
 class Soldier { //class Soldier puts in place the rules for how the viking and saxon soldiers will be represented with values (health & strength)
-    constructor (healthArg, strengthArg){ 
+    constructor (healthArg, strengthArg){ //constructor is a function that builds the info that your class starts out with
         this.health = healthArg; //represents the health level of the soldier
         this.strength = strengthArg; //represents the strength level of the soldier 
     };
     
-    attack() { //if a soldier performs an attack
+ //functions attack() and recieveDamage() happen outside of the construtor because they need to be attached for retrieval, but not executed every single time a soldier is called.
+   
+    attack() { //if a soldier performs an attack. because I am in a class I do not need to delcare the function, it is known that _____() is a function. 
         return this.strength; //return the strength level of that soldier
     }
     
