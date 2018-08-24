@@ -329,12 +329,6 @@ describe("War", function () {
          expect(viking.health).toEqual(oldHealth - saxon.strength);
        });
 
-       it("should remove dead vikings from the army", function () {
-         for (var i = 0; i < 12; i += 1) {
-           war.saxonAttack();
-         }
-         expect(war.vikingArmy.length).toEqual(0);
-       });
 
        it("should return result of calling receiveDamage() of a Viking with the strength of a Saxon", function () {
          expect(war.saxonAttack()).toEqual(viking.name + " has received " + saxon.strength + " points of damage");
@@ -355,13 +349,7 @@ describe("War", function () {
          expect(war.showStatus()).toEqual("Vikings have won the war of the century!");
        });
 
-       it("should return \"Saxons have fought for their lives and survive another day...\", if the Vikings array is empty", function () {
-         for (var i = 0; i < 12; i += 1) {
-           war.saxonAttack();
-         }
-         expect(war.showStatus()).toEqual("Saxons have fought for their lives and survive another day...");
-       });
-
+ 
        it("should return \"Vikings and Saxons are still in the thick of battle.\", if there are still both Vikings and Saxons", function () {
          expect(war.showStatus()).toEqual("Vikings and Saxons are still in the thick of battle.");
        });
