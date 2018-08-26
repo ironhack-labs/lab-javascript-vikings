@@ -65,3 +65,9 @@ War.prototype.addViking = function (viking) {
 War.prototype.addSaxon = function (saxon) {
   this.saxonArmy.push(saxon);
 };
+
+War.prototype.vikingAttack = function () {
+  var vikingRandom = Math.floor(Math.random() * this.vikingArmy.length);
+  var saxonRandom = Math.floor(Math.random() * this.saxonArmy.length);
+ 
+};
