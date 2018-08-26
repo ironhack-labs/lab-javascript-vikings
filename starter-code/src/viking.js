@@ -79,11 +79,11 @@ War.prototype.saxonAttack = function() {
   var vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
   var attackingSaxon = this.saxonArmy[saxonIndex];
   var defendingViking = this.vikingArmy[vikingIndex];
-  var hit = defendingViking.receiveDamage(attackingSaxon.strength);
+  return defendingViking.receiveDamage(attackingSaxon.strength);
   if (defendingViking.health <= 0) { 
-    this.vikingArmy.splice(vikingIndex, 1);}
-  return hit;
-}
+    this.vikingArmy.splice(vikingIndex, 1);
+  };
+};
 
 War.prototype.showStatus = function () {
   if ( this.saxonArmy.length !== 0 && this.vikingArmy.length !== 0) {
@@ -93,4 +93,4 @@ War.prototype.showStatus = function () {
   } else {
     return "Saxons have fought for their lives and survive another day...";
   }
-}
+};
