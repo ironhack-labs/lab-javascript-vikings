@@ -63,6 +63,7 @@ War.prototype.addSaxon = function(Saxon){
     this.saxonArmy.push(Saxon);
 }
 
+
 War.prototype.vikingAttack = function(){
     var i = Math.floor(Math.random() * this.vikingArmy.length);
     var j = Math.floor(Math.random() * this.saxonArmy.length);
@@ -72,15 +73,26 @@ War.prototype.vikingAttack = function(){
     if(status.includes("died")){
         this.saxonArmy.splice(j,1);
     }
-    return this.saxonArmy[j].receiveDamage(damage);
+    return status;
 }
-//War.prototype.saxonAttack = function(){}
+War.prototype.saxonAttack = function(){
+    var i = Math.floor(Math.random() * this.saxonArmy.length);
+    var j = Math.floor(Math.random() * this.vikingArmy.length);
+    var damage = this.saxonArmy[i].strength;
 
-/*
-A Saxon (chosen at random) has their receiveDamage() method called with the damage equal to 
-the strength of a Viking (also chosen at random). This should only perform a single attack 
-and the Saxon doesn't get to attack back.
+    var status = this.vikingArmy[j].receiveDamage(damage);
+    if(status.includes("died")){
+        this.vikingArmy.splice(j,1);
+    }
+    return status;
+}
+War.prototype.showStatus = function(){
+    if (this.saxonArmy.length == 0){
+        return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length == 0){
+        return "Saxons have fought for their lives and survive another day..."
+    } else {
+        return "Vikings and Saxons are still in the thick of battle.";
+    }
+}
 
-should return result of calling receiveDamage() of a Saxon with the strength of a Viking
-*/
-showStatus()
