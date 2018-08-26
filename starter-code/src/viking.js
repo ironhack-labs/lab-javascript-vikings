@@ -1,5 +1,8 @@
 // Soldier
-function Soldier() {}
+function Soldier(health, strenght) {
+    Soldier.health = health;
+    Soldier.strenght = strenght;
+}
 
 // Viking
 function Viking() {}
