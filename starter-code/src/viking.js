@@ -57,7 +57,7 @@ function War() {
   this.addSaxon = function(Saxon) {
     this.saxonArmy.push(Saxon);  // lo mismo que en addViking, no entiendo que no haya que dar argumenos a la función saxon al llamarla
   }
-  this.vikingAttack = function() { //Jasmine me admite esta misma función en la siguiente iteración, la de saxonAttack, pero no en viking, no sé por qué
+  this.vikingAttack = function() {
     var randomSaxon = Math.floor(Math.random() * (this.saxonArmy.length - 1));
     var randomViking = Math.floor(Math.random() * (this.vikingArmy.length - 1));
     var saxonDamage = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);  
