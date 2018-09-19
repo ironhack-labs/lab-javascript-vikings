@@ -27,6 +27,8 @@ function Viking(nameArg, healthArg, strengthArg) {
     return "Odin Owns You All!";
   };
 }
+Viking.prototype = Object.create(Soldier.prototype);
+
 // Saxon
 
 function Saxon(healthArg, strengthArg) {
@@ -40,6 +42,7 @@ function Saxon(healthArg, strengthArg) {
     }
   };
 }
+Saxon.prototype = Object.create(Soldier.prototype);
 
 // War
 function War() {
