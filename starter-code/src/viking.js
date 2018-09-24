@@ -47,7 +47,7 @@ function Saxon(health, strength) {
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
-// Viking Methods
+// Saxon Methods
 Saxon.prototype.receiveDamage = function (damage) {
   this.health -= damage;
   if (this.health > 0) {
@@ -93,9 +93,9 @@ War.prototype.saxonAttack = function () {
 }
 
 War.prototype.showStatus = function () {
-  if (this.vikingArmy.length >= 1 && this.saxonArmy.length <= 0) {
+  if (this.saxonArmy.length === 0) {
     return "Vikings have won the war of the century!";
-  } else if (this.vikingArmy.length <= 0 && this.saxonArmy.length >= 1) {
+  } else if (this.vikingArmy.length === 0) {
     return "Saxons have fought for their lives and survive another day...";
   } else if (this.vikingArmy.length >= 1 && this.saxonArmy.length >= 1) {
     return "Vikings and Saxons are still in the thick of battle.";
