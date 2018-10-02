@@ -18,19 +18,16 @@ Viking.prototype.constructor = Viking;
 function Viking(name, health, strength) {
   Soldier.call(this, health, strength);
   this.name = name;
-  Soldier.call(this.attack);
-
-  this.receiveDamage = function(damage){
-
-if (this.health > 0) {
-  return name + " has received " + damage + " points of damage";
-}
- else  {
-  return name + " has died in act of combat";
-}
-}
 };
-
+Viking.prototype.receiveDamage=function (damage){
+  Soldier.__proto__.receiveDamage(damage);
+  if (this.health > 0) {
+      return name + " has received " + damage + " points of damage";
+    }
+     else  {
+      return name + " has died in act of combat";
+    };
+};
 
 // Saxon
 function Saxon() {}
