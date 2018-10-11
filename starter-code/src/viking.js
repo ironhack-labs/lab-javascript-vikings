@@ -1,11 +1,11 @@
 // Soldier
-function Soldier() {}
+class Soldier {}
 
 // Viking
-function Viking() {}
+class Viking {}
 
 // Saxon
-function Saxon() {}
+class Saxon {}
 
 // War
-function War() {}
+class War {}
