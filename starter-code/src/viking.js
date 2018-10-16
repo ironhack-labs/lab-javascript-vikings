@@ -92,7 +92,7 @@ War.prototype.saxonAttack = function (){
     var theSaxon = this.saxonArmy[getSaxon];
     var attackFromSaxon = theViking.receiveDamage(theSaxon.attack());
 
-        if (theViking.health < 0) {
+        if (theViking.health <= 0) {
             this.vikingArmy.splice(getViking, 1);
         }
     
