@@ -1,11 +1,43 @@
 // Soldier
-function Soldier() {}
+class Soldier {
+  constructor(health, strength){
+    this.health = health;
+    this.strength = strength;
+  }
+  attack(){return this.strength}
+  receiveDamage(damage){this.health -= damage} //health = original health - damage
+}
 
 // Viking
-function Viking() {}
+ class Viking extends Soldier {
+   constructor(name, health, strength){
+     super(health, strength);
+     this.name = name;
+  }
+
+  receiveDamage(damage){
+    super.receiveDamage(damage)
+      if (this.health <= 0) {
+//        console.log(this.name + " has received " + damage + " points of damage")
+        return this.name + " has died in act of combat"
+      } else {return this.name + " has received " + damage + " points of damage"}
+  }
+  battleCry(){return "Odin Owns You All!"}
+}
 
 // Saxon
-function Saxon() {}
+class Saxon extends Soldier {
+  constructor(health, strength){
+    super(health, strength);
+  }
+  receiveDamage(damage){
+//    console.log("A Saxon has received " + damage + " points of damage");
+    super.receiveDamage(damage)
+    if (this.health <= 0) {
+      return "A Saxon has died in combat"
+    } else {return "A Saxon has received " + damage + " points of damage"}
+  }
+}
 
 // War
-function War() {}
+//class War {}
