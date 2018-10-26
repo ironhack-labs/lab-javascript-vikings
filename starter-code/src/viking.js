@@ -28,7 +28,19 @@ Viking.prototype.battleCry=function(){
   return "Odin Owns You All!";
 }
 // Saxon
-function Saxon() {}
+function Saxon(health,strength) {
+  Soldier.call(this,health,strength);
+}
+
+
+Saxon.prototype=Object.create(Soldier.prototype);
+Saxon.prototype.constructor=Viking;
+
+Saxon.prototype.receiveDamage=function(damage){
+  this.health-=damage;
+  return (this.health<=0?`A Saxon has died in combat`:`A Saxon has received ${damage} points of damage`);
+}
+
 
 // War
 function War() {}
