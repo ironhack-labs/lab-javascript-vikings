@@ -46,4 +46,31 @@ Saxon.prototype.receiveDamage = function(damage) {
 }
 
 // War
-function War() {}
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+
+War.prototype.addViking = function(viking) {
+  this.vikingArmy.push(viking);
+}
+
+War.prototype.addSaxon = function(saxon) {
+  this.saxonArmy.push(saxon);
+}
+
+War.prototype.vikingAttack = function() {
+  var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+  
+}
+
+War.prototype.saxonAttack = function() {
+  return "Odin Owns You All!";
+}
+
+War.prototype.showStatusbattleCry = function() {
+  return "Odin Owns You All!";
+}
+
+
