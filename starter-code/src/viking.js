@@ -76,20 +76,21 @@ War.prototype.addSaxon = function (saxon) {
 War.prototype.vikingAttack = function () {
     var randomSaxon = this.saxonArmy[0];
     var randomViking = this.vikingArmy[0];
-    if (randomSaxon.receiveDamage(randomViking.strength)) {
+     
+    randomSaxon.receiveDamage(randomViking.strength)
+    if (randomSaxon.health <= 0) {
         this.saxonArmy.splice(0, 1);
         return "A Saxon has died in combat"
     } else {
-        return randomSaxon.receiveDamage(randomViking.strength)
+        return `${randomSaxon.name} has received ${randomViking.strength} points of damage`;
     }
 }
 
 
 War.prototype.saxonAttack = function () {
-    console.log(this.vikingArmy)
     var randomSaxon = this.saxonArmy[0];
     var randomViking = this.vikingArmy[0];
-    // debugger
+     
     randomViking.receiveDamage(randomSaxon.strength)
     if (randomViking.health <= 0) {
         this.vikingArmy.splice(0, 1);
