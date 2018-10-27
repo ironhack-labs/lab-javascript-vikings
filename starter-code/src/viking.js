@@ -1,13 +1,4 @@
-// Soldier
-function Soldier(healt, strength) {}
 
-// Viking
-function Viking() {}
-
-// Saxon
-function Saxon() {}
-
-// War
 class Soldier {
 
     constructor (healthInt, strengthInt){
