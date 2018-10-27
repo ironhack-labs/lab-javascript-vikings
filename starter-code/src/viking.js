@@ -60,17 +60,44 @@ War.prototype.addSaxon = function(saxon) {
 }
 
 War.prototype.vikingAttack = function() {
-  var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-  var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+  var indexSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+  var indexViking = Math.floor(Math.random() * this.vikingArmy.length);
+
+  var attackResult = this.saxonArmy[indexSaxon].receiveDamage(this.vikingArmy[indexViking].attack());
   
+  if (this.saxonArmy[indexSaxon].health <= 0) {
+    this.saxonArmy.splice(indexSaxon, 1); 
+  }
+
+  return attackResult;
 }
 
 War.prototype.saxonAttack = function() {
-  return "Odin Owns You All!";
+  var indexSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+  var indexViking = Math.floor(Math.random() * this.vikingArmy.length);
+
+  var attackResult = this.vikingArmy[indexViking].receiveDamage(this.saxonArmy[indexSaxon].attack());
+
+  if (this.vikingArmy[indexViking].health <= 0) {
+    this.vikingArmy.splice(indexViking, 1); 
+  }
+
+  return attackResult;
 }
 
-War.prototype.showStatusbattleCry = function() {
-  return "Odin Owns You All!";
-}
+War.prototype.showStatus = function() {
+  switch (true) {
+    case (this.saxonArmy.length > 0 && this.vikingArmy.length > 0):
+      return "Vikings and Saxons are still in the thick of battle.";
+      break;
 
+    case (this.saxonArmy.length > 0):
+      return "Saxons have fought for their lives and survive another day...";
+      break;
+
+    case (this.vikingArmy.length > 0):
+      return "Vikings have won the war of the century!";
+      break;
+  }
+}
 
