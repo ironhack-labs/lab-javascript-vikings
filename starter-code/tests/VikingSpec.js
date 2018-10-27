@@ -209,7 +209,7 @@ describe("Saxon", function () {
 });
 
 
-fdescribe("War", function () {
+describe("War", function () {
   var viking, saxon, war;
 
   function generateViking () {
