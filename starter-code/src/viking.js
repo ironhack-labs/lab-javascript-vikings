@@ -59,16 +59,33 @@ function Saxon(health, strength) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 // War
-function War() {}
+function War() {
+
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+
+
+}
+
+
+War.prototype.addViking = function(Viking){
+  
+  this.vikingArmy.push(Viking);
+
+}
+
+War.prototype.addSaxon = function(Saxon){
+  this.saxonArmy.push(Saxon)
+}
+War.prototype.vikingAttack = function(){
+
+}
+War.prototype.saxonAttack = function(){
+
+}
+War.prototype.showStatus = function(){
+
+}
+
+
