@@ -71,15 +71,33 @@ War.prototype.addSaxon=function(Saxon){
 }
 
 War.prototype.vikingAttack=function(){
-    Saxon.receiveDamage
-    this.addSaxon
-
+    var vikingSoldier=this.vikingArmy[0];
+    var saxonSoldier=this.saxonArmy[0];
+    if(saxonSoldier.receiveDamage(vikingSoldier.strength)) {
+        this.saxonArmy.splice(0,1);
+        return "A Saxon has died in combat";
+    }
 }
 
 War.prototype.saxonAttack=function(){
-    
+    var vikingSoldier=this.vikingArmy[0];
+    var saxonSoldier=this.saxonArmy[0];
+    vikingSoldier.receiveDamage(saxonSoldier.strength)
+    if (vikingSoldier.health<=0){
+        this.vikingArmy.splice(0,1);
+        return "A viking died";
+    } else {
+        return vikingSoldier.name+" has received "+saxonSoldier.strength+" points of damage";
+    }
 }
 
 War.prototype.showStatus=function(){
-    
+    if (this.saxonArmy.length===0){
+        return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length===0){
+        return "Saxons have fought for their lives and survive another day...";
+    } else {
+        return "Vikings and Saxons are still in the thick of battle.";
+    }
 }
+
