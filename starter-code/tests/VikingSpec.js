@@ -142,7 +142,7 @@ describe("Viking", function () {
 });
 
 
-fdescribe("Saxon", function () {
+describe("Saxon", function () {
   var saxon;
   var health   = 60;
   var strength = 25;
@@ -209,7 +209,7 @@ fdescribe("Saxon", function () {
 });
 
 
-xdescribe("War", function () {
+describe("War", function () {
   var viking, saxon, war;
 
   function generateViking () {
