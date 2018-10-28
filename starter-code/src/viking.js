@@ -156,10 +156,14 @@ class War {
       sumOfSaxonsStrength += this.saxonArmy[i].strength;
     }
   
-   if(this.vikingArmy.length === this.saxonArmy.length && sumOfVikingsStrength > sumOfSaxonsStrength){
+    if(this.vikingArmy.length === this.saxonArmy.length && sumOfVikingsStrength > sumOfSaxonsStrength){
      return "Vikings have more probability of winning this war, because the sum of their strength (" + sumOfVikingsStrength + ") is greater than Saxon's (" + sumOfSaxonsStrength + ").";
-   } else if(this.vikingArmy.length === this.saxonArmy.length && sumOfVikingsStrength < sumOfSaxonsStrength){
+    } else if(this.vikingArmy.length === this.saxonArmy.length && sumOfVikingsStrength < sumOfSaxonsStrength){
      return "Saxons have more probability of winning this war, because the sum of their strength (" + sumOfSaxonsStrength + ") is greater than Vikings' (" + sumOfVikingsStrength + ").";
+    } else if(this.vikingArmy.length === this.saxonArmy.length && sumOfVikingsStrength === sumOfSaxonsStrength){
+      return "Saxons and Vikings have the same amount of strength(" + sumOfVikingsStrength + "), so both armys have the same probability to win this war.";
+    
+    
     } else {
       return 'For now, we are not calculating probabilities of winning when both teams do not have same amount of soldiers. We apologize.';
     }
@@ -231,7 +235,9 @@ let line = '____________________________________________________________________
 // -> Remember you can always know the status of the war with console.log(warOfTheNorth.showStatus())
 
 createGame(5,5);
-
+console.log(line);
+console.log(warOfTheNorth.calculateWhoHasMoreProbOfWinning());
+console.log(line);
 //console.log HERE THE WAR OF THE NORTH, SO YOU CAN SEE BOTH ARMYS BEFORE THE WAR BEGINS, AND A LINE SO ITS BETTER DISGUINSHABLE. 
 
 console.log(warOfTheNorth);
@@ -248,8 +254,5 @@ warOfTheNorth.saxonAttack();
 console.log(warOfTheNorth);
 console.log(line);
 console.log(warOfTheNorth.showStatus());
-console.log(warOfTheNorth.calculateWhoHasMoreProbOfWinning());
-
-
 
 
