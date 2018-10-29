@@ -56,7 +56,7 @@ Saxon.prototype.attack = function attack(){
 
   return this.strength;
 }
-Saxon.prototype.reciveDamage = function reciveDamage(damage){
+Saxon.prototype.receiveDamage = function (damage){
 
   this.health -= damage;
 
