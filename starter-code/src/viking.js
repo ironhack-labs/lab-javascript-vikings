@@ -6,12 +6,12 @@ function Soldier(healthArg, strengthArg) {
   
       return this.strength;
     }
-    Soldier.prototype.reciveDamage = function reciveDamage(damage){
+  }
+    Soldier.prototype.receiveDamage = function (damage){
       
       this.health -= damage;
       
     }
-  }
   
 // Viking
 function Viking(nameArg, healthArg, strengthArg) {
@@ -27,7 +27,7 @@ Viking.prototype.attack = function attack(){
   return this.strength;
 }
 
-Viking.prototype.reciveDamage = function reciveDamage(damage){
+Viking.prototype.receiveDamage = function(damage){
 
   this.health -= damage;
 
