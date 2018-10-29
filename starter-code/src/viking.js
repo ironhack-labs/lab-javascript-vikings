@@ -51,4 +51,50 @@ Saxon.prototype.receiveDamage = function(damage){
 }
 
 // War
-function War() {}
+
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+
+War.prototype.addViking = function (Viking){
+  this.vikingArmy.push(Viking);
+}
+War.prototype.addSaxon = function (Saxon){
+  this.saxonArmy.push(Saxon);
+}
+War.prototype.vikingAttack = function (){
+  var randomViking = Math.floor(Math.random() * this.vikingArmy.length); 
+  var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+  
+  //console.log(randomViking)
+  //console.log(this.vikingArmy[randomViking].strength)
+  //console.log(this.saxonArmy[randomSaxon].health)
+  //this.saxonArmy[randomSaxon].health -= this.vikingArmy[randomViking].strength;
+
+  //if (this.saxonArmy[randomSaxon].health <= this.vikingArmy[randomViking].strength)
+  //{
+  //  console.log(this.vikingArmy[randomViking].strength);
+  //  console.log(this.saxonArmy.splice(randomSaxon,1));
+  //}
+
+  return this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
+}
+War.prototype.saxonAttack = function(){
+  var randomViking = Math.floor(Math.random() * this.vikingArmy.length); 
+  var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+
+  //this.vikingArmy[randomViking].health -= this.saxonArmy[randomViking].strength;
+  console.log(this.saxonArmy[randomSaxon].attack)
+  console.log(this.vikingArmy[randomViking])
+
+  if(this.vikingArmy[randomViking].health <= this.saxonArmy[randomSaxon].strength){
+    this.vikingArmy.splice(randomViking,1);
+  }
+
+  return this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
+}
+War.prototype.showStatus = function(){
+
+}
+
