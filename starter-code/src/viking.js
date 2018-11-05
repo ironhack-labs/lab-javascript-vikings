@@ -1,5 +1,5 @@
 // Soldier
-  class Soldier{
+  class Soldier(){
     constructor(healthArg, strengthArg){
         this.health = healthArg;
         this.strength = strengthArg;
@@ -50,7 +50,7 @@ class Saxon extends Soldier{
         super.receiveDamage(amount);
 
         if(this.health > 0){
-          return "A Saxon has received ${amount} points of damage"
+          return `A Saxon has received ${amount} points of damage`
         } else {
           return 'A Saxon has died in act of combat'
         
@@ -99,13 +99,13 @@ class War() {
 
       let result = randomViking.receiveDamage(randomSaxon.attack()  )
 
-        // if(randomSaxon.health < 1){
-        //   this.saxonArmy.splice(randomSaxonIndex, 1)
+        if(randomSaxon.health < 1){
+          this.saxonArmy.splice(randomSaxonIndex, 1)
 
     }
-          //below, is doing the attack with a loop format
-          // this.vikingArmy= this.vikingArmy.filter((eachViking(=>{
-            // return eachViking.health > 0;
+          // below, is doing the attack with a loop format
+          this.vikingArmy= this.vikingArmy.filter((eachViking(=>{
+            return eachViking.health > 0;
           
       
       }
@@ -113,12 +113,13 @@ class War() {
 
     }
         showStatus(){
-          if(this.saxonArmy.length ===0) {
+          if(this.saxonArmy.length === 0) {
             return "Vikings have won the war of the century!"
           }
         
           if(this.vikingArmy.length === 0){
             return "Saxons have fought for their lives and survive another day..."
+          } else {
+            return "Vikings and Saxons are still in the thick of battle."
           }
-          return "Vikings and Saxons are still in the thick of battle."
         }

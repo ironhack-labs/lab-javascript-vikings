@@ -1,4 +1,4 @@
-class Soldier{
+class Soldier(){
   constructor(healthArg, strengthArg){
     this.health = healthArg;
     this.strength = strengthArg;
@@ -12,7 +12,7 @@ class Soldier{
 }
 
 //Viking
-class Viking extends Soldier{
+class Viking extends Soldier(){
   constructor(theName, theHealth, theStrength){
      // this.health = theHealth
       // this.strength = theStrength
@@ -32,5 +32,46 @@ class Viking extends Soldier{
           return "Odin Owns You All!"
         }
         //end of class
-        
+     class Saxon extends Soldier(){
+
+          constructor(health, strength){
+            super(health,strength);
+        }
+          receiveDamage(amount){
+            if (this.health > 0){
+              return `A Saxon has received ${amount} of damage`
+            } else {
+              return 'A Saxon has died in combat.'
+            }
+
+          }
 }
+
+//War
+
+  class War() {
+      constructor(){
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+      }
+        addViking(theViking){
+          this.vikingArmy.push(theViking);
+        }
+        addSaxon(theSaxon){
+          this.saxonArmy.push(theSaxon);
+        }
+
+        vikingAttack(){
+          let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
+          let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length);
+          let randomViking = this.vikingArmy[randomVikingIndex];
+          let randomSaxon = this.saxonArmy[randomSaxonIndex];
+          let result = randomSaxon.receiveDamage(randomViking.attack() )
+
+          if (randomSaxon.health < 1){
+            this.saxonArmy.splice(randomSaxonIndex, 1)
+          }
+            return result;
+        }
+        
+  }
