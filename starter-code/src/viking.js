@@ -25,9 +25,9 @@ class Viking extends Soldier {
         //super takes .receiveDamage from extended class above to the current class, used if prior code is very long, easier to super than copy,paste or search for//
         super.receiveDamage(amount);
         if(this.health > 0){
-          return "${this.name} has received ${amount} points of damage"
+          return `${this.name} has received ${amount} points of damage`
         } else {
-          return '${this.name} has died in act of combat'
+          return `${this.name} has died in act of combat`
         
       }
     
