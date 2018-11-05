@@ -63,5 +63,5 @@ War.prototype.addSaxon = function (saxonArg) {
 }
 
 War.prototype.vikingAttack = function () {
-  return receiveDamage() - Viking.strength;
+  
 }
