@@ -27,8 +27,9 @@ Viking.prototype.attack = function() {
 }
 
 Viking.prototype.receiveDamage = function(damage) { 
-  this.health -= damage;
-  if (this.health > damage) {
+  // this.health -= damage;
+  Soldier.prototype.receiveDamage.call(this, damage)
+  if (this.health > 0) {
     return this.name + " has received " + damage + " points of damage";
   } else {
     return this.name + " has died in act of combat";
@@ -52,8 +53,9 @@ Saxon.prototype.attack = function() {
 }
 
 Saxon.prototype.receiveDamage = function(damage) { 
-  this.health -= damage;
-  if (this.health > damage) {
+  // this.health -= damage;
+  Soldier.prototype.receiveDamage.call(this, damage)
+  if (this.health > 0) {
     return "A Saxon has received " + damage + " points of damage";
   } else {
     return "A Saxon has died in combat";
@@ -75,14 +77,17 @@ War.prototype.addSaxon = function(saxon) {
 }
 
 War.prototype.vikingAttack = function() {
-  var saxon = this.saxonArmy[0];
-  var viking = this.vikingArmy[0];
-  saxon.receiveDamage(viking.attack());
-  for (i = 0; i < this.saxonArmy.length; i++) {
-    if (this.saxonArmy[i].health <= 0) {
-      this.saxonArmy.splice([i]);
-    } 
-  }
+  // var saxon = this.saxonArmy[0];
+  // var viking = this.vikingArmy[0];
+  var result = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].attack())
+  // var result = saxon.receiveDamage(viking.attack());
+  if(this.saxonArmy[0].health <= 0) this.saxonArmy.shift()
+  // for (i = 0; i < this.saxonArmy.length; i++) {
+  //   if (this.saxonArmy[i].health <= 0) {
+  //     this.saxonArmy.splice([i]);
+  //   } 
+  // }
+  return result;
 }
 
 
