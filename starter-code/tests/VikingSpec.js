@@ -306,14 +306,14 @@ describe("War", function () {
         expect(saxon.health).toEqual(oldHealth - viking.strength);
       });
 
-      // it("should remove dead saxons from the army", function () {
-      //   war.vikingAttack();
-      //   expect(war.saxonArmy.length).toEqual(0);
-      // });
+      it("should remove dead saxons from the army", function () {
+        war.vikingAttack();
+        expect(war.saxonArmy.length).toEqual(0);
+      });
 
-      // it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function () {
-      //   expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
-      // });
+      it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function () {
+        expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
+      });
     });
 
     describe("saxonAttack() method", function () {

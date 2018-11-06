@@ -39,8 +39,6 @@ Viking.prototype.battleCry = function() {
   return "Odin Owns You All!";
 }
 
-
-
 // Saxon
 function Saxon(health, strength) {
   Soldier.call(this, health, strength)
@@ -77,7 +75,14 @@ War.prototype.addSaxon = function(saxon) {
 }
 
 War.prototype.vikingAttack = function() {
-  Saxon.prototype.receiveDamage(Viking.prototype.attack);
+  var saxon = this.saxonArmy[0];
+  var viking = this.vikingArmy[0];
+  saxon.receiveDamage(viking.attack());
+  for (i = 0; i < this.saxonArmy.length; i++) {
+    if (this.saxonArmy[i].health <= 0) {
+      this.saxonArmy.splice([i]);
+    } 
+  }
 }
 
 
