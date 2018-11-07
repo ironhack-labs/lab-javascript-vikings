@@ -68,13 +68,9 @@ War.prototype.vikingAttack = function() {
   
   var posViking = Number.parseInt(Math.random() * this.vikingArmy.length); //we choice a random position in vikingArmy
   var posSaxon = Number.parseInt(Math.random() * this.saxonArmy.length); //we choice a random position in saxonArmy
-  
-  var viking = this.vikingArmy.find(function(elem, index, arr) { //look for the viking in this random position
-    return index === posViking;
-  });
-  var saxon = this.saxonArmy.find(function(elem, index, arr) { //look for the saxon in this random position
-    return index === posSaxon;
-  });
+
+  var viking = this.vikingArmy[posViking];
+  var saxon = this.saxonArmy[posSaxon];
 
   if ((saxon.health - viking.strength) <= 0) { //if the saxon is going to die...we remove him from the saxonArmy
     this.saxonArmy.splice(posSaxon, 1);
@@ -86,14 +82,10 @@ War.prototype.saxonAttack = function() {
   
   var posViking = Number.parseInt(Math.random() * this.vikingArmy.length); //we choice a random position in vikingArmy
   var posSaxon = Number.parseInt(Math.random() * this.saxonArmy.length); //we choice a random position in saxonArmy
-  
-  var viking = this.vikingArmy.find(function(elem, index, arr) { //look for the viking in this random position
-    return index === posViking;
-  });
-  var saxon = this.saxonArmy.find(function(elem, index, arr) { //look for the saxon in this random position
-    return index === posSaxon;
-  });
-  
+
+  var viking = this.vikingArmy[posViking];
+  var saxon = this.saxonArmy[posSaxon];
+
   if ((viking.health - saxon.strength) <= 0) { //if the viking is going to die...we remove him from the vikingArmy
     this.vikingArmy.splice(posViking, 1);
   }
