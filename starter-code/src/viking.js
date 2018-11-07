@@ -110,6 +110,3 @@ War.prototype.showStatus = function () {
   }
   return "Vikings and Saxons are still in the thick of battle."  //return this when there are at least 1 Viking and 1 Saxon
 }
-
-
- 
