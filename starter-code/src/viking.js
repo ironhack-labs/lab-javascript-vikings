@@ -104,7 +104,7 @@ War.prototype.vikingAttack = function(){
 
     var anySaxon = Math.floor(Math.random() * this.saxonArmy.length);  //1
     var anyViking = Math.floor(Math.random() * this.vikingArmy.length);  //2
-    var totalDamage = this.saxonArmy[anySaxon].receiveDamage(thl    is.vikingArmy[anyViking].attack());  //3
+    var totalDamage = this.saxonArmy[anySaxon].receiveDamage(this.vikingArmy[anyViking].attack());  //3
 
     if (this.saxonArmy[anySaxon].health <= 0) {  //4
       this.saxonArmy.splice(0, 1);  //5
@@ -131,7 +131,7 @@ War.prototype.saxonAttack = function(){
 // 3 - Si la longitud del array de vikingArmy es mayor que cero y la de saxonArmy también quiere decir que hay todavía saxones y vikingos en la guerra y que aún no se ha terminado.
 
 War.prototype.showStatus = function(){
-    
+
     if (this.saxonArmy.length === 0){  //1
         return "Vikings have won the war of the century!"
     } else if (this.vikingArmy.length === 0){  //2
