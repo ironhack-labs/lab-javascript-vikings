@@ -60,14 +60,44 @@ function War() {
 War.prototype = Object.create(Viking.prototype);
 War.prototype.constructor = War;
 
-War.prototype.addViking = function(vikingArmy){
-    this.vikingArmy = [vikingArmy];
+War.prototype.addViking = function(Viking){
+    this.vikingArmy.push(Viking)
 }
 
-War.prototype.addSaxon = function(saxonArmy){
-  this.saxonArmy = [saxonArmy];
+War.prototype.addSaxon = function(Saxon){
+  this.saxonArmy.push(Saxon)
 }
 
 War.prototype.vikingAttack = function(){
- return Saxon.prototype.receiveDamage.call(this.vikingArmy) 
-}
+ var saxonChosen = Math.floor(Math.random() * this.saxonArmy.length);
+ var vikingChosen = Math.floor(Math.random() * this.vikingArmy.length);
+ var damageSaxon = this.saxonArmy[saxonChosen].receiveDamage(this.vikingArmy[vikingChosen].attack());
+
+     if (this.saxonArmy[saxonChosen].health <= 0) { 
+       this.saxonArmy.splice(0, 1);  
+     }
+     return damageSaxon;  
+ };
+
+ War.prototype.saxonAttack = function(){
+  var saxonChosen = Math.floor(Math.random() * this.saxonArmy.length);
+  var vikingChosen = Math.floor(Math.random() * this.vikingArmy.length);
+  var damageViking = this.vikingArmy[vikingChosen].receiveDamage(this.saxonArmy[saxonChosen].attack());
+ 
+      if (this.vikingArmy[vikingChosen].health <= 0) { 
+        this.vikingArmy.splice(0, 1);  
+      }
+      return damageViking;  
+  };
+ 
+  War.prototype.showStatus = function(){
+    if (this.saxonArmy.length === 0){
+      return "Vikings have won the war of the century!"
+    }
+    else if (this.vikingArmy.length === 0){
+      return "Saxons have fought for their lives and survive another day..."
+    }
+    else if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1) {
+      return "Vikings and Saxons are still in the thick of battle."
+    } else {};
+  }
