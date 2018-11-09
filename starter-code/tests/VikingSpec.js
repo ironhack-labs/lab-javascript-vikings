@@ -56,19 +56,18 @@ var strength = 150;
 });
 
 
-describe("Viking", function () {
-  var viking;
-  var name     = "Harald";
+describe("Soldier", function () {
+  var soldier;
   var strength = 150;
   var health   = 300;
 
   beforeEach (function () {
-    viking = new Viking(name, health, strength);
+    soldier = new Soldier(health, strength);
   });
 
-  // it("should inherit from Soldier", function () {
-  //   expect(viking instanceof Soldier).toEqual(true);
-  // });
+  it("should inherit from Soldier", function () {
+  expect(viking instanceof Soldier).toEqual(true);
+  });
 
   describe("constructor function", function () {
     // it("should receive 3 arguments (name, health & strength)", function () {
