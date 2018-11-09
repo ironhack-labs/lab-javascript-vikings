@@ -32,7 +32,13 @@ Viking.prototype = Object.create(Soldier.prototype);
 
 
 // Saxon
-function Saxon() {}
+function Saxon(health, strength) {
+  Soldier.call(this, health, strength);
+
+
+}
+
+Saxon.prototype = Object.create(Soldier.prototype);
 
 // War
 function War() {}
