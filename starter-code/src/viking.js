@@ -70,5 +70,5 @@ function War() {
 }
 
 function addViking(viking) {
-    War.vikingArmy.push(viking;)
+    War.vikingArmy.push(viking);
 }
