@@ -57,5 +57,35 @@ Saxon.prototype.receiveDamage = function (damage) {
   }
 }
 
+
+
 // War
-function War() {}
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+
+War.prototype.addViking = function (Viking) {
+  this.vikingArmy.push(Viking);
+}
+
+War.prototype.addSaxon = function (Saxon) {
+  this.saxonArmy.push(Saxon);
+}
+
+War.prototype.vikingAttack = function () {
+  var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+  var randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+
+
+  var resultAttack = randomSaxon.receiveDamage(randomViking.attack());
+
+  if (randomViking.health>0) {
+    
+  }
+
+  return resultAttack;
+  
+}
+
+
