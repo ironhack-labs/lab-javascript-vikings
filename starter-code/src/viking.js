@@ -23,11 +23,11 @@ Viking.prototype.attack = function() {
 }
 Viking.prototype.receiveDamage = function(damage) {
     Soldier.prototype.receiveDamage.call(this);
-    var damage = 0;
-    if(damage == 50 || damage == 75 ) {
-        return this.name + ' has received '+ damage + 'points of damage';
+    this.damage = 0;
+    if(this.damage == 50 || this.damage == 75 ) {
+        return this.name + ' has received '+ this.damage + 'points of damage';
     }
-    if(this.health == damage) {
+    if(this.health == this.damage) {
         return this.name + ' has died in act of combat';
     }
         
@@ -44,5 +44,31 @@ function Saxon(health, strength) {
     Soldier.call(this, health, strength);
 }
 
+Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.constructor = Saxon;
+
+Saxon.prototype.attack = function() {
+    return Soldier.prototype.attack.call(this);
+}
+
+Saxon.prototype.receiveDamage = function(damage) {
+    Soldier.prototype.receiveDamage.call(this);
+    this.damage = 0;
+    if(this.damage < this.health ) {
+        return 'A saxon has received '+ this.damage + 'points of damage';
+    }
+    if(this.health <= this.damage) {
+        return this.name + ' has died in act of combat';
+    }
+}
+
+
 // War
-function War() {}
+function War() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+}
+
+function addViking(viking) {
+    War.vikingArmy.push(viking;)
+}
