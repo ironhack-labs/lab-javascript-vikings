@@ -74,3 +74,12 @@ War.prototype.addViking = function(viking) {
 
     this.vikingArmy.push(viking);
 }
+
+War.prototype.addSaxon = function(saxon){
+
+    this.saxonArmy.push(saxon);
+}
+War.prototype.vikingAttack = function() {
+    
+
+}
