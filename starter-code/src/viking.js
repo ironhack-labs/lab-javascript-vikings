@@ -80,6 +80,36 @@ War.prototype.addSaxon = function(saxon){
     this.saxonArmy.push(saxon);
 }
 War.prototype.vikingAttack = function() {
-    
+    var saxon = this.saxonArmy[Math.floor((Math.random() * this.saxonArmy.length))];
+    var viking = this.vikingArmy[Math.floor((Math.random() * this.vikingArmy.length))];
 
+    saxon.receiveDamage(viking.strength);
+
+    if(saxon.health === 0) {
+        var index = this.saxonArmy.indexOf(saxon);
+        this.saxonArmy.splice(index,1);
+    }
+    return this.saxonArmy.length;
+}
+War.prototype.saxonAttack = function() {
+    var saxon = this.saxonArmy[Math.floor((Math.random() * this.saxonArmy.length))];
+    var viking = this.vikingArmy[Math.floor((Math.random() * this.vikingArmy.length))];
+
+    viking.receiveDamage(saxon.strength);
+
+    if(viking.health === 0) {
+        var index = this.vikingArmy.indexOf(viking);
+        this.vikingArmy.splice(index,1);
+    }
+    return this.vikingArmy.length;
+}
+War.prototype.showStatus = function() {
+    if(this.saxonArmy.length === 0 && this.vikingArmy.length > 0){
+        return 'Vikings have won the war of the century!' 
+    }
+    if(this.vikingArmy.length === 0 && this.saxonArmy.length > 0) {
+        return 'Saxons have fought for their lives and survive another day...'
+    } else {
+        return 'Vikings and Saxons are still in the thick of battle.'
+    }
 }
