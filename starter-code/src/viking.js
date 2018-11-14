@@ -83,25 +83,25 @@ War.prototype.vikingAttack = function() {
     var saxon = this.saxonArmy[Math.floor((Math.random() * this.saxonArmy.length))];
     var viking = this.vikingArmy[Math.floor((Math.random() * this.vikingArmy.length))];
 
-    saxon.receiveDamage(viking.strength);
+    var totalDamage = saxon.receiveDamage(viking.strength);
 
-    if(saxon.health === 0) {
+    if(saxon.health <= 0) {
         var index = this.saxonArmy.indexOf(saxon);
         this.saxonArmy.splice(index,1);
     }
-    return this.saxonArmy.length;
+    return totalDamage;
 }
 War.prototype.saxonAttack = function() {
     var saxon = this.saxonArmy[Math.floor((Math.random() * this.saxonArmy.length))];
     var viking = this.vikingArmy[Math.floor((Math.random() * this.vikingArmy.length))];
 
-    viking.receiveDamage(saxon.strength);
+    var totalDamage = viking.receiveDamage(saxon.strength);
 
-    if(viking.health === 0) {
+    if(viking.health <= 0) {
         var index = this.vikingArmy.indexOf(viking);
         this.vikingArmy.splice(index,1);
     }
-    return this.vikingArmy.length;
+    return totalDamage;
 }
 War.prototype.showStatus = function() {
     if(this.saxonArmy.length === 0 && this.vikingArmy.length > 0){
