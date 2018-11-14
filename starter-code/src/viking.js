@@ -12,6 +12,7 @@ Soldier.prototype.receiveDamage = function(damage){
 }
 
 // Viking
+Viking.prototype = Object.create(Soldier.prototype);
 function Viking(name, health, strength) {
     Soldier.call(this, health, strength);
     this.name = name;
@@ -32,6 +33,7 @@ Viking.prototype.battleCry = function(){
     return "Odin Owns You All!";
 };
 // Saxon
+Saxon.prototype = Object.create(Soldier.prototype);
 function Saxon(health, strength) {
     Soldier.call(this, health, strength);
 }
