@@ -48,4 +48,21 @@ Saxon.prototype.receiveDamage = function(damage){
   }else {return `A Saxon has died in combat`}
   }
 // War
-function War() {}
+function War() {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+  this.addViking = function(someViking){
+    this.vikingArmy.push(someViking);
+  }
+  this.addSaxon = function(someSaxon){
+    this.saxonArmy.push(someSaxon);
+  }
+}
+
+war.prototype.addViking = function(someViking){
+  this.vikingArmy.push(someViking);
+}
+
+war.prototype.addSaxon = function(someSaxon){
+  this.saxonArmy.push(someSaxon);
+}
