@@ -292,13 +292,13 @@ describe("War", function () {
     });
 
     describe("vikingAttack() method", function () {
-      // it("should be a function", function () {
-      //   expect(typeof(war.vikingAttack)).toBe("function");
-      // });
+      it("should be a function", function () {
+        expect(typeof(war.vikingAttack)).toBe("function");
+      });
 
-      // it("should receive 0 arguments", function () {
-      //   expect(war.vikingAttack.length).toEqual(0);
-      // });
+      it("should receive 0 arguments", function () {
+        expect(war.vikingAttack.length).toEqual(0);
+      });
 
       // it("should make Saxon receiveDamage() equal to the strength of a Viking", function () {
       //   var oldHealth = saxon.health;
