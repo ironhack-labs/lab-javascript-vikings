@@ -46,16 +46,28 @@ function Saxon(health, strength) {
 }
 
 
-let vikingArmy = [];
 // War
 function War() {
-  // this.saxonArmy = function saxonArmy() []
-  this.addViking = function addViking(viking) {
-    
-  }
-  this.addSaxon = function addSaxon(saxon) {
+  this.vikingArmy = [];
+  this.saxonArmy = [];
 
+  // this.addViking = function addViking(viking) {
+  //   this.vikingArmy.push(viking);
+  // } THIS IS GOOD BUT PROTOTYPE IS A BETTER CODE BECAUSE 
+  // IT INHERITS ANY CHANGE FROM THE CONSTRUCTION:
+
+  War.prototype.addViking = function(viking) {
+    this.vikingArmy.push(viking);
   }
+
+  // this.addSaxon = function addSaxon(saxon) {
+  //   this.saxonArmy.push(saxon);
+  // } THIS IS GOOD BUT THE BETTER CODE IS WITH PROTOTYPE:
+
+  War.prototype.addSaxon = function(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+
   this.vikingAttack = function vikingAttack() {
 
   }
@@ -63,6 +75,6 @@ function War() {
 
   }
   this.showStatus = function showStatus() {
-    
+
   }
 }
