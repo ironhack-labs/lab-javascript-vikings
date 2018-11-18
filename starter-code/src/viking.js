@@ -14,6 +14,7 @@ function Soldier(health, strength) {
 function Viking(name, health, strength) {
     Soldier.call(this, health, strength);
     this.name = name;
+
     this.receiveDamage = function (damage) {
         this.health -= damage;
         if (this.health > 0) {
@@ -27,12 +28,14 @@ function Viking(name, health, strength) {
     }
 }
 Viking.prototype = Object.create(Soldier.prototype);
-Viking.prototype.constructor = Viking;
+
 // Saxon
 function Saxon(health, strength) {
     Soldier.call(this, health, strength);
+
     this.receiveDamage = function (damage) {
         this.health -= damage;
+
         if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`
         } else {
@@ -41,7 +44,7 @@ function Saxon(health, strength) {
     };
 }
 Saxon.prototype = Object.create(Soldier.prototype);
-Saxon.prototype.constructor = Saxon;
+
 // War
 function War() {
     this.vikingArmy = [];
@@ -53,28 +56,32 @@ function War() {
         this.saxonArmy.push(saxonSoldier);
     }
     this.vikingAttack = function () {
-        this.theSaxon = randomSoldier(this.saxonArmy);
-        this.theViking = randomSoldier(this.vikingArmy);
-        this.attackResult = this.theSaxon.receiveDamage(this.theViking.strength);
+        this.vikingSoldier = randomSoldier(this.vikingArmy);
+        this.saxonSoldier = randomSoldier(this.saxonArmy);
+        this.attackResult = this.saxonSoldier.receiveDamage(this.vikingSoldier.attack());
+        if (this.vikingSoldier.strength >= this.saxonSoldier.health) {
+            this.saxonArmy.splice(this.saxonSoldier, 1);
+            return this.attackResult;
+        } return this.attackResult;
+    }
 
-        if (this.attackResult === `A Saxon has died in combat`) {
-            this.saxonArmy.pop();
-        }
-        return this.attackResult;
+    this.saxonAttack = function () {
+        this.saxonSoldier = randomSoldier(this.saxonArmy);
+        this.vikingSoldier = randomSoldier(this.vikingArmy);
+
+        if (this.saxonSoldier.strength >= this.vikingSoldier.health) {
+            this.vikingArmy.splice(this.vikingSoldier, 1);
+            return getAttackResult(this.vikingSoldier, this.saxonSoldier);
+        } return this.vikingSoldier.receiveDamage(this.saxonSoldier.attack());
+    }
+
+    // Get Random Soldier
+    function randomSoldier(army) {
+        return army[Math.floor(Math.random() * army.length)];
+    }
+
+    function getAttackResult(soldierAttack, soldierDefender) {
+        this.attackResult = soldierDefender.receiveDamage(soldierAttack.attack());
+        return attackResult;
     }
 }
-
-// Get Random Soldier
-function randomSoldier(army) {
-    return army[Math.floor(Math.random() * army.length)];
-}
-// Call
-// var newVik = new Viking(`Diego`, 100, 20);
-// var newSax = new Saxon(100, 15);
-// var newWar = new War()
-
-// newWar.addViking(newVik);
-// newWar.addSaxon(newSax);
-// newWar.vikingAttack();
-
-
