@@ -56,8 +56,8 @@ function War() {
         this.saxonArmy.push(saxonSoldier);
     }
     this.vikingAttack = function () {
-        this.vikingSoldier = randomSoldier(this.vikingArmy);
-        this.saxonSoldier = randomSoldier(this.saxonArmy);
+        this.vikingSoldier = getRandomSoldier(this.vikingArmy);
+        this.saxonSoldier = getRandomSoldier(this.saxonArmy);
         this.attackResult = this.saxonSoldier.receiveDamage(this.vikingSoldier.attack());
         if (this.vikingSoldier.strength >= this.saxonSoldier.health) {
             this.saxonArmy.splice(this.saxonSoldier, 1);
@@ -66,8 +66,8 @@ function War() {
     }
 
     this.saxonAttack = function () {
-        this.saxonSoldier = randomSoldier(this.saxonArmy);
-        this.vikingSoldier = randomSoldier(this.vikingArmy);
+        this.saxonSoldier = getRandomSoldier(this.saxonArmy);
+        this.vikingSoldier = getRandomSoldier(this.vikingArmy);
 
         if (this.saxonSoldier.strength >= this.vikingSoldier.health) {
             this.vikingArmy.splice(this.vikingSoldier, 1);
@@ -75,8 +75,18 @@ function War() {
         } return this.vikingSoldier.receiveDamage(this.saxonSoldier.attack());
     }
 
-    // Get Random Soldier
-    function randomSoldier(army) {
+    this.showStatus = function () {
+        if (this.saxonArmy.length < 1) {
+            return `Vikings have won the war of the century!`
+        }
+        if (this.vikingArmy.length < 1) {
+            return `Saxons have fought for their lives and survive another day...`
+        }
+        return `Vikings and Saxons are still in the thick of battle.`
+    }
+
+    // helpers
+    function getRandomSoldier(army) {
         return army[Math.floor(Math.random() * army.length)];
     }
 
