@@ -12,8 +12,8 @@ function Soldier(health, strength) {
   }
 }
 
-Viking.prototype = Object.create(Soldier.prototype);
-Saxon.prototype = Object.create(Soldier.prototype);
+
+
 
 // Viking
 function Viking (name, health, strength) {
@@ -38,6 +38,9 @@ function Viking (name, health, strength) {
 
 }
 
+Viking.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
+
 // Saxon
 function Saxon(health, strength) {
   Soldier.call(this, health, strength)
@@ -54,6 +57,9 @@ function Saxon(health, strength) {
   }
 
 }
+
+Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.constructor = Saxon;
 
 // War
 function War() {}
