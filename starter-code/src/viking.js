@@ -74,8 +74,8 @@ class War {
         return result
     }
     saxonAttack(){
-        var randomViking = 0
-        var randomSaxon = 0
+        var randomViking = Math.floor(Math.random()*this.vikingArmy.length)
+        var randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
         var result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
         for(var i=0; i<this.vikingArmy.length; i++){
             if(this.vikingArmy[i].health<=0){
