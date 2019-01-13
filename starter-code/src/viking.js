@@ -76,7 +76,7 @@ function War() {
     return saxonDamage;
   };
 
-  this.saxonAttack = function(){
+  this.saxonAttack = function() {
     var randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
     var saxonSoldier = this.saxonArmy[randomSaxonIndex];
 
@@ -85,9 +85,19 @@ function War() {
 
     var vikingDamage = vikingSoldier.receiveDamage(saxonSoldier.strength);
 
-    if(vikingSoldier.isAlive() == false){
+    if (vikingSoldier.isAlive() == false) {
       this.vikingArmy.pop();
     }
     return vikingDamage;
-  }
+  };
+
+  this.showStatus = function() {
+    if (this.saxonArmy.length == 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length == 0) {
+      return "Saxons have fought for their lives and survive another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+  };
 }
