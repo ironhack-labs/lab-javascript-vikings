@@ -75,4 +75,19 @@ function War() {
     }
     return saxonDamage;
   };
+
+  this.saxonAttack = function(){
+    var randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    var saxonSoldier = this.saxonArmy[randomSaxonIndex];
+
+    var randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    var vikingSoldier = this.vikingArmy[randomVikingIndex];
+
+    var vikingDamage = vikingSoldier.receiveDamage(saxonSoldier.strength);
+
+    if(vikingSoldier.isAlive() == false){
+      this.vikingArmy.pop();
+    }
+    return vikingDamage;
+  }
 }
