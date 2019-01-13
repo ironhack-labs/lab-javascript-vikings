@@ -9,7 +9,7 @@ function Soldier(health, strength) {
   };
 
   this.receiveDamage = function receiveDamage(damage) {
-    this.health = health - damage; //can it be written better?
+    this.health -= damage;
   };
 };
 
@@ -19,18 +19,27 @@ function Viking(name, health, strength) {
   Soldier.call(this, health, strength);
 
   this.name = name;
+
+  this.receiveDamage = function (damage) {          //WTF!!! how to do it outside??????
+    this.health -= damage;
+    if (this.health > 0) {
+      return `${this.name} has received ${damage} points of damage`;
+    } else {
+      return `${this.name} has died in act of combat`;
+    };
+  };
 };
 
-Viking.prototype = Object.create(Soldier.prototype); //WTF
+Viking.prototype = Object.create(Soldier.prototype);
 
-Viking.prototype.receiveDamage = function (damage) {
-  this.health = health - damage;
-  if (this.health > 0) {
-    return `${this.name} has received ${damage} points of damage`;
-  }
-
-  return `${this.name} has died in act of combat`;
-};
+// Viking.prototype.receiveDamage = function (damage) {             
+//   this.health -= damage;
+//   if (this.health > 0) {
+//     return `${this.name} has received ${damage} points of damage`;
+//   } else {
+//     return `${this.name} has died in act of combat`;
+//   };
+// };
 
 Viking.prototype.battleCry = function () {
   return "Odin Owns You All!";
@@ -40,11 +49,21 @@ Viking.prototype.battleCry = function () {
 
 function Saxon(health, strength) {
   Soldier.call(this, health, strength);
+
+  this.receiveDamage = function (damage) {
+    this.health -= damage;
+    if (this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`;
+    } else {
+      return "A Saxon has died in combat";
+    };
+  };
 };
 
 Saxon.prototype = Object.create(Soldier.prototype);
 
 // War
+
 function War() {
   this.vikingArmy = [];
   this.saxonArmy = [];
@@ -58,43 +77,92 @@ function War() {
   };
 
   this.vikingAttack = function vikingAttack() {
+
     var chooseRandomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     var chooseRandomViking = Math.floor(Math.random() * this.vikingArmy.length);
+
     var attackedSaxon = this.saxonArmy[chooseRandomSaxon];
     var attackingViking = this.vikingArmy[chooseRandomViking];
 
-    attackedSaxon.receiveDamage(attackingViking.strength);
+    var vikingAttack = attackedSaxon.receiveDamage(attackingViking.strength);
 
     if (attackedSaxon.health <= 0) {
       this.saxonArmy.splice(chooseRandomSaxon, 1);
     };
+
+    return vikingAttack;
   };
 
   this.saxonAttack = function saxonAttack() {
+
     var chooseRandomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     var chooseRandomViking = Math.floor(Math.random() * this.vikingArmy.length);
+
     var attackingSaxon = this.saxonArmy[chooseRandomSaxon];
     var attackedViking = this.vikingArmy[chooseRandomViking];
 
-    attackedViking.receiveDamage(attackingSaxon.strength);
+    var saxonAttack = attackedViking.receiveDamage(attackingSaxon.strength);
 
     if (attackedViking.health <= 0) {
       this.vikingArmy.splice(chooseRandomViking, 1);
     };
+
+    return saxonAttack;
+
   };
 
   this.showStatus = function showStatus() {
     switch (true) {
       case this.saxonArmy.length < 1:
         return "Vikings have won the war of the century!";
-        
+
       case this.vikingArmy.length < 1:
         return "Saxons have fought for their lives and survive another day...";
 
-        default:
+      default:
         return "Vikings and Saxons are still in the thick of battle.";
     };
   };
 };
 
 
+var harald = new Viking("Harald", 200, 45);
+
+var gustaff = new Saxon(250, 25);
+
+var war = new War();
+
+war.addViking(harald);
+
+war.addSaxon(gustaff);
+
+console.log(war.vikingArmy);
+console.log(war.saxonArmy);
+console.log(war.vikingAttack());
+// console.log(war.vikingAttack());
+// console.log(war.vikingAttack());
+// console.log(war.vikingAttack());
+// console.log(war.vikingAttack());
+// console.log(war.vikingAttack());
+// console.log(war.vikingAttack());
+console.log(war.saxonAttack());
+console.log(war.saxonAttack());
+console.log(war.saxonAttack());
+console.log(war.showStatus());
+console.log(war.saxonAttack());
+console.log(war.saxonAttack());
+console.log(war.saxonAttack());
+console.log(war.saxonAttack());
+console.log(war.saxonAttack());
+console.log(war.showStatus());
+
+// console.log(harald.battleCry());
+// console.log(harald.attack());
+// console.log(gustaff.attack());
+// console.log(harald.name);
+// console.log(harald.health);
+// console.log(harald.strength);
+// console.log(harald.receiveDamage(150));
+// console.log(gustaff.receiveDamage(200));
+// console.log(harald.health);
+// console.log(gustaff.health);
