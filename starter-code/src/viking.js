@@ -65,7 +65,9 @@ function War() {
     var randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
     var saxonSoldier = this.saxonArmy[randomSaxonIndex];
 
-    var vikingSoldier = this.vikingArmy[0];
+    var randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    var vikingSoldier = this.vikingArmy[randomVikingIndex];
+
     var saxonDamage = saxonSoldier.receiveDamage(vikingSoldier.strength);
 
     if (saxonSoldier.isAlive() == false) {
