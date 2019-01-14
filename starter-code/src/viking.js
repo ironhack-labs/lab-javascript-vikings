@@ -20,7 +20,7 @@ function Viking(name, health, strength) {
 
   this.name = name;
 
-  this.receiveDamage = function (damage) {  
+  this.receiveDamage = function (damage) {
     this.health -= damage;
     if (this.health > 0) {
       return `${this.name} has received ${damage} points of damage`;
@@ -31,7 +31,6 @@ function Viking(name, health, strength) {
 };
 
 Viking.prototype = Object.create(Soldier.prototype);
-
 
 Viking.prototype.battleCry = function () {
   return "Odin Owns You All!";
@@ -116,14 +115,3 @@ function War() {
     };
   };
 };
-
-
-var harald = new Viking("Harald", 200, 45);
-
-var gustaff = new Saxon(250, 25);
-
-var war = new War();
-
-war.addViking(harald);
-
-war.addSaxon(gustaff);
