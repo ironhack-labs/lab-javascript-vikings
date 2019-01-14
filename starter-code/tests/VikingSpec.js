@@ -202,9 +202,9 @@ describe("Saxon", function () {
       expect(saxon.receiveDamage(10)).toEqual("A Saxon has received 10 points of damage");
     });
 
-    // it("should return \"A Saxon has died in combat\", if the Saxon dies", function () {
-    //   expect(saxon.receiveDamage(health)).toEqual("A Saxon has died in combat");
-    // });
+    it("should return \"A Saxon has died in combat\", if the Saxon dies", function () {
+      expect(saxon.receiveDamage(health)).toEqual("A Saxon has died in combat");
+    });
   });
 });
 

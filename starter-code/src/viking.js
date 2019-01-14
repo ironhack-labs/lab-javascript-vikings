@@ -42,7 +42,7 @@ function Saxon(healthArg,strengthArg) {
     this.receiveDamage=function(damage){
         this.health=this.health-damage;
         if(this.health>0){ return "A Saxon has received " + damage + " points of damage";}
-        else {return this.name + " has died in act of combat"}
+        else {return "A Saxon has died in combat"}
      };
 }
 
