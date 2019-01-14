@@ -72,7 +72,7 @@ War.prototype.vikingAttack = function() {
 
   for(var saxon of this.saxonArmy) {
     if(saxon.health <= 0 ) {
-      this.saxonArmy.splice(this.saxonArmy.indexOf(saxon), 1);
+      this.saxonArmy.splice(randomSaxon, 1);
     }
   }
   return result;
@@ -85,7 +85,7 @@ War.prototype.saxonAttack = function() {
 
   for(var viking of this.vikingArmy) {
     if(viking.health <= 0 ) {
-      this.vikingArmy.splice(this.vikingArmy.indexOf(viking), 1);
+      this.vikingArmy.splice(randomViking, 1);
     }
   }
   return result;
