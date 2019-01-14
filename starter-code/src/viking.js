@@ -71,8 +71,8 @@ function War() {
 
         var result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
 
-        if (this.randomSaxon[randomSaxon].health <= 0){
-            this.saxonArmy.splice(randomSaxon,1);
+        if (this.saxonArmy[randomSaxon].health <= 0){
+            this.saxonArmy.splice(randomSaxon, 1);
         }
         return result;
     };
@@ -81,26 +81,21 @@ function War() {
         var randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
         var randomViking = Math.floor(Math.random()*this.vikingArmy.length);
 
-        var result = this.vikinArmy[randomVikin].receiveDamage(this.saxonArmy[randomSaxon].strength);
+        var result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
 
-        if (this.randomViking[randomViking].health <= 0){
-            this.vikingArmy.splice(randomViking,1);
+        if (this.vikingArmy[randomViking].health <= 0){
+            this.vikingArmy.splice(randomViking, 1);
         }
         return result;
     }
 
     this.showStatus = function(){
-        if (this.saxonArmy.length < 0){
+        if (this.saxonArmy.length <= 0){
             return "Vikings have won the war of the century!";
-        }  else if (this.vikingArmy.length < 0){
+        }  else if (this.vikingArmy.length <= 0){
             return "Saxons have fought for their lives and survive another day...";
         } else {
             return "Vikings and Saxons are still in the thick of battle.";
         }
     }
-
-
-} 
-
-
-
+}
