@@ -57,45 +57,45 @@ function War() {
     this.vikingArmy = [];
     this.saxonArmy = [];
 
-    this.addViking = function(Viking){
+    this.addViking = function addViking(Viking){
         this.vikingArmy.push(Viking);
     };
 
-    this.addSaxon = function(Saxon){
+    this.addSaxon = function addSaxon(Saxon){
         this.saxonArmy.push(Saxon);
     };
 
-    this.vikingAttack = function(){
-        this.randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
-        this.randomViking = Math.floor(Math.random()*this.vikingArmy.length);
+    this.vikingAttack = function vikingAttack(){
+        var randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
+        var randomViking = Math.floor(Math.random()*this.vikingArmy.length);
 
-        this.result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
+        var result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
 
         if (this.randomSaxon[randomSaxon].health <= 0){
-            this.saxonArmy.splice(randomSaxon);
+            this.saxonArmy.splice(randomSaxon,1);
         }
-        return this.result;
+        return result;
     };
 
-    this.saxonAttack = function(){
-        this.randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
-        this.randomViking = Math.floor(Math.random()*this.vikingArmy.length);
+    this.saxonAttack = function saxonAttack(){
+        var randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
+        var randomViking = Math.floor(Math.random()*this.vikingArmy.length);
 
-        this.result = this.vikinArmy[randomVikin].receiveDamage(this.saxonArmy[randomSaxon].strength);
+        var result = this.vikinArmy[randomVikin].receiveDamage(this.saxonArmy[randomSaxon].strength);
 
         if (this.randomViking[randomViking].health <= 0){
-            this.vikingArmy.splice(randomViking);
+            this.vikingArmy.splice(randomViking,1);
         }
-        return this.result;
+        return result;
     }
 
     this.showStatus = function(){
         if (this.saxonArmy.length < 0){
-            console.log("Vikings have won the war of the century!")
+            return "Vikings have won the war of the century!";
         }  else if (this.vikingArmy.length < 0){
-            console.log("Saxons have fought for their lives and survive another day...")
+            return "Saxons have fought for their lives and survive another day...";
         } else {
-            console.log("Vikings and Saxons are still in the thick of battle.")
+            return "Vikings and Saxons are still in the thick of battle.";
         }
     }
 
