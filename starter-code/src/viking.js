@@ -66,35 +66,38 @@ War.prototype.addSaxon = function(saxon) {
 }
 
 War.prototype.vikingAttack = function() {
-  var randomViking = Math.floor(Math.random()* this.vikingArmy.length);
-  var randomSaxon = Math.floor(Math.random()* this.saxonArmy.length);
-  var result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
-
-  for(var saxon of this.saxonArmy) {
-    if(saxon.health <= 0 ) {
-      this.saxonArmy.splice(randomSaxon, 1);
-    }
-  }
-  return result;
+  return attack(this.vikingArmy, this.saxonArmy);
 };
 
 War.prototype.saxonAttack = function() {
-  var randomViking = Math.floor(Math.random()* this.vikingArmy.length);
-  var randomSaxon = Math.floor(Math.random()* this.saxonArmy.length);
-  var result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
+  return attack(this.saxonArmy, this.vikingArmy);
+}
 
-  for(var viking of this.vikingArmy) {
-    if(viking.health <= 0 ) {
-      this.vikingArmy.splice(randomViking, 1);
-    }
-  }
+function attack(attacker, defender) {
+  var randomDefender = pickRandomSoldier(defender)
+  var randomAttacker = pickRandomSoldier(attacker);
+  var result = defender[randomDefender].receiveDamage(attacker[randomAttacker].strength);
+
+  clearDeadSoldiers(defender, randomDefender);
   return result;
 }
 
+function pickRandomSoldier(soldier) {
+  return Math.floor(Math.random()* soldier.length);
+}
+
+function clearDeadSoldiers(defenderArray, randomDefender) {
+  for(var soldier of defenderArray) {
+    if(soldier.health <= 0 ) {
+      defenderArray.splice(randomDefender, 1);
+    }
+  }
+}
+
 War.prototype.showStatus = function() {
-  if(this.saxonArmy.length === 0) {
+  if(this.saxonArmy.length <= 0) {
     return 'Vikings have won the war of the century!';
-  } else if(this.vikingArmy.length === 0) {
+  } else if(this.vikingArmy.length <= 0) {
     return 'Saxons have fought for their lives and survive another day...';
   } else if(this.saxonArmy.length > 0 && this.vikingArmy.length > 0) {
     return 'Vikings and Saxons are still in the thick of battle.';
