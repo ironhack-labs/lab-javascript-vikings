@@ -50,4 +50,22 @@ function Saxon(healthArg,strengthArg) {
             Viking.prototype.constructor = Viking;
 
 // War
-function War() {}
+function War() {
+    this.vikingArmy=[];
+    this.saxonArmy=[];
+    this.addViking=function(viking){
+       this.vikingArmy.push(viking);
+    };
+    this.addSaxon=function(saxon){
+        this.saxonArmy.push(saxon);
+     };
+    this.vikingAttack=function(){
+       
+         Saxon.receiveDamage();
+       if(Saxon.health<=0){
+           this.saxonArmy
+       };
+
+    };
+    }
+    
