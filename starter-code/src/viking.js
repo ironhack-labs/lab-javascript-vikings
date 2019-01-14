@@ -20,7 +20,7 @@ function Viking(name, health, strength) {
 
   this.name = name;
 
-  this.receiveDamage = function (damage) {          //WTF!!! how to do it outside??????
+  this.receiveDamage = function (damage) {  
     this.health -= damage;
     if (this.health > 0) {
       return `${this.name} has received ${damage} points of damage`;
@@ -32,14 +32,6 @@ function Viking(name, health, strength) {
 
 Viking.prototype = Object.create(Soldier.prototype);
 
-// Viking.prototype.receiveDamage = function (damage) {             
-//   this.health -= damage;
-//   if (this.health > 0) {
-//     return `${this.name} has received ${damage} points of damage`;
-//   } else {
-//     return `${this.name} has died in act of combat`;
-//   };
-// };
 
 Viking.prototype.battleCry = function () {
   return "Odin Owns You All!";
@@ -135,34 +127,3 @@ var war = new War();
 war.addViking(harald);
 
 war.addSaxon(gustaff);
-
-console.log(war.vikingArmy);
-console.log(war.saxonArmy);
-console.log(war.vikingAttack());
-// console.log(war.vikingAttack());
-// console.log(war.vikingAttack());
-// console.log(war.vikingAttack());
-// console.log(war.vikingAttack());
-// console.log(war.vikingAttack());
-// console.log(war.vikingAttack());
-console.log(war.saxonAttack());
-console.log(war.saxonAttack());
-console.log(war.saxonAttack());
-console.log(war.showStatus());
-console.log(war.saxonAttack());
-console.log(war.saxonAttack());
-console.log(war.saxonAttack());
-console.log(war.saxonAttack());
-console.log(war.saxonAttack());
-console.log(war.showStatus());
-
-// console.log(harald.battleCry());
-// console.log(harald.attack());
-// console.log(gustaff.attack());
-// console.log(harald.name);
-// console.log(harald.health);
-// console.log(harald.strength);
-// console.log(harald.receiveDamage(150));
-// console.log(gustaff.receiveDamage(200));
-// console.log(harald.health);
-// console.log(gustaff.health);
