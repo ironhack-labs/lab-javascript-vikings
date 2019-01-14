@@ -47,7 +47,7 @@ function Saxon(healthArg,strengthArg) {
 }
 
             Saxon.prototype = Object.create(Soldier.prototype)
-            Viking.prototype.constructor = Viking;
+            Saxon.prototype.constructor = Saxon;
 
 // War
 function War() {
@@ -59,13 +59,14 @@ function War() {
     this.addSaxon=function(saxon){
         this.saxonArmy.push(saxon);
      };
-    this.vikingAttack=function(){
-       
-         Saxon.receiveDamage();
-       if(Saxon.health<=0){
-           this.saxonArmy
-       };
-
-    };
+    
+    
+     this.vikingAttack=function(){
+        var newSaxonIndex=Math.floor(Math.random()*this.saxonArmy.length);
+        var newVikingIndex=Math.floor(Math.random()*this.vikingArmy.length);
+        this.saxonArmy[newSaxonIndex].receiveDamage(this.vikingArmy[newVikingIndex].strength);
+         };
+     
+    
     }
     
