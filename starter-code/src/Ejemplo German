@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>JS</title>
+		<meta charset="utf-8">	
+	</head>
+
+	<body>
+
+		<h1>OOP</h1>
+
+		<script>
+
+
+
+			function Person(arg1, arg2, arg3){
+				this.firstName 	= arg1;
+				this.surname   	= arg2;
+				this.age		= arg3;			
+			}
+
+
+
+			function Player(arg1, arg2, arg3, arg4){
+				Person.call(this, arg1, arg2, arg3);
+				this.points		= arg4;
+			}
+
+			Player.prototype = Object.create(Person.prototype)
+			Player.prototype.constructor = Player;	// overwrite Player constructor so all instances come from this function
+
+			
+
+
+			function Witch(arg1, arg2, arg3, arg4){
+				Player.call(this, arg1, arg2, arg3, arg4);
+				this.role			= 'bruja';
+			}
+
+			Witch.prototype = Object.create(Player.prototype)
+			Witch.prototype.constructor = Witch;	// overwrite Witch constructor so all instances come from this function
+			Witch.prototype.lanzarHechizo	= function(){
+				console.log("La bruja " + this.firstName + " te lanzó un hechizo!");
+			}
+			
+
+
+
+
+			function Elf(arg1, arg2, arg3, arg4){
+				Player.call(this, arg1, arg2, arg3, arg4);				
+				this.role			= 'elfo';				
+			}
+			Elf.prototype = Object.create(Person.prototype)
+			Elf.prototype.constructor = Elf;	// overwrite Elf constructor so all instances come from this function
+			Elf.prototype.escupir = function(){
+				console.log("El elfo " + this.firstName + " te escupió! Menudo guarro...");
+			}
+
+
+
+
+			var onlyPerson = new Person('Germán', 'Álvarez', 32);
+			var onlyPlayer = new Player('Sara', 'Díaz', 16, 2000);
+			var bruja = new Witch('Piruja', 'Ruiz', 97, 2000);
+			var elfo = new Elf('John', 'Doe', 30, 2000);
+
+
+
+
+			var onlyPerson = new Person('Germán', 'Álvarez', 32);
+			console.log(onlyPerson.firstName + ' tiene ' + onlyPerson.age + ' años ');
+
+			var onlyPlayer = new Player('Sara', 'Díaz', 16, 2000);
+			console.log(onlyPlayer.firstName + ' tiene ' + onlyPlayer.points + ' puntos ');
+
+			var bruja = new Witch('Piruja', 'Ruiz', 97, 2000);
+			bruja.lanzarHechizo();
+
+			var elfo = new Elf('John', 'Doe', 30, 2000);
+			elfo.escupir();
+
+
+
+		</script>
+
+	</body>
+</html>
