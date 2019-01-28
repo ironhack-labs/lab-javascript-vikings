@@ -69,7 +69,7 @@ class War {
         let randomNum2 = Math.floor(Math.random() * this.saxonArmy.length);
         let randomSaxon = this.saxonArmy[randomNum2];
         let result = randomSaxon.receiveDamage(randomViking.strength);
-        if(randomSaxon.health < 0){
+        if(randomSaxon.health <= 0){
             this.saxonArmy.splice(0, randomNum2 + 1);
         }
         return result;
@@ -80,7 +80,7 @@ class War {
         let randomNum2 = Math.floor(Math.random() * this.saxonArmy.length);
         let randomSaxon = this.saxonArmy[randomNum2];
         let result = randomViking.receiveDamage(randomSaxon.strength);
-        if(randomViking.health < 0){
+        if(randomViking.health <= 0){
             this.vikingArmy.splice(0, randomNum1 + 1);
         }
         return result;
