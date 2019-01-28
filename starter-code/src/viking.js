@@ -11,7 +11,7 @@ class Soldier {
 
   receiveDamage(damage) {
     this.health -= damage;
-  }
+  };
 
 };
 // Viking
@@ -34,7 +34,7 @@ class Viking extends Soldier {
   return "Odin Owns You All!";
   }
 
-}
+};
 
 // Saxon
 class Saxon extends Soldier {
@@ -51,8 +51,34 @@ class Saxon extends Soldier {
     }
   }
   
-}
+};
 
 
 // War
-function War() {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+
+  addViking(Viking) {
+    this.vikingArmy.push(Viking);
+  }
+
+  addSaxon(Saxon) {
+    this.saxonArmy.push(Saxon);
+  }
+
+  vikingAttack() {
+    this.vikingDamage = this.vikingArmy[0][2];
+    Saxon.receiveDamage(this.vikingDamage);
+  }
+
+
+/*
+  saxonAttack()
+  showStatus()
+*/
+
+
+};
