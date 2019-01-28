@@ -1,5 +1,4 @@
 // Soldier
-function Soldier() {}
 class Soldier{
   constructor(health, strength) {
     this.health = health;
@@ -16,7 +15,6 @@ Soldier.prototype.receiveDamage = function(damage){
 }
 
 // Viking
-function Viking() {}
 class Viking extends Soldier {
   constructor(name, health, strength) {
     super(health, strength);
@@ -43,7 +41,6 @@ class Viking extends Soldier {
 }
 
 // Saxon
-function Saxon() {}
 class Saxon extends Soldier {
   constructor(health, strength){
     super(health,strength);
