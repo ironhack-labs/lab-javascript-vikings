@@ -262,7 +262,7 @@ A `Saxon` (chosen at random) has their `receiveDamage()` method called with the 
 #### `saxonAttack()` method
 
 The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to the `strength` of a `Saxon`.
-
+vikingArmy[Math.floor(Math.random() * saxonArmy.length)
 - should be a function
 - should receive **0 arguments**
 - should make a `Viking` `receiveDamage()` equal to the `strength` of a `Saxon`
