@@ -22,36 +22,36 @@ describe("Soldier", function () {
   });
 
   describe("attack() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.attack)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(soldier.attack)).toBe("function");
+    });
 
-    // it("should receive 0 arguments", function () {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", function () {
+      expect(soldier.attack.length).toEqual(0);
+    });
 
-    // it("should return the strength property of the Soldier", function () {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
+    it("should return the strength property of the Soldier", function () {
+      expect(soldier.attack()).toEqual(strength);
+    });
   });
 
   describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.receiveDamage)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(soldier.receiveDamage)).toBe("function");
+    });
 
-    // it("should receive 1 argument (the damage)", function () {
-    //   expect(soldier.receiveDamage.length).toEqual(1);
-    // });
+    it("should receive 1 argument (the damage)", function () {
+      expect(soldier.receiveDamage.length).toEqual(1);
+    });
 
-    // it("should remove the received damage from the health property", function () {
-    //   soldier.receiveDamage(50);
-    //   expect(soldier.health).toEqual(health - 50);
-    // });
+    it("should remove the received damage from the health property", function () {
+      soldier.receiveDamage(50);
+      expect(soldier.health).toEqual(health - 50);
+    });
 
-    // it("shouldn't return anything", function () {
-    //   expect(soldier.receiveDamage(50)).toEqual(undefined);
-    // });
+    it("shouldn't return anything", function () {
+      expect(soldier.receiveDamage(50)).toEqual(undefined);
+    });
   });
 });
 

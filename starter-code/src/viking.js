@@ -1,54 +1,63 @@
 // Soldier
-function Soldier(health, strength) {
-  this.health = health;
-  this.strength = strength
+function Soldier() {}
+class Soldier{
+  constructor(health, strength) {
+    this.health = health;
+    this.strength = strength;
+  }
+}
 
-  attack(){
-    return strength
-      }
-  recieveDamage(damage){
-    this.health - damage
-    }
+Soldier.prototype.attack = function(){
+  return this.strength;
+}
+
+Soldier.prototype.receiveDamage = function(damage){
+  this.health = this.health - damage;
 }
 
 // Viking
-function Viking extends Soilder(name, health, strength) {
-  this.name = name
-  this.health = health;
-  this.strength = strength
+function Viking() {}
+class Viking extends Soldier {
+  constructor(name, health, strength) {
+    super(health, strength);
+    this.name = name;
+  }
 
-  recieveDamage(damage){
-    health -= damage
-    if (health > 0){
-      return this.name = 'has recieved' + damage + 'points of damage'
+
+
+  receiveDamage(damage) {
+    this.health = this.health - damage;
+    if(this.health > 0){
+      return this.name + " has received " + damage + " points of damage";
     }
-    else{
-      this.name = 'has die in act of combat'
+    else {
+      return this.name + " has died in act of combat";
     }
   }
-  battleCry(){
-    return 'Odin Owns You All!'
+
+  battleCry() {
+    return "Odin Owns You All!";
   }
+
+
 }
 
 // Saxon
-function Saxon extends Soilder(health, strength) {
-  this.health = health;
-  this.strength = strength
-
-  attack(){
-    return strength
-  }
-  recieveDamage(damage){
-    health -= damage
-    if (this.health > 0){
-      return 'A Saxon has recieved' + damage + 'points of damage'
-    }
-    else{
-      return 'A saxon has died'
-    }
+function Saxon() {}
+class Saxon extends Soldier {
+  constructor(health, strength){
+    super(health,strength);
   }
 
+  receiveDamage(damage){
+    this.health = this.health - damage;
+    if(this.health > 0){
+      return "A Saxon has received " + damage + " points of damage";
+    }
+    else {
+      return "A Saxon has died in combat";
+    }
+  }
 }
 
 // War
