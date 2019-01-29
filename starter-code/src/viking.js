@@ -67,36 +67,39 @@ class Saxon extends Soldier {
 // War
 //function War() {}
 
-// class War {
-//   constructor () {
-//     this.vikingArmy = [];
-//     this.saxonArmy = [];
-//   }
+class War {
+  constructor () {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
 
-//   addViking (Viking) {
-//     this.vikingArmy.push(Viking);
-//   }
+  addViking (Viking) {
+    this.vikingArmy.push(Viking);
+  }
 
-//   addSaxon (Saxon) {
-//     this.saxonArmy.push(Saxon);
-//   }
+  addSaxon (Saxon) {
+    this.saxonArmy.push(Saxon);
+  }
 
-//   vikingAttack () {
-//     const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-//     const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-//     return randomSaxon.receiveDamage(randomViking.strength);
-//     if (randomSaxon.health === 0) {
-//       saxonArmy.splice(randomSaxon);
-//     } 
-//   }
+  vikingAttack () {
+    const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    const saxonDamage = randomSaxon.receiveDamage(randomViking.strength);
 
-//   showStatus () {
+    if (randomSaxon.health === 0) {
+      this.saxonArmy.splice(randomSaxon);
+    } else {
+      return saxonDamage;
+    }
+  }
 
-//     if (this.saxonArmy > 0 && this.vikingArmy > 0){
-//       return "Vikings and Saxons are still in the thick of battle.";
-//     } else if (this.saxonArmy.length === 0) {
-//       return "Vikings have won the war of the century!";
-//     } else if (this.vikingArmy === 0) {
-//       return "Saxons have fought for their lives and survive another day...";
-//     }
-// }}
+  showStatus () {
+
+    if (this.saxonArmy.length > 0 && this.vikingArmy.length > 0){
+      return "Vikings and Saxons are still in the thick of battle.";
+    } else if (this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0) {
+      return "Saxons have fought for their lives and survive another day...";
+    }
+}}
