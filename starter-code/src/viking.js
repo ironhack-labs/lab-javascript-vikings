@@ -56,30 +56,51 @@ function War() {
   this.saxonArmy = [];
 }
 
+// function to select a random item from an Array, to be used by War
+// defined externally to War, because it will be used in several methods
+function randomSelect(arr) {  // Select an element from the array at random
+  idx = Math.floor(Math.random() * arr.length)  
+  // return arr[idx]
+  return idx;
+}
+
+
 War.prototype.addViking = function (viking){
   this.vikingArmy.push(viking) // add an element to vikingArmy array
 }
 War.prototype.addSaxon = function (saxon){
   this.saxonArmy.push(saxon) // add an element to saxonArmy array
 }
-War.prototype.vikingAttack = function(){
-  function randomSelect(arr){  // Select an element from the array at random
-    idx = Math.floor(Math.random() * this.arr.length)  
-    return arr[idx]
+
+// function to check Army and "remove" dead bodies LOL
+// args: 
+// --- army - array
+// --- soldier - numeric
+War.prototype.checkArmy = function (army, soldier){
+  // if its health is less than 0, is dead
+  if (army[soldier].health <= 0){
+    // splice method to remove soldier from army
+    army.splice(soldier, 1);
   }
+}
+
+War.prototype.vikingAttack = function(){
+  // Validation of empty array
+  console.log(this.vikingArmy.length);
   if(this.vikingArmy.length == 0){ // If array is empty
     return undefined
-  }else{
-    this.selected_saxon = randomSelect(saxonArmy) // saxon element choosen at random
-    this.selected_viking = randomSelect(vikingArmy) // viking element choosen at random
+  } 
+  
+  let selected_saxon = randomSelect(this.saxonArmy); // saxon element choosen at random
+  let selected_viking = randomSelect(this.vikingArmy); // viking element choosen at random
+  
+  //call receiveDamage method of selected saxon. Saxon receives damage of selected viking
+  let msg = this.saxonArmy[selected_saxon].receiveDamage(this.vikingArmy[selected_viking].strength);
 
-  }
-  this.selected_saxon.receiveDamage(this.selected_viking.strength)
-  if(this.selected_saxon.health <= 0){ // Health less equal zero means saxon is dead
-    this.saxonArmy.splice(idx,1); // remove element from saxonArmy array
-  }else{
-    return `Saxon health is ${this.selected_saxon.health}`
-  }
+  // check if saxon is still alive and remove dead body if necessary
+  this.checkArmy(this.saxonArmy, selected_saxon);
+
+  return msg;
 }
 
 War.prototype.saxonAttack()
