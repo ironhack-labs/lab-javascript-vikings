@@ -120,4 +120,19 @@ War.prototype.saxonAttack = function() {
   return msg;
 }
 
-War.prototype.showStatus()
+War.prototype.showStatus = function() {
+  // check viking Army status
+  if (this.saxonArmy.length == 0){
+    return `Vikings have won the war of the century!`;
+  }
+
+  // check saxon Army status
+  if (this.vikingArmy.length == 0){
+    return `Saxons have fought for their lives and survive another day...`;
+  }
+
+  // if there is at least one soldier of each army
+  if (this.saxonArmy.length > 0 && this.vikingArmy.length > 0){
+    return `Vikings and Saxons are still in the thick of battle.`;
+  }
+}
