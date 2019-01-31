@@ -5,39 +5,44 @@ var strength = 0;
 // Soldier
 function Soldier(health, strength) {
   //nuevo soldado generico
-  this.health = 300;
-  this.strength = 150;
+  this.health = health
+  this.strength = strength
   this.attack = function() {
-    return (this.strength = 150);
+    return (this.strength);
   };
   this.receiveDamage = function(damage) {
-    this.damage = 1;
-    this.health = this.health - 50;
+    this.damage = damage
+    this.health -= this.damage;
   };
 } //final de soldier
-
+ let soldier = new Soldier(300,150)
+ console.log(soldier)
 //viking
-Viking.prototype = Object.create(Soldier.prototype); //crea un nuevo objeto con las propiedades de solado
-Viking.prototype.constructor = Viking; //ligado con vikingo = nuevo soldado vikingo
-var viking = new Viking(name, health, strength);
+//ligado con vikingo = nuevo soldado vikingo
+//var viking = new Viking(name, health, strength);
+//crea un nuevo objeto con las propiedades de solado
+//Viking.prototype.Soldier = Viking; 
+
 // Viking
+Viking.prototype = Object.create(Soldier.prototype);
 
 function Viking(name, health, strength) {
   Soldier.call(this, health, strength);
-  this.name = "Harald";
-
+  this.name = name;
+  
   this.receiveDamage = function(damage) {
-    this.damage = 1;
-    this.health = this.health - 50;
-    
+    this.damage = damage;
+    this.health -= damage;
+    if(Viking.health > 1) return console.log(name,'has received ',this.damage,'points of damage');
   };
 
-  this.battleCry = function() {
+
+  this.battleCry = function(){
     return "Odin Owns You All!";
   };
 } //final de viking
-
-
+let viking = new Viking('Harald')
+console.log(viking)
 //saxon
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
