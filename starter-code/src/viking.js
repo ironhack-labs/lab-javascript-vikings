@@ -85,11 +85,10 @@ War.prototype.checkArmy = function (army, soldier){
 }
 
 War.prototype.vikingAttack = function(){
-  // Validation of empty array
-  console.log(this.vikingArmy.length);
-  if(this.vikingArmy.length == 0){ // If array is empty
+  // Validation of empty arrays
+  if (this.vikingArmy.length == 0 || this.saxonArmy.length == 0){ // If array is empty
     return undefined
-  } 
+  }
   
   let selected_saxon = randomSelect(this.saxonArmy); // saxon element choosen at random
   let selected_viking = randomSelect(this.vikingArmy); // viking element choosen at random
@@ -103,5 +102,22 @@ War.prototype.vikingAttack = function(){
   return msg;
 }
 
-War.prototype.saxonAttack()
+War.prototype.saxonAttack = function() {
+  // Validation of empty arrays
+  if (this.vikingArmy.length == 0 || this.saxonArmy.length == 0){ // If array is empty
+    return undefined
+  }
+  
+  let selected_saxon = randomSelect(this.saxonArmy); // saxon element choosen at random
+  let selected_viking = randomSelect(this.vikingArmy); // viking element choosen at random
+  
+  //call receiveDamage method of selected viking. Viking receives damage of selected saxon
+  let msg = this.vikingArmy[selected_viking].receiveDamage(this.saxonArmy[selected_saxon].strength);
+
+  // check if saxon is still alive and remove dead body if necessary
+  this.checkArmy(this.vikingArmy, selected_viking);
+
+  return msg;
+}
+
 War.prototype.showStatus()
