@@ -14,6 +14,7 @@ function Soldier(health, strength) {
 }
 
 // Viking
+Viking.prototype = Object.create (Soldier.prototype)
 function Viking(name, health, strength) {
     Soldier.call(this, health, strength)
     this.name =  name 
@@ -34,6 +35,7 @@ function Viking(name, health, strength) {
 }
 
 // Saxon
+Saxon.prototype = Object.create (Soldier.prototype)
 function Saxon (health, strength) {
     Soldier.call(this, health, strength)
 
