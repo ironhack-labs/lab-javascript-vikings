@@ -12,7 +12,12 @@ function Soldier (healthArg, strengthArg) {
 }
 
 // Viking
-function Viking() {}
+function Viking(name, health, strength) {
+  this.name = name;
+  Soldier.call(this, health, strength);
+}
+Viking.prototype = Object.create(Soldier.prototype);
+//MDN EJEMPLPO para crear un objeto proveniente de otro --> Mime.prototype = Object.create(Person.prototype);
 
 // Saxon
 function Saxon() {}
