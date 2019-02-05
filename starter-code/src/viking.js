@@ -58,11 +58,14 @@ function War() {
   this.vikingArmy = [];
   this.saxonArmy = [];
   this.addViking = function(vikingObj){
-    this.vikingArmy.push(vikingObj);
+    this.vikingArmy.push(vikingObj); 
+  }
+  this.addSaxon = function(saxonObj){
+    this.saxonArmy.push(saxonObj);
+  }
+  this.vikingAttack = function(){
     
   }
-  //this.addSaxon = function(){}
-  //this.vikingAttack = function(){}
   //this.saxonAttack = function(){}
   //this.showStatus = function(){}
 }
