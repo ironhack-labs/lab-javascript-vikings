@@ -3,7 +3,7 @@ function Soldier (healthArg, strengthArg) {
   this.health = healthArg;
   this.strength = strengthArg;
   this.attack = function(){
-    return this.strength
+    return this.strength;
   }
   this.receiveDamage = function(theDamage){
     this.health = this.health  - theDamage;
@@ -15,6 +15,19 @@ function Soldier (healthArg, strengthArg) {
 function Viking(name, health, strength) {
   this.name = name;
   Soldier.call(this, health, strength);
+  this.receiveDamage = function(theDamage){
+    this.health = this.health  - theDamage;
+   //console.log(theDamage);
+    if (this.health > 50) {
+      //console.log(this.name + 'has received ' + theDamage + ' points of damage');
+      return this.name + ' has received ' + theDamage + ' points of damage';
+    }
+    if (this.health < 50) {
+      //console.log(this.name + ' has died in act of combat')
+      return this.name + ' has died in act of combat'
+    }
+    return;
+  }
 }
 Viking.prototype = Object.create(Soldier.prototype);
 //MDN EJEMPLPO para crear un objeto proveniente de otro --> Mime.prototype = Object.create(Person.prototype);
