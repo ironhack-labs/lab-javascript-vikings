@@ -28,6 +28,9 @@ function Viking(name, health, strength) {
     }
     return;
   }
+  this.battleCry = function(){
+    return 'Odin Owns You All!';
+  }
 }
 Viking.prototype = Object.create(Soldier.prototype);
 //MDN EJEMPLPO para crear un objeto proveniente de otro --> Mime.prototype = Object.create(Person.prototype);
