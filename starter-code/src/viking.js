@@ -38,6 +38,18 @@ Viking.prototype = Object.create(Soldier.prototype);
 // Saxon
 function Saxon(health, strength) {
   Soldier.call(this, health, strength);
+  this.receiveDamage = function(theDamage){
+    this.health = this.health  - theDamage;
+    if (this.health > 0) {
+      //console.log(this.name + 'has received ' + theDamage + ' points of damage');
+      return 'A Saxon' + ' has received ' + theDamage + ' points of damage';
+    }
+    if (this.health < 50) {
+      //console.log(this.name + ' has died in act of combat')
+      return 'A Saxon' + ' has died in combat'
+    }
+    return;
+  }
 }
 Saxon.prototype = Object.create(Soldier.prototype);
 

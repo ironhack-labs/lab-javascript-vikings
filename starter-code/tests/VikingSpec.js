@@ -184,27 +184,27 @@ describe("Saxon", function () {
   });
 
   describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(saxon.receiveDamage)).toBe("function");
-    // });
+     it("should be a function", function () {
+       expect(typeof(saxon.receiveDamage)).toBe("function");
+     });
 
-    // it("should receive 1 argument (the damage)", function () {
-    //   expect(saxon.receiveDamage.length).toEqual(1);
-    // });
+     it("should receive 1 argument (the damage)", function () {
+       expect(saxon.receiveDamage.length).toEqual(1);
+     });
 
-    // it("should remove the received damage from the health property", function () {
-    //   saxon.receiveDamage(50);
-    //   expect(saxon.health).toEqual(health - 50);
-    // });
+     it("should remove the received damage from the health property", function () {
+       saxon.receiveDamage(50);
+       expect(saxon.health).toEqual(health - 50);
+     });
 
-    // it("should return \"A Saxon has received DAMAGE points of damage\", if the Saxon is still alive", function () {
-    //   expect(saxon.receiveDamage(45)).toEqual("A Saxon has received 45 points of damage");
-    //   expect(saxon.receiveDamage(10)).toEqual("A Saxon has received 10 points of damage");
-    // });
+     it("should return \"A Saxon has received DAMAGE points of damage\", if the Saxon is still alive", function () {
+       expect(saxon.receiveDamage(45)).toEqual("A Saxon has received 45 points of damage");
+       expect(saxon.receiveDamage(10)).toEqual("A Saxon has received 10 points of damage");
+     });
 
-    // it("should return \"A Saxon has died in combat\", if the Saxon dies", function () {
-    //   expect(saxon.receiveDamage(health)).toEqual("A Saxon has died in combat");
-    // });
+     it("should return \"A Saxon has died in combat\", if the Saxon dies", function () {
+       expect(saxon.receiveDamage(health)).toEqual("A Saxon has died in combat");
+     });
   });
 });
 
