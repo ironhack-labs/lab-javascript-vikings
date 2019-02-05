@@ -5,6 +5,10 @@ function Soldier (healthArg, strengthArg) {
   this.attack = function(){
     return this.strength
   }
+  this.receiveDamage = function(theDamage){
+    this.health = this.health  - theDamage;
+    return;
+  }
 }
 
 // Viking
