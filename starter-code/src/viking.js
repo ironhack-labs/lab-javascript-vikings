@@ -16,59 +16,49 @@ function Soldier(health, strength) {
         this.health = health;
         this.strength = strength;
 
-        var soldier = {health, strength};
-       
-    return soldier;
-}
+        
+        this.attack = function() {
 
-//var attack = new Soldier("a", "b");
+            return this.strength;
 
-/*
-var attack = function() {
+        }
 
-    strength = 150;
-    health   = 300;
-  
-    return "Soldier strength is " + this.strength;
-}
-*/
+        this.receiveDamage = function(damage) {
 
-/*function attack(){
-    return "Soldier strength is " + this.strength;
-  };
-*/
+            this.health = this.health - damage;
+            return;
+        }
+    }
 
-var attack = new Soldier(150, 300);
-
-attack.showSoldierStrength = function(){
-    return "Soldier strength is " + this.strength;
-  };
-
-
-var receiveDamage = function(damage) {
-
-damage - this.health;
-
-}
 
 // Viking
+
 function Viking(name, health, strength) {
 
-    Soldier.call(this, health, strength);
     this.name = name;
-    var viking = {name, health, strength};
-    return viking;
+    Soldier.call(this, health, strength);
+
+    this.attack = function() {
+    //Soldier.call(this, attack())
+    return this.strength;
+    }
+
+    this.receiveDamage = function(damage) {
+        this.health = this.health - damage;
+        if (this.health > 0) {
+            return name + " has received " + damage + " points of damage";
+        } else {
+            return name + " has died in act of combat";
+        }
+    }
+
+    this.battleCry = function() {
+        return "Odin Owns You All!"
+    }
 }
 
-var vikingAttack = new Viking();
+Viking.prototype = Object.create(Soldier.prototype);
 
-vikingAttack.showVikingStrength = function(){
-    return "Viking strength is " + this.strength;
-};
-
-
-
-//var battleCry = new Soldier();
 
 // Saxon
 function Saxon() {}
