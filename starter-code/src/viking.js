@@ -10,9 +10,6 @@ function Soldier(healthArg, strengthArg) {
   }
 };
 
-var soldierOne = new Soldier(20,5);
-// console.log(soldierOne);
-
 // Viking
 function Viking(nameArg, healthArg, strengthArg) {
   Soldier.call(this, healthArg, strengthArg);
@@ -22,11 +19,9 @@ function Viking(nameArg, healthArg, strengthArg) {
   }
   this.receiveDamage = function(damage) {
     this.health -= damage;
-    if (this.health> 0) {
-      // still alive!
+    if (this.health> 0) { 
       return this.name + " has received " + damage + " points of damage";
-    } else {
-      // dead
+    } else { 
       return this.name + " has died in act of combat";
     }
   }
@@ -95,7 +90,7 @@ function War() {
     var saxon = this.saxonArmy[randomSaxonIndex];
     var randomVikingIndex = getRandomNumber(this.vikingArmy);
     var viking = this.vikingArmy[randomVikingIndex];
-    // storing old health for console logging
+    // storing new health for console logging
     var vikingNewHealth = viking.health - saxon.strength;
     // hurting the random viking
     console.log("Saxon " + randomSaxonIndex + " (strength = " + saxon.strength + ") attacked Viking " + viking.name + " (health " + viking.health + " => " + vikingNewHealth + ")");
