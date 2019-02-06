@@ -1,16 +1,5 @@
 // Soldier
 
-/*function Soldier(healthArg, strengthArg) {
-
-    var soldier = {
-        health: healthArg,
-        strength: strengthArg
-    };
-       
-    return soldier;
-}
-*/
-
 function Soldier(health, strength) {
 
         this.health = health;
@@ -38,13 +27,16 @@ function Viking(name, health, strength) {
     this.name = name;
     Soldier.call(this, health, strength);
 
-    this.attack = function() {
-    //Soldier.call(this, attack())
+   /* this.attack = function() {
+
     return this.strength;
-    }
+
+    } */
 
     this.receiveDamage = function(damage) {
+
         this.health = this.health - damage;
+        
         if (this.health > 0) {
             return name + " has received " + damage + " points of damage";
         } else {
@@ -58,10 +50,30 @@ function Viking(name, health, strength) {
 }
 
 Viking.prototype = Object.create(Soldier.prototype);
+Viking.prototype.constructor = Viking;
 
 
 // Saxon
-function Saxon() {}
+function Saxon(health, strength) {
+
+    Soldier.call(this, health, strength);
+
+    this.receiveDamage = function(damage) {
+
+        this.health = this.health - damage;
+        
+        if (this.health > 0) {
+            return "A Saxon has received " + damage + " points of damage";
+        } else {
+            return "A Saxon has died in combat";
+        }
+    } 
+}
+
+Saxon.prototype = Object.create(Soldier.prototype);
+Saxon.prototype.constructor = Saxon;
+
+
 
 // War
 function War() {}
