@@ -84,7 +84,7 @@ class War {
     let dmg = vikRandom.receiveDamage(saxRandom.strength);
 
     if(vikRandom.health <= 0){
-      this.vikingArmy.splice(randomIndexSax,1);
+      this.vikingArmy.splice(randomIndexVik,1);
     }
     return dmg;
     }
