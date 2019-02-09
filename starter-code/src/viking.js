@@ -56,23 +56,23 @@ class War {
     this.saxonArmy.push(Saxon);
   }
   vikingAttack () {
+    let iSax = randomS(this.saxonArmy);
     let rVik = this.vikingArmy[randomS(this.vikingArmy)];
-    let rSax = this.saxonArmy[randomS(this.saxonArmy)];
+    let rSax = this.saxonArmy[iSax];
     let damage = rSax.receiveDamage(rVik.strength);
     if (rSax.health <= 0) {
-      let i = this.saxonArmy.indexOf(rSax);
-      this.saxonArmy.splice(i, 1);
+      this.saxonArmy.splice(iSax, 1);
     }
     return damage;
   }
 
   saxonAttack () {
-    let rVik = this.vikingArmy[randomS(this.vikingArmy)];
+    let iVik = randomS(this.vikingArmy);
+    let rVik = this.vikingArmy[iVik];
     let rSax = this.saxonArmy[randomS(this.saxonArmy)];
     let damage = rVik.receiveDamage(rSax.strength);
     if (rVik.health <= 0) {
-      let i = this.vikingArmy.indexOf(rVik);
-      this.vikingArmy.splice(i, 1);
+      this.vikingArmy.splice(iVik, 1);
     }
     return damage;
   }
@@ -87,7 +87,6 @@ class War {
     }
   }  
 }
-
 
 function randomS (arr) {
   return (Math.floor(Math.random () * arr.length));  
