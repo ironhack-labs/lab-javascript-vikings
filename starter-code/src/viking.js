@@ -78,12 +78,14 @@ class War {
   }
 
   showStatus () {
-    if (this.vikingArmy.length === 0) {
-      return ("Saxons have fought for their lives and survive another day...")
+    if (this.vikingArmy.length === 0 && this.saxonArmy.length === 0) {
+      return ("The gravedigger is today's winner")
+    }  else if (this.vikingArmy.length === 0) {
+        return ("Saxons have fought for their lives and survive another day...")
     } else if (this.saxonArmy.length === 0) {
-      return ("Vikings have won the war of the century!");
+        return ("Vikings have won the war of the century!");
     } else {
-      return ("Vikings and Saxons are still in the thick of battle.");
+        return ("Vikings and Saxons are still in the thick of battle.");
     }
   }  
 }
