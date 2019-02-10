@@ -112,23 +112,79 @@ War.prototype.addSaxon = function (saxon) {
 
 War.prototype.vikingAttack = function () {
 
-  var randomSaxon = [Math.floor(Math.random * saxonArmy.length)]
+  var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
 
-  var randomViking = vikingArmy[Math.floor(Math.random * vikingArmy.length)]
+  var randomViking = Math.floor(Math.random() * this.vikingArmy.length)
 
-  var saxon = saxonArmy[randomSaxon]
+  var saxon = this.saxonArmy[randomSaxon]
 
-  var viking = vikingArmy[randomViking]
+  var viking = this.vikingArmy[randomViking]
 
- var newHealth = saxon.receiveDamage(viking.strength)
+  var newHealth = saxon.receiveDamage(viking.strength)
 
-  if(saxon.receiveDamage.includes("died")) {
+  if(newHealth.includes("died")) {
 
-    this.SaxonArmy.slice(randomSaxon, 1)
+    this.saxonArmy.splice(randomSaxon, 1)
 
   }
 
   return newHealth
+
 }
 
-console.log(War.vikingAttack)
+
+
+
+War.prototype.saxonAttack = function () {
+
+  var randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+
+  var randomViking = Math.floor(Math.random() * this.vikingArmy.length)
+
+  var saxon = this.saxonArmy[randomSaxon]
+
+  var viking = this.vikingArmy[randomViking]
+
+  var newHealth = viking.receiveDamage(saxon.strength)
+
+  if(newHealth.includes("died")) {
+
+    this.vikingArmy.splice(randomViking, 1)
+
+  }
+
+  return newHealth
+
+}
+
+
+
+
+War.prototype.showStatus = function () {
+
+  if(this.saxonArmy.length === 0) {
+
+    return "Vikings have won the war of the century!"
+
+  } else if (this.vikingArmy.length === 0) {
+
+    return "Saxons have fought for their lives and survive another day..."
+
+  } else if((this.saxonArmy.length >= 1) && (this.vikingArmy.length >= 1)) {
+
+    return "Vikings and Saxons are still in the thick of battle."
+
+  }
+
+}
+
+
+
+var viking1 = new Viking ("Ragnar", 300, 150)
+var viking2 = new Viking ("BJorn", 60, 70)
+var viking3 = new Viking ("Lagartha", 80, 200)
+var viking4 = new Viking ("Torvi", 100, 150)
+var saxon1 = new Saxon ("Martha", 50, 60)
+var saxon2 = new Saxon ("Hedge", 1000, 300)
+var saxon3 = new Saxon ("Bert", 90, 100)
+
