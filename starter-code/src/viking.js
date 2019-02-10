@@ -29,15 +29,12 @@ function Viking(name, health, strength ) {
     Viking.prototype.receiveDamage = function (damage) {
      
         this.health=this.health-damage
-      
           if(this.health>0){
-      
             return (this.name+' has received '+damage+' points of damage');
-      
          }else {
-          return this.name+' has died in act of combat'};
+            return this.name+' has died in act of combat'};
 
-    }
+}
 
     this.battleCry= function battleCry(){
         return "Odin Owns You All!";
@@ -54,10 +51,21 @@ function Saxon(health, strength) {
         this.attack= function attack(){
             return this.strength
         }
-        this.receiveDamage= function receiveDamage(damage){
+
+
+        Saxon.prototype.receiveDamage = function(damage){
+            this.receiveDamage= function receiveDamage(damage){
             this.health= health-damage
-        }
+            if(this.health>0){
+                return ("A Saxon has received "+damage+" points of damage points of damage");
+             }else {
+                return ("A Saxon has died in combat")
+                };
+            }
+         }
+        
 }
+    
 
 
 // War
