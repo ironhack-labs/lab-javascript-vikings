@@ -26,9 +26,11 @@ class Soldier {
       this.health -= damage;
       if(this.health > 0) {
         return `${this.name} has received ${damage} points of damage`;
-      } else if (this.health <= 0) {
-        return `${this.name} has died in act of combat`;
       }
+      return `${this.name} has died in act of combat`;
+      // } else if (this.health <= 0) {
+      //   return `${this.name} has died in act of combat`;
+      // }
     }
 
     battleCry() {
@@ -85,24 +87,28 @@ class Soldier {
       let saxo;
       let viki;
       let nViki;
-
+      let resp;
   
       nViki = Math.floor(Math.random() * this.vikingArmy.length);
       viki = this.vikingArmy[nViki];
       saxo = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-      viki.receiveDamage(saxo.strength);
-
+      //viki.receiveDamage(saxo.strength);
+      resp = viki.receiveDamage(saxo.strength);
+      
       if(viki.health <= 0) {
         this.vikingArmy.splice(nViki, 1);
+        return resp;
       }
+
+      return resp;
     }
 
     showStatus() {
-      if (this.saxonArmy === 0) {
+      if (this.saxonArmy.length === 0) {
         return `Vikings have won the war of the century!`;
-      } else if (this.vikingArmy === 0) {
+      } else if (this.vikingArmy.length === 0) {
         return `Saxons have fought for their lives and survive another day...`;
-      } else if ((this.saxonArmy === 1) && (this.vikingArmy === 1)) {
+      } else if ((this.saxonArmy.length === 1) && (this.vikingArmy.length === 1)) {
         return `Vikings and Saxons are still in the thick of battle.`;
       }
 
