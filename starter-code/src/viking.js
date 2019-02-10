@@ -10,7 +10,12 @@ function Soldier(health,strength){
     }
 }
 
+
+
+
+
 // Viking
+    Viking.prototype=new Soldier ();
 
 function Viking(name, health, strength ) {
     this.name=name;
@@ -38,6 +43,9 @@ function Viking(name, health, strength ) {
 }
 
 // Saxon
+
+Saxon.prototype=new Soldier ();
+
 function Saxon(health, strength) {
         this.health=health;
         this.strength=strength;
