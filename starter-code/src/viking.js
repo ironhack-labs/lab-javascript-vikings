@@ -25,16 +25,18 @@ function Viking(name, health, strength ) {
     this.attack= function attack(){
         return this.strength
     }
-    this.receiveDamage = function receiveDamage(damage){
-        this.health= health-damage
-        Viking.call(this, health, damage);
-        this.checkLife= function(){
-            if (this.health>0){
-                console.log(this.name+"has received "+this.damage+"points of damage");
-            }else{
-                console.log(this.name+" has died in act of combat")
-            }
-        }
+    
+    Viking.prototype.receiveDamage = function (damage) {
+     
+        this.health=this.health-damage
+      
+          if(this.health>0){
+      
+            return (this.name+' has received '+damage+' points of damage');
+      
+         }else {
+          return this.name+' has died in act of combat'};
+
     }
 
     this.battleCry= function battleCry(){
