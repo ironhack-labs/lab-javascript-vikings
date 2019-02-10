@@ -58,25 +58,21 @@ class Soldier {
       this.addSaxon=function(rookieSaxon){
         this.saxonArmy.push(rookieSaxon);
       };
+
       this.vikingAttack=function(){
-        
-        let attackingViking = this.vikingArmy[  Math.random(this.vikingArmy.length)];
-        let indexSaxon = Math.random(this.saxonArmy.length);
-        let attackedSaxon =this.saxonArmy[ indexSaxon];
-        const returnMsg = attackedSaxon.receiveDamage(attackingViking.strength);
+        let attackingViking = this.vikingArmy[ Math.floor( Math.random()*this.vikingArmy.length)];
+        let attackedSaxon =this.saxonArmy[ Math.floor(Math.random()*this.saxonArmy.length)];
+        const message=attackedSaxon.receiveDamage(attackingViking.strength);
         this.removeCorpses(this.saxonArmy);
-        return(returnMsg);
-       
+        return(message);
       };
 
       this.saxonAttack=function(){
-        let attackingSaxon = this.saxonArmy[  Math.random(this.saxonArmy.length)];
-        let indexViking =Math.random(this.vikingArmy.length);
-        let attackedViking =this.vikingArmy[ indexViking ];
-       
+        let attackingSaxon = this.saxonArmy[  Math.floor(Math.random()*this.saxonArmy.length)];
+        let attackedViking =this.vikingArmy[ Math.floor(Math.random()*this.vikingArmy.length)];
+        const message=attackedViking.receiveDamage(attackingSaxon.strength);
         this.removeCorpses(this.vikingArmy);
-        //return('saxons');
-        return(attackedViking.receiveDamage(attackingSaxon.strength));
+        return(message);
       };
       this.showStatus=function(){
         if (this.saxonArmy.length === 0 ) {
@@ -99,8 +95,8 @@ class Soldier {
   };
 
 
-
 /*
+
   let cosmos = new War();
 
   for (let num=0; num < 10; num++) {
@@ -115,4 +111,5 @@ class Soldier {
   cosmos.saxonAttack();
   
   console.log(cosmos);
+
   */
