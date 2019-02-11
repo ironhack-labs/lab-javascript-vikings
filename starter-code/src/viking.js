@@ -37,6 +37,8 @@ function Viking(name, health, strength) {
     }
 }
 //var viking = new Viking("viking", health, strength)
+Viking.prototype = Object.create(Soldier.prototype)
+Viking.prototype.constructor = Viking
 
 // Saxon
 function Saxon(health, strength) {
@@ -56,3 +58,5 @@ function Saxon(health, strength) {
 
     }
 }
+Saxon.prototype = Object.create(Soldier.prototype)
+Saxon.prototype.constructor = Saxon
