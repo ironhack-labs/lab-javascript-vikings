@@ -36,7 +36,7 @@ function Viking(name, health, strength) {
 
     }
 }
-
+//var viking = new Viking("viking", health, strength)
 
 // Saxon
 function Saxon(health, strength) {
