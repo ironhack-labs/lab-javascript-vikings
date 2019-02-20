@@ -107,7 +107,7 @@ Once we have checked out that the test is failing, we can implement the code to 
 --------------------------------------------------------------------------------
 
 
-### Soldier
+### Iteration 1 - Soldier
 
 Modify the `Soldier` constructor function and add 2 methods to its prototype: `attack()`, and `receiveDamage()`.
 
@@ -131,7 +131,7 @@ Modify the `Soldier` constructor function and add 2 methods to its prototype: `a
 --------------------------------------------------------------------------------
 
 
-### Viking
+### Iteration 2 - Viking
 
 A `Viking` is a `Soldier` with an additional property, their `name`. They also have a different `receiveDamage()` method and new method, `battleCry()`.
 
@@ -176,7 +176,7 @@ Modify the `Viking` constructor function, have it inherit from `Soldier`, reimpl
 --------------------------------------------------------------------------------
 
 
-### Saxon
+### Iteration 3 - Saxon
 
 A `Saxon` is a weaker kind of `Soldier`. Unlike a `Viking`, a `Saxon` has no name. Their `receiveDamage()` method will also be different than the original `Soldier` version.
 
@@ -212,7 +212,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and rei
 --------------------------------------------------------------------------------
 
 
-### (BONUS) War
+### Iteration 4 - War
 
 Now we get to the good stuff: WAR! Our `War` constructor function will allow us to have a `Viking` army and a `Saxon` army that battle each other.
 
