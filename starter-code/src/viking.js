@@ -34,9 +34,7 @@ function Viking(name, healthArg, strengthArg) {
     this.receiveDamage = function (theDamage) {
 
         this.health -= theDamage;
-
-        this.health > 0
-
+        
         return this.health > 0 ?
             this.name + " has received " + theDamage + " points of damage" :
             this.name + " has died in act of combat";
@@ -138,12 +136,11 @@ function War() {
 
     this.showStatus = function () {
 
-        if (this.saxonArmy == 0) {
-            return "Vikings have won the war of the century!";
-        } else if (this.vikingArmy == 0) {
-            return "Saxons have fought for their lives and survive another day...";
-        } else {
-            return "Vikings and Saxons are still in the thick of battle.";
-        }
+     return this.saxonArmy == 0? 
+            "Vikings have won the war of the century!":
+            this.vikingArmy == 0? 
+            "Saxons have fought for their lives and survive another day...":
+            "Vikings and Saxons are still in the thick of battle.";
+        
     };
 }
