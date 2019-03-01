@@ -46,65 +46,54 @@ Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
 
 function Saxon(healthArg, strengthArg) {
-    Soldier.call(this, healthArg, strengthArg)
-    this.receiveDamage = function (theDamage) {
 
-        this.health -= theDamage;
-        return this.health > 0 ?
-            "A Saxon has received " + theDamage + " points of damage" :
-            "A Saxon has died in combat";
+        Soldier.call(this, healthArg, strengthArg)
+        this.receiveDamage = function (theDamage) {
 
+            this.health -= theDamage;
+            return this.health > 0 ?
+                "A Saxon has received " + theDamage + " points of damage" :
+                "A Saxon has died in combat";
+
+        }
     }
-}
 
 // WarConstructor
 function War() {
 
-    this.vikingArmy = [];
-    this.saxonArmy = [];
+        this.vikingArmy = [];
+        this.saxonArmy = [];
 
-    this.addViking = function (Viking) {
+        this.addViking = function (Viking) {
+            this.vikingArmy.push(Viking);
+        };
 
-        this.vikingArmy.push(Viking);
-    };
+        this.addSaxon = function (Saxon) {
+            this.saxonArmy.push(Saxon);
+        };
 
-    this.addSaxon = function (Saxon) {
+        this.vikingAttack = function () {
 
-        this.saxonArmy.push(Saxon);
-
-
-
-    };
-
-    this.vikingAttack = function () {
-
-        var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+            var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+            var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+            var receivedDamage = saxon.receiveDamage(viking.strength);
 
 
+            if (saxon.health <= 0) {
+                var index = this.saxonArmy.indexOf(saxon);
 
-        var receivedDamage = saxon.receiveDamage(viking.strength);
-
-
-        if (saxon.health <= 0) {
-
-            var index = this.saxonArmy.indexOf(saxon);
-
-            if (index > -1) {
-
-                this.saxonArmy.splice(index, 1);
+                if (index > -1) {
+                    this.saxonArmy.splice(index, 1);
+                }
             }
-
-        } return receivedDamage;
+            return receivedDamage;
 
     };
 
     this.saxonAttack = function () {
 
         var saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-
         var viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-
         var receivedDamage = viking.receiveDamage(saxon.strength);
 
         if (viking.health <= 0) {
@@ -112,12 +101,11 @@ function War() {
             var index = this.vikingArmy.indexOf(viking);
 
             if (index > -1) {
-
                 this.vikingArmy.splice(index, 1);
-
             }
 
-        } return receivedDamage;
+        } 
+        return receivedDamage;
 
     };
 
