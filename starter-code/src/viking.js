@@ -1,7 +1,5 @@
 
 //SoldierConstructor
-function Soldier() { }
-
 function Soldier(healthArg, strengthArg) {
 
     this.health = healthArg;
@@ -17,10 +15,6 @@ function Soldier(healthArg, strengthArg) {
 }
 
 // VikingContructor
-function Viking() {
-
-}
-
 //viking está herdando de soldado 
 
 Viking.prototype = Object.create(Soldier.prototype);
@@ -34,7 +28,7 @@ function Viking(name, healthArg, strengthArg) {
     this.receiveDamage = function (theDamage) {
 
         this.health -= theDamage;
-        
+
         return this.health > 0 ?
             this.name + " has received " + theDamage + " points of damage" :
             this.name + " has died in act of combat";
@@ -47,9 +41,6 @@ function Viking(name, healthArg, strengthArg) {
 }
 
 // saxonContructor
-function Saxon() {
-
-}
 //Saxon herdando atributos de Soldado
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
@@ -67,10 +58,6 @@ function Saxon(healthArg, strengthArg) {
 }
 
 // WarConstructor
-function War() {
-
-}
-
 function War() {
 
     this.vikingArmy = [];
