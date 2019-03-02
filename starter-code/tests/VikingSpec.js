@@ -334,6 +334,7 @@ describe("War", function () {
        it("should remove dead vikings from the army", function () {
          for (var i = 0; i < 12; i += 1) {
            war.saxonAttack();
+           console.log(war.vikingArmy);
          }
          expect(war.vikingArmy.length).toEqual(0);
        });
