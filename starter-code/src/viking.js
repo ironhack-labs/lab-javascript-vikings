@@ -22,10 +22,7 @@ class Viking extends Soldier{
 
   receiveDamage(damage){
     this.health -= damage;
-    if(this.health <= 0){
-      return `${this.name} has died in act of combat`;
-    }
-    return `${this.name} has received ${damage} points of damage`;
+    return this.health <= 0 ? `${this.name} has died in act of combat` : `${this.name} has received ${damage} points of damage`;
   }
 
   battleCry(){
@@ -61,18 +58,24 @@ class War {
     this.saxonArmy.push(saxon);
   }
 
-  vikingAttack(){
-    let vikingStrength = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)].attack();
-    let response = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)].receiveDamage(vikingStrength);
-    this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0);
+  // This method lets any army to attack any other army
+  armyAttack(fromArmy, toArmy){
+    let attackerStrength = fromArmy[Math.floor(Math.random()*fromArmy.length)].attack();
+    let response = toArmy[Math.floor(Math.random()*toArmy.length)].receiveDamage(attackerStrength);
+    
+    // Filter does not mutate the array, that's why I use forEach with splice instead
+    toArmy.forEach((defender, index) => defender.health <= 0 ? toArmy.splice(index, 1) : defender);
     return response;
   }
 
+  // This method is limited because right now vikings can only attack saxons. If there were another army this method would not work and it would be mandatory to use armyAttack instead
+  vikingAttack(){
+    return this.armyAttack(this.vikingArmy, this.saxonArmy);
+  }
+
+  // It has the same problems as vikingAttack
   saxonAttack(){
-    let saxonStrength = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)].attack();
-    let response = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)].receiveDamage(saxonStrength);
-    this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0);
-    return response;
+    return this.armyAttack(this.saxonArmy, this.vikingArmy);
   }
 
   showStatus(){
@@ -82,6 +85,7 @@ class War {
     if(this.vikingArmy.length <= 0){
       return 'Saxons have fought for their lives and survive another day...';
     }
+
     return 'Vikings and Saxons are still in the thick of battle.';
   }
 }

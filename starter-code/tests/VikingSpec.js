@@ -368,5 +368,51 @@ describe("War", function () {
         expect(war.showStatus()).toEqual("Vikings and Saxons are still in the thick of battle.");
       });
     });
+
+  });
+
+});
+
+// New tests
+describe('Refactorized army attack (To practise a TDD approach :) ) | ', function(){
+  var attacker, defender, war;
+
+  beforeEach(function () {
+    attacker = new Soldier(50, 120);
+    defender = new Soldier(25, 35);
+    war = new War();
+    war.attackerArmy = [attacker];
+    war.defenderArmy = [defender];
+  });
+
+  describe('armyAttack() method', function(){
+    it('should be a function', function(){
+      expect(typeof war.armyAttack).toBe('function');
+    });
+
+    it('should receive the army which will attack and the army wich will be damaged as parameters in that order', function(){
+      expect(war.armyAttack.length).toEqual(2);
+    });
+
+    it('should make armyAttack(attackerArmy, defenderArmy) to get the strength of the attacker', function(){
+      let initialHealth = defender.health;
+      war.armyAttack(war.attackerArmy, war.defenderArmy);
+      expect(defender.health).toBe(initialHealth - attacker.strength);
+    });
+
+    it('should not remove the soldiers which are still alive at the end of the army attack ', function(){
+      attacker = new Soldier(25, 35);
+      defender = new Soldier(50, 120);
+      war = new War();
+      war.attackerArmy = [attacker];
+      war.defenderArmy = [defender];
+      war.armyAttack(war.attackerArmy, war.defenderArmy)
+      expect(war.defenderArmy.length).toBe(1);
+    });
+
+    it('should remove the died defensor\'s soldiers from the defensor array', function(){
+      war.armyAttack(war.attackerArmy, war.defenderArmy);
+      expect(war.defenderArmy.length).toBe(0);
+    });
   });
 });
