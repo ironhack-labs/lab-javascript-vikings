@@ -98,5 +98,9 @@ class War {
     };
   };
 
+  showStatus() {
+
+  };
+
 
 };

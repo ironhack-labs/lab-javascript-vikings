@@ -331,12 +331,12 @@ describe("War", function () {
         expect(viking.health).toEqual(oldHealth - saxon.strength);
       });
 
-      // it("should remove dead vikings from the army", function () {
-      //   for (var i = 0; i < 12; i += 1) {
-      //     war.saxonAttack();
-      //   }
-      //   expect(war.vikingArmy.length).toEqual(0);
-      // });
+      it("should remove dead vikings from the army", function () {
+        for (var i = 0; i < 12; i += 1) {
+          war.saxonAttack();
+        }
+        expect(war.vikingArmy.length).toEqual(0);
+      });
 
       // it("should return result of calling receiveDamage() of a Viking with the strength of a Saxon", function () {
       //   expect(war.saxonAttack()).toEqual(viking.name + " has received " + saxon.strength + " points of damage");
@@ -344,9 +344,9 @@ describe("War", function () {
     });
 
     describe("showStatus() method", function () {
-      // it("should be a function", function () {
-      //   expect(typeof(war.showStatus)).toBe("function");
-      // });
+      it("should be a function", function () {
+        expect(typeof (war.showStatus)).toBe("function");
+      });
 
       // it("should receive 0 arguments", function () {
       //   expect(war.showStatus.length).toEqual(0);
