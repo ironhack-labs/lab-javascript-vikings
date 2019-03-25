@@ -348,9 +348,9 @@ describe("War", function () {
         expect(typeof (war.showStatus)).toBe("function");
       });
 
-      // it("should receive 0 arguments", function () {
-      //   expect(war.showStatus.length).toEqual(0);
-      // });
+      it("should receive 0 arguments", function () {
+        expect(war.showStatus.length).toEqual(0);
+      });
 
       // it("should return \"Vikings have won the war of the century!\", if the Saxons array is empty", function () {
       //   war.vikingAttack();
