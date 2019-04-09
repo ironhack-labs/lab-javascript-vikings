@@ -58,47 +58,45 @@ class War {
   constructor () {
     this.vikingArmy = [];
     this.saxonArmy = [];
-
-    this.addViking = function (viking) {
+  }
+    addViking(viking) {
       this.vikingArmy.push(viking);
       
     }
-    this.addSaxon = function (saxon) {
+    addSaxon(saxon) {
       this.saxonArmy.push(saxon);
     }
-    this.vikingAttack = function () {
+    vikingAttack() {
       let i = genRandom(this.saxonArmy.length);
-      let results = this.saxonArmy[i].receiveDamage(this.vikingArmy[i].strength);
+      let n = genRandom(this.vikingArmy.length);
+
+      let results = this.saxonArmy[i].receiveDamage(this.vikingArmy[n].strength);
 
       if (this.saxonArmy[i].health <= 0) {
-            this.saxonArmy.pop(i);
+            this.saxonArmy.splice(i , 1);
             return results;
       
           } else {
             return results;
           }
-      
-
-
 
     }
-    this.saxonAttack = function () {
+    saxonAttack() {
       let i = genRandom(this.vikingArmy.length);
-      let results =this.vikingArmy[i].receiveDamage(this.saxonArmy[i].strength);
+      let n = genRandom(this.saxonArmy.length);
+
+      let results = this.vikingArmy[i].receiveDamage(this.saxonArmy[n].strength);
 
        if (this.vikingArmy[i].health <= 0) {
-             this.vikingArmy.pop(i);
+             this.vikingArmy.splice(i , 1);
              return results;
 
       } else {
         return results;
       }
-
-
-
     }
     
-    this.showStatus = function () {
+    showStatus() {
       if (this.vikingArmy.length <= 0) {
         return (`Saxons have fought for their lives and survive another day...`);
 
@@ -111,7 +109,7 @@ class War {
       }
 
     }
-  }
+  
 }
 
 function genRandom(x) {
