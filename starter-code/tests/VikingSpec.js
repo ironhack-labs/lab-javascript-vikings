@@ -343,7 +343,7 @@ describe("War", function () {
         expect(war.saxonAttack()).toEqual(viking.name + " has received " + saxon.strength + " points of damage");
       });
     });
-
+// Show Status
     describe("showStatus() method", function () {
       it("should be a function", function () {
         expect(typeof(war.showStatus)).toBe("function");
