@@ -90,7 +90,7 @@ class War {
     const ramdomsaxon = Math.floor(Math.random() * this.saxonArmy.length)
     const attack = this.vikingArmy[ramdomviking].receiveDamage(this.saxonArmy[ramdomsaxon].strength)
     if (this.vikingArmy[ramdomviking].health <=0) {
-      this.vikingArmy.pop(ramdomviking)
+      this.vikingArmy.splice(ramdomviking, 1)
       
     }
     return attack
