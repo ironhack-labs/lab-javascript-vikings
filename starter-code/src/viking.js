@@ -87,9 +87,7 @@ class War {
     if (this.saxonArmy[randomNumberSaxon].health === 0) {
       this.vikingArmy.splice(randomNumberSaxon, 1)
     }
-   /*  if (this.saxonArmy[randomNumberSaxon].health === 0) {
-      this.saxonArmy.splice(randomNumberSaxon, 1)
-    } */
+
     return resultAttack
   }
 
@@ -106,11 +104,14 @@ class War {
   }
 
   showStatus() {
-    if (this.vikingArmy.length === 0) {
-      return "Saxons have fought for their lives and survive another day..."
+    if (this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!"
+    }
+    else if (this.vikingArmy.length === 0) {
+      return"Saxons have fought for their lives and survive another day..."
     
-    } else if  (this.saxonArmy.legth === 0) {
-      return "Vikings and Saxons are still in the thick of battle.\", if there are still both Vikings and Saxons"
+    } else {
+      return "Vikings and Saxons are still in the thick of battle."
 
     }
 
