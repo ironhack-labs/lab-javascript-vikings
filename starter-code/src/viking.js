@@ -27,7 +27,7 @@ class Viking  extends Soldier{
   }
   receiveDamage(damage) {
     this.health -= damage
-    if (this.health === 0) {
+    if (this.health <= 0) {
       return `${this.name} has died in act of combat`
     } else {
     return `${this.name} has received ${damage} points of damage`
@@ -55,7 +55,7 @@ class Saxon extends Soldier {
 
   receiveDamage(damage) {
     this.health -= damage
-    if (this.health === 0) {
+    if (this.health <= 0) {
       return `A Saxon has died in combat`
     } else {
     return `A Saxon has received ${damage} points of damage`
@@ -84,8 +84,9 @@ class War {
     const randomNumberSaxon = Math.floor(Math.random ()*this.saxonArmy.length)
     const randomNumberViking = Math.floor(Math.random ()*this.vikingArmy.length)
     const resultAttack = this.saxonArmy[randomNumberSaxon].receiveDamage(this.vikingArmy[randomNumberViking].strength)
-    if (this.saxonArmy[randomNumberSaxon].health === 0) {
-      this.vikingArmy.splice(randomNumberSaxon, 1)
+    
+    if (this.saxonArmy[randomNumberSaxon].health <= 0) {
+      this.saxonArmy.splice(randomNumberSaxon, 1)
     }
 
     return resultAttack
@@ -96,7 +97,7 @@ class War {
     const randomNumberSaxon = Math.floor(Math.random ()*this.saxonArmy.length)
     const randomNumberViking = Math.floor(Math.random ()*this.vikingArmy.length)
     const resultAttack = this.vikingArmy[randomNumberViking].receiveDamage(this.saxonArmy[randomNumberSaxon].strength)
-    if (this.vikingArmy[randomNumberViking].health === 0) {
+    if (this.vikingArmy[randomNumberViking].health <= 0) {
       this.vikingArmy.splice(randomNumberViking, 1)
     }
     return resultAttack
