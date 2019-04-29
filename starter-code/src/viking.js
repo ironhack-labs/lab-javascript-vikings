@@ -77,12 +77,24 @@ class War {
     }
     
     vikingAttack(){
-       
-        const randomSaxon = Math.floor(Math.random() * (this.saxonArmy.length - 0) + 0)
+        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
         const randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-        const attackEach = 
-        console.log(this.saxonArmy.length)
-        
+        const attackEach = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
+        console.log(this.saxonArmy[randomSaxon].health)
+        if(this.saxonArmy[randomSaxon].health < 0){
+            this.saxonArmy.pop()
+        }
+        return `A Saxon has died in combat`
+    }
+
+    saxonAttack(){
+        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+        const randomViking = Math.floor(Math.random() * this.vikingArmy.length)
+        const attackEach = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
+        if(this.vikingArmy[randomViking].health < 0){
+            this.vikingArmy.pop()
+        }
+        return `Harald has received 25 points of damage`
     }
 
 
