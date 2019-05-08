@@ -233,6 +233,7 @@ describe("War", function () {
     war    = new War();
   });
 
+  /* aqui*/
   describe("constructor function", function () {
     it("should receive 0 arguments", function () {
       expect(War.length).toEqual(0);
