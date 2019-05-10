@@ -68,11 +68,9 @@ class War {
     this.saxonArmy[this.saxonIndex].receiveDamage(this.vikingArmy[this.vikingIndex].strength);
     // Remove the saxon if dead
     if(this.saxonArmy[this.saxonIndex].health === 0){
-      this.saxonArmy.splice(this.saxonIndex, 2);
+      this.saxonArmy.splice(this.saxonIndex, 1);
     }
-
   }
-
   getRandomPlayer(armyArray){
     let soldierIndex = 0;
     return soldierIndex = Math.floor(Math.random()*armyArray.length);
