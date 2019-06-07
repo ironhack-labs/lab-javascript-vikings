@@ -3,57 +3,21 @@ describe("Soldier", function () {
   var strength = 150;
   var health   = 300;
 
-  beforeEach (function () {
-    soldier = new Soldier(health, strength);
-  });
 
-  describe("constructor function", function () {
-    // it("should receive 2 arguments (health & strength)", function () {
-    //   expect(Soldier.length).toEqual(2);
-    // });
 
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
+  class soldier {
+    constructor(health, strength) {
+   
+    }
+   attacks() {
+     return soldier.health
+   }
 
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
-  });
+   receiveDamage(damage) { 
+     health -=damage;
+   }
+  }
 
-  describe("attack() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.attack)).toBe("function");
-    // });
-
-    // it("should receive 0 arguments", function () {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
-
-    // it("should return the strength property of the Soldier", function () {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
-  });
-
-  describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.receiveDamage)).toBe("function");
-    // });
-
-    // it("should receive 1 argument (the damage)", function () {
-    //   expect(soldier.receiveDamage.length).toEqual(1);
-    // });
-
-    // it("should remove the received damage from the health property", function () {
-    //   soldier.receiveDamage(50);
-    //   expect(soldier.health).toEqual(health - 50);
-    // });
-
-    // it("shouldn't return anything", function () {
-    //   expect(soldier.receiveDamage(50)).toEqual(undefined);
-    // });
-  });
-});
 
 
 describe("Viking", function () {
@@ -62,85 +26,27 @@ describe("Viking", function () {
   var strength = 150;
   var health   = 300;
 
-  beforeEach (function () {
-    viking = new Viking(name, health, strength);
-  });
+  class viking extends soldier {
+    constructor(name, health, strength) {
+    super(name, health, strength) 
+     this.name = name
+  }
+  attacks() {
+    return viking.health
+  }
+  
+  receiveDamage(damage) { 
+    health -=damage;
+     if(viking.health>0) {
+       return `${viking.name} has received ${damage} points of damage`
+     }
+     else {
+       return `${viking.name} has died in act of combat`
+     }
 
-  // it("should inherit from Soldier", function () {
-  //   expect(viking instanceof Soldier).toEqual(true);
-  // });
+  }
 
-  describe("constructor function", function () {
-    // it("should receive 3 arguments (name, health & strength)", function () {
-    //   expect(Viking.length).toEqual(3);
-    // });
-
-    // it("should receive the name property as its 1st argument", function () {
-    //   expect(viking.name).toEqual(name);
-    // });
-
-    // it("should receive the health property as its 2nd argument", function () {
-    //   expect(viking.health).toEqual(health);
-    // });
-
-    // it("should receive the strength property as its 3rd argument", function () {
-    //   expect(viking.strength).toEqual(strength);
-    // });
-  });
-
-  describe("attack() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(viking.attack)).toBe("function");
-    // });
-
-    // it("should receive 0 arguments", function () {
-    //   expect(viking.attack.length).toEqual(0);
-    // });
-
-    // it("should return the strength property of the Viking", function () {
-    //   expect(viking.attack()).toEqual(strength);
-    // });
-  });
-
-  describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(viking.receiveDamage)).toBe("function");
-    // });
-
-    // it("should receive 1 argument (the damage)", function () {
-    //   expect(viking.receiveDamage.length).toEqual(1);
-    // });
-
-    // it("should remove the received damage from the health property", function () {
-    //   viking.receiveDamage(50);
-    //   expect(viking.health).toEqual(health - 50);
-    // });
-
-    // it("should return \"NAME has received DAMAGE points of damage\", if the Viking is still alive", function () {
-    //   expect(viking.receiveDamage(50)).toEqual(name + " has received 50 points of damage");
-    //   expect(viking.receiveDamage(75)).toEqual(name + " has received 75 points of damage");
-    // });
-
-    // it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
-    //   expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
-    // });
-  });
-
-  describe("battleCry() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(viking.battleCry)).toBe("function");
-    // });
-
-    // it("should receive 0 arguments", function () {
-    //   expect(viking.battleCry.length).toEqual(0);
-    // });
-
-    // it("should return \"Odin Owns You All!\"", function () {
-    //   expect(viking.battleCry()).toEqual("Odin Owns You All!");
-    // });
-  });
-});
-
+  
 
 describe("Saxon", function () {
   var saxon;
