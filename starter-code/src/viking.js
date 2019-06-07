@@ -59,21 +59,21 @@ class War {
   }
 
   vikingAttack() {
-    let randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-     let result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].attack())
-    if (this.saxonArmy[randomSaxon].health <= 0) {
-      this.saxonArmy.splice(randomSaxon,1)
+    let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+     let result = this.saxonArmy[randomSaxonIndex].receiveDamage(this.vikingArmy[randomVikingIndex].attack())
+    if (this.saxonArmy[randomSaxonIndex].health <= 0) {
+      this.saxonArmy.splice(randomSaxonIndex,1)
     } 
     return result
     }
 
   saxonAttack() {
-    let randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-    let result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].attack())
-    if (this.vikingArmy[randomViking].health <= 0) {
-      this.vikingArmy.splice(randomViking,1)
+    let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+    let result = this.vikingArmy[randomVikingIndex].receiveDamage(this.saxonArmy[randomSaxonIndex].attack())
+    if (this.vikingArmy[randomVikingIndex].health <= 0) {
+      this.vikingArmy.splice(randomVikingIndex,1)
     } 
     return result
     }
