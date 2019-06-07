@@ -311,8 +311,8 @@ describe("War", function () {
          expect(war.saxonArmy.length).toEqual(0);
        });
 
-      it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function () {
-        expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
+       it("should return result of calling receiveDamage() of a Saxon with the strength of a Viking", function () {
+         expect(war.vikingAttack()).toEqual("A Saxon has died in combat");
        });
     });
 
@@ -333,7 +333,7 @@ describe("War", function () {
 
        it("should remove dead vikings from the army", function () {
          for (var i = 0; i < 12; i += 1) {
-           war.saxonAttack(0);
+           war.saxonAttack();
          }
          expect(war.vikingArmy.length).toEqual(0);
        });
