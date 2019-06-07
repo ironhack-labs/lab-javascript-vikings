@@ -44,6 +44,43 @@ return `A Saxon has received ${damage} points of damage`
 }  
 }
 }
-
 // War
-class War {}
+class War {
+  constructor () {
+    this.vikingArmy = []
+    this.saxonArmy = []
+  }
+  addViking = (viking) => {
+  this.vikingArmy.push(viking)
+  }
+  addSaxon = (saxon) => {
+    this.saxonArmy.push(saxon)
+    }
+  vikingAttack = () => {
+    let rndSax = Math.floor(Math.random() * (this.saxonArmy.length-1))
+    let rndViking = Math.floor(Math.random() * (this.vikingArmy.length-1))
+   let result= this.saxonArmy[rndSax].receiveDamage (this.vikingArmy[rndViking].attack())
+  if(rndSax.health <= 0){
+     this.saxonArmy.splice(rndSax,1)
+  }
+  return result
+  }
+  saxonAttack = () => {
+    let rndSax = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    let rndViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+   let result= rndViking.receiveDamage(rndSax.attack())
+  if(rndViking.health <= 0){
+     this.vikingArmy.splice((this.vikingArmy.indexOf(rndViking),1))
+  }
+  return result
+  }  
+  showStatus = () => {
+    if (this.saxonArmy.length === 0) {
+      return `Vikings have won the word of the entury!`
+    } if (this.vikingArmy.length === 0) {
+      return `Saxons have fought for their lives and survive another day...`
+    } else {
+      return `Vikings and Saxons are still in the thick of battle`
+    }
+  }  
+}
