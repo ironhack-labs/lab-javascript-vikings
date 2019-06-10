@@ -77,7 +77,7 @@ class War {
     saxonOne.receiveDamage(vikingOne.strength);
 
     if (saxonOne.health <= 0) {
-      this.saxonArmy.pop(saxonOne);
+      this.saxonArmy.splice(saxonOne, 1);
       return `A Saxon has died in combat`;
     } else {
       return `A Saxon has received ${vikingOne.strength} points of damage`;
