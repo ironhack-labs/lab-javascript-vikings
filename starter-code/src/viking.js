@@ -22,7 +22,6 @@ class Viking extends Soldier {
   }
   
   attack() {
-    console.log(super.attack());
     return super.attack();
   }
 
@@ -84,7 +83,6 @@ class War {
     if (result == "A Saxon has died in combat") {
       this.saxonArmy.splice(saxonIndex, 1);
     };
-    console.log(this.saxonArmy);
     return result;
   }
 
@@ -97,7 +95,6 @@ class War {
     if (result.match(/has died in act of combat$/)) {
       this.vikingArmy.splice(vikingIndex, 1);
     };
-    console.log(this.saxonArmy);
     return result;
   }
 
