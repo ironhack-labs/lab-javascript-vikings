@@ -8,50 +8,50 @@ describe("Soldier", function () {
   });
 
   describe("constructor function", function () {
-    // it("should receive 2 arguments (health & strength)", function () {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+    it("should receive 2 arguments (health & strength)", function () {
+      expect(Soldier.length).toEqual(2);
+    });
 
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
+    it("should receive the health property as its 1st argument", function () {
+      expect(soldier.health).toEqual(health);
+    });
 
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 2nd argument", function () {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
   describe("attack() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.attack)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(soldier.attack)).toBe("function");
+    });
 
-    // it("should receive 0 arguments", function () {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", function () {
+      expect(soldier.attack.length).toEqual(0);
+    });
 
-    // it("should return the strength property of the Soldier", function () {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
+    it("should return the strength property of the Soldier", function () {
+      expect(soldier.attack()).toEqual(strength);
+    });
   });
 
   describe("receiveDamage() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.receiveDamage)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(soldier.receiveDamage)).toBe("function");
+    });
 
-    // it("should receive 1 argument (the damage)", function () {
-    //   expect(soldier.receiveDamage.length).toEqual(1);
-    // });
+    it("should receive 1 argument (the damage)", function () {
+      expect(soldier.receiveDamage.length).toEqual(1);
+    });
 
-    // it("should remove the received damage from the health property", function () {
-    //   soldier.receiveDamage(50);
-    //   expect(soldier.health).toEqual(health - 50);
-    // });
+    it("should remove the received damage from the health property", function () {
+      soldier.receiveDamage(50);
+      expect(soldier.health).toEqual(health - 50);
+    });
 
-    // it("shouldn't return anything", function () {
-    //   expect(soldier.receiveDamage(50)).toEqual(undefined);
-    // });
+    it("shouldn't return anything", function () {
+      expect(soldier.receiveDamage(50)).toEqual(undefined);
+    });
   });
 });
 
@@ -70,7 +70,7 @@ describe("Viking", function () {
   //   expect(viking instanceof Soldier).toEqual(true);
   // });
 
-  describe("constructor function", function () {
+  // describe("constructor function", function () {
     // it("should receive 3 arguments (name, health & strength)", function () {
     //   expect(Viking.length).toEqual(3);
     // });
@@ -86,9 +86,9 @@ describe("Viking", function () {
     // it("should receive the strength property as its 3rd argument", function () {
     //   expect(viking.strength).toEqual(strength);
     // });
-  });
+  // });
 
-  describe("attack() method", function () {
+  // describe("attack() method", function () {
     // it("should be a function", function () {
     //   expect(typeof(viking.attack)).toBe("function");
     // });
@@ -100,9 +100,9 @@ describe("Viking", function () {
     // it("should return the strength property of the Viking", function () {
     //   expect(viking.attack()).toEqual(strength);
     // });
-  });
+  // });
 
-  describe("receiveDamage() method", function () {
+  // describe("receiveDamage() method", function () {
     // it("should be a function", function () {
     //   expect(typeof(viking.receiveDamage)).toBe("function");
     // });
@@ -124,9 +124,9 @@ describe("Viking", function () {
     // it("should return \"NAME has died in act of combat\", if the Viking dies", function () {
     //   expect(viking.receiveDamage(health)).toEqual(name + " has died in act of combat");
     // });
-  });
+  // });
 
-  describe("battleCry() method", function () {
+  // describe("battleCry() method", function () {
     // it("should be a function", function () {
     //   expect(typeof(viking.battleCry)).toBe("function");
     // });
@@ -138,7 +138,7 @@ describe("Viking", function () {
     // it("should return \"Odin Owns You All!\"", function () {
     //   expect(viking.battleCry()).toEqual("Odin Owns You All!");
     // });
-  });
+  // });
 });
 
 
