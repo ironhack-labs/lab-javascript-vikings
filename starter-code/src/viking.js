@@ -83,17 +83,17 @@ class War  {
     }
 
     vikingAttack(){
-        // console.log("test")
+      //super.receiveDamage();
 
     let saxonWar = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
     let vikingGuy =  this.vikingArmy[Math.floor(Math.random()*this.saxonArmy.length)];
 
-    
-    let theHealth = saxonWar.health - vikingGuy.strength;
-    if (theHealth <= 0) {   
-        this.saxonArmy.splice([Math.floor(Math.random()*this.vikingArmy.length)], 1)
+     let thehealth = saxonWar.receiveDamage(vikingGuy.strength);
+   // let theHealth = saxonWar.health - vikingGuy.strength;
+    if (thehealth === "A Saxon has died in combat") {   
+        this.saxonArmy.splice([Math.floor(Math.random()*this.vikingArmy.length)], 1);
     }
-   return saxonWar.receiveDamage(vikingGuy.attack());
+   return thehealth;
 
 
 
@@ -104,18 +104,16 @@ class War  {
     saxonAttack(){
   
     let vikingWarrior = this.vikingArmy[Math.floor(Math.random()*this.saxonArmy.length)];
-    let SaxonWarrior =  this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+    let saxonWarrior =  this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
 
-
-    let newHealth = vikingWarrior.health - SaxonWarrior.strength;
-    
-    
-        if (newHealth <= 0) {   
-            this.vikingArmy.splice([Math.floor(Math.random()*this.saxonArmy.length)], 1)
-        }
     
 
-    return vikingWarrior.receiveDamage(SaxonWarrior.attack());
+let thehealth = vikingWarrior.receiveDamage(saxonWarrior.strength);
+   // let theHealth = saxonWar.health - vikingGuy.strength;
+    if (thehealth.match(/died/i)) {   
+        this.vikingArmy.splice([Math.floor(Math.random()*this.saxonArmy.length)], 1);
+    }
+   return thehealth;
 
     }
 
@@ -139,10 +137,3 @@ class War  {
 
     
 }// end of the class
-
-
-
-
-
-
-
