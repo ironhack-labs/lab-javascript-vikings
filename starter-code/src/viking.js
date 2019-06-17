@@ -4,11 +4,12 @@ class Soldier {
         this.health = healthArg;
         this.strength = strengthArg;
     }
-    attack() {
+
+    attack(){
         return this.strength;
     }
 
-    receiveDamage(damage) {
+    receiveDamage(damage){
         this.health -= damage;
     }
 }
@@ -19,17 +20,12 @@ class Viking extends Soldier {
         super(health, strength);
         this.name = name;
     }
-    
-    receiveDamage(damage) {
+    receiveDamage(damage){
         this.health -= damage;
-        if (this.health > 0){
-            return `${this.name} has received ${damage} points of damage`
-        } else {
-            return `${this.name} has died in act of combat`
-        }
+        return (this.health <= 0) ? `${this.name} has died in act of combat` : `${this.name} has received ${damage} points of damage`;
     }
 
-    battleCry() {
+    battleCry(){
         return 'Odin Owns You All!'
     }
 }
@@ -39,15 +35,12 @@ class Saxon extends Soldier {
     constructor(health, strength){
         super(health, strength);
     }
-    
-    receiveDamage(damage) {
+
+    receiveDamage(damage){
         this.health -= damage;
-        if (this.health > 0){
-            return `A Saxon has received ${damage} points of damage`
-        } else {
-            return `A Saxon has died in combat`
-        }
+        return (this.health <= 0) ? `A Saxon has died in combat` : `A Saxon has received ${damage} points of damage`;
     }
+
 }
 
 // War
@@ -57,45 +50,37 @@ class War {
         this.saxonArmy = [];
     }
 
-    addViking(viking) {
+    addViking(viking){
         this.vikingArmy.push(viking)
     }
-    
-    addSaxon(saxon) {
+
+    addSaxon(saxon){
         this.saxonArmy.push(saxon)
     }
 
     vikingAttack(){
-        let afterVAttack = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
-        
-        if (this.saxonArmy[0].health <= 0){
+        const deadSaxon = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+        if(this.saxonArmy[0].health <= 0){
             this.saxonArmy.shift();
         }
-        return afterVAttack;
+        return deadSaxon;
     }
 
     saxonAttack(){
-        let afterSAttack = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
-        
-        // this.vikingArmy.filter((vikingSoldier) => vikingSoldier.health <= 0);
-
-        if (this.vikingArmy[0].health <= 0){
+        const deadViking = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+        if(this.vikingArmy[0].health <= 0){
             this.vikingArmy.shift();
         }
-
-        console.log(this.vikingArmy)
-           
-        return afterSAttack;
-
+        return deadViking;
     }
 
     showStatus(){
-        if(this.saxonArmy.length <= 0){
-            return 'Vikings have won the war of the century!';
-        } else if (this.vikingArmy.length <= 0) {
-            return 'Saxons have fought for their lives and survive another day...';
+        if(this.saxonArmy.length === 0){
+            return 'Vikings have won the war of the century!'
+        } else if(this.vikingArmy.length === 0){
+            return 'Saxons have fought for their lives and survive another day...'
         } else {
-            return 'Vikings and Saxons are still in the thick of battle.';
+            return 'Vikings and Saxons are still in the thick of battle.'
         }
     }
 }
