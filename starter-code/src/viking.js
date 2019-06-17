@@ -84,6 +84,3 @@ class War {
   }
 }
 let war = new War();
-// war.addViking({name:'asdf', health:'20', strength:'150'});
-// war.addSaxon({health:'60', strength:'10'});
-// war.saxonAttack();
