@@ -83,40 +83,119 @@ vikingAttack(){
 }       
 
 saxonAttack(){
+
+
+
     let saxonAttacker = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+
+
+
+
+
+
 
      let vikingTarget = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
+
+
+
+
+
+
      vikingTarget.receiveDamage(saxonAttacker.strength);
 
+
+
+
+
+
+
     if(vikingTarget.health <= 0){
+
+
+
         for(let i = 0; i < this.vikingArmy.length; i++){
+
+
+
             if(this.vikingArmy[i] === vikingTarget){
+
+
+
                 this.vikingArmy.splice(i, 1);
+
+
+
             }
+
+
+
         }
+
+
+
         return `${vikingTarget.name} has died in act of combat`
+
+
+
     }else{
+
+
+
         return `${vikingTarget.name} has received ${saxonAttacker.strength} points of damage`
 
+
+
+
+
+
+
     }
+
+
+
 }
+
+
+
+
+
+
 
 showStatus(){
+
+
+
     if(this.saxonArmy.length === 0){
+
+
+
 return "Vikings have won the war of the century!"
+
+
+
     }else if(this.vikingArmy.length === 0){
+
+
+
         return "Saxons have fought for their lives and survive another day...";
+
+
+
     }else{
+
+
+
         return "Vikings and Saxons are still in the thick of battle.";
+
+
+
     }
+
+
+
 }
+
+
+
 }
-                    
-
-
-    
-
-
-  
-
