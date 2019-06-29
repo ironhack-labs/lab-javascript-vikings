@@ -105,3 +105,5 @@ War.prototype.showStatus = function () {
   } else {
     return 'Vikings and Saxons are still in the thick of battle.'}
 }
+
+
