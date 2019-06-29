@@ -62,32 +62,34 @@ Now we have to write the correct code in the `src/viking.js` file to make the te
 
 ```javascript
 // Soldier
-function Soldier () {}
+class Soldier {}
 
 // Viking
-function Viking () {}
+class Viking {}
 
 // Saxon
-function Saxon () {}
+class Saxon {}
 
 // War
-function War () {}
+class War {}
 ```
 
 In this case, the test says that _Soldier constructor function should receive 2 arguments (health & strength)_, so we have to write the correct code that passes this test. Let's make the `Soldier` constructor function receive two arguments:
 
 ```javascript
 // Soldier
-function Soldier (healthArg, strengthArg) {}
+class Soldier {
+  constructor(healthArg, strengthArg) {}
+}
 
 // Viking
-function Viking () {}
+class Viking {}
 
 // Saxon
-function Saxon () {}
+class Saxon {}
 
 // War
-function War () {}
+class War {}
 ```
 
 **Execute all the tests**
