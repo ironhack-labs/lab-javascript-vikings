@@ -23,11 +23,7 @@ class Viking extends Soldier {
 
   receiveDamage(damage) {
     this.health -= damage;
-    if (this.health > 0) {
-      return `${this.name} has received ${damage} points of damage`
-    } else {
-      return `${this.name} has died in act of combat`
-    }
+    return this.health > 0 ? `${this.name} has received ${damage} points of damage` : `${this.name} has died in act of combat`
   }
 
   battleCry() {
@@ -43,11 +39,7 @@ class Saxon extends Soldier {
 
   receiveDamage(damage) {
     this.health -= damage;
-    if (this.health > 0) {
-      return `A Saxon has received ${damage} points of damage`
-    } else {
-      return 'A Saxon has died in combat'
-    }
+    return this.health > 0 ? `A Saxon has received ${damage} points of damage` : 'A Saxon has died in combat'
   }
 }
 
@@ -87,5 +79,4 @@ class War {
   showStatus() {
     return this.saxonArmy.length === 0 ? 'Vikings have won the war of the century!' : this.vikingArmy.length === 0 ? 'Saxons have fought for their lives and survive another day...' : 'Vikings and Saxons are still in the thick of battle.';
   }
-  
 }
