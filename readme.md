@@ -1,6 +1,6 @@
 ![Ironhack Logo](https://i.imgur.com/1QgrNNw.png)
 
-# JS | Vikings *Object Oriented Programming*
+# JS | Vikings _Object Oriented Programming_
 
 ## Introduction
 
@@ -36,25 +36,24 @@ We've got a _test suite_ for our constructor functions and their methods but the
 If you open `tests/VikingSpec.js` and take a look at **lines 10-20**. You should see some `it()` functions (tests) that are commented out. Let's start by uncommenting **lines 10-12**:
 
 ```javascript
-  describe("constructor function", function () {
-    it("should receive 2 arguments (health & strength)", function () {
-      expect(Soldier.length).toEqual(2);
-    });
-
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
-
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+describe("constructor function", function() {
+  it("should receive 2 arguments (health & strength)", function() {
+    expect(Soldier.length).toEqual(2);
   });
+
+  // it("should receive the health property as its 1st argument", function () {
+  //   expect(soldier.health).toEqual(health);
+  // });
+
+  // it("should receive the strength property as its 2nd argument", function () {
+  //   expect(soldier.strength).toEqual(strength);
+  // });
+});
 ```
 
 Now that particular test (_should receive 2 arguments (health & strength)_) is failing!
 
 ![](images/2.png)
-
 
 **Write the code**
 
@@ -98,40 +97,38 @@ Now that we are passing the first test, the next step is to uncomment the next t
 
 ![](images/4.png)
 
-Once we have checked out that the test is failing, we can implement the code to make it pass. 
-
+Once we have checked out that the test is failing, we can implement the code to make it pass.
 
 ## Exercise
 
 ![](https://i.imgur.com/5TPElt8.jpg)
 
-
---------------------------------------------------------------------------------
-
+---
 
 ### Soldier
 
 Modify the `Soldier` constructor function and add 2 methods to its prototype: `attack()`, and `receiveDamage()`.
 
 #### constructor function
+
 - should receive **2 arguments** (health & strength)
 - should receive the **`health` property** as its **1st argument**
 - should receive the **`strength` property** as its **2nd argument**
 
 #### `attack()` method
+
 - should be a function
 - should receive **0 arguments**
 - should return **the `strength` property of the `Soldier`**
 
 #### `receiveDamage()` method
+
 - should be a function
 - should receive **1 argument** (the damage)
 - should remove the received damage from the `health` property
 - **shouldn't return** anything
 
-
---------------------------------------------------------------------------------
-
+---
 
 ### Viking
 
@@ -140,9 +137,11 @@ A `Viking` is a `Soldier` with an additional property, their `name`. They also h
 Modify the `Viking` constructor function, have it inherit from `Soldier`, reimplement the `receiveDamage()` method for `Viking`, and add a new `battleCry()` method.
 
 #### inheritance
-- `Viking` should inherit from `Soldier` 
+
+- `Viking` should inherit from `Soldier`
 
 #### constructor function
+
 - should receive **3 arguments** (name, health & strength)
 - should receive the **`name` property** as its **1st argument**
 - should receive the **`health` property** as its **2nd argument**
@@ -174,9 +173,7 @@ Modify the `Viking` constructor function, have it inherit from `Soldier`, reimpl
 - should receive **0 arguments**
 - should return **"Odin Owns You All!"**
 
-
---------------------------------------------------------------------------------
-
+---
 
 ### Saxon
 
@@ -185,9 +182,11 @@ A `Saxon` is a weaker kind of `Soldier`. Unlike a `Viking`, a `Saxon` has no nam
 Modify the `Saxon`, constructor function, have it inherit from `Soldier` and reimplement the `receiveDamage()` method for `Saxon`.
 
 #### inheritance
+
 - `Saxon` should inherit from `Soldier`
 
 #### constructor function
+
 - should receive **2 arguments** (health & strength)
 - should receive the **`health` property** as its **1st argument**
 - should receive the **`strength` property** as its **2nd argument**
@@ -210,15 +209,14 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and rei
 - **if the Saxon is still alive**, it should return _**"A Saxon has received DAMAGE points of damage"**_
 - **if the Saxon dies**, it should return _**"A Saxon has died in combat"**_
 
-
---------------------------------------------------------------------------------
-
+---
 
 ### (BONUS) War
 
 Now we get to the good stuff: WAR! Our `War` constructor function will allow us to have a `Viking` army and a `Saxon` army that battle each other.
 
 Modify the `War` constructor and add 5 methods to its prototype:
+
 - `addViking()`
 - `addSaxon()`
 - `vikingAttack()`
@@ -281,9 +279,7 @@ Returns the current status of the `War` based on the size of the armies.
 - **if the `Viking` array is empty**, should return _**"Saxons have fought for their lives and survive another day..."**_
 - **if there are at least 1 `Viking` and 1 `Saxon`**, should return _**"Vikings and Saxons are still in the thick of battle."**_
 
-
---------------------------------------------------------------------------------
-
+---
 
 **//Happy Coding!!**
 
