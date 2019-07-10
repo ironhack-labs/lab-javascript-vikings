@@ -63,8 +63,10 @@ class War {
         this.saxonArmy.push(saxon)
     }
     vikingAttack() {
-        this.saxonArmy.saxon.receiveDamage(this.vikingArmy.viking.strength)
-        if (saxon.health < 1) {
+        let attackingViking = this.vikingArmy[Math.round(saxonArmy.length * Math.random())]
+        let defendingSaxon = this.saxonArmy[Math.round(saxonArmy.length * Math.random())]
+        defendingSaxon.receiveDamage(attackingViking.strength)
+        if (defendingSaxon.health < 1) {
 
 
         }
