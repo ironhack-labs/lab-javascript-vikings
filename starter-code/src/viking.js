@@ -83,8 +83,17 @@ class War {
             return "A Viking has died in combat"
 
         } else {
-            return defendingViking.name + " has received " + defendingSaxon.strength + " points of damage"
+            return defendingViking.name + " has received " + attackingSaxon.strength + " points of damage"
         }
     }
-
+    showStatus() {
+        if (this.saxonArmy.length == 0) {
+            return "Vikings have won the war of the century!";
+        } else if (this.vikingArmy.length == 0) {
+            return "Saxons have fought for their lives and survive another day..."
+        }
+        else {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
+    }
 } 
