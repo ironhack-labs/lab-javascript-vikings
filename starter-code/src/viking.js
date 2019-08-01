@@ -60,5 +60,31 @@ class War {
   addSaxon(saxon) {
     this.saxonArmy.push(saxon);
   }
-  vikingAttack() {}
+  vikingAttack() {
+    if (this.vikingArmy.length < 1) return;
+    if (this.saxonArmy.length < 1) return;
+    let vik = this.vikingArmy.pop();
+    let sax = this.saxonArmy.pop();
+    let res = sax.receiveDamage(vik.strength);
+    if (sax.health > 0) this.saxonArmy.push(sax);
+    this.vikingArmy.push(vik);
+    return res;
+  }
+  saxonAttack() {
+    if (this.vikingArmy.length < 1) return;
+    if (this.saxonArmy.length < 1) return;
+    let vik = this.vikingArmy.pop();
+    let sax = this.saxonArmy.pop();
+    let res = vik.receiveDamage(sax.strength);
+    this.saxonArmy.push(sax);
+    if (vik.health > 0) this.vikingArmy.push(vik);
+    return res;
+  }
+  showStatus() {
+    if (this.saxonArmy.length < 1)
+      return "Vikings have won the war of the century!";
+    if (this.vikingArmy.length < 1)
+      return "Saxons have fought for their lives and survive another day...";
+    return "Vikings and Saxons are still in the thick of battle.";
+  }
 }
