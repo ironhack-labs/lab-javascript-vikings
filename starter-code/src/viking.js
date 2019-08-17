@@ -71,30 +71,29 @@ function War(){
   this.vikingArmy=[]
   this.saxonArmy=[]
 
-  this.addViking = function(viking){
+
+for (vikingsWanted=0;vikingsWanted<10;vikingsWanted++){
+   this.addViking = function(viking){
    this.vikingArmy.push(viking)
   }
-  
+}
+ 
+  for(saxonsWanted=0;saxonsWanted<10;saxonsWanted++){
   this.addSaxon=function(saxon){
     this.saxonArmy.push(saxon)
  }
+}
+
 
     this.vikingAttack=function(){
-    // -----choosing a random member of the army (try later) -------
-    // const randomSaxon = Math.floor(Math.random()*this.saxonArmy)
-    // const randomViking = Math.floor(Math.random()*this.vikingArmy)
-    // if(this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength).includes('dead')){
-    // this.saxonArmy[0].splice(randomSaxon,1)
-    // }
 
-    // else{
-    // return this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
-    // }
-    //------------------------------------------------------------------------
+   let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
+   let randomSaxon =  Math.floor(Math.random()*this.saxonArmy.length);
 
-     let saxonLives= this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
 
-       if(this.saxonArmy[0].health<=0){
+     let saxonLives= this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
+
+       if(this.saxonArmy[randomSaxon].health<=0){
          this.saxonArmy.shift()
        }
        return saxonLives
@@ -103,9 +102,12 @@ function War(){
   
 
    this.saxonAttack=function(){
-    let vikingLives= this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
 
-       if(this.vikingArmy[0].health<=0){
+       let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
+       let randomSaxon =  Math.floor(Math.random()*this.saxonArmy.length);
+       let vikingLives= this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
+
+       if(this.vikingArmy[randomViking].health<=0){
          this.vikingArmy.shift()
        }
        return vikingLives
