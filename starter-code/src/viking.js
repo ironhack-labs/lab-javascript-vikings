@@ -57,21 +57,41 @@ function War(){
 
   this.addViking = function(viking){ 
     this.vikingArmy.push(viking)
-  }
+    for(i=0; i < 10; i++){
+    }
+    console.log(i)
+  } 
 
   this.addSaxon = function(saxon){
     this.saxonArmy.push(saxon)
   }
-  
+
+
   this.vikingAttack = function(){
-  //Saxon.receiveDamage(this.damage) = Viking.strength
-    Saxon.prototype.attack = function(saxon){
-      saxon.receiveDamage(this.damage) 
-    } = Viking.strength
+    this.randomSaxon = Math.round(Math.random() * this.saxonArmy.length)
+    this.randomViking = Math.round(Math.random() * this.vikingArmy.length)
+    
+    this.attackViking = function(randomSaxon){
+      randomSaxon.receiveDamage(this.strength) === randomViking.strength
+      //this.saxonArmy(randomSaxon).receiveDamage(this.damage) = this.vikingArmy(randomViking).strength
+      // const battleResult = this.saxonArmy[randomoSaxon].receiveDamage(Viking.strength)
+    }
+    return this.attackViking
+    
+    // if (this.saxonArmy[Saxon].health === 0){
+    //   this.saxonArmy.splice(randomoSaxon,1)
+    // }
+    // return battleResult
   }
-  const vikingAttack = new Saxon()
-  vikingAttack.receiveDamage()
-}
+
+  }
+  
+  // const vikingAttack = new Saxon()
+  // vikingAttack.receiveDamage()
+
+
+War.prototype = Object.create(Soldier.prototype)
+War.prototype.constructor = War
 // Pokemon.prototype.atacar = function(pokemon){
 //   pokemon.receiveDamage(this.attack)
 // }
