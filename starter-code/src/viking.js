@@ -45,7 +45,11 @@ class Saxon extends Soldier {
   }
 }
 function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  let randomNumber = Math.floor(Math.random() * (max - min) + min);
+  if (randomNumber === max) {
+    randomNumber--;
+  }
+  return randomNumber;
 }
 // War
 class War {
@@ -53,22 +57,43 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
-  addViking(Viking) {
-    this.vikingArmy.push(Viking);
+  addViking(viking) {
+    this.vikingArmy.push(viking);
   }
-  addSaxon(Saxon) {
-    this.saxonArmy.push(Saxon);
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
   }
   vikingAttack() {
-    let saxonAttacked = randomInt(0, this.saxonArmy.length);
-    let vikingAttacker = randomInt(0, this.vikingArmy.length);
-    this.saxonArmy[saxonAttacked].receiveDamage(this.vikingArmy[vikingAttacker].strength);
-    if (saxonAttacked.health < 0) {
-      this.saxonArmy.slice(saxonAttacked, 1);
+    let saxonAttackedIdx = randomInt(0, this.saxonArmy.length);
+    let vikingAttackerIdx = randomInt(0, this.vikingArmy.length);
+    let vikingAttackResult = this.saxonArmy[saxonAttackedIdx].receiveDamage(
+      this.vikingArmy[vikingAttackerIdx].attack()
+    );
+    if (this.saxonArmy[saxonAttackedIdx].health < 0) {
+      this.saxonArmy.splice(saxonAttackedIdx, 1);
     }
+    return vikingAttackResult;
   }
-  // saxonAttack() {
-  //   this.vikingArmy[randomInt(0, this.vikingArmy.length)].
-
-  // }
+  saxonAttack() {
+    let vikingAttackedIdx = randomInt(0, this.vikingArmy.length);
+    let saxonAttackerIdx = randomInt(0, this.saxonArmy.length);
+    let saxonAttackResult = this.vikingArmy[vikingAttackedIdx].receiveDamage(
+      this.saxonArmy[saxonAttackerIdx].attack()
+    );
+    if (this.vikingArmy[vikingAttackedIdx].health < 0) {
+      this.vikingArmy.splice(vikingAttackedIdx, 1);
+    }
+    return saxonAttackResult;
+  }
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return `Vikings have won the war of the century!`;
+    }
+    if (this.vikingArmy.length === 0) {
+      return `Saxons have fought for their lives and survive another day...`;
+    }
+    if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) {
+    return `Vikings and Saxons are still in the thick of battle.`;
+  }
+}
 }
