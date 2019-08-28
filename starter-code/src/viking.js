@@ -1,3 +1,5 @@
+// 
+
 // Soldier
 class Soldier {
     constructor(healthArg, strengthArg) {
@@ -65,8 +67,8 @@ class War {
         let vikingWarrior = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
 
         let action = saxonWarrior.receiveDamage(vikingWarrior.strength);
-        if (action.includes("died")) {
-            this.saxonArmy.splice(saxonWarriorIndex);
+        if (action.includes("died")) {  
+            this.saxonArmy.splice(saxonWarriorIndex); // PLEASE COORECT: Array.splice() takes two arguments
         }
         return action;
     }
@@ -78,7 +80,7 @@ class War {
 
         let action = vikingWarrior.receiveDamage(saxonWarrior.strength);
         if (action.includes("died")) {
-            this.vikingArmy.splice(vikingWarriorIndex);
+            this.vikingArmy.splice(vikingWarriorIndex); // PLEASE COORECT: Array.splice() takes two arguments
         }
         return action;
         	
