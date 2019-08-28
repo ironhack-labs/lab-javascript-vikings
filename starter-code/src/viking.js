@@ -15,7 +15,13 @@ class Soldier {
 
 
 // Viking
-class Viking {}
+class Viking {
+    constructor(name, heath, strength) {
+        this.name = name,
+        this.health = health,
+        this.strength = strength
+    }
+}
 
 // Saxon
 class Saxon {}
