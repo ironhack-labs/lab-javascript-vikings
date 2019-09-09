@@ -62,7 +62,7 @@ class War {
         this.saxonArmy.push(Saxon)
     }
     vikingAttack(){
-        this.vikingArmy.random = this.Viking
+        this.viking = this.Viking
     }
     // saxonAttack(){
     //     Viking.receiveDamage()
