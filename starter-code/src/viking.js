@@ -67,20 +67,24 @@ class War {
     }
 
     vikingAttack() {
-        let saxon = Math.floor(Math.random() * this.saxonArmy.length);
-        let viking =  Math.floor(Math.random() * this.vikingArmy.length);
-        let result = this.saxonArmy[saxon].receiveDamage(this.vikingArmy[viking].attack());
-        if(result === `A Saxon has died in combat`) {
-            this.saxonArmy.splice(saxon, (saxon+1));
+        const saxonPosition = Math.floor(Math.random() * this.saxonArmy.length);
+        const vikingPosition =  Math.floor(Math.random() * this.vikingArmy.length);
+        const viking = this.vikingArmy[vikingPosition];
+        const saxon = this.saxonArmy[saxonPosition];
+        const result = saxon.receiveDamage(viking.attack());
+        if(saxon.health <= 0) {
+            this.saxonArmy.splice(saxonPosition, (saxonPosition+1));
         }
         return result;
     }
     saxonAttack() {
-        let saxon = Math.floor(Math.random() * this.saxonArmy.length);
-        let viking =  Math.floor(Math.random() * this.vikingArmy.length);
-        let result = this.vikingArmy[viking].receiveDamage(this.saxonArmy[saxon].attack());
-        if(result.indexOf(`died in act of combat`) != -1) {
-            this.vikingArmy.splice(viking, (viking+1));
+        const saxonPosition = Math.floor(Math.random() * this.saxonArmy.length);
+        const vikingPosition =  Math.floor(Math.random() * this.vikingArmy.length);
+        const viking = this.vikingArmy[vikingPosition];
+        const saxon = this.saxonArmy[saxonPosition];
+        const result = viking.receiveDamage(saxon.attack());
+        if(viking.health <= 0) {
+            this.vikingArmy.splice(vikingPosition, (vikingPosition+1));
         }
         return result;
     }
