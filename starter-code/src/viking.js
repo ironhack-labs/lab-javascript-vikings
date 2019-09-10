@@ -66,9 +66,13 @@ class War {
         this.saxonArmy.push(saxon)
     }
 
+    randomPosition(objet){
+        return Math.floor(Math.random() * objet.length)
+    }
+
     vikingAttack(){
-        const positionSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-        const positionViking = Math.floor(Math.random() * this.vikingArmy.length)
+        const positionSaxon = this.randomPosition(this.saxonArmy)
+        const positionViking = this.randomPosition(this.vikingArmy)
         const message =  this.saxonArmy[positionSaxon].receiveDamage(this.vikingArmy[positionViking].strength)
         if (this.saxonArmy[positionSaxon].health <= 0){
             this.saxonArmy.splice(positionSaxon)
@@ -77,8 +81,8 @@ class War {
 
     }
     saxonAttack(){
-        const positionSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-        const positionViking = Math.floor(Math.random() * this.vikingArmy.length)
+        const positionSaxon = this.randomPosition(this.saxonArmy)
+        const positionViking = this.randomPosition(this.vikingArmy)
         const message =  this.vikingArmy[positionViking].receiveDamage(this.saxonArmy[positionSaxon].strength)
         if (this.vikingArmy[positionViking].health <= 0){
             this.vikingArmy.splice(positionViking)
