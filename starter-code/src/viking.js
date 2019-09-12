@@ -80,7 +80,7 @@ class War {
         const result = this._randomSaxon.receiveDamage(this._randomViking.strength)
 
         if (this._randomSaxon.health <= 0){
-            this.saxonArmy.splice(this.saxonArmy.indexOf(this._randomSaxon),1)
+            this._rmDeadSaxon(this._randomSaxon)
         }
 
         return result
@@ -92,7 +92,7 @@ class War {
         const result = this._randomViking.receiveDamage(this._randomSaxon.strength)
 
         if (this._randomViking.health <= 0){
-            this.vikingArmy.splice(this.vikingArmy.indexOf(this._randomViking),1)
+            this._rmDeadViking(this._randomViking)
         }
 
         return result
@@ -100,6 +100,14 @@ class War {
 
     _pickSaxon(){
         this._randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    }
+
+    _rmDeadSaxon(saxon){
+        this.saxonArmy.splice(this.saxonArmy.indexOf(saxon),1)
+    }
+
+    _rmDeadViking(viking){
+        this.vikingArmy.splice(this.vikingArmy.indexOf(viking),1)
     }
 
     _pickViking(){
