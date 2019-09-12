@@ -8,31 +8,31 @@ describe("Soldier", function () {
   });
 
   describe("constructor function", function () {
-    // it("should receive 2 arguments (health & strength)", function () {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+    it("should receive 2 arguments (health & strength)", function () {
+      expect(Soldier.length).toEqual(2);
+    });
 
-    // it("should receive the health property as its 1st argument", function () {
-    //   expect(soldier.health).toEqual(health);
-    // });
+    it("should receive the health property as its 1st argument", function () {
+      expect(soldier.health).toEqual(health);
+    });
 
-    // it("should receive the strength property as its 2nd argument", function () {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it("should receive the strength property as its 2nd argument", function () {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
   describe("attack() method", function () {
-    // it("should be a function", function () {
-    //   expect(typeof(soldier.attack)).toBe("function");
-    // });
+    it("should be a function", function () {
+      expect(typeof(soldier.attack)).toBe("function");
+    });
 
-    // it("should receive 0 arguments", function () {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", function () {
+      expect(soldier.attack.length).toEqual(0);
+    });
 
-    // it("should return the strength property of the Soldier", function () {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
+    it("should return the strength property of the Soldier", function () {
+      expect(soldier.attack()).toEqual(strength);
+    });
   });
 
   describe("receiveDamage() method", function () {
