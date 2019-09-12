@@ -74,4 +74,13 @@ class War {
     addSaxon(Saxon){
         this.saxonArmy.push(Saxon)
     }
+    vikingAttack(){
+        
+        //const damageVicking=new this.Vicking.strength
+        //const saxonDamage=new this.Saxon.receiveDamage(damageVicking)
+
+       //return saxon.receiveDamage(this.vicking.strength)
+
+        
+    }
 }
