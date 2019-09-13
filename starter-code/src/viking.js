@@ -47,13 +47,11 @@ class Saxon extends Soldier {
         }
     }
 }
-
-
 // War
 class War {
     constructor() {
         this.vikingArmy = [];
-        this.saxonArmy=[];
+        this.saxonArmy= [];
     }
     addViking(Viking) {
         this.vikingArmy.push(Viking);
@@ -62,16 +60,41 @@ class War {
         this.saxonArmy.push(Saxon);
     }
     vikingAttack() {
-        this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].receiveDamage(this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].strength);
-        if(Saxon.health < 0) {
-
+        let damagedSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        let battle = damagedSaxon.receiveDamage(this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].strength);
+        if(damagedSaxon.health <= 0) {
+            this.saxonArmy.splice(damagedSaxon, 1);
         }
+        return battle;
     }
     saxonAttack() {
-        this.vikingArmy[Math.floor(Math.random()* this.vikingArmy.length)].receiveDamage(this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].strength);
+        const damagedViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        let battle2 = damagedViking.receiveDamage(this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].strength);
+        if(damagedViking.health <= 0) {
+            this.vikingArmy.splice(damagedViking, 1);
+        }
+        return battle2;
+            
+    }
+         
+    
+    showStatus() {
+        if(this.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!";
+        }
+        else if(this.vikingArmy.length === 0) {
+            return "Saxons have fought for their lives and survive another day...";
+            
+        }
+        else{
+            return "Vikings and Saxons are still in the thick of battle.";
+
+        }
+
+        }
+    
     }
 
-}
 /**
 var rand = myArray[Math.floor(Math.random() * myArray.length)];
  vikingAttack() method
