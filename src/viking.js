@@ -17,12 +17,22 @@ function Viking(name, health, strength) {
     
     Soldier.call(this, health,strength);
     this.name=name;
+    this.receiveDamage = function(damage){
+        this.health -= damage;
+        if(this.health > 0){
+            return `${this.name} has received ${damage} points of damage`;
+        }
+        else{
+            return `${this.name} has died in act of combat`;
+        }
+        
+    }
 
 }
 Viking.prototype = Object.create(Soldier.prototype);
 Viking.prototype.constructor = Viking;
 
-Viking.prototype.receiveDamage = function(damage){
+/* Viking.prototype.receiveDamage = function(damage){
     this.health -= damage;
     if(this.health > 0){
         return `${this.name} has received ${damage} points of damage`;
@@ -31,9 +41,9 @@ Viking.prototype.receiveDamage = function(damage){
         return `${this.name} has died in act of combat`;
     }
     
-}
+} */
 Viking.prototype.battleCry = function(){
-    return `Odin Owns you All!!`;
+    return `Odin Owns You All!`;
 }
 
 
@@ -41,21 +51,22 @@ Viking.prototype.battleCry = function(){
 // Saxon
 function Saxon(health,strength){
     Soldier.call(this,health,strength);  
+    this.receiveDamage = function(damage) {
+        this.health -= damage;
+        if(this.health > 0){
+            return `A Saxon has received ${damage} points of damage`;
+        }
+        else{
+            return `A Saxon has died in combat`;
+        }
+    
+    }
 }
 
 
-Saxon.prototype.receiveDamage = function (health,strength) {
-    this.health -= damage;
-    if(this.health > 0){
-        return `${this.name} has received ${damage} points of damage`;
-    }
-    else{
-        return `A Saxon has died in combat`;
-    }
-
-}
 Saxon.prototype = Object.create(Soldier.prototype);
 Saxon.prototype.constructor = Saxon;
+
 
 
 
@@ -112,6 +123,6 @@ War.prototype.showStatus= function(){
       return`Vikings have won the war of the century!`;
   }
   else if(this.vikingArmy.length === 0) {
-      return `Saxons have fought for their lives and survive another day..`
+      return 'Saxons have fought for their lives and survive another day...'
   }
 }
