@@ -58,9 +58,9 @@ describe("Soldier", () => {
 
 describe("Viking", () => {
   let viking;
-  var name     = "Harald";
-  var strength = 150;
-  var health   = 300;
+  let name     = "Harald";
+  let strength = 150;
+  let health   = 300;
 
   beforeEach ( () => {
     viking = new Viking(name, health, strength);
