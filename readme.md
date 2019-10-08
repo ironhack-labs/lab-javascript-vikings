@@ -33,7 +33,7 @@ Yes! Best way to know how our code is doing is to work with tests. Go ahead and 
 
 We've got a _test suite_ for our constructor functions and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `tests/VikingSpec.js` and implement the code in `src/viking.js` to make each test pass.
 
-If you open `tests/VikingSpec.js` and take a look at **lines 10-20**. You should see some `it()` functions (tests) that are commented out. Let's start by uncommenting **lines 10-12**:
+If you open `tests/VikingSpec.js` and take a look at **lines 11-21**. You should see some `it()` functions (tests) that are commented out. Let's start by uncommenting **lines 11-13**:
 
 ```javascript
   describe("constructor function", function () {
@@ -79,7 +79,7 @@ In this case, the test says that _Soldier constructor function should receive 2 
 ```javascript
 // Soldier
 class Soldier {
-  constructor(healthArg, strengthArg) {}
+  constructor(health, strength) {}
 }
 
 // Viking

@@ -156,10 +156,6 @@ describe("Saxon", function () {
   // });
 
   describe("constructor function", function () {
-    // it("should receive 2 arguments (health & strength)", function () {
-    //   expect(Saxon.length).toEqual(2);
-    // });
-
     // it("should receive the health property as its 1st argument", function () {
     //   expect(saxon.health).toEqual(health);
     // });
