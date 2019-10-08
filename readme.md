@@ -79,7 +79,7 @@ In this case, the test says that _Soldier constructor function should receive 2 
 ```javascript
 // Soldier
 class Soldier {
-  constructor(healthArg, strengthArg) {}
+  constructor(health, strength) {}
 }
 
 // Viking
