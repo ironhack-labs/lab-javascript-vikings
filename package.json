@@ -1,0 +1,16 @@
+{
+  "name": "lab-javascript-vikings",
+  "version": "1.0.0",
+  "description": "Array higher order functions",
+  "main": "./starter-code/tests/VikingSpec.js",
+  "dependencies": {
+    "jasmine-node": "^3.0.0",
+    "jasmine": "^3.5.0"
+  },
+  "scripts": {
+    "test": "jasmine"
+  },
+
+  "author": "",
+  "license": "ISC"
+}

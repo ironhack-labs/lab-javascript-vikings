@@ -1,10 +1,13 @@
+const {Soldier, Viking, Saxon, War} = require('../src/viking');
+
+
 describe("Soldier", function () {
-  var soldier;
-  var strength = 150;
-  var health = 300;
+  let soldier;
+  let strength = 150;
+  let health = 300;
 
   beforeEach(function () {
-    soldier = new Soldier(health, strength);
+    soldier = new Soldier(health,strength);
   });
 
   describe("constructor function", function () {
@@ -57,10 +60,10 @@ describe("Soldier", function () {
 
 
 describe("Viking", function () {
-  var viking;
-  var name = "Harald";
-  var strength = 150;
-  var health = 300;
+  let viking;
+  let name = "Harald";
+  let strength = 150;
+  let health = 300;
 
   beforeEach(function () {
     viking = new Viking(name, health, strength);
@@ -72,6 +75,7 @@ describe("Viking", function () {
 
   describe("constructor function", function () {
     it("should receive 3 arguments (name, health & strength)", function () {
+      console.log(Viking.length)
       expect(Viking.length).toEqual(3);
     });
 
@@ -141,9 +145,10 @@ describe("Viking", function () {
 
 
 describe("Saxon", function () {
-  var saxon;
-  var health = 60;
-  var strength = 25;
+
+  let saxon;
+  let health = 60;
+  let strength = 25;
 
   beforeEach(function () {
     saxon = new Saxon(health, strength);
@@ -208,19 +213,19 @@ describe("Saxon", function () {
 
 
 describe("War", function () {
-  var viking, saxon, war;
+  let viking, saxon, war;
 
   function generateViking() {
-    var name = "Harald";
-    var strength = 150;
-    var health = 300;
+    let name = "Harald";
+    let strength = 150;
+    let health = 300;
 
     return new Viking(name, health, strength);
   }
 
   function generateSaxon() {
-    var health = 60;
-    var strength = 25;
+    let health = 60;
+    let strength = 25;
 
     return new Saxon(health, strength);
   }
@@ -299,7 +304,7 @@ describe("War", function () {
       });
 
       it("should make Saxon receiveDamage() equal to the strength of a Viking", function () {
-        var oldHealth = saxon.health;
+        let oldHealth = saxon.health;
         war.vikingAttack();
         expect(saxon.health).toEqual(oldHealth - viking.strength);
       });
@@ -324,13 +329,13 @@ describe("War", function () {
       });
 
       it("should make a Viking receiveDamage() equal to the strength of a Saxon", function () {
-        var oldHealth = viking.health;
+        let oldHealth = viking.health;
         war.saxonAttack();
         expect(viking.health).toEqual(oldHealth - saxon.strength);
       });
 
       it("should remove dead vikings from the army", function () {
-        for (var i = 0; i < 12; i += 1) {
+        for (let i = 0; i < 12; i += 1) {
           war.saxonAttack();
         }
         expect(war.vikingArmy.length).toEqual(0);
@@ -356,7 +361,7 @@ describe("War", function () {
       });
 
       it("should return \"Saxons have fought for their lives and survive another day...\", if the Vikings array is empty", function () {
-        for (var i = 0; i < 12; i += 1) {
+        for (let i = 0; i < 12; i += 1) {
           war.saxonAttack();
         }
         expect(war.showStatus()).toEqual("Saxons have fought for their lives and survive another day...");
