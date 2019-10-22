@@ -81,27 +81,29 @@ class War {
   vikingAttack() {
     let saxonRandomIndex = Math.floor(Math.random() * this.saxonArmy.length);
     let vikingRandomIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    this.saxonArmy[saxonRandomIndex].receiveDamage(
+    let result = this.saxonArmy[saxonRandomIndex].receiveDamage(
       this.vikingArmy[vikingRandomIndex].strength
     );
 
-    if (this.saxonArmy[saxonRandomIndex].health < 0) {
+    if (this.saxonArmy[saxonRandomIndex].health <= 0) {
       this.saxonArmy.splice(saxonRandomIndex, 1);
-      return "A Saxon has died in combat";
     }
+
+    return result;
   }
 
   saxonAttack() {
     let saxonRandomIndex = Math.floor(Math.random() * this.saxonArmy.length);
     let vikingRandomIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    this.vikingArmy[vikingRandomIndex].receiveDamage(
+    let result = this.vikingArmy[vikingRandomIndex].receiveDamage(
       this.saxonArmy[saxonRandomIndex].strength
     );
 
-    if (this.vikingArmy[vikingRandomIndex].health < 0) {
+    if (this.vikingArmy[vikingRandomIndex].health <= 0) {
       this.vikingArmy.splice(vikingRandomIndex, 1);
-      return `${this.vikingArmy[vikingRandomIndex].name} has received ${this.saxonArmy[saxonRandomIndex].strength} points of damage`;
     }
+
+    return result;
   }
 
   showStatus() {
