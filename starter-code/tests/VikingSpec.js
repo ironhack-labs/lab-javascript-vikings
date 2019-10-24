@@ -222,7 +222,7 @@ describe("Saxon", function () {
   });
 });
 
-
+/*------------------ War ------------------ */
 
 describe("War", function () {
   var viking, saxon, war;
