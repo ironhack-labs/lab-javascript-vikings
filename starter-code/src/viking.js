@@ -70,10 +70,26 @@ class War {
     }
 
     saxonAttack() {
+        const vr  = Math.floor(Math.random() * this.vikingArmy.length);
+        const sr = Math.floor(Math.random() * this.saxonArmy.length);
 
+        let v = this.vikingArmy[vr];
+        let s = this.saxonArmy[sr];
+
+        // console.log(this.vikingArmy, this.saxonArmy);
+        
+        let t = v.receiveDamage(s.strength);vr
+        if(v.health <= 0) this.vikingArmy.splice( - 1, 1);
+        return t;
     }
 
     showStatus() {
-
+        if(!this.saxonArmy.length) {
+            return "Vikings have won the war of the century!";
+        } else if(!this.vikingArmy.length) {
+            return "Saxons have fought for their lives and survive another day...";
+        }   else {
+            return "Vikings and Saxons are still in the thick of battle.";
+        }
     }
 }
