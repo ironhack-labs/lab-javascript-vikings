@@ -47,11 +47,11 @@ class War {
     }
 
     addViking(v) {
-        this.vikingArmy.push(new Viking(v.name, v.health, v.strength));
+        this.vikingArmy.push(v));
     }
 
     addSaxon(s) {
-        this.saxonArmy.push(new Saxon(s.health, s.strength));
+        this.saxonArmy.push(s);
         // console.log(new Saxon(s.health, s.strength));
     }
 

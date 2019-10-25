@@ -296,11 +296,11 @@ describe("War", function () {
         expect(war.vikingAttack.length).toEqual(0);
       });
 
-      // it("should make Saxon receiveDamage() equal to the strength of a Viking", function () {
-      //   var oldHealth = saxon.health;
-      //   war.vikingAttack();
-      //   expect(saxon.health).toEqual(oldHealth - viking.strength);
-      // });
+      it("should make Saxon receiveDamage() equal to the strength of a Viking", function () {
+        var oldHealth = saxon.health;
+        war.vikingAttack();
+        expect(saxon.health).toEqual(oldHealth - viking.strength);
+      });
 
       it("should remove dead saxons from the army", function () {
         war.vikingAttack();
@@ -321,11 +321,11 @@ describe("War", function () {
         expect(war.saxonAttack.length).toEqual(0);
       });
 
-      // it("should make a Viking receiveDamage() equal to the strength of a Saxon", function () {
-      //   var oldHealth = viking.health;
-      //   war.saxonAttack();
-      //   expect(viking.health).toEqual(oldHealth - saxon.strength);
-      // });
+      it("should make a Viking receiveDamage() equal to the strength of a Saxon", function () {
+        var oldHealth = viking.health;
+        war.saxonAttack();
+        expect(viking.health).toEqual(oldHealth - saxon.strength);
+      });
 
       it("should remove dead vikings from the army", function () {
         for (var i = 0; i < 12; i += 1) {
