@@ -10,7 +10,7 @@ class Soldier {
     }
 
     receiveDamage(damage) {
-        this.health -= damage;
+        this.health = this.health - damage;
     }
 }
 
@@ -22,7 +22,7 @@ class Viking extends Soldier {
     }
 
     receiveDamage(damage) {
-        this.health -= damage;
+        this.health = this.health - damage;
         return this.health > 0 ? `${this.name} has received ${damage} points of damage` : `${this.name} has died in act of combat`;
     } 
 
@@ -34,7 +34,7 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
     receiveDamage(damage) {
-        this.health -= damage;
+        this.health = this.health - damage;
         return this.health > 0 ? `A Saxon has received ${damage} points of damage` : "A Saxon has died in combat";
     }
 }
@@ -62,14 +62,11 @@ class War {
         let v = this.vikingArmy[vr];
         let s = this.saxonArmy[sr];
 
+        console.log(this.vikingArmy, this.saxonArmy);
         
-        s.receiveDamage(v.strength);
-        // this.saxonArmy.forEach((el, i) => {
-        //     if(el.health <= 0) this.saxonArmy.splice(i, 1);
-        // });
-
-        console.log(v, s);
-        
+        let t = s.receiveDamage(v.strength);
+        if(s.health <= 0) this.saxonArmy.splice(sr - 1, 1);
+        return t;
     }
 
     saxonAttack() {
