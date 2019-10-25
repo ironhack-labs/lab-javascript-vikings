@@ -47,7 +47,7 @@ class War {
     }
 
     addViking(v) {
-        this.vikingArmy.push(v));
+        this.vikingArmy.push(v);
     }
 
     addSaxon(s) {
