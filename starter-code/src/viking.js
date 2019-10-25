@@ -68,21 +68,27 @@ class War {
 
   vikingAttack() {
     // call viking from array
-    let damage = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())].strength;
-    let ranSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
+    const damage = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())].strength;
+    const ranSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
+    // Fist attempt -- sloppy!
+    // if (ranSaxon.health - damage <= 0) {
+    //   this.saxonArmy.splice([ranSaxon], 1);
+    // }
+    const attack = ranSaxon.receiveDamage(damage);
     if (ranSaxon.health - damage <= 0) {
       this.saxonArmy.splice([ranSaxon], 1);
     }
-    return ranSaxon.receiveDamage(damage);
+    return attack;
   }
 
   saxonAttack() {
-    let damage = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())].strength;
-    let ranViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
-    if (ranViking.health - damage <= 0) {
+    const damage = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())].strength;
+    const ranViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
+    const attack = ranViking.receiveDamage(damage);
+    if (ranViking.health <= 0) {
       this.vikingArmy.splice([ranViking], 1);
     }
-    return ranViking.receiveDamage(damage);
+    return attack;
   }
 
   showStatus() {
