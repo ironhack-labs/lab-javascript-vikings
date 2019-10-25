@@ -64,10 +64,10 @@ class War {
         return attack
     }  
     saxonAttack() {
-        let vikDamage = this.vikingArmy[Math.floor((this.vikingArmy.length) * Math.random())]
-        let randomSaxon = this.saxonArmy[Math.floor((this.saxonArmy.length) * Math.random())].strength
-        let attack = vikDamage.receiveDamage(randomSaxon)
-        if (vikDamage.health <= 0) this.vikingArmy.splice([vikDamage, 1]);
+        let randomViking = this.vikingArmy[Math.floor((this.vikingArmy.length) * Math.random())]
+        let saxonDamage = this.saxonArmy[Math.floor((this.saxonArmy.length) * Math.random())].strength
+        let attack = randomViking.receiveDamage(saxonDamage)
+        if (randomViking.health <= 0) this.vikingArmy.splice([randomViking, 1]);
         return attack
     }    
     showStatus() {
