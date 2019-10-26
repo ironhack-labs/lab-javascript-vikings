@@ -1,4 +1,4 @@
-describe('Soldier', () => {
+describe("Soldier", () => {
   let soldier;
   const strength = 150;
   const health = 300;
@@ -7,35 +7,35 @@ describe('Soldier', () => {
     soldier = new Soldier(health, strength);
   });
 
-  describe('constructor function', () => {
-    // it('should receive 2 arguments (health & strength)', () => {
-    //   expect(Soldier.length).toEqual(2);
-    // });
-    //
-    // it('should receive the health property as its 1st argument', () => {
-    //   expect(soldier.health).toEqual(health);
-    // });
-    //
-    // it('should receive the strength property as its 2nd argument', () => {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+  describe("constructor function", () => {
+    it("should receive 2 arguments (health & strength)", () => {
+      expect(Soldier.length).toEqual(2);
+    });
+
+    it("should receive the health property as its 1st argument", () => {
+      expect(soldier.health).toEqual(health);
+    });
+
+    it("should receive the strength property as its 2nd argument", () => {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
-  describe('attack() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.attack).toBe('function');
-    // });
-    //
-    // it('should receive 0 arguments', () => {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
-    //
-    // it('should return the strength property of the Soldier', () => {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
+  describe("attack() method", () => {
+    it("should be a function", () => {
+      expect(typeof soldier.attack).toBe("function");
+    });
+
+    it("should receive 0 arguments", () => {
+      expect(soldier.attack.length).toEqual(0);
+    });
+
+    it("should return the strength property of the Soldier", () => {
+      expect(soldier.attack()).toEqual(strength);
+    });
   });
 
-  describe('receiveDamage() method', () => {
+  describe("receiveDamage() method", () => {
     // it('should be a function', () => {
     //   expect(typeof soldier.receiveDamage).toBe('function');
     // });
@@ -49,15 +49,15 @@ describe('Soldier', () => {
     //   expect(soldier.health).toEqual(health - 50);
     // });
     //
-    // it("shouldn't return anything", () => {
-    //   expect(soldier.receiveDamage(50)).toEqual(undefined);
-    // });
+    it("shouldn't return anything", () => {
+      expect(soldier.receiveDamage(50)).toEqual(undefined);
+    });
   });
 });
 
-describe('Viking', () => {
+describe("Viking", () => {
   let viking;
-  const name = 'Harald';
+  const name = "Harald";
   const strength = 150;
   const health = 300;
 
@@ -69,7 +69,7 @@ describe('Viking', () => {
   //   expect(viking instanceof Soldier).toEqual(true);
   // });
 
-  describe('constructor function', () => {
+  describe("constructor function", () => {
     // it('should receive 3 arguments (name, health & strength)', () => {
     //   expect(Viking.length).toEqual(3);
     // });
@@ -87,7 +87,7 @@ describe('Viking', () => {
     // });
   });
 
-  describe('attack() method', () => {
+  describe("attack() method", () => {
     // it('should be a function', () => {
     //   expect(typeof viking.attack).toBe('function');
     // });
@@ -101,7 +101,7 @@ describe('Viking', () => {
     // });
   });
 
-  describe('receiveDamage() method', () => {
+  describe("receiveDamage() method", () => {
     // it('should be a function', () => {
     //   expect(typeof viking.receiveDamage).toBe('function');
     // });
@@ -125,7 +125,7 @@ describe('Viking', () => {
     // });
   });
 
-  describe('battleCry() method', () => {
+  describe("battleCry() method", () => {
     // it('should be a function', () => {
     //   expect(typeof viking.battleCry).toBe('function');
     // });
@@ -140,7 +140,7 @@ describe('Viking', () => {
   });
 });
 
-describe('Saxon', () => {
+describe("Saxon", () => {
   let saxon;
   const health = 60;
   const strength = 25;
@@ -153,7 +153,7 @@ describe('Saxon', () => {
   //   expect(saxon instanceof Soldier).toEqual(true);
   // });
 
-  describe('constructor function', () => {
+  describe("constructor function", () => {
     // it('should receive the health property as its 1st argument', () => {
     //   expect(saxon.health).toEqual(health);
     // });
@@ -163,7 +163,7 @@ describe('Saxon', () => {
     // });
   });
 
-  describe('attack() method', () => {
+  describe("attack() method", () => {
     // it('should be a function', () => {
     //   expect(typeof saxon.attack).toBe('function');
     // });
@@ -177,7 +177,7 @@ describe('Saxon', () => {
     // });
   });
 
-  describe('receiveDamage() method', () => {
+  describe("receiveDamage() method", () => {
     // it('should be a function', () => {
     //   expect(typeof saxon.receiveDamage).toBe('function');
     // });
@@ -202,11 +202,11 @@ describe('Saxon', () => {
   });
 });
 
-describe('War', () => {
+describe("War", () => {
   let viking, saxon, war;
 
   function generateViking() {
-    const name = 'Harald';
+    const name = "Harald";
     const strength = 150;
     const health = 300;
     return new Viking(name, health, strength);
@@ -224,7 +224,7 @@ describe('War', () => {
     war = new War();
   });
 
-  describe('constructor function', () => {
+  describe("constructor function", () => {
     // it('should receive 0 arguments', () => {
     //   expect(War.length).toEqual(0);
     // });
@@ -238,7 +238,7 @@ describe('War', () => {
     // });
   });
 
-  describe('addViking() method', () => {
+  describe("addViking() method", () => {
     // it('should be a function', () => {
     //   expect(typeof war.addViking).toBe('function');
     // });
@@ -257,7 +257,7 @@ describe('War', () => {
     // });
   });
 
-  describe('addSaxon() method', () => {
+  describe("addSaxon() method", () => {
     // it('should be a function', () => {
     //   expect(typeof war.addSaxon).toBe('function');
     // });
@@ -276,13 +276,13 @@ describe('War', () => {
     // });
   });
 
-  describe('Armies Attack', () => {
+  describe("Armies Attack", () => {
     beforeEach(() => {
       war.addViking(viking);
       war.addSaxon(saxon);
     });
 
-    describe('vikingAttack() method', () => {
+    describe("vikingAttack() method", () => {
       // it('should be a function', () => {
       //   expect(typeof war.vikingAttack).toBe('function');
       // });
@@ -307,7 +307,7 @@ describe('War', () => {
       // });
     });
 
-    describe('saxonAttack() method', () => {
+    describe("saxonAttack() method", () => {
       // it('should be a function', () => {
       //   expect(typeof war.saxonAttack).toBe('function');
       // });
@@ -336,7 +336,7 @@ describe('War', () => {
       // });
     });
 
-    describe('showStatus() method', () => {
+    describe("showStatus() method", () => {
       // it('should be a function', () => {
       //   expect(typeof war.showStatus).toBe('function');
       // });
