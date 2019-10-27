@@ -7,6 +7,7 @@ describe('Soldier', () => {
     soldier = new Soldier(health, strength);
   });
 
+ master
   describe('constructor function', () => {
     it('should receive 2 arguments (health & strength)', () => {
       expect(Soldier.length).toEqual(2);
@@ -19,6 +20,20 @@ describe('Soldier', () => {
     it('should receive the strength property as its 2nd argument', () => {
       expect(soldier.strength).toEqual(strength);
     });
+
+  describe('class', () => {
+     it('should receive 2 arguments (health & strength)', () => {
+       expect(Soldier.length).toEqual(2);
+     });
+    
+     it('should receive the health property as its 1st argument', () => {
+       expect(soldier.health).toEqual(health);
+     });
+    
+     it('should receive the strength property as its 2nd argument', () => {
+       expect(soldier.strength).toEqual(strength);
+     });
+ master
   });
 
   describe('attack() method', () => {
@@ -61,7 +76,7 @@ describe('Viking', () => {
   const strength = 150;
   const health = 300;
 
-  beforeEach(function() {
+  beforeEach(() => {
     viking = new Viking(name, health, strength);
   });
 
@@ -69,6 +84,7 @@ describe('Viking', () => {
      expect(viking instanceof Soldier).toEqual(true);
    });
 
+ master
   describe('constructor function', () => {
      it('should receive 3 arguments (name, health & strength)', () => {
        expect(Viking.length).toEqual(3);
@@ -85,6 +101,24 @@ describe('Viking', () => {
      it('should receive the strength property as its 3rd argument', () => {
        expect(viking.strength).toEqual(strength);
      });
+
+  describe('class', () => {
+     it('should receive 3 arguments (name, health & strength)', () => {
+       expect(Viking.length).toEqual(3);
+     });
+    
+     it('should receive the name property as its 1st argument', () => {
+       expect(viking.name).toEqual(name);
+     });
+    
+     it('should receive the health property as its 2nd argument', () => {
+       expect(viking.health).toEqual(health);
+     });
+    
+     it('should receive the strength property as its 3rd argument', () => {
+       expect(viking.strength).toEqual(strength);
+     });
+ master
   });
 
   describe('attack() method', () => {
@@ -145,7 +179,7 @@ describe('Saxon', () => {
   const health = 60;
   const strength = 25;
 
-  beforeEach(function() {
+  beforeEach(() => {
     saxon = new Saxon(health, strength);
   });
 
@@ -153,6 +187,7 @@ describe('Saxon', () => {
      expect(saxon instanceof Soldier).toEqual(true);
    });
 
+ master
   describe('constructor function', () => {
      it('should receive the health property as its 1st argument', () => {
        expect(saxon.health).toEqual(health);
@@ -161,6 +196,16 @@ describe('Saxon', () => {
      it('should receive the strength property as its 2nd argument', () => {
        expect(saxon.strength).toEqual(strength);
      });
+
+  describe('class', () => {
+     it('should receive the health property as its 1st argument', () => {
+       expect(saxon.health).toEqual(health);
+     });
+    
+     it('should receive the strength property as its 2nd argument', () => {
+       expect(saxon.strength).toEqual(strength);
+     });
+ master
   });
 
   describe('attack() method', () => {
@@ -218,12 +263,13 @@ describe('War', () => {
     return new Saxon(health, strength);
   }
 
-  beforeEach(function() {
+  beforeEach(() => {
     viking = generateViking();
     saxon = generateSaxon();
     war = new War();
   });
 
+ master
   describe('constructor function', () => {
      it('should receive 0 arguments', () => {
        expect(War.length).toEqual(0);
@@ -236,6 +282,20 @@ describe('War', () => {
      it('should assign an empty array to the saxonArmy property', () => {
        expect(war.saxonArmy).toEqual([]);
      });
+
+  describe('class', () => {
+    // it('should receive 0 arguments', () => {
+    //   expect(War.length).toEqual(0);
+    // });
+    //
+    // it('should assign an empty array to the vikingArmy property', () => {
+    //   expect(war.vikingArmy).toEqual([]);
+    // });
+    //
+    // it('should assign an empty array to the saxonArmy property', () => {
+    //   expect(war.saxonArmy).toEqual([]);
+    // });
+ master
   });
 
   describe('addViking() method', () => {
@@ -308,6 +368,7 @@ describe('War', () => {
     });
 
     describe('saxonAttack() method', () => {
+ master
       it('should be a function', () => {
         expect(typeof war.saxonAttack).toBe('function');
       });
@@ -362,6 +423,62 @@ describe('War', () => {
       it('should return "Vikings and Saxons are still in the thick of battle.", if there are still both Vikings and Saxons', () => {
         expect(war.showStatus()).toEqual('Vikings and Saxons are still in the thick of battle.');
       });
+
+       it('should be a function', () => {
+         expect(typeof war.saxonAttack).toBe('function');
+       });
+      
+       it('should receive 0 arguments', () => {
+         expect(war.saxonAttack.length).toEqual(0);
+       });
+      
+       it('should make a Viking receiveDamage() equal to the strength of a Saxon', () => {
+         let oldHealth = viking.health;
+         war.saxonAttack();
+         expect(viking.health).toEqual(oldHealth - saxon.strength);
+       });
+      
+       it('should remove dead vikings from the army', () => {
+         for (let i = 0; i < 12; i++) {
+           war.saxonAttack();
+         }
+         expect(war.vikingArmy.length).toEqual(0);
+       });
+      
+       it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
+         expect(war.saxonAttack()).toEqual(
+           `${viking.name} has received ${saxon.strength} points of damage`
+         );
+       });
+    });
+
+    describe('showStatus() method', () => {
+       it('should be a function', () => {
+         expect(typeof war.showStatus).toBe('function');
+       });
+      
+       it('should receive 0 arguments', () => {
+         expect(war.showStatus.length).toEqual(0);
+       });
+      
+       it('should return "Vikings have won the war of the century!", if the Saxons array is empty', () => {
+         war.vikingAttack();
+         expect(war.showStatus()).toEqual('Vikings have won the war of the century!');
+       });
+      
+       it('should return "Saxons have fought for their lives and survived another day...", if the Vikings array is empty', () => {
+         for (let i = 0; i < 12; i++) {
+           war.saxonAttack();
+         }
+         expect(war.showStatus()).toEqual(
+           'Saxons have fought for their lives and survived another day...'
+         );
+       });
+      
+       it('should return "Vikings and Saxons are still in the thick of battle.", if there are still both Vikings and Saxons', () => {
+         expect(war.showStatus()).toEqual('Vikings and Saxons are still in the thick of battle.');
+       });
+ master
     });
   });
 });
