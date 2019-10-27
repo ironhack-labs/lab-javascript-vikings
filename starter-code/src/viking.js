@@ -63,11 +63,11 @@ class War {
         this.vikingArmy = [];
         this.saxonArmy = [];
     }
-    addViking(viking){
-        Viking.prototype.constructer = Viking;
+    addViking(addVik){
+      this.vikingArmy.push(addVik);
     }
-    addSaxon(){
-
+    addSaxon(addSax){
+      this.saxonArmy.push(addSax);
     }
     vikingAttack(){
 
