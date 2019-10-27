@@ -4,7 +4,7 @@
 
 ## Introduction
 
-We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now let's work with our Viking friends, applying all of the concepts we've just learned.
+We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now lets work with our Viking friends, applying all of the concepts we've just learned.
 
 ## Requirements
 
@@ -29,7 +29,7 @@ __Run the tests__
 
 We've got a _test suite_ for our constructor functions and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `tests/VikingSpec.js` and implement the code in `src/viking.js` to make each test pass.
 
-If you open `tests/VikingSpec.js` and take a look at __lines 11-21__. You should see some `it()` calls (tests) that are commented out. Let's start by uncommenting __lines 11-13__:
+If you open `tests/VikingSpec.js` and take a look at __lines 11-21__, You should see some `it()` calls (tests) that are commented out. Let's start by uncommenting __lines 11-13__:
 
 ```javascript
 describe('constructor function', () => {
@@ -208,7 +208,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 
 Now we get to the good stuff: WAR! Our `War` class will allow us to have a `Viking` army and a `Saxon` army that battle each other.
 
-Modify the `War` class and add 5 methods to its prototype:
+Modify the `War` class and add 5 methods to its `class`:
 
 - `addViking()`
 - `addSaxon()`
@@ -263,6 +263,7 @@ The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to
 - should return __result of calling `receiveDamage()` of a `Viking`__ with the `strength` of a `Saxon`
 
 #### SUPER BONUS
+
 Since there is a lot of repetitive code in the previous two iterations, _vikingAttack()_ and _saxonAttack()_ try to create one _generic_ method and call it in the case of _vikingAttack_ and in the case of _saxonAttack_ instead of using almost the same code for both methods. (This iteration doesn't have test, so ask your TAs and your instructor to give you feedback on the quality of your code after the refactor.)
 
 #### `showStatus()` method
