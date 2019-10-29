@@ -131,21 +131,18 @@ warOf1600.vikingArmy.push(viking1);
 warOf1600.vikingArmy.push(viking2);
 warOf1600.vikingArmy.push(viking3);
 warOf1600.vikingArmy.push(viking4);
-warOf1600.vikingArmy.push(viking5);
 
 let saxon0 = new Saxon(100, 85);
 let saxon1 = new Saxon(100, 65);
 let saxon2 = new Saxon(100, 70);
 let saxon3 = new Saxon(100, 30);
 let saxon4 = new Saxon(100, 99);
-let saxon5 = new Saxon(100, 55);
 
 warOf1600.saxonArmy.push(saxon0);
 warOf1600.saxonArmy.push(saxon1);
 warOf1600.saxonArmy.push(saxon2);
 warOf1600.saxonArmy.push(saxon3);
 warOf1600.saxonArmy.push(saxon4);
-warOf1600.saxonArmy.push(saxon5);
 
 console.log(warOf1600.vikingArmy);
 console.log(warOf1600.saxonArmy);
