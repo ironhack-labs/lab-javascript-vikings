@@ -73,9 +73,22 @@ class Viking extends Soldier{
         this.saxonArmy.push(saxon);
     }
     vikingAttack(){
-        let random =  Math.floor(this.saxonArmy.length * Math.random());
-        let saxom= this.saxonArmy[random];
-        saxom.receiveDamage(2);
+        let random = function (array){
+           return Math.floor(array.length * Math.random());
+        };
+        let randomViking = random(this.vikingArmy);
+        let randomSaxon = random(this.saxonArmy);
+        let vikingDamage = this.vikingArmy[randomViking].strength;
+        
+        
+        let result = this.saxonArmy[randomSaxon].receiveDamage(vikingDamage);
+       
+        if (this.saxonArmy[randomSaxon].health <= 0) {
+            this.saxonArmy.splice(randomSaxon, 1);
+        }
+
+        return result;
+        
 
     }
     saxonAttack(){}
