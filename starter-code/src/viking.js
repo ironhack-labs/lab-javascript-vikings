@@ -1,9 +1,17 @@
 // Soldier
 class Soldier {
-    constructor(health, strength) {}
-    attack (health, strength) {
-        return this.strength;
+    constructor(health, strength) {
+        this.health=health;
+        this.strength= strength
     }
+
+   //attack (health, strength) {
+    //    return this.strength;
+   // }
+   attack() {
+    return this.strength;
+   }
+
     receiveDamage(damage) {
         this.health -= damage;
     }
@@ -12,19 +20,30 @@ class Soldier {
 
 // Viking
 class Viking extends Soldier {
-    constructor(name, health, strength) {}
-    receiveDamage(damage) {
-        this.health -= damage;
-        if (this.health >= 0){
-            return ( this.name + "has received " + damage + " points of damage")
-        } else {
-            return ( this.name + "has die in act of combat ")
-        }
+    constructor(name, health, strength) {
+        super(health, strength);
+        this.name=name;
+        this.health= health;
+        this.strength= strength
+    }
+    
+    attack(){
+        return this.strength;
     }
 
-    battleCry(){
-        return "Odin owns You All!"
+    receiveDamage(damage) {
+        this.health -= damage;
+        if (this.health > 0){
+            return ( this.name + " has received " + damage + " points of damage")
+        } else {
+            return ( this.name + " has died in act of combat")
+        }
     }
+    
+    battleCry(){
+        return "Odin Owns You All!"
+    }
+    
 }
 
 // Saxon
@@ -32,12 +51,12 @@ class Saxon extends Soldier {
     attack() {
         return this.strength
     }
-    reciveDamage(damage){
+    receiveDamage(damage){
         this.health -= damage;
-        if (this.health >= 0){
-            return ( "A Saxon has received " + damage + " points of damage")
+        if (this.health > 0){
+            return "A Saxon has received " + damage + " points of damage"
         } else {
-            return ( "A Saxon has died in combat ")
+            return "A Saxon has died in combat"
         }
     }
 
@@ -45,13 +64,13 @@ class Saxon extends Soldier {
 
 // War
 class War {
-    constructor(name, health, strength) {
+    constructor() {
         this.vikingArmy = [];
         this.saxonArmy = [];
     }
 
-    addViking(name, health,strength){
-        new Viking(name, health,strength);
+    addViking(VikingObj){
+        this.vikingArmy.push(VikingObj);
 
     }
 
