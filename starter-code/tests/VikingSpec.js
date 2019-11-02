@@ -8,9 +8,9 @@ describe('Soldier', () => {
   });
 
   describe('class', () => {
-    // it('should receive 2 arguments (health & strength)', () => {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+     it('should receive 2 arguments (health & strength)', () => {
+       expect(Soldier.length).toEqual(2);
+     });
     //
     // it('should receive the health property as its 1st argument', () => {
     //   expect(soldier.health).toEqual(health);
@@ -22,9 +22,9 @@ describe('Soldier', () => {
   });
 
   describe('attack() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.attack).toBe('function');
-    // });
+     it('should be a function', () => {
+       expect(typeof soldier.attack).toBe('function');
+     });
     //
     // it('should receive 0 arguments', () => {
     //   expect(soldier.attack.length).toEqual(0);
@@ -36,9 +36,9 @@ describe('Soldier', () => {
   });
 
   describe('receiveDamage() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.receiveDamage).toBe('function');
-    // });
+     it('should be a function', () => {
+       expect(typeof soldier.receiveDamage).toBe('function');
+     });
     //
     // it('should receive 1 argument (the damage)', () => {
     //   expect(soldier.receiveDamage.length).toEqual(1);
