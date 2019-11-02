@@ -1,4 +1,4 @@
-// Soldier
+
 //function Soldier() {}
 class Soldier{
  constructor(health,strength){
@@ -83,4 +83,5 @@ class Viking extends Soldier{
 
 
  }
+
 
