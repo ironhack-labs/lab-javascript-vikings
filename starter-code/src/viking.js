@@ -73,28 +73,58 @@ class Viking extends Soldier{
         this.saxonArmy.push(saxon);
     }
     vikingAttack(){
+        
         let random = function (array){
            return Math.floor(array.length * Math.random());
         };
+
         let randomViking = random(this.vikingArmy);
         let randomSaxon = random(this.saxonArmy);
         let vikingDamage = this.vikingArmy[randomViking].strength;
         
         
-        let result = this.saxonArmy[randomSaxon].receiveDamage(vikingDamage);
+        let vikingAttack = this.saxonArmy[randomSaxon].receiveDamage(vikingDamage);
        
         if (this.saxonArmy[randomSaxon].health <= 0) {
             this.saxonArmy.splice(randomSaxon, 1);
         }
 
-        return result;
+        return vikingAttack;
         
 
     }
-    saxonAttack(){}
-    showStatus(){}
+    saxonAttack(){
+         let random = function (array){
+           return Math.floor(array.length * Math.random());
+        };
 
+        let randomViking = random(this.vikingArmy);
+        let randomSaxon = random(this.saxonArmy);
+        let saxonDamage = this.saxonArmy[randomSaxon].strength;
+        
+        
+        let saxonAttack = this.vikingArmy[randomViking].receiveDamage(saxonDamage);
+       
+        if (this.vikingArmy[randomViking].health <= 0) {
+            this.vikingArmy.splice(randomViking, 1);
+        }
 
+        return saxonAttack;
+    }
+    showStatus(){
+
+        if (this.saxonArmy.length <= 0){
+            return `Vikings have won the war of the century!`;
+        } else if (this.vikingArmy.length <= 0){
+            return `Saxons have fought for their lives and survived another day...`;
+        }else{
+            return `Vikings and Saxons are still in the thick of battle.`;
+        
+        }
+          
+
+      
+    }
  }
 
 
