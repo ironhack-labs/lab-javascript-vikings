@@ -52,11 +52,7 @@ class War {
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon);
   }
-  vikingAttack() {
-    Saxon.health = Saxon.health - Viking.strength;
-  }
-  saxonAttack() {
-    // viking.health = viking.health - saxon.strength;
-  }
+  vikingAttack() {}
+  saxonAttack() {}
   showStatus() {}
 }
