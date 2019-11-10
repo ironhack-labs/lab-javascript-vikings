@@ -56,8 +56,8 @@ class War {
   }
   vikingAttack() {
     // get random saxon
-    // ret random viking
-    // call receivedamage with random saxon taking damage from random viking
+    // get random viking
+    // call receiveDamage() with random saxon taking damage from random viking
 
     //1.
     let randomS = Math.floor(Math.random() * this.saxonArmy.length);
@@ -96,13 +96,40 @@ class War {
 }
 
 // const newWar = new War();
-// newWar.vikingAttack();
-// console.log('Output for: newWar.vikingAttack()', newWar.vikingAttack());
+
 // const saxon1 = new Saxon(100, 100);
 // const saxon2 = new Saxon(200, 200);
 // const saxon3 = new Saxon(300, 300);
-// newWar.addSaxon(saxon1, saxon2, saxon3);
+// newWar.addSaxon(saxon1);
+// newWar.addSaxon(saxon2);
+// newWar.addSaxon(saxon3);
 // const viking1 = new Viking('Ash', 100, 100);
 // const viking2 = new Viking('Kev', 200, 200);
 // const viking3 = new Viking('Sam', 300, 300);
-// newWar.addViking(viking1, viking2, viking3);
+// newWar.addViking(viking1);
+// newWar.addViking(viking2);
+// newWar.addViking(viking3);
+
+// newWar.vikingArmy;
+// newWar.saxonArmy;
+// console.log('newWar.saxonArmy', newWar.saxonArmy);
+// console.log('newWar.vikingArmy', newWar.vikingArmy);
+
+// newWar.saxonAttack();
+// console.log('newWar.saxonAttack()', newWar.saxonAttack());
+// newWar.vikingAttack();
+// console.log('newWar.vikingAttack()', newWar.vikingAttack());
+// newWar.saxonAttack();
+// console.log('newWar.saxonAttack()', newWar.saxonAttack());
+// console.log('newWar.vikingArmy after attack', newWar.vikingArmy);
+
+// newWar.showStatus();
+// console.log('newWar.showStatus()', newWar.showStatus());
+
+// //Every time you ran the code it will log every time random output like:
+
+// // newWar.saxonAttack() Kev has received 100 points of damage
+// // newWar.vikingAttack() A Saxon has died in combat
+// // newWar.saxonAttack() Kev has died in act of combat
+// // newWar.vikingArmy after attack [Viking]
+// // newWar.showStatus() Saxons have fought for their lives and survived another day...
