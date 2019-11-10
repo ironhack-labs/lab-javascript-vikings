@@ -95,36 +95,38 @@ class War {
   }
 }
 
-// const newWar = new War();
+// This is the test to play.
+//  It gives an `Uncaught TypeError: Cannot read property 'receiveDamage' of undefined` sometimes on the console, I don't know why, yet!
+const newWar = new War();
 
-// const saxon1 = new Saxon(100, 100);
-// const saxon2 = new Saxon(200, 200);
-// const saxon3 = new Saxon(300, 300);
-// newWar.addSaxon(saxon1);
-// newWar.addSaxon(saxon2);
-// newWar.addSaxon(saxon3);
-// const viking1 = new Viking('Ash', 100, 100);
-// const viking2 = new Viking('Kev', 200, 200);
-// const viking3 = new Viking('Sam', 300, 300);
-// newWar.addViking(viking1);
-// newWar.addViking(viking2);
-// newWar.addViking(viking3);
+const saxon1 = new Saxon(100, 100);
+const saxon2 = new Saxon(200, 200);
+const saxon3 = new Saxon(300, 300);
+newWar.addSaxon(saxon1);
+newWar.addSaxon(saxon2);
+newWar.addSaxon(saxon3);
+const viking1 = new Viking('Ash', 100, 100);
+const viking2 = new Viking('Kev', 200, 200);
+const viking3 = new Viking('Sam', 300, 300);
+newWar.addViking(viking1);
+newWar.addViking(viking2);
+newWar.addViking(viking3);
 
 // newWar.vikingArmy;
 // newWar.saxonArmy;
 // console.log('newWar.saxonArmy', newWar.saxonArmy);
 // console.log('newWar.vikingArmy', newWar.vikingArmy);
 
-// newWar.saxonAttack();
-// console.log('newWar.saxonAttack()', newWar.saxonAttack());
-// newWar.vikingAttack();
-// console.log('newWar.vikingAttack()', newWar.vikingAttack());
-// newWar.saxonAttack();
-// console.log('newWar.saxonAttack()', newWar.saxonAttack());
-// console.log('newWar.vikingArmy after attack', newWar.vikingArmy);
+newWar.saxonAttack();
+console.log('newWar.saxonAttack()', newWar.saxonAttack());
+newWar.vikingAttack();
+console.log('newWar.vikingAttack()', newWar.vikingAttack());
+newWar.saxonAttack();
+console.log('newWar.saxonAttack()', newWar.saxonAttack());
+console.log('newWar.vikingArmy after attack', newWar.vikingArmy);
 
-// newWar.showStatus();
-// console.log('newWar.showStatus()', newWar.showStatus());
+newWar.showStatus();
+console.log('newWar.showStatus()', newWar.showStatus());
 
 // //Every time you ran the code it will log every time random output like:
 
