@@ -48,7 +48,7 @@ class Saxon extends Soldier {
       : "A Saxon has died in combat";
   }
 }
-  
+
 // War
 class War {
   constructor() {
@@ -72,8 +72,9 @@ class War {
       this.vikingArmy[random_viking].attack()
     );
 
-    if (this.saxonArmy[random_saxon].health <= 0)
+    if (this.saxonArmy[random_saxon].health <= 0) {
       this.saxonArmy.splice(random_saxon);
+    }
 
     return msg;
   }
