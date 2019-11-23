@@ -20,6 +20,17 @@ class Viking extends Soldier {
         super(health, strength);
         this.name = name;
     }
+
+    receiveDamage(damage) {
+        this.health -= damage;
+
+        if(this.health) {
+            return `${this.name} has received ${damage} points of damage`;
+        }
+
+        return `${this.name} has died in act of combat`;
+    }
+
 }
 
 // Saxon
