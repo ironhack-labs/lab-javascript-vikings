@@ -239,22 +239,22 @@ describe('War', () => {
   });
 
   describe('addViking() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof war.addViking).toBe('function');
-    // });
-    //
-    // it('should receive 1 argument (a Viking object)', () => {
-    //   expect(war.addViking.length).toEqual(1);
-    // });
-    //
-    // it('should add the received Viking to the army', () => {
-    //   war.addViking(viking);
-    //   expect(war.vikingArmy).toEqual([viking]);
-    // });
-    //
-    // it("shouldn't return anything", () => {
-    //   expect(war.addViking(viking)).toEqual(undefined);
-    // });
+    it('should be a function', () => {
+      expect(typeof war.addViking).toBe('function');
+    });
+
+    it('should receive 1 argument (a Viking object)', () => {
+      expect(war.addViking.length).toEqual(1);
+    });
+
+    it('should add the received Viking to the army', () => {
+      war.addViking(viking);
+      expect(war.vikingArmy).toEqual([viking]);
+    });
+
+    it("shouldn't return anything", () => {
+      expect(war.addViking(viking)).toEqual(undefined);
+    });
   });
 
   describe('addSaxon() method', () => {

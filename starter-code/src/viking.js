@@ -57,7 +57,10 @@ class War {
        this.saxonArmy = [];
     }
 
-    addViking() {}
+    addViking(viking) {
+        this.vikingArmy.push(viking);
+    }
+
     addSaxon() {}
     vikingAttack() {}
     saxonAttack() {}
