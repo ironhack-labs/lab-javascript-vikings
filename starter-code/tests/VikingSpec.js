@@ -126,17 +126,17 @@ describe('Viking', () => {
   });
 
   describe('battleCry() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof viking.battleCry).toBe('function');
-    // });
-    //
-    // it('should receive 0 arguments', () => {
-    //   expect(viking.battleCry.length).toEqual(0);
-    // });
-    //
-    // it('should return "Odin Owns You All!"', () => {
-    //   expect(viking.battleCry()).toEqual('Odin Owns You All!');
-    // });
+    it('should be a function', () => {
+      expect(typeof viking.battleCry).toBe('function');
+    });
+
+    it('should receive 0 arguments', () => {
+      expect(viking.battleCry.length).toEqual(0);
+    });
+
+    it('should return "Odin Owns You All!"', () => {
+      expect(viking.battleCry()).toEqual('Odin Owns You All!');
+    });
   });
 });
 
