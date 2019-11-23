@@ -38,7 +38,7 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {}
 
 // War
 class War {}

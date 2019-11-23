@@ -149,9 +149,9 @@ describe('Saxon', () => {
     saxon = new Saxon(health, strength);
   });
 
-  // it('should inherit from Soldier', () => {
-  //   expect(saxon instanceof Soldier).toEqual(true);
-  // });
+  it('should inherit from Soldier', () => {
+    expect(saxon instanceof Soldier).toEqual(true);
+  });
 
   describe('class', () => {
     // it('should receive the health property as its 1st argument', () => {
