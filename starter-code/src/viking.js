@@ -59,19 +59,26 @@ class War {
     this.saxonArmy.push(saxon);
   }
   vikingAttack(){
-    let vikingRandom = this.vikingArmy[Math.floor(Math.random() * (this.vikingArmy.length - 1))];
-    let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1));
-    let saxonRandom = this.saxonArmy[saxonIndex];
-    let result = saxonRandom.receiveDamage(vikingRandom.strength);
-    if (saxonRandom.health <= 0) this.saxonArmy.splice(saxonIndex, 1);
-    return result;
+    return this.attack('viking');
   }
   saxonAttack(){
-    let saxonRandom = this.saxonArmy[Math.floor(Math.random() * (this.saxonArmy.length - 1))];
+    return this.attack('saxon');
+  }
+  attack(attacker){
     let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
     let vikingRandom = this.vikingArmy[vikingIndex];
-    let result = vikingRandom.receiveDamage(saxonRandom.strength);
-    if (vikingRandom.health <= 0) this.vikingArmy.splice(vikingIndex, 1);
+    let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1));
+    let saxonRandom = this.saxonArmy[saxonIndex];
+    let result;
+
+    if (attacker === 'viking'){
+      result = saxonRandom.receiveDamage(vikingRandom.strength);
+      if (saxonRandom.health <= 0) this.saxonArmy.splice(saxonIndex, 1);
+    } else {
+      result = vikingRandom.receiveDamage(saxonRandom.strength);
+      if (vikingRandom.health <= 0) this.vikingArmy.splice(vikingIndex, 1);
+    }
+
     return result;
   }
   showStatus(){
