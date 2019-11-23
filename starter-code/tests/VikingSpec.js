@@ -225,17 +225,17 @@ describe('War', () => {
   });
 
   describe('class', () => {
-    // it('should receive 0 arguments', () => {
-    //   expect(War.length).toEqual(0);
-    // });
-    //
-    // it('should assign an empty array to the vikingArmy property', () => {
-    //   expect(war.vikingArmy).toEqual([]);
-    // });
-    //
-    // it('should assign an empty array to the saxonArmy property', () => {
-    //   expect(war.saxonArmy).toEqual([]);
-    // });
+    it('should receive 0 arguments', () => {
+      expect(War.length).toEqual(0);
+    });
+
+    it('should assign an empty array to the vikingArmy property', () => {
+      expect(war.vikingArmy).toEqual([]);
+    });
+
+    it('should assign an empty array to the saxonArmy property', () => {
+      expect(war.saxonArmy).toEqual([]);
+    });
   });
 
   describe('addViking() method', () => {
