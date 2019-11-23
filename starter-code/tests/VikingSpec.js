@@ -258,22 +258,22 @@ describe('War', () => {
   });
 
   describe('addSaxon() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof war.addSaxon).toBe('function');
-    // });
-    //
-    // it('should receive 1 argument (a Saxon object)', () => {
-    //   expect(war.addSaxon.length).toEqual(1);
-    // });
-    //
-    // it('should add the received Saxon to the army', () => {
-    //   war.addSaxon(saxon);
-    //   expect(war.saxonArmy).toEqual([saxon]);
-    // });
-    //
-    // it("shouldn't return anything", () => {
-    //   expect(war.addSaxon(saxon)).toEqual(undefined);
-    // });
+    it('should be a function', () => {
+      expect(typeof war.addSaxon).toBe('function');
+    });
+
+    it('should receive 1 argument (a Saxon object)', () => {
+      expect(war.addSaxon.length).toEqual(1);
+    });
+
+    it('should add the received Saxon to the army', () => {
+      war.addSaxon(saxon);
+      expect(war.saxonArmy).toEqual([saxon]);
+    });
+
+    it("shouldn't return anything", () => {
+      expect(war.addSaxon(saxon)).toEqual(undefined);
+    });
   });
 
   describe('Armies Attack', () => {
