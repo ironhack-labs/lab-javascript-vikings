@@ -93,6 +93,38 @@ class War {
     return msg;
   }
 
+  // SUPER BONUS
+
+  /*
+  // Generic function to implement the attck between armies.
+  soldierAttack(soldier) {
+    if (soldier instanceof Viking) {
+      return combat(this.vikingArmy, this.saxonArmy);
+    } else {
+      return combat(this.saxonArmy, this.vikingArmy);
+    }
+
+    function combat(attacking_army, defenfing_army) {
+      let random_soldier_attack = Math.floor(
+        Math.random() * attacking_army.length
+      );
+      let random_soldier_defend = Matdefenfing_armyh.floor(
+        Math.random() * defenfing_army.length
+      );
+
+      let result_msg = defenfing_army[random_soldier_defend].receiveDamage(
+        attacking_army[random_soldier_attack].attack()
+      );
+
+      if (defenfing_army[random_soldier_defend].health <= 0) {
+        defenfing_army.splice(random_soldier_defend);
+      }
+
+      return result_msg;
+    }
+  }
+  */
+
   showStatus() {
     if (this.saxonArmy.length === 0) {
       return "Vikings have won the war of the century!";
