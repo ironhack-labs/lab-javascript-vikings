@@ -12,12 +12,6 @@ receiveDamage(damage){
     };
 };
 
-function attack(){
-};
-
-function receiveDamage(damage){
-};
-
 
 // Viking
 class Viking extends Soldier {
@@ -70,6 +64,12 @@ class War {
     }
 
     vikingAttack(){
-        Saxon.damage == Viking.strength;
+        const saxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+        const viking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
+        saxon.receiveDamage(viking.attack());
+        if (saxon.health < 1){
+            this.saxonArmy.splice(saxon);
+        }
+        return saxon.receiveDamage();
     }
 }
