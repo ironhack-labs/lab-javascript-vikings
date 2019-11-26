@@ -57,25 +57,27 @@ class War {
 		this.saxonArmy.push(saxon);
 	}
 
-	vikingAttack() {
+	makeAttack(attacker) {
 		let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 		let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-		this.saxonArmy = this.saxonArmy.filter(saxon => {
-			return saxon.health - randomViking.strength > 0;
-		});
-
-		return randomSaxon.receiveDamage(randomViking.strength);
+		if (attacker === 'viking') {
+			this.saxonArmy = this.saxonArmy.filter(saxon => {
+				return saxon.health - randomViking.strength > 0;
+			});
+			return randomSaxon.receiveDamage(randomViking.strength);
+		} else {
+			this.vikingArmy = this.vikingArmy.filter(viking => {
+				return viking.health - randomSaxon.strength > 0;
+			});
+			return randomViking.receiveDamage(randomSaxon.strength);
+		}
+	}
+	vikingAttack() {
+		return this.makeAttack('viking');
 	}
 	saxonAttack() {
-		let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-		let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-
-		this.vikingArmy = this.vikingArmy.filter(viking => {
-			return viking.health - randomSaxon.strength > 0;
-		});
-
-		return randomViking.receiveDamage(randomSaxon.strength);
+		return this.makeAttack('saxon');
 	}
 	showStatus() {
 		return this.saxonArmy.length === 0
