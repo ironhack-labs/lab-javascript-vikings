@@ -58,7 +58,6 @@ class War {
     addViking(viking){
         this.vikingArmy.push(viking);
     }
-
     addSaxon(saxon){
       this.saxonArmy.push(saxon);
     }
@@ -66,10 +65,11 @@ class War {
     vikingAttack(){
         const saxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
         const viking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
-        saxon.receiveDamage(viking.attack());
+        let msg = saxon.receiveDamage(viking.strength);
         if (saxon.health < 1){
             this.saxonArmy.splice(saxon);
         }
-        return saxon.receiveDamage();
+        return msg;
     }
+
 }
