@@ -308,32 +308,28 @@ describe("War", () => {
     });
 
     describe("saxonAttack() method", () => {
-      // it('should be a function', () => {
-      //   expect(typeof war.saxonAttack).toBe('function');
-      // });
-      //
-      // it('should receive 0 arguments', () => {
-      //   expect(war.saxonAttack.length).toEqual(0);
-      // });
-      //
-      // it('should make a Viking receiveDamage() equal to the strength of a Saxon', () => {
-      //   let oldHealth = viking.health;
-      //   war.saxonAttack();
-      //   expect(viking.health).toEqual(oldHealth - saxon.strength);
-      // });
-      //
-      // it('should remove dead vikings from the army', () => {
-      //   for (let i = 0; i < 12; i++) {
-      //     war.saxonAttack();
-      //   }
-      //   expect(war.vikingArmy.length).toEqual(0);
-      // });
-      //
-      // it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
-      //   expect(war.saxonAttack()).toEqual(
-      //     `${viking.name} has received ${saxon.strength} points of damage`
-      //   );
-      // });
+      it('should be a function', () => {
+        expect(typeof war.saxonAttack).toBe('function');
+      });
+            it('should receive 0 arguments', () => {
+        expect(war.saxonAttack.length).toEqual(0);
+      });
+            it('should make a Viking receiveDamage() equal to the strength of a Saxon', () => {
+        let oldHealth = viking.health;
+        war.saxonAttack();
+        expect(viking.health).toEqual(oldHealth - saxon.strength);
+      });
+            it('should remove dead vikings from the army', () => {
+        for (let i = 0; i < 12; i++) {
+          war.saxonAttack();
+        }
+        expect(war.vikingArmy.length).toEqual(0);
+      });
+            it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
+        expect(war.saxonAttack()).toEqual(
+          `${viking.name} has received ${saxon.strength} points of damage`
+        );
+      });
     });
 
     describe("showStatus() method", () => {

@@ -51,6 +51,7 @@ class War {
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon);
   }
+
   vikingAttack() {
     let Opfer = this.saxonArmy[
       Math.floor(Math.random() * this.saxonArmy.length)
@@ -58,9 +59,24 @@ class War {
     let Angreifer = this.vikingArmy[
       Math.floor(Math.random() * this.vikingArmy.length)
     ];
-    Opfer.receiveDamage(Angreifer.attack());
-    if (Opfer.health < 0) {
+    let message = Opfer.receiveDamage(Angreifer.attack());
+    if (Opfer.health <= 0) {
       this.saxonArmy.splice(this.saxonArmy.indexOf(Opfer), 1);
     }
+    return(message);
+  }
+
+  saxonAttack() {
+    let Opfer = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ];
+    let Angreifer = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ];
+    let message = Opfer.receiveDamage(Angreifer.attack());
+    if (Opfer.health <= 0) {
+      this.vikingArmy.splice(this.vikingArmy.indexOf(Opfer), 1);
+    }
+    return(message);
   }
 }
