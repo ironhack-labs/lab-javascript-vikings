@@ -69,10 +69,15 @@ class War {
     };
 
     vikingAttack(){
-        let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
-        let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
+        let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length);
+        let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
+        this.saxonArmy[randomSaxonIndex].receiveDamage(this.vikingArmy[randomVikingIndex].strength);
 
-        randomSaxon.receiveDamage(randomViking.strength);
+        let filteredSaxonArmy = this.saxonArmy.filter(function(saxon){
+            return saxon.health>0;
+                });
+
+        
 
     };
 
