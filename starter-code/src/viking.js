@@ -84,3 +84,25 @@ class War {
 
 };
 }
+
+let battle = new War;
+battle.addViking(new Viking("Juliane",10,3));
+battle.addSaxon(new Saxon(12,5));
+
+battle.vikingAttack();
+battle.saxonAttack();
+console.log(battle.showStatus());
+
+battle.vikingAttack();
+//battle.saxonAttack();
+console.log(battle.showStatus());
+
+
+battle.vikingAttack();
+//battle.saxonAttack();
+console.log(battle.showStatus());
+
+
+battle.vikingAttack();
+//battle.saxonAttack();
+console.log(battle.showStatus());
