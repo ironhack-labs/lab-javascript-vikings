@@ -57,6 +57,8 @@ class War {
     this.saxonArmy = []
   }
 
+  // addViking{}  <- Aquí me he atascado hasta que he visto que los test te pasan al vikingo ya construído. Estaba haciendo 'new Viking'
+
   addViking(receivedViking){
     this.vikingArmy.push(receivedViking);
   }
