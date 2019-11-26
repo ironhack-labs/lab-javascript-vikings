@@ -4,9 +4,11 @@ class Soldier {
 		this.health = health;
 		this.strength = strength;
 	}
+
 	attack() {
 		return this.strength;
 	}
+
 	receiveDamage(damage) {
 		this.health -= damage;
 	}
@@ -18,22 +20,27 @@ class Viking extends Soldier {
 		super(health, strength);
 		this.name = name;
 	}
+
 	receiveDamage(damage) {
 		super.receiveDamage(damage);
+
 		if (this.health > 0) {
 			return `${this.name} has received ${damage} points of damage`;
 		} else {
 			return `${this.name} has died in act of combat`;
 		}
 	}
+
 	battleCry() {
 		return 'Odin Owns You All!';
 	}
 }
+
 // // Saxon
 class Saxon extends Soldier {
 	receiveDamage(damage) {
 		super.receiveDamage(damage);
+
 		if (this.health > 0) {
 			return `A Saxon has received ${damage} points of damage`;
 		} else {
@@ -73,12 +80,15 @@ class War {
 			return randomViking.receiveDamage(randomSaxon.strength);
 		}
 	}
+
 	vikingAttack() {
 		return this.makeAttack('viking');
 	}
+
 	saxonAttack() {
 		return this.makeAttack('saxon');
 	}
+
 	showStatus() {
 		return this.saxonArmy.length === 0
 			? 'Vikings have won the war of the century!'
@@ -87,7 +97,3 @@ class War {
 				: 'Vikings and Saxons are still in the thick of battle.';
 	}
 }
-
-// let test = new War();
-// test.addViking();
-// console.log(test);
