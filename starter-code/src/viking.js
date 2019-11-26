@@ -4,9 +4,11 @@ class Soldier {
 		this.health = health;
 		this.strength = strength;
 	}
+
 	attack() {
 		return this.strength;
 	}
+
 	receiveDamage(damage) {
 		this.health -= damage;
 	}
@@ -18,22 +20,27 @@ class Viking extends Soldier {
 		super(health, strength);
 		this.name = name;
 	}
+
 	receiveDamage(damage) {
 		super.receiveDamage(damage);
+
 		if (this.health > 0) {
 			return `${this.name} has received ${damage} points of damage`;
 		} else {
 			return `${this.name} has died in act of combat`;
 		}
 	}
+
 	battleCry() {
 		return 'Odin Owns You All!';
 	}
 }
+
 // // Saxon
 class Saxon extends Soldier {
 	receiveDamage(damage) {
 		super.receiveDamage(damage);
+
 		if (this.health > 0) {
 			return `A Saxon has received ${damage} points of damage`;
 		} else {
@@ -57,16 +64,36 @@ class War {
 		this.saxonArmy.push(saxon);
 	}
 
-	vikingAttack() {
+	makeAttack(attacker) {
 		let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 		let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-		randomSaxon.receiveDamage(randomViking.strength);
+		if (attacker === 'viking') {
+			this.saxonArmy = this.saxonArmy.filter(saxon => {
+				return saxon.health - randomViking.strength > 0;
+			});
+			return randomSaxon.receiveDamage(randomViking.strength);
+		} else {
+			this.vikingArmy = this.vikingArmy.filter(viking => {
+				return viking.health - randomSaxon.strength > 0;
+			});
+			return randomViking.receiveDamage(randomSaxon.strength);
+		}
 	}
-	saxonAttack() {}
-	showStatus() {}
-}
 
-// let test = new War();
-// test.addViking();
-// console.log(test);
+	vikingAttack() {
+		return this.makeAttack('viking');
+	}
+
+	saxonAttack() {
+		return this.makeAttack('saxon');
+	}
+
+	showStatus() {
+		return this.saxonArmy.length === 0
+			? 'Vikings have won the war of the century!'
+			: this.vikingArmy.length === 0
+				? 'Saxons have fought for their lives and survived another day...'
+				: 'Vikings and Saxons are still in the thick of battle.';
+	}
+}
