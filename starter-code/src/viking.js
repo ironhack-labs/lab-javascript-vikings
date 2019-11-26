@@ -68,6 +68,7 @@ class War {
 
         let attackResult = raiderArmy[rndRaider].receiveDamage( attackerArmy[rndAttacker].attack() );
         if( raiderArmy[rndRaider].health <= 0 ) { raiderArmy.splice( rndRaider, 1 ); }
+        return attackResult;
     }
 
     vikingAttack() {
