@@ -71,24 +71,24 @@ class War {
     vikingAttack(){
         let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length);
         let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
-        this.saxonArmy[randomSaxonIndex].receiveDamage(this.vikingArmy[randomVikingIndex].strength);
+        let result=this.saxonArmy[randomSaxonIndex].receiveDamage(this.vikingArmy[randomVikingIndex].strength);
 
         if(this.saxonArmy[randomSaxonIndex].health<=0){
              this.saxonArmy.splice(randomSaxonIndex,1);
     }
-        
+        return result;
         
     };
 
     saxonAttack(){
         let randomSaxonIndex = Math.floor(Math.random()*this.saxonArmy.length);
         let randomVikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
-        this.vikingArmy[randomVikingIndex].receiveDamage(this.saxonArmy[randomSaxonIndex].strength);
+        let result =this.vikingArmy[randomVikingIndex].receiveDamage(this.saxonArmy[randomSaxonIndex].strength);
 
         if(this.vikingArmy[randomVikingIndex].health<=0){
              this.vikingArmy.splice(randomVikingIndex,1);
     }
-        
+        return result;
 
     };
 
