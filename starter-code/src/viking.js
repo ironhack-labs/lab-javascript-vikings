@@ -60,7 +60,7 @@ class War {
     ];
     Opfer.receiveDamage(Angreifer.attack());
     if (Opfer.health < 0) {
-      this.saxonArmy.slice(this.saxonArmy.indexOf(Opfer), 1);
+      this.saxonArmy.splice(this.saxonArmy.indexOf(Opfer), 1);
     }
   }
 }
