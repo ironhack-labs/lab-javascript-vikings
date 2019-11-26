@@ -76,15 +76,11 @@ class War {
   };
 
   showStatus() {
-      /* 
-      Returns the current status of the War based on the size of the armies.
-
-should be a function
-should receive 0 arguments
-if the Saxon array is empty, should return "Vikings have won the war of the century!"
-if the Viking array is empty, should return "Saxons have fought for their lives and survived another day..."
-if there are at least 1 Viking and 1 Saxon, should return "Vikings and Saxons are still in the thick of battle."
-*/
+    if (this.saxonArmy.length <= 0)
+      return "Vikings have won the war of the century!";
+    if (this.vikingArmy.length <= 0)
+      return "Saxons have fought for their lives and survived another day...";
+    return "Vikings and Saxons are still in the thick of battle.";
 
 };
 }
