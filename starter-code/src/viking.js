@@ -27,11 +27,6 @@ class Viking extends Soldier{
         super(health, strength);
         this.name = name;
 
-        // this.health = health;
-
-        // this.strength = strength;
-
-
     }
 
     receiveDamage(damage){
@@ -66,8 +61,6 @@ class Saxon extends Soldier {
 
     }
 
-
-
 }
 
 // War
@@ -76,6 +69,8 @@ class War {
     constructor() {
        this.vikingArmy = [];
        this.saxonArmy = [];
+       this.totalVikings = this.vikingArmy.length;
+       this.totalSaxons = this.saxonArmy.length;
     }
 
     addViking(viking) {
@@ -89,30 +84,73 @@ class War {
     vikingAttack() {
         let rand = Math.random();
 
-        let totalVikings = vikingArmy.length;
-        let totalSaxons = saxonArmy.length;
+        let randomVikingIndex = Math.floor(rand * this.totalVikings);
+        let randomViking = this.vikingArmy[randomVikingIndex];
 
-        let randomVikingIndex = Math.floor(rand * totalVikings);
-        let randomViking = vikingArmy[randomVikingIndex];
+        let randomSaxonIndex = Math.floor(rand * this.totalSaxons);
+        let randomSaxon = this.saxonArmy[randomSaxonIndex];
 
-        let randomSaxonIndex = Math.floor(rand * totalSaxons);
-        let randomSaxon = vikingArmy[randomSaxonIndex];
+        let attackResult = randomSaxon.receiveDamage(randomViking.strength);
+        // let a = this.selectRandomSaxon().receiveDamage(this.selectRandomViking().strength);
 
-        let a = randomSaxon.receiveDamage(randomViking.strength);
+        if(attackResult.includes("A Saxon has died")) this.saxonArmy.splice(randomSaxonIndex,1)
 
-        if(a.contains("A Saxon has died")){
-            this.saxonArmy.splice(randomSaxonIndex,1)
-        }
-
+        return attackResult;
     }
 
     saxonAttack() {
+        let rand = Math.random();
 
+        let randomVikingIndex = Math.floor(rand * this.totalVikings);
+        let randomViking = this.vikingArmy[randomVikingIndex];
+
+        let randomSaxonIndex = Math.floor(rand * this.totalSaxons);
+        let randomSaxon = this.saxonArmy[randomSaxonIndex];
+
+        let attackResult = randomViking.receiveDamage(randomSaxon.strength);
+
+        if(attackResult.includes("has died in act of combat")) this.vikingArmy.splice(randomVikingIndex,1)
+
+        return attackResult;
     }
 
     showStatus() {
+
+        if(this.saxonArmy.length === 0){
+            return "Vikings have won the war of the century!";
+        }else if(this.vikingArmy.length === 0){
+            return "Saxons have fought for their lives and survived another day..."
+        }else{
+            return "Vikings and Saxons are still in the thick of battle."
+        }
 
     }
 
 
 }
+
+    // soldierAttack(soldier){
+    //     let rand = Math.random();
+
+    //     let randomVikingIndex = Math.floor(rand * this.totalVikings);
+    //     let randomViking = this.vikingArmy[randomVikingIndex];
+
+    //     let randomSaxonIndex = Math.floor(rand * this.totalSaxons);
+    //     let randomSaxon = this.saxonArmy[randomSaxonIndex];
+        
+    //     let attackResult;
+
+    //     if(soldier === 'viking'){
+    //         attackResult = randomSaxon.receiveDamage(randomViking.strength);
+    //         if(attackResult.includes("A Saxon has died")) this.saxonArmy.splice(randomSaxonIndex, 1);  
+    //     }else{
+    //         attackResult = randomViking.receiveDamage(randomSaxon.strength);
+    //         if(attackResult.includes("has died in act of combat")) this.vikingArmy.splice(randomVikingIndex, 1)
+    //     }
+
+    //     return attackResult;
+    // }
+
+    //return this.soldierAttack('viking');
+
+    //return this.soldierAttack('saxon');
