@@ -18,9 +18,6 @@ class Viking extends Soldier{
     super(health, strength);
     this.name = name;
   }
-  // attack() {
-  //   return this.strength;
-  // }
   receiveDamage(damage) {
     this.health -= damage;
     let messegeDamage = '';
@@ -67,29 +64,36 @@ class War {
     this.saxonArmy.push(newSaxon);
   };
   vikingAttack(){
-    this.saxonArmy[Math.floor(Math.random(this.saxonArmy.length))]
-    .receiveDamage(
+    let indexRandomSaxon = Math.floor(Math.random(this.saxonArmy.length));
+    let randomSaxon = this.saxonArmy[indexRandomSaxon];
+    let saxonStatus = randomSaxon
+      .receiveDamage(
       (this.vikingArmy[Math.floor(Math.random(this.vikingArmy.length))].attack())
-    );
-    
+      );
+    if (randomSaxon.health <= 0) {
+      this.saxonArmy.splice(indexRandomSaxon, 1);
+    }
+    return saxonStatus;    
   };
-  saxonAttack(){};
-  showStatus(){};
+  saxonAttack(){
+    let indexRandomViking = Math.floor(Math.random(this.vikingArmy.length));
+    let randomViking = this.vikingArmy[indexRandomViking];
+    let vikingStatus = randomViking
+      .receiveDamage(
+      (this.saxonArmy[Math.floor(Math.random(this.saxonArmy.length))].attack())
+      );
+    if (randomViking.health <= 0) {
+      this.vikingArmy.splice(indexRandomViking, 1);
+    }
+    return vikingStatus;    
+  };
+  showStatus(){
+    if (this.saxonArmy.length <= 0){
+      return 'Vikings have won the war of the century!';
+    } else if (this.vikingArmy.length <= 0) {
+      return 'Saxons have fought for their lives and survived another day...';
+    } else {
+      return 'Vikings and Saxons are still in the thick of battle.';
+    }
+  };
 }
-
-// vikingAttack() method
-// A Saxon (chosen at random) has their receiveDamage() method called with the damage equal to the strength of a Viking (also chosen at random). This should only perform a single attack and the Saxon doesn't get to attack back.
-
-// should be a function
-// should receive 0 arguments
-// should make a Saxon receiveDamage() equal to the strength of a Viking
-// should remove dead saxons from the army
-// should return result of calling receiveDamage() of a Saxon with the strength of a Viking
-// saxonAttack() method
-// The Saxon version of vikingAttack(). A Viking receives the damage equal to the strength of a Saxon.
-
-// should be a function
-// should receive 0 arguments
-// should make a Viking receiveDamage() equal to the strength of a Saxon
-// should remove dead vikings from the army
-// should return result of calling receiveDamage() of a Viking with the strength of a Saxon
