@@ -69,12 +69,38 @@ class War {
     addViking(Viking) {
         this.vikingArmy.push(Viking);
     }
-        addSaxon()
-vikingAttack()
-saxonAttack()
-showStatus()
+    addSaxon(Saxon) {
+        this.saxonArmy.push(Saxon);
+    }
+    vikingAttack() {
+        let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);   //gets a saxon number from saxonArmy ramdomly
+        let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);  //gets a viking number from vikingArmy ramdoml
+        let saxonAtRamdom = this.saxonArmy[saxonIndex];
+        let vikingAtRamdom = this.vikingArmy[vikingIndex];
+        let result = saxonAtRamdom.receiveDamage(vikingAtRamdom.strength);
+        if (saxonAtRamdom.health <=0 ) {
+            this.saxonArmy.splice(saxonIndex,1);
+            }
+        return result;
+    }
+
+    saxonAttack() {
+        let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);   //gets a saxon number from saxonArmy ramdomly
+        let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);  //gets a viking number from vikingArmy ramdoml
+        let saxonAtRamdom = this.saxonArmy[saxonIndex];
+        let vikingAtRamdom = this.vikingArmy[vikingIndex];
+        let result = vikingAtRamdom.receiveDamage(saxonAtRamdom.strength);
+        if (vikingAtRamdom.health <=0 ) {
+            this.vikingArmy.splice(vikingIndex,1);
+            }
+        return result;
+    }
+    
+        
+
+    // showStatus()
 }
 
 
 
-let player1 = new Player('Joaquim', 'red');
+// let player1 = new Player('Joaquim', 'red');
