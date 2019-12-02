@@ -56,26 +56,37 @@ class War {
     addSaxon (Saxon) {
         this.saxonArmy.push(Saxon);
     }
-    // attack(armyA, randomA, armyB, randomB) {
-    //     let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
-    //     let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
-    //     this.armyA[randomA].receiveDamage(this.armyB[randomB].strength);
-    // }
 
-    vikingAttack () {
-        // this.attack(this.vikingArmy, randomViking, this.saxonArmy, randomSaxon)
-        let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
-        let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
-        const result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
-        this.saxonArmy = this.saxonArmy.filter(element => element.health > 0);
+    //Super Bonus!
+    attack(armyA, armyB) { 
+        let randomA = Math.floor(Math.random()*armyA.length);
+        let randomB = Math.floor(Math.random()*armyB.length);
+        const result = armyB[randomB].receiveDamage(armyA[randomA].strength);
+        armyB = armyB.filter(element => element.health > 0);
         return result;
     }
+
+    vikingAttack () {
+        //Super Bonus!
+        return this.attack(this.vikingArmy, this.saxonArmy); 
+
+        //Legacy
+        // let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
+        // let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
+        // const result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
+        // this.saxonArmy = this.saxonArmy.filter(element => element.health > 0);
+        // return result;
+    }
     saxonAttack () {
-        let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
-        let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
-        const result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
-        this.vikingArmy = this.vikingArmy.filter(element => element.health > 0);
-        return result;
+        //Super Bonus!
+        return this.attack(this.saxonArmy, this.vikingArmy); 
+
+        //Legacy
+        // let randomViking = Math.floor(Math.random()*this.vikingArmy.length);
+        // let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length);
+        // const result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
+        // this.vikingArmy = this.vikingArmy.filter(element => element.health > 0);
+        // return result;
     }
     showStatus () {
         if(this.saxonArmy.length === 0){
@@ -87,3 +98,12 @@ class War {
         }
     }
 }
+
+
+// const viking1 = new Viking("Joao", 200, 79);
+// const saxon1 = new Saxon(80, 50);
+// const war1 = new War();
+// war1.addViking(viking1);
+// war1.addSaxon(saxon1);
+// console.log(war1.saxonAttack());
+// console.log(war1.vikingAttack());
