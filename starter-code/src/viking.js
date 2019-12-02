@@ -28,7 +28,7 @@ class Viking extends Soldier {
   }
 
   battleCry() {
-    return `Odin Owns You All!`
+    return `Odin Owns You All!`;
   }
 }
 
@@ -50,5 +50,41 @@ class Saxon extends Soldier {
   }
 }
 
-// War
-class War {}
+// funcao separada para calcular random de um array
+const getRandomNumberInArray = arr => Math.floor(Math.random() * arr.length);
+
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  addViking(vikingObj) {
+    this.vikingArmy.push(vikingObj);
+  }
+  addSaxon(saxonObj) {
+    this.saxonArmy.push(saxonObj);
+  }
+  vikingAttack() {
+    const saxonSoldierIndex = getRandomNumberInArray(this.saxonArmy);
+    const saxonSoldier = this.saxonArmy[saxonSoldierIndex];
+    const vikingSoldier = this.vikingArmy[
+      getRandomNumberInArray(this.vikingArmy)
+    ];
+    const attackOutput = saxonSoldier.receiveDamage(vikingSoldier.strength);
+    if (saxonSoldier.health <= 0) {
+      this.saxonArmy.splice(saxonSoldierIndex, 1);
+    }
+    return attackOutput;
+  }
+  saxonAttack() {
+    const vikingSoldierIndex = getRandomNumberInArray(this.vikingArmy);
+    const vikingSoldier = this.vikingArmy[vikingSoldierIndex];
+    const saxonSoldier = this.saxonArmy[getRandomNumberInArray(this.saxonArmy)];
+    const attackOutput = vikingSoldier.receiveDamage(saxonSoldier.strength);
+    if (vikingSoldier.health <= 0) {
+      this.vikingArmy.splice(vikingSoldierIndex, 1);
+    }
+    return attackOutput;
+  }
+  showStatus() {}
+}
