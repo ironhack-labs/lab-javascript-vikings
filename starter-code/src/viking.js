@@ -13,10 +13,41 @@ class Soldier {
   }
 }
 
-// Viking 
-classe  Viking {}
+// Viking
+class Viking extends Soldier {
+  constructor(name, health, strength) {
+    super(health, strength);
+    this.name = name;
+  }
 
-// Saxon 
-classe  Saxon {}
+  receiveDamage(damage) {
+    super.receiveDamage(damage);
+    if (this.health > 0) {
+      return `${this.name} has received ${damage} points of damage`;
+    } else if (this.health === 0) {
+      return `${this.name} has died in act of combat`;
+    }
 
-// Guerra 
+  }
+
+  battleCry() {
+    return `Odin Owns You All!`
+  }
+
+}
+
+// Saxon
+class Saxon extends Soldier {
+
+  receiveDamage(damage) {
+    super.receiveDamage(damage);
+    if (this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`;
+    } else if (this.health === 0) {
+      return `A Saxon has died in combat`;
+    }
+  }
+}
+
+// War
+class War {}
