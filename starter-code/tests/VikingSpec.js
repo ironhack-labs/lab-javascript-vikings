@@ -8,50 +8,50 @@ describe('Soldier', () => {
   });
 
   describe('class', () => {
-    // it('should receive 2 arguments (health & strength)', () => {
-    //   expect(Soldier.length).toEqual(2);
-    // });
-    //
-    // it('should receive the health property as its 1st argument', () => {
-    //   expect(soldier.health).toEqual(health);
-    // });
-    //
-    // it('should receive the strength property as its 2nd argument', () => {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it('should receive 2 arguments (health & strength)', () => {
+      expect(Soldier.length).toEqual(2);
+    });
+    
+    it('should receive the health property as its 1st argument', () => {
+      expect(soldier.health).toEqual(health);
+    });
+    
+    it('should receive the strength property as its 2nd argument', () => {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
   describe('attack() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.attack).toBe('function');
-    // });
-    //
-    // it('should receive 0 arguments', () => {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
-    //
-    // it('should return the strength property of the Soldier', () => {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
+    it('should be a function', () => {
+      expect(typeof soldier.attack).toBe('function');
+    });
+    
+    it('should receive 0 arguments', () => {
+      expect(soldier.attack.length).toEqual(0);
+    });
+    
+    it('should return the strength property of the Soldier', () => {
+      expect(soldier.attack()).toEqual(strength);
+    });
   });
 
   describe('receiveDamage() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.receiveDamage).toBe('function');
-    // });
-    //
-    // it('should receive 1 argument (the damage)', () => {
-    //   expect(soldier.receiveDamage.length).toEqual(1);
-    // });
-    //
-    // it('should remove the received damage from the health property', () => {
-    //   soldier.receiveDamage(50);
-    //   expect(soldier.health).toEqual(health - 50);
-    // });
-    //
-    // it("shouldn't return anything", () => {
-    //   expect(soldier.receiveDamage(50)).toEqual(undefined);
-    // });
+    it('should be a function', () => {
+      expect(typeof soldier.receiveDamage).toBe('function');
+    });
+    
+    it('should receive 1 argument (the damage)', () => {
+      expect(soldier.receiveDamage.length).toEqual(1);
+    });
+    
+    it('should remove the received damage from the health property', () => {
+      soldier.receiveDamage(50);
+      expect(soldier.health).toEqual(health - 50);
+    });
+    
+    it("shouldn't return anything", () => {
+      expect(soldier.receiveDamage(50)).toEqual(undefined);
+    });
   });
 });
 
