@@ -7,8 +7,8 @@ class Soldier {
   attack(){
       return this.strength;
   };
-  receiveDamage(damage){
-     this.health -= damage;
+  receiveDamage(theDamage){
+     this.health -= theDamage;
   }
 }
 
@@ -20,17 +20,17 @@ class Viking extends Soldier{
     this.health = health;
     this.strength = strength;
   }
-  receiveDamage(damage){
-    this.health -= damage
-    if(this.health > damage){
-      return `${this.name} has received ${damage} points of damage`
+  receiveDamage(theDamage){
+    this.health -= theDamage
+    if(this.health > theDamage){
+      return `${this.name} has received ${theDamage} points of damage`;
     } else {
-      return `${this.name} has died in act of combat`
+      return `${this.name} has died in act of combat`;
     }
 
   }
   battleCry() {
-    return `Odin Owns You All!`
+    return `Odin Owns You All!`;
   }
 }
 
@@ -41,12 +41,12 @@ class Saxon extends Soldier{
     this.health = health;
     this.strength = strength;
   }
-  receiveDamage(damage){
-    this.health -= damage
-    if (this.health > damage) {
-      return `${this} has received ${damage} points of damage`
+  receiveDamage(theDamage){
+    this.health -= theDamage;
+    if (this.health > theDamage) {
+      return `${this} has received ${theDamage} points of damage`;
     } else {
-      return `${this} has died in act of combat`
+      return `${this} has died in combat`;
     }  
   }
   
@@ -58,17 +58,40 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
+
   addViking(Viking){
     this.vikingArmy.push(Viking);
   }
+
   addSaxon(Saxon){
     this.saxonArmy.push(Saxon);
   }
+
   vikingAttack(){
-    let saxonAttacked = this.saxonArmy[Math.floor(Math.random()* this.saxonArmy.length)];
-    saxonAttacked.receiveDamage(this.vikingArmy[0].strength);
-    if (saxonAttacked.health < 1 ) {
-      removeItemFromArr(this.saxonArmy, saxonAttacked)
-    }
+    let saxonRandomIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    let saxonRandom = this.saxonArmy[saxonRandomIndex];
+    let vikingRandomIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    let vikingRandom = this.vikingArmy[vikingRandomIndex];
+
+     saxonRandom.receiveDamage(vikingRandom.strength)
+     if (saxonRandom.health <= 0) {
+       this.saxonArmy.splice(saxonRandomIndex, 1);
+       return `A Saxon has died in combat`;
+     }
   }
+
+  saxonAttack(){
+    let saxonRandomIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    let saxonRandom = this.saxonArmy[saxonRandomIndex];
+    let vikingRandomIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    let vikingRandom = this.vikingArmy[vikingRandomIndex];
+
+    vikingRandom.receiveDamage(saxonRandom.strength)
+    if (vikingRandom.health <= 0) {
+      this.vikingArmy.splice(vikingRandomIndex, 1);
+      return "Odin Owns You All!";
+    }
+    return `${vikingRandom.name} has received ${saxonRandom.strength} points of damage`;
+  }
+
 }
