@@ -4,9 +4,11 @@ class Soldier {
         this.health = health
         this.strength = strength
     }
-    attack() {return this.strength}
+    attack() {
+        return this.strength
+    }
     receiveDamage(damage){
-        this.health=this.health - damage;
+        this.health -= damage
     }
 }
 
@@ -17,7 +19,7 @@ class Viking extends Soldier {
         this.name = name
     }
     receiveDamage(damage){
-        this.health=this.health - damage;
+        this.health -= damage
         if(this.health > 0) return `${this.name} has received ${damage} points of damage`
         return `${this.name} has died in act of combat`
     }
@@ -28,11 +30,8 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
-    attack(){
-        return this.strength
-    }
     receiveDamage(damage){
-        this.health=this.health - damage;
+        this.health -= damage;
         if(this.health > 0) return `A Saxon has received ${damage} points of damage`
         return `A Saxon has died in combat`
     }
@@ -55,13 +54,15 @@ class War {
         const randomViking = Math.floor(Math.random() * this.vikingArmy.length)
 
         const saxonSoldier = this.saxonArmy[randomSaxon]
+        const vikingHero = this.vikingArmy[randomViking]
 
-        if(saxonSoldier.health <= 0) {
+        const res = saxonSoldier.receiveDamage(vikingHero.strength)
+        
+        if(saxonSoldier.health <= 0){
             this.saxonArmy.splice(randomSaxon, 1)
-            return 'A saxon has died in combat'
+            return res
         }
-
-
+        
         // this.saxonArmy.forEach((e, i) => {
         //     if(e.health <= 0) {
         //         this.saxonArmy.splice(i,1)
@@ -69,15 +70,22 @@ class War {
         //     }
         // })
 
-        return this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
     }
     saxonAttack(){
         let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
         let randomViking = Math.floor(Math.random() * this.vikingArmy.length)
 
+        const saxonSoldier = this.saxonArmy[randomSaxon]
+        const vikingHero = this.vikingArmy[randomViking]
 
-        return this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
+        const res = vikingHero.receiveDamage(saxonSoldier.strength)
+
+        if(vikingHero.health <= 0){
+            this.vikingArmy.splice(randomViking, 1)
+        }
+        return res
     }
+
     showStatus(){
         if(this.saxonArmy.length === 0) {
             return 'Vikings have won the war of the century!'
@@ -86,7 +94,7 @@ class War {
             return 'Saxons have fought for their lives and survived another day...'
             }
         else if(this.saxonArmy.length > 0 && this.vikingArmy.length > 0) {
-            return 'Vikings ans Saxons are still in the thick of battle'
+            return 'Vikings and Saxons are still in the thick of battle.'
         }
     }
 }
