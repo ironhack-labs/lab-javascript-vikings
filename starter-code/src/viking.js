@@ -108,6 +108,7 @@ class War {
     return `${vikingRandom.name} has received ${saxonRandom.strength} points of damage`;
   }
 
+  //method for viking and saxon attack
   soldierAttack(soldier){
     let soldierAttacking;
     let soldierAttacked;
