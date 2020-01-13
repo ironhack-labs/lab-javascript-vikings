@@ -80,6 +80,19 @@ class War {
     }
     return attacked;    
   }
+
+  //SUPER BONUS
+  genericAttack(army) {
+    let randSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    
+    if (army === this.vikingArmy) {
+      randSaxon.receiveDamage(randViking.strength); 
+    } else {
+      randViking.receiveDamage(randSaxon.strength); 
+    }
+
+  }
   
   showStatus() {
     if (this.saxonArmy.length === 0) {
