@@ -1,4 +1,4 @@
-![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
+![logo_ironhack_blue 7](https: user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
 # LAB | JS Vikings _Object-oriented programming_
 
@@ -37,13 +37,13 @@ describe('constructor function', () => {
     expect(Soldier.length).toEqual(2);
   });
 
-  // it('should receive the health property as its 1st argument', () => {
-  //   expect(soldier.health).toEqual(health);
-  // });
+    it('should receive the health property as its 1st argument', () => {
+      expect(soldier.health).toEqual(health);
+    });
 
-  // it('should receive the strength property as its 2nd argument', () => {
-  //   expect(soldier.strength).toEqual(strength);
-  // });
+    it('should receive the strength property as its 2nd argument', () => {
+      expect(soldier.strength).toEqual(strength);
+    });
 });
 ```
 
@@ -56,34 +56,34 @@ __Write the code__
 We must write the correct code in the `src/viking.js` file to make the test pass. The starter code you will find in the file is the following:
 
 ```javascript
-// Soldier
+  Soldier
 class Soldier {}
 
-// Viking
+  Viking
 class Viking {}
 
-// Saxon
+  Saxon
 class Saxon {}
 
-// War
+  War
 class War {}
 ```
 
 In this case, the test says that _Soldier class should receive 2 arguments (health & strength)_, so we have to write the correct code that passes this test. Let's make the `Soldier` class receive two arguments:
 
 ```javascript
-// Soldier
+  Soldier
 class Soldier {
   constructor(health, strength) {}
 }
 
-// Viking
+  Viking
 class Viking {}
 
-// Saxon
+  Saxon
 class Saxon {}
 
-// War
+  War
 class War {}
 ```
 
@@ -96,7 +96,7 @@ Once we've verified that the test is failing, we can implement the code to make 
 
 ## Exercise
 
-![](https://i.imgur.com/5TPElt8.jpg)
+![](https: i.imgur.com/5TPElt8.jpg)
 
 ---
 
@@ -162,7 +162,7 @@ Modify the `Viking` class, have it inherit from `Soldier`, re-implement the `rec
 
 #### `battleCry()` method
 
-[Learn more about battle cries](http://www.artofmanliness.com/2015/06/08/battle-cries/).
+[Learn more about battle cries](http: www.artofmanliness.com/2015/06/08/battle-cries/).
 
 - should be a function
 - should receive __0 arguments__
@@ -280,4 +280,4 @@ Returns the current status of the `War` based on the size of the armies.
 
 __Happy Coding!__ 💙
 
-![Vikings picture](https://i.imgur.com/fHHEoEj.jpg)
+![Vikings picture](https: i.imgur.com/fHHEoEj.jpg)
