@@ -59,11 +59,10 @@ class War {
     let randSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
     let randViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     const attacked = randSaxon.receiveDamage(randViking.strength); 
+    
 
-    for (let i = 0; i < this.saxonArmy.length; i++) {
-      if (this.saxonArmy[i].health <= 0) {
-        this.saxonArmy.splice(i, 1);
-      }
+    if (randSaxon.health <= 0) {
+      this.saxonArmy.splice(randSaxon, 1);
     }
     return attacked;    
   }
@@ -73,10 +72,8 @@ class War {
     let randViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     const attacked = randViking.receiveDamage(randSaxon.strength); 
 
-    for (let i = 0; i < this.vikingArmy.length; i++) {
-      if (this.vikingArmy[i].health <= 0) {
-        this.vikingArmy.splice(i, 1);
-      }
+    if (randViking.health <= 0) {
+      this.vikingArmy.splice(randViking, 1);
     }
     return attacked;    
   }
@@ -86,12 +83,19 @@ class War {
     let randSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
     let randViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     
-    if (army === this.vikingArmy) {
-      randSaxon.receiveDamage(randViking.strength); 
-    } else {
-      randViking.receiveDamage(randSaxon.strength); 
+    if (army === "vikings") {
+      const attacked = randSaxon.receiveDamage(randViking.strength); 
+      if (randSaxon.health <= 0) {
+        this.saxonArmy.splice(randSaxon, 1);
+      }
+      return attacked;
+    } else if (army === "saxons") {
+      const attacked = randViking.receiveDamage(randSaxon.strength); 
+      if (randViking.health <= 0) {
+        this.vikingArmy.splice(randViking, 1);
+      }
+      return attacked;
     }
-
   }
   
   showStatus() {
@@ -106,8 +110,8 @@ class War {
 }
 
 
-let viking1 = new Viking("fuckit", 100, 20);
-let viking2 = new Viking("joder", 110, 30);
+let viking1 = new Viking("Odin", 100, 20);
+let viking2 = new Viking("Valleh", 110, 30);
 
 let saxon1 = new Saxon(120, 40);
 let saxon2 = new Saxon(125, 55);
@@ -120,3 +124,6 @@ batalla.addSaxon(saxon1);
 batalla.addSaxon(saxon2);
 
 batalla.vikingAttack();
+
+batalla.genericAttack("vikings");
+batalla.genericAttack("saxons");
