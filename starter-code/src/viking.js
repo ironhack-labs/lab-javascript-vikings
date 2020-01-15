@@ -18,9 +18,7 @@ class Viking extends Soldier {
     super(health, strength);
     this.name = name;
   }
-  attack() {
-    return this.strength;
-  }
+
   receiveDamage(damage) {
     let vikingHealth = (this.health -= damage);
     if (vikingHealth > 0) {
@@ -50,7 +48,7 @@ class Saxon extends Soldier {
 }
 
 // War
-class War extends Soldier {
+class War {
   constructor() {
     this.vikingArmy = [];
     this.saxonArmy = [];
@@ -61,6 +59,50 @@ class War extends Soldier {
   addSaxon(saxon) {
     this.saxonArmy.push(saxon);
   }
-
-  vikingAttack() {}
+  vikingAttack() {
+    let randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+    this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].attack());
+    if (randomSaxon.health === 0) {
+      this.saxonArmy.splice(randomSaxon);
+    }
+    return;
+  }
+  saxonAttack() {
+    let randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+    this.vikingArmy[randomViking].receiveDamage(this.vikingArmy[randomSaxon].attack());
+    // if (randomViking.health === 0) {
+    //   this.randomViking.splice(randomViking);
+    // }
+    return;
+  }
 }
+
+// describe('vikingAttack() method', () => {
+//   it('should be a function', () => {
+//     expect(typeof war.vikingAttack).toBe('function');
+//   });
+
+//   it('should receive 0 arguments', () => {
+//     expect(war.vikingAttack.length).toEqual(0);
+//   });
+
+//   it('should make Saxon receiveDamage() equal to the strength of a Viking', () => {
+//     let oldHealth = saxon.health;
+//     war.vikingAttack();
+//     expect(saxon.health).toEqual(oldHealth - viking.strength);
+//   });
+
+//   it('should remove dead saxons from the army', () => {
+//     war.vikingAttack();
+//     expect(war.saxonArmy.length).toEqual(0);
+//   });
+
+//   it('should return result of calling receiveDamage() of a Saxon with the strength of a Viking', () => {
+//     expect(war.vikingAttack()).toEqual('A Saxon has died in combat');
+//   });
+// });
+
+// });
+// Math.floor(Math.random()
