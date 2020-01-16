@@ -53,19 +53,44 @@ class Saxon extends Soldier {
     }
 }
 
-// War
+// bonus War
 class War {
     constructor(){
         this.vikingArmy = [];
+        this.saxonArmy = [];
     }
+    addViking(Viking){
+        this.vikingArmy.push(Viking);
+    }
+    addSaxon(Saxon){
+        this.saxonArmy.push(Saxon);
+    }
+    vikingAttack(){
+        this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+        if (this.saxonArmy[0].health <= 0){
+            this.saxonArmy.shift();
+            return `A Saxon receive damage because the strength of a Viking`;
+        }
+    }
+    saxonAttack(){
+        this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+        if (this.vikingArmy[0].health <= 0){
+            this.vikingArmy.shift();
+        }
+        return `A Viking receive damage because the strength of a Saxon`;
 }
-class Soldier {}
 
-// Viking
-class Viking {}
+//superBONUS
+showStatus(){ 
 
-// Saxon
-class Saxon {}
+    if (this.saxonArmy.length === 0){
+        return `Vikings have won the war of the century!`;
 
-// War
-class War {}
+    }
+    else if (this.vikingArmy.length ===0) {
+        return `Saxons have fought for their lives and survived another day...`;
+    } else if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1){
+        return `Vikings and Saxons are still in the thick of battle`;
+    }
+
+}
