@@ -1,10 +1,10 @@
-class Crono {
+class CronoTimeOut {
     constructor(minute, second) {
       this.second = second;
       this.minute = minute;
     }
     
-    timeCrono() {
+    start() {
         if(this.second == 60){
             this.minute++;
             this.second = 0;
@@ -13,45 +13,70 @@ class Crono {
         }
         showTimeCrono(this);
     }
+
+    stop(){
+        //this.
+    }
+
+    reset(){
+        this.second = 0;
+        this.minute = 0;
+    }
 }
 
 function showTimeCrono(cronoCount){
     let cronoShow = cronoCount; 
     setTimeout(function(){
         console.log(`Minute ${cronoShow.minute}, Second ${cronoShow.second}`);
-        cronoCount.timeCrono();
+        cronoCount.start();
     }, 1000);
+
 }
 
-start();
+// Para empezar
+const newCrono = new CronoTimeOut(0,0); 
+newCrono.start();
 
+// --------------------------------------------------------------------------------------------
 
-function start(){
-    let repeat = false;
-    do{
-        const start = prompt('Start the game? (Yes/Not)');
-        switch("Yes"){
-            case "Yes":
-                cronometro();
-                break;
-            case "Not":
-                console.log('Bye');
-                repeat = false;
-                break;
-            default:
-                console.log('Only Yes or Not');
-                repeat = false
-                break;
-        }
-    }while(repeat);
+class CronoInterval {
+    constructor(minute, second) {
+      this.second = second;
+      this.minute = minute;
+      this.interval = undefined
+    }
+    
+    start() {
+        this.interval = setInterval(() => {
+            if(this.second == 60){
+                this.minute++;
+                this.second = 0;
+            }else{
+                this.second++;
+            }
+            console.log(`Minute ${this.minute}, Second ${this.second}`);
+        }, 1000);
+    }
+
+    stop(){
+        //this.
+        
+    }
+
+    reset(){
+        this.second = 0;
+        this.minute = 0;
+    }
 }
 
-function cronometro(){
-    console.log('Start');
-    const newCrono = new Crono(0,0);
-    newCrono.timeCrono();
-}
+// Para empezar
+const newCrono = new CronoInterval(0,0); 
+newCrono.start();
 
-function resetTime(){
-    start();
-}
+
+// Apuntes del this
+// ------------------------------------------------------------------------------------------
+// call y apply para cambiar el this 
+// this de una funcion siempre hace referencia cuando se llama
+// bind hace referencia al objeto que le pasa (this)
+// https://yeisondaza.com/entendiendo-this-javascript
