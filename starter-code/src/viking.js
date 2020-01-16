@@ -99,5 +99,18 @@ class War {
 
     return vikingStatus;
   }
-  showStatus() {}
+  
+  showStatus() {
+    let warStatus;
+    
+    if(this.saxonArmy.length === 0){
+      warStatus = "Vikings have won the war of the century!";
+    } else if(this.vikingArmy.length === 0){
+      warStatus = "Saxons have fought for their lives and survived another day...";
+    } else {
+      warStatus = "Vikings and Saxons are still in the thick of battle."
+    }
+
+    return warStatus;
+  }
 }
