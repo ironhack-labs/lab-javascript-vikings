@@ -76,15 +76,13 @@ class War {
 
         // Recibir daño igual al ataque del vikingo
         let damage = vikingAlt.strength
-        saxonAlt.receiveDamage(damage)
+        let result = saxonAlt.receiveDamage(damage)
 
         // Verificar si el saxon ha muerto para eliminarlo del array
         if (saxonAlt.health <= 0) {
             this.saxonArmy.splice(this.saxonArmy.indexOf(saxonAlt), 1)
-            return "A Saxon has died in combat"
-        } else {
-            return "A Saxon has not died in combat"
         }
+        return result
 
         // Pruebas
         // console.log("Saxon")
@@ -103,14 +101,13 @@ class War {
 
         // Recibir daño igual al ataque del saxon
         let damage = saxonAlt.strength
-        vikingAlt.receiveDamage(damage)
+        let result = vikingAlt.receiveDamage(damage)
 
         // Verificar si el vikingo ha muerto para eliminarlo del array
         if (vikingAlt.health <= 0) {
             this.vikingArmy.splice(this.saxonArmy.indexOf(saxonAlt), 1)
-        } else {
-            return `${vikingAlt.name} has received ${saxonAlt.strength} points of damage`
         }
+        return result
     }
 
     showStatus() {
