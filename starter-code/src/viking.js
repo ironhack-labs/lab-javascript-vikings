@@ -68,6 +68,18 @@ class War {
     constructor() {
         this.vikingArmy = []
         this.saxonArmy = []
+        let soldierViking
+        let soldierSaxon
+    }
+
+    randomSoldier = army => {
+        if (army == this.vikingArmy) {
+            soldierViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+            return
+        } else {
+            this.soldierSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+            return
+        }
     }
 
 
@@ -82,31 +94,21 @@ class War {
 
 
     // ATAQUES
-    vikingAttack = () => {
 
-        let randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-        let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+    Attack = (victim, attacker) => {
 
-        this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
-        if (this.saxonArmy[randomSaxon].health <= 0) {
-            this.saxonArmy.splice(randomSaxon, 1)
-            return 'A Saxon has died in combat'
+        victim.receiveDamage(attacker.strength)
+        if (victim <= 0) {
+            victim.splice(victim, 1)
+            return `${victim} has died for ${attacker}`
         } else {
-            return `Saxon has received ${this.vikingArmy[randomViking].strength} points of damage`
+            if (victim = this.vikingArmy[randomViking]) {
+                return `${victim.name} has received ${attacker.strength} points of damage`
+            } else {
+                return `Saxon has received ${attacker.strength} points of damage`
+            }
         }
-    }
 
-    saxonAttack = () => {
-        let randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-        let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-
-        this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
-        if (this.vikingArmy[randomViking].health <= 0) {
-            this.vikingArmy.splice(randomViking, 1)
-            return
-        } else {
-            return `${this.vikingArmy[randomViking].name} has received ${this.saxonArmy[randomSaxon].strength} points of damage`
-        }
     }
 
     // RECUENTO DE MUERTOS
