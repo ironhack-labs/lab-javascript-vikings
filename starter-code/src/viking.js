@@ -80,4 +80,29 @@ class War {
 
         return result
     }
+
+    saxonAttack() {
+        let viking = this.vikingArmy[Math.round(Math.random() * (this.vikingArmy.length - 1))]
+        let saxon = this.saxonArmy[Math.round(Math.random() * (this.saxonArmy.length - 1))]
+
+        let result = viking.receiveDamage(saxon.strength)
+        if (viking.health <= 0) {
+            this.vikingArmy.splice(this.vikingArmy.indexOf(viking), 1)
+        }
+        return result
+    }
+
+    showStatus() {
+        if (this.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!"
+        }
+
+        if (this.vikingArmy.length === 0) {
+            return `Saxons have fought for their lives and survived another day...`
+        }
+
+        if (this.vikingArmy.length > 0 && this.vikingArmy.length > 0) {
+            return `Vikings and Saxons are still in the thick of battle.`
+        }
+    }
 }
