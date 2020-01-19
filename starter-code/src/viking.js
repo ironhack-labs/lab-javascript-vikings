@@ -28,15 +28,13 @@ class Viking extends Soldier {
 
         this.health -= damage;
 
-        if (this.health < 1) {
-            return `${name} has died in act of combat`;
+        if (this.health > 0) {
+            return `${this.name} has received ${damage} points of damage`;
         } else {
-            return `${name} has received ${damage} points of damage`;
-
+            return `${this.name} has died in act of combat`;
         }
 
     }
-
 
     battleCry() {
         return `Odin Owns You All!`;
