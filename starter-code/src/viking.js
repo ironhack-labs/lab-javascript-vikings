@@ -80,7 +80,7 @@ class War {
 
         // Verificar si el saxon ha muerto para eliminarlo del array
         if (saxonAlt.health <= 0) {
-            this.saxonArmy.splice(this.saxonArmy.indexOf(saxonAlt, 1))
+            this.saxonArmy.splice(this.saxonArmy.indexOf(saxonAlt), 1)
             return "A Saxon has died in combat"
         } else {
             return "A Saxon has not died in combat"
@@ -107,7 +107,7 @@ class War {
 
         // Verificar si el vikingo ha muerto para eliminarlo del array
         if (vikingAlt.health <= 0) {
-            this.vikingArmy.splice(this.saxonArmy.indexOf(saxonAlt, 1))
+            this.vikingArmy.splice(this.saxonArmy.indexOf(saxonAlt), 1)
         } else {
             return `${vikingAlt.name} has received ${saxonAlt.strength} points of damage`
         }
