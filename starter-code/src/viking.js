@@ -57,10 +57,15 @@ class Saxon extends Soldier {
 
 // War
 class War {
-    // constructor() {
-        vikingArmy = []
-        saxonArmy = []
-    // }
+
+    vikingArmy = []
+    saxonArmy = []
+
+    selectSoldier(army) {
+        return Math.floor(Math.random() * army.length);
+    }
+
+
     addViking(aVikingObject) {
         this.vikingArmy.push(aVikingObject)
     }
@@ -70,22 +75,32 @@ class War {
     }
 
     vikingAttack() {
-        Soldier.Saxon.receiveDamage(Viking.strength)
+        const viking = this.selectSoldier(this.vikingArmy);
+        const saxon = this.selectSoldier(this.saxonArmy);
+        const damage = this.saxonArmy[saxon].receiveDamage(this.vikingArmy[viking].strength);
+        if (this.saxonArmy[saxon].health <= 0) {
+            this.saxonArmy.splice(viking, 1);
+        }
+        return damage
     }
 
     saxonAttack() {
-        Soldier.Viking.receiveDamage(Saxon.strength)
+        const viking = this.selectSoldier(this.vikingArmy);
+        const saxon = this.selectSoldier(this.saxonArmy);
+        const damage = this.vikingArmy[viking].receiveDamage(this.saxonArmy[saxon].strength);
+        if (this.vikingArmy[viking].health <= 0) {
+            this.vikingArmy.splice(viking, 1);
+        }
+        return damage
     }
 
     showStatus() {
-        if (this.vikingArmy.length === 0) {
+        if (this.saxonArmy.length === 0) {
             return ('Vikings have won the war of the century!')
-        } else if (this.saxonArmy.length === 0) {
+        } else if (this.vikingArmy.length === 0) {
             return ('Saxons have fought for their lives and survived another day...')
         } else {
             return ('Vikings and Saxons are still in the thick of battle.')
         }
     }
-
-
 }
