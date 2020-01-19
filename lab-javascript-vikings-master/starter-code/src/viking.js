@@ -25,14 +25,15 @@ class Viking extends Soldier {
     //Viking receiving damage
 
     receiveDamage = damage => {
+
+        this.health = this.health - damage;
+
         if (this.health - damage > 0) {
 
-            this.health = this.health - damage;
             return `${this.name} has received ${damage} points of damage`
 
         } else {
 
-            this.health = this.health - damage
             return `${this.name} has died in act of combat`
 
         }
@@ -54,14 +55,14 @@ class Saxon extends Soldier {
     //the saxon receives damage
     receiveDamage = damage => {
 
-        if (this.health - damage > 0) {
+        this.health = this.health - damage;
 
-            this.health = this.health - damage;
+        if (this.health > 0) {
+
             return `A Saxon has received ${damage} points of damage`
 
         } else {
 
-            this.health = this.health - damage
             return `A Saxon has died in combat`
         }
     }
@@ -83,22 +84,24 @@ class War {
 
     vikingAttack = () => {
 
+        //getting the random indexes of attacker and receiver
         let rdmAttacker = Math.floor(Math.random() * this.vikingArmy.length)
         let rdmReceiver = Math.floor(Math.random() * this.saxonArmy.length)
 
-
+        //retreiving the objects from the army arrays
         let attacker = this.vikingArmy[rdmAttacker]
         let receiver = this.saxonArmy[rdmReceiver]
 
-
+        //execute the receiveDamage on the receiver and saving the output on the result variable
         let result = receiver.receiveDamage(attacker.strength)
 
-
+        //take out from the army the warrior if the health is less than 0
         if (receiver.health <= 0) {
 
             this.saxonArmy.splice(rdmReceiver, 1)
         }
 
+        // return the result variable containing the output of receiveDamage
         return result
 
 
@@ -109,25 +112,29 @@ class War {
     saxonAttack = () => {
 
 
+        //getting the random indexes of attacker and receiver
         let rdmAttacker = Math.floor(Math.random() * this.saxonArmy.length)
         let rdmReceiver = Math.floor(Math.random() * this.vikingArmy.length)
 
+        //retreiving the objects from the army arrays
         let attacker = this.saxonArmy[rdmAttacker]
         let receiver = this.vikingArmy[rdmReceiver]
 
+        //execute the receiveDamage on the receiver and saving the output on the result variable
         let result = receiver.receiveDamage(attacker.strength)
 
-
+        //take out from the army the warrior if the health is less than 0
         if (receiver.health <= 0) {
             this.vikingArmy.splice(rdmReceiver, 1)
 
         }
 
+        // return the result variable containing the output of receiveDamage
         return result
 
     }
 
-
+    //showin the status of the battle
     showStatus = () => {
         if (this.saxonArmy.length <= 0) {
             this.warContinues = false
