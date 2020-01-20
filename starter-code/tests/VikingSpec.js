@@ -86,7 +86,7 @@ describe('receiveDamage() method', () => {
 });
 });
 
-@@ -65,78 +65,78 @@ describe('Viking', () => {
+describe('Viking', () => {
   viking = new Viking(name, health, strength);
 });
 
