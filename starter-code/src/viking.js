@@ -64,10 +64,10 @@ class War {
 
   vikingAttack = function () {
 
-    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length - 1);
+    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
 
     let saxonPlayer = this.saxonArmy[randomSaxon];
-    let vikingPlayer = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length - 1)];
+    let vikingPlayer = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
     let result = saxonPlayer.receiveDamage(vikingPlayer.attack());
     if (saxonPlayer.health <= 0) {
@@ -78,10 +78,10 @@ class War {
   }
   saxonAttack = function () {
 
-    let ramdonViking = Math.floor(Math.random() * this.vikingArmy.length - 1);
+    let ramdonViking = Math.floor(Math.random() * this.vikingArmy.length);
 
     let vikingPlayer = this.vikingArmy[ramdonViking];
-    let saxonPlayer = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length - 1)];
+    let saxonPlayer = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
     let result = vikingPlayer.receiveDamage(saxonPlayer.attack());
     if (vikingPlayer.health <= 0) {
