@@ -24,10 +24,9 @@ class Viking extends Soldier {
   receiveDamage(damage) {
     this.health -= damage;
     if (this.health > 0) {
-      return this.name + " has received " + damage + " points of damage";
-    } else {
-      return this.name + " has died in act of combat";
+      return `${this.name} has received ${damage} points of damage`;
     }
+    return `${this.name} has died in act of combat`;
   }
 
   battleCry() {
@@ -41,10 +40,9 @@ class Saxon extends Soldier {
     this.health -= damage;
 
     if (this.health > 0) {
-      return "A Saxon has received " + damage + " points of damage";
-    } else {
-      return "A Saxon has died in combat";
+      return `A Saxon has received ${damage} points of damage`;
     }
+    return "A Saxon has died in combat";
   }
 }
 
@@ -63,31 +61,37 @@ class War {
   }
 
   vikingAttack() {
-    let index = Math.floor(Math.random() * this.saxonArmy.length);
-    let randSaxon = this.saxonArmy[index];
-
-    let index2 = Math.floor(Math.random() * this.vikingArmy.length);
-    let randViking = this.vikingArmy[index2];
-
-    let result = randSaxon.receiveDamage(randViking.strength);
-    if (randSaxon.health <= 0) {
-      this.saxonArmy.splice(index, index + 1);
-    }
-    return result;
+    return this.soldierAttack("Viking");
   }
   saxonAttack() {
+    return this.soldierAttack("Saxon");
+  }
+
+  soldierAttack(soldierType) {
     let index = Math.floor(Math.random() * this.saxonArmy.length);
     let randSaxon = this.saxonArmy[index];
 
     let index2 = Math.floor(Math.random() * this.vikingArmy.length);
     let randViking = this.vikingArmy[index2];
 
-    let result = randViking.receiveDamage(randSaxon.strength);
-    if (randViking.health <= 0) {
-      this.vikingArmy.splice(index2, index2 + 1);
+    let result = "";
+    switch (soldierType) {
+      case "Viking":
+        result = randSaxon.receiveDamage(randViking.strength);
+        if (randSaxon.health <= 0) {
+          this.saxonArmy.splice(index, index + 1);
+        }
+        break;
+      case "Saxon":
+        result = randViking.receiveDamage(randSaxon.strength);
+        if (randViking.health <= 0) {
+          this.vikingArmy.splice(index2, index2 + 1);
+        }
+        break;
     }
     return result;
   }
+
   showStatus() {
     if (this.saxonArmy.length == 0) {
       return "Vikings have won the war of the century!";
