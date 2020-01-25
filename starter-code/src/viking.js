@@ -4,6 +4,7 @@ class Soldier {
     this.health = health;
     this.strength = strength;
   }
+  
   attack() {
     return this.strength;
   }
@@ -19,10 +20,6 @@ class Viking extends Soldier {
     super(health, strength);
     this.name = name;
   }
-
-  // attack() {
-  //     return this.strength;
-  // }
 
   receiveDamage(damage) {
     this.health -= damage;
@@ -70,40 +67,16 @@ class War {
   }
 
   vikingAttack() {
-    // const genNum = this.generateRandom(this.saxonArmy);
-    // const result = this.saxonArmy[genNum].receiveDamage(
-    //   this.vikingArmy[genNum].strength
-    // );
-
-    // if (result.includes("died") === true) {
-    //   this.saxonArmy.pop();
-    //   return result;
-    // } else {
-    //   return result;
-    // }
-    return this.fightEachOther(this.saxonArmy, this.vikingArmy)
+    return this.fightEachOther(this.saxonArmy, this.vikingArmy);
   }
 
   saxonAttack() {
-    // const genNum = this.generateRandom(this.vikingArmy);
-    // const result = this.vikingArmy[genNum].receiveDamage(
-    //   this.saxonArmy[genNum].strength
-    // );
-
-    // if (result.includes("died") === true) {
-    //   this.vikingArmy.pop();
-    //   return result;
-    // } else {
-    //   return result;
-    // }
-    return this.fightEachOther(this.vikingArmy, this.saxonArmy)
+    return this.fightEachOther(this.vikingArmy, this.saxonArmy);
   }
 
   fightEachOther(arg1, arg2) {
     const genNum = this.generateRandom(arg1);
-    const result = arg1[genNum].receiveDamage(
-      arg2[genNum].strength
-    );
+    const result = arg1[genNum].receiveDamage(arg2[genNum].strength);
 
     if (result.includes("died") === true) {
       arg1.pop();
@@ -112,7 +85,6 @@ class War {
       return result;
     }
   }
-
 
   showStatus() {
     if (this.saxonArmy.length === 0) {
