@@ -58,42 +58,32 @@ class War {
 
     }
     vikingAttack(){
-        var randomNumSax = Math.floor(Math.random() * this.saxonArmy.length);
-        var randomNumVik = Math.floor(Math.random() * this.vikingArmy.length);
-
-        if (this.saxonArmy.length === 0 || this.vikingArmy.length === 0) {
-            return;
-        } else {
-            this.saxonArmy[randomNumSax].receiveDamage(this.vikingArmy[randomNumVik].strength);
-            if (this.saxonArmy[randomNumSax].health <= 0) {
-                this.saxonArmy.splice(randomNumSax,1);   
-            }
-        }  
+        return this.attack(this.saxonArmy,this.vikingArmy);
     }
 
     saxonAttack(){
-        var randomNumSax = Math.floor(Math.random() * this.saxonArmy.length);
-        var randomNumVik = Math.floor(Math.random() * this.vikingArmy.length);
-
-        if (this.saxonArmy.length === 0 || this.vikingArmy.length === 0) {
-            return;
-        } else {
-            this.vikingArmy[randomNumVik].receiveDamage(this.saxonArmy[randomNumSax].strength);
-            if (this.saxonArmy[randomNumSax].health <= 0) {
-                this.saxonArmy.splice(randomNumSaxnode ,1);  
-            } 
-        } 
+        return this.attack(this.vikingArmy,this.saxonArmy); 
     }
 
-    // attack(receiver,damager) {
-    //     var randomNum = Math.floor(Math.random() * this.receiver.length);
+    attack(taker,attacker) {
 
-    //     this.receiver[randomNum].receiveDamage(this.damager[randomNum].strength);
+        taker.forEach(function(i) {
+            if(i.health <= 0) {
+                taker.splice(taker.indexOf(i),1);
+            }
+        });
 
-    //     if (this.receiver[randomNum].health <= 0) {
-    //         this.receiver.splice(randomNum,1);
-    //     } 
-    // }
+        var randomNumReciever = Math.floor(Math.random() * taker.length);
+        var randomNumAttacker = Math.floor(Math.random() * attacker.length);
+
+        if (this.saxonArmy.length === 0 || this.vikingArmy.length === 0) {
+            return this.showStatus();
+        } else {
+            return taker[randomNumReciever].receiveDamage(attacker[randomNumAttacker].strength);
+        }
+        
+        
+    }
 
     showStatus() {
         if(this.saxonArmy.length === 0) {
@@ -132,5 +122,3 @@ console.log(newWar.saxonAttack());
 console.log(newWar.vikingAttack());
 console.log(newWar.saxonAttack());
 console.log(newWar.vikingAttack());
-
-console.log(newWar.showStatus());
