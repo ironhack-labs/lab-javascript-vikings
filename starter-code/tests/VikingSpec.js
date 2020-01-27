@@ -1,3 +1,4 @@
+/*jshint esversion:9*/
 describe('Soldier', () => {
   let soldier;
   const strength = 150;
