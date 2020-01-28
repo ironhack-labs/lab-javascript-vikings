@@ -43,6 +43,8 @@ class Saxon extends Soldier {
     }
     receiveDamage(damage){
         this.health=this.health-damage;
+        //Option2: super.receiveDamage(damage); <--calls on method receiveDamage in Soldier class
+        
         //health checked for whether soldier lived or died, i.e. points <= 0 indicate solder has died
         if (this.health > 0){
             return `A Saxon has received ${damage} points of damage`;
