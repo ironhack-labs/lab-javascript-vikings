@@ -43,7 +43,7 @@ class Saxon extends Soldier {
         if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`
         } else {
-            return `A Saxon has died in combat`
+            return "A Saxon has died in combat"
         }
     }
 }
@@ -72,9 +72,11 @@ class War {
         randomSaxon.receiveDamage(randomViking.strength);
         
         if (randomSaxon.health <= 0 ) {
-            this.saxonArmy.splice(randomSaxon, 1)
+            this.saxonArmy.splice(randomSaxon, 1);
         }
-    };
+
+        return `${randomSaxon} has received ${randomViking.strength} points of damage`
+    }
 
     saxonAttack() {  
 
@@ -84,8 +86,24 @@ class War {
         randomViking2.receiveDamage(randomSaxon2.strength);
 
         if (randomViking2.health <= 0 ) {
-            this.vikingArmy.splice(randomViking2, 1)
+            this.vikingArmy.splice(randomViking2, 1);
         }
-    };
+
+        return `${randomViking2.name} has received ${randomSaxon2.strength} points of damage`
+    }
+
+    showStatus() {
+        if (this.saxonArmy.length === 0) {
+            return `Vikings have won the war of the century!`
+        }
+
+        if (this.vikingArmy.length === 0) {
+            return `Saxons have fought for their lives and survived another day...`
+        }
+
+        if (this.saxonArmy.length && this.vikingArmy.length > 0) {
+            return `Vikings and Saxons are still in the thick of battle.`
+        }
+    }
 }
 
