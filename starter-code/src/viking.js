@@ -104,16 +104,33 @@ class War {
 
     // Saxon attack method
     saxonAttack() {
-        let indexRandomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-        let indexRandomViking = Math.floor(Math.random() * this.vikingArmy.length)
+        this.genericAttack(this.saxonArmy, this.vikingArmy)
 
-        let indexOfPower = this.vikingArmy[indexRandomViking].receiveDamage(this.saxonArmy[indexRandomSaxon].attack()) 
+        // let indexRandomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+        // let indexRandomViking = Math.floor(Math.random() * this.vikingArmy.length)
 
-        if (this.vikingArmy[indexRandomViking].health <= 0) {
-            this.vikingArmy.splice(indexRandomViking,1)
-        }
+        // let indexOfPower = this.vikingArmy[indexRandomViking].receiveDamage(this.saxonArmy[indexRandomSaxon].attack()) 
 
-        return indexOfPower
+        // if (this.vikingArmy[indexRandomViking].health <= 0) {
+        //     this.vikingArmy.splice(indexRandomViking,1)
+        // }
+
+        // return indexOfPower
+    }
+
+    // general attack method
+    genericAttack(attackingArmy, defendingArmy) {
+       
+        let indexRandomAttacker = Math.floor(Math.random() * attackingArmy.length)
+        let indexRandomDefender = Math.floor(Math.random() * defendingArmy.length)
+
+        let indexOfPower = defendingArmy[indexRandomDefender].receiveDamage(attackingArmy[indexRandomAttacker].attack()) 
+
+        if (defendingArmy[indexRandomDefender].health <= 0) {
+            defendingArmy.splice(indexRandomDefender,1)
+        }    
+        return indexOfPower    
+
     }
 
     // show status method
@@ -131,3 +148,4 @@ class War {
     }
 
 }
+
