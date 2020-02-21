@@ -63,7 +63,12 @@ class War {
         let attackedSaxon = Math.floor(Math.random()*(this.saxonArmy.length()+1));
         receiveDamage(violentViking.strength);
         attackedSaxon.health -= violentViking.strength;
+    }
+    saxonAttack() {
 
+    }
+    showStatus() {
+        
     }
 }
 
