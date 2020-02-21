@@ -64,14 +64,14 @@ class War {
         this.positionSaxon = random(this.saxonArmy.length);
         this.positionViking = random(this.vikingArmy.length);
         let result = (this.saxonArmy[this.positionSaxon].receiveDamage(this.vikingArmy[this.positionViking].strength))
-        if (this.saxonArmy[this.positionSaxon].health <= 0){  this.saxonArmy.pop(this.positionSaxon)}
+        if (this.saxonArmy[this.positionSaxon].health <= 0){  this.saxonArmy.splice(this.positionSaxon)}
         return result
     }
     saxonAttack(){
         this.positionSaxon = random(this.saxonArmy.length);
         this.positionViking = random(this.vikingArmy.length);
         let result = (this.vikingArmy[this.positionViking].receiveDamage(this.saxonArmy[this.positionSaxon].strength))
-        if (this.vikingArmy[this.positionViking].health <= 0){  this.vikingArmy.pop(this.positionViking)}
+        if (this.vikingArmy[this.positionViking].health <= 0){  this.vikingArmy.splice(this.positionViking)}
         return result
     }
     showStatus(){
