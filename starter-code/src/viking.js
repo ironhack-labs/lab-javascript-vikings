@@ -42,10 +42,8 @@ class Saxon extends Soldier {
         this.health -= damage
         if (this.health <= 0) {
             return `A Saxon has died in combat`
-        } else {
-            return `A Saxon has received ${damage} points of damage`
         }
-
+        return `A Saxon has received ${damage} points of damage`
     }
 }
 
@@ -57,39 +55,32 @@ class War {
 
     addViking(viking) {
         this.vikingArmy.push(viking)
-
-
     }
     addSaxon(saxon) {
         this.saxonArmy.push(saxon)
     }
     vikingAttack() {
-        let temp = this.superBonus("vikings")
-        console.log(temp)
-        return temp
-        //     let posicionsaxon = randomelement(this.saxonArmy.length)
-        //     let posicionviking = randomelement(this.vikingArmy.length)
-        //     let resultadovidaviking = this.saxonArmy[posicionsaxon].receiveDamage(this.vikingArmy[posicionviking].strength)
-        //     if (this.saxonArmy[posicionsaxon].health <= 0) {
-        //         this.saxonArmy.splice(posicionsaxon)
+        return this.superBonus(this.vikingArmy, this.saxonArmy)
+    
+        //     let posiciosaxon = randomelement(this.saxonArmy.length)
+        //     let posicioviking = randomelement(this.vikingArmy.length)
+        //     let resultadovidaviking = this.saxonArmy[posiciosaxon].receiveDamage(this.vikingArmy[posicioviking].strength)
+        //     if (this.saxonArmy[posiciosaxon].health <= 0) {
+        //         this.saxonArmy.splice(posiciosaxon)
         //     }
-
         //     return resultadovidaviking
         // }
 
     }
 
     saxonAttack() {
-        let temp = this.superBonus("saxon")
-        console.log(temp)
-        return temp
-        // let posicionviking = randomelement(this.vikingArmy.length)
-        // let posicionsaxon = randomelement(this.saxonArmy.length)
-        // let resultadovidasaxon = this.vikingArmy[posicionviking].receiveDamage(this.saxonArmy[posicionsaxon].strength)
-        // if (this.vikingArmy[posicionviking].health <= 0) {
-        //     this.vikingArmy.splice(posicionviking)
+        return this.superBonus(this.saxonArmy, this.vikingArmy)
+        // let posicioviking = randomelement(this.vikingArmy.length)
+        // let posiciosaxon = randomelement(this.saxonArmy.length)
+        // let resultadovidasaxon = this.vikingArmy[posicioviking].receiveDamage(this.saxonArmy[posiciosaxon].strength)
+        // if (this.vikingArmy[posicioviking].health <= 0) {
+        //     this.vikingArmy.splice(posicioviking)
         // }
-
         // return resultadovidasaxon
     }
     showStatus() {
@@ -98,40 +89,22 @@ class War {
 
         } else if (this.saxonArmy.length === 0) {
             return "Vikings have won the war of the century!"
-
-
-
-        } else {
-            return "Saxons have fought for their lives and survived another day..."
-
         }
-
-
-
+        return "Saxons have fought for their lives and survived another day..."
     }
 
     randomelement(longitud) {
-        let random = Math.floor(Math.random() * longitud)
-        return random
-    }
-    superBonus(atacante) {
-        if (atacante === "vikings") {
-            var atacant = this.saxonArmy
-            var defenent = this.vikingArmy
-        } else {
-            var defenent = this.saxonArmy
-            var atacant = this.vikingArmy
-
-        }
-
-        let posicionatacant = this.randomelement(atacant.length)
-        let posiciondefenent = this.randomelement(defenent.length)
-        let resultadovidadefenent = atacant[posicionatacant].receiveDamage(defenent[posiciondefenent].strength)
-        if (atacant[posicionatacant].health <= 0) {
-            atacant.splice(posicionatacant)
-        }
-        return resultadovidadefenent
+        return Math.floor(Math.random() * longitud)
     }
 
+    superBonus(atacant, defenent) {
+        let posicioDefenent = this.randomelement(defenent.length)
+        let posicioAtacant = this.randomelement(atacant.length)
+        let mensajeRespuestaDefensor = defenent[posicioDefenent].receiveDamage(atacant[posicioAtacant].strength)
+        if (defenent[posicioDefenent].health <= 0) {
+            defenent.splice(posicioDefenent)
+        }
+        return mensajeRespuestaDefensor
+    }
 
 }
