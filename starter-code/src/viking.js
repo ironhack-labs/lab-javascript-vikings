@@ -82,20 +82,12 @@ class War {
         } return attackedViking;
     }
     showStatus() {
-        if (this.saxonArmy < 0 && this.vikingArmy < 0) {
-            return ('Vikings have won the war of the century.');
-        } else if (this.vikingArmy < 0 && this.saxonArmy < 0) {
+        if (this.saxonArmy.length === 0 && this.vikingArmy.length >= 1) {
+            return ('Vikings have won the war of the century!');
+        } else if (this.vikingArmy.length === 0 && this.saxonArmy.length >= 1) {
             return ('Saxons have fought for their lives and survived another day...');
         } else {
             return ('Vikings and Saxons are still in the thick of battle.');
         }
     }
 }
-
-// if (this.vikingArmy >= 1 && this.saxonArmy >= 1) {
-//             return ('Vikings have won the war of the century.');
-//         } else if (this.saxonArmy <= 0) {
-//             return ('Saxons have fought for their lives and survived another day...');
-//         } else {
-//             return ('Vikings and Saxons are still in the thick of battle.')
-//         }
