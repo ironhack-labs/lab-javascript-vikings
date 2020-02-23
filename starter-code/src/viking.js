@@ -87,3 +87,26 @@ class War {
         }
     }
 }
+
+/*
+
+// BONUS EXTRA
+callAttack(showAttack) {
+    let randomViking = Math.floor(this.vikingArmy.length * Math.random());
+    let randomSaxon = Math.floor(this.saxonArmy.length * Math.random());
+    let vikingAttack = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
+       if (this.saxonArmy[randomSaxon].health <= 0) {
+           return this.saxonArmy.pop[randomSaxon];
+       }
+    let saxonAttack = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strenght);
+       if (this.vikingArmy[randomViking].health <= 0) {
+           return this.vikingArmy.pop[randomViking];
+       }
+       if (showAttack === vikingAttack) {
+           return vikingAttack;
+       } else if (showAttack === saxonAttack) {
+           return saxonAttack;
+       }
+}  
+
+*/
