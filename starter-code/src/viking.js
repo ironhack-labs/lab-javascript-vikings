@@ -94,3 +94,15 @@ class War {
         return `Saxons have fought for their lives and survived another day...`
     }
 }
+
+
+//ALTERNATIVE< generic code
+function genericAttack (attackingArmy, defendingArmy) {
+    let attackerNr = Math.floor(Math.random() * attackingArmy.length);
+    let defenderNr = Math.floor(Math.random() * defendingArmy.length);
+    let result = defendingArmy[defenderNr].receiveDamage(attackingArmy[attackerNr].strength) 
+    if (defendingArmy[defenderNr].health <= 0) {
+            defendingArmy.splice(defenderNr,1)
+        }
+    return result
+}
