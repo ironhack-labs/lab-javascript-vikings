@@ -85,21 +85,24 @@ class War {
             }
     }
 }
-// attack() {
-//     let attackArmy = this.saxonArmy || this.vikingArmy;
-//     let defenseArmy = this.saxonArmy || this.vikingArmy;
+// soldierAttack(attackingSoldierArmy, defendingSoldierArmy) {
+//     const randomAttackingSoldierIndex = Math.floor(Math.random(attackingSoldierArmy.length * Math.random()));
+//     const randomDefendindSoldierIndex = Math.floor(Math.random(defendingSoldierArmy.length * Math.random()));
 
-//     let randomAttackIndex = Math.floor(Math.random() * this.attackArmy.length);
-//     let attacker = this.attackArmy[randomAttackIndex];
-//     let randomDefenseIndex = Math.floor((Math.random() * this.defenseArmy.length));
-//     let defense = this.defenseArmy[randomDefenseIndex];
-//     let result = defense.receiveDamage(attacker.strength)
-// }    if (result === "A Saxon has died in combat") {
-//         this.saxonArmy.splice(randomSaxonIndex, 1);
-//     } else if {
-//         if (result === `${viking.name} has died in act of combat`) {
-//             this.vikingArmy.splice(randomVikingIndex, 1);
-//         }
+//     const randomAttackingSoldier = attackingSoldierArmy[randomAttackingSoldierIndex];
+//     const randomDefendindSoldier = defendingSoldierArmy[randomDefendindSoldierIndex];
+
+//     let attack = randomDefendindSoldier.receiveDamage(randomAttackingSoldier.strength)
+//     if (randomDefendindSoldier.health <= 0) {
+//         defendingSoldierArmy.splice(randomDefendindSoldierIndex, 1);
 //     }
-//     return result;
+//     return attack;
+// }
+
+// vikingAttack() {
+//     return this.soldierAttack(this.vikingArmy, this.saxonArmy);
+// }
+
+// saxonAttack() {
+//     return this.soldierAttack(this.saxonArmy, this.vikingArmy)
 // }
