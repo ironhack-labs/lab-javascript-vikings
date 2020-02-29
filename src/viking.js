@@ -67,7 +67,7 @@ class War {
 
         let attack = randomDefendingSoldier.receiveDamage(randomAttackingSoldier.strength);
 
-        if (randomDefendingSoldier.helth <= 0) {
+        if (randomDefendingSoldier.health <= 0) {
             defendingSolderArmy.splice(randomDefendingSoldierIndex,1);
         }
 
