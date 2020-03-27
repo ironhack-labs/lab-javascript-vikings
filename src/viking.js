@@ -71,7 +71,7 @@ class War{
         this.saxonArmy.push(saxon);
         break;
     }
-
+  }
   // vikingAttack()
   // saxonAttack()
   // showStatus()
