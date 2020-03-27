@@ -82,6 +82,8 @@ class War {
   
   vikingAttack() {
 
+    //keep in mind that if you introduce an object variable several times in an array, every array element isn't a copy of it, but they correspond at the same memory pointer
+
     const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
     const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
 
@@ -116,5 +118,14 @@ class War {
 
   }
 
-  // showStatus()
+  showStatus() {
+    if (this.saxonArmy.length == 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length == 0) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+  }
+
 }
