@@ -61,10 +61,17 @@ class War{
     this.saxonArmy = [];
   }
 
-  addViking()
+  addFighter(soldierType) {
 
-  
-  // addSaxon()
+    switch (soldierType) {
+      case viking:
+        this.vikingArmy.push(viking);
+        break;
+      default:
+        this.saxonArmy.push(saxon);
+        break;
+    }
+
   // vikingAttack()
   // saxonAttack()
   // showStatus()
