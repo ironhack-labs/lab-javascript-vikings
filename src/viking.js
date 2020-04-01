@@ -4,8 +4,11 @@ class Soldier {
         this.health = health
         this.strength = strength
     }
-    attack(){
+    attack() {
         return this.strength
+    }
+    receiveDamage(damage) {
+        this.health = this.health - damage
     }
 }
 
