@@ -63,19 +63,19 @@ class War {
 
     vikingAttack(){
         //choose victim at random and make it receive dmg
-        this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+        let result = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
             .receiveDamage(this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].strength);
         //filter out dead saxons
         this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0);
-
+        return result;
     }
     saxonAttack(){
         //choose victim at random and make it receive dmg
-        this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        let result = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
             .receiveDamage(this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].strength);
         //filter out dead saxons
         this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0);
-        
+        return result;
     }
     
     showStatus() {
