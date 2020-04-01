@@ -58,17 +58,17 @@ class War {
         this.saxonArmy.push(Saxon);
     }
     getRandom(tribeArmy) {
-        return tribeArmy[Math.floor(Math.random()*tribeArmy.length)]
+        return tribeArmy[Math.floor(Math.random()*tribeArmy.length)];
     }
 
     vikingAttack() {
         let randomSaxon = this.getRandom(this.saxonArmy);
         let randomViking = this.getRandom(this.vikingArmy);
-        let result = randomSaxon.receiveDamage(randomViking.strength)
+        let result = randomSaxon.receiveDamage(randomViking.strength);
         if (randomSaxon.health <= 0) {
             this.saxonArmy.splice(randomSaxon,1);
         }
-        return result
+        return result;
     }
     saxonAttack() {
         let randomSaxon = this.getRandom(this.saxonArmy);
@@ -77,11 +77,19 @@ class War {
         if (randomViking.health <= 0) {
             this.vikingArmy.splice(randomViking,1);
         }
-        return result
+        return result;
     }
 
 
-    showStatus(){
-
+    showStatus(){ 
+        if (this.saxonArmy.length == 0) {
+            return "Vikings have won the war of the century!";
+        }
+        if (this.vikingArmy.length == 0){
+            return "Saxons have fought for their lives and survived another day...";
+        }
+        if (this.saxonArmy.length >= 1 && this.vikingArmy.length >= 1){
+            return "Vikings and Saxons are still in the thick of battle.";
+        }
     }
 }
