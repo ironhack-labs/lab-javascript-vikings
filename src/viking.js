@@ -56,20 +56,34 @@ class War {
         
     }
     vikingAttack(){
-        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length-1)];
-        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length-1)];
-        
-        /* return randomSaxon.receiveDamage(randomViking.strength);
-        if(randomViking.health < 0) this.saxonArmy() -- remove Saxon from army */
-        
+        //Find random Viking/Saxon
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
+        //Removes Saxon from Army
+        if (randomSaxon.health <= randomViking.strength) {
+            this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1);
+        }
+       return randomSaxon.receiveDamage(randomViking.strength);
         
     }
     saxonAttack(){
-        
+       //Find random Viking/Saxon
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+       
+        //Removes Viking from Army
+        if (randomViking.health <= randomSaxon.strength) {
+            this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1);
+        }
+       
+        return randomViking.receiveDamage(randomSaxon.strength);
     }
     showStatus(){
         
+        if (this.saxonArmy.length <= 0) return "Vikings have won the war of the century!"
+        if (this.vikingArmy.length <= 0) return "Saxons have fought for their lives and survived another day..."
+        return "Vikings and Saxons are still in the thick of battle."
     }
 }
 
