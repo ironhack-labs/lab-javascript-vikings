@@ -4,6 +4,9 @@ class Soldier {
         this.health = health
         this.strength = strength
     }
+    attack(){
+        return this.strength
+    }
 }
 
 // Viking
