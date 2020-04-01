@@ -63,5 +63,15 @@ class War {
         }
         return receiveDamage(this.Viking[vikingRandom].strength);
     }
+    saxonAttack() {
+        let saxonRandom = Math.floor(Math.random() * this.saxonArmy.length);
+        let vikingRandom = Math.floor(Math.random() * this.vikingArmy.length);
+
+        this.Viking[vikingRandom].receiveDamage(this.Saxon[saxonRandom].strength)
+        if (this.Viking[vikingRandom].health =<0){
+            Viking.slice(vikingRandom,1);
+        }
+        return receiveDamage(this.Viking[vikingRandom].strength);
+    }
     showStatus() {}
 }
