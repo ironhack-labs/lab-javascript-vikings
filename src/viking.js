@@ -51,28 +51,33 @@ class War {
         this.saxonArmy = [];
     }
     addViking(viking){
-        this.vikingArmy.push(viking);
+        this.addSoldier(viking);
     }
     addSaxon(saxon){
-        this.saxonArmy.push(saxon);
+        this.addSoldier(saxon);
+    }
+    addSoldier(soldier){
+        if (soldier instanceof Viking){
+            this.vikingArmy.push(soldier);
+        }
+        else if (soldier instanceof Saxon) {
+            this.saxonArmy.push(soldier);
+        }
     }
     vikingAttack(){
-        let message = '';
-        if (this.vikingArmy.length>0 && this.saxonArmy.length>0){
-            let viking = this.vikingArmy[0];
-            let saxon =  this.saxonArmy[0];
-            message = saxon.receiveDamage(viking.strength);
-            this.saxonArmy = this.saxonArmy.filter(s => s.health>0);
-        }
-        return message;
+        return this.soldierAttack(this.vikingArmy[0],this.saxonArmy[0]);
     }
     saxonAttack(){
+        return this.soldierAttack(this.saxonArmy[0],this.vikingArmy[0]);
+    }
+    soldierAttack(attack,defense){
         let message = '';
-        if (this.vikingArmy.length>0 && this.saxonArmy.length>0){
-            let viking = this.vikingArmy[0];
-            let saxon =  this.saxonArmy[0];
-            message = viking.receiveDamage(saxon.strength);
+        message = defense.receiveDamage(attack.strength);
+        if (defense instanceof Viking){
             this.vikingArmy = this.vikingArmy.filter(v => v.health>0);
+        }
+        else if (defense instanceof Saxon){
+            this.saxonArmy = this.saxonArmy.filter(s => s.health>0);
         }
         return message;
     }
