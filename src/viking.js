@@ -50,6 +50,4 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {
-  addViking() {}
-}
+class War {}
