@@ -280,7 +280,7 @@ describe("War", () => {
       war.addSaxon(saxon);
       expect(war.saxonArmy).toEqual([saxon]);
     });
-    //
+
     it("shouldn't return anything", () => {
       expect(war.addSaxon(saxon)).toEqual(undefined);
     });
