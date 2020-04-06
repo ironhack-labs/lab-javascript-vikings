@@ -64,11 +64,19 @@ class War {
             this.saxonArmy.push(soldier);
         }
     }
+    getVikingSoldier(){
+        let vikingIdx = parseInt(Math.random()*this.vikingArmy.length);
+        return this.vikingArmy[vikingIdx];
+    }
+    getSaxonSoldier(){
+        let saxonIdx = parseInt(Math.random()*this.vikingArmy.length);
+        return this.saxonArmy[saxonIdx];
+    }
     vikingAttack(){
-        return this.soldierAttack(this.vikingArmy[0],this.saxonArmy[0]);
+        return this.soldierAttack(this.getVikingSoldier(),this.getSaxonSoldier());
     }
     saxonAttack(){
-        return this.soldierAttack(this.saxonArmy[0],this.vikingArmy[0]);
+        return this.soldierAttack(this.getSaxonSoldier(),this.getVikingSoldier());
     }
     soldierAttack(attack,defense){
         let message = '';
