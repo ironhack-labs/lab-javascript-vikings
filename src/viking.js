@@ -70,8 +70,8 @@ class War {
         } else {
             defender = this.vikingArmy;
         }
-        let attackerStrength = attacker[Math.random() * (attacker.length - 1)].strength;
-        let defenderSoldier = defender[Math.random() * (defender.length - 1)];
+        let attackerStrength = attacker[Math.floor(Math.random() * (attacker.length - 1))].attack();
+        let defenderSoldier = defender[Math.floor(Math.random() * (defender.length - 1))];
         let defenderOutcome = defenderSoldier.receiveDamage(attackerStrength);
         if (defenderOutcome === `${defenderSoldier.name} has died in act of combat` || defenderOutcome === `A Saxon has died in combat`) {
             defender.splice(defenderSoldier);
