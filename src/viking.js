@@ -48,7 +48,7 @@ class Saxon extends Soldier {
   }
 }
 
-// War
+// Bonus War
 class War {
   constructor() {
     this.vikingArmy = [];
@@ -73,5 +73,17 @@ class War {
       ? (this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0))
       : (this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0));
     return message;
+  }
+  // Super Bonus Status
+  
+  showStatus() {
+    let status =
+      this.saxonArmy.length === 0
+        ? "Vikings have won the war of the century!"
+        : this.vikingArmy.length === 0
+        ? "Saxons have fought for their lives and survived another day..."
+        : "Vikings and Saxons are still in the thick of battle.";
+
+    return status;
   }
 }
