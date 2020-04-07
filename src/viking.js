@@ -72,30 +72,44 @@ class War {
     {
         this.saxonArmy.push(Saxon)
     }
+    
     vikingAttack()
     {
-        
-        let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
-        let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
-        let result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
-        if (this.saxonArmy[randomSaxon].health <= 0)
-        {
-            this.saxonArmy.splice(randomSaxon,1)
-        }
-        return result
+        return this.genericAttack(this.vikingArmy, this.saxonArmy)
+        // let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
+        // let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
+        // let result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
+        // if (this.saxonArmy[randomSaxon].health <= 0)
+        // {
+        //     this.saxonArmy.splice(randomSaxon,1)
+        // }
+        // return result
     }
     saxonAttack()
     {
-        let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
-        let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
-        let result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
-        console.log(this.vikingArmy[randomViking].health)
-        if (this.vikingArmy[randomViking].health <= 0)
+        return this.genericAttack(this.saxonArmy, this.vikingArmy)
+        // let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
+        // let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
+        // let result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
+        // if (this.vikingArmy[randomViking].health <= 0)
+        // {
+        //     this.vikingArmy.splice(randomViking,1)
+        // }
+        // return result
+    }
+    genericAttack(attacker, defender)
+    {
+        let randomAttacker = Math.floor(Math.random()*attacker.length)
+        let randomDefender = Math.floor(Math.random()*defender.length)
+        let result = defender[randomDefender].receiveDamage(attacker[randomAttacker].strength)
+        if (defender[randomDefender].health <= 0)
         {
-            this.vikingArmy.splice(randomViking,1)
+            defender.splice(randomDefender,1)
         }
         return result
     }
+    
+
     showStatus()
     {
         if (this.saxonArmy.length === 0)
