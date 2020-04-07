@@ -61,10 +61,16 @@ class War {
     this.saxonArmy.push(saxon);
   }
   vikingAttack() {
-    return this.armyAttack(this.vikingArmy[0], this.saxonArmy[0]);
+    return this.armyAttack(
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)],
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    );
   }
   saxonAttack() {
-    return this.armyAttack(this.saxonArmy[0], this.vikingArmy[0]);
+    return this.armyAttack(
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)],
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    );
   }
   armyAttack(attack, defense) {
     let message = defense.receiveDamage(attack.strength);
@@ -75,7 +81,7 @@ class War {
     return message;
   }
   // Super Bonus Status
-  
+
   showStatus() {
     let status =
       this.saxonArmy.length === 0
