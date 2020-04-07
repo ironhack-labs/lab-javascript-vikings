@@ -65,11 +65,11 @@ class War {
         }
     }
     getVikingSoldier(){
-        let vikingIdx = parseInt(Math.random()*this.vikingArmy.length);
+        let vikingIdx = Math.floor(Math.random()*this.vikingArmy.length);
         return this.vikingArmy[vikingIdx];
     }
     getSaxonSoldier(){
-        let saxonIdx = parseInt(Math.random()*this.vikingArmy.length);
+        let saxonIdx = Math.floor(Math.random()*this.vikingArmy.length);
         return this.saxonArmy[saxonIdx];
     }
     vikingAttack(){
