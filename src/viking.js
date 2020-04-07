@@ -63,13 +63,15 @@ class War {
             this.saxonArmy.push(soldier);
         }
     }
+    getSoldier(army) {
+        let armyIdx = Math.floor(Math.random() * army.length);
+        return army[armyIdx];
+    }
     getVikingSoldier() {
-        let vikingIdx = Math.floor(Math.random() * this.vikingArmy.length);
-        return this.vikingArmy[vikingIdx];
+        return this.getSoldier(this.vikingArmy);
     }
     getSaxonSoldier() {
-        let saxonIdx = Math.floor(Math.random() * this.saxonArmy.length);
-        return this.saxonArmy[saxonIdx];
+        return this.getSoldier(this.saxonArmy);
     }
     vikingAttack() {
         return this.soldierAttack(this.getVikingSoldier(), this.getSaxonSoldier());
