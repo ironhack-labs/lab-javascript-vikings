@@ -19,7 +19,7 @@ class Viking extends Soldier {
         this.name = name;
     }
     receiveDamage(damage) {
-        this.health -= damage;
+        super.receiveDamage(damage);
         return this.health > 0 ? `${this.name} has received ${damage} points of damage` : `${this.name} has died in act of combat`
     }
     battleCry() {
@@ -33,7 +33,7 @@ class Saxon extends Soldier {
         super(health,strength);
     }
     receiveDamage(damage) {
-        this.health -= damage;
+        super.receiveDamage(damage);
         return this.health > 0 ? `A Saxon has received ${damage} points of damage` : 'A Saxon has died in combat';
     }
 }
@@ -51,22 +51,22 @@ class War {
         this.saxonArmy.push(saxon);
     }
     vikingAttack() {
-        let attackedSaxon = this.saxonArmy[[Math.floor(Math.random() * this.saxonArmy.length)]]
-        let attackingViking = this.vikingArmy[[Math.floor(Math.random() * this.vikingArmy.length)]]
-        let vikingAttackResult = attackedSaxon.receiveDamage(attackingViking.strength);
-        if (attackedSaxon.health <= 0) {
-            this.saxonArmy = this.saxonArmy.filter(item => item !== attackedSaxon)
+        let saxon = this.selectSoldier.call(this, this.saxonArmy)
+        let viking = this.selectSoldier.call(this, this.vikingArmy)
+        let battleResult = this.attack(viking,saxon)
+        if (saxon.health <= 0) {
+            this.saxonArmy = this.removeDeadSoldier.call(this,this.saxonArmy, saxon)
         }
-        return vikingAttackResult;
+        return battleResult;
     }
     saxonAttack() {
-        let attackedViking = this.vikingArmy[[Math.floor(Math.random() * this.vikingArmy.length)]]
-        let attackingSaxon = this.saxonArmy[[Math.floor(Math.random() * this.saxonArmy.length)]]
-        let saxonAttackResult = attackedViking.receiveDamage(attackingSaxon.strength);
-        if (attackedViking.health <= 0) {
-            this.vikingArmy = this.vikingArmy.filter(item => item !== attackedViking)
+        let saxon = this.selectSoldier.call(this, this.saxonArmy)
+        let viking = this.selectSoldier.call(this, this.vikingArmy)
+        let battleResult = this.attack(saxon,viking)
+        if (viking.health <= 0) {
+            this.vikingArmy = this.removeDeadSoldier.call(this, this.vikingArmy, viking)
         }
-        return saxonAttackResult;
+        return battleResult;
 
     }
     showStatus() {
@@ -79,5 +79,15 @@ class War {
         if (this.vikingArmy.length === 1 && this.saxonArmy.length === 1) {
             return "Vikings and Saxons are still in the thick of battle."
         }
+    }
+    selectSoldier(army) {
+        const randomSoldier = Math.floor(Math.random() * army.length)
+        return army[randomSoldier]
+    }
+    attack(attack, defend) {
+        return defend.receiveDamage(attack.strength)
+    }
+    removeDeadSoldier(army, deadSoldier) {
+        return army.filter(soldier=> soldier !== deadSoldier)
     }
 }
