@@ -64,30 +64,29 @@ class War {
     chooseSoldier(army) {
         return Math.floor(Math.random() * Math.floor(this.army.length));
     }
+    doAttack(soldier) {
+        if(soldier instanceof Viking) {
+            damage = this.saxonArmy[this.chooseSoldier(this.saxonArmy)].receiveDamage(this.vikingArmy[this.chooseSoldier(this.vikingArmy)].strength);
+
+            if(this.saxonArmy[this.chooseSoldier].health <= 0) {
+                this.saxonArmy.pop();
+            }
+        }
+        else if(soldier instanceof Saxon) {
+            damage = this.vikingArmy[this.chooseSoldier(this.vikingArmy)].receiveDamage(this.saxonArmy[this.chooseSoldier(this.saxonArmy)].strength);
+
+            if(this.vikingArmy[this.chooseSoldier(this.vikingArmy)].health <= 0) {
+                this.vikingArmy.pop();
+            }
+        }
+    }
     vikingAttack(){
 
-        let atacker = this.vikingArmy[this.chooseSoldier(this.vikingArmy)].attack();
-        let defender = this.saxonArmy[this.chooseSoldier(this.saxonArmy)];
-
-        if (defender.health - attack <= 0) {
-            this.saxonArmy.pop();
-            return defender.receiveDamage(atacker);
-            } else {
-                return atacker.receiveDamage(atacker);
-            }
+        return this.doAttack(this.vikingArmy[this.chooseSoldier]);
     }
     
     saxonAttack(){
-        let atacker = this.saxonArmy[this.chooseSoldier(this.saxonArmy)].attack();
-        let defender = this.vikingArmy[this.chooseSoldier(this.vikingArmy)];
-
-        if (defender.health - attack <= 0) {
-            this.saxonArmy.pop();
-            return defender.receiveDamage(atacker);
-            } else {
-                return atacker.receiveDamage(atacker);
-            }
-
+        return this.doAttack(this.saxonArmy[this.chooseSoldier]);
     }
     showStatus(){
         if (!this.saxonArmy.length) {
