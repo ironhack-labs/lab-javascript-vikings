@@ -96,9 +96,9 @@ class War {
     //     return soldierResponse;
     // }
     showStatus(){
-        if (this.saxonArmy < 1){
+        if (this.saxonArmy.length < 1){
             return "Vikings have won the war of the century!";
-        } else if (this.vikingArmy < 1){
+        } else if (this.vikingArmy.length < 1){
             return "Saxons have fought for their lives and survived another day...";
         }
         else {
