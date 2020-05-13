@@ -38,7 +38,6 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
-
     receiveDamage(dmg) {
         super.receiveDamage(dmg)
         if (this.health>0) {
@@ -51,4 +50,43 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+    constructor() {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+
+    addViking(myViking) {
+        this.vikingArmy.push(myViking)
+    }
+
+    addSaxon(mySaxon) {
+        this.saxonArmy.push(mySaxon)
+    }
+
+    vikingAttack() {
+        const randomVikingNumber = Math.floor(Math.random() * this.vikingArmy.length)
+        const randomSaxonNumber = Math.floor(Math.random() * this.saxonArmy.length)
+        const combatResult = this.saxonArmy[randomSaxonNumber].receiveDamage(this.vikingArmy[randomVikingNumber].attack())
+				console.log(combatResult)
+        
+        //remove dead saxons
+        this.saxonArmy = this.saxonArmy.filter(entity => entity.health>0)
+        return combatResult
+    }
+
+    saxonAttack() {
+        const randomVikingNumber = Math.floor(Math.random() * this.vikingArmy.length)
+        const randomSaxonNumber = Math.floor(Math.random() * this.saxonArmy.length)
+        const combatResult = this.vikingArmy[randomVikingNumber].receiveDamage(this.saxonArmy[randomSaxonNumber].attack())
+				console.log(combatResult)
+        
+        //remove dead saxons
+        this.vikingArmy = this.vikingArmy.filter(entity => entity.health>0)
+        return combatResult
+
+    }
+
+    showStatus() {}
+
+}
