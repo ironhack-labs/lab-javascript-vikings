@@ -22,11 +22,11 @@ class Viking extends Soldier {
         this.name = name
     }
 
-    battleCry() {
+    battleCry () {
         return 'Odin Owns You All!'
     }
 
-    receiveDamage(damage) {
+    receiveDamage (damage) {
         this.health -= damage
         if (this.health > 0){
             return `${this.name} has received ${damage} points of damage`
@@ -38,7 +38,7 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
     
-    receiveDamage(damage) {
+    receiveDamage (damage) {
         this.health -= damage
         if (this.health > 0){
             return `A Saxon has received ${damage} points of damage`
@@ -49,4 +49,49 @@ class Saxon extends Soldier {
 
 
 // War
-class War {}
+class War {
+    constructor () {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+
+    addViking (newviking){
+        this.vikingArmy.push(newviking)
+    }
+
+    addSaxon (newsaxon) {
+        this.saxonArmy.push(newsaxon)
+    }
+
+    vikingAttack () {
+        const  damageFromViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].attack()
+        const indexOfDamagedSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+        const saxonReceiveDamage = this.saxonArmy[indexOfDamagedSaxon]
+        
+        const saxonRemainingHealth = saxonReceiveDamage.receiveDamage(damageFromViking)
+
+        if (saxonReceiveDamage.health <= 0) {
+            this.saxonArmy.splice(indexOfDamagedSaxon, 1 )
+        }
+
+        return saxonRemainingHealth
+    }
+
+    saxonAttack () {
+        const  damageFromSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].attack()
+        const indexOfDamagedViking = Math.floor(Math.random() * this.vikingArmy.length)
+        const vikingReceiveDamage = this.vikingArmy[indexOfDamagedViking]
+        
+        const resultHealth = vikingReceiveDamage.receiveDamage(damageFromSaxon)
+
+        if (vikingReceiveDamage.health <= 0) {
+            this.vikingArmy.splice(indexOfDamagedViking, 1 )
+        }
+
+        return resultHealth
+    }
+
+    showStatus () {
+
+    }
+}
