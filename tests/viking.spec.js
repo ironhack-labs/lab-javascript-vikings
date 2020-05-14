@@ -1,75 +1,75 @@
-describe('Soldier', () => {
-  let soldier;
-  const strength = 150;
-  const health = 300;
+describe("Soldier", () => {
+  let soldier
+  const strength = 150
+  const health = 300
 
   beforeEach(() => {
-    soldier = new Soldier(health, strength);
-  });
+    soldier = new Soldier(health, strength)
+  })
 
-  describe('class', () => {
-    // it('should receive 2 arguments (health & strength)', () => {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+  describe("class", () => {
+    it("should receive 2 arguments (health & strength)", () => {
+      expect(Soldier.length).toEqual(2)
+    })
     //
-    // it('should receive the health property as its 1st argument', () => {
-    //   expect(soldier.health).toEqual(health);
-    // });
+    it("should receive the health property as its 1st argument", () => {
+      expect(soldier.health).toEqual(health)
+    })
     //
-    // it('should receive the strength property as its 2nd argument', () => {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
-  });
+    it("should receive the strength property as its 2nd argument", () => {
+      expect(soldier.strength).toEqual(strength)
+    })
+  })
 
-  describe('attack() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.attack).toBe('function');
-    // });
+  describe("attack() method", () => {
+    it("should be a function", () => {
+      expect(typeof soldier.attack).toBe("function")
+    })
     //
-    // it('should receive 0 arguments', () => {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
+    it("should receive 0 arguments", () => {
+      expect(soldier.attack.length).toEqual(0)
+    })
     //
-    // it('should return the strength property of the Soldier', () => {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
-  });
+    it("should return the strength property of the Soldier", () => {
+      expect(soldier.attack()).toEqual(strength)
+    })
+  })
 
-  describe('receiveDamage() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.receiveDamage).toBe('function');
-    // });
+  describe("receiveDamage() method", () => {
+    it("should be a function", () => {
+      expect(typeof soldier.receiveDamage).toBe("function")
+    })
     //
-    // it('should receive 1 argument (the damage)', () => {
-    //   expect(soldier.receiveDamage.length).toEqual(1);
-    // });
+    it("should receive 1 argument (the damage)", () => {
+      expect(soldier.receiveDamage.length).toEqual(1)
+    })
     //
-    // it('should remove the received damage from the health property', () => {
-    //   soldier.receiveDamage(50);
-    //   expect(soldier.health).toEqual(health - 50);
-    // });
+    it("should remove the received damage from the health property", () => {
+      soldier.receiveDamage(50)
+      expect(soldier.health).toEqual(health - 50)
+    })
     //
-    // it("shouldn't return anything", () => {
-    //   expect(soldier.receiveDamage(50)).toEqual(undefined);
-    // });
-  });
-});
+    it("shouldn't return anything", () => {
+      expect(soldier.receiveDamage(50)).toEqual(undefined)
+    })
+  })
+})
 
-describe('Viking', () => {
-  let viking;
-  const name = 'Harald';
-  const strength = 150;
-  const health = 300;
+describe("Viking", () => {
+  let viking
+  const name = "Harald"
+  const strength = 150
+  const health = 300
 
   beforeEach(() => {
-    viking = new Viking(name, health, strength);
-  });
+    viking = new Viking(name, health, strength)
+  })
 
   // it('should inherit from Soldier', () => {
   //   expect(viking instanceof Soldier).toEqual(true);
   // });
 
-  describe('class', () => {
+  describe("class", () => {
     // it('should receive 3 arguments (name, health & strength)', () => {
     //   expect(Viking.length).toEqual(3);
     // });
@@ -85,9 +85,9 @@ describe('Viking', () => {
     // it('should receive the strength property as its 3rd argument', () => {
     //   expect(viking.strength).toEqual(strength);
     // });
-  });
+  })
 
-  describe('attack() method', () => {
+  describe("attack() method", () => {
     // it('should be a function', () => {
     //   expect(typeof viking.attack).toBe('function');
     // });
@@ -99,9 +99,9 @@ describe('Viking', () => {
     // it('should return the strength property of the Viking', () => {
     //   expect(viking.attack()).toEqual(strength);
     // });
-  });
+  })
 
-  describe('receiveDamage() method', () => {
+  describe("receiveDamage() method", () => {
     // it('should be a function', () => {
     //   expect(typeof viking.receiveDamage).toBe('function');
     // });
@@ -123,9 +123,9 @@ describe('Viking', () => {
     // it('should return "NAME has died in act of combat", if the Viking dies', () => {
     //   expect(viking.receiveDamage(health)).toEqual(`${name} has died in act of combat`);
     // });
-  });
+  })
 
-  describe('battleCry() method', () => {
+  describe("battleCry() method", () => {
     // it('should be a function', () => {
     //   expect(typeof viking.battleCry).toBe('function');
     // });
@@ -137,23 +137,23 @@ describe('Viking', () => {
     // it('should return "Odin Owns You All!"', () => {
     //   expect(viking.battleCry()).toEqual('Odin Owns You All!');
     // });
-  });
-});
+  })
+})
 
-describe('Saxon', () => {
-  let saxon;
-  const health = 60;
-  const strength = 25;
+describe("Saxon", () => {
+  let saxon
+  const health = 60
+  const strength = 25
 
   beforeEach(() => {
-    saxon = new Saxon(health, strength);
-  });
+    saxon = new Saxon(health, strength)
+  })
 
   // it('should inherit from Soldier', () => {
   //   expect(saxon instanceof Soldier).toEqual(true);
   // });
 
-  describe('class', () => {
+  describe("class", () => {
     // it('should receive the health property as its 1st argument', () => {
     //   expect(saxon.health).toEqual(health);
     // });
@@ -161,9 +161,9 @@ describe('Saxon', () => {
     // it('should receive the strength property as its 2nd argument', () => {
     //   expect(saxon.strength).toEqual(strength);
     // });
-  });
+  })
 
-  describe('attack() method', () => {
+  describe("attack() method", () => {
     // it('should be a function', () => {
     //   expect(typeof saxon.attack).toBe('function');
     // });
@@ -175,9 +175,9 @@ describe('Saxon', () => {
     // it('should return the strength property of the Saxon', () => {
     //   expect(saxon.attack()).toEqual(strength);
     // });
-  });
+  })
 
-  describe('receiveDamage() method', () => {
+  describe("receiveDamage() method", () => {
     // it('should be a function', () => {
     //   expect(typeof saxon.receiveDamage).toBe('function');
     // });
@@ -199,32 +199,32 @@ describe('Saxon', () => {
     // it('should return "A Saxon has died in combat", if the Saxon dies', () => {
     //   expect(saxon.receiveDamage(health)).toEqual('A Saxon has died in combat');
     // });
-  });
-});
+  })
+})
 
-describe('War', () => {
-  let viking, saxon, war;
+describe("War", () => {
+  let viking, saxon, war
 
   function generateViking() {
-    const name = 'Harald';
-    const strength = 150;
-    const health = 300;
-    return new Viking(name, health, strength);
+    const name = "Harald"
+    const strength = 150
+    const health = 300
+    return new Viking(name, health, strength)
   }
 
   function generateSaxon() {
-    const health = 60;
-    const strength = 25;
-    return new Saxon(health, strength);
+    const health = 60
+    const strength = 25
+    return new Saxon(health, strength)
   }
 
   beforeEach(() => {
-    viking = generateViking();
-    saxon = generateSaxon();
-    war = new War();
-  });
+    viking = generateViking()
+    saxon = generateSaxon()
+    war = new War()
+  })
 
-  describe('class', () => {
+  describe("class", () => {
     // it('should receive 0 arguments', () => {
     //   expect(War.length).toEqual(0);
     // });
@@ -236,9 +236,9 @@ describe('War', () => {
     // it('should assign an empty array to the saxonArmy property', () => {
     //   expect(war.saxonArmy).toEqual([]);
     // });
-  });
+  })
 
-  describe('addViking() method', () => {
+  describe("addViking() method", () => {
     // it('should be a function', () => {
     //   expect(typeof war.addViking).toBe('function');
     // });
@@ -255,9 +255,9 @@ describe('War', () => {
     // it("shouldn't return anything", () => {
     //   expect(war.addViking(viking)).toEqual(undefined);
     // });
-  });
+  })
 
-  describe('addSaxon() method', () => {
+  describe("addSaxon() method", () => {
     // it('should be a function', () => {
     //   expect(typeof war.addSaxon).toBe('function');
     // });
@@ -274,15 +274,15 @@ describe('War', () => {
     // it("shouldn't return anything", () => {
     //   expect(war.addSaxon(saxon)).toEqual(undefined);
     // });
-  });
+  })
 
-  describe('Armies Attack', () => {
+  describe("Armies Attack", () => {
     beforeEach(() => {
-      war.addViking(viking);
-      war.addSaxon(saxon);
-    });
+      war.addViking(viking)
+      war.addSaxon(saxon)
+    })
 
-    describe('vikingAttack() method', () => {
+    describe("vikingAttack() method", () => {
       // it('should be a function', () => {
       //   expect(typeof war.vikingAttack).toBe('function');
       // });
@@ -305,9 +305,9 @@ describe('War', () => {
       // it('should return result of calling receiveDamage() of a Saxon with the strength of a Viking', () => {
       //   expect(war.vikingAttack()).toEqual('A Saxon has died in combat');
       // });
-    });
+    })
 
-    describe('saxonAttack() method', () => {
+    describe("saxonAttack() method", () => {
       // it('should be a function', () => {
       //   expect(typeof war.saxonAttack).toBe('function');
       // });
@@ -334,9 +334,9 @@ describe('War', () => {
       //     `${viking.name} has received ${saxon.strength} points of damage`
       //   );
       // });
-    });
+    })
 
-    describe('showStatus() method', () => {
+    describe("showStatus() method", () => {
       // it('should be a function', () => {
       //   expect(typeof war.showStatus).toBe('function');
       // });
@@ -362,6 +362,6 @@ describe('War', () => {
       // it('should return "Vikings and Saxons are still in the thick of battle.", if there are still both Vikings and Saxons', () => {
       //   expect(war.showStatus()).toEqual('Vikings and Saxons are still in the thick of battle.');
       // });
-    });
-  });
-});
+    })
+  })
+})
