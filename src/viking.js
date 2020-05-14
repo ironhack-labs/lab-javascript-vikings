@@ -91,7 +91,39 @@ class War {
         return resultHealth
     }
 
-    showStatus () {
+    //Bonus one method for both armies attack:
+    // armyAttack(whoAttack, whoDefend) {
+    //     if (whoAttack === "Saxon" && whoDefend === "Viking") {
+    //         const attacker = this.saxonArmy
+    //         const damaged = this.vikingArmy
+    //     } else if (whoAttack === "Saxon" && whoDefend === "Saxon" ) {
+    //         const attacker = this.vikingArmy
+    //         const damaged = this.saxonArmy
+    //     } else {
+    //         return "Please add a valid attacker and defender. Accepted values: 'Saxon' and 'Viking'"
+    //     }
 
+    //     const  damageFromAttacker = attacker[Math.floor(Math.random() * attacker.length)].attack()
+    //     const indexOfDamaged = Math.floor(Math.random() * damaged.length)
+    //     const armyReceiveDamage = damaged[indexOfDamaged]
+        
+    //     const resultHealth = armyReceiveDamage.receiveDamage(damageFromAttacker)
+
+    //     if (armyReceiveDamage.health <= 0) {
+    //         damaged.splice(indexOfDamaged, 1 )
+    //     }
+
+    //     return resultHealth
+    // }
+
+
+    showStatus () {
+        if (this.saxonArmy.length < 1) {
+            return "Vikings have won the war of the century!"
+        } else if (this.vikingArmy.length < 1) {
+            return  "Saxons have fought for their lives and survived another day..."
+        } else if (this.vikingArmy.length === 1 && this.saxonArmy.length === 1) {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
     }
 }
