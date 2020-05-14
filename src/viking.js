@@ -20,9 +20,6 @@ class Viking extends Soldier {
         super(health, strength);
         this.name = name;
     }
-    attack() {
-        return this.strength;
-    }
 
     receiveDamage(damage) {
         this.health -= damage;
@@ -41,9 +38,6 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
-    attack() {
-        return this.strength;
-    }
 
     receiveDamage(damage) {
         this.health -= damage;
@@ -70,27 +64,45 @@ class War {
     addSaxon(saxon) {
         this.saxonArmy.push(saxon);
     }
+
+    _soldierRandom(soldier) {
+        let random = Math.floor(Math.random() * soldier.length)
+        return soldier[random]
+    }
+
+    removeDeads(army) {
+        return army.filter(deads => deads.health > 0)
+    }
+
     vikingAttack() {
-      const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-      const randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-      const attack = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength)
-      this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0)
-      return attack
+        const attack = this._soldierRandom(this.saxonArmy).receiveDamage(this._soldierRandom(this.vikingArmy).strength)
+        this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0)
+        return attack
     }
 
     saxonAttack() {
-      const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-      const randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-      const attack = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
-      this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0)
-      return attack
+        const attack = this._soldierRandom(this.vikingArmy).receiveDamage(this._soldierRandom(this.saxonArmy).strength)
+        this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0)
+        return attack
     }
+
+    // Define a  single function for attack and no need saxonAttack and vikingAttack:
+
     generalAttack(attacker, receivedAttack) {
-        const randomAttacker = Math.floor(Math.random() * this.attacker.length)
-        const randomReceivedAttack = Math.floor(Math.random() * this.receivedAttack.length)
-        const attack = this.receivedAttack[randomReceivedAttack].receiveDamage(this.attacker[randomAttacker].strength)
+        const attack = this._soldierRandom(receivedAttack).receiveDamage(this._soldierRandom(attacker).strength)
         this.receivedAttack = this.receivedAttack.filter(man => man.health > 0)
         return attack
     }
+
+    showStatus() {
+        if (this.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!"
+        } else if (this.vikingArmy.length === 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        } else if (this.vikingArmy.length !== 0 && this.saxonArmy.length !== 0) {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
+    }
    
+    
 }
