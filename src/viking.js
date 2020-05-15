@@ -70,8 +70,20 @@ showStatus() {
     if (this.saxonArmy.length === 0) return ('Vikings have won the war of the century!')
     if (this.vikingArmy.length === 0) return ('Saxons have fought for their lives and survived another day...')
     if (this.saxonArmy.length > 0 && this.vikingArmy.length > 0) return ('Vikings and Saxons are still in the thick of battle.')
-    
     }
 }
 
+/* Intento de conjugar dos funciones en una de la clase war
 
+armyAttack(){
+    const saxonRandom = Math.floor(Math.random() * this.saxonArmy.length)
+    const vikingRandom = Math.floor(Math.random() * this.vikingArmy.length)
+    const resultCombat = this.saxonArmy[saxonRandom].receiveDamage(this.vikingArmy[vikingRandom].strength)
+    const resultCombat = this.vikingArmy[vikingRandom].receiveDamage(this.saxonArmy[saxonRandom].strength)
+
+    if (resultCombat = this.saxonArmy[saxonRandom].receiveDamage(this.vikingArmy[vikingRandom].strength)) return this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0)
+    if (resultCombat = this.vikingArmy[vikingRandom].receiveDamage(this.saxonArmy[saxonRandom].strength)) return this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0)
+    return resultCombat
+    }
+}
+*/ 
