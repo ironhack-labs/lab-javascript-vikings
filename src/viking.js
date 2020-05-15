@@ -70,19 +70,19 @@ class War {
         return soldier[random]
     }
 
-    removeDeads(army) {
-        return army.filter(deads => deads.health > 0)
+    _removeDeads(soldier) {
+        return soldier.health > 0
     }
 
     vikingAttack() {
         const attack = this._soldierRandom(this.saxonArmy).receiveDamage(this._soldierRandom(this.vikingArmy).strength)
-        this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0)
+        this.saxonArmy = this.saxonArmy.filter(this._removeDeads)
         return attack
     }
 
     saxonAttack() {
         const attack = this._soldierRandom(this.vikingArmy).receiveDamage(this._soldierRandom(this.saxonArmy).strength)
-        this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0)
+        this.vikingArmy = this.vikingArmy.filter(this._removeDeads)
         return attack
     }
 
@@ -90,7 +90,7 @@ class War {
 
     generalAttack(attacker, receivedAttack) {
         const attack = this._soldierRandom(receivedAttack).receiveDamage(this._soldierRandom(attacker).strength)
-        this.receivedAttack = this.receivedAttack.filter(man => man.health > 0)
+        this.receivedAttack = this.receivedAttack.filter(this._removeDeads)
         return attack
     }
 
