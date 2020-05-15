@@ -71,9 +71,9 @@ class War {
         const saxonRemainingHealth = saxonReceiveDamage.receiveDamage(damageFromViking)
 
         if (saxonReceiveDamage.health <= 0) {
-            this.saxonArmy.splice(indexOfDamagedSaxon, 1 )
+            this.saxonArmy.splice(indexOfDamagedSaxon, 1)
         }
-
+        //I din't use filter since I wan't the original array to delete the death ones, but maybe it is better to use it
         return saxonRemainingHealth
     }
 
@@ -92,29 +92,30 @@ class War {
     }
 
     //Bonus one method for both armies attack:
-    // armyAttack(whoAttack, whoDefend) {
-    //     if (whoAttack === "Saxon" && whoDefend === "Viking") {
-    //         const attacker = this.saxonArmy
-    //         const damaged = this.vikingArmy
-    //     } else if (whoAttack === "Saxon" && whoDefend === "Saxon" ) {
-    //         const attacker = this.vikingArmy
-    //         const damaged = this.saxonArmy
-    //     } else {
-    //         return "Please add a valid attacker and defender. Accepted values: 'Saxon' and 'Viking'"
-    //     }
-
-    //     const  damageFromAttacker = attacker[Math.floor(Math.random() * attacker.length)].attack()
-    //     const indexOfDamaged = Math.floor(Math.random() * damaged.length)
-    //     const armyReceiveDamage = damaged[indexOfDamaged]
-        
-    //     const resultHealth = armyReceiveDamage.receiveDamage(damageFromAttacker)
-
-    //     if (armyReceiveDamage.health <= 0) {
-    //         damaged.splice(indexOfDamaged, 1 )
-    //     }
-
-    //     return resultHealth
-    // }
+    armyAttack(whoAttack, whoDefend) {
+        let attacker = []
+        let damaged = []
+        if (whoAttack === "Saxon" && whoDefend === "Viking") {
+            attacker = this.saxonArmy
+            damaged = this.vikingArmy
+        } else if (whoAttack === "Viking" && whoDefend === "Saxon" ) {
+            attacker = this.vikingArmy
+            damaged = this.saxonArmy
+        } else {
+            return "Please add a valid attacker and defender. Accepted values: 'Saxon' and 'Viking'"
+        }
+  
+        const  damageFromAttacker = attacker[Math.floor(Math.random() * attacker.length)].attack()
+        const indexOfDamaged = Math.floor(Math.random() * damaged.length)
+        const armyReceiveDamage = damaged[indexOfDamaged]
+                
+        const resultHealth = armyReceiveDamage.receiveDamage(damageFromAttacker)
+  
+        if (armyReceiveDamage.health <= 0) {
+            damaged.splice(indexOfDamaged, 1)
+        }
+        return resultHealth
+      }
 
 
     showStatus () {
@@ -127,3 +128,13 @@ class War {
         }
     }
 }
+
+
+// //If you want you can use the following to test the refactorization:
+// const superWar = new War ()
+// const newSaxon = new Saxon (200, 200)
+// const newViking = new Viking ("Thor", 800, 200)
+// superWar.addSaxon(newSaxon)
+// superWar.addViking(newViking)
+// superWar.armyAttack("Saxon", "Viking")
+// superWar.armyAttack( "Viking", "Saxon")
