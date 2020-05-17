@@ -21,7 +21,11 @@ class Viking extends Soldier {
     }
     receiveDamage(damage) {
         super.receiveDamage(damage)
-        this.health <= this.damage ? `${this.name} has received ${this.damage} points of damage` : `${this.name} has died in act of combat`
+        if (this.damage >= this.health) {
+            return `${this.name} has died in act of combat`
+        } else {
+            return `${this.name} has received ${this.damage} points of damage`
+        }
     }
     battleCry() {
         return `Odin Owns You All!`
@@ -40,7 +44,6 @@ class Saxon extends Soldier {
     }
 }
 
-
 // War
 class War {
     constructor() {
@@ -54,11 +57,26 @@ class War {
         this.saxonArmy.push(saxon)
     }
     vikingAttack() {
-        const attackResult = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
+        const vikingAttackResult = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
         if (this.saxonArmy[0].health <= 0) {
             this.saxonArmy.splice(0)
         }
-
-        return attackResult
+        return vikingAttackResult
+    }
+    saxonAttack() {
+        const saxonAttackResult = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
+        if (this.vikingArmy[0].health <= 0) {
+            this.vikingArmy.splice(0)
+        }
+        return saxonAttackResult
+    }
+    showStatus() {
+        if (this.vikingArmy.length !== 0 && this.saxonArmy.length !== 0) {
+            return `Vikings and Saxons are still in the thick of battle.`
+        } else if (this.vikingArmy.length === 0) {
+            return `Saxons have fought for their lives and survived another day...`
+        } else {
+            return `Vikings have won the war of the century!`
+        }
     }
 }
