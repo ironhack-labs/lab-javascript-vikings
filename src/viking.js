@@ -43,7 +43,6 @@ class Viking extends Soldier {
         return 'Odin Owns You All!'
     }
 
-
 }
 
 // Saxon
@@ -61,5 +60,50 @@ class Saxon extends Soldier {
     }
 }
 
-// War
-class War {}
+// Bonus : War
+class War {
+
+    constructor () {
+
+        this.vikingArmy =  [];
+        this.saxonArmy =[];
+    }
+
+    addViking (viking) {
+        this.vikingArmy.push(viking)
+    }
+
+    addSaxon (saxon) {
+        this.saxonArmy.push(saxon)
+    }
+
+    vikingAttack () {
+
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
+
+        const randomViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
+
+        const attack = randomSaxon.receiveDamage(randomViking.strength)
+        
+        if (randomSaxon.health <= 0) {
+            this.saxonArmy.splice([randomSaxon, 1])
+        }
+
+        return attack
+    }
+
+    saxonAttack () {
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
+
+        const randomViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
+
+        const attack = randomViking.receiveDamage(randomSaxon.strength)
+        
+        if (randomViking.health <= 0) {
+            this.vikingArmy.splice([randomViking, 1])
+        }
+
+        return attack
+    }
+
+}
