@@ -28,8 +28,6 @@ class Viking extends Soldier {
     receiveDamage (damage) {
 
         this.health -= damage
-
-        //this.health > 0 ? (`${this.name} has received ${damage} points of damage`) : (`${this.name} has died in act of combat`)
         
         if (this.health > 0) {
             return `${this.name} has received ${damage} points of damage`
