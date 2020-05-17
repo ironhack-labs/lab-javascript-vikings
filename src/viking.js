@@ -55,8 +55,12 @@ class War {
     }
     vikingAttack() {
         const attackResult = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
+        if (this.saxonArmy[0].health <= 0) {
+            this.saxonArmy.length -= 1
+        }
+        console.log(this.saxonArmy);
 
-        return attackResult <= 0 ? this.saxonArmy.slice(0, 1) : attackResult
+        return attackResult
     }
 }
 const warss = new War()
