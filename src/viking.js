@@ -33,7 +33,33 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+    receiveDamage(damage) {
+        super.receiveDamage(damage)
+        if (this.health > 0) {
+            return `A Saxon has received ${this.damage} points of damage`
+        } else {
+            return `A Saxon has died in combat`
+        }
+    }
+}
+
 
 // War
-class War {}
+class War {
+    constructor() {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+    addViking(viking) {
+        this.vikingArmy.push(viking)
+    }
+    addSaxon(saxon) {
+        this.saxonArmy.push(saxon)
+    }
+    vikingAttack() {
+        this.saxonArmy.saxon.receiveDamage(this.viking.strength)
+    }
+}
+const warss = new War()
+console.log(warss);
