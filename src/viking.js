@@ -106,4 +106,45 @@ class War {
         return attack
     }
 
+
+    /*-----------SUPER BONUS: REFACTORING : saxonAttack & vikingAttack----------
+
+    attackingTo (vikings, saxons) {
+
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
+
+        const randomViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
+
+        switch (armyToAttack) {
+            case 'vikings':
+                const attack = randomViking.receiveDamage(randomSaxon.strength);
+                if (randomSaxon.health <= 0) {
+                this.saxonArmy.splice([randomSaxon, 1])
+                }
+                return attack
+                break;
+            case 'saxons':
+                const attack = randomSaxon.receiveDamage(randomViking.strength);
+                if (randomViking.health <= 0) {
+                this.vikingArmy.splice([randomViking, 1])
+                }
+                return attack
+        }
+
+    }
+
+
+    */
+
+    showStatus () {
+        
+        if (this.saxonArmy.length === 0) {
+            return 'Vikings have won the war of the century!';
+        } else if (this.vikingArmy.length === 0) {
+            return 'Saxons have fought for their lives and survived another day...';
+        } else if (this.saxonArmy.length >= 1 && this.vikingArmy.length >= 1) {
+            return 'Vikings and Saxons are still in the thick of battle.'
+        }
+
+    }
 }
