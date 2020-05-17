@@ -62,4 +62,3 @@ class War {
     }
 }
 const warss = new War()
-console.log(warss);
