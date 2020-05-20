@@ -23,9 +23,15 @@ class Viking extends Soldier {
     this.name = name;
   }
 
-  receiveDamage() {
+  receiveDamage(damage) {
     super.receiveDamage(damage);
-    console.log(`${(this.name)} has received ${this.damage} points of damage`);
+    return this.health > 0 ? 
+      `${this.name} has received ${damage} points of damage` :
+      `${this.name} has died in act of combat`;
+  }
+
+  battleCry() {
+    return `Odin Owns You All!`;
   }
 
 }

@@ -119,24 +119,24 @@ describe('Viking', () => {
       expect(viking.receiveDamage(50)).toEqual(`${name} has received 50 points of damage`);
       expect(viking.receiveDamage(75)).toEqual(`${name} has received 75 points of damage`);
     });
-    //
-    // it('should return "NAME has died in act of combat", if the Viking dies', () => {
-    //   expect(viking.receiveDamage(health)).toEqual(`${name} has died in act of combat`);
-    // });
+    
+    it('should return "NAME has died in act of combat", if the Viking dies', () => {
+      expect(viking.receiveDamage(health)).toEqual(`${name} has died in act of combat`);
+    });
   });
 
   describe('battleCry() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof viking.battleCry).toBe('function');
-    // });
-    //
-    // it('should receive 0 arguments', () => {
-    //   expect(viking.battleCry.length).toEqual(0);
-    // });
-    //
-    // it('should return "Odin Owns You All!"', () => {
-    //   expect(viking.battleCry()).toEqual('Odin Owns You All!');
-    // });
+    it('should be a function', () => {
+      expect(typeof viking.battleCry).toBe('function');
+    });
+    
+    it('should receive 0 arguments', () => {
+      expect(viking.battleCry.length).toEqual(0);
+    });
+    
+    it('should return "Odin Owns You All!"', () => {
+      expect(viking.battleCry()).toEqual('Odin Owns You All!');
+    });
   });
 });
 
