@@ -19,6 +19,7 @@ class Viking extends Soldier {
         this.name = name;
     }
     receiveDamage(damage) {
+        super.receiveDamage(damage);   
         this.health = this.health - damage;
         let isAllive;
         if (this.health < damage) {
@@ -36,6 +37,7 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
     receiveDamage(damage) {
+        super.receiveDamage(damage);
         this.health = this.health - damage;
         let isAlliveSaxon;
         if (this.health < damage) {
