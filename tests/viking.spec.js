@@ -203,31 +203,31 @@ describe('Saxon', () => {
 });
 
 describe('War', () => {
-  let viking, saxon, war;
+  //let viking, saxon, war;
 
   function generateViking() {
-    const name = 'Harald';
-    const strength = 150;
-    const health = 300;
-    return new Viking(name, health, strength);
+   //const name = 'Harald';
+    //const strength = 150;
+    //const health = 300;
+    //return new Viking(name, health, strength);
   }
 
   function generateSaxon() {
-    const health = 60;
-    const strength = 25;
-    return new Saxon(health, strength);
+    //const health = 60;
+    //const strength = 25;
+    //return new Saxon(health, strength);
   }
 
   beforeEach(() => {
-    viking = generateViking();
-    saxon = generateSaxon();
-    war = new War();
+    //viking = generateViking();
+    //saxon = generateSaxon();
+   //war = new War();
   });
 
   describe('class', () => {
-    // it('should receive 0 arguments', () => {
-    //   expect(War.length).toEqual(0);
-    // });
+    //it('should receive 0 arguments', () => {
+    //expect(War.length).toEqual(0);
+    //});
     //
     // it('should assign an empty array to the vikingArmy property', () => {
     //   expect(war.vikingArmy).toEqual([]);
@@ -277,9 +277,9 @@ describe('War', () => {
   });
 
   describe('Armies Attack', () => {
-    beforeEach(() => {
-      war.addViking(viking);
-      war.addSaxon(saxon);
+   // beforeEach(() => {
+      //war.addViking(viking);
+      //war.addSaxon(saxon);
     });
 
     describe('vikingAttack() method', () => {
