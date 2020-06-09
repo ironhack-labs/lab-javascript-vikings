@@ -60,21 +60,49 @@ class War {
         this.saxonArmy=[];
     }
 
-addViking(Viking){
+//can't remove te dead soldiers on each side
+
+addViking(Viking){ 
     
-    this.vikingArmy += this.vikingArmy.push(Viking);
+    this.vikingArmy = [Viking];
 
 }
-addSaxon(){
+addSaxon(Saxon){
+    
+    this.saxonArmy=[Saxon];
+
 
 }
 vikingAttack(){
 
-}
-saxonAttack(){
+let attack = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+
+
+return attack;
 
 }
+
+
+saxonAttack(){    
+
+let attack = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+
+
+return attack;
+
+
+}
+
+// somehow the showstatus doesn't pass the test, i think it has to do with the way i add saxon and viking to the armies but i can't find the problem
+
 showStatus(){
 
+    if (Saxon.length === 0) {return "Vikings have won the war of the century!";
+}
+    if (Viking.length === 0) {return "Saxons have fought for their lives and survived another day...";
+}
+    if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1) {return "Vikings and Saxons are still in the thick of battle.";
+}   
+    
 }
 }
