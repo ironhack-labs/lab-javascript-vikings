@@ -27,7 +27,6 @@ class Viking extends Soldier {
     }
     battleCry() {
         return 'Odin Owns You All!'
-
     }
 }
 
@@ -63,12 +62,12 @@ class War {
         const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
         const saxon = this.saxonArmy[randomSaxonIndex]
 
-        const result = saxon.receiveDamage(viking.strength)
+        const statusSaxon = saxon.receiveDamage(viking.strength)
 
         if (saxon.health <= 0) {
             this.saxonArmy.splice(randomSaxonIndex, 1);
         }
-        return result
+        return statusSaxon
 
     }
     saxonAttack() {
@@ -78,28 +77,19 @@ class War {
         const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
         const saxon = this.saxonArmy[randomSaxonIndex]
 
-        const result = viking.receiveDamage(saxon.strength)
+        const statusViking = viking.receiveDamage(saxon.strength)
 
         if (viking.health <= 0) {
             this.vikingArmy.splice(randomVikingIndex, 1);
         }
-        return result
+        return statusViking
     }
     showStatus() {
-        if (this.saxonArmy.length === 0) {
+        if (this.saxonArmy.length === 0)
             return "Vikings have won the war of the century!"
-        }
-        if (this.vikingArmy.length === 0) {
+        if (this.vikingArmy.length === 0)
             return "Saxons have fought for their lives and survived another day..."
-        }
-        if (this.vikingArmy.length === 1 && this.saxonArmy.length === 1) {
+        if (this.vikingArmy.length === 1 && this.saxonArmy.length === 1)
             return "Vikings and Saxons are still in the thick of battle."
-        }
     }
 }
-const game = new War()
-game.addSaxon(new Saxon(100, 20))
-game.addViking(new Viking('Daniel', 80, 20))
-console.log(game.saxonArmy)
-game.vikingAttack()
-game.vikingAttack()
