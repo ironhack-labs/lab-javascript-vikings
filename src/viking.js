@@ -60,7 +60,7 @@ class War {
         this.saxonArmy=[];
     }
 
-//struggling with removing te dead soldiers on each side, I know I have to use pop() on the armies to remove an element of their arrays
+
 
 addViking(Viking){ 
     
@@ -75,7 +75,16 @@ addSaxon(Saxon){
 }
 vikingAttack(){
 
-let attack = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+const attack = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+
+const saxon = this.saxonArmy[0];
+
+if (saxon.health <= 0){
+    
+    this.saxonArmy.pop(Saxon);
+  }
+
+
 
 
 
@@ -87,7 +96,15 @@ return attack;
 
 saxonAttack(){    
 
-let attack = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+const attack = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+
+const viking = this.vikingArmy[0];
+
+if (viking.health <= 0){
+  
+    this.vikingArmy.pop(Viking);
+}
+
 
 
 return attack;
@@ -103,8 +120,10 @@ showStatus(){
 }
     if (this.vikingArmy.length === 0) {return "Saxons have fought for their lives and survived another day...";
 }
-    if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1) {return "Vikings and Saxons are still in the thick of battle.";
+    else {return "Vikings and Saxons are still in the thick of battle.";
 }   
     
 }
 }
+
+
