@@ -60,22 +60,24 @@ class War {
         this.saxonArmy=[];
     }
 
-//can't remove te dead soldiers on each side
+//struggling with removing te dead soldiers on each side, I know I have to use pop() on the armies to remove an element of their arrays
 
 addViking(Viking){ 
     
-    this.vikingArmy = [Viking];
+    this.vikingArmy.push(Viking);
 
 }
 addSaxon(Saxon){
     
-    this.saxonArmy=[Saxon];
+    this.saxonArmy.push(Saxon);
 
 
 }
 vikingAttack(){
 
 let attack = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+
+
 
 
 return attack;
@@ -93,13 +95,13 @@ return attack;
 
 }
 
-// somehow the showstatus doesn't pass the test, i think it has to do with the way i add saxon and viking to the armies but i can't find the problem
+
 
 showStatus(){
 
-    if (Saxon.length === 0) {return "Vikings have won the war of the century!";
+    if (this.saxonArmy.length === 0) {return "Vikings have won the war of the century!";
 }
-    if (Viking.length === 0) {return "Saxons have fought for their lives and survived another day...";
+    if (this.vikingArmy.length === 0) {return "Saxons have fought for their lives and survived another day...";
 }
     if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1) {return "Vikings and Saxons are still in the thick of battle.";
 }   
