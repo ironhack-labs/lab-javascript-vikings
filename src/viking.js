@@ -60,27 +60,23 @@ class War {
     }
     
     vikingAttack() {
+        this.saxonArmy.filter (saxon => saxon.health > 0);
         for(let i = 0; i< this.vikingArmy.length; i++){
             let damage = this.vikingArmy[i].attack();
-            return this.saxonArmy[i].receiveDamage(damage);
+            this.saxonArmy[i].receiveDamage(damage);
+            this.saxonArmy = this.saxonArmy.filter (saxon => saxon.health > 0);
         }
-        this.saxonArmy.forEach(function(saxon, i) {
-            if(saxon[i].health <= 0) {
-                saxonArmy.remove(saxon[i])
-            }
-        });
-    }
+        
+      console.log(this.saxonArmy);
+      }
     saxonAttack() {
         for(let i = 0; i< this.saxonArmy.length; i++){
             let damage = this.saxonArmy[i].attack();
-            return this.vikingArmy[i].receiveDamage(damage);
-        }
-        this.saxonArmy.forEach(function(saxon, i) {
-            if(saxon[i].health <= 0) {
-                saxonArmy.remove(saxon[i])
-            }
-        });
+            this.vikingArmy[i].receiveDamage(damage);
+            this.vikingArmy = this.vikingArmy.filter (viking => viking.health > 0);
+        } 
     }
+
     showStatus () {
         if(this.saxonArmy.length === 0) {return 'Vikings have won the war of the century!'}
         else if (this.vikingArmy.length === 0) {return 'Saxons have fought for their lives and survived another day...'}
