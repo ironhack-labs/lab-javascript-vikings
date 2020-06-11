@@ -59,7 +59,37 @@ class Saxon extends Soldier {
 
     }
 }
+
 /*
 // War
 class War {
+
+    constructor() {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+
+    addViking(Viking) {
+        this.vikingArmy.push(Viking)
+    }
+
+    addSaxon(Saxon) {
+        this.saxonArmy.push(Saxon)
+    }
+
+    vikingAttack() {
+
+    }
+
+    showStatus() {
+        if (this.saxonArmy === 0) {
+           return `Vikings have won the war of the century!`;
+        } else if (this.vikingArmy === 0) {
+            return `Saxons have fought for their lives and survived another day...`;
+        } else (this.vikingArmy !== 0 && this.saxonArmy !== 0) {
+            return `Vikings and Saxons are still in the thick of battle.`;
+        }
+    }
+}
+
 */
