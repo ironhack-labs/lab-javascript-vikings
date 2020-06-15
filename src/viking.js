@@ -77,4 +77,12 @@ class  War {
         this.vikingArmy.splice(vikingIndex, 1)
         return viking.receiveDamage(saxon.strength)
      }
+     showStatus = () => {
+         if (this.saxonArmy.length >= 1 && this.vikingArmy.length >= 1)
+         return `Vikings and Saxons are still in the thick of battle.`
+         if(this.saxonArmy.length <=0)
+         return `Vikings have won the war of the century!`
+         if(this.vikingArmy.length <= 0)
+         return `Saxons have fought for their lives and survived another day...`
+     }
 }
