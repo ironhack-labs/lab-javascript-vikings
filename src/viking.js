@@ -61,21 +61,24 @@ class War {
     var saxon = this.saxonArmy[ramdomSaxon]; 
     var viking = this.vikingArmy[ramdomViking];
     saxon.receiveDamage(viking.attack())
-    if(saxon > 1){
-    }else{
-       this.saxonArmy.remove(saxon) 
+    if(saxon.health < 1){
+        this.saxonArmy.splice(ramdomSaxon)
     }
     }
     saxonAttack(){
+        var ramdomSaxon = Math.floor(Math.ramdom * this.saxonArmy.length); 
+        var ramdomViking = Math.floor(Math.ramdom * this.vikingArmy.length); 
+        var saxon = this.saxonArmy[ramdomSaxon]; 
+        var viking = this.vikingArmy[ramdomViking];
         viking.receiveDamage(saxon.attack())
-        if(viking < 1){
-
+        if(viking.health < 1){
+this.vikingArmy.splice(ramdomViking)
         }
     }
     showStatus(){
-      if(this.saxonArmy.length < 0){
+      if(this.saxonArmy.length == 0){
 return "Vikings have won the war of the century!"
-      }if(this.vikingArmy.length < 0){
+      }if(this.vikingArmy.length == 0){
         return "Saxons have fought for their lives and survived another day..."        
       }else if(this.saxonArmy.length >= 1 ){
         return "Vikings have won the war of the century!"     
