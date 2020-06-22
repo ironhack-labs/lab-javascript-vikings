@@ -17,12 +17,6 @@ class Soldier {
 
 }
 
-// let soldier;
-//   const strength = 150;
-//   const health = 300;
-// soldier = new Soldier(health, strength)
-
-
 //Viking
 class Viking extends Soldier {
   constructor(name, health, strength){
@@ -30,12 +24,6 @@ class Viking extends Soldier {
     this.name = name
 
   }
-
-
- // attack() {
-    //         return this.strength;
-    //      }
-    //not needed will inherit from parent
 
   receiveDamage(theDamage){
     super.receiveDamage(theDamage)
@@ -49,18 +37,10 @@ class Viking extends Soldier {
     
 }
 
-// let viking;
-// const strength = 150;
-// const health = 300;
-// const name = 'Harald';
-// viking = new Viking(name, health, strength);
-
 
 
 // Saxon
 class Saxon extends Soldier{
- 
-  // since redefine it we must call super in order to inherit from parents 
   receiveDamage(theDamage){
     super.receiveDamage(theDamage)
     if(this.health > 0) return `A Saxon has received ${theDamage} points of damage`;
@@ -68,12 +48,6 @@ class Saxon extends Soldier{
   }
 
 }
-
-// let saxon;
-// const health = 60;
-// const strength = 25;
-
-// saxon = new Saxon(health, strength);
 
 
 // War
@@ -105,7 +79,6 @@ class War {
     
     return saxonDamage
    
-    
   }
 
   saxonAttack(){
@@ -121,17 +94,16 @@ class War {
     
     return vikingDamage
    
-    
   }
 
-showStatus(){
+  showStatus(){
+    if(this.saxonArmy.length === this.vikingArmy.length && this.saxonArmy.length >=1 && this.vikingArmy.length >=1) return "Vikings and Saxons are still in the thick of battle."
 
-}
+    if(this.saxonArmy.length <= 0) return  "Vikings have won the war of the century!"
+    if(this.vikingArmy.length <= 0) return "Saxons have fought for their lives and survived another day..."
 
+  }
 
-
-  
-  
 }
 
 
