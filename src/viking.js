@@ -60,6 +60,29 @@ class War {
         this.saxonArmy.push(Saxon);
     }
     vikingAttack() {
-        this.vikingArmy.forEach(viking => this.saxonArmy.forEach(saxon => saxon.receiveDamage(viking.strength)))
+        let result = "";
+        this.vikingArmy.forEach(viking => this.saxonArmy.forEach((saxon, index) => {
+            saxon.receiveDamage(viking.strength);
+            if (saxon.health <= 0) {
+                this.saxonArmy.splice(index, 1);
+                result = "A Saxon has died in combat"
+            }
+        }))
+        return result;
+    }
+
+    saxonAttack() {
+        let result = "";
+        this.saxonArmy.forEach(saxon => this.vikingArmy.forEach((viking, index) => {
+            viking.receiveDamage(saxon.strength);
+            if (viking.health <= 0) {
+                this.vikingArmy.splice(index, 1);
+                result = `${this.vikingArmy.name} has died in act of combat`
+            }
+        }))
+        return result;
+    }
+    showStatus() {
+
     }
 }
