@@ -45,5 +45,51 @@ class Saxon extends Soldier{
 
 // War
 class War {
+    constructor(){
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+    }
     
+    addViking(Viking) {
+        this.vikingArmy.push(Viking)
+    }
+    addSaxon(Saxon) {
+        this.saxonArmy.push(Saxon)
+    }
+    vikingAttack() {
+        let result = "";
+        this.vikingArmy.forEach(
+            viking => this.saxonArmy.forEach(
+                (saxon, index) =>
+                {
+                    saxon.receiveDamage(viking.strength)
+                    if(saxon.health <= 0) {
+                        this.saxonArmy.splice(index, 1)
+                        result = "A Saxon has died in combat"
+                    }
+                }
+            )
+        )
+        return result
+    }
+    saxonAttack() {
+        let result2 = "";
+        this.saxonArmy.forEach(
+            saxon => this.vikingArmy.forEach(
+                (viking, index) =>
+                {
+                    viking.receiveDamage(saxon.strength)
+                    if(viking.health <= 0) {
+                        this.vikingArmy.splice(index, 1)
+                        result2 = `${viking.name} has received ${saxon.strength} points of damage`
+                    }
+                }
+            )
+        )
+        return result2
+    }
+    
+    showStatus() {
+
+    }
 }
