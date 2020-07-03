@@ -60,6 +60,6 @@ class War {
         this.saxonArmy.push(Saxon);
     }
     vikingAttack() {
-
+        this.vikingArmy.forEach(viking => this.saxonArmy.forEach(saxon => saxon.receiveDamage(viking.strength)))
     }
 }
