@@ -50,34 +50,65 @@ class Saxon extends Soldier {
 class War {
     constructor() {
         this.vikingArmy = [],
-            this.saxonArmy = []
+        this.saxonArmy = []
     }
-    addViking = function (Viking) {
-        this.vikingArmy += Viking
+    let addViking = function (Viking) {
+        let newVik = new Viking
+        this.vikingArmy.push(newVik)
     }
-    addSaxon = function (Saxon) {
-        this.saxonArmy += Saxon
+    let addSaxon = function (Saxon) {
+        let newSax = new Saxon
+        this.saxonArmy.push(newSax)
+        
     }
-    vikingAttack() = {
-
-        let randomPick = function (array) {
-            let num = Math.floor(Math.random() * (array.length))
+    let vikingAttack = function() {
+    
+        let randomPick = (array) => {
+        let num = Math.floor(Math.random() * (array.length))
             return array[num]
         }
-
-        (randomPick(this.saxonArmy)).health -= (randomPick(this.vikingArmy)).strength
-
-        if (this.saxonArmy.health <= 0) {
-            (this.saxonArmy.filter(item => item.health <= 0))
-        } else {
-            return receiveDamage((randomPick(this.vikingArmy)))
-        }
-
-
-
+        
+        let randomVik = randomPick(this.saxonArmy)
+        let randomSax = randomPick(this.vikingArmy)
+        
+        randomSax.receiveDamage = function(randomVik){
+            randomSax.health -= randomVik.strength
+            if (randomSax.health <= 0) {
+                (this.saxonArmy.filter(item => item.health <= 0))
+            } 
     }
-    saxonAttack()
-    showStatus()
 
+    return receiveDamage((randomPick(this.vikingArmy)))
+
+}
+    let saxonAttack = function() {
+    
+        let randomPick = (array) => {
+        let num = Math.floor(Math.random() * (array.length))
+            return array[num]
+        }
+        
+        let randomVik = randomPick(this.saxonArmy)
+        let randomSax = randomPick(this.vikingArmy)
+        
+        randomVik.receiveDamage = function(randomSax){
+            randomVik.health -= randomSax.strength
+            if (randomVik.health <= 0) {
+                (this.vikingArmy.filter(item => item.health <= 0))
+            } 
+    }
+
+    return receiveDamage((randomPick(this.saxonArmy)))
+
+}
+    let showStatus = function() {
+        if (saxonArmy.length === 0) {
+            return `Vikings have won the war of the century!`
+        } else if (vikingArmy.length === 0) {
+            return `Saxons have fought for their lives and survived another day...`
+        } else if (saxonArmy.length > 0 && vikingArmy > 0) {
+            return `Vikings and Saxons are still in the thick of battle.`
+        }    
+    }
 
 }
