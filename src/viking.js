@@ -73,23 +73,31 @@ class War {
         return result
     }
     saxonAttack() {
-        let result2 = "";
+        let result = ``;
         this.saxonArmy.forEach(
             saxon => this.vikingArmy.forEach(
                 (viking, index) =>
                 {
                     viking.receiveDamage(saxon.strength)
                     if(viking.health <= 0) {
+                        result = `${this.name} has died in act of combat`
                         this.vikingArmy.splice(index, 1)
-                        result2 = `${viking.name} has received ${saxon.strength} points of damage`
                     }
+                    result = `${viking.name} has received ${saxon.strength} points of damage`
                 }
             )
         )
-        return result2
+        return result
     }
     
     showStatus() {
+        if(this.saxonArmy.length === 0){
+            return "Vikings have won the war of the century!"
+        } else if(this.vikingArmy.length === 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        } else {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
 
     }
 }
