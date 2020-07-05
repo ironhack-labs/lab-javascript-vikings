@@ -59,45 +59,48 @@ class War {
     this.saxonArmy=[]
   }
   
-
   addViking(Viking){
     this.vikingArmy.push(Viking)
   }
+
   addSaxon(Saxon){
     this.saxonArmy.push(Saxon)
   }
 
   vikingAttack(){
+    let ranVik= Math.floor(Math.random()* (this.vikingArmy.length));
+    let ranSax= Math.floor(Math.random()* (this.saxonArmy.length));
+
+    let saxon = this.saxonArmy[ranSax];
+    let viking = this.vikingArmy[ranVik];
+
+    saxon.receiveDamage(viking.strength);
     let result = '';
-    this.vikingArmy.forEach(
-      viking => this.saxonArmy.forEach(
-        (saxon, index) => 
-          {
-            saxon.receiveDamage(viking.strength)
-            if(saxon.health <= 0) {
-              this.saxonArmy.splice(index,1)
-              result ='A Saxon has died in combat'
-            }
-          }
-      )
-    )
+
+    if(saxon.health <= 0) {
+      this.saxonArmy.splice(ranSax,1)
+      result ='A Saxon has died in combat'
+    }
+    
     return result
   }
+
   saxonAttack(){
+    let ranVik= Math.floor(Math.random()* (this.vikingArmy.length));
+    let ranSax= Math.floor(Math.random()* (this.saxonArmy.length));
+
+    let saxon = this.saxonArmy[ranSax];
+    let viking = this.vikingArmy[ranVik];
+
+    viking.receiveDamage(saxon.strength)
     let result = ``;
-    this.saxonArmy.forEach(
-      saxon => this.vikingArmy.forEach(
-        (viking, index) => 
-          {
-            viking.receiveDamage(saxon.strength)
-            if(viking.health <= 0) {
-              result = `A viking has gone to Valhalla`
-              this.vikingArmy.splice(index,1)
-            }
-            result = `${viking.name} has received ${saxon.strength} points of damage`
-          }
-      )
-    )
+
+    if(viking.health <= 0) {
+      result = `A viking has gone to Valhalla`
+      this.vikingArmy.splice(ranVik,1)
+    }
+    result = `${viking.name} has received ${saxon.strength} points of damage`
+
     return result
   }
   showStatus(){
