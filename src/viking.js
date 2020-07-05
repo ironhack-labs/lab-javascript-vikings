@@ -43,13 +43,13 @@ if (this.health <= 0) {
 }
 }
 // War
-class War {
-vikingArmy = [];
-saxonArmy = [];
+class War {}
 
-addViking(viking){
-    
-}}
+
+
+
+//let addViking = vikingArmy.prototype.push(viking); 
+
 
 //vikingArmy.push(viking);
 //}
