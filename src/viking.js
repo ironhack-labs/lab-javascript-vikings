@@ -102,4 +102,29 @@ class War {
         }
     }
 
+    // Super Bonus. I tried avoiding any specific names and working with attacking and defending armies. Not confident at all that it would work like this. 
+
+    genericAttack(attackerArray) {
+        
+        if (attackerArray == this.vikingArmy) {
+            defenderArray == this.saxonArmy;
+        }
+        else {
+            defenderArray = this.vikingArmy;
+        }
+
+        let randomAttacker = this.attackerArray[Math.floor(Math.random() * this.attackerArray.length)];
+        let randomDefender = this.defenderArray[Math.floor(Math.random() * this.defenderArray.length)];
+
+        let damageAttacker = randomAttacker.receiveDamage(randomDefender.strength);
+
+        if (damageAttacker.health <= 0) {
+            this.attackerArray.splice(randomAttacker, 1);
+        }
+        return damageAttacker;
+    }
+
+    genericAttack(vikingArmy); // -> This would be the way of calling the attacking army, but I got the feeling this wouldn't work (because of missing 'this.', but when I implement that, it gives an error.)
+    genericAttack(saxonArmy);
 }
+
