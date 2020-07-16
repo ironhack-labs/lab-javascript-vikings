@@ -60,11 +60,24 @@ class Saxon extends Soldier {
 
 // War
 class War {
+
+    constructor(){
+        this.vikingArmy=[]
+        this.saxonArmy=[]
+    }
     
-    addViking(){}
+    addViking(vikingObj){
+        this.vikingArmy.push(vikingObj)
+    }
+
     addSaxon(){}
     vikingAttack(){}
     saxonAttack(){}
     showStatus(){}
     
 }
+
+/*should be a function
+should receive 1 argument (a Viking object)
+should add the received Viking to the army
+shouldn't return anything*/
