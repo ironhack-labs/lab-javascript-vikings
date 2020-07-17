@@ -48,7 +48,7 @@ class Saxon extends Soldier {
     }
 }
 
-// War
+// // War
 class War {
     constructor() {
         this.vikingArmy = []
@@ -59,6 +59,40 @@ class War {
         this.vikingArmy.push(vikingObj)
     }
 
-    addSaxon()
+    addSaxon(saxonObj) {
+        this.saxonArmy.push(saxonObj)
+    }
+
+    vikingAttack() {
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        const saxonDamage = randomSaxon.receiveDamage(randomViking.attack())
+       
+        if (randomSaxon.health <= 0 ) {
+            this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1)
+        }
+        return saxonDamage
+    }
+
+    saxonAttack() {
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+        const vikingDamage = randomViking.receiveDamage(randomSaxon.attack())
+
+        if(randomViking.health <= 0 ) {
+            this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1)
+        }
+        return vikingDamage
+    }
+
+    showStatus () {
+        if(this.saxonArmy.length === 0){
+            return 'Vikings have won the war of the century!'
+        } else if(this.vikingArmy.length === 0){
+            return 'Saxons have fought for their lives and survived another day...'
+        } else {
+            return `Vikings and Saxons are still in the thick of battle.`
+        }
+    }
 
 }
