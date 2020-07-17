@@ -26,9 +26,7 @@ class Viking extends Soldier {
         } else {
             return `${this.name} has received ${damage} points of damage`
         }
-        
     }
-
     battleCry() {
         return "Odin Owns You All!"
     }
@@ -51,7 +49,6 @@ class War  {
     constructor() {
         this.vikingArmy = []
         this.saxonArmy = []
-
     } 
     addViking(Viking) {
         this.vikingArmy.push(Viking)
@@ -69,7 +66,6 @@ class War  {
             this.saxonArmy.splice(this.randomSaxon[saxonRandomIndex])
         }
         return vikingFight
-        
     }
     saxonAttack() {
         this.randomSaxon = this.saxonArmy[Math.floor(Math.random() * Math.floor(this.saxonArmy.length))];
@@ -93,14 +89,3 @@ class War  {
         }
     }
 }
-
-
-const newViking = new Viking("azaza",300, 5);
-console.log(newViking.receiveDamage(300))
-console.log(newViking.health)
-
-const newSaxon = new Saxon(4, 5); 
-//console.log(newSaxon.receiveDamage(60))
-//console.log(newSaxon.health)
- const newWar = new War();
- newWar.vikingAttack();
