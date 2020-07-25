@@ -40,29 +40,55 @@ class War {
     addViking(viking) {this.vikingArmy.push(viking)}
     addSaxon(saxon) {this.saxonArmy.push(saxon)}
     vikingAttack() {
-        let attacker = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        this.attackTurn('Viking')
+        /* let attacker = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         let attacked = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let result = attacked.receiveDamage(attacker.strength);
         if (result.includes('died')) {
             let ind = this.saxonArmy.indexOf(attacked);
             this.saxonArmy.splice(ind, 1);
         }
-        return result;
+        return result; */
     }
     saxonAttack() {
-        let attacker = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        this.attackTurn('Saxon')
+        /* let attacker = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let attacked = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         let result = attacked.receiveDamage(attacker.strength);
         if (result.includes('died')) {
             let ind = this.vikingArmy.indexOf(attacked);
             this.vikingArmy.splice(ind, 1);
         }
-        return result;
+        return result; */
     }
     showStatus() {
         if (this.saxonArmy.length > 0 && this.vikingArmy.length > 0) {return "Vikings and Saxons are still in the thick of battle."}
         if (this.vikingArmy.length === 0) {return "Saxons have fought for their lives and survived another day..."}
         if (this.saxonArmy.length === 0) {return "Vikings have won the war of the century!"}
         
+    }
+    attackTurn(soldier) {
+        if (soldier === 'Viking') {
+            let attacker = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+            let attacked = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+            let result = attacked.receiveDamage(attacker.strength);
+            if (result.includes('died')) {
+                let ind = this.saxonArmy.indexOf(attacked);
+                this.saxonArmy.splice(ind, 1);
+            }
+            return result;
+        }
+        else if (soldier === 'Saxon') {
+            let attacker = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+            let attacked = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+            let result = attacked.receiveDamage(attacker.strength);
+            if (result.includes('died')) {
+                let ind = this.vikingArmy.indexOf(attacked);
+                this.vikingArmy.splice(ind, 1);
+            }
+            return result;
+        }
+        /* Added this method to use inside the viking/saxonAttack method, but it isn't abstracted enough, more work is needed */
+
     }
 }
