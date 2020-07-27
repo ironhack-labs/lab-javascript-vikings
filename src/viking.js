@@ -13,40 +13,41 @@ class Soldier {
 // Viking
 class Viking extends Soldier {
     constructor(name, health, strength) {
-        super(health, strength)
-        this.name = name
+        super(health, strength);
+        this.name = name;
     }
 
     receiveDamage(damage) {
-        this.health = this.health - damage;
-        if (this.health > 0) { return `${this.name} has received ${damage} points of damage` }
-        else if (this.health <= 0) { return `${this.name} has died in act of combat` }
+        this.health -= damage;
+        if (this.health > 0) { return `${this.name} has received ${damage} points of damage`; }
+        if (this.health <= 0) { return `${this.name} has died in act of combat`; }
     }
 
-    battleCry() { return 'Odin Owns You All!' }
+    battleCry() { return 'Odin Owns You All!'; }
 }
 
 // Saxon
 class Saxon extends Soldier {
     receiveDamage(damage) {
-        this.health = this.health - damage;
-        if (this.health > 0) {return `A Saxon has received ${damage} points of damage`}
-        return 'A Saxon has died in combat'
+        this.health -= damage;
+        if (this.health > 0) { return `A Saxon has received ${damage} points of damage`; }
+        return 'A Saxon has died in combat';
     }
 }
 
 // War
 class War {
     constructor() {
-        this.vikingArmy = []
-        this.saxonArmy = []
+        this.vikingArmy = [];
+        this.saxonArmy = [];
     }
-    addViking(viking) { this.vikingArmy.push(viking) }
 
-    addSaxon(saxon) { this.saxonArmy.push(saxon) }
+    addViking(viking) { this.vikingArmy.push(viking); }
+
+    addSaxon(saxon) { this.saxonArmy.push(saxon); }
 
     vikingAttack() {
-        this.attackTurn('Viking')
+        this.attackTurn('Viking');
         /* let attacker = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         let attacked = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let result = attacked.receiveDamage(attacker.strength);
@@ -58,7 +59,7 @@ class War {
     }
 
     saxonAttack() {
-        this.attackTurn('Saxon')
+        this.attackTurn('Saxon');
         /* let attacker = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let attacked = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         let result = attacked.receiveDamage(attacker.strength);
@@ -85,7 +86,8 @@ class War {
                 this.saxonArmy.splice(ind, 1);
             }
             return result;
-        } else if (soldier === 'Saxon') {
+        }
+        if (soldier === 'Saxon') {
             const attacker = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
             const attacked = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
             const result = attacked.receiveDamage(attacker.strength);
@@ -95,7 +97,6 @@ class War {
             }
             return result;
         }
-        /* Added this method to use inside the viking/saxonAttack method, but it isn't abstracted enough, more work is needed */
-
+        // Added this method to use inside the viking/saxonAttack method, but it isn't abstracted enough, more work is needed
     }
 }
