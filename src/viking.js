@@ -59,24 +59,26 @@ class War {
         this.saxonArmy.push(saxon)
     }
 
-    vikingAttack() {
-        let iSaxon = Math.ceil(Math.random() * (this.saxonArmy.length - 1))
-        let iViking = Math.ceil(Math.random() * (this.vikingArmy.length - 1))
-        let message = this.saxonArmy[iSaxon].receiveDamage(this.vikingArmy[iViking].strength)
-        if (message === `A Saxon has died in combat`) {
-            this.saxonArmy.splice(iSaxon, 1)
+    attack(arg) {
+        let army = this.vikingArmy
+        let otherArmy = this.saxonArmy
+        if (!arg) {
+            army = this.saxonArmy
+            otherArmy = this.vikingArmy
         }
+        let iArmy = Math.ceil(Math.random() * (army.length - 1))
+        let iOtherArmy = Math.ceil(Math.random() * (otherArmy.length - 1))
+        let message = army[iArmy].receiveDamage(otherArmy[iOtherArmy].strength)
+        if (army[iArmy].health < 1) army.splice(iArmy, 1)
         return message
     }
 
+    vikingAttack() {
+        return this.attack(false)
+    }
+
     saxonAttack() {
-        let iSaxon = Math.ceil(Math.random() * (this.saxonArmy.length - 1))
-        let iViking = Math.ceil(Math.random() * (this.vikingArmy.length - 1))
-        let message = this.vikingArmy[iViking].receiveDamage(this.saxonArmy[iSaxon].strength)
-        if (message.includes(`has died in act of combat`)) {
-            this.vikingArmy.splice(iViking, 1)
-        }
-        return message
+        return this.attack(true)
     }
 
     showStatus() {
