@@ -29,10 +29,45 @@ receiveDamage(damage){
     }
    
 }
+battleCry(){
+    return 'Odin Owns You All!'
+}
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+    constructor(health, strength){
+    super(health, strength)
+    }
+
+    receiveDamage(damage){
+        this.health -= damage;
+        if (this.health > 0) {
+            return `A Saxon has received ${damage} points of damage`
+        }
+        if (this.health <= 0){
+           return `A Saxon has died in combat`
+        }
+
+    }
+}
 
 // War
-class War {}
+class War {
+    constructor(){
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+    }
+    addViking(Viking) {
+        this.vikingArmy.push(Viking);
+        return
+    }
+    addSaxon(Saxon) {
+        this.saxonArmy.push(Saxon);
+        return 
+    }
+    vikingAttack(){
+        
+    }
+
+}
