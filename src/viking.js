@@ -67,13 +67,29 @@ vikingAttack(){
     let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
     let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
     let result = randomSaxon.receiveDamage(randomViking.strength)
+    console.log(result);
     if (randomSaxon.health <= 0) {
         this.saxonArmy.splice(randomSaxon,1)
     }
     return result
 }
-    // saxonAttack(){
-    // }
-    // showStatus(){
-    // }
+saxonAttack(){
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    let result = randomViking.receiveDamage(randomSaxon.strength)
+    console.log(result);
+    if (randomViking.health <= 0) {
+        this.vikingArmy.splice(randomViking,1)
+    }
+    return result
+}
+showStatus(){
+    if (this.saxonArmy.length === 0){
+        return `Vikings have won the war of the century!`
+        }else if (this.vikingArmy.length === 0){
+            return `Saxons have fought for their lives and survived another day...`
+        } else {
+            return `Vikings and Saxons are still in the thick of battle.`
+        }
+    } 
 }
