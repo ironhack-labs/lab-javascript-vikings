@@ -72,9 +72,9 @@ class War {
         if (randomViking.health <= 0) {
          this.vikingArmy.splice(randomViking,1)
      }
-     return result
-    
+     return result;
     };
+    
     showStatus() {
         if (this.saxonArmy.length === 0) {
             return `Vikings have won the war of the century!`
@@ -85,3 +85,15 @@ class War {
         }
     };
 }
+
+function attack (attackingArmy,defendingArmy) {
+    let randomAttacker = this.attackingArmy[Math.floor(Math.random() * this.attackingArmy.length)]
+    let randomDefender = this.defendingArmy[Math.floor(Math.random() * this.defendingArmy.length)]
+    let result = this.randomDefender.receiveDamage(this.randomAttacker.strength);
+    if (this.randomDefender.health <= 0) {
+        this.defendingArmy.splice(this.randomDefender,1)
+    }
+    return result;
+}
+
+
