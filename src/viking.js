@@ -66,44 +66,53 @@ class War {
         this.saxonArmy.push(Saxon);
     }
 
-    enemyAttack(attacker) {
-        let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        if(attacker === Viking) {
-            let result = randomSaxon.receiveDamage(randomViking.strength);
-            if(randomSaxon.health <= 0) {
-            this.saxonArmy.splice(randomSaxon, 1);
+    attack(attacker, victim) {
+        let randomAttacker = this.attacker[Math.floor(Math.random() * this.attacker.length)];
+        let randomVictim = this.victim[Math.floor(Math.random() * this.victim.length)];    
+        let result = randomVictim.receiveDamage(randomAttacker.strength);
+            if(randomVictim.health <= 0) {
+            this.victim.splice(randomVictim, 1);
             return result;
             }
-        } else if(attacker === Saxon) {
-            let result = randomViking.receiveDamage(randomSaxon.strength);
-            if(randomViking.health <= 0) {
-            this.vikingArmy.splice(randomViking, 1);
-            return result;
-            }
-        } else {
-            return 'This fighter is not participating in the war!'
-        }
+        // let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        // let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        // if(attacker === Viking) {
+        //     let result = randomSaxon.receiveDamage(randomViking.strength);
+        //     if(randomSaxon.health <= 0) {
+        //     this.saxonArmy.splice(randomSaxon, 1);
+        //     return result;
+        //     }
+        // } else if(attacker === Saxon) {
+        //     let result = randomViking.receiveDamage(randomSaxon.strength);
+        //     if(randomViking.health <= 0) {
+        //     this.vikingArmy.splice(randomViking, 1);
+        //     return result;
+        //     }
+        // } else {
+        //     return 'This fighter is not participating in the war!'
+        // }
     }
 
     vikingAttack() {
-        let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        let result = randomSaxon.receiveDamage(randomViking.strength);
-        if(randomSaxon.health <= 0) {
-            this.saxonArmy.splice(randomSaxon, 1);
-        }
-        return result;
+        this.attack(Viking, Saxon);
+        // let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        // let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        // let result = randomSaxon.receiveDamage(randomViking.strength);
+        // if(randomSaxon.health <= 0) {
+        //     this.saxonArmy.splice(randomSaxon, 1);
+        // }
+        // return result;
     }
 
     saxonAttack() {
-        let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        let result = randomViking.receiveDamage(randomSaxon.strength);
-        if(randomViking.health <= 0) {
-            this.vikingArmy.splice(randomViking, 1);
-        }
-        return result;
+        this.attack(Saxon, Viking);
+        // let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        // let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        // let result = randomViking.receiveDamage(randomSaxon.strength);
+        // if(randomViking.health <= 0) {
+        //     this.vikingArmy.splice(randomViking, 1);
+        // }
+        // return result;
     }
 
     showStatus() {
