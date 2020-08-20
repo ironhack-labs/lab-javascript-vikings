@@ -65,16 +65,16 @@ class War {
         this.saxonArmy.push(saxon);
     }
 
-    Attack(attackers,victoms) {
-        const randomVictom = Math.floor(Math.random() * victoms.length);
+    Attack(attackers,victims) {
+        const randomVictim = Math.floor(Math.random() * victims.length);
         const randomAttacker = Math.floor(Math.random() * attackers.length);
     
-        const res = victoms[randomVictom].receiveDamage(
+        const result = victims[randomVictim].receiveDamage(
           attackers[randomAttacker].attack()
         );
-        if(victoms[randomVictom].health <= 0) victoms.splice(randomVictom,1);
+        if(victims[randomVictim].health <= 0) victims.splice(randomVictim,1);
     
-        return res;
+        return result;
       }
     
       vikingAttack() {
