@@ -115,6 +115,10 @@ class War {
 
     vikingAttack() {
         
+        let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+       
+        let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        
         saxon.health =- viking.strength 
 
         this.saxonArmy.pop()
