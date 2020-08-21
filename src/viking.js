@@ -60,8 +60,8 @@ class War {
   }
 
   vikingAttack() {
-    const chosenViking = this.vikingArmy[choose(this.vikingArmy)];
-    const chosenSaxon = this.saxonArmy[choose(this.saxonArmy)];
+    const chosenViking = choose(this.vikingArmy);
+    const chosenSaxon = choose(this.saxonArmy);
     const status = chosenSaxon.receiveDamage(chosenViking.attack());
     if (chosenSaxon.health <= 0) {
       this.saxonArmy.splice(this.saxonArmy.indexOf(chosenSaxon), 1);
@@ -70,8 +70,8 @@ class War {
   }
 
   saxonAttack() {
-    const chosenViking = this.vikingArmy[choose(this.vikingArmy)];
-    const chosenSaxon = this.saxonArmy[choose(this.saxonArmy)];
+    const chosenViking = choose(this.vikingArmy);
+    const chosenSaxon = choose(this.saxonArmy);
     const status = chosenViking.receiveDamage(chosenSaxon.attack());
     if (chosenViking.health <= 0) {
       this.vikingArmy.splice(this.vikingArmy.indexOf(chosenViking), 1);
@@ -95,5 +95,5 @@ class War {
 }
 
 function choose(n) {
-  return Math.floor(Math.random() * n.length);
+  return n[Math.floor(Math.random() * n.length)];
 }
