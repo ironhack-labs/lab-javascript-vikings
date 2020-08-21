@@ -87,6 +87,10 @@ class Saxon extends Soldier {
 
 // War
 
+let viking = new Viking
+
+let saxon = new Saxon
+
 class War {
 
     constructor() {
@@ -97,21 +101,36 @@ class War {
     
     }
 
-    addViking(Viking) {
+    addViking(viking) {
 
-        this.vikingArmy.push(Viking)
+        this.vikingArmy.push(viking)
 
     }
 
-    addSaxon(Saxon) {
+    addSaxon(saxon) {
 
-        this.saxonArmy.push(Saxon)
+        this.saxonArmy.push(saxon)
 
     }
 
     vikingAttack() {
         
+        saxon.health =- viking.strength 
+
+        this.saxonArmy.pop()
         
+        return saxon.receiveDamage(viking.strength) 
+    
+    }
+   
+   saxonAttack() {
+
+        viking.health =- saxon.strength
+        
+        this.vikingArmy.pop()
+
+        return viking.receiveDamage(saxon.strength)
+
     }
 
 }
