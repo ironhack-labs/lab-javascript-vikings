@@ -63,7 +63,7 @@ class War {
     const saxon = Math.floor(Math.random() * this.saxonArmy.length);
 
     const saxonDamage = this.saxonArmy[saxon].receiveDamage(
-      this.vikingArmy[viking].strength
+      this.vikingArmy[viking].attack()
     );
 
     if (this.saxonArmy[saxon].health <= 0) {
@@ -78,7 +78,7 @@ class War {
     const saxon = Math.floor(Math.random() * this.saxonArmy.length);
 
     const vikingDamage = this.vikingArmy[viking].receiveDamage(
-      this.saxonArmy[saxon].strength
+      this.saxonArmy[saxon].attack()
     );
 
     if (this.vikingArmy[viking].health <= 0) {
