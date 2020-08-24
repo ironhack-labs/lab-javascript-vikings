@@ -70,12 +70,11 @@ class War {
 
 
     addViking(aViking){
-
-
+        this.vikingArmy.push(aViking)
     }
 
     addSaxon(aSaxon){
-
+        this.saxonArmy.push(aSaxon)
     }
 
     vikingAttack(){
