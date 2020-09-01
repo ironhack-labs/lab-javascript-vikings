@@ -82,4 +82,24 @@ class War {
         }
         return attack;
     }
+
+    /* SUPER BONUS
+    anyAttack(army1, army2) {
+        let i = Math.floor(Math.random()*this.army1.length);
+        let j = Math.floor(Math.random()*this.army2.length);
+
+        const attack = this.army1[i].receiveDamage(this.army2[j].strength);
+
+        if (this.army1[i].health <= 0) {
+            this.army1.splice(i, 1);
+        }
+        return attack;
+    }
+    */
+
+    showStatus() {
+        return this.saxonArmy.length === 0 ? `Vikings have won the war of the century!` : 
+               this.vikingArmy.length === 0 ? `Saxons have fought for their lives and survived another day...` :
+               `Vikings and Saxons are still in the thick of battle.`;
+    }
 }
