@@ -22,7 +22,7 @@ class Viking extends Soldier {
   }
 
   battleCry() {
-      return 'Odin Owns You All!'
+    return "Odin Owns You All!";
   }
 
   receiveDamage(damage) {
@@ -35,36 +35,71 @@ class Viking extends Soldier {
   }
 }
 
-
 // Saxon
 class Saxon extends Soldier {
-    receiveDamage(damage) {
-        this.health -= damage;
-        if (this.health > 0) {
-            return `A Saxon has received ${damage} points of damage`;
-          } else {
-            return `A Saxon has died in combat`;
-          }
-        }
+  receiveDamage(damage) {
+    this.health -= damage;
+    if (this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`;
+    } else {
+      return `A Saxon has died in combat`;
+    }
+  }
 }
 
 // War
 class War {
-    constructor () {
-        this.vikingArmy = []
-        this.saxonArmy = []
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  addViking(viking) {
+    this.vikingArmy.push(viking);
+  }
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+  genericAttack() {
+    const randomViking = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ];
+    const randomSaxon = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ];
+  }
+  vikingAttack() {
+    const randomViking = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ];
+    const randomSaxon = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ];
+    const vikingAtt = randomSaxon.receiveDamage(randomViking.strength);
+    if (randomSaxon.health <= 0) {
+      this.saxonArmy.shift(this.saxonArmy[0]);
     }
-    addViking(viking) {
-        this.vikingArmy.push(viking);
+    return vikingAtt;
+  }
+  saxonAttack() {
+    const randomViking = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ];
+    const randomSaxon = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ];
+    var saxonAtt = randomViking.receiveDamage(randomSaxon.strength);
+    if (randomViking.health <= 0) {
+      this.vikingArmy.shift(this.saxonArmy[0]);
     }
-    addSaxon(saxon) {
-        this.saxonArmy.push(saxon);
+    return saxonAtt;
+  }
+  showStatus() {
+    if (this.saxonArmy.length == 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length == 0) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
     }
-    vikingAttack() {
-        console.log(this.saxonArmy)
-        var vikingAtt = this.saxonArmy[0].receiveDamage(this.strength);
-        return vikingAtt;
-    }
-    saxonAttack() {}
-    showStatus() {}
+  }
 }
