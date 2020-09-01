@@ -51,22 +51,25 @@ class War {
     addSaxon(saxon) {
         this.saxonArmy.push(saxon);
     }
-    vikingAttack() {
-        const randomVikingAttack = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].strength;
-        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        const damage = randomSaxon.receiveDamage(randomVikingAttack);
 
-        if (randomSaxon.health <= 0) this.saxonArmy.splice(randomSaxon, 1);
+    getFighterAttack(fighter1, fighter2) {
+        const randomFighter = fighter1[Math.floor(Math.random() * fighter1.length)].strength;
+        const randomRcv = fighter2[Math.floor(Math.random() * fighter2.length)];
+        const damage = randomRcv.receiveDamage(randomFighter);
+        if (randomRcv.health <= 0) fighter2.splice(randomRcv, 1); 
+
         return damage;
     }
+
+  vikingAttack() {
+
+        return this.getFighterAttack(this.vikingArmy, this.saxonArmy);
+    }
+
     saxonAttack() {
-        const randomSaxonAttack = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].strength;
-        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        const damage = randomViking.receiveDamage(randomSaxonAttack);
-
-        if (randomViking.health <= 0) this.vikingArmy.splice(randomViking, 1);
-        return damage;
+       return this.getFighterAttack(this.saxonArmy, this.vikingArmy);
     }
+
     showStatus() {
         if (this.saxonArmy.length <= 0) {
             return "Vikings have won the war of the century!";
