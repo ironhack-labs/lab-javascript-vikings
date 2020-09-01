@@ -22,11 +22,8 @@ class Viking extends Soldier {
 
     receiveDamage (damage) {
         this.health -= damage;
-        if(this.health > 0) {
-            return `${this.name} has received ${damage} points of damage`
-        } else {
-            return `${this.name} has died in act of combat`
-        }
+        return this.health > 0 ? `${this.name} has received ${damage} points of damage` : 
+        `${this.name} has died in act of combat`;
     }
 
     battleCry() {
@@ -38,11 +35,8 @@ class Viking extends Soldier {
 class Saxon extends Soldier {
     receiveDamage (damage) {
         this.health -= damage;
-        if(this.health > 0) {
-             return `A Saxon has received ${damage} points of damage`
-         } else {
-             return `A Saxon has died in combat`
-         }
+        return this.health > 0 ? `A Saxon has received ${damage} points of damage` :
+        `A Saxon has died in combat`
     }
 }
 
@@ -65,9 +59,7 @@ class War {
         
         const attack = this.saxonArmy[j].receiveDamage(this.vikingArmy[i].strength);
 
-        if (this.saxonArmy[j].health <= 0) {
-            this.saxonArmy.splice(j, 1);
-        }
+        if (this.saxonArmy[j].health <= 0) this.saxonArmy.splice(j, 1);
         return attack;
     }
 
@@ -77,9 +69,7 @@ class War {
 
         const attack = this.vikingArmy[i].receiveDamage(this.saxonArmy[j].strength);
 
-        if (this.vikingArmy[i].health <= 0) {
-            this.vikingArmy.splice(i, 1);
-        }
+        if (this.vikingArmy[i].health <= 0) this.vikingArmy.splice(i, 1);
         return attack;
     }
 
@@ -90,9 +80,7 @@ class War {
 
         const attack = this.army1[i].receiveDamage(this.army2[j].strength);
 
-        if (this.army1[i].health <= 0) {
-            this.army1.splice(i, 1);
-        }
+        if (this.army1[i].health <= 0) this.army1.splice(i, 1);
         return attack;
     }
     */
