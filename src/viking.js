@@ -102,4 +102,22 @@ class War {
     return result;
   }
 
+    showStatus(){
+        let result = "";
+        if(this.saxonArmy.length === 0) {
+            result = "Vikings have won the war of the century!";
+        } else if (this.vikingArmy.length === 0) {
+            result = "Saxons have fought for their lives and survived another day...";
+        } else { 
+            result ="Vikings and Saxons are still in the thick of battle.";
+
+        }
+
+        return result
+
+    }
+
 }
+
+
+
