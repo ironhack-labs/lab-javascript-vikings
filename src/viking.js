@@ -76,7 +76,7 @@ class War {
     ];
     const vikingAtt = randomSaxon.receiveDamage(randomViking.strength);
     if (randomSaxon.health <= 0) {
-      this.saxonArmy.shift(this.saxonArmy[0]);
+      this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon),1);
     }
     return vikingAtt;
   }
@@ -89,7 +89,7 @@ class War {
     ];
     var saxonAtt = randomViking.receiveDamage(randomSaxon.strength);
     if (randomViking.health <= 0) {
-      this.vikingArmy.shift(this.saxonArmy[0]);
+      this.vikingArmy.splice(this.vikingArmy.indexOf(this.randomViking),1);
     }
     return saxonAtt;
   }
