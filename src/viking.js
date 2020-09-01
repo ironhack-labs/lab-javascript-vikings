@@ -43,4 +43,65 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+
+  addViking(viking) {
+    this.vikingArmy.push(viking);
+  }
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+  vikingAttack() {
+    // create random number;
+    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+    //pick a random saxon;
+    let randomSaxon = this.saxonArmy[randomSaxonIndex];
+    //pick random viking;
+    let randomViking = this.vikingArmy[randomVikingIndex];
+
+    //saxon recieve damage from viking
+    let resultOfBattle = randomSaxon.receiveDamage(randomViking.strength);
+
+    //condition remove saxon
+    if (resultOfBattle === "A Saxon has died in combat") {
+      this.saxonArmy.splice(randomSaxonIndex, 1);
+      return resultOfBattle;
+    }
+    return resultOfBattle;
+    //return result of recieve damage
+  }
+
+  saxonAttack() {
+    // create random number;
+    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+    //pick a random saxon;
+    let randomSaxon = this.saxonArmy[randomSaxonIndex];
+    //pick random viking;
+    let randomViking = this.vikingArmy[randomVikingIndex];
+
+    //saxon recieve damage from viking
+    let resultOfBattle = randomViking.receiveDamage(randomSaxon.strength);
+
+    //condition remove saxon
+    if (randomViking.health <= 0) {
+      this.vikingArmy.splice(randomVikingIndex, 1);
+      return resultOfBattle;
+    }
+    return resultOfBattle;
+    //return result of recieve damage
+  }
+
+  showStatus() {
+    if (this.saxonArmy.length === 0) return "Vikings have won the war of the century!";
+    if (this.vikingArmy.length === 0) return "Saxons have fought for their lives and survived another day...";
+    return "Vikings and Saxons are still in the thick of battle.";
+  }
+}
