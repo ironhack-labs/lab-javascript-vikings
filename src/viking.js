@@ -86,8 +86,31 @@ class Saxon extends Soldier {
 		return resultOfBattle;
 	  }
 	  return resultOfBattle;
-	  //return result of recieve damage
 	}
+
+	/**/ 
+	generalAttack(attackingArmy, receivingArmy){
+		// create random number;
+		let receivers = `${receivingArmy.toLowerCase()}Army`
+		let attackers = `${attackingArmy.toLowerCase()}Army`
+		
+		let randomReceiverIndex = Math.floor(Math.random() * this[receivers].length);
+		let randomAttackerIndex = Math.floor(Math.random() * this[attackers].length);
+		//pick a random saxon;
+		let randomReceiver = this[receivers][randomReceiverIndex];
+		//pick random viking;
+		let randomAttacker = this[attackers][randomAttackerIndex];
+		//saxon recieve damage from viking
+		let resultOfBattle = randomReceiver.receiveDamage(randomAttacker.strength);
+		//condition remove saxon
+		if (randomReceiver.health <= 0) {
+		this[receivers].splice(randomReceiverIndex, 1);
+		return resultOfBattle;
+		}
+		return resultOfBattle;
+	}
+	/**/
+	
 	showStatus() {
 	  if (this.saxonArmy.length === 0) return 'Vikings have won the war of the century!';
 	  if (this.vikingArmy.length === 0) return 'Saxons have fought for their lives and survived another day...';
