@@ -78,10 +78,14 @@ class War {
     vikingAttack() {
         const vickingRandom = this.vikingArmy[parseInt(Math.floor(math.random() * this.vickingArmy.length))]
         const saxonRandom = this.saxonArmy[parseInt(Math.floor(math.random() * this.saxonArmy.length))]
-        const battle = saxonRandom.receiveDamage(randomViking.strength);
-    }   
+        const battle = vikingRandom.receiveDamage(randomViking.strength);
+    };   
 
-
+    saxonAttack() {
+        const saxonRandom = this.saxonArmy[parseInt(Math.floor(math.random() * this.saxonArmy.length))]
+        const vikingRandom = this.vikingArmy[parseInt(Math.floor(math.random() * this.vickingArmy.length))]
+        const battle = saxonRandom.receiveDamage(randomSaxon.strength);
+    };
 
 
 }
