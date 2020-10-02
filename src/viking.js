@@ -65,26 +65,30 @@ class War {
 
     vikingAttack() {
         this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].receiveDamage(this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].strength);
+        
         this.saxonArmy = this.saxonArmy.filter(function (aliveSaxons) {
-            return aliveSaxons > 0
+            return aliveSaxons.health > 0
         });
         return "A Saxon has died in combat"
     }
 
     saxonAttack() {
-        this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)].receiveDamage(this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].strength);
+        let selectViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        let selectSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        selectViking.receiveDamage(selectSaxon.strength);
+
         this.vikingArmy = this.vikingArmy.filter(function (aliveVikings) {
-            return aliveVikings > 0
+            return aliveVikings.health > 0
         });
-        return  `${Viking.name} has received ${Saxon.strength} points of damage`;
+        return  `${selectViking.name} has received ${selectSaxon.strength} points of damage`;
     }
 
     showStatus() {
-        if (this.saxonArmy =[]){
+        if (this.saxonArmy.length === 0){
             return "Vikings have won the war of the century!"
-        } else if (this.vikingArmy = []){
+        } else if (this.vikingArmy.length === 0){
             return "Saxons have fought for their lives and survived another day...";
-        } else if (this.saxonArmy !=[] && this.vikingArmy !=[]){
+        } else if (this.saxonArmy !== [] && this.vikingArmy !== []){
             return "Vikings and Saxons are still in the thick of battle.";
         }
     }
