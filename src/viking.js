@@ -51,19 +51,21 @@ class War {
         this.saxonArmy.push(sObj)       
     }
     vikingAttack(){
-        let damage = this.vikingArmy[this.getRandomInt(this.vikingArmy.length)].attack();
-        let randSax = this.getRandomInt(this.saxonArmy.length)
-        let result =  this.saxonArmy[randSax].receiveDamage(damage)
-        this.saxonArmy = this.saxonArmy.filter(soldier=>soldier.health > 0)
-        return result
+        this.soldierAttack(this.saxonArmy, this.vikingArmy)
     }
     saxonAttack(){
-        let damage = this.saxonArmy[this.getRandomInt(this.saxonArmy.length)].attack();
-        let randVik = this.getRandomInt(this.vikingArmy.length)
-        let result =  this.vikingArmy[randVik].receiveDamage(damage)
-        this.vikingArmy = this.vikingArmy.filter(soldier=>soldier.health > 0)
+        this.soldierAttack(this.vikingArmy, this.saxonArmy)
+    }
+
+    soldierAttack(attacker, defender){
+        let damage = attacker[this.getRandomInt(attacker.length)].attack();
+        let randDef = this.getRandomInt(defender.length)
+        let result =  defender[randDef].receiveDamage(damage)
+        defender === this.saxonArmy? this.saxonArmy = defender.filter(soldier=>soldier.health > 0) : this.vikingArmy = defender.filter(soldier=>soldier.health > 0)
+        console.log('atacker', defender)
         return result
     }
+
     showStatus(){
         return this.saxonArmy.length && this.vikingArmy.length ? "Vikings and Saxons are still in the thick of battle." : this.vikingArmy.length ? "Vikings have won the war of the century!" : "Saxons have fought for their lives and survived another day..."
     }
