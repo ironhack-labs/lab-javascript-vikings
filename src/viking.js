@@ -24,7 +24,6 @@ class Viking extends Soldier {
         this.name=name;
     }
 
-    // que quiere decir re-implementar la funcion de receivedDamage?
     receiveDamage(damage) {
         this.health -= damage
         if(this.health > 0){
@@ -82,7 +81,6 @@ class War {
         let saxonIndex = Math.floor(Math.random()*this.saxonArmy.length);
         let randomSaxon = this.saxonArmy[randomNum];
       
-        //randomSaxon es don agafarem la funció,i com a argument li donare, una altra funcio agafada de randomVikings, la funcio s'anomena attack. Aixi li diem qui fara el mal i qui el rebra
         randomSaxon.recieveDamage(randomViking.attack())
      }
          
