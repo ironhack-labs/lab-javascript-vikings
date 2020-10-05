@@ -25,7 +25,8 @@ class Viking extends Soldier {
     }
 
     receiveDamage(damage) {
-        this.health -= damage
+        //this.health -= damage
+        super.receiveDamage(damage)
         if(this.health > 0){
             return `${this.name} has received ${damage} points of damage`
         } else {
@@ -77,18 +78,39 @@ class War {
 
     vikingAttack(){
         let vikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
-        let randomViking = this.vikingArmy[randomNum];
+        let randomViking = this.vikingArmy[vikingIndex];
         let saxonIndex = Math.floor(Math.random()*this.saxonArmy.length);
-        let randomSaxon = this.saxonArmy[randomNum];
-      
-        randomSaxon.recieveDamage(randomViking.attack())
+        let randomSaxon = this.saxonArmy[saxonIndex];
+        
+        let dmgViking = randomSaxon.receiveDamage(randomViking.attack());
+            if (randomSaxon.health <= 0){
+                this.saxonArmy.splice(randomSaxon,1);
+            }
+            return  dmgViking;
      }
          
     
     saxonAttack(){
+        let vikingIndex = Math.floor(Math.random()*this.vikingArmy.length);
+        let randomViking = this.vikingArmy[vikingIndex];
+        let saxonIndex = Math.floor(Math.random()*this.saxonArmy.length);
+        let randomSaxon = this.saxonArmy[saxonIndex];
+        
+        let dmgSaxon = randomViking.receiveDamage(randomSaxon.attack());
+            if (randomViking.health <= 0){
+                this.vikingArmy.splice(randomViking,1)
+            }
+            return dmgSaxon
+    }
 
-    }
-    showStatus(){
-    
-    }
+        showStatus(){
+            if (this.saxonArmy.length === 0){
+                return "Vikings have won the war of the century!"
+            } else if (this.vikingArmy.length === 0){
+                return "Saxons have fought for their lives and survived another day...";
+            } else if (this.saxonArmy !== [] && this.vikingArmy !== []){
+                return "Vikings and Saxons are still in the thick of battle.";
+            }
+        }
+
 };
