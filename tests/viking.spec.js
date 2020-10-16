@@ -65,9 +65,9 @@ describe('Viking', () => {
     viking = new Viking(name, health, strength);
   });
 
-  // it('should inherit from Soldier', () => {
-  //   expect(viking instanceof Soldier).toEqual(true);
-  // });
+  it('should inherit from Soldier', () => {
+    expect(viking instanceof Soldier).toEqual(true);
+  });
 
   describe('class', () => {
     // it('should receive 3 arguments (name, health & strength)', () => {

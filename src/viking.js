@@ -15,7 +15,7 @@ class Soldier {
 
 
 // Viking
-class Viking {
+class Viking extends Soldier{
 
 
 
