@@ -59,13 +59,14 @@ class War {
      addViking(Viking) {
         this.vikingArmy.push(Viking)
      }
-
+    
     vikingAttack() {
         let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let saxonDamage = randomSaxon.receiveDamage(randomViking.strength);
         if (randomSaxon.health <= 0) this.saxonArmy.splice(randomSaxon, 1);
         return saxonDamage;
+        //this.theAttack(this.saxonArmy, this.vikingArmy);
     }
 
     saxonAttack() {
@@ -74,7 +75,18 @@ class War {
         let vikingDamage = randomViking.receiveDamage(randomSaxon.strength);
         if (randomViking.health <= 0) this.vikingArmy.splice(randomViking, 1);
         return vikingDamage
+        //this.theAttack(this.vikingArmy, this.saxonArmy);
+
     }
+
+    // Prueba de refactorización
+    /*theAttack(arr1, arr2) {
+        let randomFighterOne = this.arr1[Math.floor(Math.random() * this.arr1.length)];
+        let randomFighterTwo = this.arr2[Math.floor(Math.random() * this.arr2.length)];
+        let fighterDamage = randomFighterOne.receiveDamage(randomFighterTwo.strength);
+        if (randomFighterOne.health <= 0) this.arr1.splice(randomFighterOne, 1);
+        return fighterDamage
+    }*/
 
     showStatus() {
         if (!this.saxonArmy.length) return "Vikings have won the war of the century!"
