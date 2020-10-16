@@ -1,119 +1,86 @@
 // Soldier
 class Soldier {
-    constructor(health,strenght){
+    constructor(health,strength){
         this.health = health;
-        this.strenght = strenght;
-    };
+        this.strength = strength;
+    }
 
-    attack(){
-        return this.strenght
+    attack() {
 
+        return this.strength
     }
 
     receiveDamage(damage){
         this.health -= damage
         
-
     }
-}
 
+}
 // Viking
-class Viking extends Soldier {
-    constructor(name, health, strenght){
-        super(health,strenght);
-        this.name = name
+
+class Viking extends Soldier{
+    constructor(name,health,strength){
+        super(health,strength)
+        this.name = name;
     }
     receiveDamage(damage){
-        this.health -= damage;
-        if (this.health > 0) {
-            return '${this.name} has received ${damage} point of damage';
+        this.health -= damage
+        if(this.health > 0){
+            return `${this.name} has received ${damage} points of damage`
+        }else{
+            return `${this.name} has died in act of combat`
         }
-        return `${this.name} has died in act of combat`;
-
     }
+    
     battleCry(){
-        return "Odin Owns You All"
-
+        return  "Odin Owns You All!"
     }
+
 }
 
 // Saxon
+
 class Saxon extends Soldier{
-    constructor(health,strenght) {
-        super(health,strenght);
+    constructor(health,strength){
+       super( health,strength) 
     }
     receiveDamage(damage){
-        super.receiveDamage(damage);
-
-        if (this.health > 0) {
-            return `A Saxon has received ${damage} points of damage`;
+        this.health -= damage
+        if(this.health > 0){
+            return `A Saxon has received ${damage} points of damage`
+        }else{
+            return `A Saxon has died in combat`
         }
-        return "A Saxon has died in combat";
     }
 }
 
 // War
 class War {
-    constructor() {
-        this.vikingArmy = [];
-        this.saxonArmy = [];
+       vikingArmy = [];
+       saxonArmy = [];
+
+    //static get [Symbol.species]() { return Array; }
+    
+ 
+    addViking(Viking) {
+        this.vikingArmy = [Viking]
     }
-    addViking(vikingObj){
-        this.vikingArmy.push(vikingObj);
-    };
 
-    addSaxon(saxonObj){
-        this.saxonArmy.push(saxonObj);
+    addSaxon(Saxon){
+        this.saxonArmy = [Saxon]
 
-    };
+    }
 
     vikingAttack(){
-      let attackedSaxon = this.saxonArmy[
-          Math.floor(Math.random()*this.saxonArmy.length)
-        ];
-        let attackingViking = this.vikingArmy[
-            Math.floor(Math.random()*this.vikingArm.length) 
-        ];  
-        let vikingAttackResult = attackedSaxon.receiveDamage(
-            attackingViking.attack()
-        );
-
-        if (attackedSaxon.health <= 0) {
-            this.saxonArmy = this.saxonArmy.filter((item) => item !== attackedSaxon);
-        }
-        return vikingAttackResult;
-    };
-
-    soldierAttack(attack,defense){
-        let message = "";
-        message = defense.receiveDamage(attack.attack());
-        if (defense instanceof Saxon) {
-            this.saxonArmy = this.saxonArmy.filter((item) => item.health > 0);
-        }else if(defense instanceof Viking){
-        this.vikingArmy = this.vikingArmy.filter((item) => item.health > 0);
-    };
-       
-        return vikingAttackResult;
+        Saxon.receiveDamage = Viking.strength 
     }
 
     saxonAttack(){
-        let saxon = this.saxonArmy[
-            Math.floor(Math.random()*this.saxonArmy.length)
-          ];
-          let viking = this.vikingArmy[
-              Math.floor(Math.random()*this.vikingArm.length) 
-          ];  
 
-          return this.soldierAttack(saxon,viking);
-    };
+    }
 
     showStatus(){
-        if (this.saxonArmy.length === 0) {
-            return "Vikings have won the war of the century"; 
-        }else if (this.vikingArmy.length === 0){
-            return "Saxons have fought for their lives and survived another day...";
-        }
-
-        return "Vikings and Saxons are still in the thick of battle.";
+        
     }
 }
+
