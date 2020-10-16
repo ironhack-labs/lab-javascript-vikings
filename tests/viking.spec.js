@@ -8,9 +8,9 @@ describe('Soldier', () => {
   });
 
   describe('class', () => {
-    // it('should receive 2 arguments (health & strength)', () => {
-    //   expect(Soldier.length).toEqual(2);
-    // });
+    it('should receive 2 arguments (health & strength)', () => {
+      expect(Soldier.length).toEqual(2);
+    });
     //
     // it('should receive the health property as its 1st argument', () => {
     //   expect(soldier.health).toEqual(health);
