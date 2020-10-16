@@ -22,17 +22,17 @@ describe('Soldier', () => {
   });
 
   describe('attack() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof soldier.attack).toBe('function');
-    // });
-    //
-    // it('should receive 0 arguments', () => {
-    //   expect(soldier.attack.length).toEqual(0);
-    // });
-    //
-    // it('should return the strength property of the Soldier', () => {
-    //   expect(soldier.attack()).toEqual(strength);
-    // });
+    it('should be a function', () => {
+      expect(typeof soldier.attack).toBe('function');
+    });
+
+    it('should receive 0 arguments', () => {
+      expect(soldier.attack.length).toEqual(0);
+    });
+
+    it('should return the strength property of the Soldier', () => {
+      expect(soldier.attack()).toEqual(strength);
+    });
   });
 
   describe('receiveDamage() method', () => {
