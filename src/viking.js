@@ -21,12 +21,21 @@ class Soldier {
     }
 }
 // Viking
-class Viking {
-    constructor(name) {
+
+class Viking extends Soldier {
+    constructor(health, strength, name) {
+        super(health, strength)
         this.name = name;
     }
 }
-attack()
+
+
+// class Viking {
+//     constructor(name) {
+//         this.name = name;
+//     }
+// }
+// attack()
 
 
 // those are the methods for the Viking
