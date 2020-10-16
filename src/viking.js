@@ -57,12 +57,15 @@ class War {
         this.vikingArmy = [];
         this.saxonArmy = [];
     }
+    
     addViking(viking){
         this.vikingArmy.push(viking);
     }
+
     addSaxon(saxon){
         this.saxonArmy.push(saxon);
     }
+    
     vikingAttack(){
         const vikingRandom = Math.floor(Math.random() * this.vikingArmy.length); 
         const saxonRandom = Math.floor(Math.random() * this.vikingArmy.length); 
@@ -71,6 +74,7 @@ class War {
         return battleResult;
 
     }
+
     saxonAttack(){
         const vikingRandom = Math.floor(Math.random() * this.vikingArmy.length); 
         const saxonRandom = Math.floor(Math.random() * this.vikingArmy.length); 
@@ -79,6 +83,21 @@ class War {
         return battleResult;
 
     }
+
+    attack(soldier){//refactorización de saxonAttack y vikingAttack en un método único
+        const vikingRandom = Math.floor(Math.random() * this.vikingArmy.length); 
+        const saxonRandom = Math.floor(Math.random() * this.vikingArmy.length); 
+        if(soldier instanceof Viking){ //si soldier es un vikingo
+            const battleResult = this.saxonArmy[saxonRandom].receiveDamage(this.vikingArmy[vikingRandom].strength);
+            if(battleResult.includes("died")) this.saxonArmy.splice(saxonRandom,1);
+        }
+        else {//en caso contrario damos por hecho que es un saxon
+            const battleResult = this.vikingArmy[vikingRandom].receiveDamage(this.saxonArmy[saxonRandom].strength);
+            if(battleResult.includes("died")) this.vikingArmy.splice(vikingRandom,1);
+        }
+        return battleResult;
+    }
+
     showStatus(){
         if(!this.saxonArmy[0])return 'Vikings have won the war of the century!';
         else if(!this.vikingArmy[0]) return 'Saxons have fought for their lives and survived another day...';
