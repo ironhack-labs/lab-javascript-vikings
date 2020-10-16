@@ -70,24 +70,24 @@ class War {
     }
 
     vikingAttack() {
-        let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
-        let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        let saxon = randomIndex(this.saxonArmy)
+        let viking = randomIndex(this.vikingArmy)
 
         saxon = saxon.receiveDamage(viking.strength)
 
-        this.saxonArmy = this.saxonArmy.filter(item => item.health > 0)
+        this.saxonArmy = cleanDeads(this.saxonArmy)
 
         return saxon
 
     }
 
     saxonAttack() {
-        let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
-        let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        let saxon = randomIndex(this.saxonArmy)
+        let viking = randomIndex(this.vikingArmy)
 
         viking = viking.receiveDamage(saxon.strength)
 
-        this.vikingArmy = this.vikingArmy.filter(item => item.health > 0)
+        this.vikingArmy = cleanDeads(this.vikingArmy)
 
         return viking
     }
@@ -104,6 +104,15 @@ class War {
 
         }
     }
+}
+
+function randomIndex(array) {
+    return array[Math.floor(Math.random() * array.length)]
+}
+
+function cleanDeads(array) {
+    return array.filter(item => item.health > 0)
+
 }
 
 let viking1 = new Viking("Piet", 20, 30)
