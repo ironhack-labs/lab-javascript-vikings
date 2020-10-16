@@ -77,7 +77,7 @@ class War {
         else if (!this.vikingArmy.length){
            return "Saxons have fought for their lives and survived another day..."
         }
-        else if(this.saxonArmy.length === 1 && this.vinking.Army === 1){
+        else if (this.saxonArmy.length >= 1 || this.vinkingArmy.length >= 1){
             return "Vikings and Saxons are still in the thick of battle."
         }
     }
@@ -104,9 +104,12 @@ war.addSaxon(saxon1)
 war.addSaxon(saxon2)
 war.addSaxon(saxon3)
 
-// console.log(war.vikingArmy);
-// console.log(war.saxonArmy);
+console.log(war.vikingArmy);
+console.log(war.saxonArmy);
 
 war.vikingAttack()
+war.saxonAttack()
 
+console.log(war.vikingArmy);
+console.log(war.saxonArmy);
 
