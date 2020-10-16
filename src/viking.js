@@ -7,6 +7,9 @@ class Soldier {
   attack() {
     return this.strength
  }
+ receiveDamage(damage){
+   
+ }
 }
 
 
