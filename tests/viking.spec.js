@@ -88,17 +88,17 @@ describe('Viking', () => {
   });
 
   describe('attack() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof viking.attack).toBe('function');
-    // });
-    //
-    // it('should receive 0 arguments', () => {
-    //   expect(viking.attack.length).toEqual(0);
-    // });
-    //
-    // it('should return the strength property of the Viking', () => {
-    //   expect(viking.attack()).toEqual(strength);
-    // });
+    it('should be a function', () => {
+      expect(typeof viking.attack).toBe('function');
+    });
+
+    it('should receive 0 arguments', () => {
+      expect(viking.attack.length).toEqual(0);
+    });
+
+    it('should return the strength property of the Viking', () => {
+      expect(viking.attack()).toEqual(strength);
+    });
   });
 
   describe('receiveDamage() method', () => {
