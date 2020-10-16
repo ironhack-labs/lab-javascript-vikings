@@ -30,13 +30,47 @@ class Viking extends Soldier{
          return `Odin Owns You All!`
      }
 }
-// let viking;
-// const name = 'Harald';
-// const strength = 150;
-// const health = 300;
+
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier{
+    receiveDamage(damage) {
+        this.health -=  damage;
+        if (this.health > 0) {
+            return `A Saxon has received ${damage} points of damage`
+        } else if (this.health === 0){
+            return `A Saxon has died in combat`
+        }
+     }
+}
 
 // War
-class War {}
+class War {
+    constructor(){
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+    }
+    addViking(Viking){
+        this.vikingArmy.push(Viking);
+    }
+    addSaxon(Saxon){
+        this.saxonArmy.push(Saxon);
+    }
+    vinkingAttack(){
+           
+
+    }
+    saxonAttack(){
+
+    }
+    showStatus(){
+
+    }
+};
+
+let war = new War;
+let viking1 = new Viking('Svend',20,20);
+let viking2 = new Viking('Kristian',20,20);
+let viking3 = new Viking('Alex',20,20);
+let viking4 = new Viking('Symon',20,20);
+
