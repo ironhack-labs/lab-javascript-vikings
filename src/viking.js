@@ -36,14 +36,14 @@ class Viking extends Soldier {
     }
   }
 
-  battleCry(){
+  battleCry() {
     return `Odin Owns You All!`
   }
 
 }
 
 // Saxon
-class Saxon extends Soldier{
+class Saxon extends Soldier {
   receiveDamage(damage) {
     this.health = this.health - damage
 
@@ -61,4 +61,11 @@ class Saxon extends Soldier{
 }
 
 // War
-class War {}
+class War {
+  addViking(){}
+  addSaxon(){}
+  vikingAttack(){}
+  saxonAttack(){}
+  showStatus(){}
+
+}
