@@ -149,18 +149,18 @@ describe('Saxon', () => {
     saxon = new Saxon(health, strength);
   });
 
-  // it('should inherit from Soldier', () => {
-  //   expect(saxon instanceof Soldier).toEqual(true);
-  // });
+  it('should inherit from Soldier', () => {
+    expect(saxon instanceof Soldier).toEqual(true);
+  });
 
   describe('class', () => {
-    // it('should receive the health property as its 1st argument', () => {
-    //   expect(saxon.health).toEqual(health);
-    // });
-    //
-    // it('should receive the strength property as its 2nd argument', () => {
-    //   expect(saxon.strength).toEqual(strength);
-    // });
+    it('should receive the health property as its 1st argument', () => {
+      expect(saxon.health).toEqual(health);
+    });
+
+    it('should receive the strength property as its 2nd argument', () => {
+      expect(saxon.strength).toEqual(strength);
+    });
   });
 
   describe('attack() method', () => {

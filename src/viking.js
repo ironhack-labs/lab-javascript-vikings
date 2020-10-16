@@ -43,7 +43,14 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier{
+  // constructor(name,strength){
+    // super (name,strength )
+    // this.name = false
+    // this.strength = strength
+  // }
+
+}
 
 // War
 class War {}
