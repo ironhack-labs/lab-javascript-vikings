@@ -8,7 +8,8 @@ class Soldier {
     return this.strength
  }
  receiveDamage(damage){
-   
+   this.health = this.health - damage
+   return
  }
 }
 
