@@ -77,7 +77,7 @@ class War {
       //Viking funcion receiveDamage(Strenght de Saxon)
       let result = randomViking.receiveDamage(randomSaxon.strength);
       if (randomViking.health <= 0){
-        //Eliminar al Saxon muerto del array (splice)
+        //Eliminar al Viking muerto del array (splice)
         this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1);
       }
       //Return del punto 3
@@ -92,5 +92,30 @@ class War {
         return `Vikings and Saxons are still in the thick of battle.`
       }
     }
+    soldierAttack(soldier){
+      //Crear random Viking
+      let randomViking = this.vikingArmy[Math.round(Math.random()* (this.vikingArmy.length-1))];
+      //Crear random Saxon
+      let randomSaxon = this.saxonArmy[Math.round(Math.random()* (this.saxonArmy.length-1))];
+      //Comprobar si es Viking
+      if(soldier instanceof Viking){
+        const battleresult = randomSaxon.receiveDamage(randomViking.strength)
+        if (battleresult.includes("died")){
+          this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1);
+        }
+        //Resultado si no mueren
+        return battleresult
+        
+      //Es saxon
+      } else {
+        const battleresult = randomViking.receiveDamage(randomSaxon.strength)
+        if (battleresult.includes("died")){
+          this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1);
+        }
+        //Resultado si no mueren
+        return battleresult
+      }
+    }
 }
+
 
