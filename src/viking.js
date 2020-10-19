@@ -1,8 +1,8 @@
 // Soldier
 class Soldier {
     constructor(health, strength) {
-        this.health = health,
-            this.strength = strength
+        this.health = health
+        this.strength = strength
     }
 
     attack() {
@@ -31,16 +31,13 @@ class Viking extends Soldier {
 
         }
     }
-
     battleCry() {
         return `Odin Owns You All!`
     }
-
 }
 
 // Saxon
 class Saxon extends Soldier {
-
     receiveDamage(damage) {
         this.health -= damage
 
@@ -48,9 +45,7 @@ class Saxon extends Soldier {
             return `A Saxon has received ${damage} points of damage`
         } else {
             return `A Saxon has died in combat`
-
         }
-
     }
 }
 
@@ -68,26 +63,32 @@ class War {
     addSaxon(Saxon) {
         this.saxonArmy.push(Saxon)
     }
+    pickRandomSoldier(array) {
+        return array[Math.floor(Math.random() * array.length)]
+    }
+
+    cleanDeads(array) {
+        return array.filter(item => item.health > 0)
+    }
 
     vikingAttack() {
-        let saxon = randomIndex(this.saxonArmy)
-        let viking = randomIndex(this.vikingArmy)
+        let saxon = this.pickRandomSoldier(this.saxonArmy)
+        let viking = this.pickRandomSoldier(this.vikingArmy)
 
         saxon = saxon.receiveDamage(viking.strength)
 
-        this.saxonArmy = cleanDeads(this.saxonArmy)
+        this.saxonArmy = this.cleanDeads(this.saxonArmy)
 
         return saxon
-
     }
 
     saxonAttack() {
-        let saxon = randomIndex(this.saxonArmy)
-        let viking = randomIndex(this.vikingArmy)
+        let saxon = this.pickRandomSoldier(this.saxonArmy)
+        let viking = this.pickRandomSoldier(this.vikingArmy)
 
         viking = viking.receiveDamage(saxon.strength)
 
-        this.vikingArmy = cleanDeads(this.vikingArmy)
+        this.vikingArmy = this.cleanDeads(this.vikingArmy)
 
         return viking
     }
@@ -101,18 +102,8 @@ class War {
         }
         if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) {
             return 'Vikings and Saxons are still in the thick of battle.'
-
         }
     }
-}
-
-function randomIndex(array) {
-    return array[Math.floor(Math.random() * array.length)]
-}
-
-function cleanDeads(array) {
-    return array.filter(item => item.health > 0)
-
 }
 
 let viking1 = new Viking("Piet", 20, 30)
