@@ -5,14 +5,12 @@ class Soldier {
         this.health = health,
         this.strength = strength
     }
-
     attack(){
         return this.strength
     }
     receiveDamage(damage){
         this.health -= damage
     }
-
 }
 
 // Viking
@@ -47,8 +45,6 @@ class Saxon extends Soldier {
             return `A Saxon has died in combat`
         }
     }
-
-
 }
 
 // War
