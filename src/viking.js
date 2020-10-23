@@ -68,21 +68,17 @@ class War {
         this.saxonArmy = []
     }
 
-    addViking(Viking) {
-        this.addViking = [Viking]
-        this.vikingArmy += [
-            
-            Viking]
+    addViking(newViking) {
+        (this.vikingArmy).push(newViking)
+    }
+
+    addSaxon(newSaxon) {
+        (this.saxonArmy).push(newSaxon)
+    }
+
     
-
-    }
-
-    addSaxon() {
-
-    }
-
     vikingAttack() {
-
+      
     }
 
     saxonAttack() {
