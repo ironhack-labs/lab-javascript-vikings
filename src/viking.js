@@ -83,5 +83,50 @@ class Saxon extends Soldier {
 
 let saxon = new Saxon(60, 25)
 
+function generateViking() {
+    const name = 'Harald';
+    const strength = 150;
+    const health = 300;
+    return new Viking(name, health, strength);
+}
 
-// War
+
+   function generateViking() {
+     const name = 'Harald';
+     const strength = 150;
+     const health = 300;
+    return new Viking(name, health, strength);
+  }
+
+  function generateSaxon() {
+    const health = 60;
+    const strength = 25;
+    return new Saxon(health, strength);
+  }
+
+    viking = generateViking();
+    saxon = generateSaxon();
+  
+//War
+
+class War {
+
+    constructor() {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+
+    addViking(viking) {
+
+        this.vikingArmy.push (viking)
+
+    }
+
+    addSaxon(saxon) {
+
+        this.saxonArmy.push (saxon)
+
+    }
+        
+
+}
