@@ -20,32 +20,43 @@ class Soldier {
         this.health -= damage;
     }
 }
-// Viking
 
+// Viking
 class Viking extends Soldier {
-    constructor(health, strength, name) {
+    constructor(name, health, strength) {
         super(health, strength)
         this.name = name;
+    }
+
+    receiveDamage(damage) {
+        this.health -= damage;
+        if (this.health > 0) {
+            return this.name + " has received " + damage + " points of damage";
+        } else {
+            return this.name + " has died in act of combat";
+        }
+    }
+
+    battleCry() {
+        return "Odin Owns You All!";
     }
 }
 
 
-// class Viking {
-//     constructor(name) {
-//         this.name = name;
-//     }
-// }
-// attack()
-
-
-// those are the methods for the Viking
-receiveDamage()
-
-battleCry()
-
-
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+    constructor(health, strength) {
+        super(health, strength)
+    }
+    receiveDamage(damage) {
+        this.health -= damage;
+        if (this.health > 0) {
+            return "A Saxon has received " + damage + " points of damage";
+        } else {
+            return "A Saxon has died in act of combat";
+        }
+    }
+}
 
 // War
 class War {}
