@@ -64,6 +64,18 @@ class War {
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon);
   }
+
+  genericAttack(armyAtt, armyDef) {
+    let randomIndexAtt = Math.floor(Math.random() * armyAtt.length);
+    let randomIndexDef = Math.floor(Math.random() * armyDef.length);
+    const randomAtt = armyAtt[randomIndexAtt];
+    const randomDef = armyDef[randomIndexDef];
+    if (randomDef.health - randomAtt.strength <= 0) {
+      armyDef.splice(randomIndexDef, 1);
+    }
+    return randomDef.receiveDamage(randomAtt.attack());
+  }
+
   vikingAttack() {
     let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
     let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
