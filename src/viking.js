@@ -68,43 +68,61 @@ class War {
     this.saxonArmy.push(saxonObj);
   }
 
-  vikingAttack() {
-    //to get a random Viking to attack
-    let randomViking = this.vikingArmy[
-      Math.floor(Math.random() * this.vikingArmy.length)
-    ];
+  // vikingAttack() {
+  //   //to get a random Viking to attack
+  //   let randomViking = this.vikingArmy[
+  //     Math.floor(Math.random() * this.vikingArmy.length)
+  //   ];
 
-    //to get a random Index form the saxonArmy array for later .splice use
-    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+  //   //to get a random Index form the saxonArmy array for later .splice use
+  //   let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
 
-    //to get a random saxon to receive the attack
-    let randomSaxon = this.saxonArmy[randomSaxonIndex];
+  //   //to get a random saxon to receive the attack
+  //   let randomSaxon = this.saxonArmy[randomSaxonIndex];
 
-    //the attack
-    let battleResult = randomSaxon.receiveDamage(randomViking.strength);
+  //   //the attack
+  //   let battleResult = randomSaxon.receiveDamage(randomViking.strength);
 
-    //to see if the saxon is dead or not and if yes, remove them from the army
-    if (randomSaxon.health === 0) {
-      this.saxonArmy.splice(randomSaxonIndex, 1);
+  //   //to see if the saxon is dead or not and if yes, remove them from the army
+  //   if (randomSaxon.health <= 0) {
+  //     this.saxonArmy.splice(randomSaxonIndex, 1);
+  //   }
+  //   return battleResult;
+  // }
+
+  // saxonAttack() {
+  //   let randomSaxon = this.saxonArmy[
+  //     Math.floor(Math.random() * this.saxonArmy.length)
+  //   ];
+
+  //   let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+  //   let randomViking = this.vikingArmy[randomVikingIndex];
+
+  //   let battleRoyale = randomViking.receiveDamage(randomSaxon.strength);
+
+  //   if (randomViking.health <= 0) {
+  //     this.vikingArmy.splice(randomVikingIndex, 1);
+  //   }
+  //   return battleRoyale;
+  // }
+
+  //Refactoring both saxonAttack() and vikingAttack()
+  goToWar(attacker, defender) {
+    let randomAttIndex = Math.floor(Math.random() * attacker.length);
+
+    let randomAtt = attacker[randomAttIndex];
+
+    let randomDefIndex = Math.floor(Math.random() * defender.length);
+
+    let randomDef = defender[randomDefIndex];
+
+    let battleRoyale = defender.receivesDamage(attacker.strength);
+
+    if (randomDef.health <= 0) {
+      defender.splice(randomDefIndex, 1);
     }
-    return battleResult;
-  }
-
-  saxonAttack() {
-    let randomSaxon = this.saxonArmy[
-      Math.floor(Math.random() * this.saxonArmy.length)
-    ];
-
-    let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-
-    let randomViking = this.vikingArmy[randomVikingIndex];
-
-    let battleResult = randomViking.receiveDamage(randomSaxon.strength);
-
-    if (randomViking.health === 0) {
-      this.vikingArmy.splice(randomVikingIndex, 1);
-    }
-    return battleResult;
+    return battleRoyale;
   }
 
   showStatus() {
