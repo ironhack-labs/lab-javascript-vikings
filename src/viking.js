@@ -8,14 +8,16 @@ class Soldier {
   attack() {
     return 150;
   }
-  receiveDamage (damage) { this.health = 250; }
+  receiveDamage(damage) {
+    this.health = 250;
+  }
 }
 
 // Viking
-class Viking {
-  constructor(health, strength) {
-    this.health = 100;
-    this.strength = 10;
+class Viking extends Soldier {
+  constructor(name, health, strength) {
+    name = "Harald";
+    super();
   }
 }
 
