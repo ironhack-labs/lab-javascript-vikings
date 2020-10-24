@@ -64,7 +64,34 @@ class War {
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon);
   }
-  vikingAttack() {}
-  saxonAttack() {}
-  showStatus() {}
+  vikingAttack() {
+    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    const randomSaxon = this.saxonArmy[randomSaxonIndex];
+    const randomViking = this.vikingArmy[randomVikingIndex];
+    if (randomSaxon.health - randomViking.strength <= 0) {
+      this.saxonArmy.splice(randomSaxonIndex, 1);
+    }
+    return randomSaxon.receiveDamage(randomViking.attack());
+  }
+  saxonAttack() {
+    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    const randomSaxon = this.saxonArmy[randomSaxonIndex];
+    const randomViking = this.vikingArmy[randomVikingIndex];
+    if (randomViking.health - randomSaxon.strength <= 0) {
+      this.vikingArmy.splice(randomVikingIndex, 1);
+    }
+    return randomViking.receiveDamage(randomSaxon.attack());
+  }
+
+  showStatus() {
+    if (this.vikingArmy.length <= 0) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else if (this.saxonArmy.length <= 0) {
+      return "Vikings have won the war of the century!";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+  }
 }
