@@ -70,11 +70,9 @@ class War {
 
   // vikingAttack() {
   //   //to get a random Viking to attack
-  //   let randomViking = this.vikingArmy[
-  //     Math.floor(Math.random() * this.vikingArmy.length)
-  //   ];
+  //   let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-  //   //to get a random Index form the saxonArmy array for later .splice use
+  //   //to get a random Index from the saxonArmy array for later .splice use
   //   let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
 
   //   //to get a random saxon to receive the attack
@@ -91,9 +89,7 @@ class War {
   // }
 
   // saxonAttack() {
-  //   let randomSaxon = this.saxonArmy[
-  //     Math.floor(Math.random() * this.saxonArmy.length)
-  //   ];
+  //   let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
   //   let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
 
@@ -111,10 +107,10 @@ class War {
 
   //attacker and defender are vikingArmy array and saxonArmy array interchangeably;
   //Console.log()s add visual input of the battle for the player
+  
   goToWar(attacker, defender) {
-    console.log(
-      `The ${attacker} is attacking and the ${defender} is defending!`
-    );
+    
+    console.log(`The ${attacker} is attacking and the ${defender} is defending!`);
 
     let randomAttIndex = Math.floor(Math.random() * attacker.length);
 
@@ -126,19 +122,13 @@ class War {
 
     let battleResult = randomDef.receivesDamage(randomAtt.strength);
 
-    console.log(
-      `The soldier ${randomDef} took ${randomAtt.strength} of damage from ${randomAtt}, his health is at ${randomDef.health} points.`
-    );
+    console.log(`The soldier ${randomDef} took ${randomAtt.strength} of damage from ${randomAtt}, his health is at ${randomDef.health} points.`);
 
     if (randomDef.health <= 0) {
-      console.log(
-        `${randomDef} is out of battle. He will be removed from the field.`
-      );
+      console.log(`${randomDef} is out of battle. He will be removed from the field.`);
       defender.splice(randomDefIndex, 1);
     }
-    console.log(
-      `${randomDef} is not out of battle yet! Let's keep on fighting!`
-    );
+    console.log(`${randomDef} is not out of battle yet! Let's keep on fighting!`);
     return battleResult;
   }
 
@@ -150,10 +140,7 @@ class War {
       return `One or both of the armies don't have soldiers, this can't be a battle`;
     } else {
       while (army1.length > 0 || army2.length > 0) {
-        if (
-          (army1.length === 0 && army2.length > 0) ||
-          (army1.length > 0 && army2.length === 0)
-        ) {
+        if ((army1.length === 0 && army2.length > 0) || (army1.length > 0 && army2.length === 0)) {
           return this.showWinner();
         } else if (army1.length > army2.length) {
           return this.goToWar(army2, army1);
