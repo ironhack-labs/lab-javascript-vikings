@@ -62,22 +62,22 @@ class War {
   }
 
   vikingAttack() {
-    //to do - get random viking & random saxon
-    let vikingAttack = this.vikingArmy[0].attack();
-    let saxonDamage = this.saxonArmy[0].receiveDamage(vikingAttack);
+    var vikingIndex = math.floor.random(this.vikingArmy.length());
+    let vikingAttack = this.vikingArmy[vikingIndex].attack();
+    let saxonDamage = this.saxonArmy[vikingIndex].receiveDamage(vikingAttack);
     //remove from the array any viking who has health of zero
-    if (this.saxonArmy[0].health === 0) {
+    if (saxon.health === 0) {
       this.saxonArmy.pop();
     }
     return saxonDamage;
   }
 
   saxonAttack() {
-    //to do - get random viking & random saxon
-    let saxonAttack = this.saxonArmy[0].attack();
-    let vikingDamage = this.vikingArmy[0].receiveDamage(saxonAttack);
+    var saxonIndex = math.floor.random(this.saxonArmy.length());
+    let saxonAttack = this.saxonArmy[saxonIndex].attack();
+    let vikingDamage = this.vikingArmy[saxonIndex].receiveDamage(saxonAttack);
     //remove from the array any viking who has health of zero
-    if (this.vikingArmy[0].health === 0) {
+    if (this.vikingArmy.health.includes(0)) {
       this.vikingArmy.pop();
     }
     return vikingDamage;
