@@ -62,20 +62,30 @@ class War {
   }
 
   vikingAttack() {
-    var vikingIndex = math.floor.random(this.vikingArmy.length());
-    let vikingAttack = this.vikingArmy[vikingIndex].attack();
-    let saxonDamage = this.saxonArmy[vikingIndex].receiveDamage(vikingAttack);
+    var randomViking = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ];
+    var randomSaxon = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ];
+
+    var saxonDamage = this.randomSaxon.receiveDamage(randomViking.attack());
     //remove from the array any viking who has health of zero
-    if (saxon.health === 0) {
+    if (this.randomSaxon.health === 0) {
       this.saxonArmy.pop();
     }
     return saxonDamage;
   }
 
   saxonAttack() {
-    var saxonIndex = math.floor.random(this.saxonArmy.length());
-    let saxonAttack = this.saxonArmy[saxonIndex].attack();
-    let vikingDamage = this.vikingArmy[saxonIndex].receiveDamage(saxonAttack);
+    var randomViking = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ];
+    var randomSaxon = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ];
+
+    var vikingDamage = randomViking.receiveDamage(randomSaxon.attack());
     //remove from the array any viking who has health of zero
     if (this.vikingArmy.health.includes(0)) {
       this.vikingArmy.pop();
@@ -85,15 +95,15 @@ class War {
 
   showStatus() {
     //should return "Vikings have won the war of the century!", if the Saxons array is empty
-    if (this.saxonArmy === []) {
+    if (this.saxonArmy.length === 0) {
       return "Vikings have won the war of the century!";
     }
     // if the Vikings array is empty should return "Saxons have fought for their lives and survived another day..."
-    else if (this.vikingArmy === []) {
+    else if (this.vikingArmy.length === 0) {
       return "Saxons have fought for their lives and survived another day...";
     }
     //should return "Vikings and Saxons are still in the thick of battle.", if there are still both Vikings and Saxons
-    else if (this.saxonArmy !== [] && this.vikingArmy !== []) {
+    else {
       return "Vikings and Saxons are still in the thick of battle.";
     }
   }
