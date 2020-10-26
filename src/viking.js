@@ -59,32 +59,35 @@ class War {
         this.saxonArmy.push(saxon);
     }
 
-    choosingViking(vikingSoldiers) {
-        let choosingViking = Math.floor(Math.random() * vikingSoldiers.length);
-        let randomViking = vikingSoldiers[choosingViking];
-        return randomViking;
-    }
+    // choosingViking(vikingSoldiers) {
+    //     let choosingViking = Math.floor(Math.random() * vikingSoldiers.length);
+    //     let randomViking = vikingSoldiers[choosingViking];
+    //     return randomViking;
+    // }
 
-    choosingSaxon(saxonSoldiers) {
-        let choosingSaxon = Math.floor(Math.random() * saxonSoldiers.length);
-        let randomSaxon = saxonSoldiers[choosingSaxon];
-        return randomSaxon;
+    choosingVikingOrSaxon(soldier) {
+        let choosingSoldier = Math.floor(Math.random() * soldier.length);
+        let randomSolider = soldier[choosingSoldier];
+        return randomSolider;
     }
 
     vikingAttack() {
-        let randomViking = this.choosingViking(this.vikingArmy);
-        let randomSaxon = this.choosingSaxon(this.saxonArmy);
+        let randomViking = this.choosingVikingOrSaxon(this.vikingArmy);
+        let randomSaxon = this.choosingVikingOrSaxon(this.saxonArmy);
+
+
         randomSaxon.receiveDamage(randomViking.strength);
         let newSaxonArmy = this.saxonArmy.filter(function (saxon) {
-            return saxon.health > 0;
+            return saxon.health >= 0;
         })
         this.saxonArmy = newSaxonArmy;
         return 'A Saxon has died in combat';
     }
 
     saxonAttack() {
-        let randomViking = this.choosingViking(this.vikingArmy);
-        let randomSaxon = this.choosingSaxon(this.saxonArmy);
+        let randomViking = this.choosingVikingOrSaxon(this.vikingArmy);
+        let randomSaxon = this.choosingVikingOrSaxon(this.saxonArmy);
+
         randomViking.receiveDamage(randomSaxon.strength);
         let newVikingArmy = this.vikingArmy.filter(function (viking) {
             return viking.health > 0;
