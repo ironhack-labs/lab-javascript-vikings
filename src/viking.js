@@ -67,7 +67,7 @@ class War {
     if (saxonAttacked.health - vikingAttacking.strength <= 0) {
       this.saxonArmy.splice(saxonRandom, 1);
     }
-    return saxonAttacked.receiveDamage(vikingAttacking.attack());
+    return saxonAttacked.receiveDamage(vikingAttacking.strength);
   }
   saxonAttack() {
     const saxonRandom = Math.floor(Math.random() * this.saxonArmy.length);
@@ -77,7 +77,7 @@ class War {
     if (vikingAttacked.health - saxonAttacking.strength <= 0) {
       this.vikingArmy.splice(vikingRandom, 1);
     }
-    return vikingAttacked.receiveDamage(saxonAttacking.attack());
+    return vikingAttacked.receiveDamage(saxonAttacking.strength);
   }
   showStatus() {
     if (this.saxonArmy.length === 0) {
