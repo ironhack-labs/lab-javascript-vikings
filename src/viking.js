@@ -74,6 +74,7 @@ class War {
   vikingAttack(){
     let randomNumV = Math.floor(Math.random()*this.vikingArmy.length);
     let aViking = this.vikingArmy[randomNumV];
+   
     let randomNumS = Math.floor(Math.random()*this.saxonArmy.length);
     let aSaxon = this.saxonArmy[randomNumS];
 
@@ -82,7 +83,7 @@ class War {
 
     //remove dead saxon
     if(aSaxon.health <= 0){
-      this.saxonArmy.pop(aSaxon);
+      this.saxonArmy.splice(randomNumS,1);
     }
 
     //return aSaxon.receiveDamage(a Viking's strength)
@@ -90,10 +91,12 @@ class War {
 
   }
 
+
   //saxon攻击
   saxonAttack(){
     let randomNumV = Math.floor(Math.random()*this.vikingArmy.length);
     let aViking = this.vikingArmy[randomNumV];
+
     let randomNumS = Math.floor(Math.random()*this.saxonArmy.length);
     let aSaxon = this.saxonArmy[randomNumS];
 
@@ -102,12 +105,13 @@ class War {
 
     //remove dead viking
     if(aViking.health <= 0){
-      this.vikingArmy.pop(aViking);
+      this.vikingArmy.splice(randomNumV,1);
     }
 
     //return aViking.receiveDamage(a Saxon's strength)
     return result
   }
+
 
   //战争结果
   showStatus(){
@@ -122,6 +126,7 @@ class War {
     }
   }
 }
+
 
 
 
