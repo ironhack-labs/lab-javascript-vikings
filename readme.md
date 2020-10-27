@@ -24,7 +24,7 @@ $ git push origin master
 Create Pull Request so your TAs can check up your work.
 
 ### Test, test, test!
-
+ 
 Yes! The best way to ensure your code is doing what is expected is to constantly test. Go ahead and open the file `SpecRunner.html`!
 
 **Run the tests**
