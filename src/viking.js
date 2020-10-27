@@ -57,22 +57,6 @@ class Viking extends Soldier {
 }
 
 // Saxon
-
-// attack() method
-// (This method should be inherited from Soldier, no need to re-implement it.)
-
-// should be a function
-// should receive 0 arguments
-// should return the strength property of the Saxon
-// receiveDamage() method
-
-// (This method needs to be re-implemented for Saxon because the Saxon version needs to have different return values.)
-
-// should be a function
-// should receive 1 argument (the damage)
-// should remove the received damage from the health property
-// if the Saxon is still alive, it should return "A Saxon has received DAMAGE points of damage"
-// if the Saxon dies, it should return "A Saxon has died in combat"
 class Saxon extends Soldier {
   attack() {
     return this.strength;
@@ -88,4 +72,57 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  addViking(viking) {
+    this.vikingArmy.push(viking);
+  }
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+  vikingAttack() {
+    //A Saxon (chosen at random) has their receiveDamage() method called with the damage equal to the strength of a Viking (also chosen at random). This should only perform a single attack and the Saxon doesn't get to attack back.
+    let randomSax = Math.floor(Math.random() * this.saxonArmy.length);
+    // console.log("randomSax", randomSax);
+
+    let randomVik = Math.floor(Math.random() * this.vikingArmy.length);
+
+    let saxonObj = this.saxonArmy[randomSax];
+    // console.log("saxonObj", saxonObj);
+
+    let vikAttack = saxonObj.receiveDamage(this.vikingArmy[randomVik].strength);
+    if (saxonObj.health <= 0) {
+      this.saxonArmy.pop(saxonObj);
+    }
+    // console.log(vikAttack);
+    return vikAttack;
+  }
+  saxonAttack() {
+    let randomSax = Math.floor(Math.random() * this.saxonArmy.length);
+    // console.log("randomSax", randomSax);
+
+    let randomVik = Math.floor(Math.random() * this.vikingArmy.length);
+
+    let vikObj = this.vikingArmy[randomVik];
+
+    let saxAttack = vikObj.receiveDamage(this.saxonArmy[randomSax].strength);
+    if (vikObj.health <= 0) {
+      this.vikingArmy.pop(vikObj);
+    }
+    // console.log("saxAttack", saxAttack);
+
+    return saxAttack;
+  }
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+  }
+}
