@@ -66,7 +66,7 @@ class War {
         const result= randomSaxon.receiveDamage(randomViking.strength);
         for (let i = 0; i < this.saxonArmy.length; i++) {
             if (this.saxonArmy[i].health <= 0) {
-                this.saxonArmy.pop(this.saxonArmy[i])
+                this.saxonArmy.splice(this.saxonArmy[i], 1)
             };
         };
         return result;
@@ -78,7 +78,7 @@ class War {
         const result = randomViking.receiveDamage(randomSaxon.strength);
         for (let i = 0; i < this.vikingArmy.length; i++) {
             if (this.vikingArmy[i].health <= 0) {
-                this.vikingArmy.pop(this.vikingArmy[i])
+                this.vikingArmy.splice(this.vikingArmy[i], 1)
             };
         };
         return result;
