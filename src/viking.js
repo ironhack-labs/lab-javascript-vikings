@@ -33,10 +33,8 @@ class Soldier {
 // Viking
 class Viking extends Soldier {
   constructor(name, health, strength) {
-    super(name, health, strength);
-    this.name = "Harald";
-    this.strength = 150;
-    this.health = 300;
+    super(health, strength);
+    this.name = name;
   }
   attack() {
     return this.strength;
@@ -45,11 +43,9 @@ class Viking extends Soldier {
     // console.log("damage", damage);
     this.health -= damage;
     // console.log("health", this.health);
-    if (this.health === 0) {
-      return `${this.name} has died in act of combat`;
-    } else {
-      return `${this.name} has received ${damage} points of damage`;
-    }
+    if (this.health === 0) return `${this.name} has died in act of combat`;
+
+    return `${this.name} has received ${damage} points of damage`;
   }
   battleCry() {
     return "Odin Owns You All!";
@@ -63,11 +59,9 @@ class Saxon extends Soldier {
   }
   receiveDamage(damage) {
     this.health -= damage;
-    if (this.health > 0) {
+    if (this.health > 0)
       return `A Saxon has received ${damage} points of damage`;
-    } else {
-      return `A Saxon has died in combat`;
-    }
+    return `A Saxon has died in combat`;
   }
 }
 
@@ -95,7 +89,7 @@ class War {
 
     let vikAttack = saxonObj.receiveDamage(this.vikingArmy[randomVik].strength);
     if (saxonObj.health <= 0) {
-      this.saxonArmy.pop(saxonObj);
+      this.saxonArmy.splice(saxonObj, 1);
     }
     // console.log(vikAttack);
     return vikAttack;
@@ -110,7 +104,7 @@ class War {
 
     let saxAttack = vikObj.receiveDamage(this.saxonArmy[randomSax].strength);
     if (vikObj.health <= 0) {
-      this.vikingArmy.pop(vikObj);
+      this.vikingArmy.splice(vikObj, 1);
     }
     // console.log("saxAttack", saxAttack);
 
