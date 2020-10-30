@@ -1,4 +1,4 @@
-// Soldier
+//// Soldier
 class Soldier {
   constructor(health, strength){
     this.health = health;
@@ -15,16 +15,13 @@ class Soldier {
 
 }
 
-// Viking
+//// Viking
 class Viking extends Soldier{
   constructor(name, health, strength){
     super(health, strength);
       this.name = name;
   }
 
-  // attack(){
-  //   return this.strength;
-  // }
   receiveDamage(theDamage){
     this.health -= theDamage;
     return this.health <= 0 ? `${this.name} has died in act of combat` : `${this.name} has received ${theDamage} points of damage`;
@@ -36,16 +33,8 @@ class Viking extends Soldier{
 
 }
 
-// Saxon
+//// Saxon
 class Saxon extends Soldier{
-  // constructor(health, strength){
-  //   super(health, strength);
-  // }
-  
-  // attack(){
-  //   return this.strength;
-  // }
-
   receiveDamage(theDamage){
     this.health -= theDamage;
     return this.health <= 0 ?   "A Saxon has died in combat" :`A Saxon has received ${theDamage} points of damage`;
@@ -54,15 +43,11 @@ class Saxon extends Soldier{
 }
 
 
-// War
+//// War
 class War {
    constructor(){
     this.vikingArmy = []; 
-    this.saxonArmy = [];
-    // this.randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]; 
-    // this.randomViking =  this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-    ////see if can refactor to not repeat
-    
+    this.saxonArmy = [];   
   }
    
   addViking(aVikingObj){
@@ -74,10 +59,10 @@ class War {
   }
 
   vikingAttack(){
-    let randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    let randomViking =  this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    const randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    const randomViking =  this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-    let damageSaxon = randomSaxon.receiveDamage(randomViking.attack())
+    const damageSaxon = randomSaxon.receiveDamage(randomViking.attack())
 
    if(randomSaxon.health <= 0) 
     this.saxonArmy.splice(this.saxonArmy[damageSaxon],1)
@@ -86,12 +71,11 @@ class War {
     }
     
 
-
   saxonAttack(){
-    let randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    let randomViking =  this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    const randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    const randomViking =  this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     
-    let damageViking = randomViking.receiveDamage(randomSaxon.attack()) 
+    const damageViking = randomViking.receiveDamage(randomSaxon.attack()) 
     
     if(randomViking.health <= 0) 
     this.vikingArmy.splice(this.vikingArmy[damageViking],1)
@@ -99,7 +83,6 @@ class War {
     return damageViking
 
   }
-
 
 
   showStatus(){
@@ -111,6 +94,17 @@ class War {
     if(this.vikingArmy.length > 0 &&  this.saxonArmy.length > 0 ) return "Vikings and Saxons are still in the thick of battle."
   }
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
