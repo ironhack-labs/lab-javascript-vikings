@@ -1,18 +1,46 @@
 body {
-    padding: 0;
+    padding: 0 10vw;
     margin: 0;
 }
 
-h1 {
+h1,
+p {
     text-align: center;
 }
 
 img {
-    width: : 15%;
+    width: 25%;
 }
 
-.vikingbox {
+#gameBoard {
     display: flex;
-    justify-content: ;
-    
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.center-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.scoreBoard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30vw;
+}
+
+.vikingContainer,
+.saxonContainer {
+    width: 27vw;
+}
+
+.vikingBox,
+.saxonBox {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 9vw;
 }
