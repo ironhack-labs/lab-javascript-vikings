@@ -49,19 +49,55 @@ class War {
     vikingArmy = []
     saxonArmy = []
 
-
     addViking(Viking) {
     this.vikingArmy.push(Viking)
     }
+    // addViking(Viking) {
+    //     this.vikingArmy.push(Viking)
+    //     }
+    //     addViking(Viking) {
+    //         this.vikingArmy.push(Viking)
+    //         }
 
     addSaxon(Saxon) {
         this.saxonArmy.push(Saxon)
     }
+    // addSaxon(Saxon) {
+    //     this.saxonArmy.push(Saxon)
+    // }
+    // addSaxon(Saxon) {
+    //     this.saxonArmy.push(Saxon)
+    // }
+
 
 vikingAttack() {
 
+// choose a number of the saxonArmy array at random (Maths.random!!!!):
 
-    this.Saxon.receiveDamage(this.Viking.strength)
+let randomSaxon = Math.floor(Math.random(1, this.saxonArmy.length -1));
+let randomViking = Math.floor(Math.random(1, this.vikingArmy.length -1));
+
+
+
+
+// One attack of the viking to the saxon
+let damageViking = this.vikingArmy[randomViking].attack();
+
+
+    let oneHit = this.saxonArmy[randomSaxon].receiveDamage(damageViking);
+
+for (let i = 0; i < this.saxonArmy.length; i++) {
+    let saxguy = this.saxonArmy[i];
+    if(saxguy.health < 0) {
+        this.saxonArmy.splice(this.saxonArmy.indexOf(saxguy), 1)
+        return oneHit
+    }
+}
+
+
+    // return oneHit 
+
+
 }
 
 
