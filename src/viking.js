@@ -26,7 +26,7 @@ class Viking extends Soldier {
         return 'Odin Owns You All';
     }
 
-    receiveDamage (the damage) {
+    receiveDamage (damage) {
         if ()
         return '${name} has received ${the damage} points of damage';
         if ()
