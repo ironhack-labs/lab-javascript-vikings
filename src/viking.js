@@ -88,7 +88,7 @@ class War {
                 else if (this.vikingArmy.length == 0){
                         return "Saxons have fought for their lives and survived another day..."
                 }
-                else if (this.saxonArmy.length >= 1 || this.vikingArmy >= 1){
+                else if (this.saxonArmy.length != 0 && this.vikingArmy != 0){
                         return "Vikings and Saxons are still in the thick of battle."
                 }
         }
