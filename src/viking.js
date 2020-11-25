@@ -28,11 +28,11 @@ class Viking extends Soldier {
 
     receiveDamage(damage){
       super.receiveDamage(damage);
-        console.log(this.health)
-      if(this.health<=0){
-        return `${this.name} has died in act of combat`
-      } 
+        
+      if(this.health>0){
         return `${this.name} has received ${damage} points of damage`
+      } 
+        return `${this.name} has died in act of combat`
     }
 
     battleCry(){
@@ -40,13 +40,27 @@ class Viking extends Soldier {
     }
 }
 
-const viking1= new Viking('Odin',100,100);
+/*const viking1= new Viking('Odin',100,100);
 console.log(viking1.receiveDamage(100));
-console.log(viking1.receiveDamage(95));
+console.log(viking1.receiveDamage(95));*/
 
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+
+    attack(){
+        return super.attack();
+    }
+
+    receiveDamage(damage){
+        this.health= this.health - damage;
+        if(this.health>0){
+            return `A Saxon has received ${damage} points of damage`
+          } 
+            return `A Saxon has died in combat`
+    }
+
+}
 
 // War
 class War {}
