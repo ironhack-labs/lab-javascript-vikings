@@ -27,10 +27,7 @@ class Viking extends Soldier {
      
     receiveDamage (theDamage) {
         super.receiveDamage(theDamage)
-        if (this.health <= 0) {
-            return `${this.name} has died in act of combat`
-        }
-        return `${this.name} has received ${theDamage} points of damage`
+        return this.health <= 0 ? `${this.name} has died in act of combat` : `${this.name} has received ${theDamage} points of damage`
     }
 
     battleCry () {
@@ -39,7 +36,13 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+    receiveDamage (theDamage) {
+        super.receiveDamage(theDamage)
+        return this.health <= 0 ? `A Saxon has died in combat` : `A Saxon has received ${theDamage} points of damage`
+    }
+
+}
 
 // War
 class War {}
