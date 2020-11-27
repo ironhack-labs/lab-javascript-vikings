@@ -22,7 +22,7 @@ class Viking extends Soldier {
     }
 
     receiveDamage(damage){
-        this.health -= damage
+        super.receiveDamage(damage)
         if (this.health > 0){
             return `${this.name} has received ${damage} points of damage`
         } else {
@@ -38,7 +38,7 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
     receiveDamage(damage){
-        this.health -= damage
+        super.receiveDamage(damage)
         if (this.health > 0){
             return `A Saxon has received ${damage} points of damage`
         } else {
@@ -63,30 +63,24 @@ class War {
     }
 
     vikingAttack(){
+        // Random Saxon & Random Viking
         let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        // Viking attack to random saxon
         let vikingAttack = randomSaxon.receiveDamage(randomViking.attack())
-
-        // CREO QUE NO FUNCIONA
-        this.saxonArmy = this.saxonArmy.filter((saxon) => saxon.health === 0)
-
-        //this.saxonArmy.forEach((saxon, i) => {
-        //    if ( saxon.health === 0 ){
-        //        this.saxonArmy.splice(i, 1)
-        //    }
-        //});
-
+        // Clean Saxon Army
+        this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0)
         return vikingAttack;
     }
 
     saxonAttack(){
+        // Random Saxon & Random Viking
         let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        // Saxon attack to random viking
         let saxonAttack = randomViking.receiveDamage(randomSaxon.attack())
-        
-        // CREO QUE NO FUNCIONA
-        this.vikingArmy = this.vikingArmy.filter((viking) => viking.health === 0)
-        
+        // Clean Viking Army
+        this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0)
         return saxonAttack;
     }
 
