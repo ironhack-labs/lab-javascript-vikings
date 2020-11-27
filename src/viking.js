@@ -4,11 +4,9 @@ class Soldier {
         this.health = health
         this.strength = strength
     }
-
     attack(){
         return this.strength
     }
-
     receiveDamage(damage){
         this.health -= damage
     }
@@ -18,7 +16,6 @@ class Soldier {
 class Viking extends Soldier {
     constructor(name, health, strength){
         super(health, strength)
-
         this.name = name
     }
 
@@ -56,23 +53,108 @@ class War {
         this.saxonArmy.push(saxon)
     }
 
-    vikingAttack(){}
-    saxonAttack(){}
-    showStatus(){}
+    vikingAttack(){
+        if(this.vikingArmy.length > 0){
+        let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+        let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+
+        let result = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].attack())
+
+        if(this.saxonArmy[saxonIndex].health <= 0){
+            this.saxonArmy.splice(saxonIndex,1)
+        }
+
+        return result
+        }
+    }
+    
+    saxonAttack(){
+
+        if(this.saxonArmy.length > 0){
+        let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+        let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+
+        let result = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].attack())
+
+        if(this.vikingArmy[vikingIndex].health <= 0){
+            this.vikingArmy.splice(vikingIndex,1)
+        }
+
+        return result
+        }
+    }
+    showStatus(){
+        return this.vikingArmy.length === 0 ? `Saxons have fought for their lives and survived another day...` : this.saxonArmy.length === 0 ? `Vikings have won the war of the century!` : `Vikings and Saxons are still in the thick of battle.`
+    }
+
+    figth(){
+        let randomFight = Math.floor(Math.random() * 2);
+        if(randomFight === 1){
+            this.vikingAttack()
+        }
+        else{
+            this.saxonAttack()
+        }
+    }
 }
 
 
 
 
-let war1 = new War
+const war1 = new War
 
-war1.addViking(new Viking('Rajnak',100,20))
-war1.addViking(new Viking('Rolo',120,15))
-war1.addViking(new Viking('Floki',90,8))
+war1.addViking(new Viking('Rajnak',100,40))
+war1.addViking(new Viking('Rolo',120,40))
+war1.addViking(new Viking('Floki',90,40))
 
-war1.addSaxon(new Saxon(80,5))
-war1.addSaxon(new Saxon(75,5))
-war1.addSaxon(new Saxon(85,5))
+war1.addSaxon(new Saxon(80,25))
+war1.addSaxon(new Saxon(75,25))
+war1.addSaxon(new Saxon(85,20))
+war1.addSaxon(new Saxon(80,25))
+war1.addSaxon(new Saxon(75,20))
+war1.addSaxon(new Saxon(85,20))
 
 console.log(war1.vikingArmy)
 console.log(war1.saxonArmy)
+
+
+/* war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+war1.vikingAttack()
+
+war1.saxonAttack()
+war1.vikingAttack()
+war1.saxonAttack()
+war1.vikingAttack()
+war1.saxonAttack() 
+war1.saxonAttack() 
+war1.saxonAttack() 
+war1.saxonAttack() */
+
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+war1.figth()
+
+console.log(war1.vikingArmy)
+console.log(war1.saxonArmy)
+
+
+console.log(war1.showStatus())
