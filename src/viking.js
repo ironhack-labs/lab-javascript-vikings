@@ -54,23 +54,18 @@ class War {
     }
 
     vikingAttack(){
-        if(this.vikingArmy.length > 0){
         let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
         let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
 
         let result = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].attack())
 
         if(this.saxonArmy[saxonIndex].health <= 0){
-            this.saxonArmy.splice(saxonIndex,1)
+             this.saxonArmy.splice(saxonIndex,1)
         }
-
-        return result
-        }
+        return result   
     }
     
     saxonAttack(){
-
-        if(this.saxonArmy.length > 0){
         let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
         let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
 
@@ -79,20 +74,19 @@ class War {
         if(this.vikingArmy[vikingIndex].health <= 0){
             this.vikingArmy.splice(vikingIndex,1)
         }
-
         return result
-        }
     }
+
     showStatus(){
         return this.vikingArmy.length === 0 ? `Saxons have fought for their lives and survived another day...` : this.saxonArmy.length === 0 ? `Vikings have won the war of the century!` : `Vikings and Saxons are still in the thick of battle.`
     }
 
     figth(){
         let randomFight = Math.floor(Math.random() * 2);
-        if(randomFight === 1){
+        if(randomFight === 1 && this.vikingArmy.length > 0 && this.saxonArmy.length > 0){
             this.vikingAttack()
         }
-        else{
+        else if(randomFight === 0 && this.saxonArmy.length > 0 && this.vikingArmy.length > 0){
             this.saxonAttack()
         }
     }
@@ -110,9 +104,8 @@ war1.addViking(new Viking('Floki',90,40))
 war1.addSaxon(new Saxon(80,25))
 war1.addSaxon(new Saxon(75,25))
 war1.addSaxon(new Saxon(85,20))
-war1.addSaxon(new Saxon(80,25))
-war1.addSaxon(new Saxon(75,20))
-war1.addSaxon(new Saxon(85,20))
+
+
 
 console.log(war1.vikingArmy)
 console.log(war1.saxonArmy)
