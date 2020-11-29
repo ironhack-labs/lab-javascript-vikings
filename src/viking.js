@@ -65,25 +65,22 @@ addViking(Viking){
 
 
 addSaxon(Saxon){
-    this.Saxon.push(saxonArmy);
+    this.saxonArmy.push(Saxon);
 }
 
 vikingAttack(){
-  const result= Saxon.receiveDamage(this.vikingAttack());
-   if(Saxon.health<=0){
-       this.saxonArmy.pop();
-   }
-   return result;
-
+    vikingAttack() {
+        let result = this.saxonArmy[Math.floor(Math.random() * (this.saxonArmy.length))].receiveDamage(this.vikingArmy[Math.floor((Math.random() * (this.vikingArmy.length)))].strength);
+        this.saxonArmy = this.saxonArmy.filter(function (saxon) {
+            return saxon.health > 0
+        });
+        return result
+    }
 }
 saxonAttack(){
-    const result= Viking.receiveDamage(this.saxonAttack());
-   if(Viking.health<=0){
-       this.vikingArmy.pop();
-
+   
 }
-return result;
+
 //showStatus()
 
-}
 }
