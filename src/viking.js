@@ -21,17 +21,30 @@ class Viking extends Soldier {
 
     receiveAttack(damage) {
         this.health -= damage;
-        // buscar como implemetar dos opciones en return....   
-        /*return if(this.health > 0){
-            (`${this.name} has received ${damage} points of damage`)
-            (`${this.name} has died in act of combat`)}
-        }*/
+      
+        if (this.health > 0){
+            return(`${this.name} has received ${damage} points of damage`)
+        }// me da error jasmine en esta parte y no consigo ver el problema
+        return (`${this.name} has died in act of combat`)
+    }
+    battleCry(){
+        return ("Odin Owns You All!")
     }
 }
 
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+
+    receiveDamage(damage) {
+        this.health -= damage
+        if (this.health > 0){
+            return (`A Saxon has received ${damage} points of damage`)
+        }
+        return (`A Saxon has died in combat`)
+
+    }
+}
 
 // War
 class War {}
