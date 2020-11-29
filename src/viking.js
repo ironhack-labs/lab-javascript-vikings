@@ -64,11 +64,12 @@ class War extends Soldier {
     }
 
     vikingAttack() {
-        this.strength = this.health - damage;
+      
+    
     }
 
     saxonAttack() {
-
+       
     }
 
     showStatus() {
