@@ -68,19 +68,44 @@ addSaxon(Saxon){
     this.saxonArmy.push(Saxon);
 }
 
-vikingAttack(){
+
     vikingAttack() {
-        let result = this.saxonArmy[Math.floor(Math.random() * (this.saxonArmy.length))].receiveDamage(this.vikingArmy[Math.floor((Math.random() * (this.vikingArmy.length)))].strength);
-        this.saxonArmy = this.saxonArmy.filter(function (saxon) {
-            return saxon.health > 0
-        });
-        return result
+        //Con el metodo Math.floor(Math.random()),multipicado por la longitud del array nos da el saxon elegido.
+      let saxon = this.saxonArmy[Math.floor(Math.random())* this.saxonArmy.length]
+      let viking = thid.vikingArmy[Math.floor(Math.random())* this.vikingArmy.length]
+        // EL saxon se lleva el daño del vikingo
+      const result = saxon.receiveDamage(this.vikingAttack());
+      //Si la vida es menor a 0, dentro de saxonArmy elegimos un saxon y le quitamos 1 
+      if(saxon.health <0){
+          this.saxonArmy.splice(this.saxonArmy.indexOf(saxon),1)
+      }
     }
-}
+
 saxonAttack(){
+
+    let saxon = this.saxonArmy[Math.floor(Math.random())* this.saxonArmy.length];
+    let viking = this.vikingArmy[Math.floor(Math.random())*this.vikingArmy.length]
+
+    const result = Viking.receiveDamage(this.saxonAttack());
+
+    if(this.viking.health < 0){
+        this.vikingArmy.splice(this.vikingArmy.indexOf(viking),1)
+    }
+   
    
 }
 
-//showStatus()
+showStatus(){
+    if(this.saxonArmy.length===0){
+        return "Vikings have won the war of the century!"
+    }else if(this.saxonArmy.lengt===0){
+        return "Saxons have fought for their lives and survived another day..."
+
+    }else{
+        return  "Vikings and Saxons are still in the thick of battle."
+    }
+}
+
+
 
 }
