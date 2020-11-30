@@ -45,7 +45,7 @@ class Saxon extends Soldier {
     receiveDamage(damage) {
         this.health = this.health - damage
         if (this.health > 0) {
-            return `A Saxon has received DAMAGE points of damage`
+            return `A Saxon has received ${damage} points of damage`
         } else if (this.health <= 0) {
             return `A Saxon has died in combat`
         }
@@ -57,40 +57,85 @@ class War {
     constructor() {
         this.vikingArmy = []
         this.saxonArmy = []
-        
     }
 
-    addViking(Viking) {
-        this.vikingArmy.push(Viking)
+    addViking(viking) {
+        this.vikingArmy.push(viking)
     }
 
-    addSaxon(Saxon) {
-        this.saxonArmy.push(Saxon)
+    addSaxon(saxon) {
+        this.saxonArmy.push(saxon)
+    }
+
+    randomViking () { 
+        return this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    }
+
+    randomSaxon () {
+        return this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
     }
 
     vikingAttack() {
-        let randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-        let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+        let theOneSaxon = this.randomSaxon()
+        let theOneViking = this.randomViking()
 
-        //TRABAJANDO AQUÍ JFK console.log(Saxon[randomSaxon]) //.receiveDamage(Viking[randomViking].strength)
+        let damagedSaxon = theOneSaxon.receiveDamage(theOneViking.strength)
 
+        if (theOneSaxon.health <= 0) {
+            this.saxonArmy.splice(this.saxonArmy.indexOf(theOneSaxon), 1)
+            //return `The saxon number ${this.saxonArmy.indexOf(theOneSaxon)} has died. RIP` // (Jasmine wont let me add it)
+        }
+
+        return damagedSaxon // + ` by the great Viking whose name is ${theOneViking.name}` // (Jasmine wont let me add it)
+    }
+
+    saxonAttack() {
+        let theOneSaxon = this.randomSaxon()
+        let theOneViking = this.randomViking()
+
+        let damagedViking = theOneViking.receiveDamage(theOneSaxon.strength)
+
+        if (theOneViking.health <= 0) {
+            this.vikingArmy.splice(this.vikingArmy.indexOf(theOneViking), 1)
+            return `The great Viking ${damagedViking.name} has died. RIP` 
+        }
+
+        return damagedViking
     }
 
 }
 
 
+
+// CRreation of soldiers
+let viking1 = new Viking ('Wakanda', 100, 60)
+let viking2 = new Viking ('Kily', 100, 60)
+let viking3 = new Viking ('Mucmad', 100, 60)
+let viking4 = new Viking ('Wassa', 100, 60)
+let saxon1 = new Saxon (200, 30)
+let saxon2 = new Saxon (200, 30)
+let saxon3 = new Saxon (200, 30)
+let saxon4 = new Saxon (200, 30)
+
+// The war beggins
 const theWar = new War();
 
-// ARMY OF VIKINGS
-theWar.addViking('Wakanda', 100, 60)
-theWar.addViking('Kily', 100, 60)
-theWar.addViking('Mucmad', 100, 60)
-theWar.addViking('Wassa', 100, 60)
+// ARMY OF VIKINGS CALLED TO theWar
+theWar.addViking(viking1)
+theWar.addViking(viking2)
+theWar.addViking(viking3)
+theWar.addViking(viking4)
 
-//ARMY OF SAXONS
-theWar.addSaxon(200, 30)
-theWar.addSaxon(200, 30)
-theWar.addSaxon(200, 30)
-theWar.addSaxon(200, 30)
+//ARMY OF SAXONS CALLED TO theWar
+theWar.addSaxon(saxon1)
+theWar.addSaxon(saxon2)
+theWar.addSaxon(saxon3)
+theWar.addSaxon(saxon4)
+
 
 console.log(theWar)
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+
+
+
