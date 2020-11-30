@@ -97,10 +97,20 @@ class War {
 
         if (theOneViking.health <= 0) {
             this.vikingArmy.splice(this.vikingArmy.indexOf(theOneViking), 1)
-            return `The great Viking ${damagedViking.name} has died. RIP` 
-        }
+            return `The great Viking ${theOneViking.name} has died` 
+        } 
 
         return damagedViking
+    }
+
+    showStatus() {
+        if (this.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!"
+        } else if (this.vikingArmy.length === 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        } else if (this.vikingArmy.length >= 1 || this.saxonArmy.length >= 1) {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
     }
 
 }
@@ -133,9 +143,43 @@ theWar.addSaxon(saxon3)
 theWar.addSaxon(saxon4)
 
 
+// Let the war begin
 console.log(theWar)
+
 console.log(theWar.vikingAttack())
 console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+console.log(theWar.saxonAttack())
+console.log(theWar.vikingAttack())
+
+console.log(theWar.vikingArmy)
+
+console.log(theWar.showStatus())
+
 
 
 
