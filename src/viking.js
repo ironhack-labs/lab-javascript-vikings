@@ -70,7 +70,7 @@ class War {
         const damageViking = this.saxonArmy[saxon1].receiveDamage(this.vikingArmy[viking1].attack())
 
         if (this.saxonArmy[saxon1].health <= 0) {
-            this.saxonArmy.pop(saxon1)
+            this.saxonArmy.pop()
         }
 
         return damageViking
@@ -82,7 +82,7 @@ class War {
         const damageSaxon = this.vikingArmy[viking1].receiveDamage(this.saxonArmy[saxon1].attack())
 
         if (this.vikingArmy[viking1].health <= 0) {
-            this.vikingArmy.pop(viking1)
+            this.vikingArmy.pop()
         }
 
         return damageSaxon
