@@ -37,7 +37,7 @@ class Viking extends Soldier {
 // Saxon
 class Saxon {}
 
-class Viking extends Soldier {
+class Saxon extends Soldier {
     receiveDamage(damage) {
         if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`
