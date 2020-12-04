@@ -50,23 +50,23 @@ battleCry(){
 class Saxon extends Soldier {
     //Se puede prescindir del metodo constructor() 
     //ya que se hereda todo del padre en super(), no hay que añadir ningun parametro
-    constructor(health, strength)
-    //super(health, strength)
+    constructor(health, strength) {
+        super(health, strength)
+    }
     //Reimplementamos el metodo receiveDamage()
-    attack() {
-        return this.strength
-    } 
-    receiveDamage(damage){ 
-      super.receiveDamage(damage)
-       // var alive = `A Saxon has received ${damage} points of damage`
-        //var death = `A Saxon has died in combat`
+    //attack()  
+    receiveDamage(damage) { 
+        super.receiveDamage(damage)
+        var alive = `A Saxon has received ${damage} points of damage`
+        var death = `A Saxon has died in combat`
+      
             if (this.health > 0) {
-                //return alive
-                return `A Saxon has received ${damage} points of damage`
+                return alive
+                //return `A Saxon has received ${damage} points of damage`
             } else {
                 //¿puede ponerse directamente el mensaje que deberia devolver?
-                return (`A Saxon has died in combat`) 
-                //return death
+                //return `A Saxon has died in combat`
+                return death
             }
         
     }
