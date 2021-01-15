@@ -67,4 +67,11 @@ receiveDamage(damage){
 }
 
 // War
-class War {}
+class War {
+  constructor(){ }
+addViking(){}
+addSaxon(){}
+vikingAttack(){}
+saxonAttack(){}
+showStatus(){}
+}
