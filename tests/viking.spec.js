@@ -25,11 +25,11 @@ describe('Soldier', () => {
     // it('should be a function', () => {
     //   expect(typeof soldier.attack).toBe('function');
     // });
-    //
+    
     // it('should receive 0 arguments', () => {
     //   expect(soldier.attack.length).toEqual(0);
     // });
-    //
+    
     // it('should return the strength property of the Soldier', () => {
     //   expect(soldier.attack()).toEqual(strength);
     // });
@@ -39,16 +39,16 @@ describe('Soldier', () => {
     // it('should be a function', () => {
     //   expect(typeof soldier.receiveDamage).toBe('function');
     // });
-    //
+    
     // it('should receive 1 argument (the damage)', () => {
     //   expect(soldier.receiveDamage.length).toEqual(1);
     // });
-    //
+    
     // it('should remove the received damage from the health property', () => {
     //   soldier.receiveDamage(50);
     //   expect(soldier.health).toEqual(health - 50);
     // });
-    //
+    
     // it("shouldn't return anything", () => {
     //   expect(soldier.receiveDamage(50)).toEqual(undefined);
     // });
@@ -73,15 +73,15 @@ describe('Viking', () => {
     // it('should receive 3 arguments (name, health & strength)', () => {
     //   expect(Viking.length).toEqual(3);
     // });
-    //
+    
     // it('should receive the name property as its 1st argument', () => {
     //   expect(viking.name).toEqual(name);
     // });
-    //
+    
     // it('should receive the health property as its 2nd argument', () => {
     //   expect(viking.health).toEqual(health);
     // });
-    //
+    
     // it('should receive the strength property as its 3rd argument', () => {
     //   expect(viking.strength).toEqual(strength);
     // });
@@ -105,21 +105,21 @@ describe('Viking', () => {
     // it('should be a function', () => {
     //   expect(typeof viking.receiveDamage).toBe('function');
     // });
-    //
+    
     // it('should receive 1 argument (the damage)', () => {
     //   expect(viking.receiveDamage.length).toEqual(1);
     // });
-    //
+    
     // it('should remove the received damage from the health property', () => {
     //   viking.receiveDamage(50);
     //   expect(viking.health).toEqual(health - 50);
     // });
-    //
+    
     // it('should return "NAME has received DAMAGE points of damage", if the Viking is still alive', () => {
     //   expect(viking.receiveDamage(50)).toEqual(`${name} has received 50 points of damage`);
     //   expect(viking.receiveDamage(75)).toEqual(`${name} has received 75 points of damage`);
     // });
-    //
+    
     // it('should return "NAME has died in act of combat", if the Viking dies', () => {
     //   expect(viking.receiveDamage(health)).toEqual(`${name} has died in act of combat`);
     // });
