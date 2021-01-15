@@ -37,15 +37,15 @@ receiveDamage(damage){
     this.health=this.health-damage
    
     if (this.health>=damage){
-       return this.name `has received ${damage} points of damage`
+       return this.name + " has received " + damage + " points of damage"
     }
     else 
-      return this.name `has died in act of combat`
+      return this.name + " has died in act of combat"
     }   
 
 
 battleCry(){
-    return `Odin Owns You All!`
+    return "Odin Owns You All!"
     }   
 }
 
@@ -77,26 +77,49 @@ class War {
 
 
 
-addViking(Viking1){
-    this.vikingArmy=[Viking1]
+addViking(viking1){
+    this.vikingArmy.push(viking1)
 }
 
 
 
-addSaxon(){
+addSaxon(saxon1){
+    this.saxonArmy.push(saxon1)
+}
+
+
+vikingAttack(){
+//1.elegir saxon al azar
+//2. conseguir vikingo fuerza
+let saxon1
+let viking1
+let saxonArmy
+
+    saxon1=Math.floor(Math.random()*saxonArmy.length)
+    viking1=Math.floor(Math.random()*vikingArmy.length)
+    saxon1.receiveDamage(viking1.strength)
+ 
+}
+
+
+
+
+
+
+
+
+
+saxonAttack(){
 
 }
 
 
-vikingAttack(){}
-saxonAttack(){}
+
+
+
+
+
 showStatus(){}
-
-
-
-
-
-//
 
 
 
