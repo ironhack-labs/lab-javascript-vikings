@@ -93,19 +93,12 @@ vikingAttack(){
 //2. conseguir vikingo fuerza
 let saxon1
 let viking1
-let saxonArmy
 
-    saxon1=Math.floor(Math.random()*saxonArmy.length)
+    saxon1=Math.floor(Math.random()*saxonArmy)
     viking1=Math.floor(Math.random()*vikingArmy.length)
     saxon1.receiveDamage(viking1.strength)
- 
+    
 }
-
-
-
-
-
-
 
 
 
@@ -116,19 +109,7 @@ saxonAttack(){
 
 
 
-
-
-
 showStatus(){}
-
-
-
-
-
-
-
-
-
 
 }
 
