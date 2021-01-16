@@ -10,7 +10,7 @@ class Soldier {
   }
 
   receiveDamage(damage) {
-    this.health = Math.max(this.health - Math.abs(damage), 0);
+    this.health = this.health - damage;
   }
 }
 
@@ -22,7 +22,7 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-    this.health = Math.max(this.health - Math.abs(damage), 0);
+    this.health = this.health - damage;
     if (this.health > 0) {
       return `${this.name} has received ${damage} points of damage`;
     }
@@ -40,7 +40,7 @@ class Saxon extends Soldier {
     super(health, strength);
   }
   receiveDamage(damage) {
-    this.health = Math.max(this.health - Math.abs(damage), 0);
+    this.health = this.health - damage;
     if (this.health > 0) {
       return `A Saxon has received ${damage} points of damage`;
     }
@@ -63,7 +63,43 @@ class War {
     this.saxonArmy.push(saxon);
   }
 
-  vikingAttack() {}
-  saxonAttack() {}
-  showStatus() {}
+  vikingAttack() {
+    let result = this.soldiersAttack("viking");
+    return result;
+  }
+  saxonAttack() {
+    return this.soldiersAttack("saxon");
+  }
+
+  soldiersAttack(side) {
+    let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    let viking = this.vikingArmy[vikingIndex];
+    let saxon = this.saxonArmy[saxonIndex];
+    let resultAttack = "";
+    if (side == "viking") {
+      resultAttack = saxon.receiveDamage(viking.attack());
+      if (saxon.health <= 0) {
+        this.saxonArmy = this.saxonArmy.filter((soldiers) => soldiers != saxon);
+      }
+    } else {
+      resultAttack = viking.receiveDamage(saxon.attack());
+      if (viking.health <= 0) {
+        this.vikingArmy = this.vikingArmy.filter(
+          (soldiers) => soldiers != viking
+        );
+      }
+    }
+    return resultAttack;
+  }
+
+  showStatus() {
+    if (this.vikingArmy.length == 0) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else if (this.saxonArmy.length == 0) {
+      return "Vikings have won the war of the century!";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+  }
 }
