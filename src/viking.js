@@ -1,3 +1,5 @@
+let www;
+let qqq;
 // Soldier
 class Soldier {
   constructor(health, strength) {
@@ -45,25 +47,9 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  w;
   constructor() {
     this.vikingArmy = [];
     this.saxonArmy = [];
-  }
-
-  firstArmyAttacks(firstArmy, secondArmy) {
-    // there's a reason for which this not DRY
-    // whenever defined as a function, jasmine cries...
-    let firstSoldier = Math.floor(Math.random() * firstArmy.length);
-    let secondSoldier = Math.floor(Math.random() * secondArmy.length);
-
-    let result = secondArmy[secondSoldier].receiveDamage(
-      firstArmy[firstSoldier].strength
-    );
-    if (secondArmy[secondSoldier].health <= 0) {
-      secondArmy.splice(secondSoldier, 1);
-    }
-    return result;
   }
 
   addViking(viking) {
@@ -72,6 +58,23 @@ class War {
 
   addSaxon(saxon) {
     this.saxonArmy.push(saxon);
+  }
+
+  randomSoldier(army) {
+    return Math.floor(Math.random() * army.length);
+  }
+
+  firstArmyAttacks(firstArmy, secondArmy) {
+    let firstSoldier = this.randomSoldier(firstArmy);
+    let secondSoldier = this.randomSoldier(secondArmy);
+
+    let result = secondArmy[secondSoldier].receiveDamage(
+      firstArmy[firstSoldier].strength
+    );
+    if (secondArmy[secondSoldier].health <= 0) {
+      secondArmy.splice(secondSoldier, 1);
+    }
+    return result;
   }
 
   vikingAttack() {
