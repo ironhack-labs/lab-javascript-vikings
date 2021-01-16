@@ -1,14 +1,12 @@
-let www;
-let qqq;
 // Soldier
 class Soldier {
   constructor(health, strength) {
     this.health = health;
     this.strength = strength;
   }
-  attack = function () {
-    return this.strength;
-  };
+
+  attack = () => this.strength; // arrow functions para toda la vida!
+
   receiveDamage = function (damage) {
     this.health -= damage;
   };
@@ -20,14 +18,14 @@ class Viking extends Soldier {
     super(health, strength);
     this.name = name;
   }
+
   receiveDamage = function (damage) {
     this.health -= damage;
-    if (this.health > 0) {
-      return `${this.name} has received ${damage} points of damage`;
-    } else {
-      return `${this.name} has died in act of combat`;
-    }
+    return this.health > 0
+      ? `${this.name} has received ${damage} points of damage`
+      : `${this.name} has died in act of combat`;
   };
+
   battleCry = function () {
     return "Odin Owns You All!";
   };
@@ -37,11 +35,9 @@ class Viking extends Soldier {
 class Saxon extends Soldier {
   receiveDamage = function (damage) {
     this.health -= damage;
-    if (this.health > 0) {
-      return `A Saxon has received ${damage} points of damage`;
-    } else {
-      return `A Saxon has died in combat`;
-    }
+    return this.health > 0
+      ? `A Saxon has received ${damage} points of damage`
+      : `A Saxon has died in combat`;
   };
 }
 
@@ -67,7 +63,6 @@ class War {
   firstArmyAttacks(firstArmy, secondArmy) {
     let firstSoldier = this.randomSoldier(firstArmy);
     let secondSoldier = this.randomSoldier(secondArmy);
-
     let result = secondArmy[secondSoldier].receiveDamage(
       firstArmy[firstSoldier].strength
     );
