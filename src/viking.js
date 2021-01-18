@@ -64,6 +64,29 @@ class War {
     addSaxon (Saxon) {
         this.saxonArmy.push(Saxon);
     }
+
+    //SUPER BONUS
+    soldierAttack () {
+        let strength = this.attack()
+
+        if(this.name) {
+            let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+            let result = this.saxonArmy[saxonIndex].receiveDamage(strength);
+
+            if(this.saxonArmy[saxonIndex].health <= 0){  
+                this.saxonArmy.splice(saxonIndex, 1);
+            }
+            return result;
+        } else {
+            let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+            let result = this.vikingArmy[vikingIndex].receiveDamage(strength);
+
+            if(this.vikingArmy[vikingIndex].health <= 0){  
+                this.vikingArmy.splice(vikingIndex, 1);
+            }
+            return result;
+        }          
+    }
         
     vikingAttack() {
         
@@ -72,8 +95,6 @@ class War {
         let vikingStrength = this.vikingArmy[vikingIndex].strength;
         
         let result = this.saxonArmy[saxonIndex].receiveDamage(vikingStrength);
-
-        let saxonSoldier = this.saxonArmy[saxonIndex];
 
         if(this.saxonArmy[saxonIndex].health <= 0){  
             this.saxonArmy.splice(saxonIndex, 1);
