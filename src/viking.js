@@ -48,7 +48,7 @@ class Saxon extends Soldier{
 
 // War
 class War {
-    
+
     addViking()
     addSaxon()
     vikingAttack()
@@ -56,34 +56,3 @@ class War {
     showStatus()
 }
 
-// class Car {
-//     constructor(carColor, carEngine, carPotency, carDoorQuantity){
-//         this.color = carColor;
-//         this.engine = carEngine;
-//         this.potency = carPotency;
-//         this.doorsQuantity = carDoorQuantity;
-//         this.speed = 0;
-//     }
-
-//     accelerate(speed) {
-//         this.speed += speed;
-//     }
-
-//     break(speed) {
-//         this.speed -= speed;
-//     }
-
-//     turnLeft(){
-//         switch(this.direction){
-//             case 'N':
-//                 this.direction = 'W';
-//                 break;
-//             case 'N':
-//                 this.direction = 'W';
-//                 break;
-//             case 'N':
-//                 this.direction = 'W';
-//                 break;    
-//         }
-//     }
-// }
