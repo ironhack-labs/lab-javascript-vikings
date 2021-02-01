@@ -60,10 +60,18 @@ class Saxon extends Soldier {
         this.vikingArmy.push(viking);
     };
     vikingAttack(){
-        Saxon.receiveDamage(Viking.strength())
+        randomSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)];
+
+        randomViking = vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
+        randomSaxon.receiveDamage(randomViking.strength());
     };
     saxonAttack(){
+        randomSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)];
+        
+        randomViking = vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
+        randomViking.receiveDamage(randomSaxon.strength());
     };
     showStatus(){
 
