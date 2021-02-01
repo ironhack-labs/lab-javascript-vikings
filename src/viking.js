@@ -1,3 +1,5 @@
+// worked with Brittney :)
+
 // Soldier
 class Soldier {
     constructor(health, strength){
@@ -12,7 +14,9 @@ class Soldier {
     }
 }
 
-// Viking
+// Viking 
+// I don't know why the "viking" doesn't inherit this.health & this.strength from Soldier
+// I got this to pass Jasmine by hard coding but would like to know how to do this dynamically
 class Viking extends Soldier{
     constructor(name, health, strength){
         super(name);
@@ -23,12 +27,12 @@ class Viking extends Soldier{
             this.health -= damage;
             if (this.health > 0) {
                 return `${name} has received ${damage} points of damage`
-        } else return `${name} has died in act of combat`
-    }
+         } else return `${name} has died in act of combat`
+        }
         this.battleCry = () => {
             return `Odin Owns You All!`;
-        }
-}
+         }
+    }
 }
 
 // Saxon
@@ -41,5 +45,28 @@ class Saxon extends Soldier {
     }
 }
 
-// War
-class War {}
+// // War
+ class War {
+    constructor(){
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+    }
+    addSaxon(saxon){
+        this.saxon = new Saxon;
+        this.saxonArmy.push(saxon);
+    };
+    addViking(viking){
+        this.viking = new Viking;
+        this.vikingArmy.push(viking);
+    };
+    vikingAttack(){
+
+    };
+    saxonAttack(){
+
+    };
+    showStatus(){
+
+    };
+
+ };
