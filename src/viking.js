@@ -60,7 +60,7 @@ class Saxon extends Soldier {
         this.vikingArmy.push(viking);
     };
     vikingAttack(){
-
+        Saxon.receiveDamage(Viking.strength())
     };
     saxonAttack(){
 
