@@ -1,11 +1,11 @@
 // Soldier
 class Soldier {
     constructor (health, strength) {
-        this.health = health
-        this.strength = strength
+        this.health = health;
+        this.strength = strength;
     }
     attack() {
-        return this.strength
+        return this.strength;
     }
     receiveDamage(damage) {
         this.health -= damage;
@@ -16,7 +16,7 @@ class Soldier {
 class Viking extends Soldier {
     constructor (name, health, strength) {
         super(health, strength)
-        this.name = name
+        this.name = name;
     }
     receiveDamage(damage) {
         this.health -= damage
@@ -47,19 +47,53 @@ class Saxon extends Soldier {
 
 // War
 class War {
-vikingArmy = [] 
-   saxonArmy = []
-   addViking(Viking) {
-    this.vikingArmy.push(Viking)
+    constructor () {
+    this.vikingArmy = []; 
+    this.saxonArmy = [];
+    }
+   addViking(viking) {
+    this.vikingArmy.push(viking)
    }
-   addSaxon(Saxon) {
-    this.saxonArmy.push(Saxon)
+   addSaxon(saxon) {
+    this.saxonArmy.push(saxon)
    }
    vikingAttack() {
-   const Saxon1 = new Saxon(Math.floor(Math.random*100), Math.floor(Math.random*100))
-   const Viking1 = new Viking(Math.floor(Math.random*100), Math.floor(Math.random*100), "ratay")
-   Saxon1.receiveDamage(Viking1.strength)
+    const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+    const poorSaxon = this.saxonArmy[saxonIndex];
+    const badViking = this.vikingArmy[vikingIndex];
+
+    const damage = poorSaxon.receiveDamage(badViking.strength);
+    
+    if (poorSaxon.health < 0) {
+        this.saxonArmy.splice(saxonIndex, 1);
+    };
+    return damage;
+   }
+   saxonAttack() {
+    const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+    const poorViking = this.vikingArmy[vikingIndex];
+    const badSaxon = this.saxonArmy[saxonIndex];
+
+    const damage = poorViking.receiveDamage(badSaxon.strength);
+    
+    if (poorViking.health <= 0) {
+        this.vikingArmy.splice(vikingIndex, 1);
+    };
+    return damage;
+   }
+   showStatus() {
+    if (!this.saxonArmy.length) {
+        return 'Vikings have won the war of the century!';
+    }
+    if (!this.vikingArmy.length) {
+        return 'Saxons have fought for their lives and survived another day...';
+    }
+    return 'Vikings and Saxons are still in the thick of battle.';
    }
 }
 
-// Armies Attack
+
