@@ -49,26 +49,52 @@ class Saxon extends Soldier {
         this.saxonArmy = [];
     }
     addSaxon(saxon){
-        this.saxon = new Saxon;
+        // this.saxon = new Saxon;
         this.saxonArmy.push(saxon);
     };
     addViking(viking){
-        this.viking = new Viking;
+        // this.viking = new Viking;
         this.vikingArmy.push(viking);
     };
     vikingAttack(){
-        randomSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)];
+        // const randomSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)];
 
-        randomViking = vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        // const randomViking = vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-        randomSaxon.receiveDamage(randomViking.strength());
+        // randomSaxon.receiveDamage(randomViking.strength());
+
+        const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+        const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+        const poorSaxon = this.saxonArmy[saxonIndex];
+        const badViking = this.vikingArmy[vikingIndex];
+
+        const damage = poorSaxon.receiveDamage(badViking.attack());
+
+        if (poorSaxon.health <= 0){
+            this.saxonArmy.splice(saxonIndex, 1);
+        }
+        return damage;
     };
     saxonAttack(){
-        randomSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)];
+        // randomSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)];
         
-        randomViking = vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        // randomViking = vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-        randomViking.receiveDamage(randomSaxon.strength());
+        // randomViking.receiveDamage(randomSaxon.strength());
+
+        const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+        const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+        const poorViking = this.vikingArmy[vikingIndex];
+        const badSaxon = this.saxonArmy[saxonIndex];
+
+        const damage = poorViking.receiveDamage(badSaxon.attack());
+
+        if (poorViking.health <= 0){
+            this.vikingArmy.splice(vikingIndex, 1);
+        }
+        return damage;
     };
     showStatus(){
 
