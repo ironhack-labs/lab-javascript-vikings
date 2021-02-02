@@ -15,15 +15,11 @@ class Soldier {
 }
 
 // Viking 
-// I don't know why the "viking" doesn't inherit this.health & this.strength from Soldier
-// I got this to pass Jasmine by hard coding but would like to know how to do this dynamically
 
 class Viking extends Soldier{
     constructor(name, health, strength){
-        super(name);
+        super(health, strength);
         this.name = name;
-        this.health = health;
-        this.strength = strength;
         this.receiveDamage = (damage) => {
             this.health -= damage;
             if (this.health > 0) {
