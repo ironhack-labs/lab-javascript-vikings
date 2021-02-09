@@ -51,8 +51,12 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
-  addViking(vikingObject) {}
-  addSaxon(saxonObject) {}
+  addViking(vikingObject) {
+    this.vikingArmy.push(vikingObject);
+  }
+  addSaxon(saxonObject) {
+    this.saxonArmy.push(saxonObject);
+  }
   vikingAttack() {}
   saxonAttack() {}
   showStatus() {
@@ -63,5 +67,6 @@ class War {
     } else {
       return "Vikings and Saxons are still in the thick of battle.";
     }
+
   }
 }
