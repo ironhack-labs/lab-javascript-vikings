@@ -48,23 +48,54 @@ class Saxon extends Soldier {
 
   receiveDamage(theDamage) {
     super.receiveDamage(theDamage);
-    console.log(this.health, theDamage)
+    //console.log(this.health, theDamage)
     if (this.health > 0) 
     {
-        console.log(`A Saxon has received ${theDamage} points of damage`)
+        //console.log(`A Saxon has received ${theDamage} points of damage`)
       return `A Saxon has received ${theDamage} points of damage`;
 
     } else {
-      console.log("died")
+      //console.log("died")
         return `A Saxon has died in combat`;
     }
   }
-  //if (theDamage < this.health) {
-  //  return `A Saxon has received ${theDamage} points of damage`;
-  //} else {
-  //  return `A Saxon has died in combat`;
-  //}
+  
 }
 
 // War
-//class War {}
+class War {
+    constructor(){
+this.vikingArmy = [];
+this.saxonArmy = [];
+    }
+
+    addViking(Viking) {
+        this.vikingArmy.push(Viking);
+    }
+       
+    addSaxon(Saxon){
+
+        this.saxonArmy.push(Saxon) ;
+
+    }
+    vikingAttack(){
+        
+    }
+
+    saxonAttack(){
+
+    }
+    showStatus(){
+        
+
+    }
+}
+
+
+
+
+
+
+
+
+
