@@ -51,18 +51,30 @@ addSaxon(saxon){
 }
 
 //Shorter version
-// attack(typeofAttack){
-//     if (typeofAttack==='vikingAttack'){attackerArmy=this.vikingArmy ; victimArmy=this.saxonArmy}
-//     else{attackerArmy=this.saxonArmy; victimArmy=this.vikingArmy}
-//     let indexAttacker = Math.floor(Math.random() * this.attackerArmy.length)
-//     let indexVictim = Math.floor(Math.random() * this.victimArmy.length)
+// isVikingAttack(isVikingAttack=true){
+//     if (isVikingAttack){
+//         attackerArmy=this.vikingArmy ; 
+//         victimArmy=this.saxonArmy}
+//     else{
+//         attackerArmy=this.saxonArmy; 
+//         victimArmy=this.vikingArmy
+//     }
 
-//     let victimToBeHit = this.victimArmy[indexVictim]
-//     let attackerToStrike = this.attackerArmy[indexAttacker]
+//     // attackerArmy= isVikingAttack ? this.vikingArmy : this.saxonArmy; 
+//     // victimArmy= !isVikingAttack ? this.vikingArmy : this.saxonArmy;
+
+//     const random =army=>  Math.floor(Math.random() * army.length)
+    
+//     const indexAttacker = random(attackerArmy)
+//     const indexVictim = random(victimArmy)
+
+//     const victimToBeHit = this.victimArmy[indexVictim]
+//     const attackerToStrike = this.attackerArmy[indexAttacker]
+
 //     if (victimToBeHit.health<=attackerToStrike.strength) {this.victimArmy.splice(indexVictim, 1)}
 //     return victimToBeHit.receiveDamage(attackerToStrike.strength)
 //     }
-// }
+
 
 
 vikingAttack(){
