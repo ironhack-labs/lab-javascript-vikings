@@ -216,55 +216,53 @@ describe('War', () => {
   });
 
   describe('class', () => {
-    // it('should receive 0 arguments', () => {
-    //   expect(War.length).toEqual(0);
-    // });
+    it('should receive 0 arguments', () => {
+    expect(War.length).toEqual(0);
+    });
+    
+    it('should assign an empty array to the vikingArmy property', () => {
+    expect(war.vikingArmy).toEqual([]);
+    });
     //
-    // it('should assign an empty array to the vikingArmy property', () => {
-    //   expect(war.vikingArmy).toEqual([]);
-    // });
-    //
-    // it('should assign an empty array to the saxonArmy property', () => {
-    //   expect(war.saxonArmy).toEqual([]);
-    // });
+    it('should assign an empty array to the saxonArmy property', () => {
+    expect(war.saxonArmy).toEqual([]);
+    });
   });
 
   describe('addViking() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof war.addViking).toBe('function');
-    // });
+    it('should be a function', () => {
+    expect(typeof war.addViking).toBe('function');
+    });
+    it('should receive 1 argument (a Viking object)', () => {
+    expect(war.addViking.length).toEqual(1);
+    });
     //
-    // it('should receive 1 argument (a Viking object)', () => {
-    //   expect(war.addViking.length).toEqual(1);
-    // });
+    it('should add the received Viking to the army', () => {
+    war.addViking(viking);
+    expect(war.vikingArmy).toEqual([viking]);
+    });
     //
-    // it('should add the received Viking to the army', () => {
-    //   war.addViking(viking);
-    //   expect(war.vikingArmy).toEqual([viking]);
-    // });
-    //
-    // it("shouldn't return anything", () => {
-    //   expect(war.addViking(viking)).toEqual(undefined);
-    // });
+    it("shouldn't return anything", () => {
+    expect(war.addViking(viking)).toEqual(undefined);
+    });
   });
 
   describe('addSaxon() method', () => {
-    // it('should be a function', () => {
-    //   expect(typeof war.addSaxon).toBe('function');
-    // });
+    it('should be a function', () => {
+    expect(typeof war.addSaxon).toBe('function');
+    });
+    it('should receive 1 argument (a Saxon object)', () => {
+    expect(war.addSaxon.length).toEqual(1);
+    });
     //
-    // it('should receive 1 argument (a Saxon object)', () => {
-    //   expect(war.addSaxon.length).toEqual(1);
-    // });
-    //
-    // it('should add the received Saxon to the army', () => {
-    //   war.addSaxon(saxon);
-    //   expect(war.saxonArmy).toEqual([saxon]);
-    // });
-    //
-    // it("shouldn't return anything", () => {
-    //   expect(war.addSaxon(saxon)).toEqual(undefined);
-    // });
+    it('should add the received Saxon to the army', () => {
+     war.addSaxon(saxon);
+    expect(war.saxonArmy).toEqual([saxon]);
+    });
+    
+    it("shouldn't return anything", () => {
+    expect(war.addSaxon(saxon)).toEqual(undefined);
+    });
   });
 
   describe('Armies Attack', () => {
@@ -274,19 +272,19 @@ describe('War', () => {
     });
 
     describe('vikingAttack() method', () => {
-      // it('should be a function', () => {
-      //   expect(typeof war.vikingAttack).toBe('function');
-      // });
+      it('should be a function', () => {
+      expect(typeof war.vikingAttack).toBe('function');
+      });
       //
-      // it('should receive 0 arguments', () => {
-      //   expect(war.vikingAttack.length).toEqual(0);
-      // });
+      it('should receive 0 arguments', () => {
+      expect(war.vikingAttack.length).toEqual(0);
+      });
       //
-      // it('should make Saxon receiveDamage() equal to the strength of a Viking', () => {
-      //   let oldHealth = saxon.health;
-      //   war.vikingAttack();
-      //   expect(saxon.health).toEqual(oldHealth - viking.strength);
-      // });
+      it('should make Saxon receiveDamage() equal to the strength of a Viking', () => {
+       let oldHealth = saxon.health;
+       war.vikingAttack();
+      expect(saxon.health).toEqual(oldHealth - viking.strength);
+      });
       //
       // it('should remove dead saxons from the army', () => {
       //   war.vikingAttack();

@@ -47,15 +47,27 @@ receiveDamage(damage){
 
     this.health = this.health - damage;
        if (this.health > 0){
-        return `${this.name} has received ${damage} points of damage`
+        return `A Saxon has received ${damage} points of damage`
      } else {
-        return `${this.name} has died in act of combat`
+        return `A Saxon has died in combat`
      }
    }
 }
 
-
 // War
 class War {
-    
+   constructor(){
+    this.vikingArmy = [];
+    this.saxonArmy =[];
+   }
+   addViking (Viking){
+   this.vikingArmy.push(Viking);
+   }
+   addSaxon (Saxon){
+      this.saxonArmy.push(Saxon);
+   }
+   vikingAttack(){
+      saxon.health = viking.strength
+      
+   }
 }
