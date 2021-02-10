@@ -30,11 +30,11 @@ receiveDamage(thedamage){
  
  if(super.receiveDamage> thedamage)
  {
-   return `${this.name } has been received  ${thedamage} + points of damage`
+   return `${super.this.name } has been received  ${thedamage} + points of damage`
 } 
 else if( super.receiveDamage < thedamage)
 {
-return this.name +"has died in act of combat"
+return super.this.name +"has died in act of combat"
 }
 }
 
