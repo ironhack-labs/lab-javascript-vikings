@@ -1,3 +1,5 @@
+/* eslint-disable max-classes-per-file */
+// Soldier
 class Soldier {
   constructor(health, strength) {
     this.health = health;
@@ -5,10 +7,11 @@ class Soldier {
   }
 
   attack() {
-    return this.strength;
+    return this.strength; 
   }
+
   receiveDamage(damage) {
-    this.health = this.health - damage;
+    this.health -= damage;
   }
 }
 
@@ -20,82 +23,136 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-    this.health = this.health - damage;
+    this.health -= damage;
 
     if (this.health <= 0) {
-      return this.name + " has died in act of combat";
-    } else {
-      return this.name + " has received " + damage + " points of damage";
+      return `${this.name} has died in act of combat`;
     }
+
+    return `${this.name} has received ${damage} points of damage`;
   }
+
   battleCry() {
-    return "Odin Owns You All!";
+    return 'Odin Owns You All!';
   }
 }
 
 // Saxon
 class Saxon extends Soldier {
   receiveDamage(damage) {
-    this.health = this.health - damage;
+    this.health -= damage;
 
     if (this.health <= 0) {
-      return "A Saxon has died in combat";
-    } else {
-      return "A Saxon has received " + damage + " points of damage";
+      return 'A Saxon has died in combat';
     }
+
+    return `A Saxon has received ${damage} points of damage`;
   }
 }
 
 // War
 class War {
-  vikingArmy = [];
-  saxonArmy = [];
-
-  addViking(viking) {
-    this.vikingArmy.push(viking);
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
   }
 
-  addSaxon(saxon) {
-    this.saxonArmy.push(saxon);
+  addViking(vikingObject) {
+    this.vikingArmy.push(vikingObject);
   }
 
-  vikingAttack() {
-    let atacante = Math.floor(Math.random() * this.vikingArmy.length);
-    let atacado = Math.floor(Math.random() * this.saxonArmy.length);
+  addSaxon(saxonObject) {
+    this.saxonArmy.push(saxonObject);
+  }
 
-    const result = this.saxonArmy[atacado].receiveDamage(
-      this.vikingArmy[atacante].strength
-    );
+  vikingAttack(viking, saxon, saxonIndex) {
+    const battleFeedback = saxon.receiveDamage(viking.strength);
 
-    if (this.saxonArmy[atacado].health <= 0) {
-      this.saxonArmy.splice(this.saxonArmy[atacado], 1);
+    if (saxon.health <= 0) {
+      this.saxonArmy.splice(saxonIndex, 1);
     }
 
-    return result;
+    return battleFeedback;
   }
 
-  saxonAttack() {
-    let atacante = Math.floor(Math.random() * this.saxonArmy.length);
-    let atacado = Math.floor(Math.random() * this.vikingArmy.length);
+  saxonAttack(saxon, viking, vikingIndex) {
+    const battleFeedback = viking.receiveDamage(saxon.strength);
 
-    const result2 = this.vikingArmy[atacado].receiveDamage(
-      this.saxonArmy[atacante].strength
-    );
-
-    if (this.vikingArmy[atacado].health <= 0) {
-      this.vikingArmy.splice(this.vikingArmy[atacado], 1);
+    if (viking.health <= 0) {
+      this.vikingArmy.splice(vikingIndex, 1);
     }
 
-    return result2;
+    return battleFeedback;
+  }
+
+  attack(soldierType) {
+    if (this.vikingArmy.length === 0 || this.saxonArmy.length === 0) {
+      return 'Both armies needs soldiers to battle agains each other';
+    }
+
+    const vikingAndSaxonMinIndex = 0;
+    const vikingMaxIndex = this.vikingArmy.length;
+    const saxonMaxIndex = this.saxonArmy.length;
+
+    const vikingIndex = Math.floor(Math.random() * (vikingMaxIndex - vikingAndSaxonMinIndex)) + vikingAndSaxonMinIndex;
+    const saxonIndex = Math.floor(Math.random() * (saxonMaxIndex - vikingAndSaxonMinIndex)) + vikingAndSaxonMinIndex;
+
+    const viking = this.vikingArmy[vikingIndex];
+    const saxon = this.saxonArmy[saxonIndex];
+
+    let battleFeedback = '';
+
+    switch(soldierType.toLowerCase()) {
+      case 'viking':
+        battleFeedback = this.vikingAttack(viking, saxon, saxonIndex);
+        break;
+      case 'saxon':
+        battleFeedback = this.saxonAttack(saxon, viking, vikingIndex);
+        break;
+      default:
+        return 'soldierType argument should be "viking" or "saxon"';
+    }
+
+    return battleFeedback;
   }
 
   showStatus() {
-    if (this.saxonArmy.length <= 0) {
-      return "Vikings have won the war of the century!";
-    } else if (this.vikingArmy.length <= 0) {
-      return "Saxons have fought for their lives and survived another day...";
-    } else {
-      return "Vikings and Saxons are still in the thick of battle.";
+    if (this.vikingArmy.length === 0) {
+      return 'Saxons have fought for their lives and survived another day...';
     }
+
+    if (this.saxonArmy.length === 0) {
+      return 'Vikings have won the war of the century!';
+    }
+
+    return 'Vikings and Saxons are still in the thick of battle.';
   }
 }
+
+const war = new War();
+
+const conan = new Viking('Conan', 150, 10);
+const saxon1 = new Saxon(80, 8);
+
+war.addViking(conan);
+war.addSaxon(saxon1);
+
+console.log(war.attack('viking'));
+
+console.log(war.showStatus());
+
+console.log(war.attack('saxon'));
+
+console.log(war.showStatus());
+debugger
+console.log(war.attack('viking'));
+console.log(war.attack('viking'));
+console.log(war.attack('viking'));
+console.log(war.attack('viking'));
+console.log(war.attack('viking'));
+console.log(war.attack('viking'));
+console.log(war.attack('viking'));
+
+console.log(war.showStatus());
+
+
