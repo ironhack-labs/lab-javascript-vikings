@@ -80,7 +80,22 @@ class War {
         }
         return result
     }
-    showStatus(){
 
+
+    showStatus(){
+        if ((this.saxonArmy.length === 0) || (this.vikingArmy.length === 0)){
+        if (this.saxonArmy.length === 0){return `Vikings have won the war of the century!`}
+        if (this.vikingArmy.length === 0){return `Saxons have fought for their lives and survived another day...`}
+    }else return (`Vikings and Saxons are still in the thick of battle.`)
+    }
+    //SUPERBONUS
+    armyAttack(armyAtt,armyDef){
+        const randAtt = (Math.floor(Math.random() * this.armyAtt.length))
+        const randDef = (Math.floor(Math.random() * this.armyDef.length))
+        const result = this.armyDef[randDef].receiveDamage(this.armyAtt[randAtt].strength)
+        if (this.armyDef[randDef].health <= 0){
+            this.armyDef.splice(randDef,1)
+        }
+        return result
     }
 }
