@@ -1,78 +1,71 @@
 // Soldier
 class Soldier {
-    constructor(health, strength){
+    constructor(health, strength) {
         this.health = health;
-        this.strength = strength;
+        this.strength = strength
     }
-    attack(){
-        return this.strength;
+    attack() {
+        return this.strength
     }
-    receiveDamage(damage){
-        this.health -= damage;
+    receiveDamage(damage) {
+        this.health = this.health - damage
     }
 }
-
 // Viking
-class Viking extends Soldier{
-    constructor(name, health, strength){
+class Viking extends Soldier {
+    constructor(name, health, strength) {
         super(health, strength);
         this.name = name;
         this.health = health;
-        this.strength = strength;
+        this.strength = strength
     }
-    attack(){
-        return this.strength;
-    }
-    receiveDamage(damage){
-        if(damage < this.health){
-            this.health -= damage;
+    receiveDamage(damage) {
+        this.health = this.health - damage;
+        if (this.health > 0) {          
             return `${this.name} has received ${damage} points of damage`
-        }   
-        else if(damage >= this.health){
+        } else{
             return `${this.name} has died in act of combat`
         }
     }
-    battleCry(){
-        return 'Odin Owns You All!'
+    battleCry() {
+        return "Odin Owns You All!"
     }
 }
-
 // Saxon
-class Saxon extends Soldier{
-    constructor(health, strength){
-        super(health, strength);
-        this.health = health;
-        this. strength = strength;
-    }
-    attack(){
-        return this.strength;
-    }
-    receiveDamage(damage){
-        if(damage <this.health){
-            this.health -= damage;
+class Saxon extends Soldier {
+    receiveDamage(damage) {
+        this.health = this.health - damage;
+        if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`
-        }   
-        else if(damage >= this.health){
+        } else {
             return `A Saxon has died in combat`
         }
     }
 }
-
 // War
 class War {
-    addViking(){
-
+    vikingArmy = [ ]
+    saxonArmy = [ ]
+    addViking(Viking) {
+        this.vikingArmy.push(Viking)
     }
-    addSaxon(){
-
+    addSaxon(Saxon) {
+        this.saxonArmy.push(Saxon)
     }
-    vikingAttack(){
+    vikingAttack() {
+        let indexViking = Math.floor(Math.random()*this.vikingArmy.length);
+        let objViking = this.vikingArmy[indexViking];
+        let indexSaxon = Math.floor(Math.random()*this.saxonArmy.length);
+        let objSaxon = this.saxonArmy[indexSaxon];
 
+        let damSaxon = objSaxon.receiveDamage(objViking.strength);
+        if (objSaxon.health <= 0){
+            this.saxonArmy.splice(indexSaxon, 1);
+        } 
+       return damSaxon;
     }
-    saxonAttack(){
-
+    saxonAttack() {
     }
-    showStatus(){
-
-}
+    showStatus() {
+    }
 }
