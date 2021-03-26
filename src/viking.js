@@ -57,22 +57,24 @@ class War {
         this.saxonArmy.push(saxon);
     }
     vikingAttack() {
-        let saxon = this.saxonArmy[0];
-        let damage = this.vikingArmy[0].strength;
-        let health = this.saxonArmy[0].health;
+        let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        let damage = viking.strength;
+        let health = saxon.health;
         
-        if(health <= damage) {this.saxonArmy.pop()}
+        if(health <= damage) {this.saxonArmy.pop(saxon)}
 
         return saxon.receiveDamage(damage);
         
     }
     saxonAttack() {
-        let viking = this.vikingArmy[0];
-        let damage = this.saxonArmy[0].strength;
-        let health = this.vikingArmy[0].health;
+        let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        let damage = saxon.strength;
+        let health = viking.health;
         
         if(health <= damage) {
-            this.vikingArmy.pop()
+            this.vikingArmy.pop(viking)
         } 
         
         return viking.receiveDamage(damage);
@@ -80,7 +82,8 @@ class War {
     showStatus() {
         if (this.saxonArmy.length === 0) {
            return `Vikings have won the war of the century!` 
-        } else if(this.vikingArmy.length === 0) {
+        }
+        if(this.vikingArmy.length === 0) {
             return `Saxons have fought for their lives and survived another day...`
         }
         return `Vikings and Saxons are still in the thick of battle.`
