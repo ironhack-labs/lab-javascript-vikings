@@ -13,6 +13,9 @@ class Soldier {
     }
 }
 
+function random(array) {
+    return array[Math.floor((Math.random(array) * array.length))];
+}
 
 // Viking
 class Viking extends Soldier {
@@ -52,9 +55,31 @@ class Saxon extends Soldier {
     }
 }
 
-
-
-
-
 // War
-class War {}
+class War {
+    constructor() {}
+    vikingArmy = [];
+    saxonArmy = [];
+
+    addViking(viking) {
+        this.vikingArmy.push(viking);
+    };
+
+    addSaxon(saxon) {
+        this.saxonArmy.push(saxon);
+    };
+
+    vikingAttack() {
+        let randomSaxon = random(this.saxonArmy);
+        let randomViking = random(this.vikingArmy);
+        if (randomSaxon.health <= randomViking.strength) {
+            this.saxonArmy.splice(randomSaxon, 1);
+            return;
+        } else if (randomSaxon.health > randomViking.strength) {
+            return randomSaxon.receiveDamage(randomViking.strength);
+        }
+    };
+
+    // saxonAttack();
+    // showStatus();
+}
