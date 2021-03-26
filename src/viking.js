@@ -36,8 +36,8 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
-    constructor(health, strenght){
-        super(health, strenght)
+    constructor(health, strength){
+        super(health, strength)
     }
 
     receiveDamage(damage){
@@ -69,13 +69,14 @@ class War {
     vikingAttack(){
         let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        let newHealth = randomSaxon.health - randomViking.strength;
-        
-        if(newHealth <= 0){
-            return this.saxonArmy.pop(randomSaxon)
+        let health = randomSaxon.health;
+        let damage = randomViking.strength;
+    
+        if(health <= damage){
+           this.saxonArmy.pop(randomSaxon)
         }
 
-        return randomSaxon.receiveDamage(randomViking.strength);
+        return randomSaxon.receiveDamage(damage);
     }
 
     saxonAttack(){
@@ -91,16 +92,12 @@ class War {
     }
 
     showStatus(){
-        if(this.saxonArmy.length === 1 && this.vikingArmy.length === 1){
-            return "Vikings and Saxons are still in the thick of battle."
-        }
-
         if(this.saxonArmy.length === 0){
             return "Vikings have won the war of the century!"
-        } 
-
-        if (this.vikingArmy.length === 0){
+        } else if (this.vikingArmy.length === 0){
             return "Saxons have fought for their lives and survived another day..."
-        } 
+        } else {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
     }
 }
