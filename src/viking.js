@@ -54,17 +54,31 @@ class War {
         this.vikingArmy=[]
         this.saxonArmy=[]
     }
-    addViking(){
-
+    addViking(viking){
+        this.vikingArmy.push(viking)
     }
-    addSaxon(){
-
+    addSaxon(saxon){
+        this.saxonArmy.push(saxon)
     }
     vikingAttack(){
+        const saxRand = (Math.floor(Math.random() * this.saxonArmy.length))
+        const vikRand = (Math.floor(Math.random() * this.vikingArmy.length))
+        const result = this.saxonArmy[saxRand].receiveDamage(this.vikingArmy[vikRand].strength)
+        if (this.saxonArmy[saxRand].health <= 0){
+            this.saxonArmy.splice(saxRand,1)
+        }
+        return result
 
+        
     }
     saxonAttack(){
-
+        const saxRand = (Math.floor(Math.random() * this.saxonArmy.length))
+        const vikRand = (Math.floor(Math.random() * this.vikingArmy.length))
+        const result = this.vikingArmy[vikRand].receiveDamage(this.saxonArmy[saxRand].strength)
+        if (this.vikingArmy[vikRand].health <= 0){
+            this.vikingArmy.splice(vikRand,1)
+        }
+        return result
     }
     showStatus(){
 
