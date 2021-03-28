@@ -72,9 +72,11 @@ class War {
 
     saxonAttack() {
 
-        let selectedViking = Math.floor(Math.random() * this.vikingArmy.length)
+        const selectedViking = Math.floor(Math.random() * this.vikingArmy.length)
 
-        let selectedSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+        const selectedSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+
+        const message = `${this.vikingArmy[selectedViking].name} has received ${this.saxonArmy[selectedSaxon].strength} points of damage`
 
         this.vikingArmy[selectedViking].receiveDamage(this.saxonArmy[selectedSaxon].strength)
 
@@ -82,7 +84,7 @@ class War {
         this.vikingArmy.splice(selectedViking, 1)
         }
         
-        return `${this.vikingArmy[selectedViking].name} has received ${this.saxonArmy[selectedSaxon].strength} points of damage`
+        return message
     }
 
 
