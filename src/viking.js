@@ -61,21 +61,25 @@ class War {
         this.vikingArmy = [],
         this.saxonArmy = []
     }
+    
     addViking(viking){
         this.vikingArmy.push(viking);
     }
+
     addSaxon(saxon){
         this.saxonArmy.push(saxon);
     }
+
     vikingAttack(){
         let saxonSoldier = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let vikingSoldier = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         generalAttack(vikingSoldier,saxonSoldier);
     }
+
     saxonAttack(){
         let saxonSoldier = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         let vikingSoldier = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        generalAttack(saxonSoldier,viking)
+        generalAttack(saxonSoldier,vikingSoldier);
     }
 
     generalAttack(soldier,victim){
