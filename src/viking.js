@@ -59,9 +59,10 @@ class Saxon extends Soldier{
 
 // War
 class War {
+    
+        vikingArmy = [ ];
+        saxonArmy = [ ];
 
-    vikingArmy = [ ];
-    saxonArmy = [ ];
 
 
     addViking(Viking){
@@ -74,20 +75,41 @@ class War {
     }
 
     vikingAttack(){
-        let saxonSoldier = this.saxonArmy(Math.floor(Math.random() * this.saxonArmy.length));
-        let vikingArmy = this.vikingArmy(Math.floor(Math.random() * this.vikingArmy.length));
-        
+        let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        let vFight = randomSaxon.receiveDamage(randomViking.strength);
+        if (randomSaxon.health <= 0){
+            this.saxonArmy.pop(randomSaxon);
+        }
+        return vFight
     }
 
     saxonAttack(){
-        let saxonSoldier = this.saxonArmy(Math.floor(Math.random() * this.saxonArmy.length));
-        let vikingArmy = this.vikingArmy(Math.floor(Math.random() * this.vikingArmy.length));
+        let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        let sFight = randomViking.receiveDamage(randomSaxon.strength);
+        if  (randomViking.health <= 0){
+            this.vikingArmy.pop(randomViking);
+        }
+        return sFight
 
     }
 
     showStatus(){
+        let resultMessage;
+        if (this.saxonArmy.length == 0){
+            resultMessage = "Vikings have won the war of the century!";
+        }
+
+            else if (this.vikingArmy.length == 0){
+                resultMessage = "Saxons have fought for their lives and survived another day..."
+            }
+            else {
+                resultMessage = "Vikings and Saxons are still in the thick of battle."
+            }
+        
+        return resultMessage
 
     }
 
-    
 }
