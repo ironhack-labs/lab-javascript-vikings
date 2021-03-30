@@ -51,7 +51,20 @@ class War {
   addSaxon(viking) {
     this.saxonArmy.push(viking);
   }
+  batleAttack(attacker, defendant) {
+    let inddefendant = Math.floor(Math.random() * this[defendant].length);
+    let indattacker = Math.floor(Math.random() * this[attacker].length);
+    let randdefendant = this[defendant][inddefendant];
+    let randattacker = this[attacker][indattacker];
+    let result = randdefendant.receiveDamage(randattacker.strength);
+    if (randdefendant.health < 0) {
+      this[defendant].splice(inddefendant, 1);
+    }
+    return result;
+  }
   vikingAttack() {
+    return this.batleAttack('vikingArmy', 'saxonArmy');
+    // below the old code bevore refactor. can be removed
     let indSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     let indViking = Math.floor(Math.random() * this.vikingArmy.length);
     let randSaxon = this.saxonArmy[indSaxon];
@@ -63,6 +76,8 @@ class War {
     return result;
   }
   saxonAttack() {
+    return this.batleAttack('saxonArmy', 'vikingArmy');
+    // below the old code bevore refactor. can be removed
     let indSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     let indViking = Math.floor(Math.random() * this.vikingArmy.length);
     let randSaxon = this.saxonArmy[indSaxon];
