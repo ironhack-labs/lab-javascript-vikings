@@ -73,14 +73,33 @@ class War {
         }
         return battleResult;
     }
+    ///*---POSSIBLE ALTERNATIVE GENERIC ATTACK METHOD---*///
+    // Attack(attacker) {
+    //     let atackingArmy;
+    //     let defendingArmy;
+    //     if (attacker instanceof Viking) {
+    //         atackingArmy = this.vikingArmy;
+    //         defendingArmy = this.saxonArmy;
+    //     }
+    //     else {
+    //         attackingArmy = this.saxonArmy;
+    //         defendingArmy = this.vikingArmy
+    //     }
+    //     let randAtt = Math.floor(Math.random() * this.attackingArmy.length);
+    //     let randDef = Math.floor(Math.random() * this.defendingArmy.length);
+    //     let battleResult = this.defendingArmy[randDef].receiveDamage(this.attackingArmy[randAtt].strength);
+    //     if (battleResult.includes('died')){
+    //         this.defendingArmy.splice(randDef,1);
+    //     }
+        
+    // }
     showStatus() {
-        if (this.saxonArmy.length<=0){
+        if (this.saxonArmy.length <= 0) {
             return 'Vikings have won the war of the century!';
         }
-        if (this.vikingArmy.length<=0){
+        if (this.vikingArmy.length <= 0) {
             return 'Saxons have fought for their lives and survived another day...'
-        }
-        else {
+        } else {
             return 'Vikings and Saxons are still in the thick of battle.';
         }
     }
