@@ -9,7 +9,7 @@ We have learned Object-oriented programming and how `class` and inheritance work
 ## Requirements
 
 - Fork this repo
-- Clone this repo
+- Clone this repocsfs
 
 ## Submission
 
