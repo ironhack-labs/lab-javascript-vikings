@@ -34,8 +34,8 @@ We have got a _test suite_ for our constructor functions and their methods but t
 If you open `tests/viking.spec.js` and take a look at **lines 11-21**, You should see some `it()` calls (tests) that are commented out. Let's start by uncommenting **lines 11-13**:
 
 ```javascript
-describe('constructor function', () => {
-  it('should receive 2 arguments (health & strength)', () => {
+describe("constructor function", () => {
+  it("should receive 2 arguments (health & strength)", () => {
     expect(Soldier.length).toEqual(2);
   });
 
