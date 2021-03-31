@@ -62,16 +62,15 @@ class War {
         this.saxonArmy = [];
     };
 
-    addViking(viking){
-        this.viking = viking;
-        viking = new Viking();//do I have to put the argument name here too?
-        this.vikingArmy.push(this.viking);
+    addViking(viking){ //if want to instigate here, it should take the arguments name health and strength.
+    //    // this.vikingData = vikingData;
+    //     const viking = new Viking(name, health, strength);//do I have to put the argument name here too?
+    //     this.vikingArmy.push(viking); //add var from outside, so no this needed.
+        this.vikingArmy.push(viking)
     };
 
     addSaxon(saxon){
-        this.saxon = saxon;
-        saxon = new Saxon();
-        this.saxonArmy.push(this.saxon);
+        this.saxonArmy.push(saxon);//
     }
 
     vikingAttack(){
@@ -79,10 +78,10 @@ class War {
         const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
         const selectedViking = this.vikingArmy[vikingIndex];
         const selectedSaxon = this.saxonArmy[saxonIndex];
-        console.log(selectedSaxon)
+        //console.log(selectedSaxon)
         let result = selectedSaxon.receiveDamage(selectedViking.strength);
         
-        if (selectedSaxon.health < 0){
+        if (selectedSaxon.health < 1){
             this.saxonArmy.splice(saxonIndex,1); //splice
             //return `A Saxon has died in combat`; // I don't understand why the return value from the receiveDamage() method above is not autmoatically returned here?/
         }
@@ -95,25 +94,37 @@ class War {
         const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
         const selectedViking = this.vikingArmy[vikingIndex];
         const selectedSaxon = this.saxonArmy[saxonIndex];
-        let result2 = selectedViking.receiveDamage(selectedSaxon.strength);
-        if (selectedViking.health < 0){
+        let result = selectedViking.receiveDamage(selectedSaxon.strength);
+        if (selectedViking.health < 1){
             this.vikingArmy.splice(vikingIndex,1);
             //return `${this.selectedViking.name} has died in act of combat`
         }
-        return result2;
+        return result;
     };
 
     showStatus(){
         //check if array is empty
+        if (this.saxonArmy.length < 1){
+            return "Vikings have won the war of the century!";
+        }
+        if (this.vikingArmy.length < 1) {
+            return  "Saxons have fought for their lives and survived another day...";
+        }
+
+        if((this.saxonArmy.length >0) && (this.vikingArmy.length >0)){
+           return "Vikings and Saxons are still in the thick of battle."
+        }
     };
 }
 
-// addViking(pete, 5, 5); // what should it be called on?
-// addViking(steve, 5, 5);
-// addViking(marvin, 5, 5);
-// addSaxon(5,5);
-// addSaxon(5,5);
-// addSaxon(5,5);
-// addSaxon(5,5);
+const vikingSaxonWar = new War();
+//vikingSaxonWar.addViking('Blatand', 5, 5); 
+// vikingSaxonWar.addViking('Blatandson', 5, 5);
+// vikingSaxonWar.addViking('Thor', 5, 5);
+const saxonOne = new Saxon(5,5);
+vikingSaxonWar.addSaxon(saxonOne);
+// vikingSaxonWar.addSaxon(5,5);
+// vikingSaxonWar.addSaxon(5,5);
+// vikingSaxonWar.addSaxon(5,5);
 
-// vikingAttack();
+// vikingSaxonWar.vikingAttack();
