@@ -42,11 +42,13 @@ class Saxon extends Soldier{
     }
 
     receiveDamage(damage){
+        let saxonInjured = `A Saxon has received ${damage} points of damage`
+        let saxonDied = `A Saxon has died in combat`
         this.health = this.health - damage;
         if (this.health > 0){
-            return `A Saxon has received ${damage} points of damage`;
+            return saxonInjured;
         } else {
-            return `A Saxon has died in combat`;
+            return saxonDied;
         }
     }
 
@@ -68,25 +70,42 @@ class War {
     addSaxon(saxon){
         this.saxon = saxon;
         this.saxonArmy.push(this.saxon);
-    };
+    }
 
     vikingAttack(){
-        const selectedViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        const selectedSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        selectedSaxon.receiveDamage(selectedViking.strength);
+        const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+        const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+        const selectedViking = this.vikingArmy[vikingIndex];
+        const selectedSaxon = this.saxonArmy[saxonIndex];
+        console.log(selectedSaxon)
+        let result = selectedSaxon.receiveDamage(selectedViking.strength);
+        
         if (selectedSaxon.health < 0){
-            this.saxonArmy.pop(selectedSaxon);
+            this.saxonArmy.splice(saxonIndex,1); //splice
+            return `A Saxon has died in combat`; // I don't understand why the return value from the receiveDamage() method above is not autmoatically returned here?/
         }
+        return result;
+
     };
 
     saxonAttack(){
-        const selectedViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        const selectedSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-        selectedViking.receiveDamage(selectedSaxon.strength);
+        const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+        const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+        const selectedViking = this.vikingArmy[vikingIndex];
+        const selectedSaxon = this.saxonArmy[saxonIndex];
+        let result = selectedViking.receiveDamage(selectedSaxon.strength);
         if (selectedViking.health < 0){
-            this.vikingArmy.pop(selectedViking);
+            this.vikingArmy.splice(vikingIndex,1);
+            return `${this.selectedViking.name} has died in act of combat`
         }
+        return result;
     };
 
-    showStatus(){};
+    showStatus(){
+        //check if array is empty
+    };
 }
+
+// addViking(pete, 5, 5);
+
+// vikingAttack();
