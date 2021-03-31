@@ -64,11 +64,13 @@ class War {
 
     addViking(viking){
         this.viking = viking;
+        viking = new Viking();//do I have to put the argument name here too?
         this.vikingArmy.push(this.viking);
     };
 
     addSaxon(saxon){
         this.saxon = saxon;
+        saxon = new Saxon();
         this.saxonArmy.push(this.saxon);
     }
 
@@ -82,7 +84,7 @@ class War {
         
         if (selectedSaxon.health < 0){
             this.saxonArmy.splice(saxonIndex,1); //splice
-            return `A Saxon has died in combat`; // I don't understand why the return value from the receiveDamage() method above is not autmoatically returned here?/
+            //return `A Saxon has died in combat`; // I don't understand why the return value from the receiveDamage() method above is not autmoatically returned here?/
         }
         return result;
 
@@ -93,12 +95,12 @@ class War {
         const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
         const selectedViking = this.vikingArmy[vikingIndex];
         const selectedSaxon = this.saxonArmy[saxonIndex];
-        let result = selectedViking.receiveDamage(selectedSaxon.strength);
+        let result2 = selectedViking.receiveDamage(selectedSaxon.strength);
         if (selectedViking.health < 0){
             this.vikingArmy.splice(vikingIndex,1);
-            return `${this.selectedViking.name} has died in act of combat`
+            //return `${this.selectedViking.name} has died in act of combat`
         }
-        return result;
+        return result2;
     };
 
     showStatus(){
@@ -106,6 +108,12 @@ class War {
     };
 }
 
-// addViking(pete, 5, 5);
+// addViking(pete, 5, 5); // what should it be called on?
+// addViking(steve, 5, 5);
+// addViking(marvin, 5, 5);
+// addSaxon(5,5);
+// addSaxon(5,5);
+// addSaxon(5,5);
+// addSaxon(5,5);
 
 // vikingAttack();
