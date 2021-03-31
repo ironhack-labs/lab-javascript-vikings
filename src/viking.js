@@ -57,36 +57,16 @@ class War {
     let randdefendant = this[defendant][inddefendant];
     let randattacker = this[attacker][indattacker];
     let result = randdefendant.receiveDamage(randattacker.strength);
-    if (randdefendant.health < 0) {
+    if (randdefendant.health <= 0) {
       this[defendant].splice(inddefendant, 1);
     }
     return result;
   }
   vikingAttack() {
     return this.batleAttack('vikingArmy', 'saxonArmy');
-    // below the old code bevore refactor. can be removed
-    let indSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-    let indViking = Math.floor(Math.random() * this.vikingArmy.length);
-    let randSaxon = this.saxonArmy[indSaxon];
-    let randViking = this.vikingArmy[indViking];
-    let result = randSaxon.receiveDamage(randViking.strength);
-    if (randSaxon.health < 0) {
-      this.saxonArmy.splice(indSaxon, 1);
-    }
-    return result;
   }
   saxonAttack() {
     return this.batleAttack('saxonArmy', 'vikingArmy');
-    // below the old code bevore refactor. can be removed
-    let indSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-    let indViking = Math.floor(Math.random() * this.vikingArmy.length);
-    let randSaxon = this.saxonArmy[indSaxon];
-    let randViking = this.vikingArmy[indViking];
-    let result = randViking.receiveDamage(randSaxon.strength);
-    if (randViking.health < 0) {
-      this.vikingArmy.splice(indViking, 1);
-    }
-    return result;
   }
   showStatus() {
     if (!this.saxonArmy.length) {
