@@ -18,9 +18,6 @@ class Viking extends Soldier {
         super(health,strength);
         this.name = name;
     }
-    attack() {
-        return super.attack();
-    }
     receiveDamage(dmg){
         super.receiveDamage(dmg);
         return this.health > 0 ? `${this.name} has received ${dmg} points of damage` :
@@ -49,11 +46,9 @@ class War {
         this.vikingArmy = [];
         this.saxonArmy = [];
     }
-
     addViking(viking){
         this.vikingArmy.push(viking);
     }
-
     addSaxon(saxon){
         this.saxonArmy.push(saxon);
     }
@@ -64,12 +59,12 @@ class War {
         return this.doAttack(this.saxonArmy, this.vikingArmy);
     }
     doAttack(att, def) {
-        let attacker = att[Math.floor(Math.random() * att.length)];
-        let defIndex = Math.floor(Math.random() * def.length);
-        let defender = def[defIndex];
-        let result = defender.receiveDamage(attacker.strength);
-        if (defender.health <= 0) {
-            def.splice(defIndex, 1);
+        let random = (type) => Math.floor(Math.random() * type.length);
+        let attacker = att[random(att)];
+        let defender = [def[random(def)], random(def)];
+        let result = defender[0].receiveDamage(attacker.strength);
+        if (defender[0].health <= 0) {
+            def.splice(defender[1], 1);
         }
         return result;
     }
