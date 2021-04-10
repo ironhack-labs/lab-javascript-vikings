@@ -1,61 +1,61 @@
 // Soldier
 
-class Soldier {
-    constructor( health, strength ){
-        this.health = health;
-        this.strength = strength;
+class Soldier{
+  constructor( health,strength ){
+      this.health = health;
+      this.strength =strength;
+  }
+  attack(){
+  return this.strength
+  }
+  recieveDamage(damage){
+    health -=1
     }
 }
-Soldier.prototype.attack = function () {
-    return this.strength
-  }
-  
-  Soldier.prototype.receiveDamage = function (damage) {
-    this.health -= damage
-  }
+
   
 // Viking
 
-class Viking extend Soldier{
-    this.name = name
-    Soldier.call(this, health, strength)
+class Viking extends Soldier{
+  constructor(name,health,strength){
+    this.name=name;
   }
-  
-  Viking.prototype = Object.create(Soldier.prototype)
-  Viking.prototype.constructor = Viking
-  
-  Viking.prototype.receiveDamage = function (damage) {
-    this.health -= damage
-    if (this.health <= 0) {
-      if (this.name === 'A Saxon') {
-        return 'A Saxon has died in combat'
-      } else {
-        return this.name + ' has died in act of combat'
+  recieveDamage(damage){
+    health=0
+    if(viking.health>= 1){}
+     return `${this.name} ha recibido $(strength) de daño`
+    }return `${this.name} ha muerto en accion de combate`
+  }
+  battleCry(){
+     return "Odin es dueño de todos"
       }
-    } else {
-      return this.name + ' has received ' + damage + ' points of damage'
-    }
-  }
-  Viking.prototype.battleCry = function () {
-    return 'Odin Owns You All!'
-  
-      
-
 }
+
+
+
 
 // Saxon
-class Saxon extend Soldier {
-    function Saxon (health, strength) {
-        var name = 'A Saxon'
-        Viking.call(this, name, salud, fuerza)
-      }
-      
-      Saxon.prototype = Object.create(Viking.prototype)
-      Saxon.prototype.constructor = Saxon
-      
+class Saxon extends Soldier{
+
+  recieveDamage(damage){
+    this.health -=1
+    if(this.health >= 1 ){
+      retur `Un sajon ha recibido ${strength} puntos de daño`
+    }return `Un sajon ha muerto en combate`
+  }
+}
       
 
-}
+
 
 // War
-class War {}
+
+class War {
+  [{vikingArmy},{saxonArmy}]
+
+  addViking()
+  addSaxon()
+  vikingAttack()
+  saxonAtack()
+  showStatus()
+}
