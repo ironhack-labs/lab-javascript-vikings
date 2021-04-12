@@ -59,8 +59,8 @@ class Saxon extends Soldier {
 // War
 class War {
     constructor () {
-        this.vikingArmy = []
-        this.saxonArmy = []
+        this.vikingArmy = [];
+        this.saxonArmy = [];
     }
 
 
@@ -74,18 +74,34 @@ class War {
     }
 
     vikingAttack() {
-        this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
-        receiveDamage() =
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+
+        // No se seguir con este Bonus... ¿deberia añadir una cons para el ataque? pero no tendria sentido porque 
+        // el ataque es la propia función en si. //
+        if (randomViking.strength > randomSaxon.receiveDamage(damage) {
+            return removeDeads
+        }
 
     }
 
     saxonAttack() {
-
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        const randomSaxom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+            // No se seguir con este Bonus... ¿deberia añadir una cons para el ataque? pero no tendria sentido porque 
+        // el ataque es la propia función en si. //
+        if (randomViking.health <= 0) {
+                return deads
+            }
+ 
     }
 
     showStatus() {
-
+    if (saxonArmy.length === 0 && vikingArmy.length > 0) {
+        return (`Vikings have won the war of the century!`);
+    } else if (vikingArmy.length === 0 && saxonArmy.length > 0) {
+            return (`Saxons have fought for their lives and survived another day...`);
+        } else {
+            return (`Vikings and Saxons are still in the thick of battle.`);
+        }     
     }
-
-}
-
