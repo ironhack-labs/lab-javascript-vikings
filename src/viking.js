@@ -9,7 +9,7 @@ class Soldier{
   return this.strength
   }
   recieveDamage(damage){
-    health -=1
+    this.health -=damage
     }
 }
 
@@ -18,13 +18,17 @@ class Soldier{
 
 class Viking extends Soldier{
   constructor(name,health,strength){
+    super(health,strength)
     this.name=name;
   }
   recieveDamage(damage){
-    health=0
-    if(viking.health>= 1){}
-     return `${this.name} ha recibido $(strength) de daño`
-    }return `${this.name} ha muerto en accion de combate`
+    const newHealth =this.health -damage
+    if(newhealth>= 0){
+      this.health=newhealth
+      return `${this.name} ha recibido $(damage) de daño`
+    }else{
+    return `${this.name} ha muerto en accion de combate`
+    }
   }
   battleCry(){
      return "Odin es dueño de todos"
@@ -38,10 +42,12 @@ class Viking extends Soldier{
 class Saxon extends Soldier{
 
   recieveDamage(damage){
-    this.health -=1
-    if(this.health >= 1 ){
-      retur `Un sajon ha recibido ${strength} puntos de daño`
-    }return `Un sajon ha muerto en combate`
+    const newhealth =this.health - damage
+    if(newhealth >= 0 ){
+      this.health=newhealth
+      retur `Un sajon ha recibido ${damage} puntos de daño`
+    }else {
+      return `Un sajon ha muerto en combate`
   }
 }
       
@@ -51,11 +57,16 @@ class Saxon extends Soldier{
 // War
 
 class War {
-  [{vikingArmy},{saxonArmy}]
+  this.Viking
+  this.Saxon
 
   addViking()
+
   addSaxon()
+
   vikingAttack()
+
   saxonAtack()
+  
   showStatus()
 }
