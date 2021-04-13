@@ -76,11 +76,11 @@ class War {
     vikingAttack() {
         const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
         const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
-
-        // No se seguir con este Bonus... ¿deberia añadir una cons para el ataque? pero no tendria sentido porque 
-        // el ataque es la propia función en si. //
-        if (randomViking.strength > randomSaxon.receiveDamage(damage) {
-            return removeDeads
+        const vikingGo = this.saxonArmy.receiveDamage(this.vikingArmy.strength)
+        // No se seguir ... el planteamiento de quitar los deads //
+        if (randomSaxon.health <= 0; this.saxonArmy.indexOf(element) {
+           return this.saxonArmy.splice(element,1)}
+           return vikingGo;
         }
 
     }
@@ -88,11 +88,11 @@ class War {
     saxonAttack() {
         const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
         const randomSaxom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
-            // No se seguir con este Bonus... ¿deberia añadir una cons para el ataque? pero no tendria sentido porque 
-        // el ataque es la propia función en si. //
-        if (randomViking.health <= 0) {
-                return deads
-            }
+        const saxonGO = this.vikingArmy.receiveDamage(this.saxonArmy.strength)
+            // idem //
+        if (randomViking.health <= 0); this.vikingArmy.indexOf(element) {
+            return this.vikingArmy.splice(element,1)}
+            return saxonGo;
  
     }
 
