@@ -4,9 +4,11 @@ class Soldier {
         this.health = health
         this.strength = strength 
     }
+
     attack(){
         return this.strength
     }
+    
     receiveDamage(damage){
         this.health -= damage
     }
@@ -18,6 +20,7 @@ class Viking extends Soldier {
         super(health, strength)
         this.name = name
     }
+    
     receiveDamage(damage){
         this.health -= damage;
         if (this.health > 0){
@@ -26,6 +29,7 @@ class Viking extends Soldier {
             return `${this.name} has died in act of combat`
         }
     }
+    
     battleCry(){
         return 'Odin Owns You All!'
     }
@@ -45,20 +49,43 @@ class Saxon extends Soldier{
 
 // War
 class War {
-    vikingArmy = []
-    saxonArmy = []
+    constructor(){
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+
     addViking(viking){
         this.vikingArmy.push(viking)
     }
+
     addSaxon(saxon){
         this.saxonArmy.push(saxon)
     }
+    
     vikingAttack(){
-        this.viking.strength = this.Saxon.receiveDamage();
-        if (this.saxon.health <= 0){
-            this.saxonArmy.length - 1
+        const saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        const viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        return saxon.receiveDamage(viking.strength);
+        
+        
+    }
+
+    saxonAttack(){
+        const saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        const viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        return viking.receiveDamage(saxon.strength);
+        
+       
+        
+    }
+    
+    showStatus(){
+        if (this.saxonArmy.length === 0){
+            return 'Vikings have won the war of the century!'
+        } else if (this.vikingArmy.length === 0){
+            return 'Saxons have fought for their lives and survived another day...'
+        } else if (this.saxonArmy.length || this.vikingArmy.length >= 1){
+            return 'Vikings and Saxons are still in the thick of battle.'
         }
-        return 
-        //saxon.health = oldHealth - viking.strength
-    }  
+    }
 }
