@@ -89,6 +89,19 @@ class War {
     return damage;
   }
 
+  // genericAttack(attacker, receiver) {
+  //   receiver = receiverArmy[Math.floor(Math.random() * receiverArmy.length)];
+  //   attacker = attackerArmy[Math.floor(Math.random() * attackerArmy.length)];
+   
+  //   const damage = receiver.receiveDamage(attacker.strength);
+
+  //   if (receiver.health <= 0) {
+  //     receiverArmy.splice(receiverArmy.indexOf(receiver),1);
+  //    }
+    
+  //   return damage;
+  // }
+
   showStatus() {
 
     if (this.saxonArmy.length === 0) {
@@ -98,5 +111,5 @@ class War {
     } else if (this.saxonArmy.length >= 1 && this.vikingArmy.length >= 1) {
       return `Vikings and Saxons are still in the thick of battle.`;
     }
-  }
+  }  
 }
