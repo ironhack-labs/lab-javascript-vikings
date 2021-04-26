@@ -53,11 +53,6 @@ class Saxon extends Soldier{
         } else {
             return `A Saxon has died in combat`
         }
-
-/* should return "A Saxon has received DAMAGE points of damage", 
- if the Saxon is still alive
- should return "A Saxon has died in combat", if the Saxon dies
-        */
     }
 }
 
@@ -75,6 +70,7 @@ class War {
     addSaxon(Saxon){
         this.saxonArmy.push(Saxon)
     }
+
 
     vikingAttack(){}
     saxonAttack() {}
