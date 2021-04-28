@@ -72,6 +72,7 @@ class War {
       return saxon.receiveDamage();
     }
   }
+
   saxonAttack() {
     let saxon = this.saxonArmy[
       Math.floor(Math.random() * this.saxonArmy.length)
@@ -89,6 +90,7 @@ class War {
       return `${viking.name} has received ${saxon.strength} points of damage`;
     }
   }
+
   showStatus() {
     if (this.saxonArmy.length <= 0) {
       return "Vikings have won the war of the century!";
@@ -99,3 +101,33 @@ class War {
     }
   }
 }
+
+/*
+(SIMPLIFICACIÓN CÓDIGO)
+
+function fightingWar(p1, p2) {
+  let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
+  p1.receiveDamage(p2.stregth);
+
+  if (p1 === "saxon")
+    if (saxon.health <= 0) {
+      let posSax = this.saxonArmy.indexOf("saxon");
+      this.saxonArmy.splice(posSax, 1);
+      return "A Saxon has died in combat";
+    } else {
+      return saxon.receiveDamage();
+    }
+  else {
+    if (viking.health <= 0) {
+      let posVik = this.vikingArmy.indexOf(viking.name);
+      this.vikingArmy.splice(posVik, 1);
+      return "A Viking has died in combat";
+    } else {
+      return `${viking.name} has received ${saxon.strength} points of damage`;
+    }
+  }
+}
+
+*/
