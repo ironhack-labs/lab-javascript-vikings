@@ -17,19 +17,33 @@ class Soldier {
 
     }
 
+// Iteration 2: Viking
 
 
+class Viking extends Soldier{
 
+  constructor(name, health, strength){
+    super(health, strength)
+    this.strength = strength;
+  }
 
+  receiveDamage(theDamage){
+    this.health -= theDamage
+    if(this.health > theDamage){
+      return `${this.name} has received ${theDamage} points of damage`;
+    } else {
+      return `${this.name} has died in act of combat`;
+    } 
+}
 
+  battleCry(){
+    return `Odin Owns You All!!`
+  }
 
-
-
-// Viking
-class Viking {}
+}
 
 // Saxon
-class Saxon {}
+//class Saxon {}
 
 // War
-class War {}
+/*class War {}*/

@@ -8,17 +8,17 @@ describe('Soldier', () => {
   });
 
   describe('class', () => {
-    // it('should receive 2 arguments (health & strength)', () => {
-    //   expect(Soldier.length).toEqual(2);
-    // });
-    //
-    // it('should receive the health property as its 1st argument', () => {
-    //   expect(soldier.health).toEqual(health);
-    // });
-    //
-    // it('should receive the strength property as its 2nd argument', () => {
-    //   expect(soldier.strength).toEqual(strength);
-    // });
+    it('should receive 2 arguments (health & strength)', () => {
+      expect(Soldier.length).toEqual(2);
+    });
+    
+    it('should receive the health property as its 1st argument', () => {
+      expect(soldier.health).toEqual(health);
+    });
+    
+    it('should receive the strength property as its 2nd argument', () => {
+      expect(soldier.strength).toEqual(strength);
+    });
   });
 
   describe('attack() method', () => {
