@@ -87,8 +87,13 @@ class War {
         this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0);
         return combat;
     }
-    
-    /*showStatus(){
 
-    }*/
+    showStatus(){
+        if(this.saxonArmy.length === 0){
+            return "Vikings have won the war of the century!";
+        } else if(this.vikingArmy.length === 0){
+            return "Saxons have fought for their lives and survived another day...";
+        }
+        return "Vikings and Saxons are still in the thick of battle.";
+    }
 }
