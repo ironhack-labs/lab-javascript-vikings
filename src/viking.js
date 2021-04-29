@@ -55,7 +55,41 @@ class War {
   addSaxon(saxon) {
     this.saxonArmy.push(saxon);
   }
+
+  simplyAttack(p1) {
+    let saxon = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ];
+    let viking = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ];
+
+    if (p1 === "saxon") {
+      saxon.receiveDamage(viking.strength);
+      if (saxon.health <= 0) {
+        let posSax = this.saxonArmy.indexOf("saxon");
+        this.saxonArmy.splice(posSax, 1);
+        return "A Saxon has died in combat";
+      } else {
+        return saxon.receiveDamage();
+      }
+    } else {
+      viking.receiveDamage(saxon.strength);
+      if (viking.health <= 0) {
+        let posVik = this.vikingArmy.indexOf(viking.name);
+        this.vikingArmy.splice(posVik, 1);
+        return "A Viking has died in combat";
+      } else {
+        return `${viking.name} has received ${saxon.strength} points of damage`;
+      }
+    }
+  }
+
   vikingAttack() {
+    return this.simplyAttack("saxon");
+  }
+
+  /*
     let saxon = this.saxonArmy[
       Math.floor(Math.random() * this.saxonArmy.length)
     ];
@@ -71,9 +105,13 @@ class War {
     } else {
       return saxon.receiveDamage();
     }
-  }
+  }  */
 
   saxonAttack() {
+    return this.simplyAttack("viking");
+  }
+
+  /*
     let saxon = this.saxonArmy[
       Math.floor(Math.random() * this.saxonArmy.length)
     ];
@@ -90,6 +128,7 @@ class War {
       return `${viking.name} has received ${saxon.strength} points of damage`;
     }
   }
+  */
 
   showStatus() {
     if (this.saxonArmy.length <= 0) {
@@ -109,17 +148,17 @@ function fightingWar(p1, p2) {
   let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
   let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-  p1.receiveDamage(p2.stregth);
-
-  if (p1 === "saxon")
+  if (p1 === "saxon"){ 
+    p1.receiveDamage(p2.stregth);  
     if (saxon.health <= 0) {
       let posSax = this.saxonArmy.indexOf("saxon");
       this.saxonArmy.splice(posSax, 1);
       return "A Saxon has died in combat";
     } else {
       return saxon.receiveDamage();
-    }
+    }}
   else {
+    p2.receiveDamage(p1.stregth);
     if (viking.health <= 0) {
       let posVik = this.vikingArmy.indexOf(viking.name);
       this.vikingArmy.splice(posVik, 1);
@@ -129,5 +168,5 @@ function fightingWar(p1, p2) {
     }
   }
 }
-
 */
+console.log(simplyWar(saxon, viking));
