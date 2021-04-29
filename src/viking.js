@@ -8,7 +8,7 @@ class Soldier {
         }
 
     attack(){
-        return strength;
+        return this.strength;
         }  
     
     receiveDamage(theDamage){
@@ -19,12 +19,11 @@ class Soldier {
 
 // Iteration 2: Viking
 
-
 class Viking extends Soldier{
 
   constructor(name, health, strength){
     super(health, strength)
-    this.strength = strength;
+    this.name = name;
   }
 
   receiveDamage(theDamage){
@@ -37,13 +36,25 @@ class Viking extends Soldier{
 }
 
   battleCry(){
-    return `Odin Owns You All!!`
+    return "Odin Owns You All!!";
   }
 
 }
 
-// Saxon
-//class Saxon {}
+// Iteration 3: Saxon
+
+class Saxon extends Soldier{
+
+  receiveDamage(theDamage){
+    this.health -= theDamage
+    if(this.health <= theDamage){
+      return `A Saxon has died in combat`;
+    } 
+    else {
+      return `A Saxon has received ${theDamage} points of damage`;
+    }
+  }
+
 
 // War
-/*class War {}*/
+/*class War {}*/}
