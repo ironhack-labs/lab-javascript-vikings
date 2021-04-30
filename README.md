@@ -27,27 +27,7 @@ Create Pull Request so your TAs can check up your work.
 
 Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Now, you can run the `npm run test:watch` command to run automated tests in _watch mode_. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up to date test results.
 
-We have got a _test suite_ for our classes and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `tests/viking.spec.js` and implement the code in `src/viking.js` to make each test pass.
-
-If you open `tests/viking.spec.js` and take a look at **lines 11-21**, You should see some `it()` calls (tests) that are commented out. Let's start by uncommenting **lines 11-13**:
-
-```javascript
-describe('constructor function', () => {
-  it('should receive 2 arguments (health & strength)', () => {
-    expect(Soldier.length).toEqual(2);
-  });
-
-  // it('should receive the health property as its 1st argument', () => {
-  //   expect(soldier.health).toEqual(health);
-  // });
-
-  // it('should receive the strength property as its 2nd argument', () => {
-  //   expect(soldier.strength).toEqual(strength);
-  // });
-});
-```
-
-Now that particular test (_should receive 2 arguments (health & strength)_) is failing!
+You should see that most tests are failing. Let's work to make all of them pass!
 
 ## Instructions
 
@@ -84,13 +64,6 @@ class Saxon {}
 // War
 class War {}
 ```
-
-**Execute all the tests**
-
-Now that we are passing the first test, the next step is to uncomment the next test. To do that, we have to remove the comments from **lines 15-17** in the `tests/viking.spec.js` file, and refresh the page to see what we have to implement next.
-Once we have verified that the test is failing, we can implement the code to make it pass.
-
-![](https://i.imgur.com/5TPElt8.jpg)
 
 ### Iteration 1: Soldier
 
@@ -170,7 +143,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 
 #### class
 
-- you don't have to include constructor method since this class will inherit perfectly from the parents class, both, the health and the strength (it `extends` Soldier class :wink: )
+- You don't have to include constructor method since this class will inherit perfectly from the parents class, both, the health and the strength (it `extends` Soldier class :wink: )
 
 #### `attack()` method
 
@@ -190,7 +163,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 - **if the Saxon is still alive**, it should return **_"A Saxon has received DAMAGE points of damage"_**
 - **if the Saxon dies**, it should return **_"A Saxon has died in combat"_**
 
-### BONUS- Iteration 4: War
+### BONUS - Iteration 4: War
 
 Now we get to the good stuff: WAR! Our `War` class will allow us to have a `Viking` army and a `Saxon` army that battle each other.
 
@@ -248,7 +221,7 @@ The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to
 - should remove dead vikings from the army
 - should return **result of calling `receiveDamage()` of a `Viking`** with the `strength` of a `Saxon`
 
-### SUPER BONUS
+### SUPER BONUS - Iteration 5
 
 Since there is a lot of repetitive code in the previous two iterations, _vikingAttack()_ and _saxonAttack()_ try to create one _generic_ method and call it in the case of _vikingAttack_ and in the case of _saxonAttack_ instead of using almost the same code for both methods. (This iteration doesn't have test, so ask your TAs and your instructor to give you feedback on the quality of your code after the refactor.)
 
@@ -261,7 +234,5 @@ Returns the current status of the `War` based on the size of the armies.
 - **if the `Saxon` array is empty**, should return **_"Vikings have won the war of the century!"_**
 - **if the `Viking` array is empty**, should return **_"Saxons have fought for their lives and survived another day..."_**
 - **if there are at least 1 `Viking` and 1 `Saxon`**, should return **_"Vikings and Saxons are still in the thick of battle."_**
-
-<br>
 
 **Happy Coding!** 💙
