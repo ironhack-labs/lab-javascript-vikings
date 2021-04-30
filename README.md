@@ -15,21 +15,19 @@ We have learned Object-oriented programming and how `class` and inheritance work
 
 Upon completion, run the following commands:
 
-```
-$ git add .
-$ git commit -m "done"
-$ git push origin master
+```bash
+git add .
+git commit -m "done"
+git push origin master
 ```
 
 Create Pull Request so your TAs can check up your work.
 
 ### Test, test, test!
 
-Yes! The best way to ensure your code is doing what is expected is to constantly test. Go ahead and open the file `SpecRunner.html`!
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Now, you can run the `npm run test:watch` command to run automated tests in _watch mode_. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up to date test results.
 
-**Run the tests**
-
-We have got a _test suite_ for our constructor functions and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `tests/viking.spec.js` and implement the code in `src/viking.js` to make each test pass.
+We have got a _test suite_ for our classes and their methods but there are no tests currently being executed. We have to uncomment each `it()` inside of `tests/viking.spec.js` and implement the code in `src/viking.js` to make each test pass.
 
 If you open `tests/viking.spec.js` and take a look at **lines 11-21**, You should see some `it()` calls (tests) that are commented out. Let's start by uncommenting **lines 11-13**:
 
