@@ -1,7 +1,7 @@
 // Soldier
 class Soldier {
     constructor(health, strength) {
-        this.health = health; //health es el valor que entra por argumento
+      this  .health = health; //health es el valor que entra por argumento
         this.strength = strength;
     }
     attack() {
