@@ -8,17 +8,18 @@ We have learned Object-oriented programming and how `class` and inheritance work
 
 ## Requirements
 
-- Fork this repo
-- Clone this repo
+- Fork this repo.
+- Clone this repo.
+- Visit the "actions" tab in your fork, and enable workflows.
 
 ## Submission
 
 Upon completion, run the following commands:
 
 ```bash
-git add .
-git commit -m "done"
-git push origin master
+$ git add .
+$ git commit -m "Solved lab"
+$ git push origin master
 ```
 
 Create Pull Request so your TAs can check up your work.
