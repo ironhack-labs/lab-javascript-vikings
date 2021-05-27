@@ -6,11 +6,15 @@
 
 We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now lets work with our Viking friends, applying all of the concepts we have just learned.
 
+<br>
+
 ## Requirements
 
 - Fork this repo.
 - Clone this repo.
-- Visit the "actions" tab in your fork, and enable workflows.
+- Visit the "Actions" tab in your fork, and enable workflows.
+
+<br>
 
 ## Submission
 
@@ -24,11 +28,15 @@ $ git push origin master
 
 Create Pull Request so your TAs can check up your work.
 
+<br>
+
 ### Test, test, test!
 
-Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Now, you can run the `npm run test:watch` command to run automated tests in _watch mode_. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to always see the most up to date test results.
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to see the test results.
 
-You should see that most tests are failing. Let's work to make all of them pass!
+You will see that most of the tests are failing. Let's get to work to make all of them pass!
+
+<br>
 
 ## Instructions
 
@@ -66,6 +74,8 @@ class Saxon {}
 class War {}
 ```
 
+<br>
+
 ### Iteration 1: Soldier
 
 Modify the `Soldier` class and add 2 methods to it: `attack()`, and `receiveDamage()`.
@@ -88,6 +98,8 @@ Modify the `Soldier` class and add 2 methods to it: `attack()`, and `receiveDama
 - should receive **1 argument** (the damage)
 - should remove the received damage from the `health` property
 - **shouldn't return** anything
+
+<br>
 
 ### Iteration 2: Viking
 
@@ -132,6 +144,8 @@ Modify the `Viking` class, have it inherit from `Soldier`, re-implement the `rec
 - should receive **0 arguments**
 - should return **"Odin Owns You All!"**
 
+<br>
+
 ### Iteration 3: Saxon
 
 A `Saxon` is a weaker kind of `Soldier`. Unlike a `Viking`, a `Saxon` has no name. Their `receiveDamage()` method will also be different than the original `Soldier` version.
@@ -163,6 +177,8 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 - should remove the received damage from the `health` property
 - **if the Saxon is still alive**, it should return **_"A Saxon has received DAMAGE points of damage"_**
 - **if the Saxon dies**, it should return **_"A Saxon has died in combat"_**
+
+<br>
 
 ### BONUS - Iteration 4: War
 
@@ -221,6 +237,8 @@ The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to
 - should make a `Viking` `receiveDamage()` equal to the `strength` of a `Saxon`
 - should remove dead vikings from the army
 - should return **result of calling `receiveDamage()` of a `Viking`** with the `strength` of a `Saxon`
+
+<br>
 
 ### SUPER BONUS - Iteration 5
 
