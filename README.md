@@ -1,6 +1,6 @@
 ![logo_ironhack_blue 7](https://user-images.githubusercontent.com/23629340/40541063-a07a0a8a-601a-11e8-91b5-2f13e4e6b441.png)
 
-# LAB | JS Vikings _Object-oriented programming_
+# LAB | JS Vikings
 
 ## Introduction
 
@@ -32,9 +32,16 @@ Create Pull Request so your TAs can check up your work.
 
 ### Test, test, test!
 
-Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests. Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to see the test results.
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests. 
 
-You will see that most of the tests are failing. Let's get to work to make all of them pass!
+```shell
+$ cd lab-javascript-vikings
+$ npm install
+$ npm run test:watch
+```
+<br>
+
+Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to see the test results. You will see that most of the tests are failing. Let's get to work to make all of them pass!
 
 <br>
 
