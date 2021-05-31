@@ -55,23 +55,25 @@ constructor (){
   vikingAttack(){ 
     let x=Math.floor(Math.random()*this.saxonArmy.length)
     let y=Math.floor(Math.random()*this.vikingArmy.length)
-    this.saxonArmy[x].receiveDamage(this.vikingArmy[y].strength)}
-  saxonAttack(){}
-  showStatus(){}
+    let vikAttack= this.saxonArmy[x].receiveDamage(this.vikingArmy[y].strength);
+    if(this.saxonArmy[x].health<=0){this.saxonArmy.splice(x,1);}
+    return vikAttack;
+  }
+  saxonAttack(){
+      let x=Math.floor(Math.random()*this.vikingArmy.length)
+    let y=Math.floor(Math.random()*this.saxonArmy.length)
+    let SaxAttack=this.vikingArmy[x].receiveDamage(this.saxonArmy[y].strength);
+    if(this.vikingArmy[x].health<=0)[this.vikingArmy.splice(x,1)]
+    return SaxAttack;
+  }
+  showStatus(){
+    if(this.saxonArmy.length<=0){return `Vikings have won the war of the century!`}
+    if(this.vikingArmy.length<=0){return "Saxons have fought for their lives and survived another day..." }
+    return "Vikings and Saxons are still in the thick of battle."
+  }
 }
-const vikingWar= new War;
-vikingWar.addViking (new Viking('odin',100,100))
-vikingWar.addSaxon(new Saxon(100,100))
-vikingWar.addSaxon(new Saxon(100,100))
-vikingWar.addSaxon(new Saxon(100,100))
-vikingWar.addSaxon(new Saxon(100,100))
-vikingWar.addSaxon(new Saxon(100,100))
-vikingWar.addSaxon(new Saxon(100,100))
-vikingWar.addSaxon(new Saxon(100,100))
-vikingWar.vikingAttack()
-console.log(vikingWar)
-// The following is required to make unit tests work.
 
+// The following is required to make unit tests work.
 
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
