@@ -4,7 +4,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test:watch": "jest --watchAll --verbose=false"
   },
   "devDependencies": {
     "jest": "^26.6.3",
@@ -18,7 +18,9 @@
         "./node_modules/jest-html-reporter",
         {
           "pageTitle": "Lab Solution",
-          "outputPath": "lab-solution.html"
+          "outputPath": "lab-solution.html",
+          "includeFailureMsg": true,
+          "includeConsoleLog": true
         }
       ]
     ]
