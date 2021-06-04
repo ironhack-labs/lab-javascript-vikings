@@ -3,7 +3,7 @@
 class Soldier {
   constructor(health, strength) {
     this.health = health;
-    this.strength = strength
+    this.strength = strength;
   }
 
   attack () {
@@ -12,7 +12,7 @@ class Soldier {
   
   receiveDamage(damage) {
     this.damage = damage;
-    this.health = this.health - this.damage 
+    this.health = this.health - this.damage;
   }  
 }
 
@@ -53,31 +53,31 @@ class Saxon extends Soldier { // You don't have to include constructor method si
 
 }
 
-// War // ?? NENHUM TESTE DE WAR ESTA FUNCIONANDO
+// War 
 class War {
-  constructor() { // ?? nao esta passando no teste, é this ou let?
-    this.vikingArmy = []; // ?? nao esta passando no teste, é this ou let?
-    this.saxonArmy = []; // ?? nao esta passando no teste, é this ou let?
+  constructor() { 
+    this.vikingArmy = []; // aqui é this pq não estamos criando uma variável, só estamos dizendo que a classe vai ter este atributo
+    this.saxonArmy = []; 
+  }
+  
+  addViking(viking) { // viking aqui é passador
+    this.vikingArmy.push(viking) 
   }
 
-  addViking(Viking) { // ?? confirmar se é assim mesmo que colocar o viking object
-    this.vikingArmy.push(new Viking) // ?? confirmar se nao precisa colocar o (i,i), acho que o push vai direto pro fim. confirmar se precisa do this
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon) // não precisa colocar o (i,i) pq diferente da aula não estamos declarando um novo objeto com os atributos i,i 
   }
 
-  addSaxon(Saxon) {
-    this.saxonArmy.push(new Saxon) // ?? confirmar se nao precisa colocar o (i,i), acho que o push vai direto pro fim. confirmar se precisa do this
-  }
-
-
+ 
   vikingAttack() {
-    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]; // pq aqui tem que usar o let?
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]; // usamos o let pq senao geraria 2 random diferentes, um pro attack e outro pro if dead
 
     let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
 
-    let attack = randomSaxon.receiveDamage(randomViking.strength); // pergutnar se tem alguma forma de fazer iso sem ter que declarar essa variavel de attack
+    let attack = randomSaxon.receiveDamage(randomViking.strength); 
         
     if (randomSaxon.health<=0){
-      this.saxonArmy.splice(randomSaxon);
+      this.saxonArmy.splice(indexOf(randomSaxon),1);
     }
 
     return attack
@@ -85,17 +85,48 @@ class War {
   }
 
   saxonAttack() {
-    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]; // ?? pq aqui tem que usar o let?
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
     let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
 
     let attack = randomViking.receiveDamage(randomSaxon.strength); 
 
     if (randomViking.health<=0){
-      this.vikingArmy.splice(randomViking);
+      this.vikingArmy.splice(indexOf(randomViking),1);
     }
 
     return attack
+  }
+
+  /*
+
+  attack(soldier) { // BONUS 5
+    
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+
+    let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    
+    if (soldier === 'viking') {
+      let attack = randomSaxon.receiveDamage(randomViking.strength);
+
+      if (randomSaxon.health<=0){
+        this.saxonArmy.splice(indexOf(randomSaxon),1);
+      }
+
+      return attack
+
+    } else if (soldier === 'saxon'){
+      let attack = randomViking.receiveDamage(randomSaxon.strength);
+
+      if (randomViking.health<=0){
+        this.vikingArmy.splice(indexOf(randomViking),1); // ?? esta errado, precisa consertar o splice. onde comeca e quantos itens vai remover. tem que tirar o random viking. metodo que encontra o indice no array
+
+      return attack
+      
+    }
+
+    */
+    
   }
 
   showStatus() {
@@ -109,32 +140,11 @@ class War {
       return "Vikings and Saxons are still in the thick of battle."
     }
   }
-}
-
-
-// ?? BONUS 5 COMO REPAFORAR O CODIGO PAR NAO TER QUE REPETIR O CODIGO EM SAXON E VIKING ATTACK
-
-class Attack extends War {
-  constructor(player1,player2) { 
-    this.player1 = player1
-    this.player2 =player2
-  }
-
-  playerAttack() {
-    let player1 = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-
-    let player2 = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
-
-    let attack = player1.receiveDamage(player2.strength); 
-
-    if (player1).health<=0){
-      this.player1.splice(player1);
-    }
-
-    return attack
-  }
 
 }
+
+
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
