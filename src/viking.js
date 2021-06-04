@@ -26,7 +26,10 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-    if ((this.health = this.health - damage) > 0) {
+
+    this.health -= damage
+
+    if ( this.health > 0) {
       return `${this.name} has received ${damage} points of damage.`
     }
     return `${this.name} has died in act of combat`
@@ -51,7 +54,10 @@ class Saxon extends Soldier {
   }
 
   receiveDamage(damage) {
-    if ((this.health = this.health - damage) > 0) {
+
+    this.health -= damage
+
+    if ( this.health > 0) {
       return `A Saxon has received ${damage} points of damage`
     }
     return `A Saxon has died in combat`
@@ -72,31 +78,48 @@ class War {
   }
 
   addViking(viking){
-    this.vikingArmy.push(new Viking('Harald'))
+    this.vikingArmy.push(viking);
   }
 
   addSaxon(saxon){
-    this.saxonArmy.push(new Saxon)
+    this.saxonArmy.push(saxon);
   }
 
   vikingAttack(){
-
-
-    // return Saxon.receiveDamage(Viking.strength);
-    // remover saxon mortos (??)
     
-    
+    let saxonRandom = Math.floor(Math.random() * this.saxonArmy.length);
+    let vikingRandom = Math.floor(Math.random() * this.vikingArmy.length);
 
+    let saxonDamage = this.saxonArmy[saxonRandom].receiveDamage(this.vikingArmy[vikingRandom].strength);
+
+    if(this.saxonArmy[saxonRandom].health <= 0 ){
+      this.saxonArmy.splice(saxonRandom, 1);
+    };
+    
+    return saxonDamage
   }
 
   saxonAttack(){
-    this.vikingArmy.health - this.saxonArmy.strength
+
+    let saxonRandom = Math.floor(Math.random() * this.saxonArmy.length);
+    let vikingRandom = Math.floor(Math.random() * this.vikingArmy.length);
+
+    let vikingDamage = this.vikingArmy[vikingRandom].receiveDamage(this.saxonArmy[vikingRandom].strength);
+
+    if(this.vikingArmy[vikingRandom].health <= 0){
+      this.vikingArmy.splice(vikingRandom, 1);
+    }
+
+    return vikingDamage
+
   }
 
   showStatus(){
 
+    if (!this.saxonArmy.length) return "Vikings have won the war of the century!";
+    if (!this.vikingArmy.length) return "Saxons have fought for their lives and survived another day...";
+    if (this.vikingArmy.length && this.saxonArmy.length >= 1) return "Vikings and Saxons are still in the thick of battle.";
   }
-
 }
 
 // The following is required to make unit tests work.

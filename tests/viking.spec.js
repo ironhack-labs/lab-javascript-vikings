@@ -343,7 +343,7 @@ describe('War', () => {
 
       it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
         expect(war.saxonAttack()).toEqual(
-          `${viking.name} has received ${saxon.strength} points of damage`
+          `${viking.name} has received ${saxon.strength} points of damage.`
         );
       });
     });
