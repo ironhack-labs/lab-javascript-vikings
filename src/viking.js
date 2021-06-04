@@ -58,45 +58,50 @@ class War {
   }
 
   vikingAttack() {
-    let randomSaxon = Math.floor(
-      Math.random() * (this.saxonArmy.length - 0) + 0
-    );
-    let randomViking = Math.floor(
-      Math.random() * (this.vikingArmy.length - 0) + 0
-    );
+    let randomSaxon = this.randomize(this.saxonArmy.length);
+    let randomViking = this.randomize(this.vikingArmy.length);
 
     const result = this.saxonArmy[randomSaxon].receiveDamage(
       this.vikingArmy[randomViking].attack()
     );
 
-    if (result === 'A Saxon has died in combat')
+    if (this.areYouDead(this.saxonArmy[randomSaxon]))
       this.saxonArmy.splice(randomSaxon, 1);
 
     return result;
   }
 
   saxonAttack() {
-    let randomSaxon = Math.floor(
-      Math.random() * (this.saxonArmy.length - 0) + 0
-    );
-    let randomViking = Math.floor(
-      Math.random() * (this.vikingArmy.length - 0) + 0
-    );
+    let randomSaxon = this.randomize(this.saxonArmy.length);
+    let randomViking = this.randomize(this.vikingArmy.length);
 
     const result = this.vikingArmy[randomViking].receiveDamage(
       this.saxonArmy[randomSaxon].attack()
     );
 
-    if (
-      result ===
-      `${this.vikingArmy[randomViking].name} has died in act of combat`
-    )
+    if (this.areYouDead(this.vikingArmy[randomViking]))
       this.vikingArmy.splice(randomViking, 1);
 
     return result;
   }
 
-  showStatus() {}
+  randomize(max) {
+    return Math.floor(Math.random() * (max - 0) + 0);
+  }
+
+  areYouDead(soldier) {
+    let dead = false;
+    if (soldier.health <= 0) dead = true;
+    return dead;
+  }
+
+  showStatus() {
+    if (this.saxonArmy.length <= 0)
+      return `Vikings have won the war of the century!`;
+    else if (this.vikingArmy.length <= 0)
+      return `Saxons have fought for their lives and survived another day...`;
+    else return `Vikings and Saxons are still in the thick of battle.`;
+  }
 }
 
 // The following is required to make unit tests work.
