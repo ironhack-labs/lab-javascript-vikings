@@ -60,10 +60,10 @@ constructor (){
     return vikAttack;
   }
   saxonAttack(){
-      let x=Math.floor(Math.random()*this.vikingArmy.length)
+    let x=Math.floor(Math.random()*this.vikingArmy.length)
     let y=Math.floor(Math.random()*this.saxonArmy.length)
     let SaxAttack=this.vikingArmy[x].receiveDamage(this.saxonArmy[y].strength);
-    if(this.vikingArmy[x].health<=0)[this.vikingArmy.splice(x,1)]
+    if(this.vikingArmy[x].health<=0){this.vikingArmy.splice(x,1)}
     return SaxAttack;
   }
   showStatus(){
@@ -72,6 +72,7 @@ constructor (){
     return "Vikings and Saxons are still in the thick of battle."
   }
 }
+
 
 // The following is required to make unit tests work.
 
