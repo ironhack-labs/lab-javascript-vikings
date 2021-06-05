@@ -73,6 +73,9 @@ vikingAttack(){
 saxonAttack() {
   let attViking = Math.floor(Math.random() * this.vikingArmy.length);
   let saxonAttack = Math.floor(Math.random() * this.saxonArmy.length);
+  if (this.vikingArmy.attViking.health < 0) {
+    this.vikingArmy.slice(this.vikingArmy.indexOf(attViking), 1)
+  }
   return this.vikingArmy[attViking].receiveDamage(this.saxonArmy[saxonAttack].strength);
 }
 
