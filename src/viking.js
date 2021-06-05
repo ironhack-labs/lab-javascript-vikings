@@ -66,18 +66,24 @@ addSaxon(saxon) {
 vikingAttack(){
   let vikingAttack = Math.floor(Math.random() * this.vikingArmy.length);
   let attSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-  return this.saxonArmy[attSaxon].receiveDamage(this.vikingArmy[vikingAttack].strength)
-}
+  let attack = this.saxonArmy[attSaxon].receiveDamage(this.vikingArmy[vikingAttack].strength);
+  if (this.saxonArmy.attSaxon.health <= 0) {
+    this.saxonArmy.splice(this.saxonArmy,indexOf(attSaxon), 1);
+  } 
+  return attack;
+  }
+  
 
 
 saxonAttack() {
   let attViking = Math.floor(Math.random() * this.vikingArmy.length);
   let saxonAttack = Math.floor(Math.random() * this.saxonArmy.length);
-  if (this.vikingArmy.attViking.health < 0) {
-    this.vikingArmy.slice(this.vikingArmy.indexOf(attViking), 1)
-    return this.vikingArmy[attViking].receiveDamage(this.saxonArmy[saxonAttack].strength);
+  let attack = this.vikingArmy[attViking].receiveDamage(this.saxonArmy[saxonAttack].strength);
+  if (this.vikingArmy[attViking].health <= 0) {
+    this.vikingArmy.splice(this.vikingArmy.indexOf(attViking), 1);
   }
-  return null;
+
+  return attack;
 }
 
 showStatus() {
@@ -85,8 +91,8 @@ showStatus() {
   if (this.vikingArmy === []) return `Saxons have fought for their lives and survived another day...`
   if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) return `Vikings and Saxons are still in the thick of battle.`
 }
-}
 
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
