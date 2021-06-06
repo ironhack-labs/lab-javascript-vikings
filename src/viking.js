@@ -60,11 +60,10 @@ constructor() {
   this.saxonArmy = [];
 }
   addViking(newViking) {
-    if (this.vikingArmy += newViking)
-  this.vikingArmy =;
+    this.vikingArmy.unshift(newViking)
   }
   addSaxon(newSaxon) {
-    this.saxonArmy += newSaxon;
+    this.saxonArmy.unshift(newSaxon);
   }
   vikingAttack(){
 
