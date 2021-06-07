@@ -77,20 +77,21 @@ class War {
     let randomIndexSaxon =  Math.floor(Math.random() * this.saxonArmy.length)
     let takeTheDamage  = this.saxonArmy[randomIndexSaxon].receiveDamage(this.vikingArmy[randomIndexViking].attack())
     
-    if(this.saxonArmy[randomIndexSaxon].health === 0){
+    if(this.saxonArmy[randomIndexSaxon].health <= 0){
        this.saxonArmy.splice(randomIndexSaxon, 1)
     }
     return takeTheDamage;
   }
 
-  // saxonAttack(){
-  //   let randomIndexSaxon =  Math.floor(Math.random() * this.saxonArmy.length)
-  //   let theActionSaxon = this.saxonArmy[randomIndex].receiveDamage(this.vikingArmy[randomIndex].attack())
-  //   if(this.saxonArmy[randomIndex].health <= 0){
-  //     this.saxonArmy.splice(andomIndex,1)
-  //   }
-  //   return theAction;
-  // }
+   saxonAttack(){
+    let randomIndexViking =  Math.floor(Math.random() * this.vikingArmy.length)
+    let randomIndexSaxon =  Math.floor(Math.random() * this.saxonArmy.length)
+    let takeTheDamage = this.vikingArmy[randomIndexViking].receiveDamage(this.saxonArmy[randomIndexSaxon].attack())
+    if(this.vikingArmy[randomIndexViking].health <= 0){
+      this.vikingArmy.splice(randomIndexViking,1)
+    }
+    return takeTheDamage;
+  }
 
   // showStatus()
 }
