@@ -58,38 +58,55 @@ class War {
   addSaxon(saxon) {
     this.saxonArmy.push(saxon)
   }
+  attack(attackerArmy, receiverArmy) {
+    let receiverIndex = Math.floor(Math.random() * receiverArmy.length)
+    let attackerIndex = Math.floor(Math.random() * attackerArmy.length)
+    let receiver = receiverArmy[receiverIndex]
+    let attacker = attackerArmy[attackerIndex]
+
+    let damageResult = receiver.receiveDamage(attacker.strength)
+
+    for (let i = 0; i < receiverArmy.length; i++) {
+      if (receiverArmy[i].health <= 0) {
+        receiverArmy.splice(i,1);
+      }
+    }
+    return damageResult
+  }
   vikingAttack() {
-    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+    return this.attack(this.vikingArmy, this.saxonArmy)
+    /*let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
     let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
     let randomViking = this.vikingArmy[randomVikingIndex]
     let randomSaxon = this.saxonArmy[randomSaxonIndex]
+
+    this.attack(randomViking, randomSaxon)
     
-    randomSaxon.receiveDamage(randomViking.strength)
+    let damageResult = randomSaxon.receiveDamage(randomViking.strength)
 
       for (let i = 0; i < this.saxonArmy.length; i++) {
         if (this.saxonArmy[i].health <= 0) {
           this.saxonArmy.splice(i,1);
         }
       }
-      return "A Saxon has died in combat"
+      return damageResult*/
   }
   saxonAttack() {
-    let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+    return this.attack(this.saxonArmy, this.vikingArmy)
+    /*let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
     let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
     let randomViking = this.vikingArmy[randomVikingIndex]
     let randomSaxon = this.saxonArmy[randomSaxonIndex]
     
-    randomViking.receiveDamage(randomSaxon.strength)
+    let damageResult = randomViking.receiveDamage(randomSaxon.strength)
 
       for (let i = 0; i < this.vikingArmy.length; i++) {
         if (this.vikingArmy[i].health <= 0) {
           this.vikingArmy.splice(i,1)
         }
       }
-      // The following line does not work. Why?
-      // return `${this.vikingArmy[randomVikingIndex].name} has received ${this.saxonArmy[randomSaxonIndex].strength} points of damage`
 
-      return `${randomViking.name} has received ${randomSaxon.strength} points of damage`
+      return damageResult;*/
   }
   showStatus() {
     if (this.saxonArmy.length === 0) {
@@ -98,7 +115,7 @@ class War {
     if (this.vikingArmy.length === 0) {
       return "Saxons have fought for their lives and survived another day..."
     }
-    if (this.vikingArmy.length === 1 && this.saxonArmy.length === 1) {
+    if (this.vikingArmy.length >= 1 && this.saxonArmy.length >= 1) {
         return "Vikings and Saxons are still in the thick of battle."
     }
   }
