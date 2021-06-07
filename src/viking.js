@@ -2,7 +2,7 @@
 class Soldier {
   constructor(health, strength){
     this.health = health;
-    this.strength = strength;
+    this.strength = strength;``
   }
   attack() {
     return this.strength;
@@ -47,24 +47,66 @@ class Saxon extends Soldier{
 
 // War
 class War {
-  vikingArmy = []
-  saxonArmy = []
+  constructor(){
+  this.vikingArmy  = [];
+  this.saxonArmy = [];
+  }
+
+  
   addViking(Viking) {
     this.vikingArmy.push(Viking)
   }
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon)
   }
-  vikingAttack() {}
+  
+  // rando(tribe) {
+  //   if (tribe === saxon) {
+  //     return this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+  //   } else if (tribe === viking) {
+  //     return this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+  //   }
+  // }
+  // vikingAttack() {
+  //   this.rando(saxon).receiveDamage(this.rando(viking).attack())
+  // }
+  // saxonAttack() {
+  //   this.rando(viking).receiveDamage(this.rando(saxon).attack())
+  // }
 
-  saxonAttack() {}
+
+  randomSaxon() {
+    return this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+  }
+  randomViking() {
+    return this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+  }
+  vikingAttack() {
+    let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+    let saxHurt = this.saxonArmy[saxonIndex].receiveDamage(this.randomViking().attack())
+    if (this.saxonArmy[saxonIndex].health <= 0) {
+      this.saxonArmy.splice(saxonIndex,1)
+    }
+    return saxHurt;
+  }
+  saxonAttack() {
+    let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+    let vikHurt = this.vikingArmy[vikingIndex].receiveDamage(this.randomSaxon().attack())
+    if (this.vikingArmy[vikingIndex].health <= 0) {
+      this.vikingArmy.splice(vikingIndex,1)
+    }
+    return vikHurt
+  }
 
   showStatus() {
-    if (!this.saxonArmy.length === 0) {
+    if (this.vikingArmy.length) {
+      if (!this.saxonArmy.length) {
       return 'Vikings have won the war of the century!'
-    } else if (this.vikingArmy.length === 0) {
-      return 'Saxons have fought for their lives and survived another day...'
-    }
+    } else { 
+      return 'Vikings and Saxons are still in the thick of battle.'
+    } 
+  } else { 
+    return 'Saxons have fought for their lives and survived another day...'}
 }
 }
 
