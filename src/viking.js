@@ -75,14 +75,14 @@ class War {
      return saxonResult
   }
   saxonAttack(){
-    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
-    let randomViking = Math.floor(Math.random() * this.vikingArmy.length)
-    console.log(this.vikingArmy[randomViking].health)
-    console.log(this.saxonArmy[randomSaxon].strength)
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)] //different way for the randomsizer 
+    let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    console.log('saxon healt',randomSaxon.health)
+    // console.log(this.saxonArmy[randomSaxon].strength)
     // console.log(this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength))
-    let vikingResult = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength)
+    let vikingResult = randomViking.receiveDamage(randomSaxon.strength)
     console.log('vikingResult' + vikingResult)
-    if (vikingResult === `${this.vikingArmy[randomViking].name} has died in act of combat`){
+    if (vikingResult === `${randomViking.name} has died in act of combat`){
       this.vikingArmy.splice(randomViking, 1)
     }
     return vikingResult
