@@ -29,12 +29,12 @@ class Viking extends Soldier {
 
     }
 
-    receiveDamage(dano) {
-        this.health -= dano;
+    receiveDamage(damage) {
+        this.health -= damage;
         if (this.health === 0) {
             return `${this.name} has died in act of combat`;
         } else if (this.health > 0) {
-            return `${this.name} has received ${dano} points of damage`;
+            return `${this.name} has received ${damage} points of damage`;
 
         }
 
@@ -85,7 +85,7 @@ class War {
   vikingAttack(){
     this.vikingArmy.forEach((elem, i)=>{
        
-       this.vikingAr[i].strength -= this.saxonArmy[i].health;
+       this.vikingAr[i].strength = this.saxonArmy[i].health;
        if (this.vikingArmy[i] === 0) {
          this.vikingArmy.splice(i, 1)
        }
@@ -97,7 +97,7 @@ class War {
   saxonAttack() {
     this.saxonArmy.forEach((elem, i)=>{
       
-      this.saxonArmy[i].strength -= this.vikingArmy[i].health 
+      this.saxonArmy[i].strength = this.vikingArmy[i].health 
       if (this.saxonArmy[i] === 0){
         this.saxonArmy.splice(i, 1)
       }
