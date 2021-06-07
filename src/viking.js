@@ -67,9 +67,9 @@ vikingAttack(){
   let vikingAttack = Math.floor(Math.random() * this.vikingArmy.length);
   let attSaxon = Math.floor(Math.random() * this.saxonArmy.length);
   let attack = this.saxonArmy[attSaxon].receiveDamage(this.vikingArmy[vikingAttack].strength);
-  if (this.saxonArmy.attSaxon.health <= 0) {
-    this.saxonArmy.splice(this.saxonArmy,indexOf(attSaxon), 1);
-  } 
+  for (let saxon of this.saxonArmy) {
+            if (saxon.health <= 0) this.saxonArmy.splice(this.saxonArmy.indexOf(saxon), 1);
+        }
   return attack;
   }
   
@@ -79,8 +79,8 @@ saxonAttack() {
   let attViking = Math.floor(Math.random() * this.vikingArmy.length);
   let saxonAttack = Math.floor(Math.random() * this.saxonArmy.length);
   let attack = this.vikingArmy[attViking].receiveDamage(this.saxonArmy[saxonAttack].strength);
-  if (this.vikingArmy[attViking].health <= 0) {
-    this.vikingArmy.splice(this.vikingArmy.indexOf(attViking), 1);
+  for (let viking of this.vikingArmy) {
+    if (viking.health <= 0) this.vikingArmy.splice(this.vikingArmy.indexOf(attViking), 1);
   }
 
   return attack;
