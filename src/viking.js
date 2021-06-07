@@ -44,17 +44,20 @@ const viking1 = new Viking(10, 25, "Asgar");
 // Saxon class
 
 class Saxon extends Soldier {
-  receiveDamage(amountOfDamage) {
-  super.receiveDamage(amountOfDamage); {
-  this.health = this.health - amountOfDamage;
-  if (this.health <= 0) {
-    return "A Saxon has died in combat";
-  } else {
-    return `A Saxon has received ${amountOfDamage} points of damage`;
-  }
+  // receiveDamage(amountOfDamage) {
+  // super.receiveDamage(amountOfDamage); {
+  // this.health = this.health - amountOfDamage;
+  receiveDamage(damage){
+    this.health -= damage
+    if (this.health <= 0) {
+      return "A Saxon has died in combat";
+    } else {
+      return `A Saxon has received ${damage} points of damage`;
+    }
+  }  
 }
-}
-}
+
+
 
 const saxon1 = new Saxon(10, 25);
 
@@ -101,15 +104,18 @@ class War {
     return result2;
   }
 
-  showStatus() {
-    if (this.saxonArmy == 0) {
-      return "Vikings have won the war of the century!";
-    } else if (this.vikingArmy == 0) {
-      return "Saxons have fought for their lives and survived another day...";
-    } else if (this.saxonArmy == 1 && this.vikingArmy == 1) {
-      return "Vikings and Saxons are still in the thick of battle.";
-    }
+    showStatus() {
+      if (this.saxonArmy == 0) {
+        return "Vikings have won the war of the century!";
+      } else if (this.vikingArmy == 0) {
+        return "Saxons have fought for their lives and survived another day...";
+      } else if (this.saxonArmy == 1 && this.vikingArmy == 1) {
+        return "Vikings and Saxons are still in the thick of battle.";
+      }
+  }
 }
+
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
