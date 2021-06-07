@@ -68,17 +68,26 @@ In this case, the test says that _Soldier class should receive 2 arguments (heal
 ```javascript
 // Soldier
 class Soldier {
-  constructor(health, strength) {}
+  constructor(health, strength) {
 }
 
 // Viking
-class Viking {}
+class Viking {
+  constructor(health, strength) {
+}
+}
 
 // Saxon
-class Saxon {}
+class Saxon {
+  constructor(health, strength) {
+}
+}
 
 // War
-class War {}
+class War {
+  constructor(health, strength) {
+}
+}
 ```
 
 <br>
@@ -231,8 +240,8 @@ A `Saxon` (chosen at random) has their `receiveDamage()` method called with the 
 
 - should be a function
 - should receive **0 arguments**
-- should make a `Saxon` `receiveDamage()` equal to the `strength` of a `Viking`
-- should remove dead saxons from the army
+- should make a `Saxon` `receiveDamage()` equal to the `strength` of king`
+- should `Viking´ should remove dead saxons from the army
 - should return **result of calling `receiveDamage()` of a `Saxon`** with the `strength` of a `Viking`
 
 #### `saxonAttack()` method
