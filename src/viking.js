@@ -5,7 +5,7 @@ class Soldier {
     this.strength = strength
   }
   attack() {
-    console.log(this.strength)
+    return (this.strength)
   }
   receiveDamage(damage) {
     this.health -= damage
@@ -40,7 +40,7 @@ class Saxon extends Soldier {
   receiveDamage(damage) {
     super.receiveDamage(damage);
     if (this.health <= 0) {
-    return ("A Saxon has died in act of combat");
+    return ("A Saxon has died in combat");
   } else {
     return ('A Saxon has received ' + damage + ' points of damage');
   }
