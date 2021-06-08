@@ -211,7 +211,7 @@ if (this.saxonArmy.length>=1 && this.vikingArmy.length>=1){
 
 }
 
-//generic method 
+//generic method //OR add hostileAttack() method to both Saxon and Viking object and initializie it with "this" keyword
 
 hostileAttack(ownArmy, enemiesArmy){
   
