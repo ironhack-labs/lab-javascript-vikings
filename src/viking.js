@@ -58,9 +58,55 @@ class War {
   addSaxon(oneSaxon) {
     this.saxonArmy.push(oneSaxon);
   }
-  vikingAttack() {}
+  vikingAttack() {
+    let randomSaxonIndex = Math.floor(
+      Math.random() * this.saxonArmy.length
+    ); /* create a random index of a soldier*/
+    let randomVikingIndex = Math.floor(
+      Math.random() * this.vikingArmy.length
+    ); /*create a random index of a viking */
 
-  saxonAttack() {}
+    let saxonSoldier =
+      this.saxonArmy[
+        randomSaxonIndex
+      ]; /*get to the random saxon soldier from the saxon array*/
+    let vikingSoldier =
+      this.vikingArmy[
+        randomVikingIndex
+      ]; /* get the random saxon viking from the viking army */
+
+    let saxonDamage = saxonSoldier.receiveDamage(vikingSoldier.strength);
+
+    if (saxonSoldier.health <= 0) {
+      this.saxonArmy.splice(randomSaxonIndex, 1);
+    }
+    return saxonDamage;
+  }
+
+  saxonAttack() {
+    let randomSaxonIndex = Math.floor(
+      Math.random() * this.saxonArmy.length
+    ); /* create a random index of a soldier*/
+    let randomVikingIndex = Math.floor(
+      Math.random() * this.vikingArmy.length
+    ); /*create a random index of a viking */
+
+    let saxonSoldier =
+      this.saxonArmy[
+        randomSaxonIndex
+      ]; /*get to the random saxon soldier from the saxon array*/
+    let vikingSoldier =
+      this.vikingArmy[
+        randomVikingIndex
+      ]; /* get the random saxon viking from the viking army */
+
+    let vikingDamage = vikingSoldier.receiveDamage(saxonSoldier.strength);
+
+    if (vikingSoldier.health <= 0) {
+      this.vikingArmy.splice(randomVikingIndex, 1);
+    }
+    return vikingDamage;
+  }
 
   showStatus() {
     if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) {
@@ -68,7 +114,7 @@ class War {
     } else if (this.vikingArmy.length == 0) {
       return 'Saxons have fought for their lives and survived another day...';
     } else if (this.saxonArmy.length == 0) {
-      return 'Vikings have won the war of the century';
+      return 'Vikings have won the war of the century!';
     }
   }
 }
