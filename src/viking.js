@@ -20,14 +20,14 @@ class Viking extends Soldier {
      this.name = name;
   }
   battleCry() {
-    console.log("Odin Owns You All!")
+    return  ("Odin Owns You All!")
   }
   receiveDamage(damage) {
     super.receiveDamage(damage);
     if (this.health <= 0) {
-     return console.log(this.name + ' has died in act of combat');
+     return (this.name + ' has died in act of combat');
     } else {
-     return console.log(this.name + ' has received ' + damage + ' points of damage');
+     return (this.name + ' has received ' + damage + ' points of damage');
     }
   }
 }
@@ -40,23 +40,24 @@ class Saxon extends Soldier {
   receiveDamage(damage) {
     super.receiveDamage(damage);
     if (this.health <= 0) {
-    return console.log("A Saxon has died in act of combat");
+    return ("A Saxon has died in act of combat");
   } else {
-    return console.log('A Saxon has received ' + damage + ' points of damage');
+    return ('A Saxon has received ' + damage + ' points of damage');
   }
  }  
 }
 
 const saxon1 = new Saxon(5, 2);
 console.log(saxon1);
-saxon1.receiveDamage(3);
-saxon1.receiveDamage(2);
+console.log(saxon1.receiveDamage(3));
+console.log(saxon1.receiveDamage(3));
 
 const viking1 = new Viking('Bunny', 6, 3);
 console.log(viking1);
-viking1.receiveDamage(2);
-viking1.receiveDamage(4);
-
+console.log(viking1.receiveDamage(2));
+console.log(viking1.receiveDamage(2));
+console.log(viking1.receiveDamage(2));
+console.log(viking1.battleCry()); 
 // War
 class War {}
 
