@@ -15,16 +15,16 @@ class Soldier {
 // Viking
 class Viking extends Soldier{
   constructor(name, health, strength){
+    super(health, strength);
     this.name = name;
-    super(health, strength)
   }
   receiveDamage(damage){
-    let damageReceived = super.receiveDamage()
+    this.health = this.health - damage;
     if (this.health > 0){
-      console.log(`${name} has received ${damage} points of damage`)
+      return `${this.name} has received ${damage} points of damage`
     }
     else{
-      console.log(`${name} has died in combat`)
+      return `${this.name} has died in combat`
     }
   }
   battleCries(){
@@ -32,16 +32,78 @@ class Viking extends Soldier{
   }
 }
 
+
 // Saxon
-class Saxon extends Soldier{}
-  0
-// War
-class War {}
-
-
-
-// The following is required to make unit tests work.
-/* Environment setup. Do not modify the below code. */
-if (typeof module !== 'undefined') {
-  module.exports = { Soldier, Viking, Saxon, War };
+class Saxon extends Soldier{
+  constructor(health, strength){
+    super(health, strength);
+  }
+  receiveDamage(damage){
+    super.receiveDamage(damage);
+    if (this.health > 0){
+      return `A saxon has received ${damage} points of damage`
+    }
+    else{
+      return `A saxon has died in combat`
+    }
+  }
 }
+
+
+
+// War
+class War {
+  constructor(){
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+addViking(viking){
+  this.vikingArmy.push(viking);
+}
+addSaxon(saxon){
+  this.saxonArmy.push(saxon);
+}
+printer(){
+  console.log(this.vikingArmy);
+  console.log(this.saxonArmy);
+}  
+vikingAttack(){
+  //console.log(Math.random() * this.saxonArmy.length)
+  let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+  //console.log(saxonIndex)
+  let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+  let saxon = this.saxonArmy[saxonIndex]
+  
+  console.log(saxon)
+  let viking = this.vikingArmy[vikingIndex]
+  let saxonHealth = saxon.health;
+  let vikingStrength = viking.strength;
+  //console.log(vikingStrength)
+  let result1 = saxon.receiveDamage(vikingStrength);
+  console.log(saxon.health)
+  //console.log(result1)
+  if (saxon.health < 0){
+    this.saxonArmy.splice(saxonIndex, 1);}
+  return  `the new saxon health ${saxon.health} because of the strength ${viking.strength} of vikings`
+  }
+ saxonAttack(){
+  let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+  let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+  let saxon = this.saxonArmy[saxonIndex]
+  let viking = this.vikingArmy[vikingIndex]
+  let vikingHealth = viking.health;
+  let saxonStrength = saxon.strength;
+  let result1 = viking.receiveDamage(saxonStrength);
+  if (viking.health < 0){
+    this.vikingArmy.splice(vikingIndex, 1);}
+  return result1 + " because of the " + saxonStrength + " strength of Vikings"
+}
+}
+let pu = new War()
+let viking1 = new Viking("muriel", 100, 120);
+let saxon1 = new Saxon(100, 120);
+
+pu.addViking(viking1);
+pu.addSaxon(saxon1);
+
+pu.saxonAttack()
