@@ -2,15 +2,19 @@
 class Soldier {
   constructor(health, strength) {
     this.health = health;
-    this.strength = 150;  
+    this.strength = strength;  
   }
-  attack = function attack() {
+  attack() {
     return this.strength
   }
-  receiveDamage = function receiveDamage(damage) {
+  receiveDamage(damage) {
     this.health -= damage;
-
   }
+ 
+  // receiveDamage = function receiveDamage(damage) {
+  //   this.health -= damage;
+
+  // }
 }
 
 // Viking
@@ -20,16 +24,24 @@ class Viking extends Soldier {
     this.name = name;
   }
   receiveDamage(damage) {
-    // this.health -= damage;
-    // super.receiveDamage(damage);
-    console.log('this is the health' + this.health)
-    if (this.health <= 0) {
+    super.receiveDamage(damage);
+    if(this.health <= 0) {
       return `${this.name} has died in act of combat`
     } else {
       return `${this.name} has received ${damage} points of damage`
     }
-    // return 1
   }
+  // receiveDamage(damage) {
+  //   // this.health -= damage;
+  //   // super.receiveDamage(damage);
+  //   console.log('this is the health' + this.health)
+  //   if (this.health <= 0) {
+  //     return `${this.name} has died in act of combat`
+  //   } else {
+  //     return `${this.name} has received ${damage} points of damage`
+  //   }
+  //   // return 1
+  // }
   battleCry() {
     return `Odin Owns You All!`
   }
@@ -37,7 +49,18 @@ class Viking extends Soldier {
 
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+  receiveDamage(damage) {
+    super.receiveDamage(damage);
+    if(this.health <= 0) {
+      return `A Saxon has died in combat`
+    } else {
+      return `A Saxon has received ${damage} points of damage`
+    }
+  }
+  
+}
+// let strength = new strength(25)
 
 // War
 class War {}
