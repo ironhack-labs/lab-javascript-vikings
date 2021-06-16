@@ -32,7 +32,17 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier{
+//constructor(name, strength){} //Not needed since will inherit
+receiveDamage(damage){
+  this.health -= damage
+  if (health > 0) {
+    return `A Saxon has received ${damage} points of damage`
+  } else if (health <= 0) {
+    return `A Saxon has died in act of combat`
+  }
+}
+}
 
 // War
 class War {}
