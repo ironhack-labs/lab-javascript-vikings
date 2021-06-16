@@ -10,29 +10,29 @@ class Soldier {
     this.strength = strength;
   }
   attack() {
-    return this.strength
+    return this.strength;
   }
   receiveDamage(damage) {
-    this.health -= damage
+    this.health -= damage;
   }
 }
 
 // Viking
 class Viking extends Soldier {
   constructor(name, health, strength) {
-    super(health, strength)
-    this.name = name
+    super(health, strength);
+    this.name = name;
   }
   receiveDamage(damage) {
-    this.health -= damage
+    this.health -= damage;
     if (this.health > 0) {
-      return `${this.name} has received ${damage} points of damage`
+      return `${this.name} has received ${damage} points of damage`;
     } else if (this.health <= 0) {
-      return `${this.name} has died in act of combat`
+      return `${this.name} has died in act of combat`;
     }
   }
   battleCry() {
-    return `Odin Owns You All!`
+    return `Odin Owns You All!`;
   }
 }
 
@@ -40,42 +40,47 @@ class Viking extends Soldier {
 class Saxon extends Soldier {
   //constructor(name, strength){} //Not needed since will inherit
   receiveDamage(damage) {
-    this.health -= damage
+    this.health -= damage;
     if (this.health > 0) {
-      return `A Saxon has received ${damage} points of damage`
+      return `A Saxon has received ${damage} points of damage`;
     } else if (this.health <= 0) {
-      return `A Saxon has died in combat`
+      return `A Saxon has died in combat`;
     }
   }
 }
 
 // War
 class War {
-  constructor(){
+  constructor() {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
 
   addViking(viking) {
-    this.vikingArmy.push(viking)
+    this.vikingArmy.push(viking);
   }
-  addSaxon(saxon){
-    this.saxonArmy.push(saxon)
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
   }
-  vikingAttack(){}
-  saxonAttack(){}
-  showStatus(){}
+  vikingAttack() {
+    let randomSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randomViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    return randomSaxon.receiveDamage(randomViking.attack());
+  }
+  saxonAttack() {
+    let randomSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randomViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    return randomViking.receiveDamage(randomSaxon.attack());
+  }
+  showStatus() {}
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
-  module.exports = {
-    Soldier,
-    Viking,
-    Saxon,
-    War
-  };
+  module.exports = { Soldier, Viking, Saxon, War };
 }
