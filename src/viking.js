@@ -76,8 +76,39 @@ class War {
       this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
     return randomViking.receiveDamage(randomSaxon.attack());
   }
-  showStatus() {}
+  showStatus() {
+    if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) {
+      return 'Vikings and Saxons are still in the thick of battle.';
+    } else if (this.saxonArmy.length == 0) {
+      return 'Vikings have won the war of the century!';
+    } else if (this.vikingArmy.length == 0) {
+      return 'Saxons have fought for their lives and survived another day...';
+    }
+  }
 }
+
+let Bjorn = new Viking('Bjorn', 3000, 1500)
+let Erik = new Viking('Erik', 2000, 900)
+let Halfdan = new Viking('Halfdan', 1000, 800)
+let Gorm = new Viking('Gorm', 900, 550)
+let Hilderinc = new Saxon(1500, 650)
+let Alfred = new Saxon(1200, 550)
+let Hama = new Saxon(1100, 450)
+let Ingeld = new Saxon(1000, 350)
+let fight = new War()
+console.log(Bjorn,Erik,Halfdan,Gorm,Hilderinc,Alfred,Hama,Ingeld)
+fight.addViking(Bjorn)
+fight.addViking(Erik)
+fight.addViking(Halfdan)
+fight.addViking(Gorm)
+fight.addSaxon(Hilderinc)
+fight.addSaxon(Alfred)
+fight.addSaxon(Hama)
+fight.addSaxon(Ingeld)
+fight.saxonAttack()
+fight.vikingAttack()
+console.log(fight.showStatus())
+console.log(Bjorn,Erik,Halfdan,Gorm,Hilderinc,Alfred,Hama,Ingeld)
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
