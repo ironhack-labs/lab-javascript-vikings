@@ -5,10 +5,14 @@ class Soldier {
     this.strength = strength
   }
   attack = () => {
-    return `The strength : ${this.strength}`
+    return this.strength;
   }
-  receiveDamage = (theDamage) => {}
+  receiveDamage = (damage) => {
+    this.health = this.health - damage;
+  }
 }
+
+// this.health = this.health - damage => credits for Alejandro for his logic!
 
 // Viking
 class Viking extends Soldier {
@@ -17,20 +21,33 @@ class Viking extends Soldier {
     this.name = name
   }
   attack = () => {
-    return `${this.strength} of the Viking.`
+    return this.strength;
   }
-  receiveDamage = (theDamage) => {
-    return `${this.name.toUpperCase} has received Damage.toUpperCase point of damage.`
+  receiveDamage = (damage) => {
+    return `${this.name.toUpperCase} has received ${this.damage.toUpperCase} points of damage.`
     }
     battleCry = () => {
       return "Odin Owns You All!"
     }
 }
 
+/*
+if health === sth like true or positive(?) for "alive" return `${this.name.toUpperCase} has received Damage.toUpperCase point of damage.` 
+else return `${this.name.toUpperCase} has died in act of combat`
+*/ 
+ 
+
 // Saxon
 class Saxon extends Soldier {
-  receiveDamage = (theDamage) => {}
+   receiveDamage = (damage) => {
+     this.health = this.health - damage;
+  }
 }
+
+/*
+if health === sth like true or positive(?) for "alive" return `${this.name.toUpperCase} has received Damage.toUpperCase point of damage.` 
+else return `${this.name.toUpperCase} has died in act of combat`
+*/ 
 
 // War
 class War {}
