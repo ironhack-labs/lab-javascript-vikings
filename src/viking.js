@@ -39,14 +39,21 @@ class Viking extends Soldier {
 
 /*
 if health === sth like true or positive(?) for "alive" return `${this.name.toUpperCase} has received damage.toUpperCase point of damage.` 
+=> toUpperCase cannot be combined with "this"?!
 else return `${this.name.toUpperCase} has died in act of combat`
 */ 
  
 
 // Saxon
 class Saxon extends Soldier {
-   receiveDamage = (damage) => {
-     this.health = this.health - damage;
+  receiveDamage = (damage) => {
+    this.health = this.health - damage;
+    if ( this.health > 0 ) {
+      return `A Saxon has received ${damage} points of damage`
+    } 
+    else if ( this.health <= 0 ) {
+      return `A Saxon has died in combat`
+    }
   }
 }
 
