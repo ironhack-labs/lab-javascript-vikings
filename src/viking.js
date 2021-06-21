@@ -24,7 +24,13 @@ class Viking extends Soldier {
     return this.strength;
   }
   receiveDamage = (damage) => {
-    return `${this.name.toUpperCase} has received ${this.damage.toUpperCase} points of damage.`
+      this.health = this.health - damage;
+      if ( this.health > 0 ) {
+        return `${this.name} has received ${damage} points of damage`
+      } 
+      else if ( this.health <= 0 ) {
+        return `${this.name} has died in act of combat`
+      }
     }
     battleCry = () => {
       return "Odin Owns You All!"
@@ -32,7 +38,7 @@ class Viking extends Soldier {
 }
 
 /*
-if health === sth like true or positive(?) for "alive" return `${this.name.toUpperCase} has received Damage.toUpperCase point of damage.` 
+if health === sth like true or positive(?) for "alive" return `${this.name.toUpperCase} has received damage.toUpperCase point of damage.` 
 else return `${this.name.toUpperCase} has died in act of combat`
 */ 
  
