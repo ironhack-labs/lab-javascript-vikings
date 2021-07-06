@@ -44,7 +44,18 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+
+  saxonAttack() {
+    let randomAttack = Math.floor(Math.random() * this.vikingArmy.length)
+    this.vikingArmy[randomAttack].receiveDamage(this.saxonArmy[0].strength)
+    
+    if (this.vikingArmy[randomAttack].health <= 0) {
+      this.vikingArmy[randomAttack].splice(randomAttack, 1)
+    }
+    
+  }
+}
 
 
 
