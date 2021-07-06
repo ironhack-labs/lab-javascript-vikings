@@ -78,15 +78,30 @@ vikingAttack() {
     
     let randomIndexViking = Math.floor(Math.random() * this.vikingArmy.length);
     
-    this.saxonArmy[randomIndexSaxon].receiveDamage(
-      
-    this.vikingArmy[randomIndexViking].strength
-    );
+    this.saxonArmy[randomIndexSaxon].receiveDamage(this.vikingArmy[randomIndexViking].strength);
+
+    if(this.saxonArmy[randomIndexSaxon].health < 1) {
+      this.saxonArmy.pop(randomIndexSaxon);
+      return ("A Saxon has died in combat");
+    }
+  
+  }
+    saxonAttack() {
+    let randomIndexSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+    
+    let randomIndexViking = Math.floor(Math.random() * this.vikingArmy.length);
+    
+    this.vikingArmy[randomIndexViking].receiveDamage(this.saxonArmy[randomIndexSaxon].strength);
+
+    if(this.vikingArmy[randomIndexViking].health < 1) {
+      this.vikingArmy.pop(randomIndexViking);
+    }
+    return `Harald has received ${this.saxonArmy[randomIndexSaxon].strength} points of damage`;
   }
   
-}
+  }
 
-
+  
 
 
 // The following is required to make unit tests work.
