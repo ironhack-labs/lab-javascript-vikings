@@ -102,10 +102,7 @@ class War {
   //   this.attack(this.saxonArmy , this.vikingArmy);
   // }
 
-  showStatus () {
-
-  }
-
+  
   attack(attackerArray, receiverArray) {
     if (receiverArray.length ===0) {
       return 0;
@@ -120,6 +117,19 @@ class War {
     }
     return returnPhrase;
   }
+
+  showStatus () {
+    if(this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!"
+    }
+    else if (this.vikingArmy.length === 0) {
+      return "Saxons have fought for their lives and survived another day..."
+    }
+    else {
+      return "Vikings and Saxons are still in the thick of battle."
+    }
+  }
+
 }
 
 

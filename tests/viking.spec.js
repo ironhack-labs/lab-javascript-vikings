@@ -310,9 +310,7 @@ describe('War', () => {
       });
 
       it('should remove dead saxons from the army', () => {
-        for (let i = 0; i < 12; i++) {
-          war.vikingAttack();
-        }
+        war.vikingAttack();
         expect(war.saxonArmy.length).toEqual(0);
       });
 
