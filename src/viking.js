@@ -10,6 +10,7 @@ class Soldier {
   }
 
   receiveDamage(damage) {
+  
     this.health = this.health - damage
   }
 }
@@ -22,10 +23,10 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-    this.health -= damage;
+    super.receiveDamage(damage);
     if (this.health > 0) {
       return `${this.name} has received ${damage} points of damage`;
-    } else if (this.health <= 0) {
+    } else {
       return `${this.name} has died in act of combat`;
     }
   }
@@ -39,9 +40,9 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
   receiveDamage(damage) {
-    this.health -= damage;
+    super.receiveDamage(damage);
     if(this.health > 0) {
-      return `A Saxon has received ${damage} points of damage`
+      return `A Saxon has received ${damage} points of damage`;
     } else {
       return "A Saxon has died in combat";
     }
@@ -64,43 +65,43 @@ class War {
     this.saxonArmy.push(saxon)
   }
 
-  vikingAttack() {
-    if(this.saxonArmy.length ===0) {
-      return 0;
-    }
-   let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
-   let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
-
-   let returnPhrase = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].strength);
-
-   if (this.saxonArmy[saxonIndex].health <= 0) {
-    this.saxonArmy.splice(saxonIndex, 1)
-   }
-   return returnPhrase;
-  }
-
-  saxonAttack () {
-    if(this.vikingArmy.length ===0) {
-      return 0;
-    }
-    let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
-   let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
-
-   let returnPhrase = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].strength);
-
-   if (this.vikingArmy[vikingIndex].health <= 0) {
-    this.vikingArmy.splice(vikingIndex, 1)
-   }
-   return returnPhrase;
-  }
-
   // vikingAttack() {
-  //   this.attack(this.vikingArmy, this.saxonArmy);
+  //   if(this.saxonArmy.length ===0) {
+  //     return 0;
+  //   }
+  //  let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
+  //  let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
+
+  //  let returnPhrase = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].strength);
+
+  //  if (this.saxonArmy[saxonIndex].health <= 0) {
+  //   this.saxonArmy.splice(saxonIndex, 1)
+  //  }
+  //  return returnPhrase;
   // }
 
-  // saxonAttack() {
-  //   this.attack(this.saxonArmy , this.vikingArmy);
+  // saxonAttack () {
+  //   if(this.vikingArmy.length ===0) {
+  //     return 0;
+  //   }
+  //   let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
+  //  let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
+
+  //  let returnPhrase = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].strength);
+
+  //  if (this.vikingArmy[vikingIndex].health <= 0) {
+  //   this.vikingArmy.splice(vikingIndex, 1)
+  //  }
+  //  return returnPhrase;
   // }
+
+  vikingAttack() {
+    return this.attack(this.vikingArmy, this.saxonArmy);
+  }
+
+  saxonAttack() {
+    return this.attack(this.saxonArmy , this.vikingArmy);
+  }
 
   
   attack(attackerArray, receiverArray) {
@@ -110,6 +111,7 @@ class War {
     let attackerIndex = Math.floor(Math.random() * (attackerArray.length - 1));
     let receiverIndex = Math.floor(Math.random() * (receiverArray.length - 1)); 
 
+      
     let returnPhrase = receiverArray[receiverIndex].receiveDamage(attackerArray[attackerIndex].strength);
     
     if (receiverArray[receiverIndex].health <= 0) {
@@ -160,7 +162,15 @@ const williamWallace = new Saxon(300, 50);
 // console.log(thor);
 
 // console.log(thor.attack());
+// const armies = new War();
+// armies.addViking(thor);
+// armies.addSaxon(williamWallace);
+// console.log(armies.saxonAttack());
+// console.log(armies.saxonAttack());
 
+// console.log(armies.saxonAttack());
+// console.log(armies.saxonAttack());
+// console.log(armies.saxonAttack());
 
 
 
