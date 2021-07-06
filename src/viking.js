@@ -61,9 +61,9 @@ class War {
     this.saxonArmy.push(saxon)
   }
 
-  vikingAttack () {
-    let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
-    let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+/*   vikingAttack () {
+    const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+    const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
     
     const attack = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].strength)
     
@@ -75,8 +75,8 @@ class War {
   }
 
   saxonAttack() {
-    let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
-    let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
+    const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+    const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length)
     
     const attack = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].strength)
     
@@ -85,6 +85,27 @@ class War {
     }
 
     return attack
+  } */
+
+  //Refactored code : An army vs an army
+  attack (assailantArmy, victimArmy) {
+    const assailant = Math.floor(Math.random() * assailantArmy.length)
+    const victim = Math.floor(Math.random() * victimArmy.length)
+    
+    const attackResult = victimArmy[victim].receiveDamage(assailantArmy[assailant].strength)
+    
+    if (victimArmy[victim].health <= 0) {
+      victimArmy.splice(victim, 1)
+    }
+
+    return attackResult
+  }
+
+  showStatus(){
+    if(this.saxonArmy.length === 0) return "Vikings have won the war of the century!"
+    if(this.vikingArmy.length === 0) return "Saxons have fought for their lives and survived another day..."
+
+    return "Vikings and Saxons are still in the thick of battle."
   }
 }
 
