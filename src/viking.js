@@ -82,6 +82,7 @@ class War {
     if (this.vikingArmy[randomAttack].health <= 0) {
       this.vikingArmy[randomAttack].splice(randomAttack, 1)
     }
+  }
 }
 
 
