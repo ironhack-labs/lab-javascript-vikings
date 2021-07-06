@@ -64,33 +64,54 @@ class War {
     this.saxonArmy.push(saxon)
   }
 
+  // vikingAttack() {
+  //  let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
+  //  let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
+
+  //  let returnPhrase = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].strength);
+
+  //  if (this.saxonArmy[saxonIndex].health < 0) {
+  //   this.saxonArmy.splice(saxonIndex, 1)
+  //  }
+  //  return returnPhrase;
+  // }
+
+  // saxonAttack () {
+  //   let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
+  //  let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
+
+  //  let returnPhrase = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].strength);
+
+  //  if (this.vikingArmy[vikingIndex].health < 0) {
+  //   this.vikingArmy.splice(vikingIndex, 1)
+  //  }
+  //  return returnPhrase;
+  // }
+
   vikingAttack() {
-   let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
-   let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
-
-   let returnPhrase = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].strength);
-
-   if (this.saxonArmy[saxonIndex].health < 0) {
-    this.saxonArmy.splice(saxonIndex, 1)
-   }
-   return returnPhrase;
+    this.attack(this.vikingArmy, this.saxonArmy);
   }
 
-  saxonAttack () {
-    let vikingIndex = Math.floor(Math.random() * (this.vikingArmy.length - 1));
-   let saxonIndex = Math.floor(Math.random() * (this.saxonArmy.length - 1))
+  saxonAttack() {
+    this.attack(this.saxonArmy , this.vikingArmy);
+  }
 
-   let returnPhrase = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].strength);
+  showStatus () {
 
-   if (this.vikingArmy[vikingIndex].health < 0) {
-    this.vikingArmy.splice(vikingIndex, 1)
-   }
-   return returnPhrase;
+  }
+
+  attack(attackerArray, receiverArray) {
+    let attackerIndex = Math.floor(Math.random() * (attackerArray.length - 1));
+    let receiverIndex = Math.floor(Math.random() * (receiverArray.length - 1)); 
+
+    let returnPhrase = receiverArray[receiverIndex].receiveDamage(attackerArray[attackerIndex].strength);
+    
+    if (receiverArray[receiverIndex].health < 0) {
+      receiverArray.splice(receiverIndex,1);
+    }
+    return returnPhrase;
   }
 }
-
-
-
 
 
 // The following is required to make unit tests work.
@@ -109,6 +130,9 @@ const ryan = new Soldier(50, 10)
 
 const thor = new Viking("Thor", 100, 200);
 
+const williamWallace = new Saxon(300, 50);
+
+
 // console.log(thor);
 // console.log(thor.battleCry());
 // thor.receiveDamage(50);
@@ -118,7 +142,15 @@ const thor = new Viking("Thor", 100, 200);
 
 // console.log(thor.attack());
 
-const vikingArmy = new War()
-vikingArmy.addViking(thor)
-vikingArmy.addViking(thor)
-console.log(vikingArmy)
+const armies = new War()
+armies.addViking(thor)
+armies.addViking(thor)
+armies.addSaxon(williamWallace);
+
+console.log("armies before", armies);
+
+armies.vikingAttack();
+
+console.log("armies after attack", armies);
+
+
