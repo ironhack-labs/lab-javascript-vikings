@@ -91,7 +91,16 @@ class War {
     }
     return damageViking;
   }
-  // showStatus()
+
+  showStatus() {
+    if (!this.saxonArmy.length) {
+      return `Vikings have won the war of the century!`;
+    } else if (!this.vikingArmy.length) {
+      return `Saxons have fought for their lives and survived another day...`;
+    } else if (this.saxonArmy.length === 1 || this.vikingArmy.length === 1) {
+      return `Vikings and Saxons are still in the thick of battle.`;
+    }
+  }
 }
 
 const thor = new Viking('Thor', 100, 80);
@@ -104,6 +113,7 @@ war1.addViking(thor);
 war1.addSaxon(loki);
 
 war1.vikingAttack;
+war1.showStatus;
 
 console.log(war1.vikingArmy);
 console.log(war1.saxonArmy);
