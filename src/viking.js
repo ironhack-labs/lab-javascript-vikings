@@ -20,7 +20,6 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-    console.log('vykdoma');
     this.health -= damage;
 
     if (this.health > 0) {
@@ -68,7 +67,18 @@ class War {
     let randomVikingArmy =
       this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-    return randomSaxonArmy.receiveDamage(randomVikingArmy.strength);
+    let result = randomSaxonArmy.receiveDamage(randomVikingArmy.strength);
+
+    if (randomSaxonArmy.health <= 0) {
+      let randomSaxonArmyIndex = this.saxonArmy.indexOf(randomSaxonArmy);
+      this.saxonArmy.splice(randomSaxonArmyIndex, 1);
+    }
+
+    // if (saxonArmy.length === 0) {
+    //   return `Vikings have won the war of the century!`;
+    // }
+
+    return result;
   }
   saxonAttack() {
     let randomSaxonArmy =
@@ -76,7 +86,14 @@ class War {
     let randomVikingArmy =
       this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-    return randomVikingArmy.receiveDamage(randomSaxonArmy.strength);
+    let result = randomVikingArmy.receiveDamage(randomSaxonArmy.strength);
+
+    if (randomVikingArmy.health <= 0) {
+      let randomVikingArmyIndex = this.vikingArmy.indexOf(randomVikingArmy);
+      this.vikingArmy.splice(randomVikingArmyIndex, 1);
+    }
+
+    return result;
   }
   showStatus() {}
 }
