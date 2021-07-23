@@ -15,15 +15,13 @@ class Soldier {
 // Viking
 class Viking extends Soldier {
   constructor(name, health, strength) {
-    super(name, health, strength);
+    super(health, strength); //is it neccesary hier to declare arg. name?
     this.name = name;
-    this.health = health;
-    this.strength = strength;
   }
   receiveDamage(theDamage) {
     this.health = this.health - theDamage;
 
-    if (this.health - theDamage > 0) {
+    if (this.health > 0) {
       return `${this.name} has received ${theDamage} points of damage`;
     } else {
       return `${this.name} has died in act of combat`;
@@ -36,7 +34,17 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+  receiveDamage(theDamage) {
+    this.health = this.health - theDamage;
+
+    if (this.health > 0) {
+      return `A Saxon has received ${theDamage} points of damage`;
+    } else {
+      return 'A Saxon has died in combat';
+    }
+  }
+}
 
 // War
 class War {}
