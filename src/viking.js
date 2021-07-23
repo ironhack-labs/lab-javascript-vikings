@@ -20,7 +20,19 @@ class Viking extends Soldier {
     this.health = health;
     this.strength = strength;
   }
-  battleCry() {}
+  receiveDamage(theDamage) {
+    this.health = this.health - theDamage;
+
+    if (this.health - theDamage > 0) {
+      return `${this.name} has received ${theDamage} points of damage`;
+    } else {
+      return `${this.name} has died in act of combat`;
+    }
+  }
+
+  battleCry() {
+    return 'Odin Owns You All!';
+  }
 }
 
 // Saxon
