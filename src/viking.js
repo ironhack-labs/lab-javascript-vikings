@@ -21,7 +21,14 @@ class Viking extends Soldier {
     this.name = name;
   }
 
-  receiveDamage() {}
+  // Since the attack method is the same, as we are extending the class Soldier, we don't need to do anything. Viking will have attack as soldier()
+
+  receiveDamage(damage) {
+    this.health -= damage;
+    return this.health > 0
+      ? `${this.name} has received ${damage} points of damage`
+      : `${this.name} has died in act of combat`;
+  }
 
   battleCry() {
     return 'Odin Owns You All!';
@@ -29,10 +36,27 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+  receiveDamage(damage) {
+    this.health -= damage;
+    return this.health > 0
+      ? `A Saxon has received ${damage} points of damage`
+      : `A Saxon has died in combat`;
+  }
+}
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+  addViking() {}
+  addSaxon() {}
+  vikingAttack() {}
+  saxonAtacck() {}
+  showStatus() {}
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
