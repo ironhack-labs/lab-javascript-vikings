@@ -47,7 +47,10 @@ class Saxon extends Soldier {
   }
 }
 
-// War
+
+
+
+// War      // Math.floor(Math.random ().... Random code 
 class War {}
 
 // The following is required to make unit tests work.
