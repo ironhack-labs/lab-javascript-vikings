@@ -1,10 +1,14 @@
 // Soldier
 class Soldier {
   constructor(health, strength) {
-    (this.attack = function attack() {
-      return strength;
-    }),
-      (this.receiveDamage = function receiveDamage(damage) {});
+    this.health = health;
+    this.strength = strength;
+  }
+  attack() {
+    return this.stregnth;
+  }
+  receiveDamage(damage) {
+    health.remove();
   }
 }
 
