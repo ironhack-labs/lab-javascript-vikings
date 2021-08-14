@@ -67,12 +67,12 @@ class War {
   vikingAttack() {
     // evaluates to a number example : 8
     let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    //evaluates to a viking from the viking army array
+    // evaluates to a viking from the viking army array
     let randomViking = this.vikingArmy[randomVikingIndex];
 
     // evaluates to a number example : 8
     let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-    //evaluates to a saxon from the saxon army array
+    // evaluates to a saxon from the saxon army array
     let randomSaxon = this.saxonArmy[randomSaxonIndex];
 
     let fightMessage = randomSaxon.receiveDamage(randomViking.strength);
@@ -90,12 +90,12 @@ class War {
   saxonAttack() {
     // evaluates to a number example : 8
     let randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-    //evaluates to a saxon from the saxon army array
+    // evaluates to a saxon from the saxon army array
     let randomSaxon = this.saxonArmy[randomSaxonIndex];
 
     // evaluates to a number example : 8
     let randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    //evaluates to a viking from the viking army array
+    // evaluates to a viking from the viking army array
     let randomViking = this.vikingArmy[randomVikingIndex];
 
     let fightMessage = randomViking.receiveDamage(randomSaxon.strength);
