@@ -8,7 +8,7 @@ class Soldier {
     return this.stregnth;
   }
   receiveDamage(damage) {
-    health.remove();
+    this.health -= damage;
   }
 }
 
