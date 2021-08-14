@@ -14,11 +14,9 @@ class Soldier {
 
 // Viking
 class Viking extends Soldier{
-  constructor(health, strength, name){
+  constructor(name, health, strength){
     super(health, strength);
-    this.name = 'Harald';
-    this.health = 300;
-    this.strength = 150;
+    this.name = name; 
   }
   receiveDamage(damage){
     this.health -= damage;
