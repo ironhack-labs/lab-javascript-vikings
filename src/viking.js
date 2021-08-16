@@ -31,6 +31,7 @@ class Viking extends Soldier {
       return `${this.name} has died in act of combat`
     }
   }
+  
   battleCry(){
     return "Odin Owns You All!";
   }
@@ -78,12 +79,29 @@ class War {
 
     const damage = randomSaxon.receiveDamage(randomViking.strength)
 
-    this.saxonArmy.splice(randomIndexSaxon, 1);
+    if (randomSaxon.health <= 0 ){
+      this.saxonArmy.splice(randomIndexSaxon, 1);
+    }
 
     return damage;
   }
 
- // saxonAttack(){}
+  saxonAttack(){
+    const randomIndexSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+    const randomSaxon = this.saxonArmy[randomIndexSaxon]
+
+    const randomIndexViking = Math.floor(Math.random() * this.vikingArmy.length)
+    const randomViking = this.vikingArmy[randomIndexViking]  
+
+    const damage = randomViking.receiveDamage(randomSaxon.strength)
+
+   
+    if(randomViking.health <= 0) {
+    this.vikingArmy.splice(randomIndexViking, 1);
+    }
+
+    return damage;
+  }
 
  // showStatus(){}
 
