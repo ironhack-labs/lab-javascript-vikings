@@ -67,6 +67,25 @@ class War {
     this.saxonArmy.push(saxon);
   }
   
+  // SUPERBONUS: Generic attack function 
+  // generalAttack(attacker, target) {
+  //   let randomAttacker = Math.floor((Math.random() * this.attacker.length));
+  //   let randomTarget = Math.floor((Math.random() * this.target.length));
+  //   let resultOfAttack = this.randomTarget[target].receiveDamage(this.attacker[randomAttacker].strength);
+  //   if(this.target[randomTarget] <= 0) {
+  //     this.target.splice(this.target[saxon], 1);
+  //   }
+  //   return resultOfAttack;
+  // }
+
+  // vikingAttack() {
+  //   this.generalAttack(this.vikingArmy, this.saxonArmy);
+  // }
+
+  // saxonAttack() {
+  //   this.generalAttack(this.saxonArmy, this.vikingArmy);
+  // }
+
   vikingAttack() {
     let anyViking = Math.floor((Math.random() * this.vikingArmy.length));
     let saxon = Math.floor((Math.random() * this.saxonArmy.length));
