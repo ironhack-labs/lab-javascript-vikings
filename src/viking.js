@@ -51,13 +51,11 @@ class War {
   }
 
   addViking(viking) {
-    let newViking = new Viking(viking.name, viking.health, viking.strength);
-    this.vikingArmy.push(newViking);
+    this.vikingArmy.push(viking);
   }
 
   addSaxon(saxon) {
-    let newSaxon = new Saxon(saxon.health, saxon.strength);
-    this.saxonArmy.push(newSaxon);
+    this.saxonArmy.push(saxon);
   }
 
   vikingAttack() {
