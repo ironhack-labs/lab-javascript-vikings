@@ -81,11 +81,40 @@ class War {
     let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
     
     let status = randomSaxon.receiveDamage(randomViking.strength)
-    this.saxonArmy.filter(randomSaxon)
+    this.saxonArmy = this.saxonArmy.filter((saxon) => {
+      if(saxon.health > 0){
+        return saxon
+      }
+    })
+    return status
+
   }
 
-  saxonAttack(){}
-  showStatus(){}
+  saxonAttack(){
+    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+  
+    let status = randomViking.receiveDamage(randomSaxon.strength)
+      this.vikingArmy = this.vikingArmy.filter((viking) => {
+        if(viking.health > 0){
+          return viking
+        }
+      })
+      return status
+  }
+
+  showStatus(){
+    
+    if(this.saxonArmy == 0){
+      return "Vikings have won the war of the century!"
+    }else if(this.vikingArmy == 0){
+      return "Saxons have fought for their lives and survived another day..."
+    }else{
+      return "Vikings and Saxons are still in the thick of battle."
+    }
+
+   
+  }
 
 }
 
