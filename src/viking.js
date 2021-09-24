@@ -9,9 +9,8 @@ class Soldier {
     return this.strength
   };
 
-//TODO: receiveDamage() should remove the received damage from the health property
   receiveDamage (damage) {
-    this.health - damage;
+    this.health -= damage
   };
 
 }
@@ -24,13 +23,17 @@ class Viking extends Soldier {
     this.name = name;
   };
 
+  //TODO
 receiveDamage(damage) {
-  this.health - this.damage;
+
+  this.health -= damage;
+
   if (this.health > 0) {
     return `${this.name} has received ${this.damage} points of damage`
   } else {
     return `${this.name} has died in act of combat`
   }
+
 };
 
 battleCry () {
@@ -40,7 +43,14 @@ battleCry () {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+
+    // super(health, strength);
+    receiveDamage(damage) {
+
+    }
+
+}
 
 // War
 class War {}
