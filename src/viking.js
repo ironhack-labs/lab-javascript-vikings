@@ -1,5 +1,20 @@
 // Soldier
-class Soldier {}
+class Soldier {
+  constructor(health, strength) {
+    this.health = health,
+    this.strength = strength
+  };
+
+  attack () {
+    return this.strength
+  };
+
+//TODO: receiveDamage() should remove the received damage from the health property
+  receiveDamage (damage) {
+    this.health - damage
+  };
+
+}
 
 // Viking
 class Viking {}
