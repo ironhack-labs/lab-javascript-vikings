@@ -28,13 +28,14 @@ receiveDamage(damage) {
 
   this.health -= damage;
 
-  if (this.health > 0) {
-    return `${this.name} has received ${this.damage} points of damage`
+  if ( this.health > 0) {
+    return `${this.name} has received ${damage} points of damage`
   } else {
     return `${this.name} has died in act of combat`
   }
 
-};
+}
+
 
 battleCry () {
   return "Odin Owns You All!"
