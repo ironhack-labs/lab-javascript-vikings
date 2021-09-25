@@ -2,9 +2,9 @@
 
 
 class Soldier {
-  constructor (strength, health) {
-    this.strength = 150;
+  constructor (health, strength) {
     this.health = 300;
+    this.strength = 150;
   }
 
   attack(){
