@@ -60,37 +60,67 @@ class War {
     this.saxonArmy.push(saxonObject);
   }
 
-  vikingAttack () {
+  attack (warrior) {
+    // console.log(warrior)
+    // console.log(warrior instanceof Viking)
+    // console.log(warrior instanceof Saxon)
     // select a random saxon/viking object based on a random index of the array
     const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
     const vikingRandom= this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    // check if the object is instanceof Viking or Saxon
+    if(warrior instanceof Viking) {
+      const saxonDamage = saxonRandom.receiveDamage(vikingRandom.strength);
 
-    // random saxon receives damage, based on saxon strength
-    const saxonDamage = saxonRandom.receiveDamage(vikingRandom.strength);
+      // filter --> remove dead saxons from saxon army --> filter health > 0
+      // reassign to this.saxonArmy
+      this.saxonArmy = this.saxonArmy.filter( item => item.health > 0 );
+  
+      // return result of calling receive damage
+      return saxonDamage;
+    } else if( warrior instanceof Saxon) {
+      // random viking receives damage, based on saxon strength
+      const vikingDamage = vikingRandom.receiveDamage(saxonRandom.strength);
+      
+      // filter --> remove dead vikings from viking army --> filter health > 0
+      // reassing the new array to the viking army
+      this.vikingArmy = this.vikingArmy.filter( item => item.health > 0 );
 
-    // filter --> remove dead saxons from saxon army --> filter health > 0
-    // reassign to this.saxonArmy
-    this.saxonArmy = this.saxonArmy.filter( item => item.health > 0 );
-
-    // return result of calling receive damage
-    return saxonDamage;
+      // return result of calling receive damage
+      return vikingDamage;
+    }
   }
 
-  saxonAttack () {
-    // select a random saxon/viking object based on a random index of the array
-    const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    const vikingRandom = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)] 
-    
-    // random viking receives damage, based on saxon strength
-    const vikingDamage = vikingRandom.receiveDamage(saxonRandom.strength);
-    
-    // filter --> remove dead vikings from viking army --> filter health > 0
-    // reassing the new array to the viking army
-    this.vikingArmy = this.vikingArmy.filter( item => item.health > 0 );
+  // vikingAttack () {
+  //   // select a random saxon/viking object based on a random index of the array
+  //   const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  //   const vikingRandom= this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-    // return result of calling receive damage
-    return vikingDamage;
-  }
+  //   // random saxon receives damage, based on saxon strength
+  //   const saxonDamage = saxonRandom.receiveDamage(vikingRandom.strength);
+
+  //   // filter --> remove dead saxons from saxon army --> filter health > 0
+  //   // reassign to this.saxonArmy
+  //   this.saxonArmy = this.saxonArmy.filter( item => item.health > 0 );
+
+  //   // return result of calling receive damage
+  //   return saxonDamage;
+  // }
+
+  // saxonAttack () {
+  //   // select a random saxon/viking object based on a random index of the array
+  //   const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  //   const vikingRandom = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)] 
+    
+  //   // random viking receives damage, based on saxon strength
+  //   const vikingDamage = vikingRandom.receiveDamage(saxonRandom.strength);
+    
+  //   // filter --> remove dead vikings from viking army --> filter health > 0
+  //   // reassing the new array to the viking army
+  //   this.vikingArmy = this.vikingArmy.filter( item => item.health > 0 );
+
+  //   // return result of calling receive damage
+  //   return vikingDamage;
+  // }
 
   showStatus () {
     return this.saxonArmy.length === 0 ? `Vikings have won the war of the century!`
