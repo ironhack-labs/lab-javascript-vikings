@@ -68,13 +68,23 @@ class War {
     let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
 
     let result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].attack())
-    if (result === "A Saxon has died in combat")
+    if (result.includes("died"))
     {
       this.saxonArmy.splice(randomSaxon, 1)
     }
     return result
   }
-  saxonAttack() {}
+  saxonAttack() {
+    let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
+    let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
+
+    let result = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].attack())
+    if (result.includes("died"))
+    {
+      this.vikingArmy.splice(randomViking, 1)
+    }
+    return result
+  }
   showStatus() {}
 }
 
