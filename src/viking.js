@@ -67,7 +67,9 @@ class War {
     let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
     let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
 
+    // Attacks an random Saxon Warrior with an random Viking Warrior
     let result = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].attack())
+    // checks if he died in the process. If dead, the soldier will be spliced out of the Army Array
     if (result.includes("died"))
     {
       this.saxonArmy.splice(randomSaxon, 1)
@@ -75,6 +77,7 @@ class War {
     return result
   }
   saxonAttack() {
+    // same as in vikingAttack() with switched roles
     let randomSaxon = Math.floor(Math.random()*this.saxonArmy.length)
     let randomViking = Math.floor(Math.random()*this.vikingArmy.length)
 
