@@ -95,9 +95,24 @@ class War {
     // return result of calling receive damage
     return vikingDamage;
   }
+
+  showStatus () {
+    return this.saxonArmy.length === 0 ? `Vikings have won the war of the century!`
+      : this.vikingArmy.length  === 0 ? `Saxons have fought for their lives and survived another day...`
+      : this.vikingArmy.length  >= 1 && this.saxonArmy.length >= 1 ? `Vikings and Saxons are still in the thick of battle.`
+      : `Ups!!! Somehing wrong!`
+    }
+
+    // showStatus () {
+    //   if (this.saxonArmy.length === 0) {
+    //     return `Vikings have won the war of the century!`;
+    //   } else if (this.vikingArmy.length  === 0) {
+    //     return `Saxons have fought for their lives and survived another day...`;
+    //   } else if (this.vikingArmy.length  >= 1 && this.saxonArmy.length >= 1) {
+    //     return `Vikings and Saxons are still in the thick of battle.`;
+    //   }
+    // }
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
