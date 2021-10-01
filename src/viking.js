@@ -91,37 +91,42 @@ class War {
   }
 
   vikingAttack () {
+    // find the first alive warrior instance of viking
+    const vikingWarrior = this.vikingArmy.find( item => item.health > 0);
+    return this.attack(vikingWarrior);
     
-    // select a random saxon/viking object based on a random index of the array
-    const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    const vikingRandom= this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    // // select a random saxon/viking object based on a random index of the array
+    // const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    // const vikingRandom= this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
-    // random saxon receives damage, based on saxon strength
-    const saxonDamage = saxonRandom.receiveDamage(vikingRandom.strength);
+    // // random saxon receives damage, based on saxon strength
+    // const saxonDamage = saxonRandom.receiveDamage(vikingRandom.strength);
 
-    // filter --> remove dead saxons from saxon army --> filter health > 0
-    // reassign to this.saxonArmy
-    this.saxonArmy = this.saxonArmy.filter( item => item.health > 0 );
+    // // filter --> remove dead saxons from saxon army --> filter health > 0
+    // // reassign to this.saxonArmy
+    // this.saxonArmy = this.saxonArmy.filter( item => item.health > 0 );
 
-    // return result of calling receive damage
-    return saxonDamage;
+    // // return result of calling receive damage
+    // return saxonDamage;
   }
 
   saxonAttack () {
+    // find the first alive warrior instance of viking
+    const saxonWarrior = this.saxonArmy.find( item => item.health > 0);
+    return this.attack(saxonWarrior);
+    // // select a random saxon/viking object based on a random index of the array
+    // const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    // const vikingRandom = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)] 
     
-    // select a random saxon/viking object based on a random index of the array
-    const saxonRandom = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    const vikingRandom = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)] 
+    // // random viking receives damage, based on saxon strength
+    // const vikingDamage = vikingRandom.receiveDamage(saxonRandom.strength);
     
-    // random viking receives damage, based on saxon strength
-    const vikingDamage = vikingRandom.receiveDamage(saxonRandom.strength);
-    
-    // filter --> remove dead vikings from viking army --> filter health > 0
-    // reassing the new array to the viking army
-    this.vikingArmy = this.vikingArmy.filter( item => item.health > 0 );
+    // // filter --> remove dead vikings from viking army --> filter health > 0
+    // // reassing the new array to the viking army
+    // this.vikingArmy = this.vikingArmy.filter( item => item.health > 0 );
 
-    // return result of calling receive damage
-    return vikingDamage;
+    // // return result of calling receive damage
+    // return vikingDamage;
   }
 
   showStatus () {
