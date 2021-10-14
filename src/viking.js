@@ -47,33 +47,21 @@ class War {
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon);
   }
+  setArena(attackerArmy, victimArmy) {
+    const attacker = attackerArmy[Math.floor(attackerArmy.length * Math.random())];
+    const victim = victimArmy[Math.floor(victimArmy.length * Math.random())];
+    const victimDamageStatus = victim.receiveDamage(attacker.attack());
+    victimArmy.forEach((victm, indx) => {if(victm.health < 1) victimArmy.splice(indx, 1)});
+    return victimDamageStatus;
+  }
   vikingAttack() {
-    const aViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
-    const aSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
-    
-    const saxonStatus = aSaxon.receiveDamage(aViking.strength);
-
-    this.saxonArmy.forEach((saxon, index) => {
-      if (saxon.health < 1) this.saxonArmy.splice(index, 1);
-    });
-
-    return saxonStatus;
+    return this.setArena(this.vikingArmy, this.saxonArmy);
   }
   saxonAttack() {
-    const aViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
-    const aSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
-
-    const vickingStatus = aViking.receiveDamage(aSaxon.strength);
-
-    this.vikingArmy.forEach((viking, index) => {
-      if (viking.health < 1) this.vikingArmy.splice(index, 1);
-    });
-
-    return vickingStatus;
-
+    return this.setArena(this.saxonArmy, this.vikingArmy);
   }
   showStatus() {
-
+    return !this.saxonArmy.length ? `Vikings have won the war of the century!` : !this.vikingArmy.length ? `Saxons have fought for their lives and survived another day...` : `Vikings and Saxons are still in the thick of battle.`
   }
 }
 
