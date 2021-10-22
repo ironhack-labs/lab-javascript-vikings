@@ -48,7 +48,7 @@ describe('Soldier', () => {
 
     it('should remove the received damage from the health property', () => {
       soldier.receiveDamage(50);
-      expect(soldier.health).toEqual(health - 50);
+      expect(soldier.health).toEqual(300 - 50);
     });
 
     it("shouldn't return anything", () => {
