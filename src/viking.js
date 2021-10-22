@@ -85,10 +85,5 @@ if (typeof module !== 'undefined') {
   module.exports = { Soldier, Viking, Saxon, War };
 }
 
-let war = new War()
-let david = new Viking("David", 1000, 1000)
-let fucker = new Saxon(500, 25)
-war.addViking(david)
-war.addSaxon(fucker)
-war.vikingAttack()
+
 
