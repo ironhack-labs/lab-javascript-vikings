@@ -81,6 +81,14 @@ class War {
 
     return battle;
   }
+
+  battle() {
+    let randomSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randomViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+  }
+
   showStatus() {
     if (this.saxonArmy.length === 0) {
       return 'Vikings have won the war of the century!';
@@ -97,3 +105,20 @@ class War {
 if (typeof module !== 'undefined') {
   module.exports = { Soldier, Viking, Saxon, War };
 }
+
+// refactor vikingAttack() and saxonAttack() in one single method (to add inside War constructor instead of the single methods)
+// battle(attacker) {
+//   let randomSaxon =
+//     this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+//   let randomViking =
+//     this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+//   if (randomSaxon) {
+//     randomViking.receiveDamage(randomSaxon.strength);
+//     this.vikingArmy = this.vikingArmy.filter(
+//       vikingUnit => vikingUnit.health > 0
+//     );
+//   } else {
+//     randomSaxon.receiveDamage(randomViking.strength);
+//     this.saxonArmy = this.saxonArmy.filter(saxonUnit => saxonUnit.health > 0);
+//   }
+// }
