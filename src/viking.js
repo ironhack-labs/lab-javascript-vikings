@@ -6,11 +6,11 @@ class Soldier {
     this.strength = strength;
   }
 
-  attack () {
+  attack() {
       return this.strength;
   };
 
-  receiveDamage (damage) {
+  receiveDamage(damage) {
       this.health = this.health - damage;
   };
 }
@@ -35,7 +35,7 @@ class Viking extends Soldier {
   }
 
   battleCry() {
-    return 'Odin Owns you All!';
+    return 'Odin Owns You All!';
   }
 }
 
@@ -48,7 +48,7 @@ class Saxon extends Soldier{
     if (this.health > 0) {
       return `A Saxon has received ${damage} points of damage`;
 
-    } else { return `A Saxon has died in act of combat`;
+    } else { return `A Saxon has died in combat`;
 
       };
   }
@@ -101,7 +101,7 @@ class War{
       return "Saxons have fought for their lives and survived another day...";
     }
       else (this.vikingArmy.length > 0  && this.saxonArmy.length > 0) 
-      return "Vikings and Saxons are still in the thick of battle";
+      return "Vikings and Saxons are still in the thick of battle.";
   }
 }
 
