@@ -1,19 +1,64 @@
 // Soldier
 class Soldier {
+
   constructor (health, strength) {
+    super (health, strength)
+    this.health = health;
+    this.strength = strength;
+  }
+
+    attack () {
+      this.strength
+    };
+
+    receiveDamage (damage) {
+      
+
+    }
+}
+
+
+// Viking
+class Viking extends Soldier {
+  constructor (name) {
+    this.name = name;
     this.health = health;
     this.strength = strength
   }
+
+  receiveDamage(damage){
+    if () {
+
+    } else {
+
+    }
+  }
+
+  battleCry() {
+    console.log('Odin Owns you All!')
+  }
 }
 
-// Viking
-class Viking {}
-
 // Saxon
-class Saxon {}
+class Saxon extends Soldier{
+
+  receiveDamage(damage){
+    if () {
+
+    } else {
+
+    }
+  }
+}
 
 // War
-class War {}
+class War {
+  addViking()
+  addSaxon()
+  vikingAttack()
+  saxonAttack()
+  showStatus()
+}
 
 
 
