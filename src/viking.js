@@ -43,7 +43,20 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+
+    //No need for constructor as it'll have the same attributes and methods soldier has and js will extend those by itself
+
+    receiveDamage(damage){
+      if(this.health <= damage){
+        this.health = 0
+        return 'A Saxon has died in combat'
+      }
+      this.health -= damage
+      return `A Saxon has received ${damage} points of damage`
+    }
+
+}
 
 // War
 class War {}
