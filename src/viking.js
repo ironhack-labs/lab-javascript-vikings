@@ -83,9 +83,7 @@ class War {
   vikingAttack() {
     //Select random viking to attack and random saxon to receive damage
     let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    console.log(vikingIndex);
     let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-    console.log(saxonIndex);
 
     const viking = this.vikingArmy[vikingIndex];
     const saxon = this.saxonArmy[saxonIndex];
@@ -99,7 +97,24 @@ class War {
     return attackOutcome
   }
 
-  saxonAttack() {}
+  saxonAttack() {
+    //Select random viking to attack and random saxon to receive damage
+    let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    
+    const viking = this.vikingArmy[vikingIndex];
+    const saxon = this.saxonArmy[saxonIndex];
+
+    const attackOutcome = viking.receiveDamage(saxon.attack());
+
+    if(saxon.strength > viking.health){
+      this.vikingArmy.splice(vikingIndex, 1)
+    }
+
+    return attackOutcome
+
+
+  }
 
   showStatus() {}
 }
