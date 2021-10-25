@@ -118,8 +118,8 @@ class War {
 
   //Bonus attack function from iteration 5
   attack() {
-    //Instead of having viking attack or saxon attack call the function we can have a single function that does both
-    //choosing attacker from user input
+    //Instead of having viking attack or saxon attack call an attack function we can have a single function that does both
+    //choosing attacking army via user input
 
     //Select the attacker
     const attacker = prompt(
