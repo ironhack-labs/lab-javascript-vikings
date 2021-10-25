@@ -3,7 +3,6 @@ class Soldier {
   constructor(health, strength) {
     this.health = 300;
     this.strength = 150;
-    this.name = 'Harald';
   }
   attack() {
     return this.strength
@@ -15,11 +14,26 @@ class Soldier {
 // Viking
 class Viking extends Soldier {
   constructor(name, health, strength) {
-    super(health, strength)
+    super(health, strength);
+    this.name = name;
+  }
+
+  receiveDamage(damage) {
+    this.health -= damage;
+    if (this.health > 0)
+      return `${this.name} has received ${damage} points of damage`;
+    else return `${this.name} has died in act of combat`;
+  }
+
+  battleCry() {
+    return 'Odin Owns You All!';
   }
 }
+
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+  
+}
 // War
 class War {}
 // The following is required to make unit tests work.
