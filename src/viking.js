@@ -53,7 +53,9 @@ class War {
     this.saxonArmy.push(saxon)
   }
   vikingAttack(){
-    
+    let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    saxon.receiveDamage(viking.attack())
   }
 }
 
