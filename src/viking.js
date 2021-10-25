@@ -24,8 +24,9 @@ class Viking extends Soldier {
 
   receiveDamage(damage) {
     this.health -= damage
-
-    let messageWar = (this.health > 0) ? `${this.name} has received ${damage} points of damage` : `${this.name} has died in act of combat`
+    let strDamage = `${this.name} has received ${damage} points of damage`
+    let strDeath = `${this.name} has died in act of combat`
+    let messageWar = (this.health > 0) ? strDamage : strDeath
     return messageWar
   }
 
