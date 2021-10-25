@@ -1,67 +1,108 @@
 // Soldier
 class Soldier {
-
-  constructor(health, strength){
-    this.health = health
-    this.strength = strength
+  constructor(health, strength) {
+    this.health = health;
+    this.strength = strength;
   }
 
-  attack(){
-    return this.strength
+  attack() {
+    return this.strength;
   }
 
-  receiveDamage(damage){
-    if(this.health < damage){
-      this.health = 0
+  receiveDamage(damage) {
+    if (this.health <= damage) {
+      this.health = 0;
+    } else {
+      this.health -= damage;
     }
-    this.health -= damage
   }
-
 }
 
 // Viking
 class Viking extends Soldier {
-
-  constructor(name, health, strength){
-    super(health, strength)
-    this.name = name
+  constructor(name, health, strength) {
+    super(health, strength);
+    this.name = name;
   }
 
-  receiveDamage(damage){
-    if(this.health <= damage){
-      this.health = 0
-      return `${this.name} has died in act of combat`
+  receiveDamage(damage) {
+  
+    this.health -= damage;
+
+    if(this.health > 0){
+      return  `${this.name} has received ${damage} points of damage`
+    }else{
+      return `${this.name} has died in act of combat`;
     }
-    this.health -= damage
-    return `${this.name} has received ${damage} points of damage`
+
   }
 
-  battleCry(){
-    return 'Odin Owns You All!'
+  battleCry() {
+    return 'Odin Owns You All!';
   }
-
 }
 
 // Saxon
 class Saxon extends Soldier {
+  
+  // constructor(health, strength){
+  //   super(health, strength)
+  // }
 
-    //No need for constructor as it'll have the same attributes and methods soldier has and js will extend those by itself
+  receiveDamage(damage) {
 
-    receiveDamage(damage){
-      if(this.health <= damage){
-        this.health = 0
-        return 'A Saxon has died in combat'
-      }
-      this.health -= damage
-      return `A Saxon has received ${damage} points of damage`
+
+    this.health -= damage;
+
+    if(this.health > 0){
+      return  `A Saxon has received ${damage} points of damage`
+    }else{
+      return `A Saxon has died in combat`;
     }
 
+
+
+  }
 }
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
 
+  addViking(Viking) {
+    this.vikingArmy.push(Viking);
+  }
 
+  addSaxon(Saxon) {
+    this.saxonArmy.push(Saxon);
+  }
+
+  vikingAttack() {
+    //Select random viking to attack and random saxon to receive damage
+    let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    console.log(vikingIndex);
+    let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    console.log(saxonIndex);
+
+    const viking = this.vikingArmy[vikingIndex];
+    const saxon = this.saxonArmy[saxonIndex];
+
+    const attackOutcome = saxon.receiveDamage(viking.attack());
+
+    if(viking.strength > saxon.health){
+      this.saxonArmy.splice(saxonIndex, 1)
+    }
+
+    return attackOutcome
+  }
+
+  saxonAttack() {}
+
+  showStatus() {}
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
