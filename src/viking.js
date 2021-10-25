@@ -75,20 +75,25 @@ class War {
       this.saxonArmy.splice(randomIndexOfSaxon, 1);
     }
     return attack;
+    // To test Iterarion 5
+    // return this.genericAttack(this.vikingArmy, this.saxonArmy)
   }
   saxonAttack(){
     const randomIndexOfViking = Math.floor(Math.random() * this.vikingArmy.length);
     const randomIndexOfSaxon = Math.floor(Math.random() * this.saxonArmy.length);
     const viking = this.vikingArmy[randomIndexOfViking]; //Random Viking
     const saxon = this.saxonArmy[randomIndexOfSaxon]; //Random Viking
-    // The Viking attack the Saxon
+    // The Saxon attack the Viking
     const attack = viking.receiveDamage(saxon.strength);
-    // Check Saxon's life
+    // Check Viking's life
     if (viking.health <= 0) {
       this.vikingArmy.splice(randomIndexOfViking, 1);
     }
     return attack;
+    // To test Iterarion 5
+    // return this.genericAttack(this.saxonArmy, this.vikingArmy)
   }
+
 
   showStatus(){
     if(this.saxonArmy.length === 0){
@@ -98,6 +103,20 @@ class War {
     } else {
       return "Vikings and Saxons are still in the thick of battle."
     }
+  }
+
+  genericAttack(attackerArmy, defenderArmy){
+    const randomIndexOfAttacker = Math.floor(Math.random() * attackerArmy.length);
+    const randomIndexOfDefender = Math.floor(Math.random() * defenderArmy.length);
+    const attacker = attackerArmy[randomIndexOfAttacker]; //Random Attacker
+    const defender = defenderArmy[randomIndexOfDefender]; //Random Defender
+    // The Saxon attack the Viking
+    const attack = defender.receiveDamage(attacker.strength);
+    // Check Viking's life
+    if (defender.health <= 0) {
+      defenderArmy.splice(randomIndexOfDefender, 1);
+    }
+    return attack;
   }
 
 }
