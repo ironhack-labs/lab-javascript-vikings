@@ -68,7 +68,9 @@ In this case, the test says that _Soldier class should receive 2 arguments (heal
 ```javascript
 // Soldier
 class Soldier {
-  constructor(health, strength) {}
+  constructor(health, strength) {
+    this.health =
+  }
 }
 
 // Viking
