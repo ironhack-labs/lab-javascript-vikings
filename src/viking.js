@@ -26,15 +26,13 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-  
     this.health -= damage;
 
-    if(this.health > 0){
-      return  `${this.name} has received ${damage} points of damage`
-    }else{
+    if (this.health > 0) {
+      return `${this.name} has received ${damage} points of damage`;
+    } else {
       return `${this.name} has died in act of combat`;
     }
-
   }
 
   battleCry() {
@@ -44,24 +42,18 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
-  
   // constructor(health, strength){
   //   super(health, strength)
   // }
 
   receiveDamage(damage) {
-
-
     this.health -= damage;
 
-    if(this.health > 0){
-      return  `A Saxon has received ${damage} points of damage`
-    }else{
+    if (this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`;
+    } else {
       return `A Saxon has died in combat`;
     }
-
-
-
   }
 }
 
@@ -90,42 +82,66 @@ class War {
 
     const attackOutcome = saxon.receiveDamage(viking.attack());
 
-    if(viking.strength > saxon.health){
-      this.saxonArmy.splice(saxonIndex, 1)
+    if (viking.strength > saxon.health) {
+      this.saxonArmy.splice(saxonIndex, 1);
     }
 
-    return attackOutcome
+    return attackOutcome;
   }
 
   saxonAttack() {
     //Select random viking to attack and random saxon to receive damage
     let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
     let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-    
+
     const viking = this.vikingArmy[vikingIndex];
     const saxon = this.saxonArmy[saxonIndex];
 
     const attackOutcome = viking.receiveDamage(saxon.attack());
 
-    if(saxon.strength > viking.health){
-      this.vikingArmy.splice(vikingIndex, 1)
+    if (saxon.strength > viking.health) {
+      this.vikingArmy.splice(vikingIndex, 1);
     }
 
-    return attackOutcome
-
-
+    return attackOutcome;
   }
 
   showStatus() {
-    if(this.saxonArmy.length === 0){
-      return 'Vikings have won the war of the century!'
+    if (this.saxonArmy.length === 0) {
+      return 'Vikings have won the war of the century!';
+    } else if (this.vikingArmy.length === 0) {
+      return 'Saxons have fought for their lives and survived another day...';
+    } else if (this.vikingArmy.length >= 1 && this.saxonArmy.length >= 1) {
+      return 'Vikings and Saxons are still in the thick of battle.';
     }
-    else if(this.vikingArmy.length === 0){
-      return 'Saxons have fought for their lives and survived another day...'
+  }
+
+  //Bonus attack function from iteration 5
+  attack() {
+    //Instead of having viking attack or saxon attack call the function we can have a single function that does both
+    //choosing attacker from user input
+
+    //Select the attacker
+    const attacker = prompt(
+      'Choose the attacker (viking or saxon'
+    ).toLowerCase();
+
+    //Select random viking to attack and random saxon to receive damage
+    let vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+
+    const viking = this.vikingArmy[vikingIndex];
+    const saxon = this.saxonArmy[saxonIndex];
+
+    if (attacker === 'viking') {
+      const attackOutcome = saxon.receiveDamage(viking.attack());
+    } else if (attacker === 'saxon') {
+      const attackOutcome = viking.receiveDamage(saxon.attack());
+    } else {
+      return `Please input the attacking army's name properly`;
     }
-    else if(this.vikingArmy.length >= 1 && this.saxonArmy.length >= 1){
-      return 'Vikings and Saxons are still in the thick of battle.'
-    }
+
+    return attackOutcome;
   }
 }
 
