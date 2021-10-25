@@ -24,11 +24,19 @@ class Viking extends Soldier{
 
   receiveDamage(damage){
     this.health = this.health - damage
-    if(this.health >0){
-      return `${this.name} has received ${damage} points of damage`
-    }else{
-      return `${this.name} has died in act of combat`
-    }
+
+    const vikingSurvived = `${this.name} has received ${damage} points of damage`;
+    const vikingDeath = `${this.name} has died in act of combat`;
+
+    return (this.health > 0) ?  vikingSurvived : vikingDeath
+
+
+    
+  //   if(this.health >0){
+  //     return `${this.name} has received ${damage} points of damage`
+  //   }else{
+  //     return `${this.name} has died in act of combat`
+  //   }
   }
   battleCry(){return `Odin Owns You All!`}
 
@@ -63,7 +71,9 @@ class War {
   vikingAttack(){
     let randomSaxon =this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
     let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    
     randomSaxon.receiveDamage(randomViking.strength)
+    
     
     this.saxonArmy = this.saxonArmy.filter((saxon) => saxon.health >0)
     if(randomSaxon.health<0){
