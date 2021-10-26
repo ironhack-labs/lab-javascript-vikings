@@ -22,7 +22,7 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-    this.health -= damage;
+    super.receiveDamage(damage);
     return this.health > 0
       ? `${this.name} has received ${damage} points of damage`
       : `${this.name} has died in act of combat`;
@@ -36,7 +36,7 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
   receiveDamage(damage) {
-    this.health -= damage;
+    super.receiveDamage(damage);
     return this.health > 0
       ? `A Saxon has received ${damage} points of damage`
       : `A Saxon has died in combat`;
@@ -45,9 +45,9 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  constructor(){
+  constructor() {
     this.vikingArmy = [];
-    this.saxonArmy =[];
+    this.saxonArmy = [];
   }
   addViking(viking) {
     this.vikingArmy.push(viking);
@@ -63,7 +63,7 @@ class War {
   }
 
   attack(attackers, defenders) {
-    const strength =  this.getRndSoldier(attackers).strength;
+    const strength = this.getRndSoldier(attackers).strength;
     const defender = this.getRndSoldier(defenders);
     const result = defender.receiveDamage(strength);
     this.removeDeadSoliers();
@@ -71,22 +71,22 @@ class War {
   }
 
   showStatus() {
-    if(this.saxonArmy.length === 0) return 'Vikings have won the war of the century!';
-    if(this.vikingArmy.length === 0) return 'Saxons have fought for their lives and survived another day...';
+    if (this.saxonArmy.length === 0)
+      return 'Vikings have won the war of the century!';
+    if (this.vikingArmy.length === 0)
+      return 'Saxons have fought for their lives and survived another day...';
     return 'Vikings and Saxons are still in the thick of battle.';
   }
 
-  getRndSoldier(army){
+  getRndSoldier(army) {
     return army[Math.floor(Math.random() * army.length)];
   }
 
-  removeDeadSoliers(){
-    this.vikingArmy = this.vikingArmy.filter(v => v.health > 0);
-    this.saxonArmy = this.saxonArmy.filter(s => s.health > 0);
+  removeDeadSoliers() {
+    this.vikingArmy = this.vikingArmy.filter((v) => v.health > 0);
+    this.saxonArmy = this.saxonArmy.filter((s) => s.health > 0);
   }
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
