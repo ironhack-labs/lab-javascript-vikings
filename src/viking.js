@@ -45,7 +45,55 @@ class Saxon extends Soldier{
 }
 
 // War
-class War {}
+class War {
+  constructor(){
+    this.vikingArmy = []
+    this.saxonArmy = []
+  }
+  //the argument viking bellow is an object
+  addViking(viking){
+    this.vikingArmy.push(viking)
+  }
+  addSaxon(saxon){
+    this.saxonArmy.push(saxon)
+  
+  }
+
+  vikingAttack(){
+    //now we have to declare a random saxon
+     let diceSaxon =  Math.floor(this.saxonArmy.length * Math.random())
+     let randomSaxon = this.saxonArmy[diceSaxon]
+     let diceViking = Math.floor(this.vikingArmy.length * Math.random())
+     let randomViking = this.vikingArmy[diceViking]
+     let result = randomSaxon.receiveDamage(randomViking.strength)
+     //and now should remove dead saxons
+     
+     this.saxonArmy.sort(function(a,b){
+      return a.health - b.health
+     })
+     for (let i = 0; i< this.saxonArmy.length; i++)
+     {
+      if (this.saxonArmy[i].health<=0){
+        this.saxonArmy.shift()
+      }
+     }
+     return result
+  }
+
+
+
+
+  saxonAttack(){
+
+  }
+  showStatus(){
+
+  }
+
+
+
+
+}
 
 
 
