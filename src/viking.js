@@ -21,18 +21,27 @@ class Viking extends Soldier {
     this.name = name
     
   }
-    receiveDamage(){
-
+    receiveDamage(theDamage){
+     
     }
 
     battleCry(){
-
+      return "Odin Owns You All!"
     }
 }
 
 // Saxon
-class Saxon {
-  constructor (){}
+class Saxon extends Soldier {
+  constructor (health, strength){ 
+    super(health, strength)
+  }
+  attack(){
+   return this.strength
+  }
+
+  receiveDamage(theDamage){
+    
+  }
 }
 
 // War
