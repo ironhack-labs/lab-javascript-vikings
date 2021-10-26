@@ -58,23 +58,20 @@ class War {
   addSaxon(Saxon){
   this.saxonArmy.push(Saxon);
   }
-  vikingAttack(){
-    const figthingVikig = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-    const figthingSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    const figthingResult = figthingSaxon.receiveDamage(figthingVikig.strength);
-    if(figthingSaxon.health <= 0){
-      this.saxonArmy = this.saxonArmy.filter(saxon => saxon.health > 0);
+  attack(agressorArmy,defensorArmy){
+    const defensor = defensorArmy[Math.floor(Math.random() * defensorArmy.length)];
+    const agressor = agressorArmy[Math.floor(Math.random() * agressorArmy.length)];
+    const figthingResult = defensor.receiveDamage(agressor.strength);
+    if(defensor.health <= 0){
+      defensorArmy = defensorArmy.filter(warrior => warrior.health > 0);
     }
     return figthingResult;
   }
+  vikingAttack(){
+   return this.attack(this.vikingArmy,this.saxonArmy);
+  }
   saxonAttack(){
-    const figthingVikig = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-    const figthingSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    const figthingResult = figthingVikig.receiveDamage(figthingSaxon.strength);
-    if(figthingVikig.health <= 0){
-      this.vikingArmy = this.vikingArmy.filter(viking => viking.health > 0);
-    }
-    return figthingResult;
+    return this.attack(this.saxonArmy,this.vikingArmy);
   }
   showStatus(){
     if(this.saxonArmy.length === 0){
