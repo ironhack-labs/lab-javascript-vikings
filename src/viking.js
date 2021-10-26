@@ -84,6 +84,23 @@ class War {
 
 
   saxonAttack(){
+     let diceSaxon =  Math.floor(this.saxonArmy.length * Math.random())
+     let randomSaxon = this.saxonArmy[diceSaxon]
+     let diceViking = Math.floor(this.vikingArmy.length * Math.random())
+     let randomViking = this.vikingArmy[diceViking]
+     let result = randomViking.receiveDamage(randomSaxon.strength)
+     //and now should remove dead saxons
+     
+     this.vikingArmy.sort(function(a,b){
+      return a.health - b.health
+     })
+     for (let i = 0; i< this.vikingArmy.length; i++)
+     {
+      if (this.vikingArmy[i].health<=0){
+        this.vikingArmy.shift()
+      }
+     }
+     return result
 
   }
   showStatus(){
