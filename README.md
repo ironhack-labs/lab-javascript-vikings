@@ -69,6 +69,7 @@ In this case, the test says that _Soldier class should receive 2 arguments (heal
 // Soldier
 class Soldier {
   constructor(health, strength) {}
+  
 }
 
 // Viking
