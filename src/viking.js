@@ -10,7 +10,7 @@ class Soldier {
   }
 
   receiveDamage(damage){
-    
+    this.health = this.health - damage
   }
 }
 
@@ -21,7 +21,7 @@ class Viking extends Soldier {
     this.name = name;
     
   }
-    receiveDamage(Damage){
+    receiveDamage(damage){
 
     }
 
@@ -39,7 +39,7 @@ class Saxon extends Soldier {
       return this.strength;
     }
 
-    receiveDamage(Damage){
+    receiveDamage(damage){
       
       
     }
@@ -72,6 +72,8 @@ class War {
 
 
 }
+
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
