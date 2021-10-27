@@ -67,12 +67,23 @@ class War {
   }
 
   vikingAttack(){
-    Viking.receiveDamage = Saxon.strength
-
+    const randomViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
+    const randomSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
+    let result = randomSaxon.receiveDamage(randomViking.strength)
+    for (let saxon of this.saxonArmy){
+      if (saxon.health <= 0){ this.saxonArmy.shift(saxon)}
+    }
+    return result;
   }
 
   saxonAttack(){
-
+    const randomViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
+    const randomSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
+    let result = randomViking.receiveDamage(randomSaxon.strength)
+    for (let viking of this.vikingArmy){
+      if (viking.health <= 0){ this.vikingArmy.shift(viking)}
+    }
+    return result;
   }
 
   showStatus(){
