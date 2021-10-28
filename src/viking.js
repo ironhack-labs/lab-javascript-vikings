@@ -22,11 +22,12 @@ class Viking extends Soldier {
     
   }
     receiveDamage(damage){
-
-    }
+      this.health = this.health - damage;
+    
+  }
 
     battleCry(){
-      return "Odin Owns You All!"
+      return `Odin Owns You All!`
     }
 }
 
@@ -40,6 +41,10 @@ class Saxon extends Soldier {
     }
 
     receiveDamage(damage){
+      this.health = this.health - damage;
+      
+        return `A Saxon has died in combat`
+        
       
       
     }
