@@ -77,7 +77,20 @@ class Saxon extends Soldier {
 
 
 // War
-class War {}
+class War {
+
+  constructor(name, health, strength)
+  
+  vikingAttack(){
+    this.vikingArmy = []
+    this.saxonArmy = []
+  }
+
+  // argument viking below is an object
+  addViking (viking){
+
+  }
+}
 
 
 
@@ -86,3 +99,6 @@ class War {}
 if (typeof module !== 'undefined') {
   module.exports = { Soldier, Viking, Saxon, War };
 }
+
+
+document.querySelector
