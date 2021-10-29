@@ -67,6 +67,7 @@ class War {
       if (saxon.health = 0) {
         this.saxonArmy.pop (saxon);
       }
+      return (this.saxon.strength = )
     }
 
   }
