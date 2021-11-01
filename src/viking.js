@@ -31,9 +31,7 @@ class Viking  extends Soldier{
   battleCry(){
     return `Odin Owns You All!`
   }
-
 }
-
 
 // Saxon
 class Saxon extends Soldier{
@@ -63,13 +61,12 @@ class War {
 
   vikingAttack () {
     receiveDamage (saxon) {
-      this.axon.health == this.viking.health;
+      this.saxon.health == this.viking.health;
       if (saxon.health = 0) {
         this.saxonArmy.pop (saxon);
       }
-      return (this.saxon.strength = )
-    }
-
+      return 
+    };
   }
 
   saxonAttack () {
