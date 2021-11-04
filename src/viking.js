@@ -56,14 +56,36 @@ class War {
     let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
     let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
     saxon.receiveDamage(viking.attack())
+    this.saxonArmy.forEach((saxon) => {
+      if (saxon.health <= 0) {
+        this.saxonArmy.splice(0, 1)
+      }
+    })
+    return `A Saxon has died in combat`
+  }
+  saxonAttack(){
+    let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+    viking.receiveDamage(saxon.attack())
+    this.vikingArmy.forEach((viking) => {
+      if (viking.health <= 0) {
+        this.vikingArmy.splice(0, 1)
+      }
+    })
+    return `${viking.name} has received ${saxon.strength} points of damage`
+  }
+  showStatus(){
+    if(this.vikingArmy.length === 0){
+      return 'Saxons have fought for their lives and survived another day...'
+    }else if(this.saxonArmy.length === 0){
+      return 'Vikings have won the war of the century!'
+    }else{
+      return 'Vikings and Saxons are still in the thick of battle.'
+    }
   }
 }
 
-let x = new War
-x.vikingAttack()
-x.addViking()
-x.addSaxon()
-console.log(x)
+
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
