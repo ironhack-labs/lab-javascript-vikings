@@ -251,6 +251,7 @@ The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to
 
 Since there is a lot of repetitive code in the previous two iterations, _vikingAttack()_ and _saxonAttack()_ try to create one _generic_ method and call it in the case of _vikingAttack_ and in the case of _saxonAttack_ instead of using almost the same code for both methods. (This iteration doesn't have test, so ask your TAs and your instructor to give you feedback on the quality of your code after the refactor.)
 
+
 #### `showStatus()` method
 
 Returns the current status of the `War` based on the size of the armies.
