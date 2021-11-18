@@ -54,6 +54,15 @@ class War {
   vikingArmy = [];
   saxonArmy = [];
 
+/* 
+This doesn't work, need to find out why.
+
+selectCombatants() {
+    let combatantsArray = [Math.floor(Math.random() * this.vikingArmy.length), Math.floor(Math.random() * this.saxonArmy.length)];
+    return combatantsArray; 
+ }
+*/
+
 addViking(viking) {
 this.vikingArmy.push(viking);
 }
@@ -62,24 +71,42 @@ addSaxon(saxon) {
   this.saxonArmy.push(saxon);
 }
 
-selectCombatants() {
-    let combatantsArray = [Math.floor(Math.random() * this.vikingArmy.length), Math.floor(Math.random() * this.saxonArmy.length)];
-    return combatantsArray;
-  }
-
 vikingAttack() {
-  let combatants = selectCombatants();
+ let vikingFighter = Math.floor(Math.random() * this.vikingArmy.length);
+ let saxonFighter = Math.floor(Math.random() * this.saxonArmy.length);
+ let fightResult = this.saxonArmy[saxonFighter].receiveDamage(this.vikingArmy[vikingFighter].strength);
+ if (this.saxonArmy[saxonFighter].health <= 0) {
+  this.saxonArmy.splice(saxonFighter, 1);
+} 
+return fightResult;
+
+  /*const combatants = selectCombatants();
   this.saxonArmy[combatants[1]].receiveDamage(this.vikingArmy[combatants[0]].strength);
-  if (saxonArmy[combatants[1]].health <= 0) {
+  if (this.saxonArmy[combatants[1]].health <= 0) {
     this.saxonArmy.splice(combatants[1], 1);
   }
   return this.saxonArmy[combatants[1]].receiveDamage(this.vikingArmy[combatants[0]].strength);
+
+  */
 }
+
 saxonAttack() {
-  
+ let vikingFighter = Math.floor(Math.random() * this.vikingArmy.length);
+ let saxonFighter = Math.floor(Math.random() * this.saxonArmy.length);
+ let fightResult = this.vikingArmy[vikingFighter].receiveDamage(this.saxonArmy[saxonFighter].strength);
+ if (this.vikingArmy[vikingFighter].health <= 0) {
+  this.vikingArmy.splice(vikingFighter, 1);
+} 
+return fightResult;
 }
+
 showStatus() {
-  
+  if (this.saxonArmy.length === 0) {
+    return "Vikings have won the war of the century!";
+  } else if (this.vikingArmy.length === 0) {
+    return "Saxons have fought for their lives and survived another day..."
+  } else {return "Vikings and Saxons are still in the thick of battle."}
+
 }
 
 }
