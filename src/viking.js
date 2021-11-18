@@ -54,31 +54,37 @@ class War {
 
   }
 
-  addViking(viking){
-    this.vikingArmy.push(viking)
+  addViking(Viking){
+    this.vikingArmy.push(Viking)
   }
 
-  addSaxon(saxon){
-    this.saxonArmy.push(saxon)
+  addSaxon(Saxon){
+    this.saxonArmy.push(Saxon)
   }
 
 
-// need take an viking saxon
+// need to take a saxon/viking
 
-attack(vArmy, sArmy){
 
-  
+saxonAttack(){
+  const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+  let result = randomViking.receiveDamage(randomSaxon.attack());
+  if(randomViking.health <= 0){
+    this.vikingArmy.splice(randomSaxon, 1);
+  }
+  return result;
 }
 
-
-
-  vikingAttack () {
-    return this.attack(this.vikingArmy, this.saxonArmy);
+vikingAttack(){
+  const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+  const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+  let result = randomSaxon.receiveDamage(randomViking.attack());
+  if(randomSaxon.health <= 0){
+    this.saxonArmy.splice(randomSaxon, 1);
   }
-
-  saxonAttack () {
-    return this.attack(this.saxonArmy, this.vikingArmy);
-  }
+  return result;
+}
 
 
   showStatus () {
