@@ -100,6 +100,20 @@ saxonAttack() {
 return fightResult;
 }
 
+doBattle(attackingArmy, defendingArmy) {
+   if (attackingArmy === defendingArmy) {
+     return "This army ain't gonna fight itself";
+   }
+   let attackingFighter = Math.floor(Math.random() * this.attackingArmy.length);
+   let defendingFighter = Math.floor(Math.random() * this.defendingArmy.length);
+   let fightResult = this.attackingArmy[attackingFighter].receiveDamage(this.defendingArmy[defendingFighter].strength);
+ if (this.attackingArmy[attackingFighter].health <= 0) {
+  this.attackingArmy.splice(attackingFighter, 1);
+} 
+return fightResult;
+ 
+}
+
 showStatus() {
   if (this.saxonArmy.length === 0) {
     return "Vikings have won the war of the century!";
