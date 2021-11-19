@@ -1,14 +1,109 @@
 // Soldier
-class Soldier {}
+class Soldier {
+  constructor(health, strength) {
+    this.health = health;
+    this.strength = strength;
+  }
+
+  attack() {
+    return this.strength;
+  }
+
+  receiveDamage(damage) {
+    this.health -= damage;
+  }
+}
 
 // Viking
-class Viking {}
+class Viking extends Soldier {
+constructor(name, health, strength) {
+  super(health, strength);
+  this.name = name;
+}
+
+receiveDamage(damage) {
+
+  this.health -= damage;
+    if(this.health <= 0) {
+      return `${this.name} has died in act of combat`
+
+    } else {
+      return `${this.name} has received ${damage} points of damage`
+
+    }
+  }
+
+  battleCry() {
+
+    return "Odin Owns You All!";
+  }
+  }
+
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier{
+
+  attack() {
+    return this.strength;
+     
+  }
+
+  receiveDamage(damage) {
+
+    this.health -= damage;
+
+    if(this.health <= 0) {
+      return `A Saxon has died in combat`
+
+    } else {
+      return `A Saxon has received ${damage} points of damage`
+
+    }
+  }
+}
 
 // War
-class War {}
+class War {
+//I know constructor shouldn´t have two arguments, but otherwise I get an error creating the arrays.
+
+  constructor(vikingArmy, saxonArmy) {
+
+  this.vikingArmy = vikingArmy;
+  this.saxonArmy = saxonArmy;
+
+  this.vikingArmy = [];
+  this.saxonArmy = [];
+}
+
+  addViking(Viking) {
+    this.vikingArmy.push(Viking);
+    
+  }
+
+  addSaxon(Saxon) {
+    this.saxonArmy.push(Saxon);
+  }
+
+  vikingAttack() {
+    const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+
+    return randomSaxon.receiveDamage(this.Viking.strength);
+
+    if(randomSaxon.health <= 0) {
+      this.saxonArmy.pop(Saxon);
+    }
+    
+  }
+    
+
+  saxonAttack() {
+
+  }
+
+  showStatus() {
+
+  }
+}
 
 
 
