@@ -100,18 +100,30 @@ saxonAttack() {
 return fightResult;
 }
 
-doBattle(attackingArmy, defendingArmy) {
-   if (attackingArmy === defendingArmy) {
-     return "This army ain't gonna fight itself";
-   }
-   let attackingFighter = Math.floor(Math.random() * this.attackingArmy.length);
-   let defendingFighter = Math.floor(Math.random() * this.defendingArmy.length);
-   let fightResult = this.attackingArmy[attackingFighter].receiveDamage(this.defendingArmy[defendingFighter].strength);
- if (this.attackingArmy[attackingFighter].health <= 0) {
-  this.attackingArmy.splice(attackingFighter, 1);
+doBattle(attackers, defenders) {
+  let attackingArmy = [];
+  let defendingArmy = [];
+   switch (attackers) {
+    case "Vikings": attackingArmy = this.vikingArmy; break;
+    case "Saxons": attackingArmy = this.saxonArmy; break;
+    default: return "Only Viking and Saxon armies supported";
+  }
+  switch (defenders) {
+   case "Vikings": defendingArmy = this.vikingArmy; break;
+   case "Saxons": defendingArmy = this.saxonArmy; break;
+   default: return "Only Viking and Saxon armies supported";
+ }
+  if (attackingArmy === defendingArmy) {
+    return "This army ain't gonna fight itself";
+  }
+  let attackingFighter = Math.floor(Math.random() * attackingArmy.length);
+  let defendingFighter = Math.floor(Math.random() * defendingArmy.length);
+  let fightResult = attackingArmy[attackingFighter].receiveDamage(defendingArmy[defendingFighter].strength);
+if (attackingArmy[attackingFighter].health <= 0) {
+ attackingArmy.splice(attackingFighter, 1);
 } 
-return fightResult;
- 
+ return fightResult;
+
 }
 
 showStatus() {
