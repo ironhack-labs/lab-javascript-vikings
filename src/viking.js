@@ -65,7 +65,7 @@ class War {
     let randomSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
     let randomViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
 
-    let attack = randomSaxon.receiveDamage(randomViking.strength);
+    let attack = randomSaxon.receiveDamage(randomViking.attack());
 
     if (randomSaxon.health <= 0) {
       let saxonIndex = this.saxonArmy.indexOf(randomSaxon);
@@ -79,7 +79,7 @@ class War {
     let randomSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
     let randomViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
 
-    let attack = randomViking.receiveDamage(randomSaxon.strength);
+    let attack = randomViking.receiveDamage(randomSaxon.attack());
 
     if (randomViking.health <= 0) {
       let vikingIndex = this.vikingArmy.indexOf(randomViking);
