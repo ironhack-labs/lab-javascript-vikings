@@ -24,13 +24,13 @@ class Viking extends Soldier{
   receiveDamage(theDamage){
     this.health = this.health-theDamage;
     if(this.health>0) {
-      return `${this.name} has received ${theDamage} points of damage`
+      return `${this.name} has received ${theDamage} points of damage`;
     } else {
-      return `${this.name} has died in act of combat`
+      return `${this.name} has died in act of combat`;
     }
   };
   battleCry(){
-      return (`Odin Owns You All!`)
+      return (`Odin Owns You All!`);
     };
     
 }
@@ -43,9 +43,9 @@ class Saxon extends Soldier{
   receiveDamage(theDamage) {
     this.health = this.health-theDamage;
     if(this.health>0) {
-      return `A Saxon has received ${theDamage} points of damage`
+      return `A Saxon has received ${theDamage} points of damage`;
     } else {
-      return `A Saxon has died in combat`
+      return `A Saxon has died in combat`;
     }
   };
 }
@@ -55,10 +55,10 @@ class War {
     vikingArmy = [];
     saxonArmy = [];
     addViking(viking) {
-      this.vikingArmy.push(viking)
+      this.vikingArmy.push(viking);
     };
     addSaxon(saxon){
-      this.saxonArmy.push(saxon)
+      this.saxonArmy.push(saxon);
     };
     vikingAttack() {
       let randomSaxonSoldier = Math.floor(Math.random() * this.saxonArmy.length);
@@ -69,7 +69,7 @@ class War {
       if (randomSaxon.health <= 0) {
         this.saxonArmy.splice(randomSaxonSoldier,1);
       }
-      return resultVikingAttacks
+      return resultVikingAttacks;
     };
     saxonAttack(){
       let randomVikingSoldier = Math.floor(Math.random() * this.vikingArmy.length);
@@ -80,16 +80,16 @@ class War {
       if (randomViking.health <= 0) {
         this.vikingArmy.splice(randomVikingSoldier, 1);
       }
-      return resultSaxonAttacks
+      return resultSaxonAttacks;
     };
 
     showStatus(){
     if (this.vikingArmy.length === 0) {
-      return `Saxons have fought for their lives and survived another day...`
+      return `Saxons have fought for their lives and survived another day...`;
     } else if (this.saxonArmy.length === 0 ) {
-        return `Vikings have won the war of the century!`
+        return `Vikings have won the war of the century!`;
     } else {
-        return `Vikings and Saxons are still in the thick of battle.`
+        return `Vikings and Saxons are still in the thick of battle.`;
      }
   };
 }
