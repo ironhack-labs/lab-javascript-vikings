@@ -4,9 +4,11 @@ class Soldier {
     this.health = health;
     this.strength = strength;
   };
+
   attack() {
     return this.strength
   };
+
   receiveDamage(damage) {
     this.health -= damage
   }
@@ -18,9 +20,11 @@ class Viking extends Soldier {
     super(health,strength);
     this.name = name;
   };
+
   battleCry() {
     return "Odin Owns You All!"
   };
+
   receiveDamage(damage) {
     this.health -= damage;
     if (this.health > 0) {
@@ -49,20 +53,28 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   };
+
   addViking(viking){
     this.vikingArmy.push(viking)
   };
+
   addSaxon(saxon){
     this.saxonArmy.push(saxon)
   };
+
   vikingAttack(){
-    let choosenViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())]
-    let choosenSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())]
+    let randomVikingIndex = Math.floor(this.vikingArmy.length * Math.random())
+    let choosenViking = this.vikingArmy[randomVikingIndex]
+
+    let randomSaxonIndex = Math.floor(this.saxonArmy.length * Math.random())
+    let choosenSaxon = this.saxonArmy[randomSaxonIndex]
+
     choosenSaxon.receiveDamage(choosenViking.attack())
+
     if (choosenSaxon.health <= 0) {
-      saxonArmy.splice(choosenSaxon)
+      this.saxonArmy.splice(randomSaxonIndex,1)
     }
-    return choosenSaxon.health
+
   };
   saxonAttack(){
 
