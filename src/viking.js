@@ -88,11 +88,11 @@ saxonAttack() {
 //try to create one generic method and call it in the case of vikingAttack and in the case of saxonAttack instead of using almost the same code for both methods.
 
  attack(attackerArmy,defenderArmy) {
-  let attacker = this.attackerArmy[Math.floor(Math.random()*this.attackerArmy.length)];
-  let defender = this.defenderArmy[Math.floor(Math.random()*this.defenderArmy.length)]
+  let attacker = attackerArmy[Math.floor(Math.random()*attackerArmy.length)];
+  let defender = defenderArmy[Math.floor(Math.random()*defenderArmy.length)]
   let battleScore = defender.receiveDamage(attacker.strength);
   if (defender.health<=0) {
-   this.defenderArmy.splice(this.defenderArmy.indexOf(defender),1);
+   defenderArmy.splice(defenderArmy.indexOf(defender),1);
 }
 return battleScore;
 
