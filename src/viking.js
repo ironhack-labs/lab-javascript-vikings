@@ -10,20 +10,22 @@ class Soldier {
   }
 
   receiveDamage(damage) {
-    this.health = this.health - this.damage;
+    this.health = this.health - damage;
   }
 }
 
 // Viking
 class Viking extends Soldier{
   constructor (name, health, strength) {
+    
+    //super calls the parent class's constructor 
+    super(health, strength);
+    //super must be used before this
     this.name = name;
-    this.health = health;
-    this.strength = strength;
-
   }
 
   receiveDamage(damage) {
+    this.health = this.health - damage;
     if (this.health > 0 ){
       return `${this.name} has received ${this.damage} points of damage`;
     } else if (this.health <= 0) {
@@ -40,6 +42,10 @@ class Viking extends Soldier{
 
 // Saxon
 class Saxon extends Soldier {
+//i always need a constructor
+  constructor (health, strength) {
+    super(health, strength);
+  }
   attack () {
     return this.strength;
   }
