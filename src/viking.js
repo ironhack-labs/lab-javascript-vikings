@@ -61,6 +61,7 @@ class War {
   vikingAttack() {
     let viking =
       this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
     let saxon =
       this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
@@ -69,12 +70,14 @@ class War {
     if (saxon.health < 1) {
       this.saxonArmy.splice(this.saxonArmy.indexOf(saxon), 1);
     }
+
     return saxonAttacked;
   }
 
   saxonAttack() {
     let viking =
       this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
     let saxon =
       this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
@@ -83,25 +86,23 @@ class War {
     if (viking.health < 1) {
       this.vikingArmy.splice(this.vikingArmy.indexOf(viking), 1);
     }
+
     return vikingAttacked;
   }
 }
-// I just don't know what is incorrect with vikingAttack() and saxonAttack() :(
 
+// Show Status
+function showStatus() {
+  if (this.saxonArmy.length < 1 && this.vikingArmy.length > 1) {
+    return 'Vikings have won the war of the century!';
+  } else if (this.vikingArmy.length < 1 && this.saxonArmy.length > 1) {
+    return 'Saxons have fought for their lives and survived another day...';
+  } else if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1) {
+    return 'Vikings and Saxons are still in the thick of battle.';
+  }
+}
 
-showStatus() {
-  if (this.saxonArmy.length === 0 ) {
-  return 'Vikings have won the war of the century!';
-} else if (this.vikingArmy.length === 0) {
-  return 'Saxons have fought for their lives and survived another day...';
-} else if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1){
-  return 'Vikings and Saxons are still in the thick of battle.'
-} else {
-  return 'The battle is still on';
-}
-}
- // Here something with the syntax seems to be incorrect, can'Ät figure out either :(
-  
+// Here something with the syntax seems to be incorrect, can't figure out either
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
