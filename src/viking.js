@@ -1,8 +1,36 @@
 // Soldier
-class Soldier {}
+class Soldier {
+  constructor(health, strength){
+    this.health = health,
+    this.strength= strength,
+    this.attack = function(){
+      return this.strength;
+    },
+    this.receiveDamage = function(damage){
+      this.health -= damage
+    }
+  }
+}
 
 // Viking
-class Viking {}
+class Viking extends Soldier{
+  constructor(name, health, strenght){
+    super(health,strenght); 
+    this.name = name;
+  }
+  receiveDamage = function(damage){
+    this.health -= damage
+    if ( this.health <= 0){
+      return `${this.name} has died in act of combat`
+    }else{
+      return `${this.name} has received ${damage} points of damage`
+    }
+  }
+  battleCry = function(){
+    return "Odin Owns You All!"
+  }
+}
+
 
 // Saxon
 class Saxon {}
