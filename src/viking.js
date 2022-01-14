@@ -73,6 +73,25 @@ class War {
     }
     return statement;
   }
+
+  genericAttack(whoAttacks) {
+    // whoAttacks is string with "vikingArmy" or "saxonArmy"
+    let randomAttacker = Math.floor(Math.random() * this.vikingArmy.length);
+    let randomRecipient = Math.floor(Math.random() * this.saxonArmy.length);
+    let whoReceives = whoAttacks === 'vikingArmy' ? 'saxonArmy' : 'vikingArmy';
+
+    let attacker = this[whoAttacks][randomAttacker];
+    let recipient = this[whoReceives][randomRecipient];
+    let armyToCheck = this[whoReceives];
+    let indexToCheck = randomRecipient;
+
+    let statement = recipient.receiveDamage(attacker.attack());
+    if (recipient.health <= 0) {
+      armyToCheck.splice(indexToCheck);
+    }
+    return statement;
+  }
+
   showStatus() {
     if (!this.saxonArmy.length && this.vikingArmy.length) {
       return 'Vikings have won the war of the century!';
