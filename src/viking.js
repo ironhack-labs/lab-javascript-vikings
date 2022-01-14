@@ -25,13 +25,22 @@ class Viking extends Soldier{
       return `${this.name} has received ${damage} points of damage`
     }
   }
-  battleCry= function(){
+  battleCry = function(){
     return "Odin Owns You All!"
   }
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier{
+  receiveDamage = function(damage){
+    this.health -= damage
+    if ( this.health <= 0){
+      return `A Saxon has died in combat`
+    }else{
+      return `A Saxon has received ${damage} points of damage`
+    }
+  }
+}
 
 // War
 class War {}
