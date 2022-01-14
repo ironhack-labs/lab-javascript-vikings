@@ -76,9 +76,9 @@ class War {
 
   genericAttack(whoAttacks) {
     // whoAttacks is string with "vikingArmy" or "saxonArmy"
-    let randomAttacker = Math.floor(Math.random() * this.vikingArmy.length);
-    let randomRecipient = Math.floor(Math.random() * this.saxonArmy.length);
     let whoReceives = whoAttacks === 'vikingArmy' ? 'saxonArmy' : 'vikingArmy';
+    let randomAttacker = Math.floor(Math.random() * this[whoAttacks].length);
+    let randomRecipient = Math.floor(Math.random() * this[whoReceives].length);
 
     let attacker = this[whoAttacks][randomAttacker];
     let recipient = this[whoReceives][randomRecipient];
