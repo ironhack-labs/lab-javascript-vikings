@@ -69,48 +69,46 @@ class War {
     this.saxonArmy.push(oneSaxon);
   }
 
-  vikingAttack() {
-
-    // where would I best define this function so that I don't define it twice?
+  attack(whoIsAttacking) {
+    
     function pickRandom(army) {
       const randIndex = Math.floor(Math.random() * army.length);
       return army[randIndex];
     }
 
-    const randomViking = pickRandom(this.vikingArmy);
-    const randomSaxon = pickRandom(this.saxonArmy);
+    let attackingArmy;
+    let victimArmy;
 
-    const returnMsg = randomSaxon.receiveDamage(randomViking.strength);
-
-    if (randomSaxon.health <= 0) {
-      this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon))
+    switch (whoIsAttacking) {
+      case 'Viking':
+        attackingArmy = this.vikingArmy;
+        victimArmy = this.saxonArmy;
+        break;
+      case 'Saxon':
+        attackingArmy = this.saxonArmy;
+        victimArmy = this.vikingArmy;
+        break;
     }
 
-    return returnMsg;
+    const attacker = pickRandom(attackingArmy);
+    const victim = pickRandom(victimArmy);
+
+    const returnMsg = victim.receiveDamage(attacker.attack());
+
+    if (victim.health <= 0) {
+      // should also modify property because array..
+      victimArmy.splice(victimArmy.indexOf(victim));
+    }
+
+    return returnMsg
+  }
+
+  vikingAttack() {
+    return this.attack('Viking');
   }
 
   saxonAttack() {
-    
-    // this is basically the same function as viking - 
-    // what would be an elegant way to avoid duplicate code here?
-
-    // where would I best define this function so that I don't define it twice?
-    function pickRandom(army) {
-      const randIndex = Math.floor(Math.random() * army.length);
-      return army[randIndex];
-    }
-
-    const randomViking = pickRandom(this.vikingArmy);
-    const randomSaxon = pickRandom(this.saxonArmy);
-
-    const returnMsg = randomViking.receiveDamage(randomSaxon.strength);
-
-    if (randomViking.health <= 0) {
-      this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking))
-    }
-
-    return returnMsg;
-
+    return this.attack('Saxon');
   }
 
   showStatus() {
