@@ -43,7 +43,27 @@ class Saxon extends Soldier{
 }
 
 // War
-class War {}
+class War {
+  addViking = function(viking){
+    let vikingArmy = []
+    vikingArmy.push(viking)
+  }
+  addSaxon = function(saxon){
+    let saxonArmy = []
+    saxonArmy.push(saxon)
+  }
+  vikingAttack = function(){
+    if(saxon.reciveDamage === viking.strenght){
+      
+    }
+  }
+  saxonAttack(){
+
+  }
+  showStatus(){
+
+  }
+}
 
 
 
