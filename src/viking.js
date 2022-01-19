@@ -87,7 +87,7 @@ class War {
         //should make a Saxon receiveDamage() equal to the strength of a Viking
         let damagedSaxonArmy = randomSaxonArmy.receiveDamage(randomVikingArmy.attack());
         //should remove dead saxons from the army
-        this.saxonArmy.pop(randomSaxonArmy)
+        if (randomSaxonArmy.health <= 0) { this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxonArmy), 1) }
 
         //should make Saxon receiveDamage() equal to the strength of a Viking
         // should return result of calling receiveDamage() of a Saxon with the strength of a Viking.
@@ -105,9 +105,10 @@ class War {
 
         //should make a Viking receiveDamage() equal to the strength of a Saxon
         let damagedVikingArmy = randomVikingArmy.receiveDamage(randomSaxonArmy.attack());
-        //should remove dead vikings from the army
-        this.vikingArmy.pop(randomVikingArmy)
-            // should return result of calling receiveDamage() of a Viking with the strength of a Saxon.
+        console.log(randomSaxonArmy.attack())
+            //should remove dead vikings from the army
+        if (randomSaxonArmy.health <= 0) { this.vikingArmy.splice(this.vikingArmy.indexOf(randomVikingArmy), 1) }
+        // should return result of calling receiveDamage() of a Viking with the strength of a Saxon.
         return damagedVikingArmy;
 
     }
