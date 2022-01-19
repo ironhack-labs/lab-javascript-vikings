@@ -245,8 +245,8 @@ The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to
 - should make a `Viking` `receiveDamage()` equal to the `strength` of a `Saxon`
 - should remove dead vikings from the army
 - should return **result of calling `receiveDamage()` of a `Viking`** with the `strength` of a `Saxon`
-
-<br>
+  i
+  <br>
 
 ### SUPER BONUS - Iteration 5
 
