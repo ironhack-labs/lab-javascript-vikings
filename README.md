@@ -32,13 +32,14 @@ Create Pull Request so your TAs can check up your work.
 
 ### Test, test, test!
 
-Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests. 
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests.
 
 ```shell
 $ cd lab-javascript-vikings
 $ npm install
 $ npm run test:watch
 ```
+
 <br>
 
 Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to see the test results. You will see that most of the tests are failing. Let's get to work to make all of them pass!
