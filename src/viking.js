@@ -49,6 +49,17 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
+  attack(attacker, defender) {
+    const ranDefender = Math.floor(Math.random() * defender.length);
+    const ranAttacker = Math.floor(Math.random() * attacker.length);
+    const message = defender[ranDefender].receiveDamage(
+      attacker[ranAttacker].strength
+    );
+    if (defender[ranDefender].health < 1) {
+      defender.splice(ranDefender, 1);
+    }
+    return message;
+  }
   addViking(Viking) {
     this.vikingArmy.push(Viking);
   }
@@ -56,27 +67,10 @@ class War {
     this.saxonArmy.push(Saxon);
   }
   vikingAttack() {
-    this.attack(this.vikingArmy, this.saxonArmy);
+    return this.attack(this.vikingArmy, this.saxonArmy);
   }
   saxonAttack() {
-    this.attack(this.saxonArmy, this.vikingArmy);
-  }
-  attack(attacker, defender) {
-    const ranDefender = Math.floor(Math.random() * defender.length);
-    const ranAttacker = Math.floor(Math.random() * attacker.length);
-    defender[ranDefender].receiveDamage(attacker[ranAttacker].strength);
-    if (defender[ranDefender].health < 1) {
-      defender.splice(ranDefender, 1);
-      // Can't get this to work
-      if (defender === this.vikingArmy) {
-        return `A Viking has died in combat`;
-      } else {
-        return `A Saxon has died in combat`;
-      }
-    } else {
-      console.log(defender[ranDefender]);
-      return `${defender[ranDefender].name} has received ${attacker[ranAttacker].strength} points of damage`;
-    }
+    return this.attack(this.saxonArmy, this.vikingArmy);
   }
   showStatus() {
     if (this.saxonArmy.length < 1) {
@@ -94,3 +88,12 @@ class War {
 if (typeof module !== 'undefined') {
   module.exports = { Soldier, Viking, Saxon, War };
 }
+
+const war = new War();
+const newViking = new Viking('raegar', 10, 100);
+const newSaxon = new Saxon(10, 100);
+war.addViking(newViking);
+war.addSaxon(newSaxon);
+const m = war.vikingAttack();
+war.showStatus();
+console.log(m);
