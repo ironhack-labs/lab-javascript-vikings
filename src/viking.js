@@ -9,7 +9,7 @@ class Soldier {
   }
   receiveDamage(damage) {
     this.health = this.health - damage;
-  }
+  } 
 }
 
 // Viking
@@ -19,7 +19,7 @@ class Viking extends Soldier {
     this.name = name;
   }
   receiveDamage(damage) {
-    this.health = this.health - damage;
+    super.receiveDamage(damage);
     if (this.health > 0) {
       return `${this.name} has received ${damage} points of damage`
     } 
@@ -35,7 +35,7 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
   receiveDamage(damage) {
-  this.health = this.health - damage;
+  super.receiveDamage(damage);
   if (this.health > 0) {
     return `A Saxon has received ${damage} points of damage`;
   } 
@@ -47,13 +47,31 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  constructor (vikingArmy, saxonArmy) {
+  constructor () {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
-addViking() {}
-addSaxon() {}
-vikingAttack() {}
+addViking(viking) {
+  this.vikingArmy.push(viking)
+}
+addSaxon(saxon) {
+  this.saxonArmy.push(saxon)
+}
+vikingAttack() {
+let indexViking = vikingArmy.forEach(viking => {
+  Math.floor(Math.random()*this.vikingArmy.length)
+  return indexViking;
+});
+let indexSaxon = saxonArmy.forEach(saxon => {
+  Math.floor(Math.random()*this.saxonArmy.length)
+  return indexSaxon;
+  });
+  this.saxonArmy[indexSaxon].receiveDamage() === this.vikingArmy[indexViking].strength;
+if (this.saxonArmy[indexSaxon].health <= 0) {
+
+}
+
+}
 saxonAttack() {}
 showStatus() {}
 }
