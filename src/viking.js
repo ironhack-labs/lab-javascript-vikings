@@ -56,27 +56,49 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  constructor()
-  addvikking(){
-    
-    
+  constructor(){
+    this.vikingArmy = []
+    this.saxonArmy = []
+  }
+  addViking(viking){
+    this.vikingArmy.push(viking)
   }
   addSaxon(saxon){
-
+    this.saxonArmy.push(saxon)
   }
   vikingAttack(){
+    let saxDamaged = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    receiveDamage(saxDamaged){
+      this.saxDamaged.health = this.saxDamaged.health - this.viking.strength
+     if(this.saxDamaged.health < 0){
+      this.saxonArmy.slice(saxDamaged)
+    }else {
+      return this.saxonArmy
+    }
+    }
+  }
+    
     //choose a random saxon
     //equal the recieveDamage to the health of the saxon
     //if saxon health is equal or under 0 then it should be eliminated
     //if not dead return the result of recievedamage and not eliminate the saxon
     
+  
+ saxonAttack(){
+  let vikingDamaged = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+  receiveDamage(vikingDamaged){
+    this.vikingDamaged.health = this.vikingDamaged.health - this.saxon.strength
+    if(this.saxDamaged.health < 0){
+    this.vikingDamaged.slice(saxDamaged)
+  }else {
+    return this.vikingArmy
   }
-  saxonAttack(){
     //choose a random saxon
     //equal the recieveDamage to the health of the viking
     //if viking health is equal or under 0 then it should be eliminated
     //if not dead return the result of recievedamage and not eliminate the viking
   }
+}
   showStatus(){}
 }
 
