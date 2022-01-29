@@ -43,13 +43,6 @@ class Saxon extends Soldier {
   }
 }
 
-// const Vik1 = new Viking('Kratos', 20, 10);
-// const Vik2 = new Viking('Atreus', 20, 15);
-// const Vik3 = new Viking('Patrik', 20, 12);
-// const Sax1 = new Saxon('Vikran', 10, 5);
-// const Sax2 = new Saxon('Drogo', 15, 8);
-// const Sax3 = new Saxon('Krypton', 12, 6);
-
 // War
 class War {
   constructor() {
@@ -69,11 +62,13 @@ class War {
     const randomSaxIndex = Math.floor(Math.random() * this.saxonArmy.length);
     const randomSax = this.saxonArmy[randomSaxIndex];
 
-    if (randomSax.health < 0) {
-      this.saxonArmy.splice(randomSaxIndex); // Pq não tá funcionandoooo
+    let result = randomSax.receiveDamage(randomVik.strength);
+
+    if (randomSax.health <= 0) {
+      this.saxonArmy.splice(randomSaxIndex, 1); // Pq não tá funcionandoooo
     }
 
-    return randomSax.receiveDamage(randomVik.strength);
+    return result;
   }
   saxonAttack() {
     const randomVikIndex = Math.floor(Math.random() * this.vikingArmy.length);
@@ -81,15 +76,17 @@ class War {
     const randomSaxIndex = Math.floor(Math.random() * this.saxonArmy.length);
     const randomSax = this.saxonArmy[randomSaxIndex];
 
+    let result = randomVik.receiveDamage(randomSax.strength);
+
     if (randomVik.health <= 0) {
-      this.vikingArmy.splice(randomVikIndex);
+      this.vikingArmy.splice(randomVikIndex, 1);
     }
 
-    return randomVik.receiveDamage(randomSax.strength);
+    return result;
   }
   showStatus() {
     if (this.saxonArmy.length === 0) {
-      return 'Vikings have won the war of the century';
+      return 'Vikings have won the war of the century!';
     } else if (this.vikingArmy.length === 0) {
       return 'Saxons have fought for their lives and survived another day...';
     } else {
