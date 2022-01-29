@@ -43,12 +43,12 @@ class Saxon extends Soldier {
   }
 }
 
-const Vik1 = new Viking('Kratos', 20, 10);
-const Vik2 = new Viking('Atreus', 20, 15);
-const Vik3 = new Viking('Patrik', 20, 12);
-const Sax1 = new Saxon('Vikran', 10, 5);
-const Sax2 = new Saxon('Drogo', 15, 8);
-const Sax3 = new Saxon('Krypton', 12, 6);
+// const Vik1 = new Viking('Kratos', 20, 10);
+// const Vik2 = new Viking('Atreus', 20, 15);
+// const Vik3 = new Viking('Patrik', 20, 12);
+// const Sax1 = new Saxon('Vikran', 10, 5);
+// const Sax2 = new Saxon('Drogo', 15, 8);
+// const Sax3 = new Saxon('Krypton', 12, 6);
 
 // War
 class War {
@@ -56,42 +56,44 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
-  addViking(Viking) {
-    this.vikingArmy.push(Viking);
+  addViking(viking) {
+    this.vikingArmy.push(viking);
   }
-  addSaxon(Saxon) {
-    this.saxonArmy.push(Saxon);
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
   }
 
   vikingAttack() {
-    this.vikingArmy.addViking(Vik1);
-    this.vikingArmy.addViking(Vik2);
-    this.vikingArmy.addViking(Vik3);
-    this.saxonArmy.addSaxon(Sax1);
-    this.saxonArmy.addSaxon(Sax2);
-    this.saxonArmy.addSaxon(Sax3);
+    const randomVikIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    const randomVik = this.vikingArmy[randomVikIndex];
+    const randomSaxIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    const randomSax = this.saxonArmy[randomSaxIndex];
 
-    const randomSax = Math.floor(Math.random() * this.saxonArmy.length);
-    const randomVik = Math.floor(Math.random() * this.vikingArmy.lenght);
-    randomSax.receiveDamage(randomVik.strength);
-
-    if (randomSax.health <= 0) {
-      this.saxonArmy.splice(indesOf(randomSax));
+    if (randomSax.health < 0) {
+      this.saxonArmy.splice(randomSaxIndex); // Pq não tá funcionandoooo
     }
-    return randomSax;
+
+    return randomSax.receiveDamage(randomVik.strength);
   }
   saxonAttack() {
-    Viking.receiveDamage(Saxon.strength);
+    const randomVikIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    const randomVik = this.vikingArmy[randomVikIndex];
+    const randomSaxIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    const randomSax = this.saxonArmy[randomSaxIndex];
+
     if (randomVik.health <= 0) {
-      this.vikingArmy.splice(indesOf(randomVik));
+      this.vikingArmy.splice(randomVikIndex);
     }
-    return randomVik;
+
+    return randomVik.receiveDamage(randomSax.strength);
   }
   showStatus() {
     if (this.saxonArmy.length === 0) {
       return 'Vikings have won the war of the century';
     } else if (this.vikingArmy.length === 0) {
       return 'Saxons have fought for their lives and survived another day...';
+    } else {
+      return 'Vikings and Saxons are still in the thick of battle.';
     }
   }
 }
