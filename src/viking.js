@@ -53,9 +53,39 @@ class War {
     this.saxonArmy.push(saxonsFighters);
   };
 
-  vikingAttack() { };
-  saxonAttack() { };
-  showStatus() { };
+  vikingAttack() {
+    let randomVikingArmyLength = Math.floor(Math.random() * this.vikingArmy.length);
+    let randomSaxonArmyLength = Math.floor(Math.random() * this.saxonArmy.length);
+    let randomViking = this.vikingArmy[randomVikingArmyLength];
+    let randomSaxon = this.saxonArmy[randomSaxonArmyLength];
+    let result = randomSaxon.receiveDamage(randomViking.strength);
+    if (randomSaxon.health <= 0) {
+      this.saxonArmy.splice(randomSaxonArmyLength, 1)
+    }
+    return result;
+  };
+
+  saxonAttack() {
+    let randomVikingArmyLength = Math.floor(Math.random() * this.vikingArmy.length);
+    let randomSaxonArmyLength = Math.floor(Math.random() * this.saxonArmy.length);
+    let randomViking = this.vikingArmy[randomVikingArmyLength];
+    let randomSaxon = this.saxonArmy[randomSaxonArmyLength];
+    let result = randomViking.receiveDamage(randomSaxon.strength);
+    if (randomViking.health <= 0) {
+      this.vikingArmy.splice(randomVikingArmyLength, 1)
+    }
+    return result;
+
+  };
+  showStatus() {
+    if (!this.saxonArmy.length) {
+      return "Vikings have won the war of the century!";
+    } else if (!this.vikingArmy.length) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+  }
 }
 
 // The following is required to make unit tests work.
