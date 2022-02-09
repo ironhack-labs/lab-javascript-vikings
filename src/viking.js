@@ -69,20 +69,40 @@ addViking(Viking) {
 addSaxon(Saxon) {
   this.saxonArmy.push(Saxon)
 }
+
+
 vikingAttack() {
-  this.saxonArmy[0].strength -= this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
+  let oneSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+  let oneViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
 
-  if (this.saxonArmy[0].health <= 0) {
-    this.saxonArmy.pop(this.saxonArmy[0])
-  }
+  
+  let attackResult = oneSaxon.receiveDamage(oneViking.strength)
 
+  if (oneSaxon.health <= 0) {
+    this.saxonArmy.splice(oneSaxon)
+  
+}
+return attackResult
 }
 
 
 saxonAttack() {
-  Viking.strength -= Viking.receiveDamage(Saxon.strength)
+  let oneSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+  let oneViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+
+  
+  let attackResult = oneViking.receiveDamage(oneSaxon.strength)
+
+  if (oneViking.health <= 0) {
+    this.vikingArmy.splice(oneViking)
+  
+}
+return attackResult
 
 }
+
+
+
 showStatus() {
 
 }
