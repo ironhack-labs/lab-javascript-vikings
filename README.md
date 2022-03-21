@@ -4,7 +4,7 @@
 
 ## Introduction
 
-We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now lets work with our Viking friends, applying all of the concepts we have just learned.
+We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now let's work with our Viking friends, applying all of the concepts we have just learned.
 
 <br>
 
@@ -12,13 +12,12 @@ We have learned Object-oriented programming and how `class` and inheritance work
 
 - Fork this repo.
 - Clone this repo.
-- Visit the "Actions" tab in your fork, and enable workflows.
 
 <br>
 
 ## Submission
 
-Upon completion, run the following commands:
+- Upon completion, run the following commands:
 
 ```bash
 $ git add .
@@ -26,11 +25,15 @@ $ git commit -m "Solved lab"
 $ git push origin master
 ```
 
-Create Pull Request so your TAs can check up your work.
+- Create a Pull Request so that your TAs can check your work.
 
 <br>
 
 ### Test, test, test!
+
+This LAB is equipped with unit tests to provide automated feedback on your lab progress.
+
+This time you will be working with the tests from the beginning and use them alongside the iteration instructions.
 
 Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests. 
 
@@ -39,15 +42,24 @@ $ cd lab-javascript-vikings
 $ npm install
 $ npm run test:watch
 ```
+
 <br>
 
-Open the resulting `lab-solution.html` file with the "Live Server" VSCode extension to see the test results. You will see that most of the tests are failing. Let's get to work to make all of them pass!
+Open the resulting `lab-solution.html` file with the  [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension to see the test results. You will see that most of the tests are failing. Let's get to work to make all of them pass!
+
+
+
+**Note:** The testing environment and the `lab-solution.html` page don’t allow printing the _console logs_ in the browser.
+
+To see the console.log outputs you write in the `viking.js` file, open the `index.html` file using the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension.
 
 <br>
 
 ## Instructions
 
-We must write the correct code in the `src/viking.js` file to make the test pass. In this file you will find the following starter code:
+You will work on the `src/viking.js` file.
+
+Your task is to write the correct code in the `src/viking.js` file to make the tests pass. In this file, you will find the following starter code:
 
 ```javascript
 // Soldier
@@ -63,7 +75,13 @@ class Saxon {}
 class War {}
 ```
 
-In this case, the test says that _Soldier class should receive 2 arguments (health & strength)_, so we have to write the correct code that passes this test. Let's make the `Soldier` class receive two arguments:
+
+
+###Iteration 0: First test
+
+Let's have a look at the first test case together to get you started.
+
+The first test case says that "_Soldier class >> should receive 2 arguments (health & strength)_", so we have to write the correct code to pass this test. Let's make the `Soldier` class receive two arguments:
 
 ```javascript
 // Soldier
@@ -82,6 +100,8 @@ class War {}
 ```
 
 <br>
+
+
 
 ### Iteration 1: Soldier
 
@@ -135,7 +155,7 @@ Modify the `Viking` class, have it inherit from `Soldier`, re-implement the `rec
 
 #### `receiveDamage()` method
 
-(This method needs to be **re-implemented** for `Viking` because the `Viking` version needs to have different return values.)
+This method needs to be **re-implemented** for `Viking` because the `Viking` version needs to have different return values.
 
 - should be a function
 - should receive **1 argument** (the damage)
@@ -169,7 +189,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 
 #### `attack()` method
 
-(This method should be **inherited** from `Soldier`, no need to re-implement it.)
+This method should be **inherited** from `Soldier`, no need to re-implement it.
 
 - should be a function
 - should receive **0 arguments**
@@ -177,7 +197,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 
 #### `receiveDamage()` method
 
-(This method needs to be **re-implemented** for `Saxon` because the `Saxon` version needs to have different return values.)
+This method needs to be **re-implemented** for `Saxon` because the `Saxon` version needs to have different return values.
 
 - should be a function
 - should receive **1 argument** (the damage)
