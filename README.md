@@ -12,13 +12,12 @@ We have learned Object-oriented programming and how `class` and inheritance work
 
 - Fork this repo.
 - Clone this repo.
-- Visit the "Actions" tab in your fork, and enable workflows.
 
 <br>
 
 ## Submission
 
-Upon completion, run the following commands:
+- Upon completion, run the following commands:
 
 ```bash
 $ git add .
@@ -26,7 +25,7 @@ $ git commit -m "Solved lab"
 $ git push origin master
 ```
 
-Create Pull Request so your TAs can check up your work.
+- Create a Pull Request so that your TAs can check your work.
 
 <br>
 
