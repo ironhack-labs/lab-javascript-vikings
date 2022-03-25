@@ -19,7 +19,7 @@ class Viking extends Soldier {
   //these are the arguments
   constructor(name, health, strength) {
     // super allows access of parents props but you have to include the new one as well
-    super(health, strength, name);
+    super(health, strength);
     this.name = name;
   }
   receiveDamage(damage) {
