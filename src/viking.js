@@ -22,8 +22,8 @@ class Viking extends Soldier {
   }
 
   receiveDamage(damage) {
-    super.receiveDamage()
-    
+    super.receiveDamage(damage)
+
     if (this.health > 0) {
       return `A Viking has received ${damage} points of damage`
     } else {
@@ -42,6 +42,7 @@ class Saxon extends Soldier {
 
 
   receiveDamage(damage) {
+    super.receiveDamage(damage)
     this.health -= damage;
     if (this.health > 0) {
       return `A Saxon has received ${damage} points of damage`
