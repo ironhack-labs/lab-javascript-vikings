@@ -63,27 +63,36 @@ class War {
     this.saxonArmy.push(saxon);
   }
 
-  vikingAttack() {
+  attack(attacker) {
     let result;
-    for (let i = 0; i < this.saxonArmy.length; i++) {
-      result = this.saxonArmy[i].receiveDamage(this.vikingArmy[i].strength);
+    if (attacker === "vikings") {
+      for (let i = 0; i < this.saxonArmy.length; i++) {
+        result = this.saxonArmy[i].receiveDamage(this.vikingArmy[i].strength);
 
-      if (this.saxonArmy[i].health <= 0) {
-        delete this.saxonArmy.splice(i, 1);
+        if (this.saxonArmy[i].health <= 0) {
+          delete this.saxonArmy.splice(i, 1);
+        }
       }
+      return result;
+    } else {
+      for (let i = 0; i < this.vikingArmy.length; i++) {
+        result = this.vikingArmy[i].receiveDamage(this.saxonArmy[i].strength);
+
+        if (this.vikingArmy[i].health <= 0) {
+          delete this.vikingArmy.splice(i, 1);
+        }
+      }
+      return result;
     }
+  }
+
+  vikingAttack() {
+    let result = this.attack("vikings");
     return result;
   }
 
   saxonAttack() {
-    let result;
-    for (let i = 0; i < this.vikingArmy.length; i++) {
-      result = this.vikingArmy[i].receiveDamage(this.saxonArmy[i].strength);
-
-      if (this.vikingArmy[i].health <= 0) {
-        delete this.vikingArmy.splice(i, 1);
-      }
-    }
+    let result = this.attack("saxons");
     return result;
   }
 
