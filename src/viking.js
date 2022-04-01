@@ -64,10 +64,14 @@ class War {
   }
   
   addViking(receivedViking) {
-    this.vikingArmy = this.vikingArmy + receivedViking;
+    this.vikingArmy = receivedViking; // I can't figure out how to make it into an array and pass this test
   }
-  addSaxon(){}
-  vikingAttack() {}
+  addSaxon(receivedSaxon){
+    this.vikingArmy = receivedSaxon; // Same problem ^^
+  }
+  vikingAttack() {
+    
+  }
   saxonAttack() {}
   showStatus() {}
 }
