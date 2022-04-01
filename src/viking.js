@@ -11,10 +11,14 @@ attack(){
 }
 
 receiveDamage(thedamage){
-  this.health -= damage;
+  thedamage = this.health - thedamage;
+  // if(thedamage++){
+  // this.health - thedamage;
+  // }
+ 
 } 
 }
-
+ //this.health -= damage;
 // Viking
 class Viking extends Soldier {
   constructor(name, health, strength){ 
@@ -25,18 +29,24 @@ class Viking extends Soldier {
     return this.strength;
   }
 
-
+battleCry(){
+  return "Odin Owns You All!";
+}
 }
 
 // Saxon
 class Saxon extends Soldier {
-constructor(){
+constructor(health, strength){
 
 super()
 
 }
   attack(){
     return this.strength;
+  }
+
+  battleCry(){
+    
   }
 }
 
