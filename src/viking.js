@@ -53,8 +53,8 @@ super(health,strength);
     if(this.health > 0){
       return `A Saxon has received ${thedamage} points of damage`;
     }else if (this.health === 0){
-      return `A Saxon has died in act of combat`;
-    }
+      return `A Saxon has died in combat`
+    };
     }
 
 }
@@ -62,11 +62,16 @@ super(health,strength);
 // War
 class War {
   constructor() {
-    
+    this.vikingArmy = [];
+    this.saxonArmy = [];
   }
-  addViking(){}
+  addViking(viking){
+  viking++;
+  }
 
-  addSaxon(){}
+  addSaxon(saxon){
+  saxon++;
+  }
 
   vikingAttack(){}
 
