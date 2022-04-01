@@ -50,45 +50,50 @@ class Saxon extends Soldier{
 
 // War
 class War {
-  constructor(){
+  constructor() {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
 
-  addViking(viking){
+  addViking(viking) {
     this.vikingArmy.push(viking);
   }
 
-  addSaxon(saxon){
+  addSaxon(saxon) {
     this.saxonArmy.push(saxon);
   }
 
-  vikingAttack(){
+  vikingAttack() {
+    let result;
+    for (let i = 0; i < this.saxonArmy.length; i++) {
+      result = this.saxonArmy[i].receiveDamage(this.vikingArmy[i].strength);
 
-    /* While this passes the test, it's not scalable for bigger armies,
-    so I will try to expand on that during the weekend. The same for the 
-    saxons Arrack method */
-    let result = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
-    if (this.saxonArmy[0].health <= 0) {
-      delete this.saxonArmy.pop();
-    };
-    
+      if (this.saxonArmy[i].health <= 0) {
+        delete this.saxonArmy.splice(i, 1);
+      }
+    }
     return result;
   }
 
-  saxonAttack(){
-    let result = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
-    if (this.vikingArmy[0].health <= 0) {
-      delete this.vikingArmy.pop();
-    };
-    
+  saxonAttack() {
+    let result;
+    for (let i = 0; i < this.vikingArmy.length; i++) {
+      result = this.vikingArmy[i].receiveDamage(this.saxonArmy[i].strength);
+
+      if (this.vikingArmy[i].health <= 0) {
+        delete this.vikingArmy.splice(i, 1);
+      }
+    }
     return result;
   }
 
-  showStatus(){
-    if (this.saxonArmy.length === 0)return "Vikings have won the war of the century!";
-    if (this.vikingArmy.length === 0)return "Saxons have fought for their lives and survived another day...";
-    if (this.saxonArmy.length !== 0 && this.vikingArmy.length !== 0)return "Vikings and Saxons are still in the thick of battle.";
+  showStatus() {
+    if (this.saxonArmy.length === 0)
+      return 'Vikings have won the war of the century!';
+    if (this.vikingArmy.length === 0)
+      return 'Saxons have fought for their lives and survived another day...';
+    if (this.saxonArmy.length !== 0 && this.vikingArmy.length !== 0)
+      return 'Vikings and Saxons are still in the thick of battle.';
   }
 }
 
