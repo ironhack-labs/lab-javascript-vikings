@@ -64,27 +64,52 @@ class War {
     this.saxonArmy.push(saxon)
   }
 
+  addSoldier(army, unit){
+    army.push(unit)
+  }
+
+  // to add a saxon addSoldier(saxonArmy, saxon)
+  // to add a viking addSoldier(vikingArmy, viking)
+
+
+
   vikingAttack(){
-    let randomIndex = Math.floor(Math.random() * this.saxonArmy.length)
-    let strength = this.vikingArmy[randomIndex].strength
-    let result = this.saxonArmy[randomIndex].receiveDamage(strength)
+    const randomIndex = Math.floor(Math.random() * this.saxonArmy.length)
+    const strength = this.vikingArmy[randomIndex].strength
+    const result = this.saxonArmy[randomIndex].receiveDamage(strength)
     if (this.saxonArmy[randomIndex].health <= 0){
       this.saxonArmy.splice(randomIndex)
     }
     return result
-    // this.saxonArmy[randomIndex].health)
   }
 
   saxonAttack(){
-    let randomIndex = Math.floor(Math.random() * this.vikingArmy.length)
-    let strength = this.saxonArmy[randomIndex].strength
-    let result = this.vikingArmy[randomIndex].receiveDamage(strength)
+    const randomIndex = Math.floor(Math.random() * this.vikingArmy.length)
+    const strength = this.saxonArmy[randomIndex].strength
+    const result = this.vikingArmy[randomIndex].receiveDamage(strength)
     if (this.vikingArmy[randomIndex].health <= 0){
       this.vikingArmy.splice(randomIndex)
     }
     return result
-    // this.saxonArmy[randomIndex].health)
   }
+
+
+  attack(attackingArmy, defendingArmy){
+    const randomIndex = Math.floor(Math.random() * defendingArmy.length)
+    const strength = attackingArmy[randomIndex].strength
+    const result = defendingArmy[randomIndex].receiveDamage(strength)
+    if (defendingArmy[randomIndex].health <= 0){
+      defendingArmy.splice(randomIndex)
+    }
+    return result
+  }
+
+  // for a saxon attack call attack(this.saxonArmy, this.vikingArmy)
+  // for a viking attack call attack(this.vikingArmy, this.saxonArmy)
+
+
+  // I took out the 'this.' before the two arguments that are passed through as 
+  // I guess they need to be passed into the arguments. 
 
 
   showStatus(){
