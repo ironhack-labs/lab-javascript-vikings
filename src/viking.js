@@ -95,11 +95,11 @@ class War {
 
 
   attack(attackingArmy, defendingArmy){
-    const randomIndex = Math.floor(Math.random() * defendingArmy.length)
-    const strength = attackingArmy[randomIndex].strength
-    const result = defendingArmy[randomIndex].receiveDamage(strength)
-    if (defendingArmy[randomIndex].health <= 0){
-      defendingArmy.splice(randomIndex)
+    const randomIndex = Math.floor(Math.random() * this.defendingArmy.length)
+    const strength = this.attackingArmy[randomIndex].strength
+    const result = this.defendingArmy[randomIndex].receiveDamage(strength)
+    if (this.defendingArmy[randomIndex].health <= 0){
+      this.defendingArmy.splice(randomIndex)
     }
     return result
   }
@@ -108,8 +108,7 @@ class War {
   // for a viking attack call attack(this.vikingArmy, this.saxonArmy)
 
 
-  // I took out the 'this.' before the two arguments that are passed through as 
-  // I guess they need to be passed into the arguments. 
+
 
 
   showStatus(){
