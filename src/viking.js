@@ -25,7 +25,7 @@ class Viking extends Soldier {
       return `${this.name} has received ${theDamage} points of damage`;
       }
     
-      battlecry() {
+    battleCry() {
       return "Odin Owns You All!";
     }
 }
@@ -59,18 +59,46 @@ class War {
   vikingAttack(){
 
     const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-    const randomVikingIndex = Math.floor(Math.random() * this.VikingArmy.length);
+    const randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
 
     const randomSaxon = this.saxonArmy[randomSaxonIndex];
-    const randomViking = this.saxonArmy[randomVikingIndex];
+    const randomViking = this.vikingArmy[randomVikingIndex];
 
-    const attack = randomSaxon.receiveDamage(randomViking.strength);
+    const attackResult = randomSaxon.receiveDamage(randomViking.strength);
     
-    if(attackResults === 'A Saxon has dies in combat'){
+    if(attackResult === `A Saxon has died in combat`){
       this.saxonArmy.splice(randomSaxonIndex,1);
     }
-    return attackResults;
+    return attackResult;
   }
+
+  saxonAttack(){
+
+    const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    const randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+
+    const randomSaxon = this.saxonArmy[randomSaxonIndex];
+    const randomViking = this.vikingArmy[randomVikingIndex];
+
+    const attackResult = randomViking.receiveDamage(randomSaxon.strength);
+
+    if(attackResult === `${randomViking.name} has died in act of combat`){
+      this.vikingArmy.splice(randomVikingIndex,1);
+    }
+    return attackResult;
+
+  }
+
+  showStatus(){
+    if (this.vikingArmy.length != 0 && this.saxonArmy.length != 0){
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+    if (this.vikingArmy.length == 0){
+      return "Saxons have fought for their lives and survived another day...";
+    }
+    return "Vikings have won the war of the century!"
+  }
+
 }
 
 
