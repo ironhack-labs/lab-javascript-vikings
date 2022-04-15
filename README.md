@@ -35,7 +35,7 @@ This LAB is equipped with unit tests to provide automated feedback on your lab p
 
 This time you will be working with the tests from the beginning and use them alongside the iteration instructions.
 
-Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests. 
+Please, open your terminal, change directories into the root of the lab, and run `npm install` to install the test runner. Next, run the `npm run test:watch` command to run the automated tests.
 
 ```shell
 $ cd lab-javascript-vikings
@@ -45,9 +45,7 @@ $ npm run test:watch
 
 <br>
 
-Open the resulting `lab-solution.html` file with the  [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension to see the test results. You will see that most of the tests are failing. Let's get to work to make all of them pass!
-
-
+Open the resulting `lab-solution.html` file with the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension to see the test results. You will see that most of the tests are failing. Let's get to work to make all of them pass!
 
 **Note:** The testing environment and the `lab-solution.html` page don’t allow printing the _console logs_ in the browser.
 
@@ -75,8 +73,6 @@ class Saxon {}
 class War {}
 ```
 
-
-
 ###Iteration 0: First test
 
 Let's have a look at the first test case together to get you started.
@@ -100,8 +96,6 @@ class War {}
 ```
 
 <br>
-
-
 
 ### Iteration 1: Soldier
 
