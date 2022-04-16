@@ -69,25 +69,23 @@ class War {
   this.vikingArmy = [];
   this.saxonArmy = [];
   addViking(Viking) {
-    this.vikingArmy.push(myNewViking);
+    this.vikingArmy.push(Viking);
   }
   addSaxon(Saxon) {
-    this.saxonArmy.push(myNewSaxon);
+    this.saxonArmy.push(Saxon);
   }
   vikingAttack() {
-    const VikingRandom = Math.floor(Math.random() * this.vikingArmy.length);
-    const SaxonRandom = Math.floor(Math.random()* this.saxonArmy.length);
-    const randomViking = this.vikingArmy[VikingRandom];
-    const randomSaxon = this.saxonArmy[SaxonRandom];
-    const myResult = SaxonRandom.receiveDamage(VikingRandom.strength);
-    if (SaxonRandom.receiveDamage(VikingRandom.strength) < 0) {
-      return this.saxonArmy.pop(SaxonRandom);
-    }
-    
+    let SaxonRandom = this.saxonArmy (Math.floor(Math.random() * this.saxonArmy.length));
+    let vikingResult = SaxonRandom - SaxonRandom.receiveDamage(Viking.strength);    
   }
-  saxonAttack() {}
+  saxonAttack() {
+    let VikingRandom = this.vikingArmy(Math.floor(Math.random() * this.vikingArmy.length));
+    VikingRandom.receiveDamage(Saxon.strength);
+    let saxonResult = VikingRandom - VikingRandom.receiveDamage(Saxon.strength);
+  }
+  showStatus(){}
 }
-const newSaxon = new Saxon();
+
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
 if (typeof module !== 'undefined') {
