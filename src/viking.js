@@ -65,25 +65,59 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  constructor() {}
-  this.vikingArmy = [];
-  this.saxonArmy = [];
-  addViking(Viking) {
-    this.vikingArmy.push(Viking);
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
   }
-  addSaxon(Saxon) {
-    this.saxonArmy.push(Saxon);
+
+  addViking(viking) {
+    this.vikingArmy.push(viking);
   }
+
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+
   vikingAttack() {
-    let SaxonRandom = this.saxonArmy (Math.floor(Math.random() * this.saxonArmy.length));
-    let vikingResult = SaxonRandom - SaxonRandom.receiveDamage(Viking.strength);    
+    const theSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    const theViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    const result = theSaxon.receiveDamage(theViking.strength);
+
+    if (theSaxon.health <= 0) {
+      this.saxonArmy = this.saxonArmy.filter((element) => element !== theSaxon);
+    }
+
+    return result;
   }
+
   saxonAttack() {
-    let VikingRandom = this.vikingArmy(Math.floor(Math.random() * this.vikingArmy.length));
-    VikingRandom.receiveDamage(Saxon.strength);
-    let saxonResult = VikingRandom - VikingRandom.receiveDamage(Saxon.strength);
+    const theSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    const theViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
+    const result = theViking.receiveDamage(theSaxon.strength);
+
+    if (theViking.health <= 0) {
+      this.vikingArmy = this.vikingArmy.filter(
+        (element) => element !== theViking
+      );
+    }
+
+    return result;
   }
-  showStatus(){}
+  // This one was the easy one :P
+  showStatus() {
+    if (this.saxonArmy.length <= 0) {
+      return 'Vikings have won the war of the century!';
+    } else if (this.vikingArmy.length <= 0) {
+      return 'Saxons have fought for their lives and survived another day...';
+    } else if (this.vikingArmy.length >= 1 || this.saxonArmy >= 1) {
+      return 'Vikings and Saxons are still in the thick of battle.';
+    }
+  }
 }
 
 // The following is required to make unit tests work.
