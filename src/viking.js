@@ -72,24 +72,43 @@ addSaxon(saxon){
 
 vikingAttack(){
 
-  let randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+  const randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+  const randomViking =  this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+  const vikingAttackResult = randomSaxon.receiveDamage(randomViking.strength)
+  //quiero filtrar todo lo que se murió. randomSaxon es un objeto con health <0.
+  //entonces filtro todo item que no sea randomSaxon y me quedo con ese filtro.
   
-  //const soldadoVikingo = new Viking()
-  //const soldadoSaxon = new Saxon ()
+    if (randomSaxon.health <= 0) {
+      this.saxonArmy = this.saxonArmy.filter((item) => item !== randomSaxon);
+    }
 
-  //soldadoSaxon.receiveDamage(soldadoVikingo.strength)
+    return vikingAttackResult    
+  }
 
+saxonAttack(){
+  const randomSaxon =  this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+  const randomViking =  this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+  const saxonAttackResult = randomViking.receiveDamage(randomSaxon.strength)
 
+  if (randomViking.health <= 0) {
+    this.vikingArmy = this.vikingArmy.filter((item) => item !== randomViking);
+  }
+  return saxonAttackResult
 }
 
 
+showStatus(){
+if (this.saxonArmy.length ===0 ){
+  return "Vikings have won the war of the century!"
+} else if (this.vikingArmy.length === 0 ){
+  return "Saxons have fought for their lives and survived another day..."
+} else {return "Vikings and Saxons are still in the thick of battle."}
 
-saxonAttack(){}
-showStatus(){}
+}
 
 }
 //el super es de cuando usas Extends
-/**/
+
 
 
 
