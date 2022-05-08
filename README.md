@@ -2,6 +2,8 @@
 
 # LAB | JS Vikings
 
+![giphy](https://user-images.githubusercontent.com/76580/167318130-3f0e5e19-86bc-4278-aaab-a988febcea3f.gif)
+
 ## Introduction
 
 We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now let's work with our Viking friends, applying all of the concepts we have just learned.
