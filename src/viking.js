@@ -79,13 +79,13 @@ class War {
 
     showStatus() {
 
-        if (this.saxonArmy === 0) {
+        if (this.War.saxonArmy === 0) {
             return `Vikings have won the war of the century!`
         } else
-        if (this.vikingArmy === 0) {
+        if (this.War.vikingArmy === 0) {
             return `Saxons have fought for their lives and survived another day...`
         } else
-        if (this.vikingArmy === 1 && this.saxonArmy === 1) {
+        if (this.War.vikingArmy === 1 && this.War.saxonArmy === 1) {
             return `Vikings and Saxons are still in the thick of battle.`
         }
 
