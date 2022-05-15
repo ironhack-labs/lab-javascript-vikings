@@ -1,5 +1,10 @@
 // Soldier
-class Soldier {}
+class Soldier {
+  constructor (health, strength) {
+    this.health = 0
+    this.strength = 0
+  }
+}
 
 // Viking
 class Viking {}
