@@ -43,13 +43,6 @@ class Viking extends Soldier {
 }
 
 
-const viking1 = new Viking('Alnior', 10, 15)
-
-console.log(viking1.receiveDamage(10))
-console.log('Viking1:', viking1)
-
-
-
 
 
 // Saxon
@@ -75,13 +68,49 @@ class War {
   }
 
   addViking(viking) {
-    this.vikingArmy =+ viking
+    this.vikingArmy.push(viking)
+  }
+
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon)
+  }
+
+  vikingAttack() {
+    const dice = 0 + Math.floor(this.saxonArmy.length * Math.random())
+    this.saxonArmy[dice].receiveDamage(this.vikingArmy[dice].strength)
   }
 }
 
-// const war1 = new War()
-// addViking(viking1)
-// console.log('war1:', war1)
+
+
+const viking1 = new Viking('Alnior', 10, 15)
+
+console.log(viking1.receiveDamage(10))
+console.log('Viking1:', viking1)
+
+
+const war1 = new War()
+
+war1.addViking(viking1)
+console.log('war1:', war1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
