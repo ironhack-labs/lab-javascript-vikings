@@ -61,18 +61,39 @@ class War {
   addViking(viking) {
     this.vikingArmy.push(viking);
   }
+  deathViking;
   addSaxon(saxon) {
     this.saxonArmy.push(saxon);
   }
   vikingAttack() {
-    saxon.receiveDamage() === viking.strength;
-    if (saxon.health < 1) {
-      this.saxonArmy.pop(1);
-      return saxon.receiveDamage(viking.strength);
+    const saxonIndex = Math.floor(this.saxonArmy.length * Math.random());
+    const saxonRandom = this.saxonArmy[saxonIndex];
+    const vikingIndex = Math.floor(this.vikingArmy.length * Math.random());
+    const vikingRandom = this.vikingArmy[vikingIndex];
+    saxonRandom.receiveDamage(vikingRandom.strength);
+    if (saxonRandom.health < 1) {
+      this.saxonArmy.pop(saxonRandom);
+      return saxonRandom.receiveDamage(vikingRandom.strength);
     }
   }
-  saxonAttack() {}
-  showStatus() {}
+  saxonAttack() {
+    const saxonIndex = Math.floor(this.saxonArmy.length * Math.random());
+    const saxonRandom = this.saxonArmy[saxonIndex];
+    const vikingIndex = Math.floor(this.vikingArmy.length * Math.random());
+    const vikingRandom = this.vikingArmy[vikingIndex];
+    vikingRandom.receiveDamage(saxonRandom.strength);
+    if (vikingRandom.health < 1) this.vikingArmy.pop(vikingRandom);
+  }
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return `Vikings have won the war of the century!`;
+    }
+    if (this.vikingArmy.length === 0) {
+      return `Saxons have fought for their lives and survived another day...`;
+    }
+    if (this.vikingArmy.length === 1 && this.saxonArmy.length === 1)
+      return `Vikings and Saxons are still in the thick of battle.`;
+  }
 }
 
 // The following is required to make unit tests work.
