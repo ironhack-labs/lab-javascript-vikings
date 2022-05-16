@@ -78,6 +78,19 @@ class War {
   vikingAttack() {
     const dice = 0 + Math.floor(this.saxonArmy.length * Math.random())
     this.saxonArmy[dice].receiveDamage(this.vikingArmy[dice].strength)
+
+    if (this.saxonArmy[dice].health <= 0) {
+      this.saxonArmy.splice(dice, 1)
+    }
+  }
+
+  saxonAttack() {
+    const dice = 0 + Math.floor(this.vikingArmy.length * Math.random())
+    this.vikingArmy[dice].receiveDamage(this.saxonArmy[dice].strength)
+
+    if (this.vikingArmy[dice].health <= 0) {
+      this.vikingArmy.splice(dice, 1)
+    }
   }
 }
 
