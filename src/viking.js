@@ -68,9 +68,20 @@ class Saxon extends Soldier {
 
 
 // War
-class War {}
+class War {
+  constructor () {
+    this.vikingArmy = []
+    this.saxonArmy = [] 
+  }
 
+  addViking(viking) {
+    this.vikingArmy =+ viking
+  }
+}
 
+// const war1 = new War()
+// addViking(viking1)
+// console.log('war1:', war1)
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
