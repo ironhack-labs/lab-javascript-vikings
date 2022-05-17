@@ -56,32 +56,38 @@ class War {
   addViking(viking){
     this.vikingArmy.push(viking);
   }
+
   addSaxon(saxon){
     this.saxonArmy.push(saxon);
   }
+
   vikingAttack(){
-    const respond = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].attack());
+    const respond = this.saxonArmy[this.getRandomNumber(this.saxonArmy)].receiveDamage(this.vikingArmy[this.getRandomNumber(this.vikingArmy)].attack());
     this.saxonArmy = this.saxonArmy.filter((saxon) => saxon.health > 0);
     return respond;
   }
+
   saxonAttack(){
-    const respond = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].attack());
+    const respond = this.vikingArmy[this.getRandomNumber(this.vikingArmy)].receiveDamage(this.saxonArmy[this.getRandomNumber(this.saxonArmy)].attack());
     this.vikingArmy = this.vikingArmy.filter((viking) => viking.health > 0);
     return respond;
   }
+
   showStatus(){
     if(!this.saxonArmy.length) {
-      return `Vikings have won the war of the century!`
+      return `Vikings have won the war of the century!`;
     } else if (!this.vikingArmy.length) {
       return `Saxons have fought for their lives and survived another day...`;
     } else {
-      return `Vikings and Saxons are still in the thick of battle.`
+      return `Vikings and Saxons are still in the thick of battle.`;
     }
   }
 
+  getRandomNumber(arraySoldiers) {
+    return Math.floor(Math.random() * arraySoldiers.length);
+  }
+
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
