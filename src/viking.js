@@ -65,12 +65,15 @@ class War {
   }
 
   vikingAttack() {
-    this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
-    return this.saxonArmy[0].health
+    const attack = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength);
+    this.saxonArmy = this.saxonArmy.filter((saxon) => saxon.health > 0);
+    return attack;
   }
 
   saxonAttack() {
-    this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+    const attack = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength);
+    this.vikingArmy = this.vikingArmy.filter((viking) => viking.health > 0);
+    return attack;
   }
 
   showStatus() {
@@ -83,8 +86,6 @@ class War {
     }
   }
 }
-
-console.log(Soldier);
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
