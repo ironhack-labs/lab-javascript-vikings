@@ -11,7 +11,6 @@ class Soldier {
   
   receiveDamage(damage) {
     this.health = this.health - damage 
-    return this.health
   }
 }
 
@@ -45,8 +44,14 @@ class Saxon extends Soldier {
   //   super(health, strength)
   // }
 
-  receiveDamage(){
-
+  receiveDamage(damage) {
+    this.health = this.health - damage 
+    if(this.health <= 0 ){
+      return `A Saxon has died in combat`
+    } else if (this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`
+    }
+    return this.health
   }
 
 }
