@@ -62,14 +62,25 @@ class War {
   }
 
   vikingAttack(){
-    const respond = this.saxonArmy[this.getRandomNumber(this.saxonArmy)].receiveDamage(this.vikingArmy[this.getRandomNumber(this.vikingArmy)].attack());
-    this.saxonArmy = this.saxonArmy.filter((saxon) => saxon.health > 0);
-    return respond;
+    return this.attack(this.vikingArmy, this.saxonArmy, 'viking');
   }
 
   saxonAttack(){
-    const respond = this.vikingArmy[this.getRandomNumber(this.vikingArmy)].receiveDamage(this.saxonArmy[this.getRandomNumber(this.saxonArmy)].attack());
-    this.vikingArmy = this.vikingArmy.filter((viking) => viking.health > 0);
+    return this.attack(this.saxonArmy, this.vikingArmy, 'saxon');
+  }
+
+  attack(attackingArmy = [], defendingArmy = [], typeArmy = ''){
+    const respond = defendingArmy[this.getRandomNumber(defendingArmy)].receiveDamage(attackingArmy[this.getRandomNumber(attackingArmy)].attack());
+    switch(typeArmy){
+      case 'viking':
+        this.saxonArmy = defendingArmy.filter((defender) => defender.health > 0);
+        break;
+      case 'saxon':
+        this.vikingArmy = defendingArmy.filter((defender) => defender.health > 0);
+        break;
+      default:
+        break;
+    }
     return respond;
   }
 
