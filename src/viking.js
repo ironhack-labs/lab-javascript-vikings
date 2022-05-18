@@ -27,7 +27,7 @@ class Viking extends Soldier {
     }
   }
   battleCry() {
-    return "Odin Owns You All!";
+    return 'Odin Owns You All!';
   }
 }
 
@@ -36,7 +36,7 @@ class Saxon extends Soldier {
   receiveDamage(damage) {
     this.health -= damage;
     if (this.health <= 0) {
-      return "A Saxon has died in combat";
+      return 'A Saxon has died in combat';
     } else {
       return `A Saxon has received ${damage} points of damage`;
     }
@@ -44,9 +44,41 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+  vikingArmy = [];
+  saxonArmy = [];
 
+  addViking(Viking) {
+    this.vikingArmy.push(Viking);
+  }
 
+  addSaxon(Saxon) {
+    this.saxonArmy.push(Saxon);
+  }
+
+  vikingAttack() {
+    const attack = this.saxonArmy[(Math.floor(Math.random() * this.saxonArmy.length))].receiveDamage(this.vikingArmy[(Math.floor(Math.random() * this.vikingArmy.length))].strength);
+    this.saxonArmy = this.saxonArmy.filter((saxon) => saxon.health > 0);
+    return attack;
+  }
+
+  saxonAttack() {
+    const attack = this.vikingArmy[(Math.floor(Math.random() * this.vikingArmy.length))].receiveDamage(this.saxonArmy[(Math.floor(Math.random() * this.saxonArmy.length))].strength);
+    this.vikingArmy = this.vikingArmy.filter((viking) => viking.health > 0);
+    return attack;
+  }
+
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return 'Vikings have won the war of the century!';
+    } else if (this.vikingArmy.length === 0) {
+      return 'Saxons have fought for their lives and survived another day...';
+    } else {
+      return 'Vikings and Saxons are still in the thick of battle.';
+    }
+  }
+
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
