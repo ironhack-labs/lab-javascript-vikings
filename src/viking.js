@@ -76,8 +76,8 @@ class War {
 
   //SUPERBONUS
   warAttack(attackerArmy, attackedArmy) {
-    const attack = attackerArmy[0].receiveDamage(attackedArmy[0].strength);
-    attackerArmy = attackerArmy.filter((attacked) => attacked.health > 0);
+    const attack = attackedArmy[0].receiveDamage(attackerArmy[0].strength);
+    attackedArmy = attackedArmy.filter((attacked) => attacked.health > 0);
     return attack
   }
 
