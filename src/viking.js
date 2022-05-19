@@ -73,6 +73,14 @@ class War {
     return attack;
   }
 
+
+  //SUPERBONUS
+  warAttack(attackerArmy, attackedArmy) {
+    const attack = attackerArmy[0].receiveDamage(attackedArmy[0].strength);
+    attackerArmy = attackerArmy.filter((attacked) => attacked.health > 0);
+    return attack
+  }
+
   showStatus() {
     if (this.saxonArmy.length === 0) {
       return 'Vikings have won the war of the century!';
