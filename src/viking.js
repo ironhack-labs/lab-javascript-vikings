@@ -58,27 +58,56 @@ class War {
     this.saxonArmy.push(Saxon)
   };
 
+// SUPERBONUS
+
+  // Attack(isVikingAttacking =  false) {
+    
+  //   let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+  //   let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+
+  //   if (isVikingAttacking) {
+  //     let receivedDamage = randomSaxon.receiveDamage(randomViking.strength);
+
+  //     if (randomSaxon.health <= 0) {
+  //       this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1)
+  //     };
+
+  //     return receivedDamage;
+  //   } 
+
+  //   let receivedDamage2 = randomViking.receiveDamage(randomSaxon.strength);
+
+  //   if (randomViking.health <= 0) {
+  //     this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1)
+  //   };
+
+  //   return receivedDamage2;
+    
+  // }
+
   vikingAttack() {
+    let randomN = Math.floor(Math.random() * this.saxonArmy.length)
     let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-    let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randomSaxon = this.saxonArmy[randomN];
 
     let receivedDamage = randomSaxon.receiveDamage(randomViking.strength);
 
     if (randomSaxon.health <= 0) {
-      this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1)
+      this.saxonArmy.splice(randomN, 1)
     };
 
     return receivedDamage;
   };
 
   saxonAttack()  {
-    let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    let randomN = Math.floor(Math.random() * this.vikingArmy.length)
+    let randomViking = this.vikingArmy[randomN];
     let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
     let receivedDamage2 = randomViking.receiveDamage(randomSaxon.strength);
 
     if (randomViking.health <= 0) {
-      this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1)
+      this.vikingArmy.splice(randomN, 1)
     };
 
     return receivedDamage2;
