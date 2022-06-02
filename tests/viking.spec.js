@@ -1,6 +1,6 @@
 const { Soldier, Viking, Saxon, War } = require('./../src/viking');
 
-describe('Soldier', () => {
+describe.only('Soldier', () => {
   let soldier;
   const strength = 150;
   const health = 300;

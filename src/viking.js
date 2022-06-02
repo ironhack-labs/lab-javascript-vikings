@@ -1,5 +1,10 @@
 // Soldier
-class Soldier {}
+class Soldier {
+  constructor(health, strength) {
+    this.health = health;
+    this.strength = strength;
+  }
+}
 
 // Viking
 class Viking {}
@@ -9,8 +14,6 @@ class Saxon {}
 
 // War
 class War {}
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
