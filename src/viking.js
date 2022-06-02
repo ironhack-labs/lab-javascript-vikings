@@ -1,7 +1,10 @@
 // Soldier
+// oh wow, such soldier
 class Soldier {
   constructor(health, strength) {
+    // oh wow, such health
     this.health = health;
+    // oh wow, such strength
     this.strength = strength;
   }
 }
