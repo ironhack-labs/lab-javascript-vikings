@@ -29,8 +29,6 @@ class Viking extends Soldier {
     }
     return `${this.name} has received ${damage} points of damage`
   }
- 
-
 
 }
 
@@ -52,32 +50,37 @@ class Saxon extends Soldier{
 // War
 class War {
   
-  vikingArmy= [];
-  saxonArmy =[];
-  
-  addViking(viking) {
-
-    //viking = new Viking (this.name,this.health,this.strength);
-    this.vikingArmy.push (viking);
+  vikingArmy = [];
+  saxonArmy = [];
+ 
+  addViking (viking ) {
+    this.vikingArmy.push (viking); 
   }
   addSaxon(saxon){
     this.saxonArmy.push (saxon)
   }
   vikingAttack(){
 
+    const vikingIndex=  Math.floor( this.vikingArmy.length * Math.random() )
+    const saxonIndex=Math.floor(Math.random()*this.saxonArmy.length)
+    let saxonHealth = this.saxonArmy[saxonIndex].receiveDamage(this.vikingArmy[vikingIndex].strength)
     
-    let vikingIndex= 1+Math.floor(Math.random()*this.vikingArmy.length)
-    let saxonIndex=1+ Math.floor(Math.random()*this.saxonArmy.length)
-    let saxonHealth = this.saxonArmy[this.saxonIndex].this.health
-    
-    if (this.saxonHealth.this.health <= 0){
-      return this.saxonArmy.splice(this.saxonArmy[saxonIndex],1)
+    if (saxonHealth <= 0){
+      return this.saxonArmy.splice(this.saxonArmy[this.saxonIndex],1)
     }
-    // return call receiveDamage!!! buscar
-    return this.saxonHealth-=receiveDamage(this.vikingArmy[vikingIndex].this.strength)
+    
+    return saxonHealth
   }
   saxonAttack(){
-
+    const vikingIndex=  Math.floor( this.vikingArmy.length * Math.random() )
+    const saxonIndex=Math.floor(Math.random()*this.saxonArmy.length)
+    let vikingHealth = this.vikingArmy[vikingIndex].receiveDamage(this.saxonArmy[saxonIndex].strength)
+    
+    if (vikingHealth <= 0){
+      return this.vikingArmy.splice(this.vikingArmy[this.vikingIndex],1)
+    }
+    
+    return vikingHealth
 
   }
   showStatus(){
@@ -88,8 +91,6 @@ class War {
     }else{
       return "Vikings and Saxons are still in the thick of battle."
     }
-
-
   }
 
 }
