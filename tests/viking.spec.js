@@ -1,6 +1,6 @@
 const { Soldier, Viking, Saxon, War } = require('./../src/viking');
 
-describe('Soldier', () => {
+describe.skip('Soldier', () => {
   let soldier;
   const strength = 150;
   const health = 300;
@@ -57,7 +57,7 @@ describe('Soldier', () => {
   });
 });
 
-describe('Viking', () => {
+describe.skip('Viking', () => {
   let viking;
   const name = 'Harald';
   const strength = 150;
@@ -148,7 +148,7 @@ describe('Viking', () => {
   });
 });
 
-describe('Saxon', () => {
+describe.skip('Saxon', () => {
   let saxon;
   const health = 60;
   const strength = 25;
@@ -214,7 +214,7 @@ describe('Saxon', () => {
   });
 });
 
-describe('War', () => {
+describe.only('War', () => {
   let viking, saxon, war;
 
   function generateViking() {
