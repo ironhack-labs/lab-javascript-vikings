@@ -18,7 +18,7 @@ class Viking extends Soldier {
     super(health, strength)
     this.name = name
   }
-  receiveDamage(damage){
+  receiveDamage(damage) {
     this.health = this.health - damage
     if(this.health > 0) {
       return `${this.name} has received ${damage} points of damage`
@@ -32,10 +32,73 @@ class Viking extends Soldier {
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+  receiveDamage(damage) {
+    this.health = this.health - damage
+    if(this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`
+    } else {
+      return `A Saxon has died in combat`
+    }
+  }
+
+}
+function randomNum (arr) {
+  return Math.floor(Math.random() * arr.length)
+}
+
 
 // War
-class War {}
+class War {
+  
+  vikingArmy = new Array
+  saxonArmy = new Array
+
+  addViking(Viking) {
+    this.vikingArmy.push(Viking)
+  }
+  addSaxon(Saxon) {
+    this.saxonArmy.push(Saxon)
+  }
+  
+  vikingAttack() {
+
+    let random1 = randomNum(this.saxonArmy)
+    let random2 = randomNum(this.vikingArmy)
+
+    this.saxonArmy[random1].receiveDamage(this.vikingArmy[random2].strength)
+    if(this.saxonArmy[random1].health <= 0) {
+      this.saxonArmy.splice([random1])
+      return 'A Saxon has died in combat'
+    } else {
+      return this.vikingArmy[random2].strength
+    }
+  }
+
+  saxonAttack() {
+
+    let random3 = randomNum(this.saxonArmy)
+    let random4 = randomNum(this.vikingArmy)
+
+    this.vikingArmy[random4].receiveDamage(this.saxonArmy[random3].strength)
+    if(this.vikingArmy[random4].health <= 0) {
+      this.vikingArmy.splice([random4])
+    } else {
+      return `${this.vikingArmy[random4].name} has received ${this.saxonArmy[random3].strength} points of damage`
+    }
+  }
+
+  showStatus() {
+    if(this.saxonArmy.length === 0) {
+      return 'Vikings have won the war of the century!'
+    } else if (this.vikingArmy.length === 0) {
+      return 'Saxons have fought for their lives and survived another day...'
+    } else if (this.vikingArmy.length === 1 || this.saxonArmy.length === 1) {
+      return 'Vikings and Saxons are still in the thick of battle.'
+    }
+  }
+
+}
 
 
 
