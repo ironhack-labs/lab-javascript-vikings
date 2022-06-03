@@ -44,7 +44,55 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+
+  addViking(viking) {
+    this.vikingArmy.push(viking);
+  }
+
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+  vikingAttack() {
+    const resultvikingAttack = this.saxonArmy[
+      Math.floor(Math.random() * this.saxonArmy.length)
+    ].receiveDamage(
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        .strength
+    );
+
+    this.saxonArmy = this.saxonArmy.filter(function (saxon) {
+      saxon.health >= 0;
+    });
+
+    return resultvikingAttack;
+  }
+
+  saxonAttack() {
+    const resultSaxonAttack = this.vikingArmy[
+      Math.floor(Math.random() * this.vikingArmy.length)
+    ].receiveDamage(
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)].strength
+    );
+    this.vikingArmy = this.vikingArmy.filter(function (viking) {
+      viking.health >= 0;
+    });
+    return resultSaxonAttack;
+  }
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return 'Vikings have won the war of the century!';
+    } else if (this.vikingArmy.length === 0) {
+      return 'Saxons have fought for their lives and survived another day...';
+    } else if (this.saxonArmy.length === 1 && this.vikingArmy.length == 1) {
+      return 'Vikings and Saxons are still in the thick of battle.';
+    }
+  }
+}
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
