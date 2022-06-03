@@ -1,15 +1,111 @@
 // Soldier
-class Soldier {}
+
+
+class Soldier {
+
+  constructor(health, strength){
+    this.health = health
+    this.strength = strength
+  }
+
+  attack() {
+  
+     return this.strength
+  
+  }
+
+  receiveDamage(damage) {
+    
+    this.health -= damage 
+
+  }
+ 
+}
+
 
 // Viking
-class Viking {}
+class Viking extends Soldier {
+
+  constructor(name, health, strength){
+
+    super(health, strength)
+
+    this.name = name 
+
+  }
+
+  receiveDamage(damage) {
+
+    this.health -= damage
+
+    if ( this.health > 0) {
+
+      return `${this.name} has recieved ${damage} points of damage`
+
+    }
+
+    else{
+
+      return `${this.name} has died in act of combat`
+
+    }
+
+  }
+
+
+  battleCry() {
+
+    return "Odin Owns You All!"
+
+  }
+
+}
+
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+
+  receiveDamage(damage) {
+
+    this.health -= damage
+
+    if(this.health > 0) {
+
+      return `A Saxon has received ${damage} points of damage`
+
+    } else {
+
+      return "A Saxon has died in combat"
+
+    }
+  }
+}
 
 // War
-class War {}
+class War {
 
+  vikingArmy = []
+  saxonArmy = []
+
+    addViking(Viking) {
+
+    this.vikingArmy.push(viking1)
+      
+
+    }
+
+    addSaxon(Saxon) {
+
+      this.saxonArmy.push(saxon1)
+
+    }
+}
+
+const viking1 = new Viking("Harald", 300, 150)
+const saxon1 = new Saxon("Nazaniel", 200, 500)
+
+
+    
 
 
 // The following is required to make unit tests work.
