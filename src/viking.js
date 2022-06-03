@@ -53,23 +53,23 @@ class Saxon extends Soldier {
 // War
 class War {
   constructor() {
-    this.vikingArmy = [];
-    this.saxonArmy = [];
+    this.vikingArmy = []; // default value is an empty array where we want to add randomly chosen vikings
+    this.saxonArmy = []; // default value is an empty array where we want to add randomly chosen saxons
   }
 
   addViking(viking) {
-    this.vikingArmy.push(viking);
+    this.vikingArmy.push(viking); // add a new viking to the vikingArmy array
   }
 
   addSaxon(saxon) {
-    this.saxonArmy.push(saxon);
+    this.saxonArmy.push(saxon); // add a new saxon to the saxonArmy array
   }
 
   vikingAttack() {
-    const randomSaxonArmy = Math.floor(Math.random(this.saxonArmy.length) * 1);
+    const randomSaxonArmy = Math.floor(Math.random(this.saxonArmy.length) * 1); // randomise 1 saxon everytime we call this variable
     const randomVikingArmy = Math.floor(
       Math.random(this.vikingArmy.length) * 1
-    );
+    ); // randomise 1 viking everytime we call this variable
 
     const finalFight = String(
       this.saxonArmy[randomSaxonArmy].receiveDamage(
