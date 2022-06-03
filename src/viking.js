@@ -19,6 +19,7 @@ class Viking extends Soldier {
   constructor(name, health, strength) {
     super(health, strength);
     this.name = name;
+    this.overrated = true;
   }
 
   receiveDamage(damage) {
