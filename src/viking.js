@@ -19,16 +19,17 @@ class Soldier {
 class Viking extends Soldier {
 
   constructor(name, health, strength){
-    super(name, health & strength)
+    super(health, strength) // no agrego name porque es lo nuevo que le agrego a esta class
     this.name = name;
-    this.health = health;
-    this.strength = strength;
+    // this.health = health; // no es necesario me lo trae el constructor 
+    // this.strength = strength;
   }
 
   receiveDamage(damage){
     this.health = this.health - damage;
 
     if(this.health > 0) {return `${this.name} has received ${damage} points of damage`}
+
       else {return `${this.name} has died in act of combat`}
   }
 
@@ -50,8 +51,11 @@ class Saxon extends Soldier{
 
 // War
 class War {
-  vikingArmy = [];
-  saxonArmy = [];
+
+  constructor() {
+    this.vikingArmy = []; // hay que poner un this para aclarar que va a ser parte de War
+    this.saxonArmy = [];
+  }
 
   addViking(viking) {
     this.vikingArmy.push(viking);
@@ -61,28 +65,44 @@ class War {
     this.saxonArmy.push(saxon);
   }
 
-  vikingAttack() {
-
-    let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-    let randomViking = Math.floor(Math.random() * this.vikingArmy.length);   
-    
-    constructor(health, strength){
-    this.saxonHealth = health;
-    this.strengthViking = strength;
-    }
-    
-    receiveDamage() {
-      this.saxonHealth = this.saxonHealth - this.strengthViking;      
-    }
-    
+  randomIndex(arr) {
+    return Math.floor(Math.random() * arr.length);
   }
 
-  saxonAttack() {}
+  vikingAttack() {
+    const randomSaxonIndex = this.randomIndex(this.saxonArmy);
+    const randomSaxon = this.saxonArmy[randomSaxonIndex];   
 
-  showStatus() {}
+    const randomViking = this.vikingArmy[this.randomIndex(this.vikingArmy)]; 
+            
+    const attack = randomSaxon.receiveDamage(randomViking.strength); // puedo llamar a la strength porque lo tiene la clase el viking. Y el viking lo llamo cuando pusheo al arr
+    
+    if (randomSaxon.health <= 0) {this.saxonArmy.splice(randomSaxonIndex,1)}  
+
+    return attack;
+  } 
+
+  saxonAttack() {
+    
+    const randomVikingIndex = this.randomIndex(this.vikingArmy);
+    const randomViking = this.vikingArmy[randomVikingIndex];   
+
+    const randomSaxon = this.saxonArmy[this.randomIndex(this.saxonArmy)]; 
+            
+    const attack = randomViking.receiveDamage(randomSaxon.strength); // puedo llamar a la strength porque lo tiene la clase el viking. Y el viking lo llamo cuando pusheo al arr
+    
+    if (randomViking.health <= 0) {this.vikingArmy.splice(randomVikingIndex,1)}  
+
+    return attack;
+  }
+
+  showStatus() {
+
+    if (this.saxonArmy.length === 0) {return "Vikings have won the war of the century!"}     
+      else if (this.vikingArmy.length === 0) {return "Saxons have fought for their lives and survived another day..."} 
+         else {return "Vikings and Saxons are still in the thick of battle."}
+  }
 }
-
-
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
