@@ -12,7 +12,7 @@ class Soldier{
     };
 
     receiveDamage(damage){
-      this.health = this.health-damage;
+      this.health = this.health - damage;
     };
 
 }
@@ -61,9 +61,10 @@ class Saxon extends Soldier{
 
 // War
 class War {
-
-  vikingArmy = [];
-  saxonArmy = [];
+  constructor(){
+   this.vikingArmy = []
+   this.saxonArmy = []
+  }
 
   addViking(Viking){
     this.vikingArmy.push(Viking);
@@ -72,6 +73,7 @@ class War {
   addSaxon(Saxon){
     this.saxonArmy.push(Saxon)
   };
+
 
   vikingAttack(){
     let randomSaxon = Math.floor(this.saxonArmy.length * Math.random());
@@ -117,16 +119,15 @@ const vikingo = new Viking ('Odin', 5, 4)
 const warriorSaxon = new Saxon (5,2)
 const resultWar = new War ()
 
-while(vikingo.health > 0 || warriorSaxon > 0){
-  if(vikingo.health <= 0 || warriorSaxon <= 0){
+while(vikingo.health > 0 || warriorSaxon.health > 0){
+  if(vikingo.health <= 0 || warriorSaxon.health <= 0){
     break;
   }
-  vikingo.attack();
-  resultWar.showStatus();
-  warriorSaxon.attack();
+
   resultWar.showStatus();
 }
 */
+
 
 
 
