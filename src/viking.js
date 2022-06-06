@@ -69,6 +69,23 @@ class War {
     );
 
     const finalFight = String(
+      this.saxonArmy[randomSaxonArmy].receiveDamage(
+        this.vikingArmy[randomVikingArmy].strength
+      )
+    );
+    this.saxonArmy = this.saxonArmy.filter((saxon) => {
+      return saxon.health > 0;
+    });
+    return finalFight;
+  }
+
+  saxonAttack() {
+    const randomSaxonArmy = Math.floor(Math.random(this.saxonArmy.length) * 1);
+    const randomVikingArmy = Math.floor(
+      Math.random(this.vikingArmy.length) * 1
+    );
+
+    const finalFight = String(
       this.vikingArmy[randomVikingArmy].receiveDamage(
         this.saxonArmy[randomSaxonArmy].strength
       )
@@ -79,9 +96,15 @@ class War {
     return finalFight;
   }
 
-  saxonAttack() {}
-
-  showStatus() {}
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return `Vikings have won the war of the century!`;
+    } else if (this.vikingArmy.length === 0) {
+      return `Saxons have fought for their lives and survived another day...`;
+    } else if (this.vikingArmy.length && this.saxonArmy.length) {
+      return `Vikings and Saxons are still in the thick of battle.`;
+    }
+  }
 }
 
 // The following is required to make unit tests work.
