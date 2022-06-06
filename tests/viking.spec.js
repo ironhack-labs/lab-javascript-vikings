@@ -214,7 +214,7 @@ describe('Saxon', () => {
   });
 });
 
-describe('War', () => {
+describe.only('War', () => {
   let viking, saxon, war;
 
   function generateViking() {
