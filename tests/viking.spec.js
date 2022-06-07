@@ -294,7 +294,7 @@ describe('War', () => {
       war.addSaxon(saxon);
     });
 
-    describe.only('vikingAttack() method', () => {
+    describe('vikingAttack() method', () => {
       it('should be a declared', () => {
         expect(typeof war.vikingAttack).toBe('function');
       });
@@ -348,7 +348,7 @@ describe('War', () => {
       });
     });
 
-    describe('showStatus() method', () => {
+    describe.only('showStatus() method', () => {
       it('should be a declared', () => {
         expect(typeof war.showStatus).toBe('function');
       });
