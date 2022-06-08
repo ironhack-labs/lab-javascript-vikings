@@ -8,8 +8,8 @@ class Soldier {
     return this.strength;
   }
   receiveDamage(damage) {
-    // this.damage = damage;
-    this.health = this.health - damage;
+    this.damage = damage;
+    this.health -= this.damage;
   }
 }
 
@@ -24,8 +24,7 @@ class Viking extends Soldier {
     return this.strength;
   }
   receiveDamage(damage) {
-    this.damage = damage;
-    this.health = this.health - this.damage;
+    super.receiveDamage()
     if (this.health > 0) {
       return `${this.name} has received ${this.damage} points of damage`;
     } else {
@@ -44,9 +43,8 @@ class Saxon extends Soldier {
     return this.strength;
   }
   receiveDamage(damage) {
-    this.damage = damage;
-    this.health = this.health - this.damage;
-    this.health > 0;
+    super.receiveDamage()
+    // this.health > 0;
     if (this.health > 0)
       return `A Saxon has received ${this.damage} points of damage`;
     return `A Saxon has died in combat`;
@@ -57,32 +55,37 @@ class Saxon extends Soldier {
 class War {
   vikingArmy = [];
   saxonArmy = [];
+
   addViking(viking) {
-    this.vikingArmy.push(viking);
+    this.vikingArmy.push(viking1);
+    this.vikingArmy.push(viking2);
   }
   addSaxon(saxon) {
-    this.saxonArmy.push(saxon);
+    this.saxonArmy.push(saxon1);
+    this.saxonArmy.push(saxon2);
   }
   vikingAttack() {
     let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-    let randomVicking = Math.floor(Math.random() * this.vickingArmy.length);
-    let vickingSoldier = this.vickingArmy[randomVicking]
+    let randomViking = Math.floor(Math.random() * this.vikingArmy.length);
     let saxonSoldier = this.saxonArmy[randomSaxon];
-    let damage = saxonSoldier.receiveDamage(vickingSoldier.strength);
+    let vikingSoldier = this.vikingArmy[randomViking];
+    let damage = saxonSoldier.health - receiveDamage(vikingSoldier.strength);
     if (saxonSoldier.health <= 0) {
-      this.saxonArmy.splice(saxonArmy.indexOf(saxonSoldier),saxonArmy.indexOf(saxonSoldier) +1 )
+      this.saxonArmy.splice(this.saxonArmy.indexOf(saxonSoldier), 1 )
+      // this.saxonArmy.pop(saxonSoldier)
     }
+    console.log(damage)
     return damage
   }
 
   saxonAttack() {
     let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-    let randomVicking = Math.floor(Math.random() * this.vickingArmy.length);
-    let vickingSoldier = this.vickingArmy[randomVicking]
+    let randomViking = Math.floor(Math.random() * this.vikingArmy.length);
     let saxonSoldier = this.saxonArmy[randomSaxon];
-    let damage = vickingSoldier.receiveDamage(saxonSoldier.strength);
-    if (vickingSoldier.health <= 0) {
-      this.vickingArmy.splice(vickingArmy.indexOf(saxonSoldier),vickingArmy.indexOf(saxonSoldier) +1 )
+    let vikingSoldier = this.vikingArmy[randomViking];
+    let damage = vikingSoldier.receiveDamage(saxonSoldier.attack());
+    if (vikingSoldier.health <= 0) {
+      this.vikingArmy.splice(this.vikingArmy.indexOf(vikingSoldier),1 )
     }
     return damage
   }
@@ -102,3 +105,10 @@ class War {
 if (typeof module !== 'undefined') {
   module.exports = { Soldier, Viking, Saxon, War };
 }
+
+let saxon1 = new Saxon(10,5);
+let saxon2 = new Saxon(10,5);
+let viking1 = new Viking('Sema', 20,15);
+let viking2 = new Viking('Antonio', 20,15);
+
+console.log(war.vikingAttack())
