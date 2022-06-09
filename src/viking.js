@@ -67,6 +67,7 @@ class War {
     this.vikingStrength = this.randomViking.attack();
     // console.log(this.randomViking);
     // console.log('His strength: ' + this.vikingStrength);
+    //
     // pick random Saxon:
     this.randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
     this.randomSaxon = this.saxonArmy[this.randomSaxonIndex];
@@ -76,11 +77,13 @@ class War {
     //
     // make a Saxon receiveDamage() equal to the strength of a Viking:
     this.result = this.randomSaxon.receiveDamage(this.vikingStrength);
+    console.log(this.result);
     // console.log('Remaining health after attack: ' + this.randomSaxon.health);
     //
     // remove dead saxons from the army:
-    this.saxonArmy = this.saxonArmy.filter((saxons) => saxons.health == true);
+    this.saxonArmy = this.saxonArmy.filter((saxons) => saxons.health > 0);
     // console.log('Remaining Saxon Army: ' + this.saxonArmy.length);
+    //
     // return result of calling receiveDamage():
     return this.result;
   }
@@ -100,9 +103,9 @@ class War {
     // this.saxonStrength = this.randomSaxon.attack();
     // const result = this.randomViking.receiveDamage(this.saxonStrength);
     //
-    this.vikingArmy = this.vikingArmy.filter(
-      (vikings) => vikings.health == true
-    );
+    this.vikingArmy = this.vikingArmy.filter((vikings) => vikings.health > 0);
+    // console.log(this.result);
+    // console.log(this.vikingArmy);
     return this.result;
   }
   showStatus() {
@@ -116,10 +119,11 @@ class War {
   }
 }
 
-// const war = new War();
-// war.addViking(new Viking('Random Viking', 300, 50));
-// war.addSaxon(new Saxon(50, 15));
+const war = new War();
+war.addViking(new Viking('Random Viking', 300, 50));
+war.addSaxon(new Saxon(50, 15));
 // war.vikingAttack();
+war.saxonAttack();
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
