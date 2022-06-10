@@ -70,15 +70,15 @@ class War {
     //
     // pick random Saxon:
     this.randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-    this.randomSaxon = this.saxonArmy[this.randomSaxonIndex];
-    // console.log(this.randomSaxon);
-    // console.log('His health: ' + this.randomSaxon.health);
+    this.unluckySaxon = this.saxonArmy[this.randomSaxonIndex];
+    // console.log(this.unluckySaxon);
+    // console.log('His health: ' + this.unluckySaxon.health);
     // console.log('.......');
     //
     // make a Saxon receiveDamage() equal to the strength of a Viking:
-    this.result = this.randomSaxon.receiveDamage(this.vikingStrength);
+    this.result = this.unluckySaxon.receiveDamage(this.vikingStrength);
     console.log(this.result);
-    // console.log('Remaining health after attack: ' + this.randomSaxon.health);
+    // console.log('Remaining health after attack: ' + this.unluckySaxon.health);
     //
     // remove dead saxons from the army:
     this.saxonArmy = this.saxonArmy.filter((saxons) => saxons.health > 0);
@@ -92,16 +92,16 @@ class War {
     // pick random Saxon:
     this.randomSaxon =
       this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    this.randomViking =
+    this.unluckyViking =
       this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-    this.result = this.randomViking.receiveDamage(this.randomSaxon.attack());
+    this.result = this.unluckyViking.receiveDamage(this.randomSaxon.attack());
     //
     // this.randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    // this.randomViking = this.vikingArmy[this.randomVikingIndex];
+    // this.unluckyViking = this.vikingArmy[this.randomVikingIndex];
     // this.randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
     // this.randomSaxon = this.saxonArmy[this.randomSaxonIndex];
     // this.saxonStrength = this.randomSaxon.attack();
-    // const result = this.randomViking.receiveDamage(this.saxonStrength);
+    // const result = this.unluckyViking.receiveDamage(this.saxonStrength);
     //
     this.vikingArmy = this.vikingArmy.filter((vikings) => vikings.health > 0);
     // console.log(this.result);

@@ -348,7 +348,7 @@ describe('War', () => {
       });
     });
 
-    describe.skip('showStatus() method', () => {
+    describe('showStatus() method', () => {
       it('should be a declared', () => {
         expect(typeof war.showStatus).toBe('function');
       });
