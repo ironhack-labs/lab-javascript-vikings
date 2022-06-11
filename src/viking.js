@@ -7,7 +7,7 @@ class Soldier {
   attack() {
     return this.strength;
   }
-  recieveDamage(damage) {
+  receiveDamage(damage) {
     this.health = this.health - damage;
   }
 }
@@ -18,10 +18,10 @@ class Viking extends Soldier {
     super(health, strength);
     this.name = name;
   }
-  recieveDamage(damage) {
+  receiveDamage(damage) {
     this.health = this.health - damage;
     if (this.health > 0) {
-      return `${this.name} has recieved ${damage} points of damage`;
+      return `${this.name} has received ${damage} points of damage`;
     } else {
       return `${this.name} has died in act of combat`;
     }
@@ -36,7 +36,7 @@ class Saxon extends Soldier {
   constructor(health, strength) {
     super(health, strength);
   }
-  recieveDamage(damage) {
+  receiveDamage(damage) {
     this.health = this.health - damage;
     if (this.health > 0) {
       return `A Saxon has received ${damage} points of damage`;
@@ -52,7 +52,7 @@ class War {
     this.vikingArmy = [];
     this.saxonArmy = [];
   }
-  addVikings(viking) {
+  addViking(viking) {
     this.vikingArmy.push(viking);
   }
   addSaxon(saxon) {
@@ -86,7 +86,7 @@ class War {
   showStatus() {
     if (this.saxonArmy.length === 0) {
       return 'Vikings have won the war of the century!';
-    } else if (this.vikingsArmy.length === 0) {
+    } else if (this.vikingArmy.length === 0) {
       return 'Saxons have fought for their lives and survived another day...';
     } else if (this.saxonArmy.length === 1 && this.vikingArmy.length === 1) {
       return 'Vikings and Saxons are still in the thick of battle.';
