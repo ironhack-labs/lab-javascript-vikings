@@ -37,7 +37,7 @@ describe('Soldier', () => {
     });
   });
 
-  describe('receiveDamage() method', () => {
+  describe.only('receiveDamage() method', () => {
     it('should be a declared', () => {
       expect(typeof soldier.receiveDamage).toBe('function');
     });
