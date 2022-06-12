@@ -59,9 +59,9 @@ class War {
   vikingAttack(){
     let hitSaxon = Math.floor(Math.random()*this.saxonArmy.length);
     let hitViking = Math.floor(Math.random()*this.vikingArmy.length);
-    let vikingStrength = this.vikingArmy[hitViking].strength;
+    let viking = this.vikingArmy[hitViking];
     let attackedSaxon = this.saxonArmy[hitSaxon];
-    let attack = attackedSaxon.receiveDamage(vikingStrength);
+    let attack = attackedSaxon.receiveDamage(viking.attack());
     if (attackedSaxon.health <= 0){
     this.saxonArmy.splice(hitSaxon, 1);
     }
@@ -71,9 +71,9 @@ class War {
     let hitSaxon = Math.floor(Math.random()*this.saxonArmy.length);
     console.log(hitSaxon);
     let hitViking = Math.floor(Math.random()*this.vikingArmy.length);
-    let saxonStrength = this.saxonArmy[hitSaxon].strength;
+    let saxon = this.saxonArmy[hitSaxon];
     let attackedViking = this.vikingArmy[hitViking];
-    let attack = attackedViking.receiveDamage(saxonStrength);
+    let attack = attackedViking.receiveDamage(saxon.attack());
     if (attackedViking.health <= 0){
       this.vikingArmy.splice(hitViking, 1);
       }
