@@ -42,7 +42,7 @@ describe('Soldier', () => {
       expect(typeof soldier.receiveDamage).toBe('function');
     });
 
-    it('should receive 1 argument (the damage)', () => {
+    it('should receive 1 argument, the damage', () => {
       expect(soldier.receiveDamage.length).toEqual(1);
     });
 
