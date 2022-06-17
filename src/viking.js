@@ -35,7 +35,7 @@ class Viking extends Soldier {
     }
 
     battleCry(){
-      return 'Odin own you all !'
+      return 'Odin Owns You All!'
     }
   }
 
@@ -50,6 +50,7 @@ class Saxon extends Soldier {
     } else if (this.health === 0) {
       return `A Saxon has died in act of combat`
     }
+
   }
 
 }
