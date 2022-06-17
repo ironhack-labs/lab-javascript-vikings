@@ -59,8 +59,7 @@ class War {
     this.saxonArmy.push(saxon);
   }
   vikingAttack() {
-    const randomViking = Math.floor(this.vikingArmy.length * Math.random());
-    const randomSaxon = Math.floor(this.saxonArmy.length * Math.random());
+    const [randomViking, randomSaxon] = this.getRandomSoldiers();
     const result = this.saxonArmy[randomSaxon].receiveDamage(
       this.vikingArmy[randomViking].strength
     );
@@ -68,13 +67,18 @@ class War {
     return result;
   }
   saxonAttack() {
-    const randomViking = Math.floor(this.vikingArmy.length * Math.random());
-    const randomSaxon = Math.floor(this.saxonArmy.length * Math.random());
+    const [randomViking, randomSaxon] = this.getRandomSoldiers();
     const result = this.vikingArmy[randomViking].receiveDamage(
       this.saxonArmy[randomSaxon].strength
     );
     this.cleanArmy(this.vikingArmy);
     return result;
+  }
+  getRandomSoldiers() {
+    return [
+      Math.floor(this.vikingArmy.length * Math.random()),
+      Math.floor(this.saxonArmy.length * Math.random())
+    ];
   }
   cleanArmy(army) {
     for (let i = 0; i < army.length; i++) {
