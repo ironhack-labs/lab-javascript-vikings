@@ -76,9 +76,8 @@ class War {
     
     this.vikingArmy[randomIndexViking].receiveDamage(this.saxonArmy[randomIndexSaxon].strength);
     if (this.vikingArmy[randomIndexViking].health<=0) {
-    this.vikingArmy.splice(randomIndexViking, 1);
-    return       //return this.vikingArmy[randomIndexViking].name + " has received " + damage + " points of damage";
-    ;
+    this.vikingArmy.splice(randomIndexViking, 1); 
+  //return this.vikingArmy[randomIndexViking] + " has received " + this.saxonArmy[randomIndexSaxon].strength + " points of damage";
     }  
   }
 
