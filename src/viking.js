@@ -54,9 +54,33 @@ class Saxon extends Soldier {
 
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
 
+  addViking(Viking) {
+    this.vikingArmy.push(Viking);
+  }
 
+  addSaxon(Saxon) {
+    this.saxonArmy.push(Saxon)
+  }
+
+  vikingAttack() {
+    Saxon.receiveDamage(Viking.this.strength)
+    // retirar saxons mortos
+    return Saxon.receiveDamage(Viking.this.strength)
+  }
+
+  
+  saxonAttack() {}
+  showStatus() {}
+
+}
+
+console.log(Soldier)
 
 // The following is required to make unit tests work.
 /* Environment setup. Do not modify the below code. */
