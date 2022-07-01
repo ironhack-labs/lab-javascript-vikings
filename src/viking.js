@@ -47,9 +47,9 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  constructor([], []){
-  this.vikingArmy = []
-  this.saxonArmy = []
+  constructor(vikingArmy, saxonArmy){
+  this.vikingArmy = vikingArmy
+  this.saxonArmy = saxonArmy
   }
   addViking(viking){
   this.vikingArmy.push(viking)
@@ -70,9 +70,12 @@ class War {
     let floorNum2 = Math.floor(randomNum2)
     let randomViking = this.vikingArmy[floorNum2]
 
+    if(randomSaxon.health <= 0){
+    this.saxonArmy.pop()
+    }else{
     return randomSaxon.receiveDamage(randomViking.strength)
+    }
   
-
   }
 
   saxonAttack(){
@@ -87,6 +90,10 @@ class War {
     let floorNum = Math.floor(randomNum)
     let randomSaxon = this.saxonArmy[floorNum]
 
+    if(randomViking.health <= 0){
+      this.vikingArmy.pop()
+    }
+
     return randomViking.receiveDamage(randomSaxon.strength)
   
   }
@@ -99,12 +106,6 @@ class War {
     } else {
       return "Vikings and Saxons are still in the thick of battle."
     }
-  }
-  removeSoldier(arrArmy, soldier){
-    let index = arrArmy.indexOf(soldier)
-    let newArmy = arrArmy.splice(index, 1)
-    arrArmy = newArmy
-    return arrArmy
   }
 
 }
@@ -141,7 +142,7 @@ war.vikingAttack()
 war.vikingAttack()
 war.vikingAttack()
 war.vikingAttack()
-war.vikingAttack()
+console.log(war.vikingAttack()) // Detecta que tiene menos de 0 de health
 console.log(war)
 
 war.saxonAttack()
