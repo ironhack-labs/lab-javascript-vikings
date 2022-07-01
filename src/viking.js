@@ -89,6 +89,28 @@ class War {
       return "Vikings and Saxons are still in the thick of battle.";
     }
   }
+
+  //Super Bonus:
+
+// vikingAttack(){
+//   return warriorAttack(this.vikingArmy, this.saxonArmy)
+// }
+// saxonAttack(){
+//   return warriorAttack(this.saxonArmy, this.vikingArmy)
+// }
+// warriorAttack(attackWarrior, getDamageWarrior){
+//   let attacking = Math.floor(Math.random()*attackWarrior.length);
+//   console.log(attacking);
+//   let damagedWarrior = Math.floor(Math.random()*getDamageWarrior.length);
+//   let enemy = attackWarrior[attacking];
+//   let attacked = getDamageWarrior[attackedWarrior];
+//   let attack = attacked.receiveDamage(enemy.attack());
+//   if (attacked.health <= 0){
+//     getDamageWarrior.splice(damagedWarrior, 1);
+//     }
+//   return attack;
+//
+// }
 }
 
 // The following is required to make unit tests work.
