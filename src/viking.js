@@ -60,6 +60,10 @@ class War {
 
   vikingAttack(){
 
+    if(this.saxonArmy.length === 0){
+      return "No hay saxones"
+    }
+
     let saxonNum = this.saxonArmy.length
     let randomNum = Math.random() * saxonNum
     let floorNum = Math.floor(randomNum)
@@ -71,14 +75,18 @@ class War {
     let randomViking = this.vikingArmy[floorNum2]
 
     if(randomSaxon.health <= 0){
-    this.saxonArmy.pop()
-    }else{
-    return randomSaxon.receiveDamage(randomViking.strength)
+    let index = this.saxonArmy.indexOf(randomSaxon)
+    this.saxonArmy.splice(index, 1)
     }
+    return randomSaxon.receiveDamage(randomViking.strength)
   
   }
 
   saxonAttack(){
+
+    if(this.vikingArmy.length === 0){
+      return "No hay vikingos"
+    }
 
     let vikingNum = this.vikingArmy.length
     let randomNum2 = Math.random() * vikingNum
@@ -91,7 +99,10 @@ class War {
     let randomSaxon = this.saxonArmy[floorNum]
 
     if(randomViking.health <= 0){
-      this.vikingArmy.pop()
+      let index = this.vikingArmy.indexOf(randomViking)
+      this.vikingArmy.splice(index, 1)
+
+      return `${randomViking.name} ha muerto`
     }
 
     return randomViking.receiveDamage(randomSaxon.strength)
@@ -111,8 +122,13 @@ class War {
 }
 
 
-let saxon = new Saxon(100, 20)
-let viking = new Viking("Pepe" ,110, 30)
+let saxon = new Saxon(100, 60)
+let saxon2 = new Saxon(70, 60)
+let saxon3 = new Saxon(130, 60)
+
+let viking = new Viking("Pepe" ,110, 60)
+let viking2 = new Viking("Mike" ,70, 60)
+let viking3 = new Viking("Caca" ,60, 60)
 
 // Test viking
 // console.log(viking)
@@ -135,20 +151,39 @@ let viking = new Viking("Pepe" ,110, 30)
 let war = new War([], [])
 console.log(war)
 war.addSaxon(saxon)
+war.addSaxon(saxon2)
+war.addSaxon(saxon3)
+
 war.addViking(viking)
+war.addViking(viking2)
+war.addViking(viking3)
 
 war.vikingAttack()
 war.vikingAttack()
 war.vikingAttack()
 war.vikingAttack()
 war.vikingAttack()
-console.log(war.vikingAttack()) // Detecta que tiene menos de 0 de health
-console.log(war)
+war.vikingAttack()
+war.vikingAttack()
+war.vikingAttack()
+war.vikingAttack()
+war.vikingAttack()
+war.vikingAttack()
+console.log(war.saxonArmy)
 
 war.saxonAttack()
 war.saxonAttack()
+war.saxonAttack()
+war.saxonAttack()
+war.saxonAttack()
+war.saxonAttack()
+war.saxonAttack()
+war.saxonAttack()
+war.saxonAttack()
+war.saxonAttack()
+console.log(war.saxonAttack())
+console.log(war.vikingArmy)
 
-console.log(war.showStatus())
 
 //if(randomSaxon.health <= 0){
     // Seguir después aquí
