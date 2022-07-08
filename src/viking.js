@@ -59,6 +59,8 @@ class War {
   };
   
   vikingAttack() {
+  let randomViking = Math.floor(Math.random) * this.vikingArmy.length;
+  let randomViking = Math.floor(Math.random) * this.saxonArmy.length;
     
   }
   saxonAttack() {}
