@@ -71,7 +71,7 @@ vikingAttack() {
 
   let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
   let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-  let fight = saxon.receiveDamage(viking.attack());
+  let fight = randomSaxon.receiveDamage(randomViking.attack());
 
   return fight;
 }
