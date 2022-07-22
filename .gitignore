@@ -5,3 +5,4 @@ package-lock.json
 yarn.lock
 *.log
 lab-solution.html
+.vscode-upload.json
