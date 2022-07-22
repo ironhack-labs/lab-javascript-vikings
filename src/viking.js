@@ -69,7 +69,6 @@ class War{
   }
 
   vikingAttack(){
-
     let indexViking = this.random(this.vikingArmy.length)
     let indexSaxon = this.random(this.saxonArmy.length)
     let viking = this.vikingArmy[indexViking]
