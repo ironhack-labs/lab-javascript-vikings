@@ -1,4 +1,5 @@
 // Soldier
+//Edição para mostrar como mandar o lab
 class Soldier {}
 
 // Viking
