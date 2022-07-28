@@ -342,11 +342,11 @@ describe('War', () => {
       });
 
       it('should remove dead vikings from the army', () => {
-        console.log(`saxon has ${saxon.strength} strength`);
-        console.log(`viking has ${viking.health} health`);
+        // console.log(`saxon has ${saxon.strength} strength`);
+        // console.log(`viking has ${viking.health} health`);
         for (let i = 0; i < 12; i++) {
           war.saxonAttack();
-          console.log(`viking has ${viking.health} new health`);
+          // console.log(`viking has ${viking.health} new health`);
         }
         expect(war.vikingArmy.length).toEqual(0);
       });
