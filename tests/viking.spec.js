@@ -304,8 +304,12 @@ describe('War', () => {
       });
 
       it('should make Saxon receiveDamage() equal to the strength of a Viking', () => {
+        // console.log(`saxon has ${saxon.health} health`);
+        // console.log(`viking has ${viking.strength} strength`);
         let oldHealth = saxon.health;
+        // console.log(`vikingAttack`);
         war.vikingAttack();
+        // console.log(`saxon has ${saxon.health} health after attack`);
         expect(saxon.health).toEqual(oldHealth - viking.strength);
       });
 
@@ -329,14 +333,20 @@ describe('War', () => {
       });
 
       it('should make a Viking receiveDamage() equal to the strength of a Saxon', () => {
+
+        
         let oldHealth = viking.health;
         war.saxonAttack();
+        
         expect(viking.health).toEqual(oldHealth - saxon.strength);
       });
 
       it('should remove dead vikings from the army', () => {
+        console.log(`saxon has ${saxon.strength} strength`);
+        console.log(`viking has ${viking.health} health`);
         for (let i = 0; i < 12; i++) {
           war.saxonAttack();
+          console.log(`viking has ${viking.health} new health`);
         }
         expect(war.vikingArmy.length).toEqual(0);
       });
