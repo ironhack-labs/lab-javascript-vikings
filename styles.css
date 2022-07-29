@@ -7,32 +7,27 @@ body {
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    margin: 0;
 }
 
 .its-war {
     display: flex;
     justify-content: center;
-    font-size: 3.4em;
+    font-size: 3.8em;
 }
 
-/* .circular--square {
-    border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%; border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%;
-    width: 200px;
-    height: auto;
-} */
 
-/* Vikings */
+/* Vikings styles*/
 #containerViking {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     /* background-color: #00000030; */
-    background: linear-gradient(to right, #eef2f3, #8e9eab1c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: linear-gradient(to right, #f3f3f3ba, #8e9eab1c); 
     padding-top: 28px;
     margin-bottom: 40px;
-    border-radius: 25px;
+    /* border-radius: 25px; */
 }
 
 #viking-title {
@@ -51,18 +46,17 @@ body {
     border: 1px solid black;
 }
 
-/* Saxons */
+/* Saxons styles*/
 #containerSaxon {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-evenly;
     /* background-color: #00000030; */
-    background: linear-gradient(to right, #eef2f3, #8e9eab1c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, #f3f3f3ba, #8e9eab1c); 
     padding-top: 28px;
-    border-radius: 25px;
+    /* border-radius: 25px; */
 }
-
 
 #saxons-title {
     display: flex;
@@ -75,32 +69,29 @@ body {
     color: black;
     /* color: lightgray; */
     font-size: 2em;
-    
 } 
     
 .saxon img {
     width: 100px;
     border: 1px solid black;
+    border-top-left-radius: 50% 50%; border-top-right-radius: 50% 50%; border-bottom-right-radius: 50% 50%; border-bottom-left-radius: 50% 50%;
 }
 
 /* Attack Button */
-.viking-attack {
+.viking-attack-div {
     display: flex;
     justify-content: center;
     margin: 30px 30px;
 }
 
-.viking-attack button {
+.viking-attack-div button {
     width: 200px;
     height: 50px;
     font-family: fantasy;
     font-size: 2em;
     font-weight: bolder;
     padding-top: 6px;
+    border: 1.5px solid black;
+    background: linear-gradient(to bottom, #ffffff, #abbaab); 
 }
-    
-    
-    
-    
-    
-    
+
