@@ -59,16 +59,22 @@ class War {
   vikingAttack() {
     return this.attack(this.vikingArmy, this.saxonArmy);
   }
+
   saxonAttack() {
     return this.attack(this.saxonArmy, this.vikingArmy);
   }
-  attack(off, def) {
-    const offSoldier = this.random(off);
-    const defSoldier = this.random(def);
-    const fight = defSoldier.receiveDamage(offSoldier.strength);
-    def.forEach((soldier, index) => {
-      if (soldier.health < 1) def.splice(index, 1);
+
+  removeDeadSoldier(whatArmy) {
+    whatArmy.forEach((soldier, index) => {
+      if (soldier.health < 1) whatArmy.splice(index, 1);
     });
+  }
+
+  attack(offense, defense) {
+    const offSoldier = this.random(offense);
+    const defSoldier = this.random(defense);
+    const fight = defSoldier.receiveDamage(offSoldier.strength);
+    this.removeDeadSoldier(defense);
     return fight;
   }
 
@@ -79,6 +85,7 @@ class War {
       return "Saxons have fought for their lives and survived another day...";
     } else return "Vikings and Saxons are still in the thick of battle.";
   }
+
   random(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
