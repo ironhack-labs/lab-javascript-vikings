@@ -1,0 +1,35 @@
+body {
+    font-family: fantasy;
+    background-image: url(https: //cdnb.artstation.com/p/assets/images/images/011/110/843/large/tim-kaminski-tim-kaminski-erger.jpg?1527886740);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+
+#containerViking {
+    display: flex;
+}
+
+#containerSaxon {
+    display: flex;
+}
+
+.viking {
+    margin: 0 50px 0 50px;
+}
+
+.saxon {
+    margin: 0 50px 0 50px;
+}
+
+.viking img {
+    width: 100px;
+    border: 1px solid black;
+}
+
+.saxon img {
+    width: 100px;
+    border: 1px solid black;
+}
