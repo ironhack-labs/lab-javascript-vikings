@@ -57,21 +57,17 @@ class War {
   }
 
   vikingAttack() {
-    const randomViking = this.random(this.vikingArmy);
-    const randomSaxon = this.random(this.saxonArmy);
-    const fight = randomSaxon.receiveDamage(randomViking.attack());
-    this.saxonArmy.forEach((soldier, index) => {
-      if (soldier.health < 1) this.saxonArmy.splice(index, 1);
-    });
-    return fight;
+    return this.attack(this.vikingArmy, this.saxonArmy);
   }
-
   saxonAttack() {
-    const randomViking = this.random(this.vikingArmy);
-    const randomSaxon = this.random(this.saxonArmy);
-    const fight = randomViking.receiveDamage(randomSaxon.attack());
-    this.vikingArmy.forEach((soldier, index) => {
-      if (soldier.health < 1) this.vikingArmy.splice(index, 1);
+    return this.attack(this.saxonArmy, this.vikingArmy);
+  }
+  attack(off, def) {
+    const offSoldier = this.random(off);
+    const defSoldier = this.random(def);
+    const fight = defSoldier.receiveDamage(offSoldier.strength);
+    def.forEach((soldier, index) => {
+      if (soldier.health < 1) def.splice(index, 1);
     });
     return fight;
   }
@@ -87,8 +83,5 @@ class War {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 }
-// random(arr) {
-//   return arr[Math.floor(Math.random() * arr.length)];
-// }
 
 // Since there is a lot of repetitive code in the previous two iterations, methods vikingAttack() and saxonAttack(), try to create one generic method and call it in the case of vikingAttack and in the case of saxonAttack instead of using almost the same code for both methods. (This iteration doesn't have test, so ask your TAs and your instructor to give you feedback on the quality of your code after the refactor.)
