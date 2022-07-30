@@ -78,13 +78,13 @@ body {
 }
 
 /* Attack Button */
-.viking-attack-div {
+.attack-btn {
     display: flex;
     justify-content: center;
     margin: 30px 30px;
 }
 
-.viking-attack-div button {
+.attack-btn button {
     width: 200px;
     height: 50px;
     font-family: fantasy;

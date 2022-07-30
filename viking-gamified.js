@@ -31,26 +31,123 @@ let newWar = new War()
     // showStatusOfWar();
 
 
-    let vikingRow = document.querySelectorAll(".viking");
+   //  let vikingRow = document.querySelectorAll(".viking");
     
-    for(let i = 0; i < 5; i++){
+   //  for(let i = 0; i < 5; i++){
     
-       let vikingName = document.querySelectorAll(".name span")[i];
-       let vikingHealth = document.querySelectorAll(".health span")[i];
-       let vikingStrength = document.querySelectorAll(".strength span")[i];
+   //     let vikingName = document.querySelectorAll(".name span")[i];
+   //     let vikingHealth = document.querySelectorAll(".health span")[i];
+   //     let vikingStrength = document.querySelectorAll(".strength span")[i];
        
-       vikingName.innerText = newWar.vikingArmy[i].name
-       vikingHealth.innerText = newWar.vikingArmy[i].health
-       vikingStrength.innerText = newWar.vikingArmy[i].strength
-    }
+   //     vikingName.innerText = newWar.vikingArmy[i].name
+   //     vikingHealth.innerText = newWar.vikingArmy[i].health
+   //     vikingStrength.innerText = newWar.vikingArmy[i].strength
+   //  }
     
-    let saxonRow = document.querySelectorAll(".saxon");
+   //  let saxonRow = document.querySelectorAll(".saxon");
 
-    for(let i = 0; i < 5; i++){
+   //  for(let i = 0; i < 5; i++){
 
-       let saxonHealth = document.querySelectorAll(".health2 span")[i];
-       let saxonStrength = document.querySelectorAll(".strength2 span")[i];
+   //     let saxonHealth = document.querySelectorAll(".health2 span")[i];
+   //     let saxonStrength = document.querySelectorAll(".strength2 span")[i];
        
-       saxonHealth.innerText = newWar.saxonArmy[i].health
-       saxonStrength.innerText = newWar.saxonArmy[i].strength
-    }
+   //     saxonHealth.innerText = newWar.saxonArmy[i].health
+   //     saxonStrength.innerText = newWar.saxonArmy[i].strength
+   //  }
+
+    let vikingsTurn = true;  
+
+      document.querySelector(".attack-btn").onclick = function() {
+         if (vikingsTurn === true) {
+            newWar.vikingAttack();
+         } else if (vikingsTurn !== true) {
+            newWar.saxonAttack();
+         } 
+         changeButtonText();
+         vikingsTurn = !vikingsTurn;
+         updateStatus()
+      };
+      
+
+
+      function changeButtonText() {
+         let changeBtnText = document.querySelector(".attack-btn button")
+         
+            if (changeBtnText.innerText == "Viking Attack") {
+               changeBtnText.innerText = "Saxon Attack";
+            } else if (changeBtnText.innerText == "Saxon Attack") {
+               changeBtnText.innerText = "Viking Attack" 
+            }
+       };
+
+
+      function updateStatus() {    
+         for(let i = 0; i < 5; i++){
+             let vikingName = document.querySelectorAll('.name span')[i];
+             let vikingHealth = document.querySelectorAll('.health span')[i];
+             let vikingStrength = document.querySelectorAll('.strength span')[i];
+
+             if (newWar.vikingArmy[i]) {
+               vikingName.innerText = newWar.vikingArmy[i].health;
+               vikingHealth.innerText = newWar.vikingArmy[i].health;
+               vikingStrength.innerText = newWar.vikingArmy[i].strength;
+              } else {
+               vikingName.innerText = "Dead";
+               vikingHealth.innerText = "Dead";
+               vikingStrength.innerText = "Dead";
+              }
+          }
+
+         for(let i = 0; i < 5; i++){
+              let saxonHealth = document.querySelectorAll('.health2 span')[i];
+              let saxonStrength = document.querySelectorAll('.strength2 span')[i];
+              if (newWar.saxonArmy[i]) {
+               saxonHealth.innerText = newWar.saxonArmy[i].health;
+               saxonStrength.innerText = newWar.saxonArmy[i].strength;
+              } else {
+               saxonHealth.innerText = "Dead";
+               saxonStrength.innerText = "Dead";
+              }
+            //   if there are this many saxons, then run the next 2 lines otherwise do  but saxon.innerText = dead
+              
+             }
+         }
+         updateStatus();
+
+
+
+
+
+
+
+
+
+
+
+
+
+   // put both for loops into one function, call in begininng to start the new war, call again to 
+
+   // newWar.vikingAttack();
+      //    for(let i = 0; i < newWar.saxonArmy.length; i++){
+
+      //    let saxonHealth = document.querySelectorAll(".health2 span")[i];
+      //    let saxonStrength = document.querySelectorAll(".strength2 span")[i];
+         
+      //    saxonHealth.innerText = newWar.saxonArmy[i].health
+      //    saxonStrength.innerText = newWar.saxonArmy[i].strength
+      // }
+      
+      // document.querySelector(".attack-btn").onclick = function() {
+      //    for(let i = 0; i < newWar.vikingArmy.length; i++){
+    
+      //    let vikingName = document.querySelectorAll(".name span")[i];
+      //    let vikingHealth = document.querySelectorAll(".health span")[i];
+      //    let vikingStrength = document.querySelectorAll(".strength span")[i];
+         
+      //    vikingName.innerText = newWar.vikingArmy[i].name
+      //    vikingHealth.innerText = newWar.vikingArmy[i].health
+      //    vikingStrength.innerText = newWar.vikingArmy[i].strength
+      //    }
+
+      // }
