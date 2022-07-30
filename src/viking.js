@@ -75,7 +75,7 @@ class War {
     let attack = this.vikingArmy[rViking].strength;
     this.saxonArmy[rSaxon].receiveDamage(attack);
     if (this.saxonArmy[rSaxon].health <= 0) {
-      //how to remove rSaxon?
+      this.saxonArmy.splice(rSaxon, 1);
       return "A Saxon has died in combat";
     }
     // if (this.vikingArmy[rViking].health >= 1) {
@@ -96,7 +96,7 @@ class War {
     let attack = this.saxonArmy[rSaxon].strength;
     this.vikingArmy[rViking].receiveDamage(attack);
     if (this.vikingArmy[rViking].health <= 0) {
-      //how to remove rViking?
+      this.vikingArmy.splice(rViking, 1);
     } else {
       return `${this.vikingArmy[rViking].name} has received ${this.saxonArmy[rSaxon].strength} points of damage`;
     }
