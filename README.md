@@ -284,5 +284,5 @@ Returns the current status of the `War` based on the size of the armies.
 - **if there are at least 1 `Viking` and 1 `Saxon`**, should return **_"Vikings and Saxons are still in the thick of battle."_**
 
   
-
+  
 **Happy Coding!** 💙
