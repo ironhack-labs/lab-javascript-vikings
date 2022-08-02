@@ -59,26 +59,13 @@ class War {
       this.vikingArmy.pop(randomViking);
     return (outcome);
   }
-  showStatus() {}
+  showStatus() {
+    if (this.saxonArmy.length === 0)
+      return ('Vikings have won the war of the century!');
+    else if (this.vikingArmy.length === 0)
+      return ('Saxons have fought for their lives and survived another day...');
+    else
+      return ('Vikings and Saxons are still in the thick of battle.');
+  }
 
 }
-
-let me = new Soldier(99, 99);
-let you1 = new Viking('poop', 20, 2);
-let you2 = new Viking('poop', 20, 2);
-let you3 = new Viking('poop', 20, 2);
-let ew1 = new Saxon(2, 1);
-let ew2 = new Saxon(2, 1);
-let ew3 = new Saxon(2, 1);
-let ew4 = new Saxon(2, 1);
-
-
-let ouch = new War();
-ouch.addSaxon(ew3);
-ouch.addSaxon(ew1);
-ouch.addSaxon(ew2);
-ouch.addViking(you1);
-ouch.addViking(you2);
-ouch.addViking(you3);
-console.log(ouch.vikingAttack());
-console.log(ouch.saxonAttack());
