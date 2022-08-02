@@ -48,7 +48,7 @@ class War {
     let randomViking = selectRandom(this.vikingArmy);
     let outcome = randomSaxon.receiveDamage(randomViking.strength);
     if (randomSaxon.health <= 0)
-      this.saxonArmy.pop(randomSaxon);
+      this.saxonArmy.splice(randomSaxon);
     return (outcome);
   }
   saxonAttack() {
@@ -56,7 +56,7 @@ class War {
     let randomSaxon = selectRandom(this.saxonArmy);
     let outcome = randomViking.receiveDamage(randomSaxon.strength);
     if (randomViking.health <= 0)
-      this.vikingArmy.pop(randomViking);
+      this.vikingArmy.splice(randomViking);
     return (outcome);
   }
   showStatus() {
@@ -69,3 +69,25 @@ class War {
   }
 
 }
+
+
+let viking1 = new Viking('Ingrid', 23, 2);
+let viking2 = new Viking('Helga', 20, 4);
+let viking3 = new Viking('Sigrid', 22, 3);
+let saxon1 = new Saxon(3, 1);
+let saxon2 = new Saxon(3, 2);
+let saxon3 = new Saxon(30, 1);
+let saxon4 = new Saxon(31, 1);
+
+
+let ouch = new War();
+ouch.addSaxon(saxon1);
+ouch.addSaxon(saxon2);
+ouch.addViking(viking1);
+ouch.addViking(viking2);
+ouch.addViking(viking3);
+console.log(ouch.vikingAttack(), ouch.showStatus(), ouch.saxonArmy);
+console.log(ouch.vikingAttack(), ouch.showStatus(), ouch.saxonArmy);
+console.log(ouch.vikingAttack(), ouch.showStatus(), ouch.saxonArmy);
+console.log(ouch.vikingAttack(), ouch.showStatus(), ouch.saxonArmy);
+console.log(ouch.vikingAttack(), ouch.showStatus(), ouch.saxonArmy);
