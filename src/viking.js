@@ -21,9 +21,10 @@ class Viking extends Soldier {
 
   receiveDamage(damage) {
     this.health -= damage;
-    if (this.health > 0) {
-      return `${this.name} has received ${damage} points of damage`;
-    } else return `${this.name} has died in act of combat`;
+    return this.health > 0 ? `${this.name} has received ${damage} points of damage` : `${this.name} has died in act of combat`;
+    // if (this.health > 0) {
+    //   return `${this.name} has received ${damage} points of damage`;
+    // } else return `${this.name} has died in act of combat`;
   }
 
   battleCry() {
@@ -35,9 +36,10 @@ class Viking extends Soldier {
 class Saxon extends Soldier {
   receiveDamage(damage) {
     this.health -= damage;
-    if (this.health > 0) {
-      return `A Saxon has received ${damage} points of damage`;
-    } else return `A Saxon has died in combat`;
+    return this.health > 0 ? `A Saxon has received ${damage} points of damage` : `A Saxon has died in combat`;
+    // if (this.health > 0) {
+    //   return `A Saxon has received ${damage} points of damage`;
+    // } else return `A Saxon has died in combat`;
   }
 }
 
@@ -79,16 +81,18 @@ class War {
   }
 
   showStatus() {
-    if (this.saxonArmy.length === 0) {
-      return "Vikings have won the war of the century!";
-    } else if (this.vikingArmy.length === 0) {
-      return "Saxons have fought for their lives and survived another day...";
-    } else return "Vikings and Saxons are still in the thick of battle.";
+    if (this.saxonArmy.length === 0) return "Vikings have won the war of the century!";
+    if (this.vikingArmy.length === 0) return "Saxons have fought for their lives and survived another day...";
+    return "Vikings and Saxons are still in the thick of battle.";
+    // "early" return pattern
+    // if (this.saxonArmy.length === 0) {
+    //   return "Vikings have won the war of the century!";
+    // } else if (this.vikingArmy.length === 0) {
+    //   return "Saxons have fought for their lives and survived another day...";
+    // } else return "Vikings and Saxons are still in the thick of battle.";
   }
 
   random(arr) {
     return arr[Math.floor(Math.random() * arr.length)];
   }
 }
-
-// Since there is a lot of repetitive code in the previous two iterations, methods vikingAttack() and saxonAttack(), try to create one generic method and call it in the case of vikingAttack and in the case of saxonAttack instead of using almost the same code for both methods. (This iteration doesn't have test, so ask your TAs and your instructor to give you feedback on the quality of your code after the refactor.)
