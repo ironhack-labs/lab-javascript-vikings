@@ -78,4 +78,6 @@ class War {
 
     showStatus() { }
 
+    // usar métodos math.random y math.floor
+
 }
