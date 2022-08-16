@@ -72,42 +72,52 @@ class War {
         
         this.saxonArmy.push(Saxon)
     }
+
+    anAttack(attackArmy, deffenceArmy) {
+  
+        let attackerSoilder = attackArmy[Math.floor(Math.random()*attackArmy.length)]
+        let defffenderSoilder = deffenceArmy[Math.floor(Math.random()*deffenceArmy.length)]
+
+        let defffenderDamage =  attackerSoilder.strength
+        let result = defffenderSoilder.receiveDamage(defffenderDamage)
+
+        if (defffenderSoilder.health <= 0) {
+            deffenceArmy.splice(deffenceArmy.indexOf(defffenderSoilder),1)            
+        }   
+        return result
+
+     }
+
     vikingAttack() {
-        let saxonSoilder = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
-        let vikingSoilder = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
-
-        let saxonDamage = vikingSoilder.strength
-
-        let result = saxonSoilder.receiveDamage(saxonDamage)
-        
-        if (saxonSoilder.health <= 0) {
-            this.saxonArmy.splice(this.saxonArmy.indexOf(saxonSoilder),1)            
-        }   
-        return result
-
-    }
-    saxonAttack() {
-        let saxonSoilder = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
-        let vikingSoilder = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
-
-        let vikingDamage = saxonSoilder.strength
-
-        let result = vikingSoilder.receiveDamage(vikingDamage)
-        
-        if (vikingSoilder.health <= 0) {
-            this.vikingArmy.splice(this.vikingArmy.indexOf(vikingSoilder),1)            
-        }   
-        return result
-
-    }
-
-    // anAttack() {
-        
     //     let saxonSoilder = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
     //     let vikingSoilder = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
-      
 
-    // }
+    //     let saxonDamage = vikingSoilder.strength
+
+    //     let result = saxonSoilder.receiveDamage(saxonDamage)
+        
+    //     if (saxonSoilder.health <= 0) {
+    //         this.saxonArmy.splice(this.saxonArmy.indexOf(saxonSoilder),1)            
+    //     }   
+    //     return result
+        return this.anAttack(this.vikingArmy, this.saxonArmy)
+     }
+     saxonAttack() {
+    //     let saxonSoilder = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)]
+    //     let vikingSoilder = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)]
+
+    //     let vikingDamage = saxonSoilder.strength
+
+    //     let result = vikingSoilder.receiveDamage(vikingDamage)
+        
+    //     if (vikingSoilder.health <= 0) {
+    //         this.vikingArmy.splice(this.vikingArmy.indexOf(vikingSoilder),1)            
+    //     }   
+    //     return result
+    return this.anAttack(this.saxonArmy, this.vikingArmy)
+    }
+
+    
 
     
 
