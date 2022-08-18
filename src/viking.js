@@ -86,7 +86,7 @@ class War {
         
          // should remove dead saxons from the army
         if (this.vikingArmy[randomViking].attack() >= this.saxonArmy[randomSaxon].health) {
-            this.saxonArmy.splice(randomSaxon, 1)
+            this.saxonArmy.splice(randomSaxon, 1) // at position of randomSaxon, remove 1 item
         }
 
         // should return result of calling receivedDamage() 
