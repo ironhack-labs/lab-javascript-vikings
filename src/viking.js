@@ -59,13 +59,29 @@ class War {
         this.saxonArmy.push(Saxon);
     };
     vikingAttack(){
-        let randomViking = this.vikingArmy[Math.floor(Math.random())];
-        let randomSaxon = this.saxonArmy[Math.floor(Math.random())];
-        if (randomViking.strength > randomSaxon.health){
-             this.saxonArmy.splice(randomSaxon, 1)          
+        let viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        let saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+        let saxonIndex = this.saxonArmy.indexOf(saxon)
+        if (saxon.health < viking.strength){
+            this.saxonArmy.slice(saxonIndex, 1);
+            return 
+            Saxon.receiveDamage(viking.strength);
         }
-       return Saxon.receiveDamage(randomViking.strength);
-    }
+       return Saxon.receiveDamage(viking.strength);
+    };
+    saxonAttack(){
+
+    };
+    showStatus(){
+        if (this.saxonArmy.length === 0 ){
+            return (`Vikings have won the war of the century!`)
+        } else if (this.vikingArmy.length === 0 ){
+            return (`Saxons have fought for their lives and survived another day...`)
+        }else {
+            return (`Vikings and Saxons are still in the thick of battle.`)
+        }
+    };
+
 }
 
-const ale = new Soldier (4,6);
+
