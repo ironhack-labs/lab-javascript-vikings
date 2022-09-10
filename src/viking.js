@@ -62,10 +62,11 @@ class War {
         this.saxonArmy.push(saxon);
     }
     vikingAttack () {
+        
         let vikingNum = Math.floor(Math.random()*this.vikingArmy.length);
         let saxonNum = Math.floor(Math.random()*this.saxonArmy.length);
         
-        this.saxonArmy[saxonNum].receiveDamage(this.vikingArmy[vikingNum]['strength']);
+       // this.saxonArmy[saxonNum].receiveDamage(this.vikingArmy[vikingNum]['strength']);
         if (this.saxonArmy[saxonNum].receiveDamage(this.vikingArmy[vikingNum]['strength']).includes('died')) { // === `A Saxon has died in combat`) {
             this.saxonArmy.splice(saxonNum, 1);
         }
@@ -75,7 +76,7 @@ class War {
         let vikingNum = Math.floor(Math.random()*this.vikingArmy.length);
         let saxonNum = Math.floor(Math.random()*this.saxonArmy.length);
         
-        this.vikingArmy[vikingNum].receiveDamage(this.saxonArmy[saxonNum]['strength']);
+       // this.vikingArmy[vikingNum].receiveDamage(this.saxonArmy[saxonNum]['strength']);
         if (this.vikingArmy[vikingNum].receiveDamage(this.saxonArmy[saxonNum]['strength']).includes('died')) {
             this.vikingArmy.splice(vikingNum, 1);
         }
