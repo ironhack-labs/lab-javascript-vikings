@@ -56,7 +56,7 @@ class War {
         this.saxonArmy = [];
     }
     addViking (viking) {
-        this.vikingArmy.push(viking);
+            this.vikingArmy.push(viking);
     }
     addSaxon (saxon) {
         this.saxonArmy.push(saxon);
@@ -65,22 +65,26 @@ class War {
         
         let vikingNum = Math.floor(Math.random()*this.vikingArmy.length);
         let saxonNum = Math.floor(Math.random()*this.saxonArmy.length);
-        
-       // this.saxonArmy[saxonNum].receiveDamage(this.vikingArmy[vikingNum]['strength']);
-        if (this.saxonArmy[saxonNum].receiveDamage(this.vikingArmy[vikingNum]['strength']).includes('died')) { // === `A Saxon has died in combat`) {
-            this.saxonArmy.splice(saxonNum, 1);
-        }
-        return this.saxonArmy[saxonNum].receiveDamage(this.vikingArmy[vikingNum]['strength']);
+
+        if (this.vikingArmy[vikingNum].attack()) {
+            const saxonDamage = this.saxonArmy[saxonNum].receiveDamage(this.vikingArmy[vikingNum].strength);
+            if (saxonDamage.includes('died')) { // === `A Saxon has died in combat`) 
+                this.saxonArmy.splice(saxonNum, 1);
+            }
+            return saxonDamage;
+          }
     }
     saxonAttack () {
         let vikingNum = Math.floor(Math.random()*this.vikingArmy.length);
         let saxonNum = Math.floor(Math.random()*this.saxonArmy.length);
         
-       // this.vikingArmy[vikingNum].receiveDamage(this.saxonArmy[saxonNum]['strength']);
-        if (this.vikingArmy[vikingNum].receiveDamage(this.saxonArmy[saxonNum]['strength']).includes('died')) {
-            this.vikingArmy.splice(vikingNum, 1);
-        }
-        return this.vikingArmy[vikingNum].receiveDamage(this.saxonArmy[saxonNum]['strength']);
+        if (this.saxonArmy[saxonNum].attack()) {
+            const vikingDamage = this.vikingArmy[vikingNum].receiveDamage(this.saxonArmy[saxonNum].strength);
+            if (vikingDamage.includes('died')) {
+                this.vikingArmy.splice(vikingNum, 1);
+            }
+            return vikingDamage;
+          }
     }
     showStatus () {
         if (this.saxonArmy.length == 0) {
