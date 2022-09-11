@@ -83,10 +83,23 @@ class War {
         let j = this.getRndInteger(0,this.saxonArmy.length);
         let vikingSoldierDamageRcv = this.vikingArmy[i].receiveDamage(this.saxonArmy[j].strength);
         if(this.vikingArmy[i].health <= 0){
-            this.saxonArmy.splice(i,1);
+            this.vikingArmy.splice(i,1);
         }
         return vikingSoldierDamageRcv;
     }
 
-    
+    showStatus(){
+        if(typeof this.saxonArmy !== 'undefined' && this.saxonArmy.length > 0){
+            return "Vikings have won the war of the century!";
+        }
+        else if(typeof this.vikingArmy !== 'undefined' && this.vikingArmy.length > 0){
+            return "Saxons have fought for their lives and survived another day...";
+        }
+        else{
+            return "Vikings and Saxons are still in the thick of battle.";
+        }
+
+    }
+
+
 }
