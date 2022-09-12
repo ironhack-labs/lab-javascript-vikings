@@ -24,7 +24,7 @@ class Viking extends Soldier {
     }
     receiveDamage(damage) {
         this.health -= damage
-
+// from the beggining until this part, i collaborate after class with Berkai, Serhii and Martin.
         if (this.health !== 0) {
             return (`${this.name} has received ${damage} points of damage`);
         } else {
