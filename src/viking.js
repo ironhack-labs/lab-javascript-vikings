@@ -65,7 +65,7 @@ class War {
     );
 
     this.saxonArmy.forEach((saxonElementToCheck) => {
-      if (saxonElementToCheck.health < 0) this.saxonArmy.pop();
+      if (saxonElementToCheck.health <= 0) this.saxonArmy.pop();
     });
 
     return resultOfReceiveDamage;
@@ -81,11 +81,8 @@ class War {
     ].receiveDamage(this.saxonArmy[randomIndexSaxon].strength);
 
     this.vikingArmy.forEach((vikingArmyElementToCheck) => {
-      if (vikingArmyElementToCheck.health < 0) this.vikingArmy.pop();
+      if (vikingArmyElementToCheck.health <= 0) this.vikingArmy.pop();
     });
-    // this.vikingArmy.forEach((vikingElementToCheck) => {
-    //   if (vikingElementToCheck.health < 0) this.vikingArmy.pop();
-    // });
 
     return resultOfReceiveDamage;
   }
