@@ -41,4 +41,52 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+    const vikingObject = new Viking();
+    const saxonObject = new Saxon();
+  }
+
+  addViking(vikingObject) {
+    this.vikingArmy.push(vikingObject);
+  }
+
+  addSaxon(saxonObject) {
+    this.saxonArmy.push(saxonObject);
+  }
+
+  vikingAttack() {
+    let randomIndexSaxon = Math.floor(Math.random() * this.saxonArmy.length); // Random number for the array's length
+    let randomIndexViking = Math.floor(Math.random() * this.vikingArmy.length); // Random number for Viking
+    let resultOfReceiveDamage = this.saxonArmy[randomIndexSaxon].receiveDamage(
+      this.vikingArmy[randomIndexViking].strength
+    );
+
+    this.saxonArmy.forEach((saxonElementToCheck) => {
+      if (saxonElementToCheck.health < 0) this.saxonArmy.pop();
+    });
+
+    return resultOfReceiveDamage;
+    // return this.saxonArmy[randomIndexSaxon].receiveDamage(
+    //   this.vikingArmy[randomIndexViking].strength
+    // );
+  }
+  saxonAttack() {
+    let randomIndexSaxon = Math.floor(Math.random() * this.saxonArmy.length); // Random number for the array's length
+    let randomIndexViking = Math.floor(Math.random() * this.vikingArmy.length); // Random number for Viking
+    let resultOfReceiveDamage = this.vikingArmy[
+      randomIndexViking
+    ].receiveDamage(this.saxonArmy[randomIndexSaxon].strength);
+
+    this.vikingArmy.forEach((vikingArmyElementToCheck) => {
+      if (vikingArmyElementToCheck.health < 0) this.vikingArmy.pop();
+    });
+    // this.vikingArmy.forEach((vikingElementToCheck) => {
+    //   if (vikingElementToCheck.health < 0) this.vikingArmy.pop();
+    // });
+
+    return resultOfReceiveDamage;
+  }
+}
