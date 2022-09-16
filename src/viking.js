@@ -1,11 +1,13 @@
 // Soldier
-class Soldier {}
-
-// Viking
-class Viking {}
-
-// Saxon
-class Saxon {}
-
-// War
-class War {}
+class Soldier {
+    constructor(health, strength) {}
+  }
+  
+  // Viking
+  class Viking {}
+  
+  // Saxon
+  class Saxon {}
+  
+  // War
+  class War {}
