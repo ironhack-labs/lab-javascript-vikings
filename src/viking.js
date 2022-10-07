@@ -55,7 +55,6 @@ class War {
     addViking(objViking) {
         this.vikingArmy.push(objViking);
         console.log()
-        /* const moby = new Whale('Moby', 'white', 'Yum!'); */
     }
 
     addSaxon(objSaxon) {
@@ -64,23 +63,24 @@ class War {
 
     vikingAttack() {
 
-        /* const saxon = new Saxon(this.health, this.strength);
-        const viking = new Viking(this.name, this.health, this.strength); */
         let randomViking1 = Math.floor(Math.random() * this.vikingArmy.length);
         let randomSaxon1 = Math.floor(Math.random() * this.saxonArmy.length);
         let resultOfAttack = this.saxonArmy[randomSaxon1].receiveDamage(this.vikingArmy[randomViking1].strength);
         if (this.saxonArmy[randomSaxon1].health <= 0) {this.saxonArmy.pop([randomSaxon1])};
         return resultOfAttack;
     }
-    /* saxonAttack()
-    showStatus() */
+    saxonAttack() {
 
+        let randomViking2 = Math.floor(Math.random() * this.vikingArmy.length);
+        let randomSaxon2 = Math.floor(Math.random() * this.saxonArmy.length);
+        let resultOfAttack = this.vikingArmy[randomViking2].receiveDamage(this.saxonArmy[randomSaxon2].strength);
+        if (this.vikingArmy[randomViking2].health <= 0) {this.vikingArmy.pop([randomViking2])};
+        return resultOfAttack;
+    }
+    showStatus() {
+        if (this.saxonArmy.length === 0) return 'Vikings have won the war of the century!'
+        if (this.vikingArmy.length === 0) return 'Saxons have fought for their lives and survived another day...'
+        if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) return 'Vikings and Saxons are still in the thick of battle.'
+    }
 }
-
-/* const viking1 = new Viking('Ragnar', 100, 88);
-const war1 = new War();
-
-
-war1.addViking(viking1);
-console.log(war1.addViking()) */
 
