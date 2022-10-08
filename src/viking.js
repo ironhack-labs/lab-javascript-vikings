@@ -18,9 +18,9 @@ class Soldier {
 class Viking extends Soldier {
   constructor(name, health, strength) {
     super(health, strength);
-
     this.name = name;
   }
+
   receiveDamage(damage) {
     this.health -= damage;
     if (this.health === 0) {
@@ -29,13 +29,35 @@ class Viking extends Soldier {
       return `${this.name} has received ${damage} points of damage`;
     }
   }
+
+  battleCry() {
+    return `Odin Owns You All!`;
+  }
 }
 
-//should return "NAME has received DAMAGE points of damage", if the Viking is still alive
-//should return "NAME has died in act of combat", if the Viking dies
-
 // Saxon
-class Saxon {}
+class Saxon extends Soldier {
+  constructor(health, strength) {
+    super(health, strength);
+  }
+
+  receiveDamage(damage) {
+    this.health -= damage;
+    if (this.health === 0) {
+      return `A Saxon has died in combat`;
+    } else if (this.health > 0) {
+      return `A Saxon has received ${damage} points of damage`;
+    }
+  }
+}
 
 // War
-class War {}
+class War {
+  addViking() {}
+
+  addSaxon() {}
+
+  vikingAttack() {}
+  saxonAttack() {}
+  showStatus() {}
+}
