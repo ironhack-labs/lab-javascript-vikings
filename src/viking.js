@@ -56,10 +56,10 @@ class War {
     saxonArmy = [];
 
     addViking(vikObj){
-        this.vikingArmy.push(vikObj)
+        this.vikingArmy.push(vikObj);
     }
     addSaxon(saxObj){
-        this.saxonArmy.push(saxObj)
+        this.saxonArmy.push(saxObj);
     }
     vikingAttack(){
         let saxObj = this.saxonArmy[Math.floor(Math.random * this.saxonArmy.length)];
