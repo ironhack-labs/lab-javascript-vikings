@@ -65,8 +65,7 @@ class War {
   }
 
   vikingAttack() {
-    const viking = this._randomize(this.vikingArmy);
-    const sax = this._randomize(this.saxonArmy);
+    const { sax, viking } = this._castFighters();
 
     const damage = sax.receiveDamage(viking.strength);
 
@@ -78,8 +77,7 @@ class War {
   }
 
   saxonAttack() {
-    const sax = this._randomize(this.saxonArmy);
-    const viking = this._randomize(this.vikingArmy);
+    const { sax, viking } = this._castFighters();
 
     const damage = viking.receiveDamage(sax.strength);
 
@@ -98,6 +96,16 @@ class War {
     } else {
       return `Vikings and Saxons are still in the thick of battle.`;
     }
+  }
+
+  _castFighters() {
+    const sax = this._randomize(this.saxonArmy);
+    const viking = this._randomize(this.vikingArmy);
+
+    return {
+      sax,
+      viking,
+    };
   }
 
   _randomize(army) {
