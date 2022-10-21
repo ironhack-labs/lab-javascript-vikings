@@ -90,19 +90,3 @@ class War {
 
     }
 }
-const war = new War;
-
-war.addSaxon(new Saxon(100, 15));
-war.addSaxon(new Saxon(100, 10));
-war.addSaxon(new Saxon(100, 5));
-
-war.addViking(new Viking("Ragnar", 100, 20));
-war.addViking(new Viking("Rollo", 100, 15));
-war.addViking(new Viking("Thorsten", 100, 10));
-
-
-for (let i = 0; i < 20; i++) {
-  war.saxonAttack();
-  war.vikingAttack();
-  console.log(war.showStatus());
-}
