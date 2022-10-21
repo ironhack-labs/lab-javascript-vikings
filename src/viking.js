@@ -65,34 +65,26 @@ class War {
   }
 
   vikingAttack() {
-    const viking =
-      this.vikingArmy[Math.floor(Math.random(this.vikingArmy.length - 1))];
-    const sax =
-      this.saxonArmy[Math.floor(Math.random(this.saxonArmy.length - 1))];
-    const damage = sax.receiveDamage(viking.strength);
-    const deadSax = [];
+    const viking = this._randomize(this.vikingArmy);
+    const sax = this._randomize(this.saxonArmy);
 
-    for (let s in this.saxonArmy) {
-      if (this.saxonArmy[s].health <= 0) {
-        this.saxonArmy.splice(deadSax[s], 1);
-      }
+    const damage = sax.receiveDamage(viking.strength);
+
+    if (sax.health <= 0) {
+      this.saxonArmy.splice(sax, 1);
     }
 
     return damage;
   }
 
   saxonAttack() {
-    const viking =
-      this.vikingArmy[Math.floor(Math.random(this.vikingArmy.length - 1))];
-    const sax =
-      this.saxonArmy[Math.floor(Math.random(this.saxonArmy.length - 1))];
-    const damage = viking.receiveDamage(sax.strength);
-    const deadVikings = [];
+    const sax = this._randomize(this.saxonArmy);
+    const viking = this._randomize(this.vikingArmy);
 
-    for (let v in this.vikingArmy) {
-      if (this.vikingArmy[v].health <= 0) {
-        this.vikingArmy.splice(deadVikings[v], 1);
-      }
+    const damage = viking.receiveDamage(sax.strength);
+
+    if (viking.health <= 0) {
+      this.vikingArmy.splice(viking, 1);
     }
 
     return damage;
@@ -106,5 +98,9 @@ class War {
     } else {
       return `Vikings and Saxons are still in the thick of battle.`;
     }
+  }
+
+  _randomize(army) {
+    return army[Math.floor(Math.random() * army.length)];
   }
 }
