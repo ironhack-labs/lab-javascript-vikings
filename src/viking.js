@@ -66,26 +66,27 @@ class War {
     let randomViking = this.vikingArmy[Math.floor(Math.random(this.vikingArmy.length - 1))]
     let randomSaxon = this.saxonArmy[Math.floor(Math.random(this.saxonArmy.length - 1))]
     let saxonDamage = randomSaxon.receiveDamage(randomViking.strength)
-    let deadSaxonIndexes = []
     for (let i = 0; i < this.saxonArmy.length; i++) {
       if (this.saxonArmy[i].health <= 0) {
-        this.saxonArmy.splice(deadSaxonIndexes[i], 1)
+        this.saxonArmy.splice(this.saxonArmy[i], 1)
       }
     }
     return saxonDamage
   }
+
   saxonAttack() {
     let randomViking = this.vikingArmy[Math.floor(Math.random(this.vikingArmy.length - 1))]
     let randomSaxon = this.saxonArmy[Math.floor(Math.random(this.saxonArmy.length - 1))]
     let vikingDamage = randomViking.receiveDamage(randomSaxon.strength)
-    let deadSaxonIndexes = []
     for (let i = 0; i < this.vikingArmy.length; i++) {
       if (this.vikingArmy[i].health <= 0) {
-        this.vikingArmy.splice(deadSaxonIndexes[i], 1)
+        this.vikingArmy.splice(this.saxonArmy[i], 1)
       }
     }
     return vikingDamage
   }
+
+
   showStatus() {
     if (this.saxonArmy.length === 0) {
       return "Vikings have won the war of the century!"
