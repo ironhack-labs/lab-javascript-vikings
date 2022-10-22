@@ -24,17 +24,18 @@ receiveDamage(theDamage) {
 
 // Viking
 class Viking extends Soldier {
-    constructor(health, strength, name){
-        super (name);
-     
-        
-        
-        
+    constructor(name, health, strength){
+     super(health, strength);
+
+     this.name = name;
+      
+             
     }
     
+
+} 
     
-    
-}
+
 
 
 
