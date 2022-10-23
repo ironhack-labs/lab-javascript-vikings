@@ -65,7 +65,7 @@ class War {
   }
 
   vikingAttack() {
-    const { sax, viking } = this._castFighters();
+    const { sax, viking } = this.#castFighters();
 
     const damage = sax.receiveDamage(viking.strength);
 
@@ -77,7 +77,7 @@ class War {
   }
 
   saxonAttack() {
-    const { sax, viking } = this._castFighters();
+    const { sax, viking } = this.#castFighters();
 
     const damage = viking.receiveDamage(sax.strength);
 
@@ -98,9 +98,9 @@ class War {
     }
   }
 
-  _castFighters() {
-    const sax = this._randomize(this.saxonArmy);
-    const viking = this._randomize(this.vikingArmy);
+  #castFighters() {
+    const sax = this.#randomize(this.saxonArmy);
+    const viking = this.#randomize(this.vikingArmy);
 
     return {
       sax,
@@ -108,7 +108,7 @@ class War {
     };
   }
 
-  _randomize(army) {
+  #randomize(army) {
     return army[Math.floor(Math.random() * army.length)];
   }
 }
