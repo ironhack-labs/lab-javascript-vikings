@@ -54,14 +54,10 @@ class War {
         this.saxonArmy.push(saxonObj)
     }
     vikingAttack() {
-        const res = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
-        if (this.saxonArmy[0].health <= 0) this.saxonArmy.shift()
-        return res
+        return this.attack(this.vikingArmy, this.saxonArmy)
     }
     saxonAttack() {
-        const res = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
-        if (this.vikingArmy[0].health <= 0) this.vikingArmy.shift()
-        return res
+        return this.attack(this.saxonArmy, this.vikingArmy)
     }
 
     attack(attackingArmy, defendingArmy) {
