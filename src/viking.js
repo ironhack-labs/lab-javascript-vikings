@@ -63,5 +63,16 @@ class War {
         if (this.vikingArmy[0].health <= 0) this.vikingArmy.shift()
         return res
     }
-    showStatus() {}
+
+    attack(attackingArmy, defendingArmy) {
+        const res = defendingArmy[0].receiveDamage(attackingArmy[0].strength)
+        if (defendingArmy[0].health <= 0) defendingArmy.shift()
+        return res
+    }
+
+    showStatus() {
+        if (!this.saxonArmy.length) return "Vikings have won the war of the century!";
+        if (!this.vikingArmy.length) return "Saxons have fought for their lives and survived another day...";
+        return "Vikings and Saxons are still in the thick of battle.";
+    }
 }
