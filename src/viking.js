@@ -64,7 +64,8 @@ class War {
   vikingAttack() {
     const targetIndex = Math.floor(Math.random() * this.saxonArmy.length);
     const target = this.saxonArmy[targetIndex];
-    const attacker = this.vikingArmy[0];
+    const attacker =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 
     const attackResult = target.receiveDamage(attacker.strength);
 
