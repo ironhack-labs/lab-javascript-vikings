@@ -90,14 +90,40 @@ class War {
 
     return attackResult;
   }
+
+  makeAttack(attacker) {
+    let attackingArmy;
+    let defendingArmy;
+
+    if (attacker instanceof Viking) {
+      attackingArmy = this.vikingArmy;
+      defendingArmy = this.saxonArmy;
+    } else {
+      attackingArmy = this.saxonArmy;
+      defendingArmy = this.vikingArmy;
+    }
+
+    const targetSoldierIndex = Math.floor(Math.random() * defendingArmy.length);
+    const targetSoldier = defendingArmy[targetSoldierIndex];
+    const attackingSoldier =
+      attackingArmy[Math.floor(Math.random() * attackingArmy.length)];
+
+    const attackResult = targetSoldier.receiveDamage(attackingSoldier.strength);
+
+    if (targetSoldier.health <= 0) {
+      defendingArmy.splice(targetSoldierIndex, 1);
+    }
+
+    return attackResult;
+  }
+
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
+  }
 }
-
-const viking = new Viking("Thor", 100, 10);
-const saxon = new Saxon(50, 5);
-
-const war = new War();
-
-war.addViking(viking);
-war.addSaxon(saxon);
-
-war.vikingAttack();
