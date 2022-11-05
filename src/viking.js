@@ -52,10 +52,10 @@ class War {
         this.saxonArmy = saxonArmy;
     }
     addViking(Viking) {
-        vikingArmy.push(Viking.name); // doen't work in tests
+        this.vikingArmy.push(Viking);
     }
     addSaxon(Saxon) {
-        saxonArmy.push(Saxon); // doen't work in tests
+        this.saxonArmy.push(Saxon);
     }
     vikingAttack() {
 
