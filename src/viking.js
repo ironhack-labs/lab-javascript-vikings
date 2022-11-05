@@ -61,11 +61,14 @@ class War {
     this.saxonArmy.push(saxon);
   }
 
+  getRandomNumber(army) {
+    return Math.floor(Math.random() * army.length);
+  }
+
   vikingAttack() {
-    const targetIndex = Math.floor(Math.random() * this.saxonArmy.length);
+    const targetIndex = this.getRandomNumber(this.saxonArmy);
     const target = this.saxonArmy[targetIndex];
-    const attacker =
-      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    const attacker = this.vikingArmy[this.getRandomNumber(this.vikingArmy)];
 
     const attackResult = target.receiveDamage(attacker.strength);
 
@@ -77,10 +80,9 @@ class War {
   }
 
   saxonAttack() {
-    const targetIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    const targetIndex = this.getRandomNumber(this.vikingArmy);
     const target = this.vikingArmy[targetIndex];
-    const attacker =
-      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    const attacker = this.saxonArmy[this.getRandomNumber(this.saxonArmy)];
 
     const attackResult = target.receiveDamage(attacker.strength);
 
@@ -103,10 +105,9 @@ class War {
       defendingArmy = this.vikingArmy;
     }
 
-    const targetSoldierIndex = Math.floor(Math.random() * defendingArmy.length);
+    const targetSoldierIndex = this.getRandomNumber(defendingArmy);
     const targetSoldier = defendingArmy[targetSoldierIndex];
-    const attackingSoldier =
-      attackingArmy[Math.floor(Math.random() * attackingArmy.length)];
+    const attackingSoldier = attackingArmy[this.getRandomNumber(attackingArmy)];
 
     const attackResult = targetSoldier.receiveDamage(attackingSoldier.strength);
 
