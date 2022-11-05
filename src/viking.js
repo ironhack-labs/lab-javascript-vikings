@@ -61,8 +61,10 @@ class War {
     }
 
     attack(attackingArmy, defendingArmy) {
-        const res = defendingArmy[0].receiveDamage(attackingArmy[0].strength)
-        if (defendingArmy[0].health <= 0) defendingArmy.shift()
+        const attackingSoldier = attackingArmy[Math.floor(Math.random()*attackingArmy.length)]
+        const defendingSoldier = defendingArmy[Math.floor(Math.random()*defendingArmy.length)]
+        const res = defendingSoldier.receiveDamage(attackingSoldier.strength)
+        if (defendingSoldier.health <= 0) defendingArmy.splice(defendingArmy.indexOf(defendingSoldier))
         return res
     }
 
