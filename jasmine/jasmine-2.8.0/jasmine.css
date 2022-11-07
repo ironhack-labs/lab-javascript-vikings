@@ -57,7 +57,7 @@ body { overflow-y: scroll; }
 .jasmine_html-reporter .jasmine-summary ul { list-style-type: none; margin-left: 14px; padding-top: 0; padding-left: 0; }
 .jasmine_html-reporter .jasmine-summary ul.jasmine-suite { margin-top: 7px; margin-bottom: 7px; }
 .jasmine_html-reporter .jasmine-summary li.jasmine-passed a { color: #007069; }
-.jasmine_html-reporter .jasmine-summary li.jasmine-failed a { color: #ca3a11; }
+.jasmine_html-reporter .jasmine-summary li.jasmine-failed a { color: yellow; background-color: black; }
 .jasmine_html-reporter .jasmine-summary li.jasmine-empty a { color: #ba9d37; }
 .jasmine_html-reporter .jasmine-summary li.jasmine-pending a { color: #ba9d37; }
 .jasmine_html-reporter .jasmine-summary li.jasmine-disabled a { color: #bababa; }
