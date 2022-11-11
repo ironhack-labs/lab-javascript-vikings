@@ -68,4 +68,23 @@ class War {
         }
         return result;
     }
+
+    saxonAttack () {
+        const result = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
+            if (this.vikingArmy[0].health <=0) {
+                this.vikingArmy.shift();
+            }
+            return result;
+    }
+
+    showStatus (){
+        if (this.saxonArmy.length === 0) {
+            return 'Vikings have won the war of the century!'
+        }
+       if (this.vikingArmy.length === 0) {
+            return 'Saxons have fought for their lives and survived another day...'
+       }
+
+       return 'Vikings and Saxons are still in the thick of battle.'
+    }
 }
