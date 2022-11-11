@@ -62,30 +62,52 @@ class War {
     this.saxonArmy.push(theSaxon);
   }
 
-  vikingAttack() {
+  //   vikingAttack() {
+  //     const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+  //     const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+  //     const saxon = this.saxonArmy[saxonIndex];
+  //     const viking = this.vikingArmy[vikingIndex];
+
+  //     const attack = saxon.receiveDamage(viking.strength);
+
+  //     if (saxon.health <= 0) this.saxonArmy.splice(saxonIndex, 1);
+
+  //     return attack;
+  //   }
+  //   saxonAttack() {
+  //     const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+  //     const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+  //     const saxon = this.saxonArmy[saxonIndex];
+  //     const viking = this.vikingArmy[vikingIndex];
+
+  //     const attack = viking.receiveDamage(saxon.strength);
+
+  //     if (viking.health <= 0) this.vikingArmy.splice(vikingIndex, 1);
+
+  //     return attack;
+  //   }
+
+  attack(theArmy) {
     const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
     const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
     const saxon = this.saxonArmy[saxonIndex];
     const viking = this.vikingArmy[vikingIndex];
 
-    const attack = saxon.receiveDamage(viking.strength);
+    let attack = '';
 
-    if (saxon.health <= 0) this.saxonArmy.splice(saxonIndex, 1);
-
-    return attack;
-  }
-  saxonAttack() {
-    const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-    const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    const saxon = this.saxonArmy[saxonIndex];
-    const viking = this.vikingArmy[vikingIndex];
-
-    const attack = viking.receiveDamage(saxon.strength);
-
-    if (viking.health <= 0) this.vikingArmy.splice(vikingIndex, 1);
+    if (theArmy === 'saxon') {
+      attack = viking.receiveDamage(saxon.strength);
+      if (viking.health <= 0) this.vikingArmy.splice(vikingIndex, 1);
+    } else if (theArmy === 'viking') {
+      attack = saxon.receiveDamage(viking.strength);
+      if (saxon.health <= 0) this.saxonArmy.splice(saxonIndex, 1);
+    } else {
+      attack = 'unknown army. try again';
+    }
 
     return attack;
   }
+
   showStatus() {
     if (!this.vikingArmy.length)
       return `Saxons have fought for their lives and survived another day...`;
