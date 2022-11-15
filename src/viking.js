@@ -59,22 +59,40 @@ class War {
     }
 
     vikingAttack () {
-        
-        const RandomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
 
-        const RandomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+        const vikingAttack = randomSaxon.receiveDamage(randomViking.strength) 
 
-        RandomSaxon.receiveDamage(RandomViking.strength) 
+        if (randomSaxon.health <= 0) {
+            this.saxonArmy.splice(randomSaxon, 1)
+        }
 
-        /*
-        const aliveSaxonArmy = this.saxonArmy.filter((health) => {
-            return health !== 0
-        })
+        return vikingAttack // --> should return result of calling receiveDamage() of a Saxon with the strength of a Viking - me lo marca en rojo y no se porque
+    }
+    
 
-        this.saxonArmy = this.saxonArmy - aliveSaxonArmy
-        */
+    saxonAttack () {
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
 
+        const saxonAttack = randomViking.receiveDamage(randomSaxon.strength)
 
+        if (randomViking.health <= 0) {
+            this.vikingArmy.splice(randomViking, 1)
+        }
+
+        return saxonAttack
+    }
+
+    showStatus () {
+        if (this.saxonArmy.length === 0) {
+            return `Vikings have won the war of the century!`
+        } else if (this.vikingArmy.length === 0) {
+            return `Saxons have fought for their lives and survived another day...`
+        } else {
+            return `Vikings and Saxons are still in the thick of battle.`
+        }
     }
 
 }
