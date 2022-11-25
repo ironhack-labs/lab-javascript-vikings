@@ -8,6 +8,7 @@ describe('Soldier', () => {
     soldier = new Soldier(health, strength);
   });
 
+
   describe('class', () => {
     it('should receive 2 arguments (health & strength)', () => {
       expect(Soldier.length).toEqual(2);
@@ -381,3 +382,6 @@ describe('War', () => {
     });
   });
 });
+
+
+
