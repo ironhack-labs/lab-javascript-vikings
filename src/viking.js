@@ -94,4 +94,16 @@ class War {
         return randomViking.receiveDamage(randomSaxon.attack());
     }
 
+    showStatus() {
+        if (!this.saxonArmy.length) {
+            return "Vikings have won the war of the century!";
+        }
+        else if(!this.vikingArmy.length) {
+            return "Saxons have fought for their lives and survived another day..."
+        }
+        else if (this.vikingArmy && this.saxonArmy) {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
+    }
+
 }
