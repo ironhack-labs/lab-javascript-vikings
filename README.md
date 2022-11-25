@@ -31,23 +31,15 @@ $ git push origin master
 
 <br>
 
-
-
 ## Test Your Code
 
 This LAB is equipped with unit tests to provide automated feedback on your lab progress. In case you want to check the tests, they are in the `tests/viking.spec.js` file.
 
-
-
 To run the tests and your JavaScript code, open the `SpecRunner.html` file using the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) VSCode extension.
-
-
 
 To see the outputs of the `console.log` in your JavaScript code, open the [Console in the Developer Tools](https://developer.chrome.com/docs/devtools/open/#console).
 
 <br>
-
-
 
 ## Instructions
 
@@ -68,8 +60,6 @@ class Saxon {}
 // War
 class War {}
 ```
-
-
 
 ### Iteration 0: First test
 
@@ -94,8 +84,6 @@ class War {}
 ```
 
 <br>
-
-
 
 ### Iteration 1: Soldier
 
@@ -201,8 +189,6 @@ This method needs to be **re-implemented** for `Saxon` because the `Saxon` versi
 
 <br>
 
-
-
 ### BONUS - Iteration 4: War
 
 Now we get to the good stuff: WAR! Our `War` class will allow us to have a `Viking` army and a `Saxon` army that battle each other.
@@ -263,8 +249,6 @@ The `Saxon` version of `vikingAttack()`. A `Viking` receives the damage equal to
 
 <br>
 
-
-
 ### BONUS - Iteration 5
 
 Since there is a lot of repetitive code in the previous two iterations, methods _vikingAttack()_ and _saxonAttack()_, try to create one _generic_ method and call it in the case of _vikingAttack_ and in the case of _saxonAttack_ instead of using almost the same code for both methods. (This iteration doesn't have test, so ask your TAs and your instructor to give you feedback on the quality of your code after the refactor.)
@@ -282,7 +266,5 @@ Returns the current status of the `War` based on the size of the armies.
 - **if the `Viking` array is empty**, should return **_"Saxons have fought for their lives and survived another day..."_**
 
 - **if there are at least 1 `Viking` and 1 `Saxon`**, should return **_"Vikings and Saxons are still in the thick of battle."_**
-
-  
 
 **Happy Coding!** 💙
