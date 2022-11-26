@@ -70,12 +70,9 @@ class War {
     }
     vikingAttack() {
         // A Saxon (chosen at random). go through array and generate a random number but within the amount of items in the array
-        const randomSaxonFromArmy = Math.floor(Math.random() * this.saxonArmy.length);
-        // assign it to a random variable to be used
-        const randomSaxon = this.saxonArmy[randomSaxonFromArmy];
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         // a Viking (also chosen at random)
-        const randomVikingFromArmy = Math.floor(Math.random() * this.vikingArmy.length);
-        const randomViking = this.vikingArmy[randomVikingFromArmy];
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         // randomViking attacks randomSaxon, saxon receives damage equal to this.strength of viking
         const attackSaxon = randomSaxon.receiveDamage(randomViking.strength);
         this.saxonArmy.splice(randomSaxon, 1);
@@ -83,17 +80,21 @@ class War {
     }
     saxonAttack() {
         // Same as above but Saxon attacks Viking
-        const randomSaxonFromArmy = Math.floor(Math.random() * this.saxonArmy.length);
-        const randomSaxon = this.saxonArmy[randomSaxonFromArmy];
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
         // a Viking (also chosen at random)
-        const randomVikingFromArmy = Math.floor(Math.random() * this.vikingArmy.length);
-        const randomViking = this.vikingArmy[randomVikingFromArmy];
-
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
         const attackViking = randomViking.receiveDamage(randomSaxon.strength);
         this.vikingArmy.splice(randomViking, 1);
         return attackViking;
     }
     showStatus() {
-        // to do?
+        // should return "Vikings have won the war of the century!", if the Saxons array is empty
+        if (this.saxonArmy <= 0) {
+            return `Vikings have won the war of the century!`;
+        } else if (this.vikingArmy <= 0) {
+            return `Saxons have fought for their lives and survived another day...`;
+        } else {
+            return `Vikings and Saxons are still in the thick of battle.`;
+        }
     }
 }
