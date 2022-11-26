@@ -1,5 +1,6 @@
 // Soldier
 class Soldier {
+
     constructor(health, strength) {
         this.health = health;
         this.strength = strength;
@@ -17,13 +18,15 @@ class Soldier {
 
 // Viking
 class Viking extends Soldier {
+
     constructor(name, health, strength) {
         super(health, strength);
         this.name = name;
     }
 
     receiveDamage(damage) { 
-        this.health = this.health - damage;
+        super.receiveDamage(damage);
+
         if (this.health > 0) {   
             return `${this.name} has received ${damage} points of damage`;
         } else if (this.health <= 0) {
@@ -39,11 +42,10 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier{
-    constructor(health, strength) {
-        super(health, strength);
-    }
+    
     receiveDamage(damage) {
-        this.health = this.health - damage;
+        super.receiveDamage(damage);
+
         if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`;
         } else if (this.health <= 0) {
@@ -54,6 +56,7 @@ class Saxon extends Soldier{
 
 // War
 class War {
+    
     constructor() {
         this.vikingArmy = [];
         this.saxonArmy = [];
