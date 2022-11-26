@@ -53,19 +53,50 @@ class Saxon extends Soldier{
     
 
 }
+class Aztec extends Soldier{ // class for iteraton 5
+
+    receiveDamage(damage){
+        
+        this.health-=damage;
+        if(this.health>0){
+            return `A Saxon has received ${damage} points of damage`
+        }else{
+            return `A Saxon has died in combat`
+        }
+        
+    }
+   
+
+}
 
 // War
 class War {
     constructor(){
         this.vikingArmy =[];
         this.saxonArmy =[];
+        this.aztecsArmy =[];// this line is only for the iteration 5 method
+
+        this.allTheArmies=[[],[],[]];// this line is only for the iteration 5 method, i guess there is a better way to create an empty matrix
+        //but i have no idea how XD... 
     }
     addViking(viking){
+
         this.vikingArmy.push(viking)
+
+        this.allTheArmies[0].push(viking) // this line is only for the iteration 5 method
     }
     addSaxon(saxon){
         this.saxonArmy.push(saxon)
+
+        this.allTheArmies[1].push(saxon) // this line is only for the iteration 5 method
     }
+    addAztecs(){// this method is only for the iteration 5 method
+         this.allTheArmies[2].push(aztecs)
+
+        
+    }
+   
+    
     vikingAttack(){
         //we need a random number from 0 to saxonArmy.lenght = indexSaxRan
         let indexSaxRan = Math.floor(Math.random()*this.saxonArmy.length)
@@ -105,5 +136,60 @@ class War {
         }else{
             return "Vikings and Saxons are still in the thick of battle."
         }
+    }
+
+    
+    Attacking(attacker,defender){ 
+
+    //     the idea is to create a method that allows one faction to attack another one
+    //     I am using this aproach in case i want to add  more armies into the game in the future
+
+    //     if we are using this method we need to create a new array with all the armies in the constructor...line 79
+        
+       let armyAtt,armyDef;
+
+
+        switch(attacker){
+            case `viking`:
+                armyAtt = 0
+                break;
+            case `saxon`:
+                armyAtt = 1
+               break;
+            case `aztecs`:
+                armyAtt = 2
+                break;
+        }
+        switch(defender){
+            case `viking`:
+                armyDef = 0
+                break;
+            case `saxon`:
+                armyDef = 1
+               break;
+            case `aztecs`:
+                armyDef = 2
+                break;
+        }
+       
+        
+
+      
+         //we need a random number from 0 to the attackers army (this.allTheArmies[armyAtt]) = indexAttackerRan
+         let indexAttackerRan = Math.floor(Math.random()*this.allTheArmies[armyAtt].length)
+         //we need a random number from 0 to the defenders army (this.allTheArmies[armydef]) = indexDefenderRan
+         let indexDefenderRan = Math.floor(Math.random()*this.allTheArmies[armyDef].length)
+
+          //  the attack begin
+        let attack = this.allTheArmies[armyAtt][indexAttackerRan].receiveDamage(this.allTheArmies[armyDef][indexDefenderRan].strength);
+
+       // cheaking for deads
+        if (this.allTheArmies[armyDef][indexDefenderRan].health <= 0){
+            
+            this.allTheArmies[armyDef].splice(indexDefenderRan,1)
+        }
+        return attack
+
+
     }
 }
