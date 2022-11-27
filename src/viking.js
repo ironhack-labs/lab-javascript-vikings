@@ -65,13 +65,13 @@ class War {
     let randomViking = this.vikingArmy[vikingIndex];
     let randomSaxon = this.saxonArmy[saxonIndex];
 
-    let damage = randomSaxon.receiveDamage(randomViking.attack());
+    let result = randomSaxon.receiveDamage(randomViking.attack());
 
     if (randomSaxon.health <= 0) {
       this.saxonArmy.splice(saxonIndex, 1);
     }
 
-    return damage;
+    return result;
   }
   saxonAttack() {
     let saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
