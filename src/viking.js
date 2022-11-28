@@ -76,7 +76,7 @@ class War {
         this.saxonArmy =[];
         this.aztecsArmy =[];// this line is only for the iteration 5 method
 
-         this.allTheArmies=[[],[],[]];// this line is only for the iteration 5 method, i guess there is a better way to create an empty matrix
+        this.allTheArmies=[[],[],[]];// this line is only for the iteration 5 method, i guess there is a better way to create an empty matrix
         
 
       
@@ -102,20 +102,25 @@ class War {
    
     
     vikingAttack(){
-        //we need a random number from 0 to saxonArmy.lenght = indexSaxRan
-        let indexSaxRan = Math.floor(Math.random()*this.saxonArmy.length)
-        // we need a random number from 0 to vikingArmy.lenght = indexVikRan
-        let indexVikRan = Math.floor(Math.random()*this.vikingArmy.length)
+        // //we need a random number from 0 to saxonArmy.lenght = indexSaxRan
+        // let indexSaxRan = Math.floor(Math.random()*this.saxonArmy.length)
+        // // we need a random number from 0 to vikingArmy.lenght = indexVikRan
+        // let indexVikRan = Math.floor(Math.random()*this.vikingArmy.length)
 
-        //  the attack begin
-        let attack = this.saxonArmy[indexSaxRan].receiveDamage(this.vikingArmy[indexVikRan].strength);
+        // //  the attack begin
+        // let attack = this.saxonArmy[indexSaxRan].receiveDamage(this.vikingArmy[indexVikRan].strength);
 
-        //cheaking for deads
-        if (this.saxonArmy[indexSaxRan].health <= 0){
-            this.saxonArmy.splice(indexSaxRan,1)
-        }
+        // //cheaking for deads
+        // if (this.saxonArmy[indexSaxRan].health <= 0){
+        //     this.saxonArmy.splice(indexSaxRan,1)
+        // }
+
+        // return attack
+             
+        let attack = this.Attacking(`viking`,`saxon`);
+        this.saxonArmy = this.allTheArmies[1]
         return attack
-               
+
     }
     saxonAttack(){
 
@@ -184,13 +189,14 @@ class War {
          let indexDefenderRan = Math.floor(Math.random()*this.allTheArmies[armyDef].length)
 
           //  the attack begin
-        let attack = this.allTheArmies[armyAtt][indexAttackerRan].receiveDamage(this.allTheArmies[armyDef][indexDefenderRan].strength);
+        let attack = this.allTheArmies[armyDef][indexAttackerRan].receiveDamage(this.allTheArmies[armyAtt][indexDefenderRan].strength);
 
        // cheaking for deads
         if (this.allTheArmies[armyDef][indexDefenderRan].health <= 0){
             
             this.allTheArmies[armyDef].splice(indexDefenderRan,1)
         }
+
         return attack
 
 
