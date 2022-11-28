@@ -76,22 +76,26 @@ class War {
         this.saxonArmy =[];
         this.aztecsArmy =[];// this line is only for the iteration 5 method
 
-        this.allTheArmies=[[],[],[]];// this line is only for the iteration 5 method, i guess there is a better way to create an empty matrix
-        //but i have no idea how XD... 
+         this.allTheArmies=[[],[],[]];// this line is only for the iteration 5 method, i guess there is a better way to create an empty matrix
+        
+
+      
+
     }
     addViking(viking){
 
         this.vikingArmy.push(viking)
 
         this.allTheArmies[0].push(viking) // this line is only for the iteration 5 method
+
     }
     addSaxon(saxon){
         this.saxonArmy.push(saxon)
 
         this.allTheArmies[1].push(saxon) // this line is only for the iteration 5 method
     }
-    addAztecs(){// this method is only for the iteration 5 method
-         this.allTheArmies[2].push(aztecs)
+    addAztecs(aztec){// this method is only for the iteration 5 method
+         this.allTheArmies[2].push(aztec)
 
         
     }
@@ -171,8 +175,7 @@ class War {
                 armyDef = 2
                 break;
         }
-       
-        
+           
 
       
          //we need a random number from 0 to the attackers army (this.allTheArmies[armyAtt]) = indexAttackerRan
