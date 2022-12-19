@@ -13,14 +13,12 @@ class Soldier {
     receiveDamage(damage) {
         this.health -= damage
     }
-
 }
 
 // Viking
 class Viking extends Soldier {
 
     constructor(name, health, strength) {
-        
         super(health, strength)
         this.name = name
     }
@@ -34,13 +32,11 @@ class Viking extends Soldier {
         } else {
             return `${this.name} has died in act of combat`
         }
-        
     }
 
     battleCry() {
         return "Odin Owns You All!"
     }
-
 }
 
 // Saxon
@@ -56,7 +52,6 @@ class Saxon extends Soldier {
             return `A Saxon has died in combat`
         }
     }
-
 }
 
 // War
@@ -77,22 +72,49 @@ class War {
     }
 
     vikingAttack() {
-        Viking.attack
-        this.health -= Viking.strength
+        const saxon = selectRandom(this.saxonArmy)
+        const viking = selectRandom(this.vikingArmy)
+        const output = saxon.receiveDamage(viking.strength)
         
-        return saxonArmy.receiveDamage(vikingArmy.strength)
+        for (let i = 0; i < this.saxonArmy.length; i++) {
+            const saxonElement = this.saxonArmy[i];
 
+            if(saxonElement.health <= 0) {
+                this.saxonArmy.splice(i, 1)
+            }
+        }
+        return output
     }
 
     saxonAttack() {
-        return Viking.receiveDamage(Saxon.strength)
+        const saxon = selectRandom(this.saxonArmy)
+        const viking = selectRandom(this.vikingArmy)
+        const output = viking.receiveDamage(saxon.strength)
+
+        for (let i = 0; i < this.vikingArmy.length; i++) {
+            const vikingElement = this.vikingArmy[i];
+
+            if(vikingElement.health <= 0) {
+                this.vikingArmy.splice(i, 1)
+            }
+        }
+        return output
     }
 
-    /*
+    
     showStatus() {
-        if(this.SaxonArmy)
+        if(this.saxonArmy.length == 0) {
+            return "Vikings have won the war of the century!"
+        } else if(this.vikingArmy.length == 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        } else {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
     }
-    */
-
 }
 
+function selectRandom(array) {
+    let randomNum = Math.floor(Math.random()*array.length)
+
+    return array[randomNum]
+}
