@@ -67,7 +67,11 @@ addSaxon(saxon){
 }
 
 vikingAttack(){
-    this.saxon.receiveDamage(damage) = this.viking.strength;
+    let pickSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+    let pickViking = Math.floor(Math.random() * this.vikingArmy.length)
+
+    this.saxon[pickSaxon].receiveDamage(damage) = this.viking[pickViking].strength;
+    
 }
 
 saxonAttack(){
