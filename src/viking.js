@@ -70,12 +70,21 @@ vikingAttack(){
     let pickSaxon = Math.floor(Math.random() * this.saxonArmy.length)
     let pickViking = Math.floor(Math.random() * this.vikingArmy.length)
 
-    this.saxon[pickSaxon].receiveDamage(damage) = this.viking[pickViking].strength;
+    if (Saxon.health <= 0) {
+        this.saxonArmy.splice(this.saxonArmy[pickSaxon],1)
+    }
+
+    return this.saxonArmy[pickSaxon].receiveDamage(this.vikingArmy[pickViking].strength)
+    
     
 }
 
 saxonAttack(){
-    
+    let pickViking = Math.floor(Math.random() * this.vikingArmy.length)
+    let pickSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+
+    return this.vikingArmy[pickViking].receiveDamage(this.saxonArmy[pickSaxon].strength)
+
 }
 
 showStatus(){
