@@ -62,14 +62,14 @@ class War {
 		let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 		let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 		let afterTheAttack = randomSaxon.receiveDamage(randomViking.strength);
-		if (randomSaxon.health < 1) this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1);
+		if (randomSaxon.health <= 0) this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1);
 		return afterTheAttack;
 	}
 	saxonAttack() {
 		let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 		let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 		let afterTheAttack = randomViking.receiveDamage(randomSaxon.strength);
-		if (randomViking.health < 1) this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1);
+		if (randomViking.health <= 0) this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1);
 		return afterTheAttack;
 	}
 	/*  Bonus code for generic attack function
