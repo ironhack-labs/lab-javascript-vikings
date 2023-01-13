@@ -51,7 +51,9 @@ Your task is to write the correct code in the `src/viking.js` file to make the t
 
 ```javascript
 // Soldier
-class Soldier {}
+class Soldier {
+}
+
 
 // Viking
 class Viking {}
