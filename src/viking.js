@@ -68,21 +68,44 @@ class War {
     this.vikingArmy = []
     this.saxonArmy = []
     }
+
     addViking(viking){
         this.viking = viking
-        vikingArmy.push(this.viking)
+        this.vikingArmy.push(viking)
     }
+
     addSaxon(saxon){
         this.saxon = saxon
+        this.saxonArmy.push(saxon)
     }
+    
     vikingAttack(){
+        this.saxon.receiveDamage = Viking (this.strength)
+        if (Saxon.health === 0){
+            this.saxonArmy.pop(saxon)
+        }
+        return receiveDamage[Math.floor(Math.random()* array.length )]
+        }
+       
 
-    }
-    saxonAttack(){
-
+        saxonAttack(){
+            if (Saxon.heatlh === 0){
+                this.vikingArmy.pop(viking)
+            }
+    
     }
     showStatus(){
+    if (this.saxonArmy === []){
+        return "Vikings have won the war of the centyry!"
+    } else if (this.vikingArmy === []){
+        return "Saxos have fought for their lives and survived another day"
+    }else {
+        "Vikings and Saxons are still in the thick of battle"
+    }
 
     }
 
-}
+    }
+
+  
+
