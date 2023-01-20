@@ -1,4 +1,3 @@
-// Soldier
 class Soldier {
   constructor(health, strength) {
     this.health = health;
@@ -7,15 +6,29 @@ class Soldier {
 
   attack = () => this.strength;
 
-  receiveDamage = damage => {
+  receiveDamage = (damage) => {
     this.health = this.health - damage;
-  }  
+  };
 }
-// Viking
-class Viking {}
 
-// Saxon
+class Viking extends Soldier {
+  constructor(name, health, strength) {
+    super(health, strength);
+    this.name = name;
+  }
+
+  receiveDamage = (damage) => {
+    this.health = this.health - damage;
+
+    if (this.health) return `${this.name} has received ${damage} points of damage`;
+
+    return `${this.name} has died in act of combat`;
+  };
+
+   battleCry = () => "Odin Owns You All!";
+}
+
 class Saxon {}
 
-// War
+
 class War {}
