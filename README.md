@@ -73,7 +73,10 @@ The first test case says that "_Soldier class >> should receive 2 arguments (hea
 ```javascript
 // Soldier
 class Soldier {
-  constructor(health, strength) {}
+  constructor(health, strength) {
+   
+  }
+
 }
 
 // Viking
