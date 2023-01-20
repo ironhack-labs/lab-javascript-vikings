@@ -20,7 +20,7 @@ class Viking extends Soldier {
   receiveDamage = (damage) => {
     this.health = this.health - damage;
 
-    if (this.health)
+    if (this.health > 0)
       return `${this.name} has received ${damage} points of damage`;
 
     return `${this.name} has died in act of combat`;
@@ -33,7 +33,8 @@ class Saxon extends Soldier {
   receiveDamage = (damage) => {
     this.health = this.health - damage;
 
-    if (this.health >= 0) return `A Saxon has received ${damage} points of damage`;
+    if (this.health > 0)
+      return `A Saxon has received ${damage} points of damage`;
 
     return `A Saxon has died in combat`;
   };
@@ -53,41 +54,58 @@ class War {
     this.saxonArmy.push(saxon);
   }
 
-  vikingAttack() {
-    const randomVikingIndex = Math.floor(
-      Math.random() * this.vikingArmy.length
-    );
-    const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+  getRandomSoldier(soldiers) {
+    const soldierIndex = Math.floor(Math.random() * soldiers.length);
 
-    const randomViking = this.vikingArmy[randomVikingIndex];
-    const randomSaxon = this.saxonArmy[randomSaxonIndex];
+    return { soldier: soldiers[soldierIndex], index: soldierIndex };
+  }
 
-    const damageMessage = randomSaxon.receiveDamage(randomViking.attack());
-    
-    if (randomSaxon.health <= 0) {
-      this.saxonArmy.splice(randomSaxonIndex, 1);
+  getOpponents(soldierType) {
+    const soldiers = {};
+
+    if (soldierType === "viking") {
+      soldiers.attacker = this.getRandomSoldier(this.vikingArmy);
+      soldiers.enemy = this.getRandomSoldier(this.saxonArmy);
+      soldiers.enemy.army = this.saxonArmy;
+    } else {
+      soldiers.attacker = this.getRandomSoldier(this.saxonArmy);
+      soldiers.enemy = this.getRandomSoldier(this.vikingArmy);
+      soldiers.enemy.army = this.vikingArmy;
     }
+    
+    return soldiers;
+  }
 
-    return damageMessage;
+  doFight(attacker, enemy) {
+    const figthMessage = enemy.soldier.receiveDamage(attacker.soldier.attack());
+
+    return figthMessage;
+  }
+
+  removeDead(enemyHealth, enemyIndex, enemyArmy) {
+    if (enemyHealth <= 0) {
+      enemyArmy.splice(enemyIndex, 1);
+    }
+  }
+
+  soldierAttack(soldierType) {
+    const opponents = this.getOpponents(soldierType);
+
+    const attacker = opponents.attacker;
+    const enemy = opponents.enemy;
+
+    const attackMessage = this.doFight(attacker, enemy);
+    
+    this.removeDead(enemy.soldier.health, enemy.index, enemy.army);
+
+    return attackMessage;
+  }
+
+  vikingAttack() {
+    return this.soldierAttack("viking");
   }
 
   saxonAttack() {
-    const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-
-    const randomVikingIndex = Math.floor(
-      Math.random() * this.vikingArmy.length
-    );
-
-    const randomSaxon = this.saxonArmy[randomSaxonIndex];
-    const randomViking = this.vikingArmy[randomVikingIndex];
-
-    const damageMessage = randomViking.receiveDamage(randomSaxon.attack());
-    
-    if (randomViking.health <= 0) {
-      this.vikingArmy.splice(randomVikingIndex, 1);
-    }
-
-    console.log(damageMessage);
-    return damageMessage;
+    return this.soldierAttack("saxon");
   }
 }
