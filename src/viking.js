@@ -1,5 +1,7 @@
 // Soldier
-class Soldier {}
+class Soldier {
+    
+}
 
 // Viking
 class Viking {}
