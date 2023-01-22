@@ -72,7 +72,7 @@ class War {
       soldiers.enemy = this.getRandomSoldier(this.vikingArmy);
       soldiers.enemy.army = this.vikingArmy;
     }
-    
+
     return soldiers;
   }
 
@@ -95,7 +95,7 @@ class War {
     const enemy = opponents.enemy;
 
     const attackMessage = this.doFight(attacker, enemy);
-    
+
     this.removeDead(enemy.soldier.health, enemy.index, enemy.army);
 
     return attackMessage;
@@ -107,5 +107,22 @@ class War {
 
   saxonAttack() {
     return this.soldierAttack("saxon");
+  }
+
+  showStatus() {
+    const noVikings = this.vikingArmy.length <= 0;
+    const noSaxons = this.saxonArmy.length <= 0;
+
+    const vikingVictory = "Vikings have won the war of the century!";
+    const saxonVictory =
+      "Saxons have fought for their lives and survived another day...";
+    const ongoingBattle =
+      "Vikings and Saxons are still in the thick of battle.";
+
+    if (noSaxons) return vikingVictory;
+
+    if (noVikings) return saxonVictory;
+
+    return ongoingBattle;
   }
 }
