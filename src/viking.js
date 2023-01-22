@@ -82,7 +82,7 @@ class War {
     return figthMessage;
   }
 
-  removeDead(enemyHealth, enemyIndex, enemyArmy) {
+  removeDead(enemyHealth, enemyIndex, enemyArmy) {  
     if (enemyHealth <= 0) {
       enemyArmy.splice(enemyIndex, 1);
     }
@@ -90,12 +90,12 @@ class War {
 
   soldierAttack(soldierType) {
     const opponents = this.getOpponents(soldierType);
-
+    
     const attacker = opponents.attacker;
     const enemy = opponents.enemy;
-
+    
     const attackMessage = this.doFight(attacker, enemy);
-
+    
     this.removeDead(enemy.soldier.health, enemy.index, enemy.army);
 
     return attackMessage;
