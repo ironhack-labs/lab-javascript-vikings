@@ -87,23 +87,4 @@ class War {
     if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0)
       return "Vikings and Saxons are still in the thick of battle.";
   }
-  genericMethod(armyAttack) {
-      let generateRandomDefense = Math.floor(
-        Math.random() * this.saxonArmy.length
-      );
-      let generateRandomAttack = Math.floor(
-        Math.random() * this.vikingArmy.length
-      );
-    if (armyAttack === "vikings") {
-        let randomAttack = this.vikingArmy[generateRandomViking];
-      let randomDefeat = this.saxonArmy[generateRandomSaxon];
-    }
-    if (armyAttack === "saxons") {
-      let randomAttack = this.saxonArmy[generateRandomSaxon];
-      let randomDefeat = this.vikingArmy[generateRandomViking];
-    }
-    let resultOfCallReceiveDamage = (armyAttacked, ArmyDefeat) =>
-      randomViking.receiveDamage(randomSaxon.strength);
-    return resultOfCallReceiveDamage(randomAttack, randomDefeat);
-  }
 }
