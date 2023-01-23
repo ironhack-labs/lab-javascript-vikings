@@ -67,13 +67,53 @@ class War {
   }
 
   vikingAttack() {
-    const aViking = this.vikingArmy[Math.floor(Math.random() * array.length)];
-    const aSaxon = this.saxonArmy[Math.floor(Math.random() * array.length)];
+    const randomViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    const randomSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
-    // if (aSaxon.receiveDamage() )
+    const damageTaken = randomSaxon.receiveDamage(randomViking.strength);
+    if (randomSaxon.health <= 0) {
+      this.saxonArmy.pop(randomSaxon);
+    }
+    return damageTaken;
   }
+  saxonAttack() {
+    const randomViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    const randomSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 
-  saxonAttack() {}
+    const damageTaken = randomViking.receiveDamage(randomSaxon.strength);
+    if (randomViking.health <= 0) {
+      this.vikingArmy.pop(randomViking);
+    }
+    return damageTaken;
+  }
 
   showStatus() {}
 }
+
+const viking1 = new Viking("joe", 200, 15);
+const viking2 = new Viking("tom", 200, 15);
+const viking3 = new Viking("pol", 200, 15);
+
+const saxon1 = new Saxon(100, 30);
+const saxon2 = new Saxon(100, 30);
+const saxon3 = new Saxon(100, 30);
+
+const war = new War();
+
+war.addViking(viking1);
+war.addViking(viking2);
+war.addViking(viking3);
+
+war.addSaxon(saxon1);
+war.addSaxon(saxon2);
+war.addSaxon(saxon3);
+
+console.log(war.vikingAttack());
+console.log(war.saxonAttack());
+
+console.log(war.vikingArmy);
+console.log(war.saxonArmy);
