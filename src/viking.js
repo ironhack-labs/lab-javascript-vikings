@@ -98,11 +98,12 @@ class War {
 
 
     console.log('je suis ds vicking attack')
-    // for (i = 0; i < this.saxonArmy.length; i++) {
-    //   if (this.saxonArmy[i].health <= 0) {
-    //     this.saxonArmy.splice(i, 1)
-    //   }
-    // }
+    for (i = 0; i < this.saxonArmy.length; i++) {
+      if (this.saxonArmy[i].health <= 0) {
+        let deadIndex = this.saxonArmy.indexOf[this.saxonArmy[i]]
+        this.saxonArmy.splice(deadIndex, 1)
+      }
+    }
   }
 
   saxonAttack() {
