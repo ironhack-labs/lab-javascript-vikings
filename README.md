@@ -171,7 +171,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 
 #### class
 
-- You don't have to include a constructor method since this class will inherit perfectly from the parents class, both, the health and the strength (it `extends` Soldier class :wink: )
+- You don't have to include a constructor method since this class  will inherit perfectly from the parents class, both, the health and the strength (it `extends` Soldier class :wink: )
 
 #### `attack()` method
 
