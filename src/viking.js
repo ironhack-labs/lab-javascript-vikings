@@ -4,10 +4,12 @@ class Soldier {
     this.health = health
     this.strength = strength
   }
-  attack() {//攻撃・soldierの強さを返す
+  attack() {
+    //攻撃・soldierの強さを返す
     return this.strength
   }
-  receiveDamage(damage) {//ダメージを受けるとhealthから引かれる
+  receiveDamage(damage) {
+    //ダメージを受けるとhealthから引かれる
     this.health -= damage
   }
 }
@@ -20,20 +22,24 @@ class Viking extends Soldier {
     super(health, strength)
     this.name = name
   }
-  attack() {//攻撃・soldierの強さを返す
+  attack() {
+    //攻撃・soldierの強さを返す
     return this.strength
   }
-  receiveDamage(damage) {//ダメージを受けるとhealthから引かれる
+  receiveDamage(damage) {
+    //ダメージを受けるとhealthから引かれる
     this.health -= damage
-    if (this.health > 0) {//バイキングが生きているなら●ポイントのダメージを受け取る
+    if (this.health > 0) {
+      //バイキングが生きているなら●ポイントのダメージを受け取る
       return `${this.name} has received ${damage} points of damage`
-    } else {//バイキングは死ぬ
+    } else {
+      //バイキングは死ぬ
       return `${this.name} has died in act of combat`
     }
   }
 
-  battleCry(){
-    return `Odin Owns You All!`//みんな泣く
+  battleCry() {
+    return `Odin Owns You All!` //みんな泣く
   }
 }
 
@@ -41,10 +47,12 @@ class Viking extends Soldier {
 //サクソン人は弱い兵士です。バイキングとは異なり、サクソンには名前がありません。receiveDamage()メソッドもオリジナルのSoldierバージョンとは異なります。Saxonのコンストラクタ関数を修正し、Soldierを継承させ、Saxon用のreceiveDamage()メソッドを再実装してください。
 
 class Saxon extends Soldier {
-  attack() {//攻撃・soldierの強さを返す
+  attack() {
+    //攻撃・soldierの強さを返す
     return super.attack()
   }
-  receiveDamage(damage) {//ダメージを受けるとhealthから引かれる
+  receiveDamage(damage) {
+    //ダメージを受けるとhealthから引かれる
     this.health -= damage
     if (this.health > 0) {
       return `A Saxon has received ${damage} points of damage`
@@ -57,42 +65,52 @@ class Saxon extends Soldier {
 // War
 class War {
   constructor() {
-    this.vikingArmy = []//バイキング兵
-    this.saxonArmy = []//サクソン兵
+    this.vikingArmy = [] //バイキング兵
+    this.saxonArmy = [] //サクソン兵
   }
-  addViking(Viking) {//バイキング兵追加
+  addViking(Viking) {
+    //バイキング兵追加
     this.vikingArmy.push(Viking)
   }
 
-  addSaxon(Saxon) {//サクソン兵追加
+  addSaxon(Saxon) {
+    //サクソン兵追加
     this.saxonArmy.push(Saxon)
   }
 
-  //サクソン人（ランダムに選ばれる）は、バイキング（これもランダムに選ばれる）の強さに等しいダメージで、そのreceiveDamage()メソッドを呼び出されます。これは1回の攻撃だけで、サクソン人は反撃してこないはずです。 
+  //サクソン人（ランダムに選ばれる）は、バイキング（これもランダムに選ばれる）の強さに等しいダメージで、そのreceiveDamage()メソッドを呼び出されます。これは1回の攻撃だけで、サクソン人は反撃してこないはずです。
 
   vikingAttack() {//バイキング攻撃
-    // I don't understand!!!
-    const soldierViking = this.vikingArmy(Math.floor(Math.random() * this.length))
-    const soldierSaxon = this.saxonArmy(Math.floor(Math.random() * this.length))
-    if (soldierSaxon.receiveDamage() === soldierViking.strength) {
-      this.soldierSaxon.pop() 
+    const soldierViking = Math.floor(Math.random() * this.vikingArmy.length)
+    const soldierSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+    const result = this.saxonArmy[soldierSaxon].receiveDamage(
+      this.vikingArmy[soldierViking].strength
+    )
+
+    if (this.saxonArmy[soldierSaxon].health <= 0) {
+      this.saxonArmy.splice(soldierSaxon, 1)
     }
-      return receiveDamage()
+    return result
   }
 
   saxonAttack() {
-    //I don't understand!!
-  }
-  
-  showStatus() {
-    //Why it doesn't work???
-    if (this.saxonArmy.length === 0) {
-      return "Vikings have won the war of the century!"
+    const soldierViking = Math.floor(Math.random() * this.vikingArmy.length)
+    const soldierSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+    const result = this.vikingArmy[soldierViking].receiveDamage(this.saxonArmy[soldierSaxon].strength)
+
+    if (this.vikingArmy[soldierViking].health <= 0) {
+      this.vikingArmy.splice(soldierViking, 1)
     }
-    else if (this.vikingArmy.length === 0) {
-      return  "Saxons have fought for their lives and survived another day..."
+    return result
+  }
+
+  showStatus() {
+    if (this.saxonArmy.length === 0) {
+      return 'Vikings have won the war of the century!'
+    } else if (this.vikingArmy.length === 0) {
+      return 'Saxons have fought for their lives and survived another day...'
     } else if (this.saxonArmy.length > 0 && this.vikingArmy.length > 0) {
-      return "Vikings and Saxons are still in the thick of battle."
+      return 'Vikings and Saxons are still in the thick of battle.'
     }
   }
 }
