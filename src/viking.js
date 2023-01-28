@@ -45,7 +45,8 @@ class Saxon extends Soldier{
     receiveDamage(damage){
            this.health = this.health - damage 
            if(this.health > 0){
-               return `A Saxon has received ${damage} points of damage`
+              
+            return `A Saxon has received ${damage} points of damage`
            }
            else{
              return  `A Saxon has died in combat`
@@ -55,4 +56,37 @@ class Saxon extends Soldier{
 }
 
 // War
-class War {}
+class War {
+constructor(){
+    this.vikingArmy = []
+    this.saxonArmy = []
+}
+
+addViking(Viking){
+     this.vikingArmy.push(Viking)
+}
+addSaxon(Saxon){
+this.saxonArmy.push(Saxon)
+}
+vikingAttack (){
+    const saxonSoldier = [Math.floor(Math.random() * this.saxonArmy.length)]
+    const vikingSoldier = [Math.floor(Math.random() * this.vikingArmy.length)]
+  
+    let result = this.saxonArmy[saxonSoldier].receiveDamage(this.vikingArmy[vikingSoldier].strength)
+    if (this.saxonArmy[saxonSoldier].health <= 0){
+        this.saxonArmy.pop(saxonSoldier)
+    }
+    return result
+}
+
+
+saxonAttack(){
+
+}
+showStatus(){
+
+}
+
+
+
+}
