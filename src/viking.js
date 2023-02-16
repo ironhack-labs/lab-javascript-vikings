@@ -32,7 +32,16 @@ class Viking extends Soldier{
 }
 
 // Saxon
-class Saxon {}
+class Saxon extends Soldier{
+    receiveDamage(damage){
+        this.health = this.health - damage;
+        if(this.health > 1){
+           return `A Saxon has received ${damage} points of damage`
+        }else if(this.health < 1){
+           return `A Saxon has died in combat`
+        }
+   }
+}
 
 // War
 class War {}
