@@ -62,8 +62,8 @@ class War {
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon);
   }
-
+/* funktion in funktion geht, random soll dert viking aus der army ausgesucht werden.
   vikingAttack() {
-    this.saxon.health -= Math.random.damage == viking.strength;
+    this.saxon.health -= damage == this.viking.strength;
   }
 }
