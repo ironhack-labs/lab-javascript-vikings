@@ -39,6 +39,10 @@ class Viking extends Soldier {
 
 // Iteration 3: Saxon
 class Saxon extends Soldier {
+  constructor(health, strength) {
+    super(health, strength);
+  }
+
   receiveDamage(damage) {
     this.health -= damage;
     if (this.health > 0) {
@@ -62,8 +66,18 @@ class War {
   addSaxon(Saxon) {
     this.saxonArmy.push(Saxon);
   }
-/* funktion in funktion geht, random soll dert viking aus der army ausgesucht werden.
+
   vikingAttack() {
-    this.saxon.health -= damage == this.viking.strength;
+    let randomViking =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+    let randomSaxon =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+
+    let saxonFight = randomSaxon.receiveDamage(randomViking.strength);
+
+    if (randomSaxon.health <= 0) {
+      this.saxonArmy.pop(randomSaxon);
+    }
+    return saxonFight;
   }
 }
