@@ -80,6 +80,7 @@ class War {
       return `A Saxon has died in combat`;
     }
   }
+
   saxonAttack() {
     let saxonRandom = Math.floor(Math.random() * this.saxonArmy.length);
     let vikingRandom = Math.floor(Math.random() * this.vikingArmy.length);
@@ -88,10 +89,15 @@ class War {
     );
     if (this.vikingArmy[vikingRandom].health <= 0) {
       this.vikingArmy.splice(vikingRandom, 1);
-      return `${this.vikingArmy[vikingRandom].name} has died in act of combat`;
+      return `A Viking has died in act of combat`;
     } else {
       return `${this.vikingArmy[vikingRandom].name} has received ${this.saxonArmy[saxonRandom].strength} points of damage`;
     }
   }
   showStatus() {}
 }
+
+const saxonas = new War();
+saxonas.addViking(new Viking(50, 10, 10));
+saxonas.addSaxon(new Saxon(10, 10));
+saxonas.saxonAttack();
