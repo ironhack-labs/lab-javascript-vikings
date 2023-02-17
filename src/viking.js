@@ -64,4 +64,18 @@ class War {
           return `A Saxon has died in combat`;
        }
        }
+       saxonAttack(){
+        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+        const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+        const vikingName = this.vikingArmy[randomViking].name;
+        const saxonStrength = this.saxonArmy[randomSaxon].strength;
+        this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
+        
+       if(this.vikingArmy[randomViking].health <= 0){
+          this.vikingArmy.splice(randomViking, 1);
+          return `${vikingName} has died in act of combat`
+       }else{
+        return `${vikingName} has received ${saxonStrength} points of damage`;
+       }
+     }
 }
