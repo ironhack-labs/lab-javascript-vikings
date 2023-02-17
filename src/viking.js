@@ -55,4 +55,13 @@ class War {
       addSaxon(Saxon) {
         this.saxonArmy.push(Saxon);
       }
+      vikingAttack(){
+        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+        const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+        this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
+       if(this.saxonArmy[randomSaxon].health < 1){
+          this.saxonArmy.splice(randomSaxon,1);
+          return `A Saxon has died in combat`;
+       }
+       }
 }
