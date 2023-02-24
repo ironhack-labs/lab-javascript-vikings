@@ -56,6 +56,3 @@ class War {
         this.saxonArmy.push(Saxon)
     }
 }
-
-let player1 = new Saxon("Joaquín", 26, 56);
-console.log(Saxon.receiveDamage())
