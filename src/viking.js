@@ -40,7 +40,7 @@ class Saxon extends Soldier {
     if (this.health > 0) {
       return `A Saxon has received ${damage} points of damage`;
     }
-    if (this.health <= 0) {
+    else if (this.health <= 0) {
       return "A Saxon has died in combat";
     }
   }
@@ -92,52 +92,44 @@ class War {
   }
 }
 
-// const guerra = new War();
 
-// const viking1 = new Viking("Alex", 200, 30);
-// const viking2 = new Viking("Eric", 300, 50);
+// SOME CODE TO TRY THE EPIC WAR!!!!
 
-// const saxon1 = new Saxon(300, 20);
-// const saxon2 = new Saxon(200, 40);
-// const saxon3 = new Saxon(100, 60);
+//  const guerra = new War();
 
-// guerra.addSaxon(saxon1);
-// guerra.addSaxon(saxon2);
-// guerra.addSaxon(saxon3);
+//  const viking1 = new Viking("Alex", 200, 30);
+//  const viking2 = new Viking("Eric", 300, 50);
 
-// guerra.addViking(viking1);
-// guerra.addViking(viking2);
+//  const saxon1 = new Saxon(300, 20);
+//  const saxon2 = new Saxon(200, 40);
+//  const saxon3 = new Saxon(100, 60);
 
-// console.log(guerra.saxonArmy);
-// setTimeout(() => {
-//   guerra.vikingAttack();
-//   guerra.vikingAttack();
-//   guerra.vikingAttack();
-//   guerra.vikingAttack();
-//   guerra.vikingAttack();
-//   guerra.vikingAttack();
-//   console.log(guerra.saxonArmy);
-// }, 5000);
+//  guerra.addSaxon(saxon1);
+//  guerra.addSaxon(saxon2);
+//  guerra.addSaxon(saxon3);
 
-// const soldier1 = new Soldier(100, 10);
-// console.log(
-//   "Soldier health: " + soldier1.health + " and strength: " + soldier1.strength
-// );
+//  guerra.addViking(viking1);
+//  guerra.addViking(viking2);
 
-// const viking1 = new Viking("eric", 80, 20);
-// console.log(
-//   "Viking name: " +
-//     viking1.name +
-//     ", with health: " +
-//     viking1.health +
-//     " and strength: " +
-//     viking1.strength
-// );
+//  console.log(guerra.saxonArmy);
+//  setTimeout(() => {
+//    guerra.vikingAttack();
+//    guerra.vikingAttack();
+//    guerra.vikingAttack();
+//    guerra.vikingAttack();
+//    guerra.vikingAttack();
+//    guerra.vikingAttack();
+//    console.log(guerra.saxonArmy);
+//  }, 5000);
 
-// const saxon1 = new Saxon(120, 15);
-// console.log(
-//   "Saxon health: " + saxon1.health + " and strength: " + saxon1.strength
-// );
+//  const soldier1 = new Soldier(100, 10);
+//  console.log(
+//    "Soldier health: " + soldier1.health + " and strength: " + soldier1.strength
+//  );
 
-// console.log(saxon1.receiveDamage(50));
-// console.log(saxon1.health);
+//  console.log(saxon1.receiveDamage(50));
+//  console.log(saxon1.health);
+
+//  setTimeout(() => {
+//      console.log(guerra.showStatus())
+//  }, 6000);
