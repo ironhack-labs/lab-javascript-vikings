@@ -13,9 +13,6 @@ class Soldier {
 	}
 }
 
-const gerald = new Soldier(75, 15);
-console.log(gerald);
-
 // Viking
 class Viking extends Soldier {
 	constructor(name, health, strength) {
@@ -26,23 +23,19 @@ class Viking extends Soldier {
 	receiveDamage(damage) {
 		this.health -= damage;
 		if (this.health <= 0) {
+			console.log(`${this.name} has died in act of combat`);
 			return `${this.name} has died in act of combat`;
 		} else if (this.health > 0) {
+			console.log(`${this.name} has received ${damage} points of damage`);
 			return `${this.name} has received ${damage} points of damage`;
 		}
 	}
 
 	battleCry() {
+		console.log('TO VALHALLA!');
 		return 'Odin Owns You All!';
 	}
 }
-
-const bjorn = new Viking('Bjorn', 150, 25);
-console.log(bjorn);
-const skadi = new Viking('Skadi', 130, 35);
-console.log(bjorn);
-const brumhilda = new Viking('Brumhilda', 110, 20);
-console.log(bjorn);
 
 // Saxon
 class Saxon extends Soldier {
@@ -62,11 +55,6 @@ class Saxon extends Soldier {
 	}
 }
 
-const henry = new Saxon(100, 20);
-const edward = new Saxon(100, 20);
-const horace = new Saxon(100, 20);
-console.log(henry);
-
 // War
 class War {
 	constructor() {
@@ -80,52 +68,72 @@ class War {
 		this.saxonArmy.push(Saxon);
 	}
 
-	vikingAttack() {
-		let randomViking =
-			this.vikingArmy[Math.ceil(Math.random() * this.vikingArmy.length)];
-		let randomSaxon =
-			this.saxonArmy[Math.ceil(Math.random() * this.saxonArmy.length)];
-		randomSaxon.receiveDamage(randomViking.strength);
-		if (randomSaxon.health <= 0) {
-			this.saxonArmy.splice(0, 1);
-		}
+	randomViking() {
+		return this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
 	}
-	saxonAttack() {
-		let randomViking =
-			this.vikingArmy[Math.ceil(Math.random() * this.vikingArmy.length)];
-		let randomSaxon =
-			this.saxonArmy[Math.ceil(Math.random() * this.saxonArmy.length)];
-		randomViking.receiveDamage(randomSaxon.strength);
-		if (randomViking.health <= 0) {
-			this.vikingArmy.splice(0, 1);
-		}
+	randomSaxon() {
+		return this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
 	}
 
-	armiesAttack(typeOfAttack) {
-		if (typeOfAttack === 'Viking') {
-			randomSaxon.receiveDamage(randomViking.strength);
-			if (randomSaxon.health <= 0) {
-				this.saxonArmy.splice(0, 1);
-			}
-		} else if (typeOfAttack === 'Saxon') {
-			randomViking.receiveDamage(randomSaxon.strength);
-			if (randomViking.health <= 0) {
-				this.vikingArmy.splice(0, 1);
-			}
-		}
+	vikingAttack() {
+		let randomSaxon = this.randomSaxon();
+		let randomViking = this.randomViking();
+
+		let attack = randomSaxon.receiveDamage(randomViking.strength);
+
+		if (randomSaxon.health <= 0) {
+			this.saxonArmy.splice(randomSaxon, 1);
+		} else console.log(`Remaining Health: ${randomSaxon.health}`);
+
+		return attack;
 	}
+	saxonAttack() {
+		let randomSaxon = this.randomSaxon();
+		let randomViking = this.randomViking();
+
+		let attack = randomViking.receiveDamage(randomSaxon.strength);
+
+		if (randomViking.health <= 0) {
+			this.vikingArmy.splice(randomViking, 1);
+		} else if (randomViking.health <= 20) {
+			randomViking.battleCry();
+			console.log(`Remaining Health: ${randomViking.health}`);
+		} else console.log(`Remaining Health: ${randomViking.health}`);
+
+		return attack;
+	}
+
+	// armiesAttack(typeOfAttack) {
+	// 	if (typeOfAttack === 'Viking') {
+	// 		randomSaxon.receiveDamage(randomViking.strength);
+	// 		if (randomSaxon.health <= 0) {
+	// 			this.saxonArmy.splice(0, 1);
+	// 		}
+	// 	} else if (typeOfAttack === 'Saxon') {
+	// 		randomViking.receiveDamage(randomSaxon.strength);
+	// 		if (randomViking.health <= 0) {
+	// 			this.vikingArmy.splice(0, 1);
+	// 		}
+	// 	}
+	// }
 
 	showStatus() {}
 }
 
-const war = new War();
+const bjorn = new Viking('Bjorn', 100, 25);
+const skadi = new Viking('Skadi', 100, 35);
+const brumhilda = new Viking('Brumhilda', 100, 20);
 
-war.addSaxon(henry);
-war.addSaxon(edward);
-war.addSaxon(horace);
+const henry = new Saxon(100, 15);
+const edward = new Saxon(100, 35);
+const horace = new Saxon(100, 20);
 
-war.addViking(bjorn);
-war.addViking(skadi);
-war.addViking(brumhilda);
+const bloodyWar = new War();
 
-console.log(war.saxonArmy, war.vikingArmy);
+bloodyWar.addSaxon(henry);
+bloodyWar.addSaxon(edward);
+bloodyWar.addSaxon(horace);
+
+bloodyWar.addViking(bjorn);
+bloodyWar.addViking(skadi);
+bloodyWar.addViking(brumhilda);
