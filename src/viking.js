@@ -55,10 +55,11 @@ class War {
   }
   genericAttack(attackerArmy, defenderArmy) {
     const indexRandomDefender = Math.floor(Math.random() * defenderArmy.length);
-    const defenderRandom = defenderArmy[indexRandomDefender];
-    const attackerRandom =
-      attackerArmy[Math.floor(Math.random() * attackerArmy.length)];
-    const resultDamage = defenderRandom.receiveDamage(attackerRandom.strength);
+    const indexRandomAttacker = Math.floor(Math.random() * attackerArmy.length);
+
+    const resultDamage = defenderArmy[indexRandomDefender].receiveDamage(
+      attackerArmy[indexRandomAttacker].strength
+    );
 
     if (defenderRandom.health <= 0) {
       defenderArmy.splice(indexRandomDefender, 1);
