@@ -61,7 +61,7 @@ class War {
       attackerArmy[indexRandomAttacker].strength
     );
 
-    if (defenderRandom.health <= 0) {
+    if (defenderArmy[indexRandomDefender].health <= 0) {
       defenderArmy.splice(indexRandomDefender, 1);
     }
     return resultDamage;
