@@ -40,10 +40,19 @@ class Saxon extends Soldier {
         }
         else { return `A Saxon has died in combat` }
     }
-    }
+}
 
 
 // War
-class War { }
+class War {
+    constructor() {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+    addViking(Viking) {
+        
+    }
+
+}
 
 const sold = new Soldier(100, 100) // {health: , strength: , attack(), receiveDamage()}
