@@ -75,7 +75,7 @@ class War {
     return result;
   }
 
-  attack(attacker, attacked) {
+  randomAttack(attacker, attacked) {
     let random = Math.floor(Math.random() * attacked.length);
     let result = attacked[random].receiveDamage(attacker[random].strength);
     if (attacked[random].health <= 0) {
