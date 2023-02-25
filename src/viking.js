@@ -53,39 +53,31 @@ class War {
   addSaxon(saxon) {
     this.saxonArmy.push(saxon);
   }
-  vikingAttack() {
-    const indexRandomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-    const saxonRandom = this.saxonArmy[indexRandomSaxon];
-    const vikingRandom =
-      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-    const resultDamage = saxonRandom.receiveDamage(vikingRandom.strength);
-    if (saxonRandom.health <= 0) {
-      this.saxonArmy.splice(indexRandomSaxon, 1);
+  genericAttack(attackerArmy, defenderArmy) {
+    const indexRandomDefender = Math.floor(Math.random() * defenderArmy.length);
+    const defenderRandom = defenderArmy[indexRandomDefender];
+    const attackerRandom =
+      attackerArmy[Math.floor(Math.random() * attackerArmy.length)];
+    const resultDamage = defenderRandom.receiveDamage(attackerRandom.strength);
+
+    if (defenderRandom.health <= 0) {
+      defenderArmy.splice(indexRandomDefender, 1);
     }
     return resultDamage;
+  }
+  vikingAttack() {
+    return this.genericAttack(this.vikingArmy, this.saxonArmy);
   }
   saxonAttack() {
-    const indexRandomViking = Math.floor(
-      Math.random() * this.vikingArmy.length
-    );
-    const vikingRandom = this.vikingArmy[indexRandomViking];
-    const saxonRandom =
-      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
-    const resultDamage = vikingRandom.receiveDamage(saxonRandom.strength);
-    if (vikingRandom.health <= 0) {
-      this.vikingArmy.splice(indexRandomViking, 1);
-    }
-    return resultDamage;
+    return this.genericAttack(this.saxonArmy, this.vikingArmy);
   }
   showStatus() {
-    if(this.saxonArmy.length === 0){
-    return "Vikings have won the war of the century!";
-
-  }else if(this.vikingArmy.length === 0){
-    return "Saxons have fought for their lives and survived another day...";
-  } else {
-    return "Vikings and Saxons are still in the thick of battle.";
-  } 
-
+    if (this.saxonArmy.length === 0) {
+      return "Vikings have won the war of the century!";
+    } else if (this.vikingArmy.length === 0) {
+      return "Saxons have fought for their lives and survived another day...";
+    } else {
+      return "Vikings and Saxons are still in the thick of battle.";
+    }
   }
 }
