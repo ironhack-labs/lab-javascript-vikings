@@ -28,7 +28,7 @@ class Viking extends Soldier {
     }
     receiveDamage(damage) {
         this.health = this.health - damage;
-        if (this.health > damage) {
+        if (this.health > 0) {
             return `${this.name} has received ${damage} points of damage`
         }
         else {
@@ -51,7 +51,7 @@ class Saxon extends Soldier {
     // No need to add this method due to the inheritance
     receiveDamage (damage) {
         this.health = this.health - damage;
-        if (this.health > damage) {
+        if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`
         }
         else {
@@ -61,4 +61,12 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+    constructor() {
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+    }
+    addViking(viking) {
+
+    }
+}
