@@ -75,8 +75,24 @@ class War {
     }
 
     vikingAttack () {
+        
+        
+    }
+
+    saxonAttack () {
 
         
     }
+
+    showStatus () {
+
+        if (war.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!"
+        }
+
+        
+    }
+
+
     }
     
