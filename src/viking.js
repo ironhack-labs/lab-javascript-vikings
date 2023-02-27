@@ -71,6 +71,10 @@ let randomViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.leng
 let randomSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
 let result = randomSaxon.receiveDamage(randomViking.strength);
 
+if (result === `A Saxon has died in combat`){
+    this.saxonArmy.splice(randomSaxon,1);
+}
+return result;
 }
 
 saxonAttack() {
@@ -78,8 +82,7 @@ saxonAttack() {
 }
 
 showStatus() {
-    this.saxonArmy = [];
-    this.vikingArmy = [];
+
 
     if (this.saxonArmy.length === 0 ) {
         return "Vikings have won the war of the century!"
