@@ -4,6 +4,30 @@
 
 ![giphy](https://user-images.githubusercontent.com/76580/167318130-3f0e5e19-86bc-4278-aaab-a988febcea3f.gif)
 
+<details>
+  <summary>
+   <h2>Learning Goals</h2>
+  </summary>
+
+  This exercise is designed to allow you practice and apply the concepts and techniques taught in class. 
+
+  Upon completion of this exercise, you will be able to:
+
+  - Run predefined tests in Jasmine to verify that the program meets the technical requirements.
+  - Identify expected code behavior by reading and understanding test results and errors.
+  - Define a `class` and use it to create objects (instances).
+  - Create a subclass that extends a parent class using `extends` and `super()` to inherit properties and methods.
+  - Define and implement class methods that use the `this` keyword to access and manipulate object properties.
+  - Add or remove items from an array using the array methods (`push`, `pop`, `shift`, `unshift`, and `splice`).
+  - Iterate over arrays using the `for` and `forEach` loops.
+  - Pass values as arguments to functions.
+  - Use the `return` keyword to return a value from a function.
+
+  <br>
+  <hr> 
+
+</details>
+
 ## Introduction
 
 We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now let's work with our Viking friends, applying all of the concepts we have just learned.
