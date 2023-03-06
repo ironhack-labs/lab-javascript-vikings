@@ -9,7 +9,7 @@
    <h2>Learning Goals</h2>
   </summary>
 
-  This exercise is designed to allow you practice and apply the concepts and techniques taught in class. 
+ This exercise allows you to practice and apply the concepts and techniques taught in class. 
 
   Upon completion of this exercise, you will be able to:
 
@@ -30,7 +30,7 @@
 
 ## Introduction
 
-We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now let's work with our Viking friends, applying all of the concepts we have just learned.
+We have learned Object-oriented programming and how `class` and inheritance work in JavaScript. Now let's work with our Viking friends, applying the concepts we have just learned.
 
 <br>
 
@@ -46,9 +46,9 @@ We have learned Object-oriented programming and how `class` and inheritance work
 - Upon completion, run the following commands:
 
 ```bash
-$ git add .
-$ git commit -m "Solved lab"
-$ git push origin master
+git add .
+git commit -m "Solved lab"
+git push origin master
 ```
 
 - Create a Pull Request so that your TAs can check your work.
@@ -195,7 +195,7 @@ Modify the `Saxon`, constructor function, have it inherit from `Soldier` and re-
 
 #### class
 
-- You don't have to include a constructor method since this class will inherit perfectly from the parents class, both, the health and the strength (it `extends` Soldier class :wink: )
+- You don't have to include a constructor method since this class will inherit perfectly from the parents class, both the health and the strength (it `extends` Soldier class :wink: )
 
 #### `attack()` method
 
@@ -306,7 +306,9 @@ Returns the current status of the `War` based on the size of the armies.
 
   If you are stuck in your code and don't know how to solve the problem or where to start, you should take a step back and try to form a clear question about the specific issue you are facing. This will help you narrow down the problem and come up with potential solutions.
 
+
   For example, is it a concept that you don't understand, or are you receiving an error message that you don't know how to fix? It is usually helpful to try to state the problem as clearly as possible, including any error messages you are receiving. This can help you communicate the issue to others and potentially get help from classmates or online resources. 
+
 
   Once you have a clear understanding of the problem, you will be able to start working toward the solution.
 
@@ -332,7 +334,7 @@ Returns the current status of the `War` based on the size of the armies.
   <summary>How do I loop over an array using the <code>forEach()</code> method?</summary>
   <br>
 
-  The `forEach()` method executes a provided function once for each array element. It does not return a new array, but rather executes the function on each element in the array.
+  The `forEach()` method executes a provided function once for each array element. It does not return a new array but rather executes the function on each element in the array.
 
   The syntax of the `forEach()` method is as follows:
 
@@ -368,7 +370,7 @@ Returns the current status of the `War` based on the size of the armies.
   <summary>How do I remove an element from an array?</summary>
   <br>
 
-  To remove an array element at a specified index, you should use the `splice()` method. The `splice()` method modifies the original array and returns an array containing the removed elements. 
+  You should use the `splice()` method to remove an array element at a specified index. The `splice()` method modifies the original array and returns an array containing the removed elements. 
 
   Syntax:
 
@@ -445,26 +447,22 @@ Returns the current status of the `War` based on the size of the armies.
   <summary>I am unable to push changes to the repository. What should I do?</summary>
   <br>
 
-  There are a couple of possible reasons why you may be unable to *push* changes to a Git repository:
+There are a couple of possible reasons why you may be unable to *push* changes to a Git repository:
 
-  1. **You have not committed your changes:** Before you can push your changes to the repository, you need to commit them using the `git commit` command. Make sure you have committed your changes and try pushing again. To do this, run the following terminal commands from the project folder:
-
+1. **You have not committed your changes:** Before you can push your changes to the repository, you need to commit them using the `git commit` command. Make sure you have committed your changes and try pushing again. To do this, run the following terminal commands from the project folder:
   ```bash
   git add .
   git commit -m "Your commit message"
   git push
   ```
+2. **You do not have permission to push to the repository:** If you have cloned the repository directly from the main Ironhack repository without making a *Fork* first, you do not have write access to the repository.
+To check which remote repository you have cloned, run the following terminal command from the project folder:
+  ```bash
+  git remote -v
+  ```
+If the link shown is the same as the main Ironhack repository, you will need to fork the repository to your GitHub account first and then clone your fork to your local machine to be able to push the changes.
 
-  2. **You do not have permission to push to the repository:** If you have cloned the repository directly from the main Ironhack repository without making a *Fork* first, you do not have write access to the repository.
-   To check which remote repository you have cloned, run the following terminal command from the project folder:
-
-   ```bash
-   git remote -v
-   ```
-
-   If the link shown is the same as the main Ironhack repository, you will need to fork the repository to your GitHub account first, and then clone your fork to your local machine to be able to push the changes.
-
-   **Note:** You may want to make a copy of the code you have locally, to avoid losing it in the process.
+**Note**: You should make a copy of your local code to avoid losing it in the process.
 
   [Back to top](#faqs)
 
