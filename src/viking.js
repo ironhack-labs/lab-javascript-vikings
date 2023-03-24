@@ -6,11 +6,11 @@ class Soldier {
     }
 
     attack() {
-        return this.health;
+        return this.strength;
     }
 
     receiveDamage(damage) {
-        this.health =- damage;
+        this.health = this.health- damage;
     }
 }
 
@@ -28,7 +28,7 @@ class Viking extends Soldier {
     receiveDamage(damage) {
         this.health = this.health - damage;
         if (this.health >= 1) {
-            return `${this.name} has received DAMAGE points of damage`;
+            return `${this.name} has received ${damage} points of damage`;
         } else {
             return `${this.name} has died in act of combat`
         }
@@ -58,6 +58,10 @@ class Saxon extends Soldier {
         }
     }
 }
+
+let viking = new Viking ('Ragnar', 6, 9)
+
+console.log(viking)
 
 // War
 class War {}
