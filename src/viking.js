@@ -32,8 +32,9 @@ class Viking extends Soldier {
 
 // Saxon
 class Saxon extends Soldier {
+    //No constructor necessary because parameters of Saxon are the same as Soldier. 
     receiveDamage(damage) {
-        super.receiveDamage(damage);
+        super.receiveDamage(damage); //Saxon receives damage.
         if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`;
         } else {
@@ -48,11 +49,11 @@ class War {
         this.vikingArmy = [];
         this.saxonArmy = [];
     }
-    addViking(Viking){
-        this.vikingArmy.push(Viking);
+    addViking(vikingObj){
+        this.vikingArmy.push(vikingObj);
     }
-    addSaxon(Saxon){
-        this.saxonArmy.push(Saxon);
+    addSaxon(saxonObj){
+        this.saxonArmy.push(saxonObj);
     }
     vikingAttack(){
         const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
@@ -61,7 +62,7 @@ class War {
         const randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
         const randomViking = this.vikingArmy[randomVikingIndex];   
         
-        const result = randomSaxon.receiveDamage(randomViking.strength);
+        const result = randomSaxon.receiveDamage(randomViking.attack()); //same as randomViking.damage
 
         if (randomSaxon.health <= 0) {
             this.saxonArmy.splice(randomSaxonIndex, 1); //Finds the radnom Saxon soldier in the SaxonArmy Array that has zero health and deletes that one element. 
