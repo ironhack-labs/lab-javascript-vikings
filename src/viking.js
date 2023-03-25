@@ -79,6 +79,29 @@ class War {
         })
         return receivedSaxonDamage;
     }
+    // soldierAttack() {
+    //     let randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length >> 0)];
+    //     let randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length >> 0)];
+        
+    //     let vikingReceiveDamage = randomViking.receiveDamage(randomSaxon.strength);
+    //     let saxonReceiveDamage = randomSaxon.receiveDamage(randomViking.strength);
+      
+    //     if (vikingReceiveDamage) {
+    //       this.vikingArmy.forEach((viking, i) => {
+    //       if (vikingReceiveDamage > randomViking.health) {
+    //         this.vikingArmy.splice(viking[i]);
+    //       }
+    //     })
+    //       return vikingReceiveDamage;
+    //     } else if (saxonReceiveDamage) {
+    //         this.saxonArmy.forEach((saxon, i) => {
+    //         if (saxonReceiveDamage > randomSaxon.health) {
+    //           this.saxonArmy.splice(saxon[i]);
+    //       }
+    //     })
+    //       return saxonReceiveDamage;
+    //     }  
+    // } 
     showStatus() {
         if (this.saxonArmy == 0) {
             return  `Vikings have won the war of the century!`;
