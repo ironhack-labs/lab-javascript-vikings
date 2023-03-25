@@ -118,17 +118,17 @@ describe('Viking', () => {
 
     it('should return "NAME has received DAMAGE points of damage", if the Viking is still alive', () => {
       expect(viking.receiveDamage(50)).toEqual(
-        `${name} has received 50 points of damage`
+        `${name} has received 50 points of damage.`
       );
     
       expect(viking.receiveDamage(75)).toEqual(
-        `${name} has received 75 points of damage`
+        `${name} has received 75 points of damage.`
       );
     });
 
     it('should return "NAME has died in act of combat", if the Viking dies', () => {
       expect(viking.receiveDamage(health)).toEqual(
-        `${name} has died in act of combat`
+        `${name} has died in act of combat.`
       );
     });
   });
@@ -201,15 +201,15 @@ describe('Saxon', () => {
 
     it('should return "A Saxon has received DAMAGE points of damage", if the Saxon is still alive', () => {
       expect(saxon.receiveDamage(45)).toEqual(
-        'A Saxon has received 45 points of damage'
+        'A Saxon has received 45 points of damage.'
       );
       expect(saxon.receiveDamage(10)).toEqual(
-        'A Saxon has received 10 points of damage'
+        'A Saxon has received 10 points of damage.'
       );
     });
 
     it('should return "A Saxon has died in combat", if the Saxon dies', () => {
-      expect(saxon.receiveDamage(health)).toEqual('A Saxon has died in combat');
+      expect(saxon.receiveDamage(health)).toEqual('A Saxon has died in combat.');
     });
   });
 });
@@ -315,7 +315,7 @@ describe('War', () => {
       });
 
       it('should return result of calling receiveDamage() of a Saxon with the strength of a Viking', () => {
-        expect(war.vikingAttack()).toEqual('A Saxon has died in combat');
+        expect(war.vikingAttack()).toEqual('A Saxon has died in combat.');
       });
     });
 
@@ -343,7 +343,7 @@ describe('War', () => {
 
       it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
         expect(war.saxonAttack()).toEqual(
-          `${viking.name} has received ${saxon.strength} points of damage`
+          `${viking.name} has received ${saxon.strength} points of damage.`
         );
       });
     });
