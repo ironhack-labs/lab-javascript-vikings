@@ -92,8 +92,6 @@ class War {
     }
     return result;
 
-
-    
   }
    // showStatus()
    showStatus() {
@@ -110,10 +108,11 @@ class War {
 }
 
 
+//TEST CASES
 //create vikings and saxons
-// let viking1 = new Viking("viking1", 100, 10);
-// let viking2 = new Viking("viking2", 200, 20);
-// let saxon1 = new Saxon(10, 1);
+// let viking1 = new Viking("viking1", 100, 10); //creates a new viking object
+// let viking2 = new Viking("viking2", 200, 20); 
+// let saxon1 = new Saxon(10, 1); //create new saxon object
 // let saxon2 = new Saxon(20, 2);
 
 // let war1 = new War();
@@ -123,3 +122,5 @@ class War {
 // war1.addViking(viking2);
 
 // console.log(war1);
+
+
