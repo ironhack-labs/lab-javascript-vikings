@@ -1,5 +1,5 @@
 // Soldier
-class Soldier {}
+class Soldier {health, strength}
 
 // Viking
 class Viking {}
@@ -9,3 +9,15 @@ class Saxon {}
 
 // War
 class War {}
+fdsafdasfdsafdsafdsafdsf
+fdsafdasfdsafdsafdsafdsfsf
+SharedArrayBufferds
+(dsaf
+    dsa
+    fdsa
+    f
+    dsaff
+    fasdf
+    ) => {
+    
+}
