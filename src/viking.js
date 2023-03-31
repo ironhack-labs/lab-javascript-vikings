@@ -66,23 +66,25 @@ class War {
     vikingAttack(){
 
         let randomSaxon = this.saxonArmy[Math.floor(Math.random() * (this.saxonArmy.length-1))];
-        let saxonHealth = randomSaxon.health;
+        let saxon = randomSaxon
 
         let randomViking = this.vikingArmy[Math.floor(Math.random() * (this.vikingArmy.length-1))]
         let vikingStrength = randomViking.strength
 
-
-        randomViking.receiveDamage(randomSaxon.attack())
+        let attack = saxon.receiveDamage(vikingStrength)
 
     }
-    // saxonAttack()
-    // showStatus()
+    saxonAttack(){
+
+    }
+
+    
+    showStatus(){
+
+
+    }
 }
 
 
-// const garfield = new Viking('Harald', 150, 300);
-// console.log(garfield)
 
-const garfield = new War();
-console.log(garfield)
 
