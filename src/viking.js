@@ -1,4 +1,4 @@
-// Soldier
+/*  ---- Soldier ----  */
 class Soldier {
     constructor(health, strength){
         this.health = health;
@@ -14,9 +14,9 @@ class Soldier {
     }
 }
 
-// Viking
+/*  ---- Viking ----  */
 class Viking extends Soldier {
-    constructor(name,health, strength){
+    constructor(name, health, strength){
         super(health, strength)
         this.name = name;
     }
@@ -35,7 +35,7 @@ class Viking extends Soldier {
     }
 }
 
-// Saxon
+/*  ---- Saxon ----  */
 class Saxon extends Soldier {
     attack() {
         return this.strength;
@@ -51,18 +51,14 @@ class Saxon extends Soldier {
     }
 }
 
-
-
-// War
-
+/*  ---- War ----  */
 class War {
-    //class
     constructor(){
         this.vikingArmy = [];
         this.saxonArmy = [];
     }
 
-    //adding vikings & saxons method
+    //Method to add vikings & saxons to each array
     addViking(vikingObj) {
         this.vikingArmy.push(vikingObj);
     }
@@ -71,14 +67,66 @@ class War {
         this.saxonArmy.push(saxonObj);
     }
 
-    //armies attack
+    //Viking attack
     vikingAttack() {
-        Saxon.receiveDamage().demage = Viking.strength;
+        // Viking Attack: Pick a random viking from viking array
+        let i = Math.floor(Math.random() * this.vikingArmy.length);
+        let vikingAttacker = this.vikingArmy[i];
+
+        // Saxon Defend: Pick a random saxon from saxon array
+        let j = Math.floor(Math.random() * this.saxonArmy.length);
+        let saxonDefender = this.saxonArmy[j];
+
+        // Result of the combat
+        let resultOfVikingAttack = saxonDefender.receiveDamage(vikingAttacker.strength);
+
+        // Remove dead Saxons from the army
+        if (saxonDefender.health <= 0) {
+            this.saxonArmy.splice(this.saxonArmy.indexOf(saxonDefender), 1);
+        }
+
+        return resultOfVikingAttack;
     }
 
+    //Saxon attack
     saxonAttack() {
+        // Saxon Attack: Pick a random saxon from saxon array
+        let k = Math.floor(Math.random() * this.saxonArmy.length);
+        let saxonAttacker = this.saxonArmy[k];
 
+        // Viking Defend: Pick a random viking from viking array
+        let l = Math.floor(Math.random() * this.vikingArmy.length);
+        let vikingDefender = this.vikingArmy[l];
+
+        // Result of the combat
+        let resultOfSaxonAttack = vikingDefender.receiveDamage(saxonAttacker.strength);
+
+        // Remove dead Saxons from the army
+        if (vikingDefender.health <= 0) {
+            this.vikingArmy.splice(this.vikingArmy.indexOf(vikingDefender), 1);
+        }
+        
+        return resultOfSaxonAttack;
     }
+
+    /* Iteration 5 get cleaner code
+
+    attack(attacker, defender) {
+        let i = Math.floor(Math.random() * attacker.length);
+        let j = Math.floor(Math.random() * defender.length);
+
+        let warAttacker = attacker[i];
+        let warDefender = defender[j];
+
+        let resultOfAttack = warDefender.receiveDamage(warAttacker.strength);
+
+        if(warDefender.health <= 0) {
+            defender.splice(defender.indexOf(warDefender), 1);
+        }
+
+        return resultOfAttack;
+    }
+    */
 
     showStatus(){
         console.log(this.saxonArmy)
@@ -91,11 +139,3 @@ class War {
         }
     }
 }
-
-/* let viking1 = new Viking (100, 100)
-let saxon1 = new Saxon (200, 50)
-
-war(viking1, saxon1);
-
-viking1.war()
-*/
