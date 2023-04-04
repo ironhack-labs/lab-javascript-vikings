@@ -8,7 +8,8 @@ class Soldier {
         return this.strength;
     }
     receiveDamage(damage){
-        damage - this.health;
+        this.damage = damage;
+        const currentHealth = this.health - this.damage;
     }
 }
 
@@ -17,6 +18,18 @@ class Viking extends Soldier {
     constructor(name, health, strength){
         super(health, strength);
         this.name = name;
+    }
+    attack(){
+        return this.strength;
+    }
+    receiveDamage(damage){
+        this.damage = damage;
+        const currentHealth = this.health - this.damage;
+        if(this.health > 0){return `${this.name} has received ${this.damage} points of damage`}
+        else{return `${this.name} has died in act of combat`}
+    }
+    battleCry(){
+        return "Odin Owns You All!"
     }
 }
 
