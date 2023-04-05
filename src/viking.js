@@ -47,4 +47,34 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+    constructor(){
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+    }
+
+    addViking(vikingArmy){
+        const newViking = this.vikingArmy.push();
+    }
+    addSaxon(saxonArmy){
+        const newSaxon = this.saxonArmy.push();
+    }
+    vikingAttack(){
+        let attackOfViking = Saxon.receiveDamage;
+        delete this.saxonArmy[0];
+        return attackOfViking;
+    }
+    saxonAttack(){
+        let attackOfSaxon = Viking.receiveDamage;
+        delete this.vikingArmy[0];
+        return attackOfSaxon;
+    }
+    showStatus(){
+        if (this.saxonArmy = []){return "Vikings have won the war of the century!"}
+        else if (this.vikingArmy = []){return "Saxons have fought for their lives and survived another day..."}
+        else {return "Vikings and Saxons are still in the thick of battle."}
+    }
+}
+
+let viking1 = new Viking('Raul', 100, 70);
+let saxon1 = new Saxon(70, 50);
