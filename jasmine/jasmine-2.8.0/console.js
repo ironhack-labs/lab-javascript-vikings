@@ -1,190 +1,131 @@
-/*
-Copyright (c) 2008-2017 Pivotal Labs
 
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
+/**
+ Starting with version 2.0, this file "boots" Jasmine, performing all of the necessary initialization before executing the loaded environment and all of a project's specs. This file should be loaded after `jasmine.js` and `jasmine_html.js`, but before any project source files or spec files are loaded. Thus this file can also be used to customize Jasmine for a project.
+ If a project is using Jasmine via the standalone distribution, this file can be customized directly. If a project is using Jasmine via the [Ruby gem][jasmine-gem], this file can be copied into the support directory via `jasmine copy_boot_js`. Other environments (e.g., Python) will have different mechanisms.
+ The location of `boot.js` can be specified and/or overridden in `jasmine.yml`.
+ [jasmine-gem]: http://github.com/pivotal/jasmine-gem
+ */
 
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
+ (function() {
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
-LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
-OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
-WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
-function getJasmineRequireObj() {
-  if (typeof module !== 'undefined' && module.exports) {
-    return exports;
-  } else {
-    window.jasmineRequire = window.jasmineRequire || {};
-    return window.jasmineRequire;
+  /**
+   * ## Require &amp; Instantiate
+   *
+   * Require Jasmine's core files. Specifically, this requires and attaches all of Jasmine's code to the `jasmine` reference.
+   */
+  window.jasmine = jasmineRequire.core(jasmineRequire);
+
+  /**
+   * Since this is being run in a browser and the results should populate to an HTML page, require the HTML-specific Jasmine code, injecting the same reference.
+   */
+  jasmineRequire.html(jasmine);
+
+  /**
+   * Create the Jasmine environment. This is used to run all specs in a project.
+   */
+  var env = jasmine.getEnv();
+
+  /**
+   * ## The Global Interface
+   *
+   * Build up the functions that will be exposed as the Jasmine public interface. A project can customize, rename or alias any of these functions as desired, provided the implementation remains unchanged.
+   */
+  var jasmineInterface = jasmineRequire.interface(jasmine, env);
+
+  /**
+   * Add all of the Jasmine global/public interface to the global scope, so a project can use the public interface directly. For example, calling `describe` in specs instead of `jasmine.getEnv().describe`.
+   */
+  extend(window, jasmineInterface);
+
+  /**
+   * ## Runner Parameters
+   *
+   * More browser specific code - wrap the query string in an object and to allow for getting/setting parameters from the runner user interface.
+   */
+
+  var queryString = new jasmine.QueryString({
+    getWindowLocation: function() { return window.location; }
+  });
+
+  var filterSpecs = !!queryString.getParam("spec");
+
+  var catchingExceptions = queryString.getParam("catch");
+  env.catchExceptions(typeof catchingExceptions === "undefined" ? true : catchingExceptions);
+
+  var throwingExpectationFailures = queryString.getParam("throwFailures");
+  env.throwOnExpectationFailure(throwingExpectationFailures);
+
+  var random = queryString.getParam("random");
+  env.randomizeTests(random);
+
+  var seed = queryString.getParam("seed");
+  if (seed) {
+    env.seed(seed);
   }
-}
 
-getJasmineRequireObj().console = function(jRequire, j$) {
-  j$.ConsoleReporter = jRequire.ConsoleReporter();
-};
+  /**
+   * ## Reporters
+   * The `HtmlReporter` builds all of the HTML UI for the runner page. This reporter paints the dots, stars, and x's for specs, as well as all spec names and all failures (if any).
+   */
+  var htmlReporter = new jasmine.HtmlReporter({
+    env: env,
+    onRaiseExceptionsClick: function() { queryString.navigateWithNewParam("catch", !env.catchingExceptions()); },
+    onThrowExpectationsClick: function() { queryString.navigateWithNewParam("throwFailures", !env.throwingExpectationFailures()); },
+    onRandomClick: function() { queryString.navigateWithNewParam("random", !env.randomTests()); },
+    addToExistingQueryString: function(key, value) { return queryString.fullStringWithNewParam(key, value); },
+    getContainer: function() { return document.body; },
+    createElement: function() { return document.createElement.apply(document, arguments); },
+    createTextNode: function() { return document.createTextNode.apply(document, arguments); },
+    timer: new jasmine.Timer(),
+    filterSpecs: filterSpecs
+  });
 
-getJasmineRequireObj().ConsoleReporter = function() {
+  /**
+   * The `jsApiReporter` also receives spec results, and is used by any environment that needs to extract the results  from JavaScript.
+   */
+  env.addReporter(jasmineInterface.jsApiReporter);
+  env.addReporter(htmlReporter);
 
-  var noopTimer = {
-    start: function(){},
-    elapsed: function(){ return 0; }
+  /**
+   * Filter which specs will be run by matching the start of the full name against the `spec` query param.
+   */
+  var specFilter = new jasmine.HtmlSpecFilter({
+    filterString: function() { return queryString.getParam("spec"); }
+  });
+
+  env.specFilter = function(spec) {
+    return specFilter.matches(spec.getFullName());
   };
 
-  function ConsoleReporter(options) {
-    var print = options.print,
-      showColors = options.showColors || false,
-      onComplete = options.onComplete || function() {},
-      timer = options.timer || noopTimer,
-      specCount,
-      failureCount,
-      failedSpecs = [],
-      pendingCount,
-      ansi = {
-        green: '\x1B[32m',
-        red: '\x1B[31m',
-        yellow: '\x1B[33m',
-        none: '\x1B[0m'
-      },
-      failedSuites = [];
+  /**
+   * Setting up timing functions to be able to be overridden. Certain browsers (Safari, IE 8, phantomjs) require this hack.
+   */
+  window.setTimeout = window.setTimeout;
+  window.setInterval = window.setInterval;
+  window.clearTimeout = window.clearTimeout;
+  window.clearInterval = window.clearInterval;
 
-    print('ConsoleReporter is deprecated and will be removed in a future version.');
+  /**
+   * ## Execution
+   *
+   * Replace the browser window's `onload`, ensure it's called, and then run all of the loaded specs. This includes initializing the `HtmlReporter` instance and then executing the loaded Jasmine environment. All of this will happen after all of the specs are loaded.
+   */
+  var currentWindowOnload = window.onload;
 
-    this.jasmineStarted = function() {
-      specCount = 0;
-      failureCount = 0;
-      pendingCount = 0;
-      print('Started');
-      printNewline();
-      timer.start();
-    };
-
-    this.jasmineDone = function() {
-      printNewline();
-      for (var i = 0; i < failedSpecs.length; i++) {
-        specFailureDetails(failedSpecs[i]);
-      }
-
-      if(specCount > 0) {
-        printNewline();
-
-        var specCounts = specCount + ' ' + plural('spec', specCount) + ', ' +
-          failureCount + ' ' + plural('failure', failureCount);
-
-        if (pendingCount) {
-          specCounts += ', ' + pendingCount + ' pending ' + plural('spec', pendingCount);
-        }
-
-        print(specCounts);
-      } else {
-        print('No specs found');
-      }
-
-      printNewline();
-      var seconds = timer.elapsed() / 1000;
-      print('Finished in ' + seconds + ' ' + plural('second', seconds));
-      printNewline();
-
-      for(i = 0; i < failedSuites.length; i++) {
-        suiteFailureDetails(failedSuites[i]);
-      }
-
-      onComplete(failureCount === 0);
-    };
-
-    this.specDone = function(result) {
-      specCount++;
-
-      if (result.status == 'pending') {
-        pendingCount++;
-        print(colored('yellow', '*'));
-        return;
-      }
-
-      if (result.status == 'passed') {
-        print(colored('green', '.'));
-        return;
-      }
-
-      if (result.status == 'failed') {
-        failureCount++;
-        failedSpecs.push(result);
-        print(colored('red', 'F'));
-      }
-    };
-
-    this.suiteDone = function(result) {
-      if (result.failedExpectations && result.failedExpectations.length > 0) {
-        failureCount++;
-        failedSuites.push(result);
-      }
-    };
-
-    return this;
-
-    function printNewline() {
-      print('\n');
+  window.onload = function() {
+    if (currentWindowOnload) {
+      currentWindowOnload();
     }
+    htmlReporter.initialize();
+    env.execute();
+  };
 
-    function colored(color, str) {
-      return showColors ? (ansi[color] + str + ansi.none) : str;
-    }
-
-    function plural(str, count) {
-      return count == 1 ? str : str + 's';
-    }
-
-    function repeat(thing, times) {
-      var arr = [];
-      for (var i = 0; i < times; i++) {
-        arr.push(thing);
-      }
-      return arr;
-    }
-
-    function indent(str, spaces) {
-      var lines = (str || '').split('\n');
-      var newArr = [];
-      for (var i = 0; i < lines.length; i++) {
-        newArr.push(repeat(' ', spaces).join('') + lines[i]);
-      }
-      return newArr.join('\n');
-    }
-
-    function specFailureDetails(result) {
-      printNewline();
-      print(result.fullName);
-
-      for (var i = 0; i < result.failedExpectations.length; i++) {
-        var failedExpectation = result.failedExpectations[i];
-        printNewline();
-        print(indent(failedExpectation.message, 2));
-        print(indent(failedExpectation.stack, 2));
-      }
-
-      printNewline();
-    }
-
-    function suiteFailureDetails(result) {
-      for (var i = 0; i < result.failedExpectations.length; i++) {
-        printNewline();
-        print(colored('red', 'An error was thrown in an afterAll'));
-        printNewline();
-        print(colored('red', 'AfterAll ' + result.failedExpectations[i].message));
-
-      }
-      printNewline();
-    }
+  /**
+   * Helper function for readability above.
+   */
+  function extend(destination, source) {
+    for (var property in source) destination[property] = source[property];
+    return destination;
   }
 
-  return ConsoleReporter;
-};
+}());
