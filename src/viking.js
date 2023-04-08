@@ -23,8 +23,8 @@ class Viking extends Soldier{
         super.attack();
         return this.strength
     }
-    receiveDamage(vikingDamage){
-        this.damage = vikingDamage;
+    receiveDamage(damage){
+        this.damage = damage;
         this.health -= this.damage;
         if(this.health > 0){
             return `${this.name} has received ${this.damage} points of damage`
@@ -43,8 +43,8 @@ class Saxon extends Soldier{
         super.attack();
         return this.strength
     }
-    receiveDamage(saxonDamage){
-        this.damage = saxonDamage
+    receiveDamage(damage){
+        this.damage = damage
         this.health -= this.damage
         if(this.health > 0){
             return `A Saxon has received ${this.damage} points of damage`
@@ -62,15 +62,42 @@ class War {
         this.saxonArmy = []
     }
 
-     addViking(vikingName){
-        this.vikingArmy.push(vikingName)
+     addViking(viking){
+        this.vikingArmy.push(viking)
       }
-    addSaxon(saxonName){
-        this.saxonArmy.push(saxonName)
+    addSaxon(saxon){
+        this.saxonArmy.push(saxon)
     }
     vikingAttack(){
-        
+        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length)
+        const randomViking = Math.floor(Math.random() * this.vikingArmy.length)
+
+        const viking = this.vikingArmy[randomViking]
+        const saxon = this.saxonArmy[randomSaxon]
+        const damage = viking.strength
+        const result = saxon.receiveDamage(damage)
+
+        if (saxon.health <= 0) {
+            this.saxonArmy.splice(saxon, 1)
+        }
+
+        return result
+
     }
-    // saxonAttack()
-    // showStatus()
+    saxonAttack(){
+        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+        const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+
+        const saxon = this.saxonArmy[randomSaxon];
+        const viking = this.vikingArmy[randomViking];
+        const damage = saxon.strength;
+        const result = viking.receiveDamage(damage);
+
+        if (viking.health <= 0) {
+        this.vikingArmy.splice(randomViking, 1);
+        }
+
+        return result;
+    }
+    // showStatus(){}
 }
