@@ -65,7 +65,7 @@ vikingAttack(){
     let randomViking = this.vikingArmy[Math.floor(Math.random())];
     randomSaxon.receiveDamage(randomViking.attack());
     if(randomSaxon.health <= 0){
-         this.saxonArmy.pop(randomSaxon);
+         this.saxonArmy.splice(randomSaxon,1);
  return "A Saxon has died in combat"
     }else {
         return `A Saxon has received ${randomViking.strength} points of damage`;
@@ -77,7 +77,7 @@ saxonAttack(){
     let randomViking = this.vikingArmy[Math.floor(Math.random())];
     randomViking.receiveDamage(randomSaxon.attack());
     if(randomViking.health <= 0){
-         this.vikingArmy.pop(randomViking);
+         this.vikingArmy.splice(randomViking,1);
          return `${randomViking.name} has died in act of combat`;
         }else {
             return `${randomViking.name} has received ${randomSaxon.strength} points of damage`;
