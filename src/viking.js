@@ -70,7 +70,7 @@ class War {
         if(randomSaxon.health>0){
             return `A Saxon has received ` + randomViking.strength + ` points of damage`
         }
-        this.saxonArmy.pop(randomSaxon)
+        this.saxonArmy.splice(randomSaxon,1)
         return `A Saxon has died in combat`
         
         
@@ -84,7 +84,7 @@ class War {
         if(randomViking.health>0){
             return randomViking.name + ` has received ` + randomSaxon.strength + ` points of damage`
         }
-        this.vikingArmy.pop(randomViking)
+        this.vikingArmy.splice(randomViking,1)
         return `${randomViking.name} has died in act of combat`
         
     }
