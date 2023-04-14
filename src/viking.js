@@ -28,11 +28,11 @@ class Soldier {
       if(this.health <= 0 ){ 
           return `${this.name} has died in act of combat`;
      } else {
-         return `${this.name} has received ${Damage} points of damage`;
+         return `${this.name}has received ${Damage} points of damage`;
       } 
      }
      battleCry(){
-      return 'Odin Owns You All!'
+      return "Odin Owns You All!"
      } 
     }
      
@@ -44,7 +44,8 @@ class Soldier {
     super.receiveDamage(Damage);
     if(this.health > 0 ){ 
         return `A Saxon has received  ${Damage} points of damage`;
-   } else {
+   } 
+   else {
        return `A Saxon has died in combat`;
     } 
 
