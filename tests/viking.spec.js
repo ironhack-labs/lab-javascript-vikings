@@ -318,6 +318,7 @@ describe('War', () => {
         expect(war.vikingAttack()).toEqual('A Saxon has died in combat');
       });
     });
+    
 
     describe('saxonAttack() method', () => {
       it('should be a declared', () => {
@@ -340,7 +341,7 @@ describe('War', () => {
         }
         expect(war.vikingArmy.length).toEqual(0);
       });
-
+      
       it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
         expect(war.saxonAttack()).toEqual(
           `${viking.name} has received ${saxon.strength} points of damage`
