@@ -1,3 +1,4 @@
+
 // Soldier
 class Soldier {
     constructor(health, strength) {
