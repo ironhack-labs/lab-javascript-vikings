@@ -69,22 +69,39 @@ class War {
     
     let randomSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
     let randomViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
-
-    let indexOfSaxon = this.saxonArmy.indexOf(randomSaxon)
-    let indexOfViking = this.vikingArmy.indexOf(randomViking)
-
-    console.log(randomSaxon)
+    let indexOfRandomSaxon = this.saxonArmy.indexOf(randomSaxon)
     
     randomSaxon.receiveDamage(randomViking.strength)
-
     //NOS RENDIMOS!!!!!!!!!!!! HAPPY WEEKEND
-
+    if(randomSaxon.health === 0 || randomSaxon.health < 0) {
+      this.saxonArmy.splice(indexOfRandomSaxon)
+      return 'A Saxon has died in combat'
+    }
    }
+
    saxonAttack() {
 
-   }
-   showStatus() {
+    let randomSaxon = this.saxonArmy[Math.floor(this.saxonArmy.length * Math.random())];
+    let randomViking = this.vikingArmy[Math.floor(this.vikingArmy.length * Math.random())];
 
+    let indexOfRandomViking = this.vikingArmy.indexOf(randomViking)
+    
+    randomViking.receiveDamage(randomSaxon.strength)
+
+    if(randomViking.health === 0 || randomViking.health < 0) {
+    this.vikingArmy.splice(indexOfRandomViking)
+   }
+     return `${randomViking.name} has received ${randomSaxon.strength} points of damage`
+   }
+
+   showStatus() {
+    if(this.vikingArmy.length === 0) {
+        return 'Saxons have fought for their lives and survived another day...'
+    }
+    if(this.saxonArmy.length === 0) {
+        return 'Vikings have won the war of the century!'
+    }
+    else return "Vikings and Saxons are still in the thick of battle."
    }
 }
 
