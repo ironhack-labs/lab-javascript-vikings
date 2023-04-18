@@ -17,19 +17,19 @@ class Soldier {
 // Viking
 class Viking extends Soldier {
     constructor (name, health, strength) {
-        this.name = name
+        this.name = name;
         super(health, strength)
     }
 
     receiveDamage(damage) {
-        this.health = this.health - damage
+        this.health -= damage
 
         if (this.health > 0) {
-            console.log(`${this.name} has received ${this.damage} points of damage`)
+            return `${this.name} has received ${damage} points of damage`
         }
 
-        else if (this.health <=0) {
-            console.log(`${this.name} has died in act of combat`)
+        else {
+            return `${this.name} has died in act of combat`
         }
     }
 
@@ -54,4 +54,14 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+    addViking();
+
+    addSaxon();
+
+    vikingAttack();
+
+    saxonAttack();
+
+    showStatus();
+}
