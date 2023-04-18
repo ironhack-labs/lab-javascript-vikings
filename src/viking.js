@@ -17,24 +17,24 @@ class Soldier {
 // Viking
 class Viking extends Soldier {
     constructor (name, health, strength) {
+        super(health, strength);
         this.name = name;
-        super(health, strength)
     }
 
     receiveDamage(damage) {
         this.health -= damage
 
         if (this.health > 0) {
-            return `${this.name} has received ${damage} points of damage`
+            return `${this.name} has received ${damage} points of damage`;
         }
 
         else {
-            return `${this.name} has died in act of combat`
+            return `${this.name} has died in act of combat`;
         }
     }
 
     battleCry() {
-        return 'Odin Owns You All!'
+        return 'Odin Owns You All!';
     }
 }
 
@@ -43,25 +43,67 @@ class Saxon extends Soldier {
    receiveDamage(damage) {
     this.health = this.health - damage
 
-    if (this.health > 0) {
-        return `A Saxon has received ${damage} points of damage`
-    }
+    if (this.health > 0) return `A Saxon has received ${damage} points of damage`;
 
-   else if (this.health <= 0) {
-    return "A Saxon has died in combat"
-   }
+    else return "A Saxon has died in combat";
    }
 }
 
 // War
 class War {
-    addViking();
+    constructor() {
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+    };
 
-    addSaxon();
+    addViking(viking) {
+        this.vikingArmy.push(viking);
+    };
 
-    vikingAttack();
+    addSaxon(saxon) {
+        this.saxonArmy.push(saxon);
+    };
 
-    saxonAttack();
+    vikingAttack() {
+        // Select random viking
+        let viking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
 
-    showStatus();
+        // Select random saxon
+        let saxonIndex = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+
+        let saxon = this.saxonArmy[saxonIndex];
+
+        let resultAttack = saxon.receiveDamage(viking.strength)
+
+        // Saxon receive damage
+        saxon.receiveDamage(viking.strength);
+
+        // Remove Saxon from army if dead
+        if(saxon.health -= 0){
+            this.saxonArmy.splice(saxonIndex, 1)
+        }
+
+        return resultAttack;
+
+    };
+
+    saxonAttack() {
+        // Select random viking
+        let vikingIndex = [Math.floor(Math.random()*this.vikingArmy.length)];
+
+        let viking = this.vikingArmy[vikingIndex];
+
+        // Select random saxon
+        let saxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
+
+        let resultAttack = viking.receiveDamage(saxon.strength)
+
+        if (viking.health <= 0) {
+            this.vikingArmy.splice(vikingIndex, 1);
+        }
+
+        return resultAttack;
+    };
+
+    showStatus() {};
 }
