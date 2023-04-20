@@ -5,7 +5,7 @@ class Soldier {
     this.strength = strength
   }
 
-  attack () { 
+  attack() { 
     return this.strength
   }
 
@@ -33,7 +33,7 @@ class Viking extends Soldier {
     return message
   }
 
-  battleCry = () => { 
+  battleCry() { 
     return "Odin Owns You All!"
   }
 }
@@ -64,7 +64,6 @@ class War {
   constructor() {
     this.vikingArmy = []
     this.saxonArmy = []
-    this.armyHeadCount = this.saxonArmy.length + this.vikingArmy.length
   }
 
   addViking(viking) {
@@ -76,14 +75,19 @@ class War {
   }
 
   vikingAttack() {
-    const random = Math.floor(Math.random() * this.vikingArmy.length)
-    const randomViking = this.vikingArmy[random]
-    const randomSaxon = this.saxonArmy[random]
+    const randomV = Math.floor(Math.random() * this.vikingArmy.length)
+    const randomS = Math.floor(Math.random() * this.saxonArmy.length)
+    const randomViking = this.vikingArmy[randomV]
+    const randomSaxon = this.saxonArmy[randomS]
     let message = ""
 
-    randomSaxon.receiveDamage(randomViking.attack())
+
+    if (this.saxonArmy.length > 0) {
+      randomSaxon.receiveDamage(randomViking.attack())
+    }
+    
     if (randomSaxon.health <= 0) {
-      this.saxonArmy.splice(random, 1)
+      this.saxonArmy.splice(randomS, 1)
       message = "A Saxon has died in combat"
     } else {
       message = `A Saxon has received ${randomViking.strength} points of damage`
@@ -93,14 +97,18 @@ class War {
   }
 
   saxonAttack() {
-    const random = Math.floor(Math.random() * this.saxonArmy.length)
-    const randomSaxon = this.saxonArmy[random]
-    const randomViking = this.vikingArmy[random]
+    const randomS = Math.floor(Math.random() * this.saxonArmy.length)
+    const randomV = Math.floor(Math.random() * this.vikingArmy.length)
+    const randomSaxon = this.saxonArmy[randomS]
+    const randomViking = this.vikingArmy[randomV]
     let message = ""
 
-    randomViking.receiveDamage(randomSaxon.attack())
+    if (this.vikingArmy.length > 0) {
+      randomViking.receiveDamage(randomSaxon.attack())
+    }
+
     if (randomViking.health <= 0) {
-      this.vikingArmy.splice(random, 1)
+      this.vikingArmy.splice(randomV, 1)
       message = "A Viking has died in combat"
     } else {
       message = `${randomViking.name} has received ${randomSaxon.strength} points of damage`
@@ -125,3 +133,25 @@ class War {
   }
 }
 Object.freeze(War)
+
+
+
+
+const oldWar = new War
+const getRandomNumber = () => Math.floor(Math.random() * 100)
+
+for (let i = 0; i < 10; i++) {
+  const viking = new Viking(`viking #${i}`, getRandomNumber(), getRandomNumber())
+  const saxon = new Saxon(getRandomNumber(), getRandomNumber())
+  oldWar.addViking(viking)
+  oldWar.addSaxon(saxon)
+}
+
+while (oldWar.saxonArmy.length && oldWar.vikingArmy.length > 0) {
+  const randomNumber = Math.floor(Math.random() * 2) + 1
+  randomNumber % 2 === 0 ?
+    console.log(oldWar.saxonAttack())
+    :
+    console.log(oldWar.vikingAttack())
+}
+console.log(oldWar.showStatus())
