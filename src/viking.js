@@ -117,8 +117,8 @@ let strength;
 for(let i = 0; i < 10; i++){
     let randomIndexName = Math.floor(Math.random() * vikingNames.length);    
     nombre = vikingNames[randomIndexName];
-    health = Math.floor( Math.random() * (9000 - 3000 + 1) + 3000);
-    strength = Math.floor( Math.random() * (1000 - 500 + 1) + 500 );
+    health = Math.floor( Math.random() * (9001 - 3000) + 3000);
+    strength = Math.floor( Math.random() * (1001 - 500) + 500);
     if(health % 100 === 0 && strength % 100 === 0){
         vikingSoldier = new Viking(nombre, health, strength);
         startWar.addViking(vikingSoldier);
@@ -129,8 +129,8 @@ for(let i = 0; i < 10; i++){
 }
 //Create Saxon Army
 for(let i = 0; i < 10; i++){
-    health = Math.floor( Math.random() * (9000 - 3000 + 1) + 3000);
-    strength = Math.floor( Math.random() * (1000 - 500 + 1) + 500 );
+    health = Math.floor( Math.random() * (9001 - 3000) + 3000);
+    strength = Math.floor( Math.random() * (1001 - 500) + 500 );
     if(health % 100 === 0 && strength % 100 === 0){
     saxonSoldier = new Saxon(health, strength);
     startWar.addSaxon(saxonSoldier);
@@ -142,8 +142,8 @@ for(let i = 0; i < 10; i++){
 
 let randomNum;
 while(startWar.vikingArmy.length > 0 && startWar.saxonArmy.length > 0){
-    randomNum = Math.floor(Math.random()*10);
-    if(randomNum % 2 === 0) console.log(startWar.saxonAttack());
+    randomNum = Math.floor(Math.random() * 2);
+    if(randomNum === 0) console.log(startWar.saxonAttack());
     else console.log(startWar.vikingAttack());
 }
 
