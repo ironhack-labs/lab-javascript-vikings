@@ -120,28 +120,31 @@ Object.freeze(War)
 
 
 
-// ---------------------------------------------------------------- //
-// Debugging
-// Scope: uncovered areas of Jasmine automatical testing
+/* --------------------------- "Debugging" --------------------------- */
+// Scope: uncovered areas of Jasmine automatical testing (and have fun)
+// Instructions: Uncomment (cmd + /) below to experience the fierce consol battle
+/* ------------------------------------------------------------------- */
 
 // new war instance and random generator function
-const oldWar = new War
-const getRandomNumber = () => Math.floor(Math.random() * 100)
+// const oldWar = new War
+// const getRandomNumber = () => Math.floor(Math.random() * 100)
 
-// Creation of random army
-for (let i = 0; i < 50; i++) {
-  const viking = new Viking(`viking #${i}`, getRandomNumber(), getRandomNumber())
-  const saxon = new Saxon(getRandomNumber(), getRandomNumber())
-  oldWar.addViking(viking)
-  oldWar.addSaxon(saxon)
-}
+// // Creation of random army
+// for (let i = 0; i < 50; i++) {
+//   const viking = new Viking(`viking #${i}`, getRandomNumber(), getRandomNumber())
+//   const saxon = new Saxon(getRandomNumber(), getRandomNumber())
+//   oldWar.addViking(viking)
+//   oldWar.addSaxon(saxon)
+// }
 
-// To the battle!
-while (oldWar.saxonArmy.length && oldWar.vikingArmy.length > 0) {
-  const randomNumber = Math.floor(Math.random() * 2) + 1
-  randomNumber % 2 === 0 ?
-    console.log(oldWar.saxonAttack())
-    :
-    console.log(oldWar.vikingAttack())
-}
-console.log(oldWar.showStatus())
+// /* 
+// * To the battle!
+// */
+// while (oldWar.saxonArmy.length && oldWar.vikingArmy.length > 0) {
+//   const randomNumber = Math.floor(Math.random() * 2) + 1
+//   randomNumber % 2 === 0 ?
+//     console.log(oldWar.saxonAttack())
+//     :
+//     console.log(oldWar.vikingAttack())
+// }
+// console.log(oldWar.showStatus())
