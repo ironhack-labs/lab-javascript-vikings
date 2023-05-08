@@ -17,7 +17,7 @@
   - Identify expected code behavior by reading and understanding test results and errors.
   - Define a `class` and use it to create objects (instances).
   - Create a subclass that extends a parent class using `extends` and `super()` to inherit properties and methods.
-  - Define and implement class methods that use the `this` keyword to access and manipulate object properties.
+  - Define class methods that use the `this` keyword to access object properties.
   - Add or remove items from an array using the array methods (`push`, `pop`, `shift`, `unshift`, and `splice`).
   - Iterate over arrays using the `for` and `forEach` loops.
   - Pass values as arguments to functions.
