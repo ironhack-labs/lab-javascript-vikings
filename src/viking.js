@@ -72,9 +72,12 @@ class War {
 
     let attackAction = randomSaxon.receiveDamage(randomViking.attack());
 
-    this.saxonArmy.splice(randomSaxon);
+    if (randomSaxon.health <= 0) {
+        this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1);
+    }
 
-    return `A Saxon has died in combat`;
+    return attackAction;
+
     }
 
     saxonAttack () {
@@ -84,9 +87,13 @@ class War {
 
     let attackAction = randomViking.receiveDamage(randomSaxon.attack());
 
-    this.vikingArmy.splice(randomViking);
-
+    if (randomViking.health <= 0) {
+        this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking), 1);
     }
+
+    return attackAction;
+    }
+
     showStatus(){
         if (this.saxonArmy.length === 0) {
             return "Vikings have won the war of the century!";
@@ -99,10 +106,3 @@ class War {
         }
     }
     }
-
-
-
-    // if (randomSaxon.health <= 0) {
-    //     this.saxonArmy.splice(randomSaxon);
-    //     return `A Saxon has died in combat`;
-    //  }
