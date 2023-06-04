@@ -48,8 +48,10 @@ class Saxon extends Soldier {
 
 // War
 class War {
-  vikingArmy = [];
-  saxonArmy = [];
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
 
   addViking(viking) {
     this.vikingArmy.push(viking);
