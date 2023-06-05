@@ -17,10 +17,8 @@ class Soldier {
 // Viking
 class Viking extends Soldier {
   constructor(name, health, strength) {
-    super();
+    super(health, strength);
     this.name = name;
-    this.health = health;
-    this.strength = strength;
   }
 
   receiveDamage(damage) {
@@ -44,6 +42,7 @@ class Saxon extends Viking {
     super();
     this.health = health;
     this.strength = strength;
+    this.name = "RANDOM SAXON";
   }
 
   receiveDamage(damage) {
@@ -81,13 +80,21 @@ class War {
     randomDefender.health -= randomAttacker.strength;
 
     if (randomDefender.health <= 0) {
-      // ADD CODE HERE DEVIN
-      console.log("DEAD!!!!!");
+      this.saxonArmy.splice(randomDefender, 1);
     }
   }
 
   saxonAttack() {
-    let random = Math.floor(Math.random() * 10);
+    let randomAttacker =
+      this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+    let randomDefender =
+      this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+
+    randomDefender.health -= randomAttacker.strength;
+
+    if (randomDefender.health <= 0) {
+      this.vikingArmy.splice(randomDefender, 1);
+    }
   }
 
   showStatus() {
