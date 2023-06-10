@@ -66,6 +66,18 @@ class War {
         this.saxonArmy.push(Saxon)
     }
 
+    /* attack (attacker, defender) {
+        const attacker = this.attacker[Math.floor(Math.random() * this.attacker.length)]
+        const defender = this.defender[Math.floor(Math.random() * this.defender.length)]
+
+        const health = defender.receiveDamage(attacker.strength)
+
+        if (defender.health <= 0) {
+            this.defender.splice(defender, 1)
+        }
+        return health;
+    } */
+    
     vikingAttack () {
         const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
         const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
