@@ -111,8 +111,8 @@ class War {
       victimArmy.splice(victimArmy.indexOf(randomVictim),1);
     }
     return result
-
   }
+
   showStatus(){
     if(!this.saxonArmy.length){
       return 'Vikings have won the war of the century!'
@@ -124,8 +124,6 @@ class War {
   }
 }
 const war = new War(
-
-
 )
 
 war.soldierAttack(war.saxonArmy, war.vikingArmy)
