@@ -65,24 +65,23 @@ class War {
         
     let randSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
     let randViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
-    randSaxon.receiveDamage(randViking.strength) 
+    let result = randSaxon.receiveDamage(randViking.strength) 
     if (randSaxon.health <= 0) {
-        this.saxonArmy.pop()
-        return `A Saxon has died in combat`
+        this.saxonArmy.splice(randSaxon, 1)
     } 
-    return `A Saxon has received ${randViking.strength} points of damage`
+    return result
    
     }
     saxonAttack() {
 
        let randSaxon = this.saxonArmy[Math.floor(Math.random()*this.saxonArmy.length)];
        let randViking = this.vikingArmy[Math.floor(Math.random()*this.vikingArmy.length)];
-         randViking.receiveDamage(randSaxon.strength)
+       let result = randViking.receiveDamage(randSaxon.strength)
         if (randViking.health <= 0) {
-            this.vikingArmy.pop()
-            return `${randViking.name} has died in act of combat`
+            this.vikingArmy.splice(randViking, 1)
+            
         } 
-        return `${randViking.name} has received ${randSaxon.strength} points of damage`
+        return result
         
 
     }
@@ -102,6 +101,7 @@ class War {
     }
     
 }
+
 
 
 
