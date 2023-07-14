@@ -69,8 +69,8 @@ class War {
         let outcome = randomSaxon.receiveDamage(randomViking.strength);
 
         if(randomSaxon.health <= 0){
-                this.saxonArmy.pop(randomSaxon);
-            }
+            this.saxonArmy.splice(this.saxonArmy.indexOf(this.randomSaxon),1);
+        }
         return outcome;
     }
     saxonAttack(){
@@ -80,7 +80,7 @@ class War {
         let outcome = randomViking.receiveDamage(randomSaxon.strength);
 
         if(randomViking.health <= 0){
-                this.vikingArmy.pop(randomViking);
+                this.vikingArmy.splice(this.vikingArmy.indexOf(randomViking),1);
             }
         return outcome;
     }
