@@ -70,18 +70,19 @@ class War {
     }
 
     vikingAttack() {
-        this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
+        let result = this.saxonArmy[0].receiveDamage(this.vikingArmy[0].strength)
         this.saxonArmy.shift()
+        return result
     }
 
     saxonAttack() {
-        this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
+        let result = this.vikingArmy[0].receiveDamage(this.saxonArmy[0].strength)
 
         if (this.vikingArmy[0].health <= 0) {
             this.vikingArmy.shift()
 
         }
-
+        return result
     }
 
     showStatus() {
