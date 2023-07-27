@@ -83,7 +83,6 @@ class War
         {
             for(let i of this.saxonArmy)
             {
-                console.log(i.health)
                 if(i.health <= 0)
                 {
                     this.saxonArmy.splice(i, 1)
