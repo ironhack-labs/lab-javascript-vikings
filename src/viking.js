@@ -58,11 +58,6 @@ class War
     vikingArmy = [];
     saxonArmy = [];
 
-    randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-    randomViking = Math.floor(Math.random() * this.vikingArmy.length);
-    viking = this.vikingArmy[this.randomViking]; 
-    saxon = this.saxonArmy[this.randomSaxon];
-
     addViking(viking)
     {
         this.vikingArmy.push(viking);
@@ -74,42 +69,53 @@ class War
     }
 
 
-    vikingAttack()
+    selectSoldier(type)
     {
-        // let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-        // let randomViking = Math.floor(Math.random() * this.vikingArmy.length);
-        // let viking = this.vikingArmy[randomViking]; 
-        // let saxon = this.saxonArmy[randomSaxon];
-        let result = this.saxon.receiveDamage(this.viking.strength);
+        let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+        let randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+        let viking = this.vikingArmy[randomViking]; 
+        let saxon = this.saxonArmy[randomSaxon];
 
-        for(let i of this.saxonArmy)
+        let vikingHit = saxon.receiveDamage(viking.strength);
+        let saxonHit = viking.receiveDamage(saxon.strength);
+
+        if(type == "viking")
         {
-            if(i.health <= 0)
+            for(let i of this.saxonArmy)
             {
-                this.saxonArmy.splice(i, 1)
+                console.log(i.health)
+                if(i.health <= 0)
+                {
+                    this.saxonArmy.splice(i, 1)
+                }
             }
+
+           return vikingHit
         }
 
-        return result
+        if(type == "saxon")
+        {
+            for(let i of this.vikingArmy)
+            {
+                if(i.health <= 0)
+                {
+                    this.vikingArmy.splice(i, 1)
+                }
+            }
+
+            return saxonHit
+        }
+    }
+
+
+    vikingAttack()
+    {
+        return this.selectSoldier("viking")
     }
 
     saxonAttack()
     {
-        // let randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-        // let randomViking = Math.floor(Math.random() * this.vikingArmy.length);
-        // let viking = this.vikingArmy[randomViking]; 
-        // let saxon = this.saxonArmy[randomSaxon];
-        let result = this.viking.receiveDamage(this.saxon.strength);
-
-        for(let i of this.vikingArmy)
-        {
-            if(i.health <= 0)
-            {
-                this.vikingArmy.splice(i, 1)
-            }
-        }
-
-        return result
+        return this.selectSoldier("saxon")
     }
 
     showStatus()
@@ -130,46 +136,3 @@ class War
         }
     }
 }
-
-
-class Block
-{
-    constructor(array){
-        this.array = array;
-    }
-
-    getWidth()
-    {
-        let width = this.array[0];
-
-        return width;
-    }
-
-    getLength()
-    {
-        let length = this.array[1];
-
-        return length;
-    }
-
-    getHeight()
-    {
-        let height = this.array[2];
-
-        return height;
-    }
-
-    getVolume()
-    {
-        return this.getWidth() * this.getLength() * this.getHeight();
-    }
-
-    getSurfaceArea()
-    {
-        return (2 * this.getLength() * this.getWidth()) + (2 * this.getLength() * this.getHeight()) + (2 * this.getWidth() * this.getHeight()) 
-    }
-}
-
-let block = new Block([2, 4, 6]);
-
-console.log(block.getSurfaceArea())
