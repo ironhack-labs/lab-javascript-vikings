@@ -64,7 +64,7 @@ class Soldier {
         const randomViking = this.vikingArmy[randomVikingIndex];
         const randomSaxon =  this.saxonArmy[randomSaxonIndex];
         
-        console.log(`The viking ${randomViking.name} attacks a Saxon`);
+        console.log(`The viking ${randomViking.name} attacks a Saxon. ${randomViking.name} screams: ${randomViking.battleCry().toUpperCase()}`);
        
     
       //2. Saxon receives attack from Viking
@@ -115,12 +115,15 @@ class Soldier {
      
       showStatus() {
         if(this.saxonArmy.length === 0){
+            console.log("Vikings have won the war of the century!")
             return "Vikings have won the war of the century!"
         }
         if(this.vikingArmy.length === 0){
-            return "Saxons have fought for their lives and survived another day..."
+            console.log("Saxons have fought for their lives and survived another day...")
+          return "Saxons have fought for their lives and survived another day..."
         }
         if(this.vikingArmy.length > 0 && this.saxonArmy.length > 0){
+          console.log("Vikings and Saxons are still in the thick of battle.")
             return "Vikings and Saxons are still in the thick of battle."
         }
       }
@@ -142,5 +145,18 @@ class Soldier {
   console.log(testWar.vikingArmy);
   console.log(testWar.saxonArmy);
   
-  //testWar.vikingAttack();
+  // Turn 1
+  testWar.vikingAttack();
   testWar.saxonAttack();
+  testWar.showStatus();
+  // Turn 2
+  testWar.vikingAttack();
+  testWar.saxonAttack();
+  testWar.showStatus();
+  // Turn 3
+  testWar.vikingAttack();
+  testWar.saxonAttack();
+  testWar.showStatus();
+  
+  
+  
