@@ -113,14 +113,26 @@ class Soldier {
         return dmgReceived;
       }
      
-      showStatus() {}
+      showStatus() {
+        if(this.saxonArmy.length === 0){
+            return "Vikings have won the war of the century!"
+        }
+        if(this.vikingArmy.length === 0){
+            return "Saxons have fought for their lives and survived another day..."
+        }
+        if(this.vikingArmy.length > 0 && this.saxonArmy.length > 0){
+            return "Vikings and Saxons are still in the thick of battle."
+        }
+      }
   }
   
   const testWar = new War();
-  const vikingOne = new Viking('Mati', 3, 7);
-  const vikingTwo = new Viking('Arceus', 2, 5);
-  const saxonOne = new Saxon(7, 6);
-  const saxonTwo = new Saxon(5, 7);
+  const vikingOne = new Viking('Mati', 7, 3);
+  const vikingTwo = new Viking('Arceus', 5, 2);
+  const vikingThree = new Viking('Freya', 5, 5);
+  const saxonOne = new Saxon(6, 4);
+  const saxonTwo = new Saxon(4, 5);
+  const saxonThree = new Saxon(5, 3);
   
   testWar.addViking(vikingOne);
   testWar.addViking(vikingTwo);
