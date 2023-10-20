@@ -57,29 +57,62 @@ class Soldier {
       this.saxonArmy.push(saxon);
     }
     vikingAttack() {
-    
+        //1. Select Viking and Saxon
         const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
         const randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+        
+        const randomViking = this.vikingArmy[randomVikingIndex];
+        const randomSaxon =  this.saxonArmy[randomSaxonIndex];
+        
+        console.log(`The viking ${randomViking.name} attacks a Saxon`);
+       
+    
+      //2. Saxon receives attack from Viking
+      
+        const dmgReceived = randomSaxon.receiveDamage(randomViking.attack());
+        
+        console.log(`The saxon has ${randomSaxon.health}HP after the attack`);
+    
+        // 3. remove dead saxon
+        if (randomSaxon.health <= 0) {
+          this.saxonArmy.splice(randomSaxonIndex, 1);
+          console.log('The Saxon is dead...')
+        }
+        // 4. return result receiveDamage()+strength of viking
+        return dmgReceived
+      }
+    
+      saxonAttack() {
+        //1. Select Viking and Saxon
+        const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+        const randomVikingIndex = Math.floor(
+          Math.random() * this.vikingArmy.length
+        );
     
         const randomViking = this.vikingArmy[randomVikingIndex];
         const randomSaxon = this.saxonArmy[randomSaxonIndex];
-        
-       
-        const dmgReceived = randomSaxon.receiveDamage(randomViking.attack());
     
-
-        if (randomSaxon.health < 0) {
-          this.saxonArmy.splice(randomSaxonIndex, 1);
+        console.log(`A Saxon attacks ${randomViking.name}!`);
+    
+        //2. Saxon receives attack from Viking
+    
+        const dmgReceived = randomViking.receiveDamage(randomSaxon.attack());
+    
+        console.log(
+          `The attack has caused ${randomSaxon.attack()} HP. ${
+            randomViking.name
+          } has ${randomViking.health} HP`
+        );
+    
+        // 3. remove dead saxon
+        if (randomViking.health <= 0) {
+          console.log(`${randomViking.name} is dead...'`);
+          this.vikingArmy.splice(randomVikingIndex, 1);
         }
-    
+        // 4. return result receiveDamage()+strength of viking
         return dmgReceived;
       }
-    
-      saxonAttack() {}
-      showStatus() {}
-    
-        
-      saxonAttack() {}
+     
       showStatus() {}
   }
   
@@ -97,5 +130,5 @@ class Soldier {
   console.log(testWar.vikingArmy);
   console.log(testWar.saxonArmy);
   
-  testWar.vikingAttack();
-  
+  //testWar.vikingAttack();
+  testWar.saxonAttack();
