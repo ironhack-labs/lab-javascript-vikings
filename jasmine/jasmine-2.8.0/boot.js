@@ -8,7 +8,7 @@
  [jasmine-gem]: http://github.com/pivotal/jasmine-gem
  */
 
-(function() {
+(function charsInfo(health,strangth) {
 
   /**
    * ## Require &amp; Instantiate
