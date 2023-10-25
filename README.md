@@ -51,7 +51,7 @@ git commit -m "Solved lab"
 git push origin master
 ```
 
-- Create a Pull Request so that your TAs can check your work.
+- Create a Pull Request and submit your assignment
 
 <br>
 
