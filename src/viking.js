@@ -21,11 +21,13 @@ class Viking extends Soldier{
     }
     
     receiveDamage(damage){
-        this.health -= damage;
+        // this.health -= damage;
+        super.receiveDamage(damage);
+
         if (this.health > 0){
             return `${this.name} has received ${damage} points of damage`;
         }
-        else if (this.health <= 0){
+        else {
             return  `${this.name} has died in act of combat`;
         }
     }
@@ -37,16 +39,18 @@ class Viking extends Soldier{
 
 // Saxon
 class Saxon extends Soldier{
-    constructor (health, strength){
-        super(health, strength); 
-    }
+    // constructor (health, strength){
+    //     super(health, strength); 
+    // } -> if constructor is the same from the parent and child class I can omit the constructor.
 
     receiveDamage(damage){
-        this.health -= damage;
+        //this.health -= damage;
+        super.receiveDamage(damage);
+
         if (this.health > 0){
             return `A Saxon has received ${damage} points of damage`;
         }
-        else if (this.health <= 0){
+        else {
             return `A Saxon has died in combat`;
         }
     }
@@ -71,7 +75,7 @@ class War {
         const randViking = Math.floor(Math.random() * this.vikingArmy.length);
         const randSaxon = Math.floor(Math.random() * this.saxonArmy.length);
 
-        let attack = this.saxonArmy[randSaxon].receiveDamage(this.vikingArmy[randViking].strength);
+        let attack = this.saxonArmy[randSaxon].receiveDamage(this.vikingArmy[randViking].attack());
 
         if (this.saxonArmy[randSaxon].health <= 0){
             this.saxonArmy.splice (randSaxon,1);
@@ -84,7 +88,7 @@ class War {
         const randViking = Math.floor(Math.random() * this.vikingArmy.length);
         const randSaxon = Math.floor(Math.random() * this.saxonArmy.length);
 
-        let attack = this.vikingArmy[randViking].receiveDamage(this.saxonArmy[randSaxon].strength);
+        let attack = this.vikingArmy[randViking].receiveDamage(this.saxonArmy[randSaxon].attack());
 
         if (this.vikingArmy[randViking].health <= 0){
             this.vikingArmy.splice (randViking,1);
