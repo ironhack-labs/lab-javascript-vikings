@@ -1,3 +1,6 @@
+// Link to pull: https://github.com/ironhack-labs/lab-javascript-vikings/pull/3889
+
+
 // Soldier
 class Soldier {
 
@@ -62,6 +65,14 @@ class War {
    constructor(){
     this.vikingArmy=[]
     this.saxonArmy=[]
+
+   }
+   addViking(vickingWarriors){
+    this.vikingArmy.push(vickingWarriors)
+
+   }
+   addSaxon(SaxonWarriors){
+    this.saxonArmy.push(SaxonWarriors)
 
    }
 }
