@@ -96,4 +96,36 @@ class War {
 
     return message;
   }
+
+  // bonus iteration
+  attack(attacker) {
+    const randomVikingIndex = getRandomInt(this.vikingArmy.length);
+    const randomViking = this.vikingArmy[randomVikingIndex];
+    const randomSaxonIndex = getRandomInt(this.saxonArmy.length);
+    const randomSaxon = this.saxonArmy[randomSaxonIndex];
+
+    let message;
+
+    switch (attacker) {
+      case "viking":
+        message = randomSaxon.receiveDamage(randomViking.strength);
+        if (randomSaxon.health <= 0) {
+          this.saxonArmy.splice(randomSaxonIndex, 1);
+        }
+        return message;
+      case "saxon":
+        message = randomViking.receiveDamage(randomSaxon.strength);
+        if (randomViking.health <= 0) {
+          this.vikingArmy.splice(randomVikingIndex, 1);
+        }
+        return message;
+      default:
+        throw new Error(
+          "war.attack(): invalid argument 'attacker'; must be either 'viking' or 'saxon'"
+        );
+    }
+  }
 }
+
+
+
