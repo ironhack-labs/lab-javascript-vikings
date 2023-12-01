@@ -1,3 +1,10 @@
+/** Get random integer
+ *
+ * Range: [0-max[ */
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
 // Soldier
 class Soldier {
   constructor(health, strength) {
@@ -46,4 +53,47 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+
+  addViking(viking) {
+    this.vikingArmy.push(viking);
+  }
+
+  addSaxon(saxon) {
+    this.saxonArmy.push(saxon);
+  }
+
+  vikingAttack() {
+    const randomVikingIndex = getRandomInt(this.vikingArmy.length);
+    const randomViking = this.vikingArmy[randomVikingIndex];
+    const randomSaxonIndex = getRandomInt(this.saxonArmy.length);
+    const randomSaxon = this.saxonArmy[randomSaxonIndex];
+
+    const message = randomSaxon.receiveDamage(randomViking.strength);
+
+    if (randomSaxon.health <= 0) {
+      this.saxonArmy.splice(randomSaxonIndex, 1);
+    }
+
+    return message;
+  }
+
+  saxonAttack() {
+    const randomVikingIndex = getRandomInt(this.vikingArmy.length);
+    const randomViking = this.vikingArmy[randomVikingIndex];
+    const randomSaxonIndex = getRandomInt(this.saxonArmy.length);
+    const randomSaxon = this.saxonArmy[randomSaxonIndex];
+
+    const message = randomViking.receiveDamage(randomSaxon.strength);
+
+    if (randomViking.health <= 0) {
+      this.vikingArmy.splice(randomVikingIndex, 1);
+    }
+
+    return message;
+  }
+}
