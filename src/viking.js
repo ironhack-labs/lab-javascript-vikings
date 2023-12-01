@@ -70,6 +70,15 @@ class War {
     addSaxon(Saxon){
         this.saxonArmy.push(Saxon)
     }
+
+    vikingAttack(){
+    }
+
+    saxonAttack(){
+    }
+
+    showStatus(){
+    }
 }
 
 
