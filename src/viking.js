@@ -52,4 +52,28 @@ receiveDamage(damage) {
 }
 
 // War
-class War {}
+class War {
+    constructor() {
+        this.vikingArmy = []
+        this.saxonArmy = []
+    }
+
+addViking(viking) {
+
+    this.vikingArmy.push(viking)
+}
+
+addSaxon(saxon) {
+
+    this.saxonArmy.push(saxon)
+}
+
+vikingAttack() {
+    const viking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)]
+    const saxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
+
+    
+}
+saxonAttack() {}
+showStatus() {}
+}
