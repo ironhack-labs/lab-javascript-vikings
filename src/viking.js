@@ -122,7 +122,7 @@ class War {
     return battleStatus;
   }
 
-  /**************** Extra lab ******************/
+  /**************** Extra lab *******************/
 
   // This method is made in replace of vikingAttack() and saxonAttack()
 
