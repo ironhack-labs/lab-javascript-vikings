@@ -4,6 +4,7 @@ describe('Soldier', () => {
   const strength = 150;
   const health = 300;
 
+
   beforeEach(() => {
     soldier = new Soldier(health, strength);
   });
