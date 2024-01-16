@@ -58,18 +58,23 @@ class War {
     this.saxonArmy.push(saxons);
   }
   vikingAttack() {
-    console.log(this.saxonArmy[0].health - this.vikingArmy[0].strength);
     const viking = this.vikingArmy[0];
     const saxon = this.saxonArmy[0];
-    saxon.receiveDamage(viking.strength);
-
-    // const test = new Saxon(this.saxonArmy[0].health, this.saxonArmy[0].strength).receiveDamage(this.vikingArmy[0].strength)
-    // if (test.includes('died')) {
-    //   this.saxonArmy = []
-    // }
-    // console.log(test);
-    // return test
+    const message = saxon.receiveDamage(viking.strength);
+    this.saxonArmy = this.saxonArmy.filter((el) => el.health > 0);
+    return message
+    // return showStatus();
   }
-  saxonAttack() { }
-  showStatus() { }
+  saxonAttack() {
+    const viking = this.vikingArmy[0];
+    const saxon = this.saxonArmy[0];
+    const message = viking.receiveDamage(saxon.strength);
+    this.vikingArmy = this.vikingArmy.filter((el) => el.health > 0);
+    return message;
+  }
+  showStatus() {
+    const viking = this.vikingArmy[0];
+    const saxon = this.saxonArmy[0];
+    const message = saxon.receiveDamage(viking.strength);
+  }
 }
