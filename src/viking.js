@@ -57,46 +57,32 @@ class War {
 	addSaxon(saxons) {
 		this.saxonArmy.push(saxons);
 	}
+
+	attack(attackers, defenders) {
+		const attackIndex = Math.floor(Math.random() * attackers.length);
+		const defendIndex = Math.floor(Math.random() * defenders.length);
+		const attacker = attackers[attackIndex];
+		const defender = defenders[defendIndex];
+		const result = defender.receiveDamage(attacker.strength);
+		if (defender.health <= 0) {
+			defenders.splice(defendIndex, 1);
+		}
+		return result;
+	}
 	vikingAttack() {
-		const viking = this.vikingArmy[0];
-		const saxon = this.saxonArmy[0];
-		const message = saxon.receiveDamage(viking.strength);
-		this.saxonArmy = this.saxonArmy.filter((el) => el.health > 0);
-		return message;
-		// return showStatus();
+		return this.attack(this.vikingArmy, this.saxonArmy);
 	}
 	saxonAttack() {
-		const viking = this.vikingArmy[0];
-		const saxon = this.saxonArmy[0];
-		const message = viking.receiveDamage(saxon.strength);
-		this.vikingArmy = this.vikingArmy.filter((el) => el.health > 0);
-		return message;
+		return this.attack(this.saxonArmy, this.vikingArmy);
 	}
+
 	showStatus() {
 		if (this.saxonArmy.length === 0) {
-			this.vikingArmy = this.vikingArmy.filter((el) => el.health > 0);
 			return 'Vikings have won the war of the century!';
-		} else if (this.vikingArmy.length === 0) {
-		this.saxonArmy = this.vikingArmy.filter((el) => el.health > 0);
-			return 'Saxons have fought for their lives and survived another day...';
-		} else {
-			return 'Vikings and Saxons are still in the thick of battle.';
 		}
-		// 	const viking = this.vikingArmy;
-		// 	const saxon = this.saxonArmy;
-		// 	const message = saxon.receiveDamage(viking.strength);
-		// 	console.log(this.vikingAttack());
-		// 	if (saxon === this.saxonArmy) {
-		// 		this.saxonAttack();
-		// 		viking.receiveDamage(saxon.strength);
-		// 		// this.saxonArmy = this.saxonArmy.filter((el) => el.health > 0);
-		// 		return 'Vikings have won the war of the century!';
-		// 	} else if (viking === this.vikingArmy) {
-		// 		this.vikingAttack();
-		// 		// this.vikingArmy = this.vikingArmy.filter((el) => el.health > 0);
-		// 		return 'Saxons have fought for their lives and survived another day...';
-		// 	}
-		// 	return 'Vikings and Saxons are still in the thick of battle.';
-		// }
+		if (this.vikingArmy.length === 0) {
+			return 'Saxons have fought for their lives and survived another day...';
+		}
+		return 'Vikings and Saxons are still in the thick of battle.';
 	}
 }
