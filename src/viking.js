@@ -86,12 +86,12 @@ class War {
     }
 
     vikingAttack() {
-        this.attack(`saxon`);
+        return this.attack(`saxon`);
 
     }
 
     saxonAttack() {
-        this.attack(`viking`);
+       return this.attack(`viking`);
     }
 
     showStatus() {
