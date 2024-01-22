@@ -90,6 +90,33 @@ class War {
 
     }
 
+    attack(soldierToAttack) {
+
+        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
+        const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
+
+        if (soldierToAttack === `viking`) {
+
+            const outcome = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
+
+            if (this.vikingArmy[randomViking].health <= 0) {
+                this.vikingArmy.splice(randomViking, 1)
+            }
+
+        } else if (soldierToAttack === `saxon`) {
+
+            const outcome = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
+
+            if (this.saxonArmy[randomSaxon].health <= 0) {
+                this.saxonArmy.splice(randomSaxon, 1)
+            }
+
+        }
+
+        return outcome;
+
+    }
+
     showStatus() {
         if (this.vikingArmy.length > 0 && this.saxonArmy.length > 0) {
             return `Vikings and Saxons are still in the thick of battle.`;
