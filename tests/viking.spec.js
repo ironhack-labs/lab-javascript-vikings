@@ -120,7 +120,7 @@ describe('Viking', () => {
       expect(viking.receiveDamage(50)).toEqual(
         `${name} has received 50 points of damage`
       );
-    
+
       expect(viking.receiveDamage(75)).toEqual(
         `${name} has received 75 points of damage`
       );
