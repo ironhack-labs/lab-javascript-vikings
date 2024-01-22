@@ -62,41 +62,11 @@ class War {
         this.saxonArmy.push(saxon);
     }
 
-    vikingAttack() {
-        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-        const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
-
-        const outcome = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
-
-        if (this.saxonArmy[randomSaxon].health <= 0) {
-            this.saxonArmy.splice(randomSaxon, 1)
-        }
-
-        return outcome;
-
-    }
-
-    saxonAttack() {
-        const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
-        const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
-
-        const outcome = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
-
-        if (this.vikingArmy[randomViking].health <= 0) {
-            this.vikingArmy.splice(randomViking, 1)
-        }
-
-        return outcome;
-
-    }
-
     attack(soldierToAttack) {
-
         const randomSaxon = Math.floor(Math.random() * this.saxonArmy.length);
         const randomViking = Math.floor(Math.random() * this.vikingArmy.length);
 
         if (soldierToAttack === `viking`) {
-
             const outcome = this.vikingArmy[randomViking].receiveDamage(this.saxonArmy[randomSaxon].strength);
 
             if (this.vikingArmy[randomViking].health <= 0) {
@@ -104,7 +74,6 @@ class War {
             }
 
         } else if (soldierToAttack === `saxon`) {
-
             const outcome = this.saxonArmy[randomSaxon].receiveDamage(this.vikingArmy[randomViking].strength);
 
             if (this.saxonArmy[randomSaxon].health <= 0) {
@@ -112,9 +81,17 @@ class War {
             }
 
         }
-
         return outcome;
 
+    }
+
+    vikingAttack() {
+        this.attack(`saxon`);
+
+    }
+
+    saxonAttack() {
+        this.attack(`viking`);
     }
 
     showStatus() {
