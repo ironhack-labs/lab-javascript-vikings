@@ -36,10 +36,10 @@ class Viking extends Soldier {
 class Saxon extends Soldier {
     receiveDamage(damage) {
         this.health = this.health - damage
-        if (damage > this.health) {
-            return `A Saxon has died in combat`
-        } else {
+        if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`
+        } else {
+            return `A Saxon has died in combat`
         }
     }
 }
@@ -59,14 +59,35 @@ class War {
     }
 
     vikingAttack() {
-        let saxon = Math.floor(Math.random(this.saxonArmy) * this.saxonArmy.length)
-        receiveDamage(damage) {
-            this.health = this.health - damage
+        const viking = this.vikingArmy[0]
+        const saxon = this.saxonArmy[0]
+        const attack = viking.strength
+        const damage = saxon.receiveDamage(attack)
+
+        if (saxon.health <= 0) {
+            this.saxonArmy.shift()
+        }
+        return damage
+    }
+    saxonAttack() {
+        const viking = this.vikingArmy[0]
+        const saxon = this.saxonArmy[0]
+        const attack = saxon.strength
+        const damage = viking.receiveDamage(attack)
+
+        if (viking.health <= 0) {
+            this.vikingArmy.shift()
+        }
+        return damage
+    }
+    showStatus() {
+        if (this.saxonArmy.length <= 0) {
+            return "Vikings have won the war of the century!"
+        } else if (this.vikingArmy.length <= 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        } else {
+            return 'Vikings and Saxons are still in the thick of battle.'
         }
     }
 }
 
-    // saxonAttack()
-
-    // showStatus()
-}
