@@ -74,7 +74,7 @@ class War {
       attackResult === "A Saxon has died in combat" ||
       attackResult === `${randomVictim.name} has died in act of combat`;
 
-    // if Saxon has died, find index and splice from army array
+    // if randomVictim has died, find index and splice from victimArmy array
     if (isVictimDead) {
       let indexDead = victimArmy.indexOf(randomVictim);
       victimArmy.splice(indexDead, 1);
@@ -100,17 +100,3 @@ class War {
     }
   }
 }
-
-// Debugging
-// Create viking, saxon and war
-let viking1 = new Viking("Harald", 300, 150);
-let saxon1 = new Saxon(60, 25);
-let war1 = new War();
-
-// Add soldiers to army
-war1.addViking(viking1);
-war1.addSaxon(saxon1);
-
-//Attack!
-//war1.vikingAttack();
-war1.saxonAttack();
