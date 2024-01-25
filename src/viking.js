@@ -48,4 +48,61 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+  constructor() {
+    this.vikingArmy = [];
+    this.saxonArmy = [];
+  }
+
+  addViking(vikingSoldier) {
+    this.vikingArmy.push(vikingSoldier);
+  }
+  addSaxon(saxonSoldier) {
+    this.saxonArmy.push(saxonSoldier);
+  }
+
+  attack(victimArmy, aggressorArmy) {
+    // Chose soldiers at random
+    let randomVictim =
+      victimArmy[Math.floor(Math.random() * victimArmy.length)];
+    let randomAggressor =
+      aggressorArmy[Math.floor(Math.random() * aggressorArmy.length)];
+
+    let attackResult = randomVictim.receiveDamage(randomAggressor.strength);
+
+    let isVictimDead =
+      attackResult === "A Saxon has died in combat" ||
+      attackResult === `${randomVictim.name} has died in act of combat`;
+
+    // if Saxon has died, find index and splice from army array
+    if (isVictimDead) {
+      let indexDead = victimArmy.indexOf(randomVictim);
+      victimArmy.splice(indexDead, 1);
+    }
+
+    return attackResult;
+  }
+
+  vikingAttack() {
+    return this.attack(this.saxonArmy, this.vikingArmy);
+  }
+  saxonAttack() {
+    return this.attack(this.vikingArmy, this.saxonArmy);
+  }
+
+  showStatus() {}
+}
+
+// Debugging
+// Create viking, saxon and war
+let viking1 = new Viking("Harald", 300, 150);
+let saxon1 = new Saxon(60, 25);
+let war1 = new War();
+
+// Add soldiers to army
+war1.addViking(viking1);
+war1.addSaxon(saxon1);
+
+//Attack!
+//war1.vikingAttack();
+war1.saxonAttack();
