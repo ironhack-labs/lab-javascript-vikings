@@ -70,27 +70,33 @@ class War {
         this.saxonArmy.push(saxon);
     }
     vikingAttack() {
-        const vikingObj = new Viking();
-        const saxonObj = new Saxon();
-        const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-        const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-        const result = saxonObj.receiveDamage(this.vikingArmy[vikingIndex].strength);
-        if (saxonObj.health === 0) {
-            this.saxonArmy.splice(this.saxonArmy.indexOf(saxonObj), 1);
+        const solArray = this.creatRandom();
+        const result = solArray[1].receiveDamage(solArray[0].strength);
+        console.log(result)
+        if (solArray[1].health <= 0) {
+            this.saxonArmy.splice(this.saxonArmy.indexOf(solArray[1]), 1);
         }
         return result;
     }
-
+   
     saxonAttack() {
+
+        const solArray = this.creatRandom();
+        const result = solArray[0].receiveDamage(solArray[1].strength);
+        if (solArray[0].health <= 0) {
+            this.vikingArmy.splice(this.vikingArmy.indexOf(solArray[0]), 1);
+        }
+        return result;
+    }
+    creatRandom() {
         const vikingObj = new Viking();
         const saxonObj = new Saxon();
         const vikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
         const saxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-        const result = vikingObj.receiveDamage(this.saxonArmy[vikingIndex].strength);
-        if (vikingObj.health === 0) {
-            this.vikingArmy.splice(this.vikingArmy.indexOf(vikingObj), 1);
-        }
-        return result;
+        const randomViking = this.vikingArmy[vikingIndex]
+        const randomSaxon = this.saxonArmy[saxonIndex]
+        // console.log(randomViking,randomSaxon)
+        return [randomViking,randomSaxon]
     }
     showStatus() {
         if (this.saxonArmy.length === 0) {
