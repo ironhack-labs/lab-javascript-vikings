@@ -106,11 +106,7 @@ class War {
 
         const saxonDamage = randomSaxon.attack();
 
-        console.log("health: ", randomViking.health)
-        console.log("damage: ", saxonDamage)
-
         const attackResult = randomViking.receiveDamage(saxonDamage)
-        console.log(attackResult)
 
         if (randomViking.health <= 0) {
             this.vikingArmy.splice(randomVikingIndex, 1);
@@ -120,9 +116,13 @@ class War {
     }
 
     showStatus() {
+        if (this.saxonArmy.length === 0) {
+            return "Vikings have won the war of the century!";
+        } else if (this.vikingArmy.length === 0) {
+            return "Saxons have fought for their lives and survived another day..."
+        } else {
+            return "Vikings and Saxons are still in the thick of battle."
+        }
 
     }
 }
-
-
-War.vikingAttack()
