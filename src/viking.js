@@ -83,17 +83,14 @@ class War {
 
 
         // Define the amount of damage the the viking will do
-        const vikingDamage = randomViking.attack()
-
         // Get the result of the attack by getting the damage received by the Saxon
-        const attackResult = randomSaxon.receiveDamage(vikingDamage)
+        const attackResult = this.soldierAttack(randomViking, randomSaxon)
 
         // If the Saxon is dead, remove it from the array (…maybe splice can help)
         if (randomSaxon.health <= 0) {
             this.saxonArmy.splice(randomSaxonIndex, 1);
         }
         
-
         // Return the the result of the attack
         return attackResult;
     }
@@ -104,13 +101,19 @@ class War {
         const randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
         const randomViking = this.vikingArmy[randomVikingIndex];
 
-        const saxonDamage = randomSaxon.attack();
-
-        const attackResult = randomViking.receiveDamage(saxonDamage)
+        const attackResult = this.soldierAttack(randomSaxon, randomViking)
 
         if (randomViking.health <= 0) {
             this.vikingArmy.splice(randomVikingIndex, 1);
         }
+        
+        return attackResult;
+    }
+
+    soldierAttack(attacker, receiver) {
+        const damage = attacker.attack();
+
+        const attackResult = receiver.receiveDamage(damage) 
         
         return attackResult;
     }
