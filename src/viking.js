@@ -29,7 +29,7 @@ class Viking extends Soldier {
 
     receiveDamage(damage) {
         this.health -= damage;
-        if (this.health) {
+        if (this.health > 0) {
             return `${this.name} has received ${damage} points of damage`;
         }
         else {
@@ -50,7 +50,7 @@ class Saxon extends Soldier {
 
     receiveDamage(damage) {
         this.health -= damage;
-        if (this.health) {
+        if (this.health > 0) {
             return `A Saxon has received ${damage} points of damage`;
         }
         else {
@@ -60,4 +60,53 @@ class Saxon extends Soldier {
 }
 
 // War
-class War {}
+class War {
+    constructor() {
+        this.vikingArmy = [];
+        this.saxonArmy = [];
+    }
+    addViking(viking){
+        this.vikingArmy.push(viking);
+    }
+
+    addSaxon(saxon) {
+        this.saxonArmy.push(saxon)
+    }
+
+    vikingAttack() {
+        // Get a random viking from the viking army (create random index first, then pick the random viking. same for saxon)
+        // Get a random Saxon from the Saxon army
+        const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
+        const randomSaxon = this.saxonArmy[randomSaxonIndex]
+        const randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length)
+        const randomViking = this.vikingArmy[randomVikingIndex];
+
+
+        // Define the amount of damage the the viking will do
+        const vikingDamage = randomViking.attack();
+
+        // Get the result of the attack by getting the damage received by the Saxon
+        const attackResult = randomSaxon.receiveDamage(vikingDamage)
+        console.log(attackResult)
+
+        // If the Saxon is dead, remove it from the array (…maybe splice can help)
+        if (randomSaxon.health <= 0) {
+            this.saxonArmy.splice(randomSaxonIndex, 1);
+        }
+        
+
+        // Return the the result of the attack
+        return attackResult;
+    }
+
+    saxonAttack(){
+        
+    }
+
+    showStatus() {
+
+    }
+}
+
+
+War.vikingAttack()
