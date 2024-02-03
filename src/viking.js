@@ -60,11 +60,26 @@ class War {
     }
 
     
-    vikingArmy(){}
-    saxonArmy(){} 
-    addViking(){}
-    addSaxon(){}
-    VikingAttack(){}
+
+    addViking(viking){
+    this.vikingArmy.push(viking)
+    }
+    addSaxon(saxon){
+    this.saxonArmy.push(saxon)
+    }
+    vikingAttack(){
+        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
+        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)];
+
+        
+        const result = randomSaxon.receiveDamage(randomViking.strength);
+
+    
+        if (randomSaxon.health <= 0) {
+            this.saxonArmy.splice(this.saxonArmy.indexOf(randomSaxon), 1);
+        }
+
+    }
     saxonAttack(){}
     showStatus(){}
 }
