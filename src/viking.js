@@ -64,26 +64,30 @@ class War {
     let randSaxIndex = Math.floor(Math.random() * this.saxonArmy.length);
     let randSax = this.saxonArmy[randSaxIndex];
     // select a random Viking
-    let randVikIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    let randViking = this.vikingArmy[randVikIndex];
+    let randVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    let randViking = this.vikingArmy[randVikingIndex];
     // make saxon receive damage equal to strength of Viking
     randSax.receiveDamage(randViking.strength);
     if (randSax.health < 0) {
       this.saxonArmy.splice(randSaxIndex, 1);
+      return `A Saxon has died in combat`;
     }
+    return `A Saxon has received ${randViking.strength} points of damage`;
   }
   saxonAttack() {
     // select a random
     let randSaxIndex = Math.floor(Math.random() * this.saxonArmy.length);
     let randSax = this.saxonArmy[randSaxIndex];
     // select a random Viking
-    let randVikIndex = Math.floor(Math.random() * this.vikingArmy.length);
-    let randViking = this.vikingArmy[randVikIndex];
+    let randVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
+    let randViking = this.vikingArmy[randVikingIndex];
     // make saxon receive damage equal to strength of Viking
     randViking.receiveDamage(randSax.strength);
     if (randViking.health < 0) {
-      this.vikingArmy.splice(randVikIndex, 1);
+      this.vikingArmy.splice(randVikingIndex, 1);
+      `${randViking.name} has died in act of combat`;
     }
+    return `${randViking.name} has received ${randSax.strength} points of damage`;
   }
   showStatus() {
     if (this.saxonArmy.length == 0) {
