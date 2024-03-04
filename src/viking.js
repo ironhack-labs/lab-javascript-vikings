@@ -96,26 +96,3 @@ class War {
     }
   }
 }
-
-const raphael = new Viking("Raphaël", 100, 100);
-const claire = new Viking("Claire", 90, 90);
-const feryal = new Viking("Feryal", 80, 80);
-
-const a = new Saxon(50, 50);
-const b = new Saxon(50, 50);
-const c = new Saxon(50, 50);
-
-const war = new War();
-
-war.addViking(raphael);
-war.addViking(claire);
-war.addViking(feryal);
-
-war.addSaxon(a);
-war.addSaxon(b);
-war.addSaxon(c);
-
-war.vikingAttack();
-war.vikingAttack();
-
-war.showStatus();
