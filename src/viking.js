@@ -123,7 +123,6 @@ class War {
     }
 }
 
-
 const viking1 = new Viking("VIKING 01", 100, 20);
 const viking2 = new Viking("VIKING 02", 120, 25);
 const viking3 = new Viking("VIKING 03", 150, 35);
