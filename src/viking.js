@@ -126,7 +126,33 @@ class War {
 
 const viking1 = new Viking("VIKING 01", 100, 20);
 const viking2 = new Viking("VIKING 02", 120, 25);
+const viking3 = new Viking("VIKING 03", 150, 35);
 const saxon1 = new Saxon(80, 10);
 const saxon2 = new Saxon(120, 20);
+const saxon3 = new Saxon(130, 25);
 
 const war = new War();
+
+war.addViking(viking1);
+war.addViking(viking2);
+war.addViking(viking3);
+
+war.addSaxon(saxon1);
+war.addSaxon(saxon2);
+war.addSaxon(saxon3);
+
+
+let rounds = 0;
+while (war.vikingArmy.length > 0 && war.saxonArmy.length > 0) {
+
+    console.log(`Round ${++rounds}: Vikings attack!`);
+    console.log(war.vikingAttack());
+    console.log(war.showStatus());
+
+    console.log(`Round ${rounds}: Saxons counterattack!`);
+    console.log(war.saxonAttack());
+    console.log(war.showStatus());
+}
+
+console.log("Game Over!");
+console.log(war.showStatus());
