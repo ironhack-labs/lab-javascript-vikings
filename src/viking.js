@@ -73,38 +73,29 @@ class War {
             console.log("Only Viking instances can be added to the army.");
           }
     }
-
-    vikingAttack(){
-        // Need to store hte index for using it later to remove if the HP reaches 0
-        const saxonIndex = Math.floor(this.saxonArmy.length * Math.random());
-        const vikingIndex = Math.floor(this.vikingArmy.length * Math.random());
+    genericAttack(attackingArmy, defendingArmy) {
+        const attackerIndex = Math.floor(attackingArmy.length * Math.random());
+        const defenderIndex = Math.floor(defendingArmy.length * Math.random());
         
-        const choosenSaxon = this.saxonArmy[saxonIndex];
-        const choosenViking = this.vikingArmy[vikingIndex];
+        const attacker = attackingArmy[attackerIndex];
+        const defender = defendingArmy[defenderIndex];
 
-        const damageResult = choosenSaxon.receiveDamage(choosenViking.strength);
-        if (choosenSaxon.health <= 0){
-            this.saxonArmy.splice(saxonIndex, 1);
+        const damageResult = defender.receiveDamage(attacker.strength);
+        
+        if (defender.health <= 0) {
+            defendingArmy.splice(defenderIndex, 1);
         }
-        return damageResult
+        
+        return damageResult;
     }
 
-    saxonAttack(){
-        const saxonIndex = Math.floor(this.saxonArmy.length * Math.random());
-        const vikingIndex = Math.floor(this.vikingArmy.length * Math.random());
-        
-        const choosenSaxon = this.saxonArmy[saxonIndex];
-        const choosenViking = this.vikingArmy[vikingIndex];
-
-        const damageResult = choosenViking.receiveDamage(choosenSaxon.strength);
-        if (choosenViking.health <= 0){
-            this.vikingArmy.splice(vikingIndex, 1);
-        }
-        return damageResult
-    
-
+    vikingAttack() {
+        return this.genericAttack(this.vikingArmy, this.saxonArmy);
     }
 
+    saxonAttack() {
+        return this.genericAttack(this.saxonArmy, this.vikingArmy);
+    }
     showStatus(){
         if (this.saxonArmy.length === 0){
             return `Vikings have won the war of the century!`
