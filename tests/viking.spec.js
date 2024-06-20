@@ -56,7 +56,24 @@ describe('Soldier', () => {
   });
 });
 
-describe('Viking', () => {
+// ### Iteration 1: Soldier START//
+
+class Solider {
+  constructor(health,strength) {
+    this.health = health;
+    this.strength = strength;
+   
+    }
+    attack() {
+        return this.strength;
+    }
+    receiveDamage(damage) {
+      this.health -= damage;
+    }
+  }
+  // Iteration Soldier END
+
+  //describe('Viking', () => {
   let viking;
   const name = 'Harald';
   const strength = 150;
@@ -133,6 +150,48 @@ describe('Viking', () => {
     });
   });
 
+
+  // ### Iteration 2: Viking START//
+
+  class Viking extends Solider 
+  {
+    constructor(name,health,strength) {
+      super(health, strength);
+      this.name= name;
+    }
+      // New Method
+      receiveDamage(damage) 
+      {
+        this.health -= damage;
+
+        if (this.health > 0) {
+
+          return (this.name + "has recieved "+ damage +" points of Damage" ); 
+        } else {
+           return (this.name + "has died in act of combat " );
+        }
+                       
+      }
+      
+      battleCry() 
+      {
+        return "Odin Owns You All!";
+      }
+      
+  }  
+ // END Viking and Battle cry  
+
+  describe('Viking', () => {
+  let viking;
+  const name = 'Harald';
+  const strength = 150;
+  const health = 300;
+
+  beforeEach(() => {
+    viking = new Viking(name, health, strength);
+  });
+
+
   describe('battleCry() method', () => {
     it('should be a declared', () => {
       expect(typeof viking.battleCry).toBe('function');
@@ -147,6 +206,8 @@ describe('Viking', () => {
     });
   });
 });
+
+
 
 describe('Saxon', () => {
   let saxon;
@@ -213,6 +274,36 @@ describe('Saxon', () => {
     });
   });
 });
+
+// ### Iteration 3: Saxon START//
+
+class Saxon extends Solider 
+{
+  constructor(health,strength) 
+  {
+  super(health, strength);
+  }  
+    // New Method
+    receiveDamage(damage) 
+    {
+
+      this.health -= damage;
+
+      //**if the Saxon is still alive**, it should return **_"A Saxon has received DAMAGE points of damage"_**
+      //if the Saxon dies**, it should return **_"A Saxon has died in combat"_**
+
+      if (this.health > 0) {
+
+        return (this.name + "A Saxon has recieved "+ damage +" points of Damage"); 
+      } else {
+          return (this.name + "A Saxon has died in act of combat ");
+      }
+                      
+    }
+   
+}
+  
+// END Saxon
 
 describe('War', () => {
   let viking, saxon, war;
