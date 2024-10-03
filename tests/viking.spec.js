@@ -379,5 +379,46 @@ describe('War', () => {
         );
       });
     });
+
+    describe('genericAttack() method', () => {
+      it('should be a declared', () => {
+        expect(typeof war.genericAttack).toBe('function');
+      });
+
+      it('should receive 1 argument (a "viking" or a "saxon" string)', () => {
+        expect(war.genericAttack.length).toEqual(1);
+      });
+
+      it('should make the target receiveDamage() equal to the attackers strength', () => {
+        let saxonOldHealth = saxon.health;
+        let vikingOldHealth = viking.health;
+        war.genericAttack("saxon");
+        war.genericAttack("viking");
+        expect(viking.health).toEqual(vikingOldHealth - saxon.strength);
+        expect(saxon.health).toEqual(saxonOldHealth - viking.strength);
+      });
+
+      it('should remove dead saxons from the army', () => {
+        war.genericAttack("viking");
+        expect(war.saxonArmy.length).toEqual(0);
+      });
+
+      it('should remove dead vikings from the army', () => {
+        for (let i = 0; i < 12; i++) {
+          war.genericAttack("saxon");
+        }
+        expect(war.vikingArmy.length).toEqual(0);
+      });
+
+      it('should return result of calling receiveDamage() of a Saxon with the strength of a Viking', () => {
+        expect(war.genericAttack("viking")).toEqual('A Saxon has died in combat');
+      });
+
+      it('should return result of calling receiveDamage() of a Viking with the strength of a Saxon', () => {
+        expect(war.genericAttack("saxon")).toEqual(
+          `${viking.name} has received ${saxon.strength} points of damage`
+        );
+      });
+    });
   });
 });
