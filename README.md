@@ -132,7 +132,7 @@ Modify the `Soldier` class and add 2 methods to it: `attack()`, and `receiveDama
 #### `receiveDamage()` method
 
 - should be a function
-- should receive **1 argument** (the damage)
+- should receive **1 argument** (damage)
 - should remove the received damage from the `health` property
 - **shouldn't return** anything
 
@@ -168,7 +168,7 @@ Modify the `Viking` class, have it inherit from `Soldier`, re-implement the `rec
 This method needs to be **re-implemented** for `Viking` because the `Viking` version needs to have different return values.
 
 - should be a function
-- should receive **1 argument** (the damage)
+- should receive **1 argument** (damage)
 - should remove the received damage from the `health` property
 - **if the `Viking` is still alive**, it should return **"NAME has received DAMAGE points of damage"**
 - **if the `Viking` dies**, it should return **"NAME has died in act of combat"**
@@ -210,7 +210,7 @@ This method should be **inherited** from `Soldier`, no need to re-implement it.
 This method needs to be **re-implemented** for `Saxon` because the `Saxon` version needs to have different return values.
 
 - should be a function
-- should receive **1 argument** (the damage)
+- should receive **1 argument** (damage)
 - should remove the received damage from the `health` property
 - **if the Saxon is still alive**, it should return **_"A Saxon has received DAMAGE points of damage"_**
 - **if the Saxon dies**, it should return **_"A Saxon has died in combat"_**
@@ -257,7 +257,7 @@ The `Saxon` version of `addViking()`.
 
 #### `vikingAttack()` method
 
-A `Saxon` (chosen at random) has their `receiveDamage()` method called with the damage equal to the `strength` of a `Viking` (also chosen at random). This should only perform a single attack and the `Saxon` doesn't get to attack back.
+A `Saxon` (chosen at random) has their `receiveDamage()` method called with damage equal to the `strength` of a `Viking` (also chosen at random). This should only perform a single attack and the `Saxon` doesn't get to attack back.
 
 - should be a function
 - should receive **0 arguments**
