@@ -34,28 +34,27 @@ getJasmineRequireObj().console = function(jRequire, j$) {
 };
 
 getJasmineRequireObj().ConsoleReporter = function() {
-
-  var noopTimer = {
+  const noopTimer = {
     start: function(){},
     elapsed: function(){ return 0; }
   };
 
   function ConsoleReporter(options) {
-    var print = options.print,
-      showColors = options.showColors || false,
-      onComplete = options.onComplete || function() {},
-      timer = options.timer || noopTimer,
-      specCount,
-      failureCount,
-      failedSpecs = [],
-      pendingCount,
-      ansi = {
-        green: '\x1B[32m',
-        red: '\x1B[31m',
-        yellow: '\x1B[33m',
-        none: '\x1B[0m'
-      },
-      failedSuites = [];
+    const print = options.print;
+    const showColors = options.showColors || false;
+    const onComplete = options.onComplete || function() {};
+    const timer = options.timer || noopTimer;
+    let specCount;
+    let failureCount;
+    let failedSpecs = [];
+    let pendingCount;
+    const ansi = {
+      green: '\x1B[32m',
+      red: '\x1B[31m',
+      yellow: '\x1B[33m',
+      none: '\x1B[0m'
+    };
+    let failedSuites = [];
 
     print('ConsoleReporter is deprecated and will be removed in a future version.');
 
@@ -70,51 +69,41 @@ getJasmineRequireObj().ConsoleReporter = function() {
 
     this.jasmineDone = function() {
       printNewline();
-      for (var i = 0; i < failedSpecs.length; i++) {
+      for (let i = 0; i < failedSpecs.length; i++) {
         specFailureDetails(failedSpecs[i]);
       }
-
       if(specCount > 0) {
         printNewline();
-
-        var specCounts = specCount + ' ' + plural('spec', specCount) + ', ' +
+        let specCounts = specCount + ' ' + plural('spec', specCount) + ', ' +
           failureCount + ' ' + plural('failure', failureCount);
-
         if (pendingCount) {
           specCounts += ', ' + pendingCount + ' pending ' + plural('spec', pendingCount);
         }
-
         print(specCounts);
       } else {
         print('No specs found');
       }
-
       printNewline();
-      var seconds = timer.elapsed() / 1000;
+      const seconds = timer.elapsed() / 1000;
       print('Finished in ' + seconds + ' ' + plural('second', seconds));
       printNewline();
-
-      for(i = 0; i < failedSuites.length; i++) {
+      for(let i = 0; i < failedSuites.length; i++) {
         suiteFailureDetails(failedSuites[i]);
       }
-
       onComplete(failureCount === 0);
     };
 
     this.specDone = function(result) {
       specCount++;
-
       if (result.status == 'pending') {
         pendingCount++;
         print(colored('yellow', '*'));
         return;
       }
-
       if (result.status == 'passed') {
         print(colored('green', '.'));
         return;
       }
-
       if (result.status == 'failed') {
         failureCount++;
         failedSpecs.push(result);
@@ -144,17 +133,17 @@ getJasmineRequireObj().ConsoleReporter = function() {
     }
 
     function repeat(thing, times) {
-      var arr = [];
-      for (var i = 0; i < times; i++) {
+      const arr = [];
+      for (let i = 0; i < times; i++) {
         arr.push(thing);
       }
       return arr;
     }
 
     function indent(str, spaces) {
-      var lines = (str || '').split('\n');
-      var newArr = [];
-      for (var i = 0; i < lines.length; i++) {
+      const lines = (str || '').split('\n');
+      const newArr = [];
+      for (let i = 0; i < lines.length; i++) {
         newArr.push(repeat(' ', spaces).join('') + lines[i]);
       }
       return newArr.join('\n');
@@ -163,24 +152,21 @@ getJasmineRequireObj().ConsoleReporter = function() {
     function specFailureDetails(result) {
       printNewline();
       print(result.fullName);
-
-      for (var i = 0; i < result.failedExpectations.length; i++) {
-        var failedExpectation = result.failedExpectations[i];
+      for (let i = 0; i < result.failedExpectations.length; i++) {
+        const failedExpectation = result.failedExpectations[i];
         printNewline();
         print(indent(failedExpectation.message, 2));
         print(indent(failedExpectation.stack, 2));
       }
-
       printNewline();
     }
 
     function suiteFailureDetails(result) {
-      for (var i = 0; i < result.failedExpectations.length; i++) {
+      for (let i = 0; i < result.failedExpectations.length; i++) {
         printNewline();
         print(colored('red', 'An error was thrown in an afterAll'));
         printNewline();
         print(colored('red', 'AfterAll ' + result.failedExpectations[i].message));
-
       }
       printNewline();
     }
