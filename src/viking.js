@@ -61,35 +61,33 @@ class War {
     this.saxonArmy.push(saxonSoldier);
   }
 
-  vikingAttack() {
-    let result = this.saxonArmy[this.saxonArmy.length - 1].receiveDamage(
-      this.vikingArmy[this.vikingArmy.length - 1].strength
-    );
+  attack(attackerArmy, defenderArmy) {
+    const attacker = attackerArmy[attackerArmy.length - 1];
+    const defender = defenderArmy[defenderArmy.length - 1];
 
-    if(this.saxonArmy[this.saxonArmy.length - 1].health <= 0){
-        this.saxonArmy.pop();
-    }
+    const result = defender.receiveDamage(attacker.strength);
 
-    return result
-  }
-
-  saxonAttack(){
-    let result = this.vikingArmy[this.vikingArmy.length - 1].receiveDamage(this.saxonArmy[this.saxonArmy.length - 1].strength);
-
-    if(this.vikingArmy[this.vikingArmy.length - 1].health <= 0){
-        this.vikingArmy.pop();
+    if (defender.health <= 0) {
+      defenderArmy.pop();
     }
 
     return result;
   }
 
-  showStatus(){
-    return this.saxonArmy.length === 0 
-    ? "Vikings have won the war of the century!"
-    : this.vikingArmy.length === 0
-    ? "Saxons have fought for their lives and survived another day..."
-    : "Vikings and Saxons are still in the thick of battle."
+  vikingAttack() {
+    return this.attack(this.vikingArmy, this.saxonArmy)
+
   }
 
-  
+  saxonAttack() {
+    return this.attack(this.saxonArmy, this.vikingArmy)
+  }
+
+  showStatus() {
+    return this.saxonArmy.length === 0
+      ? "Vikings have won the war of the century!"
+      : this.vikingArmy.length === 0
+      ? "Saxons have fought for their lives and survived another day..."
+      : "Vikings and Saxons are still in the thick of battle.";
+  }
 }
