@@ -1,68 +1,58 @@
-// Soldier
+// 🧱 Base Soldier class: shared by both Vikings and Saxons
 class Soldier {
     constructor(health, strength) {
         this.health = health;
         this.strength = strength;
     }
 
+    // Attack simply returns the strength value
     attack() {
         return this.strength;
     }
 
+    // Subtracts health when damage is received
     receiveDamage(damage) {
-        return this.health -= damage;
+        this.health -= damage;
     }
 }
 
-// Viking
+// ⚔️ Viking class inherits from Soldier
 class Viking extends Soldier {
     constructor(name, health, strength) {
-        super(health, strength);
-        this.name = name;
+        super(health, strength); // Inherit health and strength
+        this.name = name;        // Add unique property: name
     }
 
-
+    // Override damage method with custom Viking message
     receiveDamage(damage) {
-        this.health -= damage;
-        if (this.health > 0) {
-            return `${this.name} has received ${damage} points of damage`;
-        } else {
-            return `${this.name} has died in act of combat`;
-        }
+        super.receiveDamage(damage);
+        return this.health > 0
+            ? `${this.name} has received ${damage} points of damage`
+            : `${this.name} has died in act of combat`;
     }
 
+    // Viking-only method
     battleCry() {
         return "Odin Owns You All!";
     }
-
-
 }
 
-// Saxon
+// 🪓 Saxon class also inherits from Soldier
 class Saxon extends Soldier {
     constructor(health, strength) {
-        super(health, strength);
+        super(health, strength); // Reuse Soldier's constructor
     }
 
-
-    attack() {
-        return this.strength;
-    }
-
+    // Override damage method with Saxon-specific message
     receiveDamage(damage) {
-        this.health -= damage;
-        if (this.health > 0) {
-            return `A Saxon has received ${damage} points of damage`;
-        } else {
-            return `A Saxon has died in combat`;
-        }
-
+        super.receiveDamage(damage);
+        return this.health > 0
+            ? `A Saxon has received ${damage} points of damage`
+            : `A Saxon has died in combat`;
     }
-
-
 }
 
-// War
+// 🧠 War class: manages the armies and the battle logic
 class War {
     constructor() {
         this.vikingArmy = [];
@@ -70,90 +60,82 @@ class War {
     }
 
     addViking(viking) {
-        if (viking instanceof Viking) {
-            this.vikingArmy.push(viking);
-        } else {
-            throw new Error("Only Vikings can be added");
-        }
+        this.vikingArmy.push(viking);
     }
 
     addSaxon(saxon) {
-        if (saxon instanceof Saxon) {
-            this.saxonArmy.push(saxon);
-        } else {
-            throw new Error("Only Saxons can be added");
-        }
+        this.saxonArmy.push(saxon);
     }
 
+    // One random Viking attacks a random Saxon
     vikingAttack() {
-        if (this.vikingArmy.length === 0 || this.saxonArmy.length === 0) return;
+        const viking = this.getRandom(this.vikingArmy);
+        const saxonIndex = this.getRandomIndex(this.saxonArmy);
+        const saxon = this.saxonArmy[saxonIndex];
 
-        const randomViking = this.vikingArmy[Math.floor(Math.random() * this.vikingArmy.length)];
-        const randomSaxonIndex = Math.floor(Math.random() * this.saxonArmy.length);
-        const randomSaxon = this.saxonArmy[randomSaxonIndex];
+        const result = saxon.receiveDamage(viking.attack());
 
-        const result = randomSaxon.receiveDamage(randomViking.strength);
-
-        if (randomSaxon.health <= 0) {
-            this.saxonArmy.splice(randomSaxonIndex, 1);
-        }
+        // Remove dead Saxon
+        if (saxon.health <= 0) this.saxonArmy.splice(saxonIndex, 1);
 
         return result;
     }
 
+    // One random Saxon attacks a random Viking
     saxonAttack() {
-        if (this.saxonArmy.length === 0 || this.vikingArmy.length === 0) return;
-        const randomSaxon = this.saxonArmy[Math.floor(Math.random() * this.saxonArmy.length)]
-        const randomVikingIndex = Math.floor(Math.random() * this.vikingArmy.length);
-        const randomViking = this.vikingArmy[randomVikingIndex];
+        const saxon = this.getRandom(this.saxonArmy);
+        const vikingIndex = this.getRandomIndex(this.vikingArmy);
+        const viking = this.vikingArmy[vikingIndex];
 
-        const result = randomViking.receiveDamage(randomSaxon.strength);
-        if (randomViking.health <= 0) {
-            this.vikingArmy.splice(randomVikingIndex, 1);
-        }
+        const result = viking.receiveDamage(saxon.attack());
+
+        // Remove dead Viking
+        if (viking.health <= 0) this.vikingArmy.splice(vikingIndex, 1);
+
         return result;
     }
 
+    // Check who is winning
     showStatus() {
-        if (this.saxonArmy.length === 0) {
-            return "Vikings have won the war of the century!";
-        } else if (this.vikingArmy.length === 0) {
-            return "Saxons have fought for their lives and survived another day...";
-        } else {
-            return "Vikings and Saxons are still in the thick of battle.";
-        }
+        if (this.saxonArmy.length === 0) return "✅ Vikings have won the war!";
+        if (this.vikingArmy.length === 0) return "💀 Saxons have survived!";
+        return "⚔️ The battle rages on...";
+    }
+
+    // Helper: get random item from array
+    getRandom(arr) {
+        return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    // Helper: get random index
+    getRandomIndex(arr) {
+        return Math.floor(Math.random() * arr.length);
     }
 }
 
+// 🔥 Let's simulate a battle
 const war = new War();
 
-// Add Vikings
+// Add 3 Vikings
 war.addViking(new Viking("Ragnar", 100, 25));
 war.addViking(new Viking("Lagertha", 90, 30));
 war.addViking(new Viking("Bjorn", 110, 20));
 
-// Add Saxons
+// Add 5 Saxons
 for (let i = 0; i < 5; i++) {
     war.addSaxon(new Saxon(60, 15));
 }
 
-// Battle loop
+// Run the battle
 let round = 1;
-
 while (war.vikingArmy.length > 0 && war.saxonArmy.length > 0) {
-    console.log(`\n⚔️ ROUND ${round}`);
+    console.log(`\n🔥 ROUND ${round}`);
+    console.log("Viking attack:", war.vikingAttack());
 
-    // Vikings attack
-    const vikingAttackLog = war.vikingAttack();
-    console.log("Viking attack:", vikingAttackLog);
-
-    // Saxons attack (only if any left)
     if (war.saxonArmy.length > 0) {
-        const saxonAttackLog = war.saxonAttack();
-        console.log("Saxon attack:", saxonAttackLog);
+        console.log("Saxon attack:", war.saxonAttack());
     }
 
     console.log(war.showStatus());
     round++;
 }
-// Viking attacks Saxon
