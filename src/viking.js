@@ -69,13 +69,15 @@ class War {
         return [army[warriorRandomNumber], army, warriorRandomNumber];
     }
 
-    warriorAttackDefense(warriorAttack, warriorDefense) {
+        warriorAttackDefense(warriorAttack, warriorDefense) {
         
         const soldierAttack = this.randomWarrior(warriorAttack)[0];
 
-        const soldierDefense = this.randomWarrior(warriorDefense)[0];
-        const soldierDefenseArmy = this.randomWarrior(warriorDefense)[1];
-        const soldierDefensePositionArray = this.randomWarrior(warriorDefense)[2];
+        const soldierDF = this.randomWarrior(warriorDefense);
+
+        const soldierDefense = soldierDF[0];
+        const soldierDefenseArmy = soldierDF[1];
+        const soldierDefensePositionArray = soldierDF[2];
 
         const result = soldierDefense.receiveDamage(soldierAttack.strength);
 
